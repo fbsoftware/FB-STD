@@ -1,0 +1,5 @@
+libFB-1.1.1
+Tabella "tmp" con struttura variata per cui varia anche la classe TMP.
+
+Classe TMP - aggiunto parametro ambiente e utilizzato il solo metodo read_tmp(),
+eliminato metodo read_tmp_a().

@@ -1,0 +1,288 @@
+<NotepadPlus>
+    <Project name="FB-STD">
+        <Folder name="component">
+            <File name="component\content.php" />
+            <File name="component\cont_arg.php" />
+            <File name="component\cont_art.php" />
+            <File name="component\cont_artarg.php" />
+            <File name="component\cont_artcap.php" />
+            <File name="component\cont_cap.php" />
+            <File name="component\cont_gal.php" />
+            <File name="component\cont_htm.php" />
+            <File name="component\cont_lnk.php" />
+            <File name="component\cont_url.php" />
+            <File name="component\cont_vid.php" />
+        </Folder>
+        <Folder name="css">
+            <File name="css\stili-custom.css" />
+            <File name="css\style.css" />
+        </Folder>
+        <Folder name="images">
+            <Folder name="archivi">
+                <File name="images\archivi\aiuto.png" />
+                <File name="images\archivi\art.png" />
+                <File name="images\archivi\config.png" />
+                <File name="images\archivi\ela.png" />
+                <File name="images\archivi\help_art.php" />
+                <File name="images\archivi\img.png" />
+                <File name="images\archivi\ind.png" />
+                <File name="images\archivi\isc.png" />
+                <File name="images\archivi\mnu.png" />
+                <File name="images\archivi\nav.png" />
+                <File name="images\archivi\tmp.png" />
+                <File name="images\archivi\ute.png" />
+                <File name="images\archivi\vel.png" />
+                <File name="images\archivi\ver.png" />
+                <File name="images\archivi\xdb.png" />
+            </Folder>
+            <Folder name="bottoni">
+                <File name="images\bottoni\a-iscritti.png" />
+                <File name="images\bottoni\aiuto.png" />
+                <File name="images\bottoni\archivia.png" />
+                <File name="images\bottoni\cancella.png" />
+                <File name="images\bottoni\cerca.png" />
+                <File name="images\bottoni\chiudi.png" />
+                <File name="images\bottoni\config.png" />
+                <File name="images\bottoni\esci.png" />
+                <File name="images\bottoni\modifica.png" />
+                <File name="images\bottoni\mostra.png" />
+                <File name="images\bottoni\nuovo.png" />
+                <File name="images\bottoni\ripristina.png" />
+                <File name="images\bottoni\ritorno.png" />
+                <File name="images\bottoni\salva.png" />
+                <File name="images\bottoni\stampa.png" />
+                <File name="images\bottoni\uscita.png" />
+            </Folder>
+            <Folder name="logo">
+                <File name="images\logo\logo.png" />
+            </Folder>
+            <File name="images\exit.png" />
+            <File name="images\fausto.png" />
+        </Folder>
+        <Folder name="jquery">
+            <Folder name="ui">
+                <Folder name="1.12.1">
+                    <Folder name="themes">
+                        <Folder name="base">
+                            <File name="jquery\ui\1.12.1\themes\base\jquery-ui.css" />
+                        </Folder>
+                    </Folder>
+                    <File name="jquery\ui\1.12.1\jquery-ui.js" />
+                </Folder>
+            </Folder>
+            <File name="jquery\jquery-1.12.4.js" />
+        </Folder>
+        <Folder name="js">
+            <File name="js\date_picker_it.js" />
+            <File name="js\FBbase.js" />
+            <File name="js\jquery-1.7.2.min.js" />
+            <File name="js\jquery-ui-1.8.20.custom.min.js" />
+        </Folder>
+        <Folder name="language">
+            <File name="language\en.ini" />
+            <File name="language\fr.ini" />
+            <File name="language\it.ini" />
+        </Folder>
+        <Folder name="libFB-1.1.1">
+            <File name="libFB-1.1.1\calen.jpg" />
+            <File name="libFB-1.1.1\CHANGELOG.txt" />
+            <File name="libFB-1.1.1\DB_PDO.php" />
+            <File name="libFB-1.1.1\FB.bottoni.php" />
+            <File name="libFB-1.1.1\FB.class.php" />
+            <File name="libFB-1.1.1\FB.field.php" />
+            <File name="libFB-1.1.1\FileIni.class.php" />
+        </Folder>
+        <Folder name="moduli">
+            <File name="moduli\footer.php" />
+            <File name="moduli\header.php" />
+            <File name="moduli\header_a.php" />
+            <File name="moduli\liv2.php" />
+            <File name="moduli\nav2.php" />
+            <File name="moduli\path_a.php" />
+        </Folder>
+        <File name="bootstrap_link.php" />
+        <File name="config.ini" />
+        <File name="connectDB.php" />
+        <File name="dsp_session.php" />
+        <File name="fields_art.php" />
+        <File name="fields_ela_p.php" />
+        <File name="fields_mnu.php" />
+        <File name="fields_nav.php" />
+        <File name="fields_tmp.php" />
+        <File name="fields_ute.php" />
+        <File name="fields_xdb.php" />
+        <File name="gest_mnu.php" />
+        <File name="gest_server.php" />
+        <File name="include_head.php" />
+        <File name="index.php" />
+        <File name="jquery_link.php" />
+        <File name="lingua.php" />
+        <File name="loadLibraries.php" />
+        <File name="loadTemplateAdmin.php" />
+        <File name="loadTemplateSito.php" />
+        <File name="login.php" />
+        <File name="login_test.php" />
+        <File name="msg.php" />
+        <File name="phpinfo.php" />
+        <File name="post_art.php" />
+        <File name="post_mnu.php" />
+        <File name="post_nav.php" />
+        <File name="post_tmp.php" />
+        <File name="post_ute.php" />
+        <File name="post_xdb.php" />
+        <File name="request.php" />
+        <File name="set_nav.php" />
+        <File name="struct_db.php" />
+        <File name="upd_mnu.php" />
+        <File name="vid_db.php" />
+        <File name="widget.php" />
+        <File name="workspace" />
+        <File name="write_mnu.php" />
+        <Folder name="component">
+            <File name="component\content.php" />
+            <File name="component\cont_arg.php" />
+            <File name="component\cont_art.php" />
+            <File name="component\cont_artarg.php" />
+            <File name="component\cont_artcap.php" />
+            <File name="component\cont_cap.php" />
+            <File name="component\cont_gal.php" />
+            <File name="component\cont_htm.php" />
+            <File name="component\cont_lnk.php" />
+            <File name="component\cont_url.php" />
+            <File name="component\cont_vid.php" />
+        </Folder>
+        <Folder name="css">
+            <File name="css\stili-custom.css" />
+            <File name="css\style.css" />
+        </Folder>
+        <Folder name="images">
+            <Folder name="archivi">
+                <File name="images\archivi\aiuto.png" />
+                <File name="images\archivi\art.png" />
+                <File name="images\archivi\config.png" />
+                <File name="images\archivi\ela.png" />
+                <File name="images\archivi\help_art.php" />
+                <File name="images\archivi\img.png" />
+                <File name="images\archivi\ind.png" />
+                <File name="images\archivi\isc.png" />
+                <File name="images\archivi\mnu.png" />
+                <File name="images\archivi\nav.png" />
+                <File name="images\archivi\tmp.png" />
+                <File name="images\archivi\ute.png" />
+                <File name="images\archivi\vel.png" />
+                <File name="images\archivi\ver.png" />
+                <File name="images\archivi\xdb.png" />
+            </Folder>
+            <Folder name="bottoni">
+                <File name="images\bottoni\a-iscritti.png" />
+                <File name="images\bottoni\aiuto.png" />
+                <File name="images\bottoni\archivia.png" />
+                <File name="images\bottoni\cancella.png" />
+                <File name="images\bottoni\cerca.png" />
+                <File name="images\bottoni\chiudi.png" />
+                <File name="images\bottoni\config.png" />
+                <File name="images\bottoni\esci.png" />
+                <File name="images\bottoni\modifica.png" />
+                <File name="images\bottoni\mostra.png" />
+                <File name="images\bottoni\nuovo.png" />
+                <File name="images\bottoni\ripristina.png" />
+                <File name="images\bottoni\ritorno.png" />
+                <File name="images\bottoni\salva.png" />
+                <File name="images\bottoni\stampa.png" />
+                <File name="images\bottoni\uscita.png" />
+            </Folder>
+            <Folder name="logo">
+                <File name="images\logo\logo.png" />
+            </Folder>
+            <File name="images\exit.png" />
+            <File name="images\fausto.png" />
+            <File name="images\ok.png" />
+            <File name="images\stop.png" />
+        </Folder>
+        <Folder name="jquery">
+            <Folder name="ui">
+                <Folder name="1.12.1">
+                    <Folder name="themes">
+                        <Folder name="base">
+                            <File name="jquery\ui\1.12.1\themes\base\jquery-ui.css" />
+                        </Folder>
+                    </Folder>
+                    <File name="jquery\ui\1.12.1\jquery-ui.js" />
+                </Folder>
+            </Folder>
+            <File name="jquery\jquery-1.12.4.js" />
+        </Folder>
+        <Folder name="js">
+            <File name="js\date_picker_it.js" />
+            <File name="js\FBbase.js" />
+            <File name="js\jquery-1.7.2.min.js" />
+            <File name="js\jquery-ui-1.8.20.custom.min.js" />
+        </Folder>
+        <Folder name="language">
+            <File name="language\en.ini" />
+            <File name="language\fr.ini" />
+            <File name="language\it.ini" />
+        </Folder>
+        <Folder name="libFB-1.1.1">
+            <File name="libFB-1.1.1\calen.jpg" />
+            <File name="libFB-1.1.1\CHANGELOG.txt" />
+            <File name="libFB-1.1.1\DB_PDO.php" />
+            <File name="libFB-1.1.1\FB.bottoni.php" />
+            <File name="libFB-1.1.1\FB.class.php" />
+            <File name="libFB-1.1.1\FB.field.php" />
+            <File name="libFB-1.1.1\FileIni.class.php" />
+        </Folder>
+        <Folder name="moduli">
+            <File name="moduli\footer.php" />
+            <File name="moduli\header.php" />
+            <File name="moduli\header_a.php" />
+            <File name="moduli\liv2.php" />
+            <File name="moduli\nav2.php" />
+            <File name="moduli\path_a.php" />
+        </Folder>
+        <File name="bootstrap_link.php" />
+        <File name="config.ini" />
+        <File name="connectDB.php" />
+        <File name="dsp_session.php" />
+        <File name="fields_art.php" />
+        <File name="fields_ela_p.php" />
+        <File name="fields_mnu.php" />
+        <File name="fields_nav.php" />
+        <File name="fields_tmp.php" />
+        <File name="fields_ute.php" />
+        <File name="fields_xdb.php" />
+        <File name="gest_mnu.php" />
+        <File name="gest_nav.php" />
+        <File name="gest_server.php" />
+        <File name="include_head.php" />
+        <File name="index.php" />
+        <File name="jquery_link.php" />
+        <File name="lingua.php" />
+        <File name="loadLibraries.php" />
+        <File name="loadTemplateAdmin.php" />
+        <File name="loadTemplateSito.php" />
+        <File name="login.php" />
+        <File name="login_test.php" />
+        <File name="msg.php" />
+        <File name="phpinfo.php" />
+        <File name="post_art.php" />
+        <File name="post_mnu.php" />
+        <File name="post_nav.php" />
+        <File name="post_tmp.php" />
+        <File name="post_ute.php" />
+        <File name="post_xdb.php" />
+        <File name="request.php" />
+        <File name="set_nav.php" />
+        <File name="struct_db.php" />
+        <File name="upd2_nav.php" />
+        <File name="upd_mnu.php" />
+        <File name="upd_nav.php" />
+        <File name="vid_db.php" />
+        <File name="widget.php" />
+        <File name="workspace" />
+        <File name="write_mnu.php" />
+        <File name="write_nav.php" />
+        <File name="__session" />
+        <File name="__workspace" />
+    </Project>
+</NotepadPlus>
