@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 3.0   
