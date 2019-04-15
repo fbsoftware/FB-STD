@@ -9,12 +9,20 @@
    *-------------------------------------------------------------------------
    * gestione descrizionbi in lingua
 ============================================================================= */
-include_once 'include_gest.php';
-include_once 'post_lang.php';           //print_r($_POST);//debug
-
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-$head = new getBootHead('Lingue',$_SESSION['ambito']);
-     $head->getBootHead();
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead();
+
+include_once 'post_lang.php';           
+//print_r($_POST);//debug
  
      // contenitore
      echo     "<div class='container form-horizontal'>"; 
@@ -22,9 +30,11 @@ $head = new getBootHead('Lingue',$_SESSION['ambito']);
 
 switch ($azione)
 {
+//==================================================================================     
+
     case 'nuovo':    // inserimento
 
-          $param    = array('nuovo','ritorno');     
+          $param    = array('salva|nuovo','ritorno');     
           $bti      = new bottoni_str_par($LANG." - ".$INS,'lang','write_lang.php',$param);
                $bti->btn();  
           echo  "<fieldset class='col-md-7'>"; 
@@ -39,7 +49,7 @@ foreach (glob($dir) as $key => $gx)
           $lin = explode('/',$gx);
           $naz = array_pop($lin);
           $sect = substr($naz,0,2);
-          $fx = new input(array('',$sect,30,'Traduzione per:  <strong> $sect </strong>','Traduzione il lingua','i'));
+          $fx = new input(array('',$sect,30,"Traduzione per:  <strong>".$sect." </strong>",'Traduzione il lingua','i'));
           $fx->field();
           $n++ ;
      }
@@ -47,17 +57,18 @@ foreach (glob($dir) as $key => $gx)
      echo  "</fieldset>";      
      break;
 
+//==================================================================================     
 
-    case 'modifica':        // modifica
+case 'modifica':        // modifica
 
-          $param    = array('modifica','ritorno');     
+          $param    = array('salva|modifica','ritorno');     
           $bti      = new bottoni_str_par($LANG." - ".$MOD,'lang','write_lang.php',$param);
           $bti->btn();  
 
 if ($chiave == '')
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:admin.php?".$_SESSION['location']."";
+     $loc = "location:index.php?".$_SESSION['location']."";
      header($loc);
      }
      $options=array('autoSave'=>true, 'readOnly'=>false);
@@ -84,17 +95,18 @@ foreach (glob('language/*.*') as $key => $gx)
      echo  "</form>";  
      echo  "</fieldset>";     
      break;
+//==================================================================================     
          
 // cancellazione    
     case 'cancella' :
-          $param    = array('cancella','ritorno');     
+          $param    = array('salva|cancella','ritorno');     
           $bti      = new bottoni_str_par($LANG." - ".$MOD,'lang','write_lang.php',$param);
           $bti->btn();  
 
 if ($chiave == '')
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:admin.php?".$_SESSION['location']."";
+     $loc = "location:index.php?".$_SESSION['location']."";
      header($loc);
      }
      $options=array('autoSave'=>true, 'readOnly'=>false);
@@ -121,13 +133,12 @@ foreach (glob('language/*.*') as $key => $gx)
      break;
  
     case 'chiudi' :
-     $loc = "location:admin.php?urla=widget.php&pag=";
-     header($loc);                          
+     header('location:index.php?urla=widget.php&pag=');                        
      break;
  
     default:
 
-     }
+}
      echo "</div>";
      echo "</div>";
 ob_end_flush();

@@ -42,7 +42,7 @@ echo     "<div class='row container'>";
 switch ($azione)
 { 
     case 'nuovo':       // inserimento 
-     $bti = new bottoni_str_par($ARG.' - '.$INS,'arg','write_arg.php',array('salva|nuovo','ritorno'));     
+     $bti = new bottoni_str_par($ARGS.' - '.$INS,'arg','write_arg.php',array('salva|nuovo','ritorno'));     
           $bti->btn(); 
 		echo  "<fieldset class='col-md-8'>"; 
       $arg = new DB_ins('arg','rprog');                       

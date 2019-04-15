@@ -16,7 +16,7 @@ require_once('lingua.php');
 require_once('connectDB.php');
 
 //   toolbar
-     $btx = new bottoni_str_par($ARG,'arg','upd_arg.php',array('nuovo','modifica','cancella','chiudi'));     
+     $btx = new bottoni_str_par($ARGS,'arg','upd_arg.php',array('nuovo','modifica','cancella','chiudi'));     
           $btx->btn();
               
 // memorizza location iniziale

@@ -9,10 +9,17 @@
    * ------------------------------------------------------------------------
    * gestione descrizionbi in lingua
 ============================================================================= */ 
-include_once 'include_gest.php';
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-$head = new getBootHead('Lingue',$_SESSION['ambito']);
-     $head->getBootHead();
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead();
 
 include_once 'post_lang.php';      //print_r($_POST);//debug
 switch ($azione)
@@ -25,7 +32,7 @@ case 'nuovo':
           $file->setValue('fr',$voce,$fr);
           $file=new FileIni("language/en.ini", $options);
           $file->setValue('en',$voce,$en);
-          $loc = "location:admin.php?".$_SESSION['location']."";
+          $loc = "location:index.php?".$_SESSION['location']."";
           header($loc);
           $_SESSION['esito'] = 54;
      break;
@@ -38,7 +45,7 @@ case 'modifica':
           $file->setValue('fr',$voce,$fr);
           $file=new FileIni("language/en.ini", $options);
           $file->setValue('en',$voce,$en);
-          $loc = "location:admin.php?".$_SESSION['location']."";
+          $loc = "location:index.php?".$_SESSION['location']."";
           header($loc);
           $_SESSION['esito'] = 55;
      break;
@@ -52,22 +59,21 @@ case 'cancella':
           $file=new FileIni("language/en.ini", $options);
   $bool = $file->deleteKey('en',$voce);
        if ($bool) {  echo "record cancellato";  }
-       $loc = "location:admin.php?".$_SESSION['location']."";
+       $loc = "location:index.php?".$_SESSION['location']."";
           header($loc);
           $_SESSION['esito'] = 53;
      break;
 
 case 'ritorno':
           $_SESSION['esito'] = 2;
-          $loc = "location:admin.php?".$_SESSION['location']."";
+          $loc = "location:index.php?".$_SESSION['location']."";
           header($loc);         
      break;
 default:
           $_SESSION['esito'] = 0;
-          $loc = "location:admin.php?".$_SESSION['location']."";
+          $loc = "location:index.php?".$_SESSION['location']."";
           header($loc);         
-
 }
-     $loc = "location:admin.php?".$_SESSION['location']."";
+     $loc = "location:index.php?".$_SESSION['location']."";
      header($loc);
 ?> 

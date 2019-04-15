@@ -9,17 +9,14 @@
    * ------------------------------------------------------------------------
    * gestione descrizionbi in lingua
 ============================================================================= */
-if (!function_exists('getBootHead')) 
-{
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Lingue',$_SESSION['ambito']);
-     $head->getBootHead(); 
-     echo "</head>";   
-}
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+require_once('connectDB.php');
+
 //   bottoni gestione
 $btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array('nuovo','modifica','cancella','chiudi'));     
-$btx->btn();
+	$btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
@@ -52,6 +49,6 @@ foreach($lang as $chiave => $valore)
      unset($chiave);
      echo "</tbody>";
      echo "</table>";
-     echo "</form>";
      echo "</div>";     // col
+     echo "</form>";
 ?> 
