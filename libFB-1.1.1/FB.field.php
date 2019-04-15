@@ -31,7 +31,7 @@ class input
 
         public function field()
           {    echo "<div>";   
-              if ($this->label == !NULL)
+              if ($this->tipo !== 'h')
                   { echo "<label for='$this->campo' data-toggle='tooltip' title='$this->pch'>$this->label</label>"; }
  switch ($this->tipo) {
 case 'ck':      // check box

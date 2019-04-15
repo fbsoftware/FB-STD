@@ -26,7 +26,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 //  mostra tabella
-echo "<div class='col-md-4'>";
+echo "<div class='col-md-6'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<th>Scel</th>";
@@ -63,5 +63,4 @@ echo "<tbody>";
           echo "</table>";
           echo "</form>";
           echo "</div>";     // col
-          echo "</div>";     // row
 ?>

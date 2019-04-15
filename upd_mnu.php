@@ -27,22 +27,12 @@ require_once('post_mnu.php');
 if (isset($_POST['submit']))    $azione  =$_POST['submit'];
 if (($azione == 'modifica' || $azione == 'cancella' ) && $bid == '') {header('location:gest_mnu.php');}
 
-// mostra toolbar o chiude
+// mostra toolbar 
 switch ($azione)
-{    
-    case 'cancella' :
-
-		  break;  
+{	case '':
     case 'chiudi' :
 	header('location:index.php?urla=widget.php&pag=');		
-	break;      
-}
-      
-switch ($azione)
-{
-    case '':
-    header('location:index.php?urla=widget.php&pag=');
-    break;
+	break;     	
 //==================================================================================     
     case 'nuovo':
 	 //   toolbar
@@ -51,7 +41,7 @@ switch ($azione)
 		$btx->btn();
       $mnu = new DB_ins('mnu','bprog');                             
       $xxx = $mnu->insert();     
-echo  "<fieldset class='gest'>";
+echo  "<fieldset class='col-md-8'>";
       $f3 = new field($xxx,'bprog',03,'Progressivo');          
 		$f3->field_i();      
       $ts = new DB_tip_i('stato','bstat','','Stato record','');        
@@ -73,14 +63,14 @@ echo  "</form>";
 	$btx    = new bottoni_str_par('Menu - modifica','mnu','write_mnu.php',$param);  
 		$btx->btn();
 
-	echo  "<fieldset class='gest'>";  
+	echo  "<fieldset class='col-md-8'>";  
       $sql = "SELECT * FROM `".DB::$pref."mnu` 
 			   WHERE `bid` = ".$bid."  ";    
      foreach($PDO->query($sql) as $row)
 	 {
       include('fields_mnu.php');
-     $f1 = new field($bid,'bid',1,'');                         
-		$f1->field_h();     
+     $f1 = new input(array($bid,'bid',1,'','','h'));                         
+		$f1->field();     
      $ts = new DB_tip_i('stato','bstat',$bstat,'Stato record','');
 		$ts->select();
      $f3 = new field($bprog,'bprog',3,'Progressivo');          
@@ -94,7 +84,9 @@ echo  "</form>";
      $f7 = new field($bselect,'bselect',1,'Selezionato');      
 		$f7->field_i(); 
 	 }
-      echo  "</fieldset></form>";
+      echo "</fieldset>";
+	  echo "</form>";
+
       break;
 //==================================================================================     
      
@@ -109,7 +101,7 @@ echo  "</form>";
 	foreach($PDO->query($sql) as $row)
 	{
 	include('fields_mnu.php'); 
-	echo  "<fieldset class='gest'>";
+	echo  "<fieldset class='col-md-8'>";
      $f1 = new field($bid,'bid',1,'');                   
 		$f1->field_h();     
      $ts = new field($bstat,'bstat',1,'Stato record');   
@@ -130,11 +122,9 @@ echo  "</fieldset></form>";
 //==================================================================================     
 
       default:
-              echo "UPD-Operazione invalida: azione=".$azione;    
+              echo "upd_mnu.php - Operazione invalida: azione=".$azione;    
 }
 ob_end_flush();
-
 ?>
-
 </body>
 </html>

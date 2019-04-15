@@ -22,10 +22,6 @@ require_once("bootstrap_link.php");
 require_once('lingua.php'); 
 $app->closeHead(); 
 
-     // contenitore
-     echo     "<div class='container form-horizontal'>"; 
-     echo     "<div class='row container'>";
-
 require_once('tinys.php');
 require_once('post_arg.php');
 
@@ -35,15 +31,20 @@ $rtext    = $QUI_TEXT;
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1) 
      {
-        header('location:index.php?'.$_SESSION['location'].'');
+      header('location:index.php?'.$_SESSION['location'].'');
      }
+	 
+// contenitore
+echo     "<div class='container form-horizontal'>"; 
+echo     "<div class='row container'>";
 
 // mostra stringa bottoni o chiude
 switch ($azione)
 { 
     case 'nuovo':       // inserimento 
-     $bti = new bottoni_str_par($ARG.' - '.$INS,'arg','write_arg.php',array('nuovo','ritorno'));     
+     $bti = new bottoni_str_par($ARG.' - '.$INS,'arg','write_arg.php',array('salva|nuovo','ritorno'));     
           $bti->btn(); 
+		echo  "<fieldset class='col-md-8'>"; 
       $arg = new DB_ins('arg','rprog');                       
           $nr =  $arg->insert();
       $f1 = new input(array($nr,'rprog',3,$PROG,'Per ordinamento','i'));                   
@@ -56,20 +57,19 @@ switch ($azione)
           $f3->field();
       $sn = new input(array('','rmostra',1,$MOSTRAT,'Mostra testo si-no','i'));                   
           $sn->field();
-          
-echo  "<div class='txtarea' >
-       <textarea name='rtext' cols='100' rows='20'>".$rtext."</textarea>";          
-echo  "</form>";
+      $sn = new input(array('Inserire un testo','rtext',1,$MOSTRAT,'Inserire un testo','tx'));                   
+          $sn->field();  
+		echo  "</fieldset>";     
+		echo  "</form>";
       break;
 
 // modifica     
     case 'modifica':
-     $btm = new bottoni_str_par($ARG.' - '.$MOD,'arg','write_arg.php',array('modifica','ritorno'));     
+     $btm = new bottoni_str_par($ARG.' - '.$MOD,'arg','write_arg.php',array('salva|modifica','ritorno'));     
           $btm->btn();
-
-$sql = "SELECT *
-        FROM `".DB::$pref."arg`
-        WHERE `rid` = $rid " ;
+	$sql = "SELECT *
+			FROM `".DB::$pref."arg`
+			WHERE `rid` = $rid " ;
 // transazione    
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
      $PDO = new PDO($con,DB::$user,DB::$pw);
@@ -77,7 +77,7 @@ $sql = "SELECT *
      foreach($PDO->query($sql) as $row)
      {
       include 'fields_arg.php'; 
-      echo  "<fieldset class='col-md-6'>";
+		echo  "<fieldset class='col-md-8'>"; 
       $f0 = new input(array($rid,'rid',1,'ID record','','h'));              
           $f0->field();    
       $f1 = new input(array($rprog,'rprog',3,$PROG,'Per ordinamento','i'));        
@@ -90,17 +90,20 @@ $sql = "SELECT *
           $f3->field();
       $f4 = new input(array($rmostra,'rmostra',1,$MOSTRAT,'SI-NO per mostrare il titolo dell argomento','sn'));        
           $f4->field();
-      echo  "</fieldset>";
-      echo  "<div class='txtarea'>
-       <textarea name='rtext' cols='100' rows='20'>".$rtext."</textarea>";          
-       echo  "</form></div>";
+      $f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','tx'));        
+          $f4->field();	
+		echo  "</fieldset>";     
+      echo  "</form>";
       }
 break;
  
 // cancellazione    
     case 'cancella' :
-$btc = new bottoni_str($ARG.' - '.$DELCONF,'arg','write_arg.php',array('cancella','ritorno')); 
-                  $btc->bt_upd_canc(); 
+// toolbar
+	$param  = array('salva|cancella','ritorno');    
+	$btx    = new bottoni_str_par($ARG.' - '.$DELCONF,'arg','write_arg.php',$param);  
+		$btx->btn();
+		
     $sql = "SELECT * 
             FROM `".DB::$pref."arg`
             WHERE `rid` = $rid  "; 
@@ -109,30 +112,33 @@ $btc = new bottoni_str($ARG.' - '.$DELCONF,'arg','write_arg.php',array('cancella
      $PDO = new PDO($con,DB::$user,DB::$pw);
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
-     {
+	{
      include('fields_arg.php');
-     echo  "<fieldset class='col-md-6'>"; 
-      $f0 = new field($rid,'rid',1,'ID record');            $f0->field_h();    
-      $f1 = new field($rprog,'rprog',3,$PROG);      $f1->field_r();
-      $ts = new field($rstat,'rstat',1,$STREC);     $ts->field_r();
-      $f2 = new field(htmlspecialchars($rcod, ENT_QUOTES),'rcod',10,$COD);  $f2->field_r();
-      $f3 = new field(htmlspecialchars($rdesc, ENT_QUOTES),'rdesc',50,$DESC);     $f3->field_r();
-      $f4 = new field($rmostra,'rmostra',1,$MOSTRAT);   $f4->field_r(); 
-      echo  "</fieldset>";     
-      echo    "<div class='txtarea'>
-               <textarea name='rtext' cols='100' rows='20'>".$rtext."</textarea>";          
-      echo    "</form></div>";
-     } 
+		echo  "<fieldset class='col-md-8'>"; 
+		$f0 = new field($rid,'rid',1,'ID record');            $f0->field_h();    
+		$f1 = new field($rprog,'rprog',3,$PROG);      $f1->field_r();
+		$ts = new field($rstat,'rstat',1,$STREC);     $ts->field_r();
+		$f2 = new field(htmlspecialchars($rcod, ENT_QUOTES),'rcod',10,$COD);  $f2->field_r();
+		$f3 = new field(htmlspecialchars($rdesc, ENT_QUOTES),'rdesc',50,$DESC);     $f3->field_r();
+		$f4 = new field($rmostra,'rmostra',1,$MOSTRAT);   $f4->field_r(); 
+		$f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','tx'));        
+			$f4->field();         
+		echo  "</fieldset>";     
+		echo    "</form>";
+
+	} 
       break;   
  
     case 'chiudi' :
     {
-    header('location:admin.php');
+    header('location:index.php?urla=widget.php&pag=');
         break;
     } 
    
     default:
   echo $OP_INVAL;    
      }
+	  echo  "</div>";	//row
+	  echo  "</div>";	// container
 ob_end_flush();
 ?></html>
