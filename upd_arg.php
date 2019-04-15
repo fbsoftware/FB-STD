@@ -7,22 +7,27 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * -------------------------------------------
-   * gestione tabella argomenti      
+   * gestione tabella argomenti  
+	* 1.0.0	nuova head
 ============================================================================= */
-if (!function_exists('getBootHead')) 
-{
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Argomenti',$_SESSION['ambito']);
-     $head->getBootHead(); 
-}
-   
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead(); 
+
      // contenitore
      echo     "<div class='container form-horizontal'>"; 
      echo     "<div class='row container'>";
 
-include_once('tinys.php');
-include_once('post_arg.php');
+require_once('tinys.php');
+require_once('post_arg.php');
 
 $azione   = $_POST['submit'];  
 $rtext    = $QUI_TEXT;
@@ -30,8 +35,7 @@ $rtext    = $QUI_TEXT;
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1) 
      {
-          $loc = "location:admin.php?".$_SESSION['location']."";
-          header($loc);
+        header('location:index.php?'.$_SESSION['location'].'');
      }
 
 // mostra stringa bottoni o chiude

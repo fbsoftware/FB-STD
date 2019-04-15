@@ -9,6 +9,7 @@
 =============================================================================  
    * Gestione della tabella 'nav' voci di menu e sottovoci.
    * Aggiunto "nhead" per gestire header per ogni voce menu (Max.9).
+   * 1.0.0	nuovo head breve
 =============================================================================  */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');

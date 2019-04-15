@@ -6,16 +6,21 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
-   * ------------------------------------------------------------------------
-   * aggiornamento tabella 'arg'      
+	* ------------------------------------------------------------------------
+	* aggiornamento tabella 'arg' 
+	* 1.0.0	nuova head
 ============================================================================= */ 
-if (!function_exists('getBootHead')) 
-{
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Argomenti',$_SESSION['ambito']);
-     $head->getBootHead(); 
-}
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead();
 
 // transazione    
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";

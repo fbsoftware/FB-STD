@@ -152,11 +152,12 @@ case 'url':
 	}
  
  echo  "</fieldset></div>"; 
-      
-      echo  "<div class='crea_dx'><fieldset >";
+	echo  "<div class='crea_dx'><fieldset >";
 	  $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
 		$f2->field();     
-      echo  "</fieldset></div></form>";          
+	echo  "</fieldset>"; 
+	echo "</div>";
+	echo "</form>";
       break;
 }    
 //==================================================================================     

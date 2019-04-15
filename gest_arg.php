@@ -10,14 +10,12 @@
    * gestione tabella 'arg' argomenti. 
    * 22/12/2013 incasellamento in tabella        
 ============================================================================= */ 
-if (!function_exists('getBootHead')) 
-{
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Argomenti',$_SESSION['ambito']);
-     $head->getBootHead(); 
-}
-//   bottoni gestione
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+require_once('connectDB.php');
+
+//   toolbar
      $btx = new bottoni_str_par($ARG,'arg','upd_arg.php',array('nuovo','modifica','cancella','chiudi'));     
           $btx->btn();
               
@@ -34,8 +32,8 @@ echo "<thead>";
 echo "<th>Scel</th>";
 echo "<th>Stato</th>"; 
 echo "<th>Prg</th>";
-echo "<th>-- Codice -</th>";
-echo "<th>--- --- - Descrizione --- ---</th>";
+echo "<th>Codice</th>";
+echo "<th>Descrizione</th>";
 echo "<th>T</th>";
 echo "</thead>";
 

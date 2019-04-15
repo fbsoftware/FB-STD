@@ -9,14 +9,19 @@
    * ------------------------------------------------------------------------
    * Inserimento in base al tipo voce  
    * Gestito livello di accesso
+   * 1.0.0	nuova head
 ============================================================================= */ 
-echo  "<link rel='stylesheet' type='text/css' href='css/style.css'>";
-//include_once 'classiFB.php';
-include_once 'classi/DB.php';
-include_once 'classi/bottoni.php';
-include_once 'classi/field.php';
-include_once 'classi/FB.class.php';
-$dbase = new DB('sito');  $dbase->openDB();
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
+// DOCTYPE & head
+$app = new Head('Gestione navigatore');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead();;
 
 include('post_nav.php');
 @$azione=$_POST['submit'];
@@ -32,9 +37,11 @@ case 'ritorno':
       
 case 'nuovo': 
      {
-     $param  = array('Voci di menu - inserimento','nav','write_nav.php','salva|nuovo','ritorno');  
-     $btx    = new bt_param($param);     $btx->show_bottoni($param); 
-
+// toolbar
+	$param  = array('salva|nuovo','ritorno');    
+	$btx    = new bottoni_str_par('Voci di menu - inserimento','nav','write_nav.php',$param);  
+		$btx->btn();
+	 
 echo  "<div class='crea'><fieldset >";
       $nav = new DB_ins('nav','nprog');   
 		$num = $nav->insert();
@@ -44,33 +51,31 @@ echo  "<div class='crea'><fieldset >";
 		$ts->select();
       $men = new DB_sel_l('mnu','bprog','','bmenu','nmenu','bstat','bmenu','Menu','');
              $men->select_label();
-      $f2 = new field('','nli',20,'Voce');                      $f2->field_i();
-      $f4 = new field('','ndesc',20,'Sottovoce');             $f4->field_i();
-      $f3 = new field('','ntesto',25,'Descrizione');                  $f3->field_i();      
-      $tv = new field($ntipo,'ntipo',20,'Tipo voce');           $tv->field_r(); 
+      $f2 = new field('','nli',20,'Voce');                      
+		$f2->field_i();
+      $f4 = new field('','ndesc',20,'Sottovoce');             
+		$f4->field_i();
+      $f3 = new field('','ntesto',25,'Descrizione');                  
+		$f3->field_i();      
+      $tv = new field($ntipo,'ntipo',20,'Tipo voce');           
+		$tv->field_r(); 
 switch ($ntipo)
 {      
 case 'arg':
-       {$t = new DB_sel_l('arg','rdesc','','rcod','nsotvo','rstat','rdesc','Argomento','');
+       $t = new DB_sel_l('arg','rdesc','','rcod','nsotvo','rstat','rdesc','Argomento','');
        echo $t->select_label()  ; break;
-       } 
-case 'cap':
-       {$t = new DB_sel_l('cap','cdesc','','ccod','nsotvo','cstat','cdesc','Capitolo','');
+ case 'cap':
+       $t = new DB_sel_l('cap','cdesc','','ccod','nsotvo','cstat','cdesc','Capitolo','');
        echo $t->select_label()  ; break;
-       } 
 case 'art':
-       {$t = new DB_sel_l('art','atit','','atit','nsotvo','astat','atit','Articolo','');
+       $t = new DB_sel_l('art','atit','','atit','nsotvo','astat','atit','Articolo','');
        echo $t->select_label()  ; break;
-       } 
 case 'lnk':
-       {$ty = new field($nsotvo,'nsotvo',30,'Link interno');    echo $ty->field_i(); break;
-       } 
+       $ty = new field($nsotvo,'nsotvo',30,'Link interno');    echo $ty->field_i(); break;
 case 'ifr':
-       {
        $tw = new select_root($nsotvo,'nsotvo','Html/php pers.');
        echo $tw->select_dir();
        break;
-       } 
 }       
       $f5 = new field('','ntarget',20,'Target');                    
 	 	$f5->field_i();
@@ -84,12 +89,14 @@ case 'ifr':
 	 	$fa->field_i();           
       $tz = new field(0,'naccesso',1,'Livello accesso');           
 	 	$tz->field_i();
-     echo  "</fieldset></div>";
- /*     echo  "<div class='crea_dx'><fieldset >";
-      echo  "<label for=ntitle>Titolo pagina</label>";
-      echo  "<textarea name='ntitle' cols=33 rows=3 >$ntitle</textarea>";
-      echo  "</fieldset></div>";  */
-	 echo  "</form>";         
+		
+ echo  "</fieldset></div>"; 
+	echo  "<div class='crea_dx'><fieldset >";
+	  $f2 = new input(array('','nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
+		$f2->field();     
+	echo  "</fieldset>"; 
+	echo "</div>";
+	echo "</form>";      
       break;
 }
 } 
