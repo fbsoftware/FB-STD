@@ -25,11 +25,11 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 // mostra la tabella
-echo "<div class='col-md-4'>";
+echo "<fieldset class='col-md-6'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scel</th>";
-echo "<th>Stringa codifica</th>";
+echo "<th>Scelta</th>";
+echo "<th>Stringa da tradurre</th>";
 echo "<th>--- Traduzione nella lingua ---</th>";
 echo "</thead>";
 
@@ -49,6 +49,6 @@ foreach($lang as $chiave => $valore)
      unset($chiave);
      echo "</tbody>";
      echo "</table>";
-     echo "</div>";     // col
+     echo "</fieldset>";     // col
      echo "</form>";
 ?> 
