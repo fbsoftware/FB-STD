@@ -52,8 +52,7 @@ case '':
       break;
 //==================================================================================     
 case 'chiudi' :
-	header('location:index.php?urla=widget.php&pag=');                          
-	  break; 
+	header('location:index.php?'.$_SESSION['location'].'');	  break; 
 //==================================================================================     
 
 case 'nuovo':    // scelta tipo voce, prosegue su: upd2_nav.php
@@ -152,11 +151,12 @@ case 'url':
 	}
  
  echo  "</fieldset></div>"; 
-      
-      echo  "<div class='crea_dx'><fieldset >";
+	echo  "<div class='crea_dx'><fieldset >";
 	  $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
 		$f2->field();     
-      echo  "</fieldset></div></form>";          
+	echo  "</fieldset>"; 
+	echo "</div>";
+	echo "</form>";
       break;
 }    
 //==================================================================================     

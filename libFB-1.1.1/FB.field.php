@@ -30,8 +30,9 @@ class input
 
 
         public function field()
-          {    echo "<div>";   
-              if ($this->label == !NULL)
+          {  // label non serve per tipo = h/star  
+			echo "<div>";   
+              if (($this->tipo !== 'h') && ($this->tipo !== 'star'))
                   { echo "<label for='$this->campo' data-toggle='tooltip' title='$this->pch'>$this->label</label>"; }
  switch ($this->tipo) {
 case 'ck':      // check box
@@ -40,15 +41,8 @@ case 'ck':      // check box
                 if ($this->valini === 1) { echo "checked";} 
                 echo ">";
  break;
-/*    case 'star':        // immagine stella
-                if ($this->valini == '*')
-                    { echo "<input type='image' class='titolo'
-                       name='$this->campo' value= '$this->valini'
-                       src='images/star.png '>"; }
-                else { echo "<input type='text' class='titolo' readonly='readonly'
-                       name='$this->campo' value= '$this->valini' size='$this->lung' >"; }
-         break;  */
-case 'star':     // immagine stella
+
+ case 'star':     // immagine stella
           if ($this->valini == '*') 
                {
                echo "<input type='image' class='titolo' 
