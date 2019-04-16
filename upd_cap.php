@@ -9,11 +9,17 @@
    *-------------------------------------------------------------------------
    * 2.0 aggiunto argomento del capitolo.
 ============================================================================= */
-include_once 'include_gest.php';
-
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-$head = new getBootHead('gestione capitoli',$_SESSION['ambito']);
-     $head->getBootHead();
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead();
      
      // contenitore
      echo     "<div class='container'>"; 
@@ -29,7 +35,7 @@ $content =$QUI_TEXT;
 if (($azione == 'modifica' || $azione == 'cancella') && ($cid < 1)) 
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:admin.php?".$_SESSION['location']."";
+     $loc = "location:index.php?".$_SESSION['location']."";
      header($loc);
      }
 
@@ -38,12 +44,11 @@ switch ($azione)
 // inserimento 
     case 'nuovo':
 
-          $bti = new bottoni_str_par('Capitoli - inserimento','cap','write_cap.php',array('nuovo','ritorno'));     
+          $bti = new bottoni_str_par('Capitoli - inserimento','cap','write_cap.php',array('salva|nuovo','ritorno'));     
                $bti->btn();
                echo "</div>";   // row
                echo "</div>";   // container
           echo  "<fieldset class='col-md-8'>";               
-               include_once 'include_gest.php';     
           $cap = new DB_ins('cap','cprog');                     
           $f3 = new input(array($cap->insert(),'cprog',03,'Progressivo','Per ordinamento','i'));        
                $f3->field();   
@@ -65,7 +70,7 @@ switch ($azione)
  
 // modifica     
     case 'modifica':
-          $bti = new bottoni_str_par('Capitoli - modifica','cap','write_cap.php',array('modifica','ritorno'));     
+          $bti = new bottoni_str_par('Capitoli - modifica','cap','write_cap.php',array('salva|modifica','ritorno'));     
                $bti->btn();
                echo "</div>";   // row
                echo "</div>";   // container
@@ -104,7 +109,7 @@ $PDO->beginTransaction();
 
 // cancellazione    
     case 'cancella' :
-          $bti = new bottoni_str_par('Capitoli - cancella','cap','write_cap.php',array('cancella','ritorno'));     
+          $bti = new bottoni_str_par('Capitoli - cancella','cap','write_cap.php',array('salva|cancella','ritorno'));     
                $bti->btn();
                echo "</div>";   // row
                echo "</div>";   // container
@@ -144,7 +149,7 @@ $PDO->beginTransaction();
  
     case 'chiudi' :
     {
-         $loc = "location:admin.php?urla=widget.php&pag=";
+         $loc = "location:index.php?urla=widget.php&pag=";
          header($loc);                          
         break;
     } 

@@ -55,9 +55,9 @@ case 'cancella':
 		  break;
 
 case 'ritorno':
-               $_SESSION['esito'] = 2;
-               header('location:index.php?'.$_SESSION['location'].'');
-               break;
+		$_SESSION['esito'] = 2;
+		   break;
+			   
 default :      $_SESSION['esito'] = 1;
 }
 	header('location:index.php?'.$_SESSION['location'].'');

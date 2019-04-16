@@ -11,7 +11,7 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
 require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
+require_once('loadTemplateAdmin.php');	
 require_once('connectDB.php');
 
 // DOCTYPE & head
@@ -22,7 +22,6 @@ require_once('jquery_link.php');
 require_once('bootstrap_link.php');
 require_once('lingua.php');
 $app->closeHead();
-
 echo "<body>";
 // test se richiesto login ============================
      if(!isset($_COOKIE['admin']))
@@ -40,7 +39,8 @@ require_once('set_nav.php');
 require_once('moduli/header_a.php');       
 
 //  N A V I G A T O R E   ===========================
-echo    "<nav>";        
+echo    "<nav>"; 
+      
 if  (TMP::$tmenu == 'admin') {	include('moduli/nav2.php'); }	
 echo    "</nav>";   
  

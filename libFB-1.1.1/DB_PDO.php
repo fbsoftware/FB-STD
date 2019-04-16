@@ -16,6 +16,7 @@
   proprietà statiche.
   3.0     impiego di PDO per MySQL
   3.1.1   tolto parametro
+  1.0.0	base per Github	
 ============================================================================= */
 class DB
 {      
@@ -114,7 +115,7 @@ class TMP       extends  DB
   public static $tglyforma    = '';    // glifi - forma  
   public static $tglyreverse  = '';    // glifi - reverse color
 
-		function __construct($ambiente ='sito') 
+		function __construct($ambiente) 
 		{
 		self::$ambiente = $ambiente;
 		}
@@ -142,7 +143,7 @@ class TMP       extends  DB
 					}			  
 
               foreach($PDO->query($sql) as $row)
-              {  
+              { 
                self::$tid     		= $row['tid'];
                self::$tprog   		= $row['tprog'];
                self::$tstat   		= $row['tstat'];

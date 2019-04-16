@@ -10,11 +10,18 @@
    * aggiornamento tabella 'cap' 
    * 2.0 aggiunto argomento del capitolo.         
 ============================================================================= */ 
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Capitoli',$_SESSION['ambito']);
-     $head->getBootHead(); 
-     echo "</head>";   
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("include_head.php");
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once('lingua.php'); 
+$app->closeHead();
+
 include('post_cap.php');
 
 $azione  =$_POST['submit'];
@@ -81,6 +88,6 @@ case 'ritorno':
 default:
                     $_SESSION['esito'] = 0;
 }
-     $loc = "location:admin.php?".$_SESSION['location']."";
+     $loc = "location:index.php?".$_SESSION['location']."";
      header($loc);
 ?> 
