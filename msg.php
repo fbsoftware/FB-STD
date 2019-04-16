@@ -50,14 +50,14 @@ if(isset($_SESSION['esito']))
           }      
 
           echo "</div>";
-          echo "</div>";
+          echo "</div><br/>";
      unset($_SESSION['esito']);
      }
 // zona messaggi unificati
 if(isset($_SESSION['errore'])) 
      {
-     echo "<div class='container'>";
-     echo "<div class='row'>";
+//     echo "<div class='container'>";
+//     echo "<div class='row'>";
      echo "<div class='col-md-6'>";
      // errori
 
@@ -76,12 +76,11 @@ if(isset($_SESSION['errore']))
           echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;Descrizione mancante <br />";
           if ($_SESSION['errore5'] == 1)      
           echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;Tipo mancante <br />";
-
           echo "</div>";
           }  
 
           echo "</div>";
-          echo "</div>";
+          echo "</div><br/>";
 
      unset($_SESSION['errore']);
      unset($_SESSION['errore0']);

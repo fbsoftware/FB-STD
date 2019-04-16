@@ -52,8 +52,7 @@ case '':
       break;
 //==================================================================================     
 case 'chiudi' :
-	header('location:index.php?urla=widget.php&pag=');                          
-	  break; 
+	header('location:index.php?'.$_SESSION['location'].'');	  break; 
 //==================================================================================     
 
 case 'nuovo':    // scelta tipo voce, prosegue su: upd2_nav.php

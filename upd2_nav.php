@@ -31,7 +31,7 @@ switch ($azione)
 {    
 case 'ritorno':
      {
-     header('location:gest_nav.php');   
+     header('location:index.php?'.$_SESSION['location'].''); 
      break;     
      } 
       
