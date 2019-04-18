@@ -60,10 +60,11 @@ include'fields_nav.php';
            echo "</ul>"; 
 
 //  bottone logout
-echo "<div class='bottoni'>";
+echo "<div style='float:right;'>";
 echo "<form class='bottoni' method='post' action='login.php'>";
-echo "<button class='big' type='submit' name='submit' value='logout'>        
-      <img src='images/exit.png' height='30' alt='exit.png' title='exit'/>Logout</button>";
-echo  "</form>";
-echo "</div>";		   
+echo "<button class='btn btn-danger navbar-btn' type='submit' name='submit' value='chiudi'> ";        
+echo "Uscita";
+echo "</button>";
+echo "</form>";   
+echo "</div>";	   
 ?> 

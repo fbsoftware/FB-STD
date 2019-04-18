@@ -40,13 +40,13 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
               }
             echo "</select>";
      echo "<br ><br >";    
-     echo  "<button type='submit' name='submit' value='Conferma'>Conferma</button><br >";
+     echo  "<button type='submit' name='submit' value='conferma'>Conferma</button><br >";
      echo  "</form>";
 
 // ritorno
      echo  "<form name=modulo  action='fix_tmp.php' method=post>"; 
      echo  "<hr ><br >";
-     echo  "<button type='submit' name='submit' value='Ritorno'>Ripristina</button>";
+     echo  "<button type='submit' name='submit' value='ritorno'>Ripristina</button>";
      echo  "<script type='text/javascript' language='JavaScript'> ";
      echo  "close()";
      echo  "</script>" ; 

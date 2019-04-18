@@ -42,7 +42,7 @@ class DB
         public static $e_mail = '';       // e-mail relativa al sito       
         public static $url = '';          // url del sito (http://....)
         public static $livello = '';      // livello di versione
-        public static $modifica = '';     // modifica di versione
+        public static $modify= '';     // modifica di versione
         public static $rilascio = '';     // rilascio di versione
         public static $author = '';       // autore
         public static $keywords = '';     // parole chiave
@@ -58,7 +58,7 @@ class DB
 
                   self::$livello   = $arr['versione']['livello'];
                   self::$rilascio  = $arr['versione']['rilascio'];
-                  self::$modifica  = $arr['versione']['modifica'];
+                  self::$modify    = $arr['versione']['modify'];
 
                   self::$root      = $arr['DB']['root'];
                   self::$host      = $arr['DB']['host'];

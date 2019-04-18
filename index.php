@@ -11,17 +11,17 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
 require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');	
-require_once('connectDB.php');
-
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
 // DOCTYPE & head
-$app = new Head('FB-STD');
+$app = new Head('Gestione menu');
 $app->openHead();
-require_once('include_head.php');
-require_once('jquery_link.php');
-require_once('bootstrap_link.php');
-require_once('lingua.php');
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once("include_head.php");
+require_once('lingua.php'); 
 $app->closeHead();
+
 echo "<body>";
 // test se richiesto login ============================
      if(!isset($_COOKIE['admin']))

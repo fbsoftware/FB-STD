@@ -25,13 +25,12 @@ require_once("bootstrap_link.php");
 require_once('lingua.php'); 
 $app->closeHead();
 
-require_once 'transactDB.php';
 $num    = $_POST['scelto']; 
 $return = $_POST['submit'];
 
 switch($return)
 {
-case 'Conferma':
+case 'conferma':
 
 
      $result = $PDO->query("UPDATE ".DB::$pref."tmp
@@ -45,18 +44,14 @@ case 'Conferma':
      $iframe='';
      break;
   
-case 'Ritorno':
-     $url='';
-     $iframe='';
-     $forma='';
+case 'ritorno':
+header('location:index.php?'.$_SESSION['location'].'');
+
      break;
-	   
+  
 case 'chiudi':
-     $url='';
-     $iframe='';
-     $forma='';
+header('location:index.php?urla=widget.php&pag=');
      break;
 }
-     header('location:index.php?'.$_SESSION['location'].'');
 
 ?>

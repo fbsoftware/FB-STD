@@ -9,6 +9,10 @@
 ============================================================================= 
    * visualizza widgets applicazione
 ============================================================================= */
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('lingua.php');
+require_once('connectDB.php');
 echo "<img src='images/logo/logo.png' alt='LOGO' title='logo'style='margin-left:200px;margin-top:150px;'>";
 // resetto tutti gli errori
      unset($_SESSION['esito']);

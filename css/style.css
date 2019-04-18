@@ -1,6 +1,7 @@
-﻿/* At-Rules */
-	@charset "UTF-8";
-/* ==== TAG PERSONALIZZATI ==== */
+﻿	@charset "UTF-8";
+/* ================================================== */
+/*	1.0.0	img-utente
+/* ================================================== */
 
 a {
 text-decoration: none  !important
@@ -32,7 +33,7 @@ hr {
 color: #008000;
 }
 
-P {
+p {
 margin: 0;
 padding: 0.5em 1em;
 text-align: left;
@@ -78,8 +79,6 @@ border: none;
 margin: 0;
 vertical-align: middle;
 }
-img.esci {
-margin: 5px 10px 0 0;}
 
 /*  fieldset  */
 fieldset.log {
@@ -147,6 +146,7 @@ margin: 10px;
 }
 
 form.bottoni {
+margin-block-end: 0 !important;
 float: left;
 }
 
@@ -308,7 +308,7 @@ opacity: .25;
 }
 
 .little {
-font-size: 70%;
+font-size: 50%;
 }
 
 .red {
@@ -486,6 +486,11 @@ font-size: 12pt;
 
 .img-centro {
 text-align: center;
+}
+
+.img-utente {
+vertical-align: middle;
+height: 50px;
 }
 
 .marchio {
