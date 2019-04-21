@@ -23,20 +23,19 @@ echo "</head>";
 //print_r($_POST);//debug
 $azione = $_POST['submit'];
 $table  = $_POST['table'];
-   
-      //   bottoni gestione
-     $param  = array( 'Struttura della tabella : <strong>'.$table.'</strong>','config','index.php?urla=widget.php&pag=','ritorno');  
-     $btx    = new bt_param($param);     $btx->show_bottoni($param);
 
+// toolbar
+	$param  = array('ritorno');    
+	$btx    = new bottoni_str_par('Struttura della tabella : <strong>'.$table.'</strong>','config','index.php?'.$_SESSION['location'],$param);  
+		$btx->btn();
 switch ($azione) 
      {
-            case 'chiudi':
+		case 'chiudi':
             $loc = "location:index.php?urla=widget.php&pag=";
                  header($loc);                          
             break;
-            case 'ritorno':
-             $loc = "location:admin.php?".$_SESSION['location']."";
-                  header($loc);
+		case 'ritorno':
+			header('location:index.php?'.$_SESSION['location'].'');
             break;
             
      default:
@@ -50,6 +49,7 @@ if (isset($table))
  //    echo '<h3>Tabella : '.$table.'</h3>';
 $sql = "SHOW FULL COLUMNS FROM ".$table;
 
+echo "<div class='tableFixHead'>";    
           echo '<table cellpadding="0" cellspacing="0">';
           echo '<tr><th>Campo</th><th>Tipo</th><th>Key</th><th>Default<th>Extra</th><th>Descrizione</th></tr>';
      //     while($row2 = mysql_fetch_row($result2))
@@ -67,7 +67,7 @@ $sql = "SHOW FULL COLUMNS FROM ".$table;
                }
 
           echo '</table>';
-          
+echo '</div>';          
           break;
 
      }
