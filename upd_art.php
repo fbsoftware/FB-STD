@@ -16,10 +16,11 @@ $app->openHead();
 require_once("include_head.php");
 require_once("jquery_link.php");
 require_once("bootstrap_link.php");
-require_once('lingua.php'); 
+require_once('lingua.php');
 $app->closeHead();
 
-include('post_art.php');
+require_once('tinys.php');
+require_once('post_art.php');
 if (isset($_POST['submit']))    $azione   =$_POST['submit'];  
 $content  ='--- Inserire qui il testo ---';
 

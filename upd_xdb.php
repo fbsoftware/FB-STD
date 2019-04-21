@@ -36,10 +36,9 @@ switch ($azione)
     case 'chiudi' :
     $loc = "location:index.php?".$_SESSION['location']."";
          header($loc);
-    break; }
+    break; 
 // inserimento 
     case 'nuovo':
-    {
     $param = array('salva|nuovo','ritorno');
     $btx   = new bottoni_str_par('Tipologie - inserimento','xdb','write_xdb.php',$param);     
          $btx->btn();
@@ -58,10 +57,8 @@ switch ($azione)
           $f4->field();  
      echo  "</fieldset></form>";
       break;
-     }
 // modifica     
     case 'modifica':
-    { 
      $param = array('salva|modifica','ritorno');
      $btx   = new bottoni_str_par('Tipologie - modifica','xdb','write_xdb.php',$param);     
           $btx->btn();
@@ -87,11 +84,9 @@ switch ($azione)
           $f3->field();  
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','i'));          
           $f4->field(); 
-
-     }
+	 }
      echo    "</fieldset></form>";     
      break;
-    }
 // cancellazione    
     case 'cancella' :
           $param  = array('salva|cancella','ritorno');    

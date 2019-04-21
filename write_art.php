@@ -11,10 +11,15 @@
 ============================================================================= */ 
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-echo "</head>"; 
+require_once("connectDB.php");
+// DOCTYPE & head
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once("include_head.php");
+require_once('lingua.php'); 
+$app->closeHead();
 
 include('post_art.php');    
 $azione =$_POST['submit'];  
