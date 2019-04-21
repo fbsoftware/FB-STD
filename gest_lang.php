@@ -9,9 +9,6 @@
    * ------------------------------------------------------------------------
    * gestione descrizionbi in lingua
 ============================================================================= */
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
 require_once('connectDB.php');
 
 //   bottoni gestione
@@ -25,12 +22,12 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 // mostra la tabella
-echo "<fieldset class='col-md-6'>";
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<th>Scelta</th>";
-echo "<th>Stringa da tradurre</th>";
-echo "<th>--- Traduzione nella lingua ---</th>";
+echo "<th>Stringa codificata da tradurre</th>";
+echo "<th>Traduzione nella lingua specifica</th>";
 echo "</thead>";
 
 echo "<tbody>";

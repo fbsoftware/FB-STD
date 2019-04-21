@@ -42,10 +42,10 @@ class bottoni_str_par
                }             
         public function btn()           //  bottoni gestione
           {      
-                echo    "<fieldset>";
+                echo    "<fieldset class='toolbar'>";
                 // immagine ampiezza=1
                 echo "<div class='col-md-1'>";
-                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='50'> ";
+                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
                 echo    "</div>";
                 
                 // titolo ampiezza=4
@@ -122,11 +122,11 @@ class bottoni_str_par_new
                }             
         public function btn()           //  bottoni gestione
           {      
-                echo    "<fieldset>";
+                echo    "<fieldset class='toolbar'>";
                               
                 // immagine ampiezza=1
                 echo "<div class='col-sm-1'>";
-                echo "<img src='images/$this->tabella.png' alt='manca img' height='50'> ";
+                echo "<img src='images/$this->tabella.png' alt='manca img' height='40'> ";
                 echo    "</div>";
                 
                 // titolo ampiezza=4

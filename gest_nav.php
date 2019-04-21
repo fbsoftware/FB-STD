@@ -2,7 +2,7 @@
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 3.0   
-   * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
+   * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
@@ -11,9 +11,6 @@
    * Aggiunto "nhead" per gestire header per ogni voce menu (Max.9).
    * 1.0.0	nuovo head breve
 =============================================================================  */
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
 require_once('connectDB.php');
 $tipo         = $_SESSION['pag']; 
 
@@ -29,12 +26,12 @@ $tipo         = $_SESSION['pag'];
 	include_once('msg.php');
   
      // mostra la tabella filtrata --------------------------------------------------
-echo "<div class='container fb-table-scroll'>";     
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
-echo "<thead class='well'>"; 
+echo "<thead>"; 
 echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 
-echo "<th>Prog</th>"; 
+echo "<th>Progressivo</th>"; 
 echo "<th>Menu</th>";
 echo "<th>VOCE</th>";
 echo "<th>Sottovoce</th>";

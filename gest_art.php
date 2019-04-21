@@ -9,9 +9,6 @@
    * ==========================================================================
    * Gestione articoli 
    * ======================================================================= */
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
 require_once('connectDB.php');
 
    //   bottoni gestione
@@ -26,7 +23,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 //  mostra tabella 
-echo "<div class='container fb-table-scroll'>";     
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead class='well'>"; 
 echo "<th>Scelta</th>";
@@ -35,7 +32,7 @@ echo "<th>Prog</th>";
 echo "<th>Titolo</th>"; 
 echo "<th>Argomento</th>"; 
 echo "<th>Capitolo</th>";
-echo "<th>Tit.</th>"; 
+echo "<th>Si titolo</th>"; 
 echo "</thead>";
        
 $sql =    "SELECT * FROM `".DB::$pref."art` 

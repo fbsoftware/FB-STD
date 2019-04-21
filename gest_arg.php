@@ -10,9 +10,6 @@
    * gestione tabella 'arg' argomenti. 
    * 22/12/2013 incasellamento in tabella        
 ============================================================================= */ 
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
 require_once('connectDB.php');
 
 //   toolbar
@@ -26,15 +23,15 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 //  mostra tabella
-echo "<div class='col-md-6'>";
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scel</th>";
+echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 
-echo "<th>Prg</th>";
+echo "<th>Progressivo</th>";
 echo "<th>Codice</th>";
 echo "<th>Descrizione</th>";
-echo "<th>T</th>";
+echo "<th>Si titolo</th>";
 echo "</thead>";
 
 echo "<tbody>";

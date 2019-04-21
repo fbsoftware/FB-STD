@@ -46,7 +46,7 @@ echo    "</nav>";
  
     //  C O R P O   =====================================             
 echo "<section id='corpo' class='container'>"; 
-$pos = $tmp->col2;  
+//$pos = $tmp->col2;  
 if ($urla){
           require_once $urla;
           } 

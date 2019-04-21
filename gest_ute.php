@@ -2,17 +2,12 @@
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 1.02    
-   * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
+   * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */  
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-echo "</head>";  
+require_once('connectDB.php'); 
  
  //   bottoni gestione
 $param = array('nuovo','modifica','cancella','chiudi');
@@ -27,15 +22,15 @@ $msg = new msg($_SESSION['esito']);
      $msg->msg();
 
 //   testate
-echo "<div class='container fb-table-scroll'>";     
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-bordered table-condensed'>"; 
-echo "<thead class='well'>"; 
+echo "<thead>"; 
 echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 
-echo "<th>Prog</th>";
+echo "<th>Progressivo</th>";
 echo "<th>Utente</th>";
-echo "<th>Acc.</th>";
-echo "<th>Iscritto</th>";
+echo "<th>Livello accesso</th>";
+echo "<th>Numero utente</th>";
  
 // transazione
      $sql = "SELECT * FROM `".DB::$pref."ute`

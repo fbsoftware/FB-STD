@@ -10,9 +10,6 @@
    * gestione tabella 'cap' capitoli. 
    * 2.0 aggiunto codice argomento del capitolo.        
 ============================================================================= */ 
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
 require_once('connectDB.php');
 
 //   bottoni gestione
@@ -26,12 +23,12 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 //   mostra la tabella filtrata --------------------------------------------------
-echo "<div class='col-md-4'>";
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scel</th>";
+echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 
-echo "<th>Prg</th>";
+echo "<th>Progr.</th>";
 echo "<th>Codice</th>";
 echo "<th>Descrizione</th>";
 echo "<th>Titolo</th>";
