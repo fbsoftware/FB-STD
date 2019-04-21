@@ -237,7 +237,7 @@ CREATE TABLE `tbl_ute` (
 --
 
 INSERT INTO `tbl_ute` (`uid`, `ustat`, `uprog`, `username`, `upassword`, `uaccesso`, `uiscritto`) VALUES
-(7, '', 1, 'fausto', '4ee38d6aa63ed3dbc33ef4d0561b3eaa', 9, 0),
+(7, '', 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 9, 0),
 (13, '', 0, 'test', '098f6bcd4621d373cade4e832627b4f6', 0, 0);
 
 -- --------------------------------------------------------
