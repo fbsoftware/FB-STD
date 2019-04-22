@@ -7,6 +7,8 @@ Un paragrafo della descrizione del progetto va qui
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
 [altro riferimento]: http://altro-qualcosa
 tabella
+Prodotto|Q.tà
+--------|----
 uno|Alberto
 due|Piero
 tre|Zircone
