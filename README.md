@@ -7,11 +7,10 @@ Un paragrafo della descrizione del progetto 'va qui'
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
 [altro riferimento]: http://altro-qualcosa
 tabella
-Prodotto|Q.tà
---------|----
-uno|Alberto
-due|Piero
-tre|Zircone
+| Colonna 1 | Colonna 2 |
+|    :--    |    --:    |
+|  testo 1  |  testo 2  |
+[Caption tabella][identificativo]
 ## Iniziare
 '''
 Queste istruzioni ti daranno una copia del progetto in esecuzione sul tuo computer locale per scopi di sviluppo e test. Vedere la distribuzione per le note su come distribuire il progetto su un sistema live.
