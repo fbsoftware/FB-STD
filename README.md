@@ -6,6 +6,10 @@ Un paragrafo della descrizione del progetto va qui
 [Riferimento][#stop]
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
 [altro riferimento]: http://altro-qualcosa
+tabella
+uno|Alberto
+due|Piero
+tre|Zircone
 ## Iniziare
 
 Queste istruzioni ti daranno una copia del progetto in esecuzione sul tuo computer locale per scopi di sviluppo e test. Vedere la distribuzione per le note su come distribuire il progetto su un sistema live.
