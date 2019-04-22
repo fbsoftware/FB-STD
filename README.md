@@ -1,6 +1,6 @@
 # FB-STD
 
-Un paragrafo della descrizione del progetto va qui 
+Un paragrafo della descrizione del progetto 'va qui' 
  [Google](https://www.google.it/)
 [Link con titolo](https://www.google.it/ "Google link sul titolo")
 [Riferimento][#stop]
@@ -13,9 +13,9 @@ uno|Alberto
 due|Piero
 tre|Zircone
 ## Iniziare
-
+'''
 Queste istruzioni ti daranno una copia del progetto in esecuzione sul tuo computer locale per scopi di sviluppo e test. Vedere la distribuzione per le note su come distribuire il progetto su un sistema live.
-
+'''
 ### Prerequisiti
 
 Di quali cose hai bisogno per installare il software e come installarlo
