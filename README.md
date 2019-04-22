@@ -1,7 +1,7 @@
 # FB-STD
 
-Un paragrafo della descrizione del progetto va qui
-[Link](https://www.google.it/)
+Un paragrafo della descrizione del progetto va qui 
+ [Google](https://www.google.it/)
 [Link con titolo](https://www.google.it/ "Google")
 [Riferimento][chiave del riferimento]
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
