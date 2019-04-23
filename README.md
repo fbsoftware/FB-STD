@@ -6,14 +6,8 @@ Un paragrafo della descrizione del progetto 'va qui'
 [Riferimento][#stop]
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
 [altro riferimento]: http://altro-qualcosa
-
-![Figura 14.1][1]
-
- [1]: images/bootstrap1.png
  
-![menu 1][2]
-
-[2]: tutorial/menu-1.png 
+[2]: tutorial/menu-1.PNG
 
 ## Iniziare
 '''
