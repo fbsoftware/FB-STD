@@ -16,6 +16,7 @@
  *          la gestione utenti, altrimenti accesso a tutto
  *        - protezione tasto invio (non ammesso)
  *	1.0.0	immagini tabella da images/archivi
+ * 	1.0.1	solo se c'è immagine
 ------------------------------------------------------------------------- */
           // funzione con parametri
 class bottoni_str_par         
@@ -42,18 +43,20 @@ class bottoni_str_par
                }             
         public function btn()           //  bottoni gestione
           {      
-                echo    "<fieldset class='toolbar'>";
-                // immagine ampiezza=1
+                // immagine ampiezza = 1
                 echo "<div class='col-md-1'>";
+				if (file_exists("images/archivi/".$this->tabella.".png"))
+				{
                 echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
-                echo    "</div>";
+				}
+				echo    "</div>";
                 
-                // titolo ampiezza=4
+                // titolo ampiezza = 4
                 echo "<div class='col-md-4 text-center'>";
                 echo "<h1 class='toolbar'>&nbsp;".$this->titolo."</h1>";
                 echo    "</div>";
                 
-                // bottoni ampiezza=7
+                // bottoni ampiezza = 7
                 echo    "<div class='btn-group col-md-7 text-right'>"; 
                 echo    "<form method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;
 				// accessi consentiti ai bottoni
@@ -91,7 +94,6 @@ class bottoni_str_par
 			}
 		}	// endfor
                 echo    "</div>";
-                echo    "</fieldset>";  // fieldset 
 	}	// end function
 }	// end class
 /* ----------------------------------------------
@@ -122,11 +124,12 @@ class bottoni_str_par_new
                }             
         public function btn()           //  bottoni gestione
           {      
-                echo    "<fieldset class='toolbar'>";
-                              
                 // immagine ampiezza=1
                 echo "<div class='col-sm-1'>";
-                echo "<img src='images/$this->tabella.png' alt='manca img' height='40'> ";
+				if (file_exists("images/archivi/".$this->tabella.".png"))
+				{
+                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
+				}
                 echo    "</div>";
                 
                 // titolo ampiezza=4
@@ -154,8 +157,6 @@ class bottoni_str_par_new
                }
                }
                 echo    "</div>";
-                
-                echo    "</fieldset>";  // fieldset 
           }
 }
 

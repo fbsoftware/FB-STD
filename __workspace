@@ -59,11 +59,21 @@
             <Folder name="logo">
                 <File name="images\logo\logo.png" />
             </Folder>
+            <File name="images\admin.png" />
             <File name="images\exit.png" />
             <File name="images\fausto.png" />
             <File name="images\ok.png" />
             <File name="images\star.png" />
             <File name="images\stop.png" />
+            <File name="images\test.png" />
+        </Folder>
+        <Folder name="installa">
+            <File name="installa\database.php" />
+            <File name="installa\dir_host.php" />
+            <File name="installa\ftp.php" />
+            <File name="installa\index.php" />
+            <File name="installa\mostrafile.php" />
+            <File name="installa\scelta.php" />
         </Folder>
         <Folder name="jquery">
             <Folder name="ui">
@@ -641,6 +651,7 @@
         <File name="change_tmp.php" />
         <File name="config.ini" />
         <File name="connectDB.php" />
+        <File name="cont_art.php" />
         <File name="dsp_session.php" />
         <File name="fields_arg.php" />
         <File name="fields_art.php" />
@@ -651,13 +662,17 @@
         <File name="fields_tmp.php" />
         <File name="fields_ute.php" />
         <File name="fields_xdb.php" />
+        <File name="fix_tmp.php" />
         <File name="gest_arg.php" />
+        <File name="gest_art.php" />
         <File name="gest_cap.php" />
+        <File name="gest_config.php" />
         <File name="gest_lang.php" />
         <File name="gest_mnu.php" />
         <File name="gest_nav.php" />
         <File name="gest_server.php" />
         <File name="gest_tmp.php" />
+        <File name="gest_ute.php" />
         <File name="gest_xdb.php" />
         <File name="include_head.php" />
         <File name="index.php" />
@@ -670,6 +685,7 @@
         <File name="login.php" />
         <File name="login_test.php" />
         <File name="msg.php" />
+        <File name="my_fbstd.sql" />
         <File name="phpinfo.php" />
         <File name="post_arg.php" />
         <File name="post_art.php" />
@@ -685,38 +701,32 @@
         <File name="set_nav.php" />
         <File name="struct_db.php" />
         <File name="tinys.php" />
+        <File name="tooltip.html" />
         <File name="upd2_nav.php" />
         <File name="upd_arg.php" />
+        <File name="upd_art.php" />
         <File name="upd_cap.php" />
         <File name="upd_lang.php" />
         <File name="upd_mnu.php" />
         <File name="upd_nav.php" />
         <File name="upd_tmp.php" />
+        <File name="upd_ute.php" />
         <File name="upd_xdb.php" />
         <File name="vid_db.php" />
         <File name="widget.php" />
         <File name="workspace" />
         <File name="write_arg.php" />
+        <File name="write_art.php" />
         <File name="write_cap.php" />
+        <File name="write_config.php" />
         <File name="write_lang.php" />
         <File name="write_mnu.php" />
         <File name="write_nav.php" />
         <File name="write_tmp.php" />
+        <File name="write_ute.php" />
         <File name="write_xdb.php" />
+        <File name="z-scroll.html" />
         <File name="__session" />
         <File name="__workspace" />
-        <File name="fix_tmp.php" />
-        <File name="gest_config.php" />
-        <File name="write_config.php" />
-        <File name="fields_ute.php" />
-        <File name="gest_ute.php" />
-        <File name="post_ute.php" />
-        <File name="upd_ute.php" />
-        <File name="write_ute.php" />
-        <File name="fields_art.php" />
-        <File name="upd_art.php" />
-        <File name="write_art.php" />
-        <File name="gest_art.php" />
-        <File name="tooltip.html" />
     </Project>
 </NotepadPlus>

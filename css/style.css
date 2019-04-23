@@ -76,7 +76,7 @@ border: 0;
 
 img {
 border: none;
-margin: 0;
+margin: 5 0 0;
 vertical-align: middle;
 }
 
@@ -234,9 +234,9 @@ background-color: #eeeeee;
 /* tabelle */
 table {
 font-size: 10pt;
-border-right: 1px solid #ccc;
+/* border-right: 1px solid #ccc; */
 border-bottom: 1px solid #ccc;
-margin-left: 10px;
+/* margin-left: 10px; */
 }
 
 th {

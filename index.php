@@ -45,7 +45,7 @@ if  (TMP::$tmenu == 'admin') {	include('moduli/nav2.php'); }
 echo    "</nav>";   
  
     //  C O R P O   =====================================             
-echo "<section id='corpo' class='container'>"; 
+echo "<section id='corpo'>"; 
 //$pos = $tmp->col2;  
 if ($urla){
           require_once $urla;
