@@ -786,9 +786,6 @@ public $titolo="";
 	echo "<meta name='description' 	content='".DB::$site."' >";             
     echo "<meta name='keywords' 	content='".DB::$keywords."' >";             
     echo "<meta name='author' 		content='".DB::$author."' >";	           
-
-	// personali 
-	include 'include_head.php';
      }
 	 
 	function closeHead() 

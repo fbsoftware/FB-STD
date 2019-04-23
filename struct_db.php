@@ -9,20 +9,14 @@
 =============================================================================
    *  Scelta della tabella 
 =============================================================================  */
-if (!function_exists('getBootHead')) 
-{
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-echo "</head>"; 
-}  
 
 //   bottoni gestione
 $param  = array('mostra','chiudi');    
 $btx    = new bottoni_str_par('Struttura del database','config','vid_db.php',$param);  
      $btx->btn();
+
+// memorizza location iniziale
+$_SESSION['location'] = $_SERVER['QUERY_STRING'];
   
 //  filtro la tabella da visualizzare
 echo "<div><fieldset class='input'><div>";

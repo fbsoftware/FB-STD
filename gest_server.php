@@ -5,9 +5,9 @@ $btx   = new bottoni_str_par('Dati del server','config','index.php?urla=widget.p
      $btx->btn();
 // zona messaggi
 include_once 'msg.php';     
+
+echo "<div class='tableFixHead'>";    
 ?>
-<div class="center">
-<br>
 <table cellpadding="0" cellspacing="0" >
 <tbody>
 <tr><th>Variabile</th><th>Valore</th></tr>

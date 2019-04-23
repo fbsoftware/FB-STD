@@ -9,9 +9,6 @@
    * -------------------------------------------------------------------------
    * Gestione dei templates      
 ============================================================================= */
-require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
 require_once('connectDB.php');  
      
 //   bottoni gestione
@@ -25,8 +22,8 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php'; 
 
 //  testata di tabella 
-echo "<div class='row'>";  
-echo "<div class='col-md-10'>";      
+echo "<div class='tableFixHead'>";    
+     
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<tr>";
@@ -78,6 +75,5 @@ echo "<tbody>";
      echo "</tbody>";
      echo "</table>";
      echo "</form>";
-     echo "</div>";     // col
-     echo "</div>";     // row
+     echo "</div>";     
 ?> 

@@ -10,14 +10,8 @@
    * gestione tabella 'cap' capitoli. 
    * 2.0 aggiunto codice argomento del capitolo.        
 ============================================================================= */ 
-if (!function_exists('getBootHead')) 
-{
-// DOCTYPE & head
-include_once 'include_gest.php';
-$head = new getBootHead('Capitoli',$_SESSION['ambito']);
-     $head->getBootHead(); 
-     echo "</head>";   
-}
+require_once('connectDB.php');
+
 //   bottoni gestione
 $btx = new bottoni_str_par($CAP,'cap','upd_cap.php',array('nuovo','modifica','cancella','chiudi'));     
      $btx->btn();
@@ -29,15 +23,15 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 include_once 'msg.php';
 
 //   mostra la tabella filtrata --------------------------------------------------
-echo "<div class='col-md-4'>";
+echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scel</th>";
+echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 
-echo "<th>Prg</th>";
+echo "<th>Progr.</th>";
 echo "<th>Codice</th>";
-echo "<th>- Descrizione ---</th>";
-echo "<th>T</th>";
+echo "<th>Descrizione</th>";
+echo "<th>Titolo</th>";
 echo "</thead>";
 
 echo "<tbody>"; 

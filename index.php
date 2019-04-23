@@ -12,15 +12,14 @@
 ============================================================================= */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once('connectDB.php');
-
+require_once("connectDB.php");
 // DOCTYPE & head
-$app = new Head('FB-STD');
+$app = new Head('Gestione menu');
 $app->openHead();
-require_once('include_head.php');
-require_once('jquery_link.php');
-require_once('bootstrap_link.php');
-require_once('lingua.php');
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once("include_head.php");
+require_once('lingua.php'); 
 $app->closeHead();
 
 echo "<body>";
@@ -40,13 +39,14 @@ require_once('set_nav.php');
 require_once('moduli/header_a.php');       
 
 //  N A V I G A T O R E   ===========================
-echo    "<nav>";        
+echo    "<nav>"; 
+      
 if  (TMP::$tmenu == 'admin') {	include('moduli/nav2.php'); }	
 echo    "</nav>";   
  
     //  C O R P O   =====================================             
-echo "<section id='corpo' class='container'>"; 
-$pos = $tmp->col2;  
+echo "<section id='corpo'>"; 
+//$pos = $tmp->col2;  
 if ($urla){
           require_once $urla;
           } 

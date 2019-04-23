@@ -1,7 +1,7 @@
 ﻿/* Font family e colore di sfondo */
 
 body {
-margin: 10px auto;
+margin: -10px 10px 0;
 padding: 0;
 font-size: 10pt;
 width: 95%;
@@ -348,6 +348,9 @@ footer a, footer a:hover {color: #5cb85c;}
 
 
 /* Stile per modificare e sovrascrivere l'aspetto degli input di Bootstrap */
+form	{
+  margin-block-end: 0em !important;	
+}
 
 .form-control {
   height: 32px;
@@ -563,7 +566,15 @@ fieldset  {
      border: 1px solid #E3E3E3;
      border-radius: 4px;
      padding: 5px;
-     margin-bottom: 5px;
+     margin-top: 5px;
+}
+fieldset.toolbar  {
+     background: #F5F5F5;
+     border: 1px solid #E3E3E3;
+     border-radius: 4px;
+     padding: 5px;
+     margin-top: 5px;
+	 height: 55px;
 }
 legend    {
      color: #a52a2a;
@@ -581,10 +592,7 @@ html {
   position: relative;
   min-height: 100%;
 }
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 0px;
-}
+
 #footer {
  /*   position: absolute;
   bottom: 0;
@@ -642,6 +650,29 @@ div.fb-table-scroll     {
   /*   height: 450px;  */
      float: left;
      overflow-y: scroll;
+}
+.tableFixHead {
+  overflow-y: auto;
+  height: 400px;
+  margin-top: 5px;
+  float: left;
+  width: 100%;
+}
+
+.tableFixHead table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tableFixHead th,
+.tableFixHead td {
+  padding: 8px 16px;
+}
+
+.tableFixHead th {
+ /* position: sticky; */
+  top: 0;
+  background: #eee;
 }
 td.center {
      text-align: center;
@@ -935,4 +966,5 @@ h1.toolbar	{
 font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size:14pt;	
 font-weight: bold;
+margin-top: 10px;
 }

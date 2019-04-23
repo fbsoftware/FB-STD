@@ -2,7 +2,7 @@
 /** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 3.0    
-   * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
+   * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
@@ -55,9 +55,9 @@ case 'cancella':
 		  break;
 
 case 'ritorno':
-               $_SESSION['esito'] = 2;
-               header('location:index.php?'.$_SESSION['location'].'');
-               break;
+		$_SESSION['esito'] = 2;
+		   break;
+			   
 default :      $_SESSION['esito'] = 1;
 }
 	header('location:index.php?'.$_SESSION['location'].'');
