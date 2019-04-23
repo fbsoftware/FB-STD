@@ -1,5 +1,5 @@
 # FB-STD
-
+## CARATTERISTICHE
 ### Libreria di base per qualsiasi gestione che permetta di:
 - gestire tabelle di database MYSQL anche combinate fra di loro
 - produrre stampe da tabelle
@@ -16,7 +16,7 @@
 
 [2]: tutorial/menu-1.PNG
 
-##LIBRERIA DI CLASSI
+## LIBRERIA DI CLASSI
 Permettono di gestire:
 - campi di input form
 - toolbar con immagine - testo e bottoni di comando
