@@ -6,7 +6,13 @@ Un paragrafo della descrizione del progetto 'va qui'
 [Riferimento][#stop]
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
 [altro riferimento]: http://altro-qualcosa
-![menu-1]: tutorial/menu-1.png 
+![Figura 14.1][1]
+
+ [1]: images/bootstrap1.png
+ 
+![menu-1][1]
+
+[1]: tutorial/menu-1.png 
 ## Iniziare
 '''
 Queste istruzioni ti daranno una copia del progetto in esecuzione sul tuo computer locale per scopi di sviluppo e test. Vedere la distribuzione per le note su come distribuire il progetto su un sistema live.
