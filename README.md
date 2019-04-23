@@ -6,7 +6,9 @@ Un paragrafo della descrizione del progetto 'va qui'
 [Riferimento][#stop]
 Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
 [altro riferimento]: http://altro-qualcosa
-![menu-1](https://github.com/fbsoftware/FB-STD/tutorial/menu-1.png "Menu: Backoffice ")
+![menu 1][2] 
+[2]: tutorial/menu-1.PNG
+
 ## Iniziare
 '''
 Queste istruzioni ti daranno una copia del progetto in esecuzione sul tuo computer locale per scopi di sviluppo e test. Vedere la distribuzione per le note su come distribuire il progetto su un sistema live.
