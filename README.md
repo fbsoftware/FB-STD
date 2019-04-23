@@ -1,11 +1,10 @@
 # FB-STD
 
-Un paragrafo della descrizione del progetto 'va qui' 
- [Google](https://www.google.it/)
-[Link con titolo](https://www.google.it/ "Google link sul titolo")
-[Riferimento][#stop]
-Ora metto un [altro riferimento] [chiave del riferimento]: http://qualcosa
-[altro riferimento]: http://altro-qualcosa
+Libreria di base per qualsiasi gestione che permetta di:
+- gestire tabelle di database MYSQL anche combinate fra di loro
+- produrre stampe da tabelle
+- analizzare la struttura di tabelle 
+- gestire templates per app gestionali e siti web
 ![menu 1][2] 
 
 [2]: tutorial/menu-1.PNG
