@@ -16,6 +16,11 @@
 
 [2]: tutorial/menu-1.PNG
 
+![menu 2][1] 
+
+[1]: tutorial/menu-2.PNG
+
+
 ## LIBRERIA DI CLASSI
 Permettono di gestire:
 - campi di input form
