@@ -9,17 +9,18 @@
 =============================================================================
    *  visualizza struttura tabella database
 =============================================================================  */
-if (!function_exists('getBootHead')) 
-{
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-echo  "<link rel='stylesheet' type='text/css' href='css/style.css'>";
-echo "</head>"; 
-}  
- 
+require_once("connectDB.php");
+// DOCTYPE & head
+$app = new Head('Struttura DB');
+$app->openHead();
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once("include_head.php");
+require_once('lingua.php'); 
+$app->closeHead();
+
 //print_r($_POST);//debug
 $azione = $_POST['submit'];
 $table  = $_POST['table'];

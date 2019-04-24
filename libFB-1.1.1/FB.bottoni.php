@@ -44,6 +44,8 @@ class bottoni_str_par
         public function btn()           //  bottoni gestione
           {      
                 // immagine ampiezza = 1
+				echo "<div class='row'>";
+
                 echo "<div class='col-md-1'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{
@@ -94,6 +96,8 @@ class bottoni_str_par
 			}
 		}	// endfor
                 echo    "</div>";
+				echo    "</div>";	// row
+
 	}	// end function
 }	// end class
 /* ----------------------------------------------
