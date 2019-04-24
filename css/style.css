@@ -331,55 +331,6 @@ background-color: #969696;
 background-color: #c0c0c0;
 }
 
-.CS {
-list-style-image: url(../images/Constructor.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.DS {
-list-style-image: url(../images/Destructor.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.CL {
-list-style-image: url(../images/Class.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.SV {
-list-style-image: url(../images/StaticVariable.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.SM {
-list-style-image: url(../images/StaticMethod.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.DV {
-list-style-image: url(../images/Variable.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.DM {
-list-style-image: url(../images/Method.png);
-margin: 0 0 0 3em;
-padding-left: 0;
-}
-
-.XX {
-color: #666666;
-list-style-type: square;
-margin-left: 3em;
-padding-left: 0;
-}
-
 /*   div   */
 div.azioni {
 height: 60px;

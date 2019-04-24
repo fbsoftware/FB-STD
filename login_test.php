@@ -18,22 +18,33 @@ $upassword =$_POST['pass'];
 $passmd5   =md5($upassword);    // cripto la password
 
 require_once('connectDB.php');
+
 $sql = "SELECT * FROM `".DB::$pref."ute`  
         WHERE username='".$username."' and ustat<>'A'";
+
+$statement = $PDO->prepare($sql);  
+$statement->execute();  
+if ($statement->rowCount() < 1) 
+	{
+	setcookie('err','2',time()+3600,'','','');
+	header('location:login.php') ;				
+	}
+echo "<br/>";
+	
 foreach($PDO->query($sql) as $row)
   {  
     	if ( $row['upassword'] == $passmd5)
             { 
-            if ( $row['uiscritto'] > 0) 
-               {}  
+            // password valida
             setcookie('admin',$username,time()+3600,'','','');
             setcookie('accesso',$row['uaccesso'],time()+3600,'','','');
             setcookie('numero',$row['uiscritto'],time()+3600,'','','');
             setcookie('err','0',time()+3600,'','','');   
-            header('location:index.php?forma=Iscritti&sub=&content=htm&dati=widget.php&pag=') ;
-            }
+			header('location:index.php?urla=widget.php&pag=');          
+			}
        else
            { 
+			// pw invalida
            setcookie('err','1',time()+3600,'','',''); 
            header('location:login.php') ;
            } 

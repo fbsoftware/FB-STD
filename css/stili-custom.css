@@ -14,7 +14,6 @@ a[data-toggle="tooltip"] {
 }
 
  label    {
- width:150px;
  float: left;
  width: 150px;
  display: inline;
@@ -688,9 +687,7 @@ display:none;
 img.login {
 	margin-right: 40px;
 }
-.red {
-     color: #ff0000;
-}
+
 .blue {
 	background: #DCDCDC;
 }
