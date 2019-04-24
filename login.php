@@ -41,7 +41,8 @@ echo  "<form name='modulo' action='login_test.php' method='post'>";
  $f2 = new input(array('','pass',20,'Password','','pw'));         
      $f2->field();
 
-echo  "<br ><button  class='btn btn-primary' type='submit' name='submit' value='Login' >Accedi</button><br >";
+echo  "<br >";
+echo  "<button class='btn btn-primary' type='submit' name='submit' value='Login' >Accedi</button>";
 echo  "<button class='btn btn-danger' type='reset' name='submit_back' value='Resetta' >Resetta</button>"; 
 
 	if  ($_COOKIE['err'] == 1) 

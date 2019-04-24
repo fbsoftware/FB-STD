@@ -21,15 +21,14 @@ require_once('connectDB.php');
 
 $sql = "SELECT * FROM `".DB::$pref."ute`  
         WHERE username='".$username."' and ustat<>'A'";
-
 $statement = $PDO->prepare($sql);  
-$statement->execute();  
-if ($statement->rowCount() < 1) 
-	{
-	setcookie('err','2',time()+3600,'','','');
-	header('location:login.php') ;				
-	}
-echo "<br/>";
+$statement->execute(); 
+ 
+		if ($statement->rowCount() < 1) 
+			{	// utente sconosciuto
+			setcookie('err','2',time()+3600,'','','');
+			header('location:login.php') ;				
+			}
 	
 foreach($PDO->query($sql) as $row)
   {  
