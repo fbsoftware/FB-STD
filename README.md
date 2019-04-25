@@ -30,8 +30,13 @@
 ## LIBRERIA DI CLASSI
 La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di gestire:
 - campi di input form
+
+![fields][6] 
+
+[6]: tutorial/fields.PNG
 - toolbar con immagine - testo e bottoni di comando
-![toolbar 1][4] 
+
+![toolbar 1][6] 
 
 [4]: tutorial/toolbar-1.PNG
 ![toolbar 1][5] 
