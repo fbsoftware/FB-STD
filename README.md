@@ -39,7 +39,7 @@ La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di 
 ![toolbar 1][6] 
 
 [4]: tutorial/toolbar-1.PNG
-![toolbar 1][5] 
+![toolbar 2][5] 
 
 [5]: tutorial/toolbar-2.PNG
 
