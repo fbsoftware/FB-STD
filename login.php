@@ -41,7 +41,7 @@ echo  "<form name='modulo' action='login_test.php' method='post'>";
  $f2 = new input(array('','pass',20,'Password','','pw'));         
      $f2->field();
 
-echo  "<br >";
+echo  "<div class='login'>";
 echo  "<button class='btn btn-primary' type='submit' name='submit' value='Login' >Accedi</button>";
 echo  "<button class='btn btn-danger' type='reset' name='submit_back' value='Resetta' >Resetta</button>"; 
 
@@ -57,7 +57,7 @@ echo  "<button class='btn btn-danger' type='reset' name='submit_back' value='Res
 		{
 		echo  "&nbsp;" ;
 		}
-		
+echo  "</div>";
 echo  "</form>";
 echo  "</fieldset>";
 echo  "</div>";			// form

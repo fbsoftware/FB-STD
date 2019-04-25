@@ -41,8 +41,8 @@ case 'nuovo':
 	$param  = array('salva|nuovo','ritorno');    
 	$btx    = new bottoni_str_par('Voci di menu - inserimento','nav','write_nav.php',$param);  
 		$btx->btn();
-	 
-echo  "<div class='crea'><fieldset >";
+echo "<fieldset >";
+echo  "<div class='col-md-6'>";
       $nav = new DB_ins('nav','nprog');   
 		$num = $nav->insert();
       $f1 = new field($num,'nprog',3,'Progressivo');       
@@ -89,9 +89,6 @@ case 'ifr':
 	 	$fa->field_i();           
       $tz = new field(0,'naccesso',1,'Livello accesso');           
 	 	$tz->field_i();
-		
- echo  "</fieldset></div>"; 
-	echo  "<div class='crea_dx'><fieldset >";
 	  $f2 = new input(array('','nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
 		$f2->field();     
 	echo  "</fieldset>"; 
