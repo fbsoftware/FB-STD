@@ -726,7 +726,8 @@
         <File name="write_ute.php" />
         <File name="write_xdb.php" />
         <File name="z-scroll.html" />
-        <File name="__session" />
-        <File name="__workspace" />
+        <Folder name="tutorial">
+            <File name="tutorial\menu-1.PNG" />
+        </Folder>
     </Project>
 </NotepadPlus>

@@ -28,7 +28,7 @@ echo "</pre></fieldset>";
 
 echo "<fieldset class='col-md-6'><legend>COOKIES</legend>";
 if (isset($_COOKIE))
-     {   echo "<table cellpadding='0' cellspacing='0' >";
+     {   echo "<table class='table table-striped table-bordered table-condensed'>"; 
          echo "<tr><th>Nome</th><th>Valore</th></tr>";
     foreach ($_COOKIE as $name => $value)
           {

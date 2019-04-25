@@ -76,7 +76,7 @@ border: 0;
 
 img {
 border: none;
-margin: 5 0 0;
+margin: 5 0 0 5;
 vertical-align: middle;
 }
 
@@ -175,7 +175,7 @@ background: #D4FFFF;
 input {
 color: blue;
 font-size: 10pt;
-background: #ffffff;
+/* background: #ffffff; */
 border: 1px solid #aaaaaa;
 }
 
@@ -256,10 +256,6 @@ border-top: 1px solid #ccc;
 padding: 5px;
 text-align: left;
 vertical-align: bottom;
-}
-
-td.fc:first-child {
-background: #eee;
 }
 
 td.img {

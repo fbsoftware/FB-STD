@@ -25,7 +25,7 @@ $msg = new msg($_SESSION['esito']);
      
 //echo "<div class='row'>";  
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-striped table-condensed'>"; 
+echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";                
 echo "<th>Sc</th>";
