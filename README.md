@@ -7,6 +7,9 @@
 - gestire templates per app gestionali e siti web
 - gestire menù a due livelli e relative voci di menù
 - gestire utenti con password e livello di accesso alle app
+![login][3] 
+
+[3]: tutorial/login.PNG
 - definire tipologie particolari predefinite tramite apposita tabella
 - configurare l'ambiente di lavoro e il database
 - gestire templates per gestione amministrativa archivi e aspetto di siti web
