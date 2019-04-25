@@ -11,6 +11,7 @@
 - configurare l'ambiente di lavoro e il database
 - gestire templates per gestione amministrativa archivi e aspetto di siti web
 - gestione documentazione basata su una struttura: argomento - capitoli - articoli
+### Librerie di terze parti
 - utilizzo del framework Bootstrap 3
 - utilizzo della libreria Jquery
 
