@@ -20,14 +20,9 @@
 - utilizzo del framework Bootstrap 3
 - utilizzo della libreria Jquery
 
-![menu 1][2] 
+![menu 1][2]                                                        ![menu 2][1] 
 
-[2]: tutorial/menu-1.PNG
-
-![menu 2][1] 
-
-[1]: tutorial/menu-2.PNG
-
+[2]: tutorial/menu-1.PNG                                            [1]: tutorial/menu-2.PNG
 
 ## LIBRERIA DI CLASSI
 La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di gestire:
