@@ -29,16 +29,19 @@ echo "<th>Scelta</th>";
 echo "<th>Stringa codificata da tradurre</th>";
 echo "<th>Traduzione nella lingua specifica</th>";
 echo "</thead>";
-
 echo "<tbody>";
+
  // lettura it.ini
-$lang = parse_ini_file("language/it.ini");
+$lang = parse_ini_file("language/".TMP::$tlang.".ini");
+
 ksort($lang);
 foreach($lang as $chiave => $valore)
      {  $$chiave=$valore;
      echo "<tr>";
      echo "<td class='center'>"; 
-     $f0 = new fieldi($chiave,'chiave',0); $f0->field_ck(); echo "</td>";
+     $f0 = new fieldi($chiave,'chiave',0); 
+	 $f0->field_ck(); 
+	 echo "</td>";
      echo "<td><strong>".$chiave."</strong></td>";
      echo "<td>".$valore."</td>";
      echo "</tr>";

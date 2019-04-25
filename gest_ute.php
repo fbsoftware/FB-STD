@@ -23,7 +23,7 @@ $msg = new msg($_SESSION['esito']);
 
 //   testate
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-bordered table-condensed'>"; 
+echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 

@@ -8,7 +8,7 @@ include_once 'msg.php';
 
 echo "<div class='tableFixHead'>";    
 ?>
-<table cellpadding="0" cellspacing="0" >
+<table class='table table-striped table-bordered table-condensed'>
 <tbody>
 <tr><th>Variabile</th><th>Valore</th></tr>
 <tr><td class="fc">FILE</td>                 <td><?php echo $_SERVER['PHP_SELF']?></td></tr>

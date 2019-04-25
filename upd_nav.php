@@ -80,7 +80,8 @@ case 'modifica':
 	foreach($PDO->query($sql) as $row)
 	{
       include('fields_nav.php');          
-      echo  "<div class='crea'><fieldset >";
+      echo  "<fieldset >";
+	  echo "<div col-md-6'>";
       $f0  = new field($nid,'nid',1,'ID record');                   
 		$f0->field_h();
       $f1  = new field($nprog,'nprog',3,'Progressivo');             
@@ -149,9 +150,7 @@ case 'url':
       $tz = new input(array($naccesso,'naccesso',1,'Livello accesso','','i'));    
 		$tz->field();
 	}
- 
- echo  "</fieldset></div>"; 
-	echo  "<div class='crea_dx'><fieldset >";
+
 	  $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
 		$f2->field();     
 	echo  "</fieldset>"; 
@@ -170,29 +169,41 @@ case 'cancella':
 			 WHERE `nid` = $nid ";
     foreach($PDO->query($sql) as $row)
 	{
-    include('fields_nav.php');         
-      echo  "<div class='crea'><fieldset >";
-      
-$f0 = new field($nid,'nid',1,'ID record');                     $f0->field_h();
-$f1 = new field($nprog,'nprog',3,'Progressivo');               $f1->field_r();
-$ts = new field($nstat,'nstat',1,'Stato record');              $ts->field_r();
-$tm = new field($nmenu,'nmenut',20,'Menu');                    $tm->field_r();
-$f2 = new field($nli,'nli',20,'Voce');                         $f2->field_r();
-$f4 = new field($ndesc,'ndesc',20,'Sottovoce');                $f4->field_r();
-$f3 = new field($ntesto,'ntesto',25,'Descrizione');            $f3->field_r();
-$tv = new field($ntipo,'ntipo',10,'Tipo voce');                $tv->field_r();
-$f8 = new field($nsotvo,'nsotvo',10,'Comando');                $f8->field_r();
-$f5 = new field($ntarget,'ntarget',20,'Target');               $f5->field_r();
-$f6 = new field($nselect,'nselect',1,'Voce corrente (*)');     $f6->field_r();
-$f7 = new field($ntitle,'ntitle',1,'(1)Titoli, (0)dettaglio'); $f7->field_r();
-$f9 = new field($nhead,'nhead',1,'(1)Header specifico');       $f9->field_r();
-$fk = new field($npag,'npag',1,'Parametro');                   $fk->field_r();
-$tz = new field($naccesso,'naccesso',1,'Livello accesso');     $tz->field_r();
-      echo  "</fieldset></div>";
-       
-      echo  "<div class='crea_dx'><fieldset >";
-	  $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','txr'));     
-		$f2->field();  
+    include('fields_nav.php');  
+      echo "<fieldset>";
+      echo  "<div class=col-md-6>";
+$f0 = new field($nid,'nid',1,'ID record');                     
+	$f0->field_h();
+$f1 = new field($nprog,'nprog',3,'Progressivo');               
+	$f1->field_r();
+$ts = new field($nstat,'nstat',1,'Stato record');              
+	$ts->field_r();
+$tm = new field($nmenu,'nmenut',20,'Menu');                    
+	$tm->field_r();
+$f2 = new field($nli,'nli',20,'Voce');                         
+	$f2->field_r();
+$f4 = new field($ndesc,'ndesc',20,'Sottovoce');                
+	$f4->field_r();
+$f3 = new field($ntesto,'ntesto',25,'Descrizione');            
+	$f3->field_r();
+$tv = new field($ntipo,'ntipo',10,'Tipo voce');                
+	$tv->field_r();
+$f8 = new field($nsotvo,'nsotvo',10,'Comando');                
+	$f8->field_r();
+$f5 = new field($ntarget,'ntarget',20,'Target');               
+	$f5->field_r();
+$f6 = new field($nselect,'nselect',1,'Voce corrente (*)');     
+	$f6->field_r();
+$f7 = new field($ntitle,'ntitle',1,'(1)Titoli, (0)dettaglio'); 
+	$f7->field_r();
+$f9 = new field($nhead,'nhead',1,'(1)Header specifico');       
+	$f9->field_r();
+$fk = new field($npag,'npag',1,'Parametro');                   
+	$fk->field_r();
+$tz = new field($naccesso,'naccesso',1,'Livello accesso');     
+	$tz->field_r();
+$f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','txr'));     
+	$f2->field();  
       echo  "</fieldset>"; 
       echo  "</div>"; 
 	}

@@ -40,7 +40,6 @@ require_once('moduli/header_a.php');
 
 //  N A V I G A T O R E   ===========================
 echo    "<nav>"; 
-      
 if  (TMP::$tmenu == 'admin') {	include('moduli/nav2.php'); }	
 echo    "</nav>";   
  

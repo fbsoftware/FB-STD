@@ -215,7 +215,7 @@ break;
           {    
           include_once('fields_tmp.php');
           //echo "<br >"; 
-          echo  "<fieldset class='gest'>";
+          echo  "<fieldset'>";
           $f0 = new input(array($tid,'tid',1,'','','h'));                 
                $f0->field();
           $f1 = new input(array($tprog,'tprog',2,'Progressivo','','r'));       

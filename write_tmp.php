@@ -23,7 +23,10 @@ require_once('lingua.php');
 $app->closeHead();
 
 include_once 'post_tmp.php';
-$azione   =$_POST['submit'];   //print_r($_POST);//debug
+$azione   =$_POST['submit'];
+
+echo "<br />";   
+//print_r($_POST);//debug
 
 // test validità codice  
 if (($tmenu <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
@@ -49,7 +52,7 @@ case 'nuovo':
                               '$tmenu','$tlang','$tslidebutt','$tslidetime',
                               '$tportitle','$tcolor','$tglyforma','$tgliftitle',
                               '$tgliftext','$tglyreverse','$ttipo',
-						 $tpromotitle,'$tpromotit','$tpromotext')";
+						 '$tpromotitle','$tpromotit','$tpromotext')";
                         $PDO->exec($sql);    
                         $PDO->commit();
                         $_SESSION['esito'] = 54;
@@ -63,7 +66,7 @@ echo           $sql = "UPDATE `".DB::$pref."tmp`
                        tcolor='$tcolor',tglyforma='$tglyforma',
                        tgliftitle='$tgliftitle',tgliftext='$tgliftext',
                        tglyreverse='$tglyreverse',ttipo='$ttipo',
-				   tpromotitle=$tpromotitle,
+				   tpromotitle='$tpromotitle',
 				   tpromotit='$tpromotit', 
 				   tpromotext='$tpromotext'      
                    WHERE `tid`='$tid' ";
@@ -82,8 +85,7 @@ case 'ritorno':
           header('location:gest_tmp.php');
           break;
 }
-	$loc = "location:index.php?".$_SESSION['location']."";
-     	header($loc);
+header('location:index.php?'.$_SESSION['location'].'');
 ob_end_flush();
 
 ?> 

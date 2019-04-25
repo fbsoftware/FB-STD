@@ -47,12 +47,18 @@ switch ($azione)
 
 if (isset($table))
      {
- //    echo '<h3>Tabella : '.$table.'</h3>';
 $sql = "SHOW FULL COLUMNS FROM ".$table;
 
 echo "<div class='tableFixHead'>";    
-          echo '<table cellpadding="0" cellspacing="0">';
-          echo '<tr><th>Campo</th><th>Tipo</th><th>Key</th><th>Default<th>Extra</th><th>Descrizione</th></tr>';
+          echo "<table class='table table-striped table-bordered table-condensed'>"; 
+          echo '<tr>
+				<th>Campo</th>
+				<th>Tipo</th>
+				<th>Key</th>
+				<th>Default<th>
+				Extra</th>
+				<th>Descrizione</th>
+				</tr>';
      //     while($row2 = mysql_fetch_row($result2))
 			foreach($PDO->query($sql) as $row)
   
