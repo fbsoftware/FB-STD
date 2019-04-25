@@ -1,4 +1,4 @@
-# FB-STD
+# FB-STD   libreria standard di sviluppo app.
 ## CARATTERISTICHE
 ### Libreria di base per qualsiasi gestione che permetta di:
 - gestire tabelle di database MYSQL anche combinate fra di loro
