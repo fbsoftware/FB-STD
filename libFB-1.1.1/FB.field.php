@@ -34,7 +34,7 @@ class input
           {  // label non serve per tipo = h/star  
 			echo "<div>";   
               if (($this->tipo !== 'h') && ($this->tipo !== 'star'))
-                  { echo "<label for='$this->campo' data-toggle='tooltip' data-placement='left' title='$this->pch'>$this->label</label>"; }
+                  { echo "<label for='$this->campo' data-toggle='tooltip' data-placement='top' title='$this->pch'>$this->label</label>"; }
  switch ($this->tipo) {
 case 'ck':      // check box
                 echo "<input type='checkbox' id='$this->campo' name='$this->campo'

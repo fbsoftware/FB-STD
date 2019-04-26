@@ -8,7 +8,6 @@
    * all'uso anche improprio di FB open template.
 ==============================================================================*/ 
 ?>
-
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -23,7 +22,7 @@
 <?php
 include_once '../libFB-1.1.1/DB_PDO.php';
 include_once '../libFB-1.1.1/FB.field.php';
-include_once("../bootstrap_link.php");
+include_once('../bootstrap_link.php');
 
 // include_once '../transactDB.php';
 echo "<div class='col-md-7'> 
@@ -35,18 +34,18 @@ echo "</div>";
 $host="localhost"; 
 $user="user";  
 $pw="pw";  
-$db="my_";  
-$pref="n_";  
+$db="my_database";  
+$pref="prefix_";  
 $sep="/";
-$e_mail="fbsoftware@libero.it"; 
-$pege_title="";  
-$site="";  
+$e_mail="fbsoftware@xxxxxx.it"; 
+$page_title="FB-STD";  
+$site="Mysite";  
 $dir_imm="images/";  
 $author="fbsoftware";
 $keywords=""; 
-$root="/";
+$root="/FB-STD/";
 $lib="libFB-1.1.1"; 
-$url="http://fbsoftware.altervista.org"; 
+$url="http://fbsoftware.xxxxxxxxx.org"; 
 $incr=5;
 
        
