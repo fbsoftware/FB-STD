@@ -58,3 +58,9 @@ Per installare la libreria in locale necessita:
 - copiarvi gli archivi decompressi del download.zip
 - aprire un browser e digitare: `localhost/fb-std/installa/` che mostra il modulo per inserire i dati necessari all'installazione dell'app.
 
+![installa][9] 
+
+[9]: tutorial/installa.png
+
+- compilare tutti i campi con i dati relativi alla vostra installazione con particolare attenzione a quelli relativi al database.
+
