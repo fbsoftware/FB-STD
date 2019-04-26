@@ -281,7 +281,20 @@ $PDO->exec("INSERT INTO `".$_POST['pref']."xdb` (`xid`, `xstat`, `xprog`, `xtipo
 (880, '', 684, 'msg', '151', 'Informazione'),
 (882, '', 694, 'lin', 'it', 'Italiano'),
 (883, '', 699, 'lin', 'fr', 'Francese'),
-(884, '', 704, 'lin', 'en', 'Inglese')");
+(884, '', 704, 'lin', 'en', 'Inglese'),
+(885, '', 709, 'ttmp', 'admin', 'admin'),
+(886, '', 714, 'ttmp', 'blog', 'sito'),
+(887, '', 719, 's-n', '1', 'SI'),
+(888, '', 724, 's-n', '0', 'NO'),
+(889, '', 729, 'color', 'danger', 'Rosso'),
+(890, '', 734, 'color', 'warning', 'Ocra'),
+(891, '', 739, 'color', 'info', 'Azzurro'),
+(892, '', 744, 'color', 'default', 'Bianco'),
+(893, '', 749, 'color', 'primary', 'Blue'),
+(894, '', 754, 'color', 'basic', 'Grigio'),
+(895, '', 759, 'forma', 'square', 'Quadrata'),
+(896, '', 764, 'forma', 'circle', 'Circolare'),
+(897, '', 769, 'forma', 'square-arr', 'Quadrata arrotondata')";
 echo "<br />Creata tabella XDB";
 
 //==================================================================================     
