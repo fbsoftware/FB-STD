@@ -294,7 +294,7 @@ $PDO->exec("INSERT INTO `".$_POST['pref']."xdb` (`xid`, `xstat`, `xprog`, `xtipo
 (894, '', 754, 'color', 'basic', 'Grigio'),
 (895, '', 759, 'forma', 'square', 'Quadrata'),
 (896, '', 764, 'forma', 'circle', 'Circolare'),
-(897, '', 769, 'forma', 'square-arr', 'Quadrata arrotondata')";
+(897, '', 769, 'forma', 'square-arr', 'Quadrata arrotondata')");
 echo "<br />Creata tabella XDB";
 
 //==================================================================================     
