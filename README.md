@@ -54,6 +54,7 @@ Per installare la libreria in locale necessita:
 - cliccare `OK` per avviare la creazione e, quando terminata, vengono mostrati i messaggi di ciò che è stato fatto
 
 a questo punto aprire il browser e digitare: `localhost/fb-std/` e verrà mostrata la mappa di collegamento
+
 ![login][3] 
 
 [3]: tutorial/login.PNG
@@ -67,3 +68,5 @@ digitare `admin` sia per utente che per password e accedere e viene mostrata la 
 ![menu 2][1] 
 
 [1]: tutorial/menu-2.PNG
+
+selezionare la sottovoce `utenti` e cambiare le password standard e aggiungere o eliminare utenti se necessario. 
