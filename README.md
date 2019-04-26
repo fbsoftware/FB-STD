@@ -32,9 +32,9 @@
 La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di gestire:
 - campi di input form
 
-![fields][6] 
+![fields][7] 
 
-[6]: tutorial/fields.PNG
+[7]: tutorial/fields.PNG
 
 - toolbar con immagine - testo e bottoni di comando
 
@@ -46,4 +46,15 @@ La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di 
 
 [5]: tutorial/toolbar-2.PNG
 
+## INSTALLAZIONE IN LOCALE
+Per installare la libreria in locale necessita:
+- web server locale (Come ad esempio XAMPP, di seguito si fa riferimento a XAMPP)
+- effettuare il `download.zip` del repository `FB-STD` 
+
+![download][8] 
+
+[8]: tutorial/download.png
+- creare una cartella (Per esempio: `fb-std`) per contenere la libreria nella root del web server (Normalmente `htdocs`)
+- copiarvi gli archivi decompressi del download.zip
+- aprire un browser e digitare: `localhost/fb-std/installa/` che mostra il modulo per inserire i dati necessari all'installazione dell'app.
 
