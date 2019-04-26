@@ -60,7 +60,7 @@ Per installare la libreria in locale necessita:
 
 ![installa][9] 
 
-[9]: tutorial/installa.png
+[9]: tutorial/installa.PNG
 
 - compilare tutti i campi con i dati relativi alla vostra installazione con particolare attenzione a quelli relativi al database.
 
