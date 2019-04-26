@@ -69,4 +69,4 @@ digitare `admin` sia per utente che per password e accedere e viene mostrata la 
 
 [1]: tutorial/menu-2.PNG
 
-selezionare la sottovoce `utenti` e cambiare le password standard e aggiungere o eliminare utenti se necessario. 
+selezionare la sottovoce `Backoffice -> utenti` e cambiare le password standard e aggiungere o eliminare utenti se necessario. 
