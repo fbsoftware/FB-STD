@@ -222,6 +222,10 @@ margin: 7.5px;
 float: left;
 }
 
+div.login{
+  text-align: center;
+}
+
 /*   ID   */
 header {
 float: left;
@@ -288,8 +292,4 @@ padding: 0;
 background-color: #55ABD2;
 border-radius: 0 0 7px 7px;
 padding: 5px 0;
-}
-
-div.login{
-  text-align: center;
 }
