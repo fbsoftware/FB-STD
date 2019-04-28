@@ -28,11 +28,11 @@ echo "<table class='table table-hover table-striped table-bordered table-condens
 echo "<thead class='well'>"; 
 echo "<th>Scelta</th>";
 echo "<th>Stato</th>"; 
-echo "<th>Prog</th>";
+echo "<th>Progressivo</th>";
 echo "<th>Titolo</th>"; 
 echo "<th>Argomento</th>"; 
 echo "<th>Capitolo</th>";
-echo "<th>Si titolo</th>"; 
+echo "<th>Si/No titolo</th>"; 
 echo "</thead>";
        
 $sql =    "SELECT * FROM `".DB::$pref."art` 
@@ -45,9 +45,9 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
           { 
            include('fields_art.php'); 
           echo "<tr>";                  
-           $f1 = new fieldi($aid,'aid',2);           
+           $f1 = new fieldi($aid,'aid',2,'');           
   echo "<td>"; $f1->field_ck(); echo "</td>";
-           $f2 = new fieldi($astat,'astat',2);       
+           $f2 = new fieldi($astat,'astat',2,'');       
   echo "<td>"; $f2->field_st(); echo "</td>";
   ?>
 <td><?php echo $aprog ?></td>

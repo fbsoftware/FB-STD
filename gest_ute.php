@@ -18,8 +18,7 @@ $btx   = new bottoni_str_par('Utenti','ute','upd_ute.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$msg = new msg($_SESSION['esito']);
-     $msg->msg();
+	include_once('msg.php');
 
 //   testate
 echo "<div class='tableFixHead'>";    
@@ -42,9 +41,9 @@ echo "<th>Numero utente</th>";
      {
      include('fields_ute.php');                 
      echo "<tr>";
-                $f1 = new fieldi($uid,'uid',2);           
+                $f1 = new fieldi($uid,'uid',2,'');           
      echo "<td>"; $f1->field_ck(); echo "</td>";
-           $f2 = new fieldi($ustat,'ustat',2);       
+           $f2 = new fieldi($ustat,'ustat',2,'');       
      echo "<td>"; $f2->field_st(); echo "</td>";
 ?>
      <td><?php echo $uprog ?></td>

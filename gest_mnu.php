@@ -39,9 +39,9 @@ $sql = "SELECT * FROM ".DB::$pref."mnu
       {       
       include('fields_mnu.php');
      echo "<tr>";
-  $f1 = new fieldi($bid,'bid',2);            
+  $f1 = new fieldi($bid,'bid',2,'');            
   echo "<td>"; $f1->field_ck(); echo "</td>";
-  $st = new fieldi($bstat,'bstat',2);        
+  $st = new fieldi($bstat,'bstat',2,'');        
   echo "<td>"; $st->field_st(); echo "</td>";
   ?>
 	<td><?php echo $bprog ?></td>

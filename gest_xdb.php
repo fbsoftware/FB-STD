@@ -20,17 +20,16 @@ $btx   = new bottoni_str_par('Tipologie','xdb','upd_xdb.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-$msg = new msg($_SESSION['esito']);
-     $msg->msg();
+	include_once('msg.php');
      
 //echo "<div class='row'>";  
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";                
-echo "<th>Sc</th>";
-echo "<th>St</th>";
-echo "<th>Prg</th>"; 
+echo "<th>Scelta</th>";
+echo "<th>Stato</th>";
+echo "<th>Progressivo</th>"; 
 echo "<th>Tipo</th>"; 
 echo "<th>Codice</th>"; 
 echo "<th>Descrizione</th>";
@@ -50,11 +49,11 @@ echo "<tbody class='y'>";
           include('fields_xdb.php');
           echo "<tr>";
           echo "<td>";       
-          $f0 = new fieldi($xid,'xid',2);           
+          $f0 = new fieldi($xid,'xid',2,'');           
                $f0->field_ck();  
           echo "</td>";
           echo "<td>";  
-          $f1 = new fieldi($xstat,'xstat',2);       
+          $f1 = new fieldi($xstat,'xstat',2,'');       
                $f1->field_st();
           echo "</td>";
                     ?>

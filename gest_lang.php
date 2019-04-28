@@ -39,7 +39,7 @@ foreach($lang as $chiave => $valore)
      {  $$chiave=$valore;
      echo "<tr>";
      echo "<td class='center'>"; 
-     $f0 = new fieldi($chiave,'chiave',0); 
+     $f0 = new fieldi($chiave,'chiave',0,''); 
 	 $f0->field_ck(); 
 	 echo "</td>";
      echo "<td><strong>".$chiave."</strong></td>";

@@ -6,6 +6,8 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
+   --------------------------------------------------------------------------
+   28/04/2019	mostra il titolo con select
 ============================================================================= */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
@@ -45,8 +47,8 @@ $content  ='--- Inserire qui il testo ---';
           $cap->select_label();
       $f4 = new input(array('','atit',30,'Titolo','','i'));     
           $f4->field(); 
-      $f4 = new input(array('','amostra',1,'Mostra il titolo','','i'));    
-          $f4->field();  
+     $tz = new DB_tip_i('s-n','amostra',0,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
+          $tz->select(); 
       $f9 = new input(array($content,'atext',30,'Testo','','tx'));  
           $f9->field();       
 echo "</fieldset>";
@@ -85,8 +87,8 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $cap2->select_label();
       $f4 = new input(array($atit,'atit',30,'Titolo articolo','','i'));    
           $f4->field(); 
-      $f4 = new input(array($amostra,'amostra',1,'Mostra il titolo','','i'));    
-          $f4->field(); 
+     $tz = new DB_tip_i('s-n','amostra',$amostra,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
+          $tz->select(); 
      echo "<br />";
       $f9 = new input(array($atext,'atext',30,'Testo','','tx'));  
           $f9->field();

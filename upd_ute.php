@@ -6,13 +6,20 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
+   -------------------------------------------------------------------------
+   28/04/2019	tabellato accesso
 ============================================================================= */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once('lingua.php');
-$head = new getBootHead('gestione iscritti');
-     $head->getBootHead(); 
-echo "</head>"; 
+require_once("connectDB.php");
+// DOCTYPE & head
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once("include_head.php");
+require_once('lingua.php'); 
+$app->closeHead();
 include('post_ute.php') ;          
 //print_r($_POST);//debug
 $azione    =$_POST['submit'];          
@@ -46,9 +53,9 @@ switch ($azione)
           $f4->field();  
       $f5 = new input(array('','upassword',40,'Password','','pw'));             
           $f5->field();
-      $f6 = new input(array('','uaccesso',1,'Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo','i'));                
-          $f6->field(); 
-      $f7 = new input(array('','uiscritto',3,'Nr.iscritto','','i'));           
+      $f6  = new DB_tip_i('acc','uaccesso','','Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo');   
+		$f6->select();		  
+     $f7 = new input(array('','uiscritto',3,'Nr.iscritto','','i'));           
           $f7->field();   
      echo "</fieldset>";
      echo "</div>";
@@ -82,8 +89,8 @@ case 'modifica':
           $f4->field();  
       $f5 = new input(array($upassword,'upassword',40,'Password','','pw'));    
           $f5->field(); 
-      $f6 = new input(array($uaccesso,'uaccesso',1,'Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo','i'));        
-          $f6->field();
+      $f6  = new DB_tip_i('acc','uaccesso',$uaccesso,'Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo');   
+		$f6->select();		  
       $f7 = new input(array($uiscritto,'uiscritto',3,'Nr.iscritto','','i'));        
           $f7->field(); 
      }

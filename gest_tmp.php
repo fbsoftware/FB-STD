@@ -49,11 +49,11 @@ echo "<tbody>";
            include('fields_tmp.php');
      echo "<tr>";
 	echo "<td class='center fc'>"; 
-	$f0 = new fieldi($tid,'tid',2);            
+	$f0 = new fieldi($tid,'tid',2,'');            
      	$f0->field_ck(); 
 	echo "</td>";
 	echo "<td class='center'>"; 
-	$f2 = new fieldi($tstat,'tstat',2);        
+	$f2 = new fieldi($tstat,'tstat',2,'');        
      	$f2->field_st(); 
 	echo "</td>";
 ?>

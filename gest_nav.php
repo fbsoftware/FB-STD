@@ -49,9 +49,9 @@ echo "</thead>";
             foreach($PDO->query($sql) as $row)             
   {  include('fields_nav.php');
      echo "<tr>";
-  $f1 = new fieldi($nid,'nid',2);            
+  $f1 = new fieldi($nid,'nid',2,'');            
   echo "<td>"; $f1->field_ck(); echo "</td>";
-  $st = new fieldi($nstat,'nstat',2);        
+  $st = new fieldi($nstat,'nstat',2,'');        
   echo "<td>"; $st->field_st(); echo "</td>";
        ?>
      <td><?php echo $nprog ?></td> 

@@ -214,8 +214,8 @@ break;
           foreach($PDO->query($sql) as $row)
           {    
           include_once('fields_tmp.php');
-          //echo "<br >"; 
-          echo  "<fieldset'>";
+     echo "<div class='row'>";
+     echo  "<fieldset class='col-md-6'>";  
           $f0 = new input(array($tid,'tid',1,'','','h'));                 
                $f0->field();
           $f1 = new input(array($tprog,'tprog',2,'Progressivo','','r'));       
@@ -235,6 +235,7 @@ break;
           $fk = new input(array($tlang,'tlang',3,'Lingua','','r'));                    
                $fk->field();
           echo  "</fieldset>";
+		  echo "</div>";
           echo  "</form>";
           }
     break;
