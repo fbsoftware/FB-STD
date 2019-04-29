@@ -1,0 +1,4 @@
+CHANGELOG
+29/04/2019	FB-STD-1.0.7	
+			uso di "spl_autoload_register"
+			messaggi con classe msg
