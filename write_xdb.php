@@ -56,10 +56,7 @@ case 'cancella':
 case 'ritorno':
           $_SESSION['esito'] = 2;
          break;
-case 'chiudi' :
-		header('location:index.php?urla=widget.php&pag=');
-		break;
-default:
+
   echo "Operazione invalida";
 }
 $loc = "location:index.php?".$_SESSION['location']."";
