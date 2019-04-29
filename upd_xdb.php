@@ -34,9 +34,9 @@ switch ($azione)
 { // controllo
     case '':
     case 'chiudi' :
-    $loc = "location:index.php?".$_SESSION['location']."";
-         header($loc);
-    break; 
+		header('location:index.php?urla=widget.php&pag=');
+		break;
+default:
 // inserimento 
     case 'nuovo':
     $param = array('salva|nuovo','ritorno');
