@@ -19,7 +19,7 @@ $btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array('nuovo','modific
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-include_once 'msg.php'; 
+$M = new msg($_SESSION['esito']); $M->msg(); 
 
 //  testata di tabella 
 echo "<div class='tableFixHead'>";    

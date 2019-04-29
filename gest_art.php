@@ -20,7 +20,10 @@ $btx   = new bottoni_str_par('Articoli','art','upd_art.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];     
 
 // zona messaggi
-include_once 'msg.php';
+$M = new msg($_SESSION['esito']); $M->msg();
+
+//$M = new msg($_SESSION['esito']); $M->msg();
+
 
 //  mostra tabella 
 echo "<div class='tableFixHead'>";    

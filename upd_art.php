@@ -47,8 +47,10 @@ $content  ='--- Inserire qui il testo ---';
           $cap->select_label();
       $f4 = new input(array('','atit',30,'Titolo','','i'));     
           $f4->field(); 
-     $tz = new DB_tip_i('s-n','amostra',0,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
-          $tz->select(); 
+//     $tz = new DB_tip_i('s-n','amostra',0,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
+//          $tz->select(); 
+          $f6 = new input(array('','amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
+               $f6->field();  
       $f9 = new input(array($content,'atext',30,'Testo','','tx'));  
           $f9->field();       
 echo "</fieldset>";
@@ -87,8 +89,11 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $cap2->select_label();
       $f4 = new input(array($atit,'atit',30,'Titolo articolo','','i'));    
           $f4->field(); 
-     $tz = new DB_tip_i('s-n','amostra',$amostra,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
-          $tz->select(); 
+//    $tz = new DB_tip_i('s-n','amostra',$amostra,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
+ //         $tz->select(); 
+          $f6 = new input(array($amostra,'amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
+               $f6->field();  
+
      echo "<br />";
       $f9 = new input(array($atext,'atext',30,'Testo','','tx'));  
           $f9->field();

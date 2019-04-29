@@ -18,7 +18,7 @@ $btx   = new bottoni_str_par('Utenti','ute','upd_ute.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-	include_once('msg.php');
+	$M = new msg($_SESSION['esito']); $M->msg();
 
 //   testate
 echo "<div class='tableFixHead'>";    

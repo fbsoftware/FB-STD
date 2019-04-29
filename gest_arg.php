@@ -20,7 +20,7 @@ require_once('connectDB.php');
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-include_once 'msg.php';
+$M = new msg($_SESSION['esito']); $M->msg();
 
 //  mostra tabella
 echo "<div class='tableFixHead'>";    

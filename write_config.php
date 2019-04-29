@@ -39,13 +39,13 @@ $file->setValue('versione', 'livello'  ,  $_POST['livello']);
 $file->setValue('versione', 'rilascio' ,  $_POST['rilascio']);
 $file->setValue('versione', 'modifica' ,  $_POST['modifica']);
 
-$file->setValue('DB', 'root', $_POST['root']);
 $file->setValue('DB', 'host', $_POST['host']);
 $file->setValue('DB', 'user', $_POST['user']);
 $file->setValue('DB', 'pw'  , $_POST['pw']);
 $file->setValue('DB', 'db'  , $_POST['db']);
 $file->setValue('DB', 'pref', $_POST['pref']);
 
+$file->setValue('config', 'root', 	   $_POST['root']);
 $file->setValue('config', 'site'     , $_POST['site']);
 $file->setValue('config', 'page_title',$_POST['page_title']);
 $file->setValue('config', 'author' ,   $_POST['author']);

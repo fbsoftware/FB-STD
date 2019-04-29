@@ -23,7 +23,7 @@ $tipo         = $_SESSION['pag'];
 	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-	include_once('msg.php');
+$M = new msg($_SESSION['esito']); $M->msg();
   
      // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";    

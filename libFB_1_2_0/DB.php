@@ -37,23 +37,23 @@ class DB
                   self::$rilascio  = $arr['versione']['rilascio'];
                   self::$modify    = $arr['versione']['modify'];
 
-                  self::$root      = $arr['DB']['root'];
                   self::$host      = $arr['DB']['host'];
                   self::$user      = $arr['DB']['user'];
                   self::$pw        = $arr['DB']['pw'];
                   self::$db        = $arr['DB']['db'];
                   self::$pref      = $arr['DB']['pref'];
-
-                  self::$incr       = $arr['config']['incr'];
+				  
+				  self::$root       = $arr['config']['root'];
                   self::$site       = $arr['config']['site'];
-                  self::$sep        = $arr['config']['sep'];
+	              self::$page_title = $arr['config']['page_title'];
                   self::$dir_imm    = $arr['config']['dir_imm'];
-                  self::$page_title = $arr['config']['page_title'];
+				  self::$lib        = $arr['config']['lib'];
+                  self::$incr       = $arr['config']['incr'];
+                  self::$sep        = $arr['config']['sep'];
                   self::$e_mail     = $arr['config']['e_mail'];
                   self::$url        = $arr['config']['url'];
                   self::$author     = $arr['config']['author'];
                   self::$keywords   = $arr['config']['keywords'];
-				  self::$lib        = $arr['config']['lib'];
           return $arr;
          }
 				  
