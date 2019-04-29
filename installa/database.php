@@ -22,8 +22,8 @@
   <body>
 <?php
 // acquisizione e creazione config.ini
-require '../libFB-1.1.1/FileIni.class.php';  
-require '../libFB-1.1.1/DB_PDO.php';              
+require '../libFB_1_2_0/FileIni.php';  
+require '../libFB_1_2_0/DB.php';              
 $options=array('autoSave'=>true, 'readOnly'=>false);  
 $file=new FileIni("../config.ini", $options);
   
@@ -294,7 +294,10 @@ $PDO->exec("INSERT INTO `".$_POST['pref']."xdb` (`xid`, `xstat`, `xprog`, `xtipo
 (894, '', 754, 'color', 'basic', 'Grigio'),
 (895, '', 759, 'forma', 'square', 'Quadrata'),
 (896, '', 764, 'forma', 'circle', 'Circolare'),
-(897, '', 769, 'forma', 'square-arr', 'Quadrata arrotondata')");
+(897, '', 769, 'forma', 'square-arr', 'Quadrata arrotondata')
+(898, '', 770, 'acc', '0', 'Ospite'),
+(899, '', 771, 'acc', '5', 'Utente'),
+(900, '', 772, 'acc', '9', 'Amministratore')");
 echo "<br />Creata tabella XDB";
 
 //==================================================================================     

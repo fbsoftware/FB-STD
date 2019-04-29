@@ -8,48 +8,55 @@
    * all'uso anche improprio di FB open template.
 ==============================================================================*/ 
 ?>
-<!DOCTYPE HTML>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="generator" content="PSPad editor, www.pspad.com">
-  <title></title>
-  <link rel="stylesheet" href="../css/style.css"  type="text/css" >
-  <link rel="stylesheet" href="../css/stili-custom.css"  type="text/css" >
-  </head>
-  
-  <body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="index,follow" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
 <?php
-include_once '../libFB-1.1.1/DB_PDO.php';
-include_once '../libFB-1.1.1/FB.field.php';
-include_once('../bootstrap_link.php');
+require_once("../jquery_link.php");
+echo "<link rel='stylesheet' href='../css/stili-custom.css' type='text/css' media='screen'>";
+echo "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>";
+require_once("../libFB_1_2_0/field.php");       
 
-// include_once '../transactDB.php';
+?>	
+</head>
+
+<body>
+<?php
+// definizione variabili
+$host="localhost"; 
+$user="";  
+$pw="";  
+$db="my_database";  
+$pref="prefix_";  
+$sep="/";
+$e_mail="fbsoftware@xxxxxx.it"; 
+$page_title="Installazione";  
+$site="Libreria standard FB";  
+$dir_imm="images/";  
+$author="fbsoftware";
+$keywords=""; 
+$root="/FB-STD/";
+$lib="libFB_1_2_0"; 
+$url="http://fbsoftware.xxxxxxxxx.org"; 
+$incr=5;
+
+// testata
+echo "<div class='row'>";
 echo "<div class='col-md-7'> 
      <fieldset >
      <h3>Creazione del database con le tabelle del sito</h3>"; 
 echo "</fieldset>";
 echo "</div>";
-// definizione variabili
-$host="localhost"; 
-$user="user";  
-$pw="pw";  
-$db="my_database";  
-$pref="prefix_";  
-$sep="/";
-$e_mail="fbsoftware@xxxxxx.it"; 
-$page_title="FB-STD";  
-$site="Mysite";  
-$dir_imm="images/";  
-$author="fbsoftware";
-$keywords=""; 
-$root="/FB-STD/";
-$lib="libFB-1.1.1"; 
-$url="http://fbsoftware.xxxxxxxxx.org"; 
-$incr=5;
+echo "</div>";
 
-       
 // dati del database
+echo "<div class='row'>";
 echo "<div class='col-md-7'>
      <form action='database.php' method='post'>
      <fieldset><legend>Dati del database</legend> ";
@@ -63,8 +70,8 @@ echo "<div class='col-md-7'>
 		$f4->field_i();   
 	$f5 = new field($pref,'pref',20,'Prefisso');
 		$f5->field_i();   
-
 echo "</fieldset>";
+echo "</div>";
 echo "</div>";
 
 // dati di configurazione 
@@ -104,5 +111,5 @@ echo "</fieldset>";
 echo "</form>";
 echo "</div>";
 ?>
-  </body>
+</body>
 </html>

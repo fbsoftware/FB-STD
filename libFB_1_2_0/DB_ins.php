@@ -8,14 +8,20 @@
   Esempio: $x = new DB_ins('tabella','campo del progressivo')
 ============================================================================= */
 class DB_ins          extends DB
+{       
+        public static $con  = '';         // collegamento  
+        public static $PDO  = '';         // collegamento PDO
 
-{       public $tabella ='';
+
+		public $tabella ='';
         public $prog    ='';
 // variabili interne
         public $max     = 0;  
   
     public function __construct($tabella,$prog)       
            { 
+		   self::$con        = $con;
+		   self::$PDO        = $PDO;
            $this->tabella = $tabella;
            $this->prog    = $prog;     // campo del progressivo di ordinamento
 			//parent::__construct(); 
