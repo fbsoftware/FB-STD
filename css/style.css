@@ -263,6 +263,15 @@ background: #ffffff;
 border: 1px solid #aaaaaa;
 }
 
+#upd {
+margin-top:20px;
+float: left;
+width: 100%;
+min-height: 450px;
+background: #ffffff;
+border: 1px solid #aaaaaa;
+}
+
 article {
 float: left;
 width: 100%;
