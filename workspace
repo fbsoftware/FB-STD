@@ -1193,5 +1193,8 @@
             <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\promo.php" />
             <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\section_head.php" />
         </Folder>
+        <File name="C:\xampp\htdocs\fbot-boot\gest.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\upd.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\write.php" />
     </Project>
 </NotepadPlus>

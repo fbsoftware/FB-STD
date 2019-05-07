@@ -27,15 +27,15 @@ echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";                
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>";
-echo "<th>Progressivo</th>"; 
+echo "<th style='width:2%;'>Scelta</th>";
+echo "<th style='width:2%;'>Stato</th>";
+echo "<th style='width:2%;'>Progressivo</th>"; 
 echo "<th>Tipo</th>"; 
 echo "<th>Codice</th>"; 
 echo "<th>Descrizione</th>";
 echo "</tr>";
 echo "</thead>";       
-echo "<tbody class='y'>";
+echo "<tbody>";
  // lettura database
      $sql = "SELECT * 
                FROM ".DB::$pref."xdb     
@@ -48,16 +48,16 @@ echo "<tbody class='y'>";
           {   
           include('fields_xdb.php');
           echo "<tr>";
-          echo "<td>";       
+          echo "<td class='mid'>";       
           $f0 = new fieldi($xid,'xid',2,'');           
                $f0->field_ck();  
           echo "</td>";
-          echo "<td>";  
+          echo "<td class='mid'>";  
           $f1 = new fieldi($xstat,'xstat',2,'');       
                $f1->field_st();
           echo "</td>";
                     ?>
-          <td ><?php echo $xprog ?></td> 
+          <td class="mid"><?php echo $xprog ?></td> 
           <td><?php echo $xtipo ?></td> 
           <td><?php echo $xcod ?></td> 
           <td><?php echo $xdes ?></td>      

@@ -27,11 +27,12 @@ $M = new msg($_SESSION['esito']); $M->msg();
   
      // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>"; 
+echo "<table class='table table-hover table-bordered table-condensed'>"; 
+echo "<thead>";
+echo "<tr>";
+echo "<th style='width:2%;'>Scelta</th>";
+echo "<th style='width:2%;'>Stato</th>"; 
+echo "<th style='width:2%;'>Progressivo</th>"; 
 echo "<th>Menu</th>";
 echo "<th>VOCE</th>";
 echo "<th>Sottovoce</th>";
@@ -40,21 +41,24 @@ echo "<th>TIPO</th>";
 echo "<th>Contenuto</th>";
 echo "<th>SEL</th>";
 echo "<th>ACC</th>";
+echo "</tr>";
 echo "</thead>";          
-
+	echo "<tbody>";
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
                WHERE nmenu='".TMP::$tmenu."' 
                ORDER BY nprog";
             foreach($PDO->query($sql) as $row)             
   {  include('fields_nav.php');
+
+
      echo "<tr>";
-  $f1 = new fieldi($nid,'nid',2,'');            
-  echo "<td>"; $f1->field_ck(); echo "</td>";
-  $st = new fieldi($nstat,'nstat',2,'');        
-  echo "<td>"; $st->field_st(); echo "</td>";
+	$f1 = new fieldi($nid,'nid',2,'');            
+	echo "<td class='mid'>"; $f1->field_ck(); echo "</td>";
+	$st = new fieldi($nstat,'nstat',2,'');        
+	echo "<td class='mid'>"; $st->field_st(); echo "</td>";
        ?>
-     <td><?php echo $nprog ?></td> 
+     <td class="mid"><?php echo $nprog ?></td> 
      <td><?php echo $nmenu ?></td>
      <td><?php echo $nli ?></td>
      <td><?php echo $ndesc ?></td>
@@ -65,8 +69,9 @@ echo "</thead>";
      <td><?php echo $naccesso ?></td>   
 <?php 
   }
-     echo "</tr>";
-     echo "</table></form></div>";
-     echo "</div></div>";
-
+	echo "</tr>";
+ 	echo "</tbody>";
+	echo "</table>";
+	echo "</div>";
+	echo "</form>";
 ?> 
