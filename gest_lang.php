@@ -12,7 +12,7 @@
 require_once('connectDB.php');
 
 //   bottoni gestione
-$btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array('nuovo','modifica','cancella','chiudi'));     
+$btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
 	$btx->btn();
 
 // memorizza location iniziale

@@ -31,7 +31,7 @@ $rtext    = $QUI_TEXT;
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1) 
      {
-      header('location:index.php?'.$_SESSION['location'].'');
+      header('location:admin.php?'.$_SESSION['location'].'');
      }
 	 
 // contenitore
@@ -137,7 +137,7 @@ break;
  
     case 'chiudi' :
     {
-    header('location:index.php?urla=widget.php&pag=');
+    header('location:admin.php?urla=widget.php&pag=');
         break;
     } 
    

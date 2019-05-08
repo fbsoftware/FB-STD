@@ -140,7 +140,7 @@ echo    "</form>";
     }
 
 case 'chiudi' :   
-          $loc = "location:index.php?urla=widget.php&pag=";
+          $loc = "location:admin.php?urla=widget.php&pag=";
           header($loc);                                   
           break;     
                   

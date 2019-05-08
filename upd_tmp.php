@@ -28,7 +28,7 @@ $azione   =$_POST['submit'];
 if (($azione == 'modifica' || $azione == 'cancella') && ($tid < 1)) 
      {
      $_SESSION['esito'] = 4;
-$loc = "location:index.php?".$_SESSION['location']."";
+$loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
 
@@ -241,12 +241,12 @@ break;
     break;
            
 case 'ritorno' :            
-          $loc = "location:index.php?".$_SESSION['location']."";
+          $loc = "location:admin.php?".$_SESSION['location']."";
                header($loc);  
           break;    
            
 case 'chiudi' :            
-          $loc = "location:index.php?urla=widget.php&pag=";
+          $loc = "location:admin.php?urla=widget.php&pag=";
                header($loc);                          
           break;    
           

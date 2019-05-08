@@ -35,21 +35,21 @@ switch ($azione)
     case 'nuovo':    // inserimento
 
           $param    = array('salva|nuovo','ritorno');     
-          $bti      = new bottoni_str_par($LANG." - ".$INS,'lang','write_lang.php',$param);
+          $bti      = new bottoni_str_par($LANG.' - '.$UPD_INSER,'lang','write_lang.php',$param);
                $bti->btn();  
           echo  "<fieldset class='col-md-7'>"; 
-          $f4 = new input(array('','voce',30,'Descrizione','Descrizione da tradurre','ia'));          
+          $f4 = new input(array('','voce',50,'Descrizione','Descrizione da tradurre','ia'));          
           $f4->field();
 // lettura directory language
           $n=0;
-          $dir = "language/*.*";
+          $dir = "language/*.ini";
 foreach (glob($dir) as $key => $gx)
      {
           $array_file[$key] = $gx;
           $lin = explode('/',$gx);
           $naz = array_pop($lin);
           $sect = substr($naz,0,2);
-          $fx = new input(array('',$sect,30,"Traduzione per:  <strong>".$sect." </strong>",'Traduzione il lingua','i'));
+          $fx = new input(array('',$sect,50,"Traduzione per:  <strong>".$sect." </strong>",'Traduzione il lingua','i'));
           $fx->field();
           $n++ ;
      }
@@ -62,18 +62,18 @@ foreach (glob($dir) as $key => $gx)
 case 'modifica':        // modifica
 
           $param    = array('salva|modifica','ritorno');     
-          $bti      = new bottoni_str_par($LANG." - ".$MOD,'lang','write_lang.php',$param);
+          $bti      = new bottoni_str_par($LANG.' - '.$UPD_MODIF,'lang','write_lang.php',$param);
           $bti->btn();  
 
 if ($chiave == '')
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
      $options=array('autoSave'=>true, 'readOnly'=>false);
      echo  "<fieldset class='col-md-7'>"; 
-      $f4 = new input(array($_POST['chiave'],'voce',30,'Descrizione','Descrizione da tradurre','ia'));       
+      $f4 = new input(array($_POST['chiave'],'voce',50,'Descrizione','Descrizione da tradurre','ia'));       
           $f4->field();
           
 // lettura directory language
@@ -88,7 +88,7 @@ foreach (glob('language/*.*') as $key => $gx)
      $arr = parse_ini_file ( "language/".$naz , true ); // apro il file
      $file = new FileIni("language/".$naz, $options);
      $value = $file->getValue($sect,$_POST['chiave']);    // leggo il valore
-     $fx = new input(array($value,$sect,30,"Traduzione per:  <strong>".$sect." </strong>",'Traduzione in '.$sect.'','i'));
+     $fx = new input(array($value,$sect,50,"Traduzione per:  <strong>".$sect." </strong>",'Traduzione in '.$sect.'','i'));
           $fx->field();
      $n++ ;
      }
@@ -100,18 +100,18 @@ foreach (glob('language/*.*') as $key => $gx)
 // cancellazione    
     case 'cancella' :
           $param    = array('salva|cancella','ritorno');     
-          $bti      = new bottoni_str_par($LANG." - ".$MOD,'lang','write_lang.php',$param);
+          $bti      = new bottoni_str_par($LANG.' - '.$UPD_CONF_CANC,'lang','write_lang.php',$param);
           $bti->btn();  
 
 if ($chiave == '')
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
      $options=array('autoSave'=>true, 'readOnly'=>false);
       echo  "<fieldset class='col-md-7'>"; 
-      $f4 = new input(array($_POST['chiave'],'voce',30,'Descrizione','Descrizione da tradurre','ia'));
+      $f4 = new input(array($_POST['chiave'],'voce',50,'Descrizione','Descrizione da tradurre','ia'));
           $f4->field();
 // lettura directory language
           $n=0;
@@ -124,7 +124,7 @@ foreach (glob('language/*.*') as $key => $gx)
      $arr = parse_ini_file ( "language/".$naz , true ); // apro il file
      $file = new FileIni("language/".$naz, $options);
      $value = $file->getValue($sect,$_POST['chiave']);    // leggo il valore
-     $fx = new input(array($value,$sect,30,"Traduzione per:  <strong> ".$sect." </strong>",'Traduzione in '.$sect.'','i'));
+     $fx = new input(array($value,$sect,50,"Traduzione per:  <strong> ".$sect." </strong>",'Traduzione in '.$sect.'','i'));
           $fx->field();
      $n++ ;
      }
@@ -133,7 +133,7 @@ foreach (glob('language/*.*') as $key => $gx)
      break;
  
     case 'chiudi' :
-     header('location:index.php?urla=widget.php&pag=');                        
+     header('location:admin.php?urla=widget.php&pag=');                        
      break;
  
     default:

@@ -88,6 +88,6 @@ case 'ritorno':
 default:
                     $_SESSION['esito'] = 0;
 }
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?> 

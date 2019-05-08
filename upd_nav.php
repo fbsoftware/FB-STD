@@ -30,7 +30,7 @@ $azione=$_POST['submit'];
 if (($azione == 'modifica' || $azione == 'cancella') && $nid == '') 
           {
           $_SESSION['esito'] = 4;
-          header('location:index.php?'.$_SESSION['location'].'');
+          header('location:admin.php?'.$_SESSION['location'].'');
           }
 
 // mostra stringa bottoni
@@ -48,12 +48,12 @@ switch ($azione)
 
 case '':
 	$_SESSION['esito'] = 4;
-	header('location:index.php?'.$_SESSION['location'].'');
+	header('location:admin.php?'.$_SESSION['location'].'');
       break;
 //==================================================================================     
 
 case 'chiudi' :
-		header('location:index.php?urla=widget.php&pag=');
+		header('location:admin.php?urla=widget.php&pag=');
 		break;
 default:
 //==================================================================================     

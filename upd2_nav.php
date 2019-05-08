@@ -31,7 +31,7 @@ switch ($azione)
 {    
 case 'ritorno':
      {
-     header('location:index.php?'.$_SESSION['location'].''); 
+     header('location:admin.php?'.$_SESSION['location'].''); 
      break;     
      } 
       

@@ -1,7 +1,7 @@
-﻿/* Font family e colore di sfondo */
+/* Font family e colore di sfondo */
 
 body {
-margin: 0 10px 0;
+margin: 10px auto;
 padding: 0;
 font-size: 10pt;
 width: 95%;
@@ -13,7 +13,16 @@ a[data-toggle="tooltip"] {
      cursor:none;
 }
 
+a {
+text-decoration: none  !important ;
+padding: 0 10px;
+}
+
+a:hover {
+color: Red;
+}
  label    {
+ width:150px;
  float: left;
  width: 150px;
  display: inline;
@@ -37,18 +46,22 @@ text-align: right;
 /* Stili per sovrascrivere e modificare la Navbar di Bootstrap */
 .navbar {
   border: none;
+  margin-bottom: 0px;
+  border-radius: 7px 7px 0 0;
 }
 
 .navbar-nav {
   margin-top: 0;
+  flex-direction :row !important;
 }
 
 .navbar-brand {
  display: inline-block;
- /*text-indent: -9999px; */
+ /*text-indent: -9999px; 
  width: 190px;
- height: 100px;
- /*background: url(../images/icofbot.png) center bottom no-repeat;    */
+ height: 100px; */
+ background: url(images/logo/logo.png) center bottom no-repeat; 
+   
 }                                             
 
 .navbar-default {
@@ -213,8 +226,7 @@ text-align: right;
 .btn {
   border: 01px solid #bbbbbb;
   border-radius: 4px;
-  padding: 6px;
-  margin: 4px;
+  margin-top: 18px;
 }
 .btn:focus {
   outline: 0;
@@ -347,9 +359,6 @@ footer a, footer a:hover {color: #5cb85c;}
 
 
 /* Stile per modificare e sovrascrivere l'aspetto degli input di Bootstrap */
-form	{
-  margin-block-end: 0em !important;	
-}
 
 .form-control {
   height: 32px;
@@ -565,25 +574,17 @@ fieldset  {
      border: 1px solid #E3E3E3;
      border-radius: 4px;
      padding: 5px;
-     margin-top: 5px;
-}
-fieldset.toolbar  {
-     background: #F5F5F5;
-     border: 1px solid #E3E3E3;
-     border-radius: 4px;
-     padding: 5px;
-     margin-top: 5px;
-	 height: 55px;
+     margin-bottom: 5px;
 }
 legend    {
      color: #a52a2a;
      border-bottom:none !important;
      margin-bottom:0px  !important;
      padding: 0 5px;
-   /*  width: fit-content !important;  */
+     width: fit-content !important;
      font-weight: bold;
      font-size: inherit;
-     background-color: #e1e1e1;
+     
 }
 /* Footer styles
 -------------------------------------------------- */
@@ -591,7 +592,10 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 0px;
+}
 #footer {
  /*   position: absolute;
   bottom: 0;
@@ -645,22 +649,16 @@ div.primary {
     right: 20px;
     display:none;
 }
-
 td.center {
      text-align: center;
-}
-.back-to-top {
-cursor: pointer;
-position: fixed;
-bottom: 0;
-right: 20px;
-display:none;
 }
 /* mappa di login */
 img.login {
 	margin-right: 40px;
 }
-
+.red {
+     color: #ff0000;
+}
 .blue {
 	background: #DCDCDC;
 }
@@ -671,12 +669,11 @@ div.widget {
 	border: 2px solid #AAAAAA;
 	border-radius: 5px;
 	background: #CCCCCC;
-     width: 100%;
 }
 div.widget:hover {
   	box-shadow: 3px 5px 10px rgba(0,0,0,0.75);       
-	border-bottom-right-radius: 70% 25px;
-     transition-property: border-bottom-right-radius;
+/*	border-bottom-right-radius: 70% 25px;
+     transition-property: border-bottom-right-radius;   */
      transition-duration: .5s;
      background: #CCCCCC;
 }
@@ -853,8 +850,9 @@ margin: 0;
 padding: 0;
 background: gainsboro;
 list-style: none;
-font: 1em Verdana;
+font: 1.2em Verdana;
 font-weight: bold;
+
 width: 90%;
 }
 
@@ -925,19 +923,38 @@ border-right: 0px;
 font-weight: bold;
 background: #444444;
 }
-/* autocomplete scrollabile */
-.ui-autocomplete {
-    max-height: 250px;
-    overflow-y: auto;
-    /* prevent horizontal scrollbar */
-    overflow-x: hidden;
-  }
-h1.toolbar	{
-font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size:14pt;	
-font-weight: bold;
-margin-top: 10px;
+/* override al colore bootstrap  */
+.table-striped>tbody>tr:nth-of-type(odd)     {
+background-color: #99ff99;
 }
+/* centratura row nel container  */
+.row-center    {
+margin: 0 auto;
+}
+/* elimina padding orizzontale  */
+.no-padd    {
+padding-left: 0px !important;
+padding-right: 0px !important;
+}
+/* titolo */
+.text-big {
+font-size: 36px;
+-webkit-margin-sfter : 0px !important;
+-webkit-margin-before: 0px !important;
+}
+/*  override form user agent */
+form {
+margin-bottom: 0px;
+}
+/* settaggi del marchio */
+.marchio {
+height: 50px;
+float: left;                 
+/*  margin: 7.5px; */
+}
+ul.dropdown-menu:hover {
+display :block;
+} 
 
     /* TABELLA */
 .tableFixHead    { 

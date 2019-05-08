@@ -31,7 +31,7 @@ if (($azione == 'modifica' || $azione == 'cancella' ) && $bid == '') {header('lo
 switch ($azione)
 {	case '':
     case 'chiudi' :
-	header('location:index.php?urla=widget.php&pag=');		
+	header('location:admin.php?urla=widget.php&pag=');		
 	break;     	
 //==================================================================================     
     case 'nuovo':

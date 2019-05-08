@@ -67,7 +67,7 @@ class bottoni_str_par
 				// scan bottoni
 				$length = count($this->param);
                for ($i = 0; $i < $length; $i++) 
-               {
+	   {
 				// test se label diversa da azione
                $act = $this->param[$i];
 				$pos = strpos($this->param[$i], '|');
@@ -82,9 +82,9 @@ class bottoni_str_par
                          <img src=images/bottoni/".$act.".png alt='".$act."' height=25 />".$act."</button>";
 				}
 				}
-		else
-			{
-			list($label,$act)=explode('|',$this->param[$i]); 
+			else
+				{
+				list($label,$act)=explode('|',$this->param[$i]); 
                // controllo accesso al bottone 
                if(in_array($act, $b5))  { $accesso_bottone = 5; }
                if(in_array($act, $b0))  { $accesso_bottone = 0; }
@@ -93,7 +93,7 @@ class bottoni_str_par
                echo    "<button class='btn btn-default btn-md' type='submit' name='submit' value='".$act."' id='".$act."'>
                          <img src=images/bottoni/".$label.".png alt='".$label."' height=25 />".$label."</button>";
                }
-			}
+				}
 		}	// endfor
                 echo    "</div>";
 				echo    "</div>";	// row

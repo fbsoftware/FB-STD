@@ -27,7 +27,7 @@ $azione  =$_POST['submit'];
  switch ($azione)
 {
 case 'chiudi':
-     header('location:index.php?urla=widget.php&pag=');                     
+     header('location:admin.php?urla=widget.php&pag=');                     
           break;
                       
 default:
@@ -57,7 +57,7 @@ $file->setValue('config', 'lib',       $_POST['lib']);
 $file->setValue('config', 'e_mail',    $_POST['e_mail']);
 $file->setValue('config', 'url',       $_POST['url']);
 
-header('location:index.php?'.$_SESSION['location'].'');
+header('location:admin.php?'.$_SESSION['location'].'');
  break;
 }
 ob_end_flush();

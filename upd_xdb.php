@@ -26,7 +26,7 @@ $azione  =$_POST['submit'];
 if (($azione == 'modifica' || $azione == 'cancella') && $xid == '') 
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
 
@@ -34,7 +34,7 @@ switch ($azione)
 { // controllo
     case '':
     case 'chiudi' :
-		header('location:index.php?urla=widget.php&pag=');
+		header('location:admin.php?urla=widget.php&pag=');
 		break;
 default:
 // inserimento 

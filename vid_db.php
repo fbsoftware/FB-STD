@@ -32,11 +32,11 @@ $table  = $_POST['table'];
 switch ($azione) 
      {
 		case 'chiudi':
-            $loc = "location:index.php?urla=widget.php&pag=";
+            $loc = "location:admin.php?urla=widget.php&pag=";
                  header($loc);                          
             break;
 		case 'ritorno':
-			header('location:index.php?'.$_SESSION['location'].'');
+			header('location:admin.php?'.$_SESSION['location'].'');
             break;
             
      default:
