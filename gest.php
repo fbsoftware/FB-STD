@@ -47,14 +47,14 @@ echo "</thead>";
      include('fields_tab.php');      
      echo "<tr>";  
      $f1 = new fieldi($£id,'£id',2,'');               
-     echo "<td class='mid'>"; 
+     echo "<td class='center'>"; 
 		$f1->field_ck(); echo "</td>";   
      $st = new fieldi($£stat,'£stat',2,'');           
-     echo "<td class='mid'>"; 
+     echo "<td class='center'>"; 
 		$st->field_st(); echo "</td>"; 
 		
      ?>   
-     <td class="mid"><?php echo $£prog ?></td>
+     <td class="center"><?php echo $£prog ?></td>
      <td><?php echo $gtmpcolonna_1 ?></td>
      <td><?php echo htmlspecialchars($gtmpcolonna_2, ENT_QUOTES) ?></td>
      <td><?php echo $gtmpcolonna_3 ?></td>

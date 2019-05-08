@@ -25,7 +25,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // selezione template                 
      echo "<div id=login>";
-     echo "<fieldset class='mid'>";
+     echo "<fieldset class='center'>";
      echo "<legend>&nbsp;Cambio template&nbsp;</legend>"; 
      echo "<p>"; 
      echo "<select name=scelto class='img-centro'>";

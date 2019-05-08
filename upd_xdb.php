@@ -39,7 +39,7 @@ switch ($azione)
 default:
 // inserimento 
     case 'nuovo':
-    $param = array('salva|nuovo','ritorno');
+    $param = array($SAV.'|nuovo',$RET.'|ritorno');
     $btx   = new bottoni_str_par('Tipologie - inserimento','xdb','write_xdb.php',$param);     
          $btx->btn();
          

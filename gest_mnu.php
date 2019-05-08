@@ -24,9 +24,9 @@ $M = new msg($_SESSION['esito']); $M->msg();
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>"; 
+echo "<th style='width:2%;'>Scelta</th>";
+echo "<th style='width:2%;'>Stato</th>";
+echo "<th style='width:2%;'>Progressivo</th>"; 
 echo "<th>Nome</th>";
 echo "<th>Tipo</th>";
 echo "<th>Descrizione</th>";
@@ -40,11 +40,11 @@ $sql = "SELECT * FROM ".DB::$pref."mnu
       include('fields_mnu.php');
      echo "<tr>";
   $f1 = new fieldi($bid,'bid',2,'');            
-  echo "<td>"; $f1->field_ck(); echo "</td>";
+  echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
   $st = new fieldi($bstat,'bstat',2,'');        
-  echo "<td>"; $st->field_st(); echo "</td>";
+  echo "<td class='center'>"; $st->field_st(); echo "</td>";
   ?>
-	<td><?php echo $bprog ?></td>
+	<td class="center"><?php echo $bprog ?></td>
 	<td><?php echo $bmenu ?></td>
 	<td><?php echo $btipo ?></td>
 	<td><?php echo $btesto ?></td>

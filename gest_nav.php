@@ -12,7 +12,7 @@
    * 1.0.0	nuovo head breve
 =============================================================================  */
 require_once('connectDB.php');
-$tipo         = $_SESSION['pag']; 
+	$tipo = $_SESSION['pag']; 
 
   //   toolbar
 	$param  = array('nuovo','modifica','cancella','chiudi');    
@@ -23,7 +23,7 @@ $tipo         = $_SESSION['pag'];
 	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+	$M = new msg($_SESSION['esito']); $M->msg();
   
      // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";    
@@ -54,11 +54,11 @@ echo "</thead>";
 
      echo "<tr>";
 	$f1 = new fieldi($nid,'nid',2,'');            
-	echo "<td class='mid'>"; $f1->field_ck(); echo "</td>";
+	echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
 	$st = new fieldi($nstat,'nstat',2,'');        
-	echo "<td class='mid'>"; $st->field_st(); echo "</td>";
+	echo "<td class='center'>"; $st->field_st(); echo "</td>";
        ?>
-     <td class="mid"><?php echo $nprog ?></td> 
+     <td class="center"><?php echo $nprog ?></td> 
      <td><?php echo $nmenu ?></td>
      <td><?php echo $nli ?></td>
      <td><?php echo $ndesc ?></td>
