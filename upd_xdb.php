@@ -40,7 +40,7 @@ default:
 // inserimento 
     case 'nuovo':
     $param = array($SAV.'|nuovo',$RET.'|ritorno');
-    $btx   = new bottoni_str_par('Tipologie - inserimento','xdb','write_xdb.php',$param);     
+    $btx   = new bottoni_str_par($TIP.' - '.$UPD_INSER,'xdb','write_xdb.php',$param);     
          $btx->btn();
          
      echo  "<fieldset class='col-md-6'>";  
@@ -59,8 +59,8 @@ default:
       break;
 // modifica     
     case 'modifica':
-     $param = array('salva|modifica','ritorno');
-     $btx   = new bottoni_str_par('Tipologie - modifica','xdb','write_xdb.php',$param);     
+     $param = array($SAV.'|modifica',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($TIP.' - '.$UPD_MODIF,'xdb','write_xdb.php',$param);     
           $btx->btn();
 
 // transazione 
@@ -89,8 +89,8 @@ default:
      break;
 // cancellazione    
     case 'cancella' :
-          $param  = array('salva|cancella','ritorno');    
-          $btx    = new bottoni_str_par('Conferma cancellazione','xdb','write_xdb.php',$param);  
+          $param  = array($SAV.'|cancella',$RET.'|ritorno');    
+          $btx    = new bottoni_str_par($UPD_CONF_CANC,'xdb','write_xdb.php',$param);  
                $btx->btn(); 
       $sql = "SELECT * FROM `".DB::$pref."xdb` 
                            WHERE `xid` = $xid  ";    

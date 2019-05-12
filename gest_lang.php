@@ -19,7 +19,7 @@ $btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array($NEW.'|nuovo',
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
 
 // mostra la tabella
 echo "<div class='tableFixHead'>";    

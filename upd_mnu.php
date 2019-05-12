@@ -36,8 +36,8 @@ switch ($azione)
 //==================================================================================     
     case 'nuovo':
 	 //   toolbar
-	$param  = array('salva|nuovo','ritorno');    
-	$btx    = new bottoni_str_par('Menu - inserimento','mnu','write_mnu.php',$param);  
+	$param  = array($SAV.'|nuovo',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($MENU.' - '.$UPD_INSER,'mnu','write_mnu.php',$param);  
 		$btx->btn();
       $mnu = new DB_ins('mnu','bprog');                             
       $xxx = $mnu->insert();     
@@ -59,8 +59,8 @@ echo  "</form>";
       break;
 //==================================================================================     
     case 'modifica':  // toolbar modifica 
-		$param  = array('salva|modifica','ritorno');    
-	$btx    = new bottoni_str_par('Menu - modifica','mnu','write_mnu.php',$param);  
+		$param  = array($SAV.'|modifica',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($MENU.' - '.$UPD_MODIF,'mnu','write_mnu.php',$param);  
 		$btx->btn();
 
 	echo  "<fieldset class='col-md-8'>";  
@@ -92,8 +92,8 @@ echo  "</form>";
      
     case 'cancella' :
 	// toolbar
-	$param  = array('salva|cancella','ritorno');    
-	$btx    = new bottoni_str_par('Menu - conferma cancellazione','mnu','write_mnu.php',$param);  
+	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($MENU.' - '.$UPD_CONF_CANC,'mnu','write_mnu.php',$param);  
 		$btx->btn();
 
       $sql = "SELECT * FROM `".DB::$pref."mnu` 

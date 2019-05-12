@@ -10,15 +10,15 @@
 require_once("connectDB.php");
 
 // toolbar
-	$param  = array('nuovo','modifica','cancella','chiudi');    
-	$btx    = new bottoni_str_par('Menu','mnu','upd_mnu.php',$param);  
+	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
+	$btx    = new bottoni_str_par($MENU,'mnu','upd_mnu.php',$param);  
 		$btx->btn();
 		
 // memorizza location iniziale
 	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 	
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
  
 //   testata
 echo "<div class='tableFixHead'>";    

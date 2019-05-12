@@ -15,15 +15,15 @@ require_once('connectDB.php');
 	$tipo = $_SESSION['pag']; 
 
   //   toolbar
-	$param  = array('nuovo','modifica','cancella','chiudi');    
-	$btx    = new bottoni_str_par('Voci di menu','nav','upd_nav.php',$param);  
+	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
+	$btx    = new bottoni_str_par($VOCI_MENU,'nav','upd_nav.php',$param);  
 		$btx->btn();
       
 // memorizza location iniziale
 	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-	$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
   
      // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";    

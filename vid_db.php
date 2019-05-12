@@ -54,7 +54,7 @@ echo "<div class='tableFixHead'>";
           echo '<tr>
 				<th>Campo</th>
 				<th>Tipo</th>
-				<th>Key</th>
+				<th>Null</th>
 				<th>Default<th>
 				Extra</th>
 				<th>Descrizione</th>

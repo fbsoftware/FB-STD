@@ -51,7 +51,7 @@ case 'cancella':
                   WHERE nid='$nid'";
 		$PDO->exec($sql);    
 		$PDO->commit();
-		$_SESSION['esito'] = 54;
+		$_SESSION['esito'] = 53;
 		  break;
 
 case 'ritorno':

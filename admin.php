@@ -11,7 +11,7 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
 require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');
+require_once('loadTemplateAdmin.php');  
 require_once("connectDB.php");
 // DOCTYPE & head
 $app = new Head('Gestione menu');
