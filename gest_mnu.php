@@ -24,13 +24,13 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>Scelta</th>";
-echo "<th style='width:2%;'>Stato</th>";
-echo "<th style='width:2%;'>Progressivo</th>"; 
-echo "<th>Nome</th>";
-echo "<th>Tipo</th>";
-echo "<th>Descrizione</th>";
-echo "<th>Selezionato</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th>$NAME</th>";
+echo "<th>$TIPO</th>";
+echo "<th>$DESC</th>";
+echo "<th>$SEL</th>";
 echo "</thead>";   
 
 $sql = "SELECT * FROM ".DB::$pref."mnu 

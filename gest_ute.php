@@ -11,14 +11,14 @@ require_once('connectDB.php');
  
 //   bottoni gestione
 	$param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
-	$btx   = new bottoni_str_par('Utenti','ute','upd_ute.php',$param);     
+	$btx   = new bottoni_str_par($UTES,'ute','upd_ute.php',$param);     
 		$btx->btn();
      
 // memorizza location iniziale
 	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-	$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
 
 //   testate
 echo "<div class='tableFixHead'>";    

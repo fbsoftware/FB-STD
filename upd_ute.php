@@ -39,7 +39,7 @@ switch ($azione)
  
 	case 'nuovo':
       $param = array($SAV.'|nuovo',$RET.'|ritorno');
-      $btx   = new bottoni_str_par('Inserimento utenti','ute','write_ute.php',$param);     
+      $btx   = new bottoni_str_par($UTES.' - '.$INS,'ute','write_ute.php',$param);     
            $btx->btn();
       $db_ute = new DB_ins('ute','uprog');                       
       $nmax = $db_ute->insert();
@@ -65,8 +65,8 @@ switch ($azione)
  //==================================================================================     
     
 case 'modifica':
-     $param = array($SAV.'|nuovo',$RET.'|ritorno');
-     $btx   = new bottoni_str_par('Modifica utenti','ute','write_ute.php',$param);     
+     $param = array($SAV.'|modifica',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($UTES.' - '.$MOD,'ute','write_ute.php',$param);     
           $btx->btn();
      echo "<div class='col-md-7'>";
      echo  "<fieldset>";    
@@ -102,8 +102,8 @@ case 'modifica':
  //==================================================================================     
    
 case 'cancella':
-     $param = array($SAV.'|nuovo',$RET.'|ritorno');
-     $btx   = new bottoni_str_par('Conferma cancellazione','ute','write_ute.php',$param);     
+     $param = array($SAV.'|cancella',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($DELCONF,'ute','write_ute.php',$param);     
           $btx->btn();
      echo "<div class='col-md-7'>";
      echo  "<fieldset>";      

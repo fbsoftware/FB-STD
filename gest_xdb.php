@@ -20,7 +20,7 @@ $btx   = new bottoni_str_par($TIP,'xdb','upd_xdb.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-	$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
      
 //echo "<div class='row'>";  
 echo "<div class='tableFixHead'>";    

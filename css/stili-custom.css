@@ -943,6 +943,7 @@ margin-top: 10px;
 .tableFixHead    { 
 	overflow-y: auto; 
 	height: 450px; 
+	clear:both;
 	}
 .tableFixHead th { 
 	position: sticky; 

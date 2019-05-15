@@ -13,25 +13,25 @@
 require_once('connectDB.php');
 
 //   toolbar
-     $btx = new bottoni_str_par($ARGS,'arg','upd_arg.php',array('nuovo','modifica','cancella','chiudi'));     
+     $btx = new bottoni_str_par($ARGS,'arg','upd_arg.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
           $btx->btn();
               
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
 
 //  mostra tabella
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:.2%;'>Scelta</th>";
-echo "<th style='width:.2%;'>Stato</th>";
-echo "<th style='width:.2%;'>Progressivo</th>"; 
-echo "<th>Codice</th>";
-echo "<th>Descrizione</th>";
-echo "<th>Si/No titolo</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th>$COD</th>";
+echo "<th>$DESC</th>";
+echo "<th>$S_N_TIT</th>";
 echo "</thead>";
 
 echo "<tbody>";

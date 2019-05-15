@@ -960,6 +960,7 @@ display :block;
 .tableFixHead    { 
 	overflow-y: auto; 
 	height: 450px; 
+	clear:both;
 	}
 .tableFixHead th { 
 	position: sticky; 

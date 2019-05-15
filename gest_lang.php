@@ -25,9 +25,9 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stringa codificata da tradurre</th>";
-echo "<th>Traduzione nella lingua specifica</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th>$STR-$COD</th>";
+echo "<th>$STR-$TRANSLATE</th>";
 echo "</thead>";
 echo "<tbody>";
 

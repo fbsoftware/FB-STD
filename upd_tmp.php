@@ -45,7 +45,7 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
-          $bti = new bottoni_str_par($INS ,'tmp','write_tmp.php',array('salva|nuovo','ritorno'));     
+          $bti = new bottoni_str_par($INS ,'tmp','write_tmp.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           	$bti->btn();
           
      echo "<div class='row'>";
@@ -125,7 +125,7 @@ echo "</fieldset>";
  //==================================================================================     
 
  case 'modifica':
-          $btm = new bottoni_str_par($TEMPLATES.' - '.$MOD ,'tmp','write_tmp.php',array('salva|modifica','ritorno'));     
+          $btm = new bottoni_str_par($TEMPLATES.' - '.$MOD ,'tmp','write_tmp.php',array($SAV.'|modifica',$RET.'|ritorno'));     
                $btm->btn();
 
      echo "<div class='row'>";
@@ -206,8 +206,8 @@ echo "</fieldset>";
 break;
     
     case 'cancella' :
-          $param    = array('salva|cancella','ritorno');
-          $btc = new bottoni_str_par($TEMPLATES.' - '.$DEL ,'tmp','write_tmp.php',$param); 
+          $param    = array($SAV.'|cancella',$RET.'|ritorno');
+          $btc = new bottoni_str_par($TEMPLATES.' - '.$DELCONF ,'tmp','write_tmp.php',$param); 
           $btc->btn();
 
      $sql = "SELECT * FROM `".DB::$pref."tmp` where `tid` = $tid ";

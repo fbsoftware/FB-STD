@@ -12,14 +12,14 @@
 require_once('connectDB.php');  
      
 //   bottoni gestione
-$btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array('nuovo','modifica','cancella','chiudi'));     
+$btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg(); 
+require_once 'msg.php'; 
 
 //  testata di tabella 
 echo "<div class='tableFixHead'>";    

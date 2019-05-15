@@ -34,7 +34,7 @@ switch ($azione)
 
     case 'nuovo':    // inserimento
 
-          $param    = array('salva|nuovo','ritorno');     
+          $param    = array($SAV.'|nuovo',$RET.'|ritorno');     
           $bti      = new bottoni_str_par($LANG.' - '.$UPD_INSER,'lang','write_lang.php',$param);
                $bti->btn();  
           echo  "<fieldset class='col-md-7'>"; 
@@ -61,7 +61,7 @@ foreach (glob($dir) as $key => $gx)
 
 case 'modifica':        // modifica
 
-          $param    = array('salva|modifica','ritorno');     
+          $param    = array($SAV.'|modifica',$RET.'|ritorno');     
           $bti      = new bottoni_str_par($LANG.' - '.$UPD_MODIF,'lang','write_lang.php',$param);
           $bti->btn();  
 
@@ -99,7 +99,7 @@ foreach (glob('language/*.*') as $key => $gx)
          
 // cancellazione    
     case 'cancella' :
-          $param    = array('salva|cancella','ritorno');     
+          $param    = array($SAV.'|cancella',$RET.'|ritorno');     
           $bti      = new bottoni_str_par($LANG.' - '.$UPD_CONF_CANC,'lang','write_lang.php',$param);
           $bti->btn();  
 
