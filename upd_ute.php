@@ -20,6 +20,7 @@ require_once("bootstrap_link.php");
 require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
+
 include('post_ute.php') ;          
 //print_r($_POST);//debug
 $azione    =$_POST['submit'];          
@@ -28,7 +29,7 @@ $azione    =$_POST['submit'];
 if (!isset($uid) && ($azione != 'nuovo'))
      {  
      $_SESSION['esito'] = 4;
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
 
@@ -37,8 +38,8 @@ switch ($azione)
  //==================================================================================     
  
 	case 'nuovo':
-      $param = array('salva|nuovo','ritorno');
-      $btx   = new bottoni_str_par('Inserimento utenti','ute','write_ute.php',$param);     
+      $param = array($SAV.'|nuovo',$RET.'|ritorno');
+      $btx   = new bottoni_str_par($UTES.' - '.$INS,'ute','write_ute.php',$param);     
            $btx->btn();
       $db_ute = new DB_ins('ute','uprog');                       
       $nmax = $db_ute->insert();
@@ -55,7 +56,7 @@ switch ($azione)
           $f5->field();
       $f6  = new DB_tip_i('acc','uaccesso','','Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo');   
 		$f6->select();		  
-     $f7 = new input(array('','uiscritto',3,'Nr.iscritto','','i'));           
+     $f7 = new input(array('','uiscritto',3,'Nr.utente','','i'));           
           $f7->field();   
      echo "</fieldset>";
      echo "</div>";
@@ -64,8 +65,8 @@ switch ($azione)
  //==================================================================================     
     
 case 'modifica':
-     $param = array('salva|modifica','ritorno');
-     $btx   = new bottoni_str_par('Modifica utenti','ute','write_ute.php',$param);     
+     $param = array($SAV.'|modifica',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($UTES.' - '.$MOD,'ute','write_ute.php',$param);     
           $btx->btn();
      echo "<div class='col-md-7'>";
      echo  "<fieldset>";    
@@ -91,7 +92,7 @@ case 'modifica':
           $f5->field(); 
       $f6  = new DB_tip_i('acc','uaccesso',$uaccesso,'Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo');   
 		$f6->select();		  
-      $f7 = new input(array($uiscritto,'uiscritto',3,'Nr.iscritto','','i'));        
+      $f7 = new input(array($uiscritto,'uiscritto',3,'Nr.utente','','i'));        
           $f7->field(); 
      }
      echo "</fieldset>";
@@ -101,8 +102,8 @@ case 'modifica':
  //==================================================================================     
    
 case 'cancella':
-     $param = array('salva|cancella','ritorno');
-     $btx   = new bottoni_str_par('Conferma cancellazione','ute','write_ute.php',$param);     
+     $param = array($SAV.'|cancella',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($DELCONF,'ute','write_ute.php',$param);     
           $btx->btn();
      echo "<div class='col-md-7'>";
      echo  "<fieldset>";      
@@ -127,7 +128,7 @@ case 'cancella':
           $f5->field();
       $f6 = new input(array($uaccesso,'uaccesso',1,'Accesso','','r'));       
           $f6->field();
-      $f7 = new input(array($uiscritto,'uiscritto',3,'Nr.iscritto','','r')); 
+      $f7 = new input(array($uiscritto,'uiscritto',3,'Nr.utente','','r')); 
           $f7->field(); 
      }
      echo "</fieldset>";
@@ -136,7 +137,7 @@ case 'cancella':
       break;
 
 case 'chiudi' :
-     $loc = "location:index.php?urla=widget.php&pag=";
+     $loc = "location:admin.php?urla=widget.php&pag=";
      header($loc);                           
           break;      
 

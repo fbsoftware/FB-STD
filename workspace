@@ -1,5 +1,5 @@
 <NotepadPlus>
-    <Project name="fbotboot">
+    <Project name="fbot-boot">
         <Folder name="component">
             <File name="C:\xampp\htdocs\fbot-boot\component\content-old.php" />
             <File name="C:\xampp\htdocs\fbot-boot\component\content.php" />
@@ -85,6 +85,8 @@
             <File name="C:\xampp\htdocs\fbot-boot\css\style-tolto.css" />
             <File name="C:\xampp\htdocs\fbot-boot\css\style.css" />
             <File name="C:\xampp\htdocs\fbot-boot\css\styles.css" />
+            <File name="C:\xampp\htdocs\fbot-boot\css\z-stili-custom.css" />
+            <File name="C:\xampp\htdocs\fbot-boot\css\z-style.css" />
         </Folder>
         <Folder name="fonts">
             <File name="C:\xampp\htdocs\fbot-boot\fonts\glyphicons-halflings-regular.eot" />
@@ -99,9 +101,7 @@
         </Folder>
         <Folder name="images">
             <Folder name="archivi">
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\20180730_155213.jpg" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\aim.png" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\aiuto.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\arg.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\ars.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\art.png" />
@@ -110,23 +110,18 @@
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\cap.xcf" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\config.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\ela.png" />
+                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\foo.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\gly.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\img.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\ind.png" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\info.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\isc.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\lang.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\lay.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\mnu.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\mod.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\nav.png" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\nuovo.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\por.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\prm.png" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\ritorno.png" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\salva.png" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\SCAN01919-000.jpg" />
-                <File name="C:\xampp\htdocs\fbot-boot\images\archivi\SCAN01921-000.jpg" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\sld.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\tmp.png" />
                 <File name="C:\xampp\htdocs\fbot-boot\images\archivi\ute.png" />
@@ -177,6 +172,7 @@
             <File name="C:\xampp\htdocs\fbot-boot\images\aereo-pec.png" />
             <File name="C:\xampp\htdocs\fbot-boot\images\aereo-pec2.png" />
             <File name="C:\xampp\htdocs\fbot-boot\images\aereo.png" />
+            <File name="C:\xampp\htdocs\fbot-boot\images\alberi.gif" />
             <File name="C:\xampp\htdocs\fbot-boot\images\baetis.jpg" />
             <File name="C:\xampp\htdocs\fbot-boot\images\calendar.png" />
             <File name="C:\xampp\htdocs\fbot-boot\images\calendar.xcf" />
@@ -251,6 +247,37 @@
             <File name="C:\xampp\htdocs\fbot-boot\libFB-1.1.0\FB.class.php" />
             <File name="C:\xampp\htdocs\fbot-boot\libFB-1.1.0\FB.field.php" />
             <File name="C:\xampp\htdocs\fbot-boot\libFB-1.1.0\FileIni.class.php" />
+        </Folder>
+        <Folder name="libFBblog_1_2_0">
+            <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\dialogo_modale.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\getArt.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\promo.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\section_head.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFBblog_1_2_0\txt.php" />
+        </Folder>
+        <Folder name="libFB_1_2_0">
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\bottoni_str_par.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\CHANGELOG.txt" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_decxdb.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_ins.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_mnu.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_sel_l.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_sel_lt.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_sel_table.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\DB_tip_i.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\field.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\fieldi.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\FileIni.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\getTmp.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\Head.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\input.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\msg.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\select_file.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\select_root.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\setNav.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\TMP.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\libFB_1_2_0\z-tabla.html" />
         </Folder>
         <Folder name="moduli">
             <File name="C:\xampp\htdocs\fbot-boot\moduli\debug.php" />
@@ -947,14 +974,22 @@
             <File name="C:\xampp\htdocs\fbot-boot\video\ninfe.mp4" />
         </Folder>
         <Folder name="z-php">
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\colori12.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\Nuovo2.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\radio.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\rotate.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\tab.html" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\x-gest_sld2.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\x-gest_sld3.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\x-tmp.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\x-zebra.html" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\yn.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\yn2.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-alias.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-array.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-btn.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-cla.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-classi.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-clear-cookie.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-col.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-col.php.bak" />
@@ -962,10 +997,22 @@
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-data.html" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-data.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-dir2.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-fa-menu.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-fa.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-fa2.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-fa4.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-faless.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-fields.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-file.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-fumetto.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-grid.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-imodal.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-imodal2.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-include.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-md5.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-menu.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-modal.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-modale.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-nazione.html" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-nazione.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-out.php" />
@@ -976,10 +1023,17 @@
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-select2.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-sino.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-slider.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-table.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-table.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-table2.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-tables.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-testdir.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-tmp.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-tooltip.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-tooltip.php" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-trans.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-ts.html" />
+            <File name="C:\xampp\htdocs\fbot-boot\z-php\z-tx.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-video.html" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-widget.php" />
             <File name="C:\xampp\htdocs\fbot-boot\z-php\z-yt.html" />
@@ -988,12 +1042,13 @@
             <File name="C:\xampp\htdocs\fbot-boot\z-php\zapfdingbats.php" />
         </Folder>
         <File name="C:\xampp\htdocs\fbot-boot\admin.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\bootstrap_link.php" />
         <File name="C:\xampp\htdocs\fbot-boot\call_ok.php" />
         <File name="C:\xampp\htdocs\fbot-boot\change_tmp.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\colori12.html" />
         <File name="C:\xampp\htdocs\fbot-boot\colori12.php" />
         <File name="C:\xampp\htdocs\fbot-boot\config.ini" />
         <File name="C:\xampp\htdocs\fbot-boot\config.ini.bak" />
+        <File name="C:\xampp\htdocs\fbot-boot\connectDB.php" />
         <File name="C:\xampp\htdocs\fbot-boot\container.php" />
         <File name="C:\xampp\htdocs\fbot-boot\content.php" />
         <File name="C:\xampp\htdocs\fbot-boot\cont_arg.php" />
@@ -1018,6 +1073,7 @@
         <File name="C:\xampp\htdocs\fbot-boot\fields_art.php" />
         <File name="C:\xampp\htdocs\fbot-boot\fields_asl.php" />
         <File name="C:\xampp\htdocs\fbot-boot\fields_cap.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\fields_foo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\fields_gly.php" />
         <File name="C:\xampp\htdocs\fbot-boot\fields_lay.php" />
         <File name="C:\xampp\htdocs\fbot-boot\fields_mnu.php" />
@@ -1039,6 +1095,7 @@
         <File name="C:\xampp\htdocs\fbot-boot\gest_asl.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_cap.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_config.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\gest_foo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_gly.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_info.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_lang.php" />
@@ -1052,7 +1109,6 @@
         <File name="C:\xampp\htdocs\fbot-boot\gest_sld.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_tmp.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_ute.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\gest_xdb-orig.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_xdb.php" />
         <File name="C:\xampp\htdocs\fbot-boot\gest_xxx.php" />
         <File name="C:\xampp\htdocs\fbot-boot\goBack.php" />
@@ -1063,10 +1119,14 @@
         <File name="C:\xampp\htdocs\fbot-boot\include_head_a.php" />
         <File name="C:\xampp\htdocs\fbot-boot\index-orig.php" />
         <File name="C:\xampp\htdocs\fbot-boot\index.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\jquery_link.php" />
         <File name="C:\xampp\htdocs\fbot-boot\layout.php" />
         <File name="C:\xampp\htdocs\fbot-boot\lingua.php" />
         <File name="C:\xampp\htdocs\fbot-boot\liv2.php" />
         <File name="C:\xampp\htdocs\fbot-boot\liv3.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\loadLibraries.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\loadTemplateAdmin.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\loadTemplateSito.php" />
         <File name="C:\xampp\htdocs\fbot-boot\login.php" />
         <File name="C:\xampp\htdocs\fbot-boot\login_test.php" />
         <File name="C:\xampp\htdocs\fbot-boot\makefont.php" />
@@ -1075,14 +1135,15 @@
         <File name="C:\xampp\htdocs\fbot-boot\msg.php" />
         <File name="C:\xampp\htdocs\fbot-boot\nav2.php" />
         <File name="C:\xampp\htdocs\fbot-boot\nav3.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\Nuovo2.html" />
         <File name="C:\xampp\htdocs\fbot-boot\path_a.php" />
         <File name="C:\xampp\htdocs\fbot-boot\phpgotomysql.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\phpinfo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_aim.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_arg.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_art.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_asl.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_cap.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\post_foo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_gly.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_lang.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_lay.php" />
@@ -1095,18 +1156,17 @@
         <File name="C:\xampp\htdocs\fbot-boot\post_tmp.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_ute.php" />
         <File name="C:\xampp\htdocs\fbot-boot\post_xdb.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\radio.html" />
         <File name="C:\xampp\htdocs\fbot-boot\request.php" />
         <File name="C:\xampp\htdocs\fbot-boot\request.php.bak" />
-        <File name="C:\xampp\htdocs\fbot-boot\rotate.html" />
+        <File name="C:\xampp\htdocs\fbot-boot\set_nav.php" />
         <File name="C:\xampp\htdocs\fbot-boot\struct_db.php" />
         <File name="C:\xampp\htdocs\fbot-boot\symbol.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\tab.html" />
         <File name="C:\xampp\htdocs\fbot-boot\times.php" />
         <File name="C:\xampp\htdocs\fbot-boot\timesb.php" />
         <File name="C:\xampp\htdocs\fbot-boot\timesbi.php" />
         <File name="C:\xampp\htdocs\fbot-boot\timesi.php" />
         <File name="C:\xampp\htdocs\fbot-boot\tinys.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\upd2_foo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd2_lay.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd2_mod.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd2_nav.php" />
@@ -1115,6 +1175,7 @@
         <File name="C:\xampp\htdocs\fbot-boot\upd_art.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd_asl.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd_cap.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\upd_foo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd_gly.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd_lang.php" />
         <File name="C:\xampp\htdocs\fbot-boot\upd_lay.php" />
@@ -1136,6 +1197,7 @@
         <File name="C:\xampp\htdocs\fbot-boot\write_asl.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_cap.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_config.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\write_foo.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_gly.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_lang.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_lay.php" />
@@ -1149,24 +1211,8 @@
         <File name="C:\xampp\htdocs\fbot-boot\write_ute.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_xdb.php" />
         <File name="C:\xampp\htdocs\fbot-boot\write_xxx.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\yn.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-fa-menu.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-fa.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-fa2.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-fa4.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-faless.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-fields.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-fumetto.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-grid.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-imodal.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-imodal2.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-modal.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-modale.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-table.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-table.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-table2.php" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-trans.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-ts.html" />
-        <File name="C:\xampp\htdocs\fbot-boot\z-tx.php" />
+        <File name="C:\xampp\htdocs\fbot-boot\z-scroll.html" />
+        <File name="C:\xampp\htdocs\fbot-boot\z-scroll2.html" />
+        <File name="C:\xampp\htdocs\fbot-boot\z-tabla.html" />
     </Project>
 </NotepadPlus>

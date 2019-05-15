@@ -1,7 +1,7 @@
 ﻿/* Font family e colore di sfondo */
 
 body {
-margin: -10px 10px 0;
+margin: 0 10px 0;
 padding: 0;
 font-size: 10pt;
 width: 95%;
@@ -645,34 +645,7 @@ div.primary {
     right: 20px;
     display:none;
 }
-div.fb-table-scroll     {
-  /*   height: 450px;  */
-     float: left;
-     overflow-y: scroll;
-}
-.tableFixHead {
-  overflow-y: auto;
-  height: 400px;
-  margin-top: 5px;
-  float: left;
-  width: 100%;
-}
 
-.tableFixHead table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.tableFixHead th,
-.tableFixHead td {
-  padding: 8px 16px;
-}
-
-.tableFixHead th {
- /* position: sticky; */
-  top: 0;
-  background: #eee;
-}
 td.center {
      text-align: center;
 }
@@ -965,3 +938,27 @@ font-size:14pt;
 font-weight: bold;
 margin-top: 10px;
 }
+
+    /* TABELLA */
+.tableFixHead    { 
+	overflow-y: auto; 
+	height: 450px; 
+	clear:both;
+	}
+.tableFixHead th { 
+	position: sticky; 
+	top: 0; 
+	}
+
+table  { 
+	border-collapse: collapse; 
+	width: 100%; 
+	}
+	
+th, td { 
+	padding: 8px 16px; 
+	}
+	
+th     { 
+	background:#eee; 
+	}

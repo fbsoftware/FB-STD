@@ -1,0 +1,484 @@
+/* At-Rules */
+	@charset "UTF-8";
+/* ==== TAG PERSONALIZZATI ==== */
+
+a {
+text-decoration: none  !important
+}
+/*
+a:link {
+color: #800000;
+}
+
+a:active {
+color: #ff00ff;
+}
+
+a:visited {
+color: Navy;
+}
+
+a:hover {
+color: Red;
+}
+*/
+a.uscita {
+float: left;
+color: red;
+border:none;
+text-decoration:none;
+}
+
+hr {
+color: #008000;
+}
+
+P {
+margin: 0;
+padding: 0.5em 1em;
+text-align: left;
+color: #000000;
+}
+
+.p:first-letter {
+float: left;
+padding-right: 0.1em;
+line-height: 0.5em;
+font-size: 2em;
+color: #a52a2a;
+}
+
+Pre {
+color: #000000;
+line-height: 1pc;
+margin: 0 0 5px 0;
+}
+
+Pre.info {
+color: #000000;
+line-height: 10px;
+margin: 0;
+}
+
+ul.info {
+margin: 0 0 0 1em;
+list-style-type: none;
+}
+
+ul.info li {
+line-height: 10px;
+margin-top: -10px;
+}
+
+iframe {
+border: 0;
+}
+
+img.esci {
+margin: 5px 10px 0 0;}
+
+/*  fieldset  */
+fieldset.log {
+border: 1px solid #aaaaaa;
+background: #F4F4F4;
+margin: 0em 0.5em;
+padding: 5px;
+border-radius: 7px;
+}
+
+fieldset.gest {
+border: 1px solid #aaaaaa;
+margin: 1em;
+padding: 5px;
+width: 80%;
+border-radius: 7px;
+box-shadow: -3px 4px 6px 4px #CCCCCC;
+}
+
+fieldset.button {
+border: 1px solid #aaaaaa;
+margin: 1em;
+padding: 0;
+}
+
+fieldset.input {
+border: none;
+margin: 1px;
+padding: 1px;
+border-radius: 0;
+}
+
+fieldset.tabella {
+border: 1px solid #aaaaaa;
+margin: 0;
+padding: 10px;
+border-radius: 7px;
+}
+
+fieldset div {
+float: left;
+width: 100%;
+padding: 1px 0 2px;
+}
+
+
+legend.log {
+color: #a52a2a;
+font-weight: bold;
+border-radius: 7px;
+border: 1px solid #AAAAAA;
+margin-bottom: 30px;
+padding: 5px;
+background: #ffffff;
+}
+
+/*  form  */
+form login{
+margin 0 50% 0 50%
+}
+
+form.wdg {
+margin: 10px;
+}
+/* per user agent Google */
+form.bottoni {
+float: left;
+margin-bottom: 0em !important;
+}
+
+select {
+color: blue;
+font-size: 10pt;
+}
+
+select:focus {
+background: #D4FFFF;
+}
+
+span.right {
+float: right;
+}
+
+textarea {
+color: blue;
+font-size: 10pt;
+}
+
+textarea:focus {
+background: #D4FFFF;
+}
+
+input {
+color: blue;
+font-size: 10pt;
+border: 1px solid #aaaaaa;
+}
+
+button {
+background: #dddddd;
+border: 1px solid #aaaaaa;
+font-size: 12pt;
+}
+
+button.login {
+margin: 0 50% 0 50%;
+}
+
+button.big {
+width: 90px;
+height: 30px;
+border: none;
+background: transparent;
+margin-right: 15px;
+font-size:11px;
+}
+button.big:hover {
+border: 1px solid #aaaaaa;
+background: #FFCC99;
+}
+
+button.wdg {
+width: 90px;
+height: 90px;
+margin: auto;
+border: none;
+background-color: #FFFFFF;
+}
+
+
+optgroup:before {
+background-color: #eeeeee;
+}
+
+/* tabelle */
+
+th {
+font-size: 10pt;
+background: #ccc;
+padding: 5px;
+border-left: 1px solid #ccc;
+border-top: 1px solid #ccc;
+}
+
+td {
+border-left: 1px solid #ccc;
+border-top: 1px solid #ccc;
+padding: 5px;
+text-align: left;
+vertical-align: bottom;
+}
+
+/*  CLASSI  */
+.scuro {
+background-color: #ff9900;
+}
+
+.transp {
+background-color: transparent;
+}
+
+.database {
+background-color: #ffffff;
+}
+
+.dx {
+float: right;
+margin-right: 10px;
+}
+
+.logo {
+float: left;
+margin: 5px;
+}
+
+.preview {
+width: 60%;
+}
+
+.opacity25 {
+filter: alpha(opacity=25);
+opacity: .25;
+}
+
+.little {
+font-size: 70%;
+}
+
+.mid {
+text-align: center;
+}
+
+.top {
+background-color: #969696;
+}
+
+.lato {
+background-color: #c0c0c0;
+}
+
+
+/*   div   */
+div.azioni {
+height: 60px;
+width: 97%;
+border: 1px solid #aaaaaa;
+margin: 1em;
+padding: 0.5em;
+border-radius: 7px;
+background: #f4f4f4;
+clear: left;
+}
+
+div.titolo {
+float: left;
+font-size: 25px;
+color: #07A1FF;
+}
+
+div.bottoni {
+float: right;
+}
+
+div.tabella {
+float: left;
+height: 600px;
+overflow: scroll;
+}
+
+div.scelte {
+float: left;
+}
+
+div.scroll {
+overflow: scroll;
+}
+
+div.crea {
+width: 49%;
+float: left;
+}
+
+div.crea_dx {
+width: 49%;
+float: right;
+}
+
+div.msg {
+height: 20px;
+width: 97%;
+background-color: rgba(255,192,203,0.5);
+border: 1px solid #A52A2A;
+border-radius: 7px;
+color: #A52A2A;
+margin: 1em;
+padding: 10PX 0 10PX 20px;
+font-weight: bold;
+}
+
+div.msg_ok {
+height: 20px;
+background-color: rgba(202,245,188,0.5);
+border: 1px solid #50B63A;
+border-radius: 7px;
+color: #50B63A;
+padding: 10PX 0 10PX 20px;
+font-weight: bold;
+}
+
+div.msg_err {
+height: 20px;
+background-color: #fbe3e4;
+border: 1px solid #fbc2c4;
+border-radius: 7px;
+color: #8a1f11;
+padding: 10PX 0 10PX 20px;
+font-weight: bold;
+}
+
+div.txtarea {
+float: left;
+margin: 1em;
+}
+
+div.busta {
+position: absolute;
+margin-top: 350px;
+margin-left: 400px;
+font-weight: bold;
+font-size: 12pt;
+}
+
+.img-centro {
+text-align: center;
+}
+
+.marchio {
+height: 50px;
+margin: -5px;
+float: left;
+}
+
+/*   ID   */
+header {
+float: left;
+width: 100%;
+margin: 0;
+height: 65px;
+background-image: linear-gradient(top,#b8e4ff ,#2e94c0 );
+background-image: -moz-linear-gradient(top,#b8e4ff ,#2e94c0 );
+background-image: -webkit-linear-gradient(top,#b8e4ff ,#2e94c0 );
+background-image: -ms-linear-gradient(top,
+#b8e4ff ,
+#2e94c0 );
+font-size: 200%;
+font-weight: bolder;
+color: #ffffff;
+border: 1px solid #aaaaaa;
+border-radius: 7px 7px 0 0;
+}
+
+nav {
+float: left;
+width: 100%;
+margin: 0;
+padding: 0;
+background-color: #dcdcdc;
+border-left: 1px solid #aaaaaa;
+border-right: 1px solid #aaaaaa;
+}
+
+#logo {
+float: left;
+}
+
+#titolo_pagina {
+margin-left: 20px;
+float: left;
+}
+
+#corpo {
+float: left;
+width: 100%;
+min-height: 450px;
+background: #ffffff;
+border: 1px solid #aaaaaa;
+}
+
+#blog {
+padding: 5px;
+margin: 5px;
+}
+
+#blog-header {
+padding: 5px;
+color: #ffffff;
+background: #009900;
+border-bottom: 1px solid #009900;
+text-align: center;
+}
+
+article {
+float: left;
+width: 100%;
+color: #000000;
+background: transparent;
+}
+
+aside.left {
+float: left;
+width: 0%;
+background: transparent;
+color: #000;
+;
+}
+
+aside.right {
+float: left;
+width: 0%;
+background: transparent;
+color: #000;
+}
+
+footer {
+width: 100%;
+clear: left;
+padding: 0;
+background-color: #55ABD2;
+border-radius: 0 0 7px 7px;
+padding: 5px 0;
+}
+
+#login {
+height: 370px;
+width: 400px;
+background: #ffffff;
+margin: 100px auto;
+}
+
+#widgets {
+background: #ffffff;
+margin: 0;
+padding: 0;
+text-align: center;
+clear: left;
+}

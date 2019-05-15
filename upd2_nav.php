@@ -31,15 +31,15 @@ switch ($azione)
 {    
 case 'ritorno':
      {
-     header('location:index.php?'.$_SESSION['location'].''); 
+     header('location:admin.php?'.$_SESSION['location'].''); 
      break;     
      } 
       
 case 'nuovo': 
      {
 // toolbar
-	$param  = array('salva|nuovo','ritorno');    
-	$btx    = new bottoni_str_par('Voci di menu - inserimento','nav','write_nav.php',$param);  
+	$param  = array($SAV.'|nuovo',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($VOCI_MENU.' - '.$NEW,'nav','write_nav.php',$param);  
 		$btx->btn();
 echo "<fieldset >";
 echo  "<div class='col-md-6'>";

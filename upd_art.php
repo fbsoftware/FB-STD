@@ -26,12 +26,18 @@ require_once('post_art.php');
 if (isset($_POST['submit']))    $azione   =$_POST['submit'];  
 $content  ='--- Inserire qui il testo ---';
 
+// test scelta effettuata sul pgm chiamante
+if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1) 
+     {
+	  $_SESSION['esito'] = 4;
+      header('location:admin.php?'.$_SESSION['location'].'');
+     }
  switch ($azione)
 {
     case 'nuovo':
     { 
-     $param = array('salva|nuovo','ritorno');
-     $btx   = new bottoni_str_par('Inserimento articoli','art','write_art.php',$param);     
+     $param = array($SAV.'|nuovo',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($ARTS." - ".$INS,'art','write_art.php',$param);     
           $btx->btn();
           // contenitore
      echo "<div class='col-md-7'>";        
@@ -61,8 +67,8 @@ echo "</form>";
      
     case 'modifica':
 {   // record in modifica 
-$param = array('salva|modifica','ritorno');
-$btx   = new bottoni_str_par('Articoli - modifica','art','write_art.php',$param);     
+$param = array($SAV.'|modifica',$RET.'|ritorno');
+$btx   = new bottoni_str_par($ARTS." - ".$MOD,'art','write_art.php',$param);     
      $btx->btn();
      // contenitore
      echo "<div class='col-md-7'>";     
@@ -104,8 +110,8 @@ break;
     
     case 'cancella' :
     {
-     $param = array('salva|cancella','ritorno');
-     $btx   = new bottoni_str_par('Conferma cancellazione','art','write_art.php',$param);     
+     $param = array($SAV.'|cancella',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($ARTS." - ".$DELCONF,'art','write_art.php',$param);     
           $btx->btn();                 
      $sql = "SELECT * 
                FROM `".DB::$pref."art` 
@@ -140,7 +146,7 @@ echo    "</form>";
     }
 
 case 'chiudi' :   
-          $loc = "location:index.php?urla=widget.php&pag=";
+          $loc = "location:admin.php?urla=widget.php&pag=";
           header($loc);                                   
           break;     
                   

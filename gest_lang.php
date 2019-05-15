@@ -12,22 +12,22 @@
 require_once('connectDB.php');
 
 //   bottoni gestione
-$btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array('nuovo','modifica','cancella','chiudi'));     
+$btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
 	$btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
 
 // mostra la tabella
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stringa codificata da tradurre</th>";
-echo "<th>Traduzione nella lingua specifica</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th>$STR-$COD</th>";
+echo "<th>$STR-$TRANSLATE</th>";
 echo "</thead>";
 echo "<tbody>";
 

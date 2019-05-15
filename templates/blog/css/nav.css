@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* * Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+   * package		FB open template
+   * versione 1.1    
+   * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
+   * license		GNU/GPL
+   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+   * all'uso anche improprio di FB open template.
+============================================================================= */ 
+
+/*- Menu nav --------------------------- */
+
+.nav {
+        margin:  0;
+        padding: 0.5em 0;
+        height: 2em;   
+        }
+
+.nav li {
+        display: inline;
+        float:left;
+        border-right:1px solid red;    
+        background:grey;  
+        text-decoration:none;
+         }
+        
+.nav a {height:0;
+        border: 0;
+        margin: 0.5em 0;
+        padding: 0.5em 15px;
+        white-space:nowrap;
+        text-align: center;
+}
+
+.nav a:hover,
+.nav a:focus,
+.nav a:active { color: red; }
+
+
+.nav a.current  { color: red;
+                  font-weight:bold;}

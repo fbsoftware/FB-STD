@@ -12,34 +12,34 @@
 require_once('connectDB.php');
 
  //   toolbar
-$param = array('nuovo','modifica','cancella','chiudi');
-$btx   = new bottoni_str_par('Tipologie','xdb','upd_xdb.php',$param);     
+$param = array($NEW."|nuovo",$MOD."|modifica",$DEL."|cancella",$CLO."|chiudi");
+$btx   = new bottoni_str_par($TIP,'xdb','upd_xdb.php',$param);     
      $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-	$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
      
 //echo "<div class='row'>";  
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";                
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>";
-echo "<th>Progressivo</th>"; 
+echo "<th style='width:2%;'>Scelta</th>";
+echo "<th style='width:2%;'>Stato</th>";
+echo "<th style='width:2%;'>Progressivo</th>"; 
 echo "<th>Tipo</th>"; 
 echo "<th>Codice</th>"; 
 echo "<th>Descrizione</th>";
 echo "</tr>";
 echo "</thead>";       
-echo "<tbody class='y'>";
+echo "<tbody>";
  // lettura database
      $sql = "SELECT * 
                FROM ".DB::$pref."xdb     
-               ORDER BY xtipo,xcod";
+               ORDER BY xtipo,xdes";
 // transazione    
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
      $PDO = new PDO($con,DB::$user,DB::$pw);
@@ -48,16 +48,16 @@ echo "<tbody class='y'>";
           {   
           include('fields_xdb.php');
           echo "<tr>";
-          echo "<td>";       
+          echo "<td class='center'>";       
           $f0 = new fieldi($xid,'xid',2,'');           
                $f0->field_ck();  
           echo "</td>";
-          echo "<td>";  
+          echo "<td class='center'>";  
           $f1 = new fieldi($xstat,'xstat',2,'');       
                $f1->field_st();
           echo "</td>";
                     ?>
-          <td ><?php echo $xprog ?></td> 
+          <td class="center"><?php echo $xprog ?></td> 
           <td><?php echo $xtipo ?></td> 
           <td><?php echo $xcod ?></td> 
           <td><?php echo $xdes ?></td>      

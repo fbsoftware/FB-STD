@@ -60,10 +60,10 @@ case 'cancella':
   
 case 'ritorno':
           $_SESSION['esito'] = 2;
-          $loc = "location:index.php?".$_SESSION['location']."";
+          $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
 }
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
 ob_end_flush();
 ?>  

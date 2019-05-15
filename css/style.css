@@ -143,6 +143,7 @@ background: #ccc;
 padding: 5px;
 border-left: 1px solid #ccc;
 border-top: 1px solid #ccc;
+text-align:center;
 }
 
 td {
@@ -151,6 +152,10 @@ border-top: 1px solid #ccc;
 padding: 5px;
 text-align: left;
 vertical-align: bottom;
+}
+
+tr td:last-child	{
+border-right: 1px solid #ccc;
 }
 
 /*  CLASSI  */
@@ -162,7 +167,7 @@ font-size: 50%;
 background: gainsboro;
 }
 
-.mid {
+.center {
 text-align: center;
 }
 
@@ -256,6 +261,15 @@ border-right: 1px solid #aaaaaa;
 }
 
 #corpo {
+float: left;
+width: 100%;
+min-height: 450px;
+background: #ffffff;
+border: 1px solid #aaaaaa;
+}
+
+#upd {
+margin-top:20px;
 float: left;
 width: 100%;
 min-height: 450px;

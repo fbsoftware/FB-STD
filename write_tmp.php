@@ -85,7 +85,7 @@ case 'ritorno':
           header('location:gest_tmp.php');
           break;
 }
-header('location:index.php?'.$_SESSION['location'].'');
+header('location:admin.php?'.$_SESSION['location'].'');
 ob_end_flush();
 
 ?> 

@@ -12,30 +12,30 @@
 require_once('connectDB.php');  
      
 //   bottoni gestione
-$btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array('nuovo','modifica','cancella','chiudi'));     
+$btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg(); 
+require_once 'msg.php'; 
 
 //  testata di tabella 
 echo "<div class='tableFixHead'>";    
-     
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
+echo "<table class='table table-hover table-bordered table-condensed'>";
 echo "<thead>"; 
 echo "<tr>";
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>";
+echo "<th style='width:2%;'>Scelta</th>";
+echo "<th style='width:2%;'>Stato</th>";
+echo "<th style='width:2%;'>Progressivo</th>"; 
 echo "<th>Selezionato</th>";
 echo "<th>Codice</th>";
 echo "<th>Tipo</th>";
 echo "<th>Percorso</th>";
 echo "<th>Descrizione</th>";
 echo "<th>Menù</th>";
+echo "<th>Lingua</th>";
 echo "</tr>";
 echo "</thead>";
 
@@ -48,7 +48,7 @@ echo "<tbody>";
           {
            include('fields_tmp.php');
      echo "<tr>";
-	echo "<td class='center fc'>"; 
+	echo "<td class='center'>"; 
 	$f0 = new fieldi($tid,'tid',2,'');            
      	$f0->field_ck(); 
 	echo "</td>";
@@ -57,7 +57,7 @@ echo "<tbody>";
      	$f2->field_st(); 
 	echo "</td>";
 ?>
-	<td><?php echo $tprog ?></td>
+	<td class="center"><?php echo $tprog ?></td>
 <?php 
 	echo "<td class='center'>"; 
 	$f2 = new input(array($tsel,'tsel',1,'','tooltip','star'));     
@@ -69,6 +69,7 @@ echo "<tbody>";
 	<td><?php echo $tfolder ?></td>
 	<td><?php echo $tdesc ?></td>
 	<td><?php echo $tmenu ?></td>
+	<td><?php echo $tlang ?></td>
 <?php
      echo "</tr>";
           }

@@ -51,7 +51,7 @@ case 'cancella':
                   WHERE nid='$nid'";
 		$PDO->exec($sql);    
 		$PDO->commit();
-		$_SESSION['esito'] = 54;
+		$_SESSION['esito'] = 53;
 		  break;
 
 case 'ritorno':
@@ -60,6 +60,6 @@ case 'ritorno':
 			   
 default :      $_SESSION['esito'] = 1;
 }
-	header('location:index.php?'.$_SESSION['location'].'');
+	header('location:admin.php?'.$_SESSION['location'].'');
 ob_end_flush();
 ?> 

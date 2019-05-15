@@ -13,25 +13,25 @@
 require_once('connectDB.php');
 
 //   bottoni gestione
-$btx = new bottoni_str_par($CAP,'cap','upd_cap.php',array('nuovo','modifica','cancella','chiudi'));     
+$btx = new bottoni_str_par($CAP,'cap','upd_cap.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
      
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
 
 //   mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>";
-echo "<th>Codice</th>";
-echo "<th>Descrizione</th>";
-echo "<th>Titolo si/no</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th>$COD</th>";
+echo "<th>$DESC</th>";
+echo "<th>$S_N_TIT</th>";
 echo "</thead>";
 
 echo "<tbody>"; 

@@ -32,7 +32,7 @@ case 'nuovo':
           $file->setValue('fr',$voce,$fr);
           $file=new FileIni("language/en.ini", $options);
           $file->setValue('en',$voce,$en);
-          $loc = "location:index.php?".$_SESSION['location']."";
+          $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
           $_SESSION['esito'] = 54;
      break;
@@ -45,7 +45,7 @@ case 'modifica':
           $file->setValue('fr',$voce,$fr);
           $file=new FileIni("language/en.ini", $options);
           $file->setValue('en',$voce,$en);
-          $loc = "location:index.php?".$_SESSION['location']."";
+          $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
           $_SESSION['esito'] = 55;
      break;
@@ -59,21 +59,21 @@ case 'cancella':
           $file=new FileIni("language/en.ini", $options);
   $bool = $file->deleteKey('en',$voce);
        if ($bool) {  echo "record cancellato";  }
-       $loc = "location:index.php?".$_SESSION['location']."";
+       $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
           $_SESSION['esito'] = 53;
      break;
 
 case 'ritorno':
           $_SESSION['esito'] = 2;
-          $loc = "location:index.php?".$_SESSION['location']."";
+          $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);         
      break;
 default:
           $_SESSION['esito'] = 0;
-          $loc = "location:index.php?".$_SESSION['location']."";
+          $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);         
 }
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?> 

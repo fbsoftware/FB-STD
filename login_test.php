@@ -39,7 +39,7 @@ foreach($PDO->query($sql) as $row)
             setcookie('accesso',$row['uaccesso'],time()+3600,'','','');
             setcookie('numero',$row['uiscritto'],time()+3600,'','','');
             setcookie('err','0',time()+3600,'','','');   
-			header('location:index.php?urla=widget.php&pag=');          
+			header('location:admin.php?urla=widget.php&pag=');          
 			}
        else
            { 

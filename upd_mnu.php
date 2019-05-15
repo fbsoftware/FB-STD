@@ -31,36 +31,36 @@ if (($azione == 'modifica' || $azione == 'cancella' ) && $bid == '') {header('lo
 switch ($azione)
 {	case '':
     case 'chiudi' :
-	header('location:index.php?urla=widget.php&pag=');		
+	header('location:admin.php?urla=widget.php&pag=');		
 	break;     	
 //==================================================================================     
     case 'nuovo':
 	 //   toolbar
-	$param  = array('salva|nuovo','ritorno');    
-	$btx    = new bottoni_str_par('Menu - inserimento','mnu','write_mnu.php',$param);  
+	$param  = array($SAV.'|nuovo',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($MENU.' - '.$UPD_INSER,'mnu','write_mnu.php',$param);  
 		$btx->btn();
       $mnu = new DB_ins('mnu','bprog');                             
       $xxx = $mnu->insert();     
 echo  "<fieldset class='col-md-8'>";
-      $f3 = new field($xxx,'bprog',03,'Progressivo');          
+      $f3 = new field($xxx,'bprog',03,$PROG);          
 		$f3->field_i();      
-      $ts = new DB_tip_i('stato','bstat','','Stato record','');        
+      $ts = new DB_tip_i('stato','bstat','',$ST,'');        
 		$ts->select();
-      $f4 = new field('','bmenu',03,'Nome');                    
+      $f4 = new field('','bmenu',03,$NAME);                    
 		$f4->field_i();       
-      $tmnu = new DB_tip_i('menu','btipo','','Aspetto','');            
+      $tmnu = new DB_tip_i('menu','btipo','',$ASP,'');            
 		$tmnu->select();     
-      $f5 = new field('','btesto',25,'Titolo');                 
+      $f5 = new field('','btesto',25,$TIT);                 
 		$f5->field_i();   
-      $f6 = new field('','bselect',1,'Selezionato');                
-		$f6->field_i();         
+	$f2 = new input(array(0,'bselect',1,$SEL,'','sn'));     
+		$f2->field(); 
 echo  "</fieldset>"; 
 echo  "</form>";
       break;
 //==================================================================================     
     case 'modifica':  // toolbar modifica 
-		$param  = array('salva|modifica','ritorno');    
-	$btx    = new bottoni_str_par('Menu - modifica','mnu','write_mnu.php',$param);  
+		$param  = array($SAV.'|modifica',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($MENU.' - '.$UPD_MODIF,'mnu','write_mnu.php',$param);  
 		$btx->btn();
 
 	echo  "<fieldset class='col-md-8'>";  
@@ -81,8 +81,8 @@ echo  "</form>";
 		$tt->select();
      $f6 = new field($btesto,'btesto',50,'Titolo');            
 		$f6->field_i();
-     $f7 = new field($bselect,'bselect',1,'Selezionato');      
-		$f7->field_i(); 
+	$f2 = new input(array($bselect,'bselect',1,'Selezionato','','sn'));     
+		$f2->field();      
 	 }
       echo "</fieldset>";
 	  echo "</form>";
@@ -92,8 +92,8 @@ echo  "</form>";
      
     case 'cancella' :
 	// toolbar
-	$param  = array('salva|cancella','ritorno');    
-	$btx    = new bottoni_str_par('Menu - conferma cancellazione','mnu','write_mnu.php',$param);  
+	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($MENU.' - '.$UPD_CONF_CANC,'mnu','write_mnu.php',$param);  
 		$btx->btn();
 
       $sql = "SELECT * FROM `".DB::$pref."mnu` 

@@ -37,7 +37,8 @@ public $numero = 0;           // variabile numero per if
                     echo "<img src='images/info.png' height=20 alt='info'>"; }
                            
                     $f1 = new DB_decxdb('msg',$this->numero);
-                    echo "&nbsp;&nbsp;&nbsp;".$f1->decxdb();
+					$message = $f1->decxdb();
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;".$message;
                     echo "</div>";                    
                       
                echo "</div>";           // col     

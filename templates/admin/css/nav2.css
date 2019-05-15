@@ -1,0 +1,52 @@
+/* CSS Document */
+ul.nav2{
+float: left;
+margin: 0;
+padding: 0;
+/*border-left: 1px solid grey;*/ 
+background: #3f3f3f;
+list-style:none;
+font:1em Verdana;
+width:100%;
+}	
+ul.nav2 li ul li{
+list-style:none;
+margin:0;
+padding:0;
+}
+ul.nav2 li{
+float:left;
+margin: 0;
+padding: 0;
+color:black;
+}
+ul.nav2 a:link,
+ul.nav2 a:visited{
+display: block;
+padding: 4px 16px;
+color: #ffffff;
+text-decoration: none;
+}
+ul.nav2 a:hover,
+ul.nav2 a:focus,
+ul.nav2 a:active{
+background-color: #838383;
+color: #ffffff;
+text-decoration: none;
+}
+ul.nav2 li ul{
+display: none;
+}
+ul.nav2 li:hover ul{
+display: block;
+position: absolute;
+z-index:1;
+width:130px;
+padding: 0;
+margin: 0;
+background: #3f3f3f;
+font-size:.8em;
+}
+ul.nav2 li li {
+width: 130px;                       
+}

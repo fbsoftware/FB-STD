@@ -24,7 +24,9 @@ class input
 
 
         public function field()
-          {  // label non serve per tipo = h/star  
+		
+          {  
+		   // label non serve per tipo = h/star  
 			echo "<div>";   
               if (($this->tipo !== 'h') && ($this->tipo !== 'star'))
                   { echo "<label for='$this->campo' data-toggle='tooltip' data-placement='top' title='$this->pch'>$this->label</label>"; }
@@ -159,14 +161,14 @@ break;
 
 case 'sn' :			// radio button 0=NO  1=SI
 		if($this->valini == 0) 
-        { 
-        echo  "<input id='state0' type='radio' value='0' name='$this->campo' checked='checked'>&nbsp;No&nbsp;";
-        echo  "<input id='state1' type='radio' value='1' name='$this->campo'>&nbsp;Si&nbsp;";
+        {
+        echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo' checked='checked'/>No";
+        echo  "<input id='state1' type='radio' value='1' name='$this->campo'/>Si";
         }                                     
         if($this->valini == 1) 
         {
-        echo  "<input id='state0' type='radio' value='0' name='$this->campo'>&nbsp;No&nbsp;";
-        echo  "<input id='state1' type='radio' value='1' name='$this->campo' checked='checked' >&nbsp;Si&nbsp;";
+        echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo'/>No";
+        echo  "<input id='state1' type='radio' value='1' name='$this->campo' checked='checked' />Si";
         }
 break; 
 		 

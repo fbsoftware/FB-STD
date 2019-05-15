@@ -54,11 +54,11 @@ case 'cancella':
 		 $_SESSION['esito'] = 53;
 			 break;
 case 'chiudi' :
-		header('location:index.php?urla=widget.php&pag=');
+		header('location:admin.php?urla=widget.php&pag=');
 		break;
 default:
                $_SESSION['esito'] = 1;
                echo "WRITE-Operazione invalida: azione=".$azione;
 }
-	header('location:index.php?'.$_SESSION['location'].'');		
+	header('location:admin.php?'.$_SESSION['location'].'');		
 ?> 

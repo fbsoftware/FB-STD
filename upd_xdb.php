@@ -26,7 +26,7 @@ $azione  =$_POST['submit'];
 if (($azione == 'modifica' || $azione == 'cancella') && $xid == '') 
      {
      $_SESSION['esito'] = 4;
-     $loc = "location:index.php?".$_SESSION['location']."";
+     $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
 
@@ -34,13 +34,13 @@ switch ($azione)
 { // controllo
     case '':
     case 'chiudi' :
-		header('location:index.php?urla=widget.php&pag=');
+		header('location:admin.php?urla=widget.php&pag=');
 		break;
 default:
 // inserimento 
     case 'nuovo':
-    $param = array('salva|nuovo','ritorno');
-    $btx   = new bottoni_str_par('Tipologie - inserimento','xdb','write_xdb.php',$param);     
+    $param = array($SAV.'|nuovo',$RET.'|ritorno');
+    $btx   = new bottoni_str_par($TIP.' - '.$INS,'xdb','write_xdb.php',$param);     
          $btx->btn();
          
      echo  "<fieldset class='col-md-6'>";  
@@ -59,8 +59,8 @@ default:
       break;
 // modifica     
     case 'modifica':
-     $param = array('salva|modifica','ritorno');
-     $btx   = new bottoni_str_par('Tipologie - modifica','xdb','write_xdb.php',$param);     
+     $param = array($SAV.'|modifica',$RET.'|ritorno');
+     $btx   = new bottoni_str_par($TIP.' - '.$MOD,'xdb','write_xdb.php',$param);     
           $btx->btn();
 
 // transazione 
@@ -89,8 +89,8 @@ default:
      break;
 // cancellazione    
     case 'cancella' :
-          $param  = array('salva|cancella','ritorno');    
-          $btx    = new bottoni_str_par('Conferma cancellazione','xdb','write_xdb.php',$param);  
+          $param  = array($SAV.'|cancella',$RET.'|ritorno');    
+          $btx    = new bottoni_str_par($TIP.' - '.$UPD_CONF_CANC,'xdb','write_xdb.php',$param);  
                $btx->btn(); 
       $sql = "SELECT * FROM `".DB::$pref."xdb` 
                            WHERE `xid` = $xid  ";    

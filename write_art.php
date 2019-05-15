@@ -30,7 +30,7 @@ switch ($azione)
 case 'ritorno':
                {
                $_SESSION['esito'] = 2;
-               $loc = "location:index.php?".$_SESSION['location']."";
+               $loc = "location:admin.php?".$_SESSION['location']."";
                header($loc);
                break; }
 
@@ -68,7 +68,7 @@ case 'cancella':
 
 default :      $_SESSION['esito'] = 0;
 } 
-$loc = "location:index.php?".$_SESSION['location']."";
+$loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);          
  
 ?>

@@ -31,7 +31,8 @@ $rtext    = $QUI_TEXT;
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1) 
      {
-      header('location:index.php?'.$_SESSION['location'].'');
+	  $_SESSION['esito'] = 4;
+      header('location:admin.php?'.$_SESSION['location'].'');
      }
 	 
 // contenitore
@@ -42,7 +43,7 @@ echo     "<div class='row container'>";
 switch ($azione)
 { 
     case 'nuovo':       // inserimento 
-     $bti = new bottoni_str_par($ARGS.' - '.$INS,'arg','write_arg.php',array('salva|nuovo','ritorno'));     
+     $bti = new bottoni_str_par($ARGS.' - '.$INS,'arg','write_arg.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           $bti->btn(); 
 		echo  "<fieldset class='col-md-8'>"; 
       $arg = new DB_ins('arg','rprog');                       
@@ -65,7 +66,7 @@ switch ($azione)
 
 // modifica     
     case 'modifica':
-     $btm = new bottoni_str_par($ARG.' - '.$MOD,'arg','write_arg.php',array('salva|modifica','ritorno'));     
+     $btm = new bottoni_str_par($ARG.' - '.$MOD,'arg','write_arg.php',array($SAV.'|modifica',$RET.'|ritorno'));     
           $btm->btn();
 	$sql = "SELECT *
 			FROM `".DB::$pref."arg`
@@ -100,7 +101,7 @@ break;
 // cancellazione    
     case 'cancella' :
 // toolbar
-	$param  = array('salva|cancella','ritorno');    
+	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
 	$btx    = new bottoni_str_par($ARG.' - '.$DELCONF,'arg','write_arg.php',$param);  
 		$btx->btn();
 		
@@ -137,7 +138,7 @@ break;
  
     case 'chiudi' :
     {
-    header('location:index.php?urla=widget.php&pag=');
+    header('location:admin.php?urla=widget.php&pag=');
         break;
     } 
    

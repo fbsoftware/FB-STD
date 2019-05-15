@@ -59,6 +59,6 @@ case 'ritorno':
 
   echo "Operazione invalida";
 }
-$loc = "location:index.php?".$_SESSION['location']."";
+$loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?> 

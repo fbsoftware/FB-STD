@@ -30,7 +30,7 @@ $azione=$_POST['submit'];
 if (($azione == 'modifica' || $azione == 'cancella') && $nid == '') 
           {
           $_SESSION['esito'] = 4;
-          header('location:index.php?'.$_SESSION['location'].'');
+          header('location:admin.php?'.$_SESSION['location'].'');
           }
 
 // mostra stringa bottoni
@@ -48,20 +48,20 @@ switch ($azione)
 
 case '':
 	$_SESSION['esito'] = 4;
-	header('location:index.php?'.$_SESSION['location'].'');
+	header('location:admin.php?'.$_SESSION['location'].'');
       break;
 //==================================================================================     
 
 case 'chiudi' :
-		header('location:index.php?urla=widget.php&pag=');
+		header('location:admin.php?urla=widget.php&pag=');
 		break;
 default:
 //==================================================================================     
 
 case 'nuovo':    // scelta tipo voce, prosegue su: upd2_nav.php
     { 
-	$param  = array('salva|nuovo','ritorno');  
-	$btx    = new bottoni_str_par('Tipo voce di menu','nav','upd2_nav.php',$param);     
+	$param  = array($SAV.'|nuovo',$RET.'|ritorno');  
+	$btx    = new bottoni_str_par($TIPO_VOCE.' - '.$MENU,'nav','upd2_nav.php',$param);     
 		$btx->btn($param);
 	echo  "<fieldset >";
 	$tmod = new DB_tip_i('voce','ntipo','','Tipo voce','');     
@@ -74,8 +74,8 @@ case 'nuovo':    // scelta tipo voce, prosegue su: upd2_nav.php
 case 'modifica':
 { 	       
 		// toolbar
-	$param  = array('salva|modifica','ritorno');    
-	$btx    = new bottoni_str_par('Voci di menu - modifica','nav','write_nav.php',$param);  
+	$param  = array($SAV.'|modifica',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($VOCI_MENU.' - '.$MOD,'nav','write_nav.php',$param);  
 		$btx->btn();
     $sql = "SELECT * 
 			 FROM `".DB::$pref."nav` 
@@ -165,8 +165,8 @@ case 'url':
        
 case 'cancella':
 		// toolbar
-	$param  = array('salva|cancella','ritorno');    
-	$btx    = new bottoni_str_par('Voci di menu - conferma cancellazione','nav','write_nav.php',$param);  
+	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
+	$btx    = new bottoni_str_par($VOCI_MENU.' - '.$UPD_CONF_CANC,'nav','write_nav.php',$param);  
 		$btx->btn();
     $sql = "SELECT * FROM `".DB::$pref."nav` 
 			 WHERE `nid` = $nid ";

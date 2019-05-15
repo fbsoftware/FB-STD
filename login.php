@@ -29,7 +29,7 @@ echo  "<body>";
      echo     "<div class='form-horizontal'>";                
      echo     "<fieldset class='row well col-md-6'>";
  
-echo  "<h3 class='mid'><img src='images/logo/logo.png' alt='logo.png, 1,6kB' title='logo' height='75''>";
+echo  "<h3 class='center'><img src='images/logo/logo.png' alt='logo.png, 1,6kB' title='logo' height='75''>";
 echo  "Collegamento</h3>"; 
 echo  "<hr >"; 
           

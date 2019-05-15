@@ -12,26 +12,27 @@
    * 1.0.0	nuovo head breve
 =============================================================================  */
 require_once('connectDB.php');
-$tipo         = $_SESSION['pag']; 
+	$tipo = $_SESSION['pag']; 
 
   //   toolbar
-	$param  = array('nuovo','modifica','cancella','chiudi');    
-	$btx    = new bottoni_str_par('Voci di menu','nav','upd_nav.php',$param);  
+	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
+	$btx    = new bottoni_str_par($VOCI_MENU,'nav','upd_nav.php',$param);  
 		$btx->btn();
       
 // memorizza location iniziale
 	$_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$M = new msg($_SESSION['esito']); $M->msg();
+require_once 'msg.php';
   
      // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>"; 
+echo "<table class='table table-hover table-bordered table-condensed'>"; 
+echo "<thead>";
+echo "<tr>";
+echo "<th style='width:2%;'>Scelta</th>";
+echo "<th style='width:2%;'>Stato</th>"; 
+echo "<th style='width:2%;'>Progressivo</th>"; 
 echo "<th>Menu</th>";
 echo "<th>VOCE</th>";
 echo "<th>Sottovoce</th>";
@@ -40,21 +41,24 @@ echo "<th>TIPO</th>";
 echo "<th>Contenuto</th>";
 echo "<th>SEL</th>";
 echo "<th>ACC</th>";
+echo "</tr>";
 echo "</thead>";          
-
+	echo "<tbody>";
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
                WHERE nmenu='".TMP::$tmenu."' 
                ORDER BY nprog";
             foreach($PDO->query($sql) as $row)             
   {  include('fields_nav.php');
+
+
      echo "<tr>";
-  $f1 = new fieldi($nid,'nid',2,'');            
-  echo "<td>"; $f1->field_ck(); echo "</td>";
-  $st = new fieldi($nstat,'nstat',2,'');        
-  echo "<td>"; $st->field_st(); echo "</td>";
+	$f1 = new fieldi($nid,'nid',2,'');            
+	echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
+	$st = new fieldi($nstat,'nstat',2,'');        
+	echo "<td class='center'>"; $st->field_st(); echo "</td>";
        ?>
-     <td><?php echo $nprog ?></td> 
+     <td class="center"><?php echo $nprog ?></td> 
      <td><?php echo $nmenu ?></td>
      <td><?php echo $nli ?></td>
      <td><?php echo $ndesc ?></td>
@@ -65,8 +69,9 @@ echo "</thead>";
      <td><?php echo $naccesso ?></td>   
 <?php 
   }
-     echo "</tr>";
-     echo "</table></form></div>";
-     echo "</div></div>";
-
+	echo "</tr>";
+ 	echo "</tbody>";
+	echo "</table>";
+	echo "</div>";
+	echo "</form>";
 ?> 
