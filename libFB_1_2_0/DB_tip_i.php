@@ -28,25 +28,29 @@ class DB_tip_i          extends DB
                if ($this->label > '')
                {
                echo "<label for='$this->nome' data-toggle='tooltip' 
-			title='$this->toolt' name='$this->toolt'>$this->label</label>";
+					title='$this->toolt' name='$this->toolt'>$this->label</label>";
                echo "<select name='$this->nome'";
-               echo " ><br >";
                }
                $con = "mysql:host=".self::$host.";dbname=".self::$db.""; 
                $PDO = new PDO($con,self::$user,self::$pw);
                $PDO->beginTransaction();
                $sql = "SELECT * FROM ".self::$pref."xdb
-                  WHERE xtipo = '$this->tipo' and xstat <> 'A'       
+                  WHERE xtipo = '$this->tipo' and xstat != 'A'       
                   ORDER BY xtipo,xdes";  
                                                   
               foreach($PDO->query($sql) as $row)            
-              {  
-              if    ($row['xcod'] == $this->valini)
-                    {echo "<option selected='selected' value='".$row['xcod']."'>
-                       ".$row['xdes']."</option>"; }
+			{       
+               if    ($row['xcod'] == '$this->valini')
+                    {
+					echo "<option selected='selected' value='".$row['xcod']."'>
+                       ".$row['xdes']."</option>"; 
+					}
               else
-                    echo "<option value=".$row['xcod'].">".$row['xdes']."</option>"; 
-              }
+					{ 
+					echo "<option value='".$row['xcod']."'>
+						".$row['xdes']."</option>"; 
+					} 
+			}
             echo "</select></div>";
           } 
           
@@ -60,6 +64,7 @@ class DB_tip_i          extends DB
                $con = "mysql:host=".self::$host.";dbname=".self::$db.""; 
                $PDO = new PDO($con,self::$user,self::$pw);
                $PDO->beginTransaction();
+			   
                $sql = "SELECT * FROM ".self::$pref."xdb
                   WHERE xtipo = '$this->tipo'        
                   ORDER BY xtipo,xdes";  

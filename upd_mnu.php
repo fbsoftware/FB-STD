@@ -46,7 +46,7 @@ echo  "<fieldset class='col-md-8'>";
 		$f3->field_i();      
       $ts = new DB_tip_i('stato','bstat','',$ST,'');        
 		$ts->select();
-      $f4 = new field('','bmenu',03,$NAME);                    
+      $f4 = new field('','bmenu',20,$NAME);                    
 		$f4->field_i();       
       $tmnu = new DB_tip_i('menu','btipo','',$ASP,'');            
 		$tmnu->select();     
@@ -93,7 +93,7 @@ echo  "</form>";
     case 'cancella' :
 	// toolbar
 	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
-	$btx    = new bottoni_str_par($MENU.' - '.$UPD_CONF_CANC,'mnu','write_mnu.php',$param);  
+	$btx    = new bottoni_str_par($MENU.' - '.$DELCONF,'mnu','write_mnu.php',$param);  
 		$btx->btn();
 
       $sql = "SELECT * FROM `".DB::$pref."mnu` 

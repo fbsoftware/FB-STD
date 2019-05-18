@@ -15,8 +15,11 @@ require_once('loadTemplateAdmin.php');
 require_once('lingua.php');
 require_once('connectDB.php');
 
+// memorizza location iniziale
+$_SESSION['location'] = $_SERVER['QUERY_STRING'];
+
 // toolbar
-	$param  = array('chiudi');    
+	$param  = array($CLO.'|chiudi');    
 	$btx    = new bottoni_str_par('Cambio template','tmp','fix_tmp.php',$param);  
 		$btx->btn();
 
@@ -24,10 +27,10 @@ require_once('connectDB.php');
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // selezione template                 
-     echo "<div id=login>";
-     echo "<fieldset class='center'>";
+     echo     "<div class='container' style='margin: 50px auto 0 30%'>"; 
+     echo     "<div class='form-horizontal'>";                
+     echo     "<fieldset class='row well col-md-6'>";
      echo "<legend>&nbsp;Cambio template&nbsp;</legend>"; 
-     echo "<p>"; 
      echo "<select name=scelto class='img-centro'>";
      $sql="    SELECT * FROM ".DB::$pref."tmp 
                WHERE tstat=' ' and tcod != 'admin'";
@@ -40,18 +43,19 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
               }
             echo "</select>";
      echo "<br ><br >";    
-     echo  "<button type='submit' name='submit' value='conferma'>Conferma</button><br >";
-     echo  "</form>";
+     echo  "<button type='submit' class='btn btn-primary' name='submit' value='conferma'>Conferma</button><br >";
+	echo  "</form>";
 
 // ritorno
      echo  "<form name=modulo  action='fix_tmp.php' method=post>"; 
-     echo  "<hr ><br >";
-     echo  "<button type='submit' name='submit' value='ritorno'>Ripristina</button>";
+     echo  "<hr >";
+	 echo  "<br >";
+     echo  "<button class='btn btn-danger' type='submit' name='submit' value='ritorno'>Ripristina</button>";
      echo  "<script type='text/javascript' language='JavaScript'> ";
      echo  "close()";
      echo  "</script>" ; 
      echo  "</form>";
-     echo  "</p>";
      echo  "</fieldset>";
      echo  "</div>";  
+     echo  "</div>";
 ?> 

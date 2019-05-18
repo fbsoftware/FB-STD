@@ -27,6 +27,10 @@ $app->closeHead();
 
 $num    = $_POST['scelto']; 
 $return = $_POST['submit'];
+print_r($_POST);//debug
+
+echo "</div>";
+
 
 switch($return)
 {
@@ -42,15 +46,17 @@ case 'conferma':
                             or die ('fix_tmp/conferma:'.mysql_error());   // seleziona
      $url='';
      $iframe='';
+          header('location:admin.php?urla=widget.php&pag=');	 
+	 
      break;
   
 case 'ritorno':
-header('location:admin.php?'.$_SESSION['location'].'');
+          header('location:admin.php?'.$_SESSION['location'].'');
 
      break;
   
 case 'chiudi':
-header('location:admin.php?urla=widget.php&pag=');
+          header('location:admin.php?urla=widget.php&pag=');
      break;
 }
 

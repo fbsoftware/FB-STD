@@ -166,7 +166,7 @@ case 'url':
 case 'cancella':
 		// toolbar
 	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
-	$btx    = new bottoni_str_par($VOCI_MENU.' - '.$UPD_CONF_CANC,'nav','write_nav.php',$param);  
+	$btx    = new bottoni_str_par($VOCI_MENU.' - '.$DELCONF,'nav','write_nav.php',$param);  
 		$btx->btn();
     $sql = "SELECT * FROM `".DB::$pref."nav` 
 			 WHERE `nid` = $nid ";

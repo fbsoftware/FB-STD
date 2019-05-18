@@ -26,7 +26,7 @@ class DB_sel_table
 		$sql = "SHOW TABLES";
 		$result = $PDO->query($sql);
 		
-		print_r($result);//debug
+//		print_r($result);//debug
 		while ($tableName = $result->fetch(PDO::FETCH_NUM))
                {
         echo  $this->table = $tableName[0];
