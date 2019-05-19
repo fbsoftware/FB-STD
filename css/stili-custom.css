@@ -1,5 +1,7 @@
-﻿/* Font family e colore di sfondo */
-
+﻿	@charset "UTF-8";
+/* ================================================== */
+/*	1.0.0	img-utente
+/* ================================================== */
 body {
 margin: 0 10px 0;
 padding: 0;
@@ -441,7 +443,25 @@ border: none;
 vertical-align: bottom;
 padding: 0 3px;
 cursor:auto;
+width: 25px;
+
 }
+
+input.titolo {
+/*border: 1px solid #ffffff;  */
+background: inherit;
+color: blue;
+border-width: 0px;
+}
+
+input.titolo_b {
+/*border: 1px solid #ffffff; */
+background: inherit;
+color: blue;
+font-weight: bold;
+border-width: 0px;
+}
+
 
 button {
 background: #dddddd;
@@ -806,27 +826,7 @@ div.footer {
      margin-bottom: 5px;
 }
 
-input.titolo {
-/*border: 1px solid #ffffff;  */
-background: inherit;
-color: blue;
-border-width: 0px;
-}
-
-input.titolo_b {
-/*border: 1px solid #ffffff; */
-background: inherit;
-color: blue;
-font-weight: bold;
-border-width: 0px;
-}
-
-input.nobord {
-border: none;
-/*  vertical-align: bottom;   */
-width: 25px;
-padding: 0 3px;
-}
+/*  TOOLTIP  */
 .tooltip {
 	position: absolute;
 	z-index: 1070;
@@ -974,10 +974,7 @@ hr.slim   { 		 /* HR senza margini verticali  */
  background-color: #aaaaaa;
  height: 1px;
 }
-/*  alert senza margini  */
-.alert    {
-margin-bottom: 0px !important;
-}
+
 /* navigatore */
 ul.nav2 {
 float: left;
@@ -1092,11 +1089,10 @@ table  {
 td { 
 	padding: 8px 16px;
 	font-size: 10pt;
-	background: #ccc;
+	background: #fefefe;
 	padding: 5px;
 	border-left: 1px solid #ccc;
 	border-top: 1px solid #ccc;
-	text-align:center;	
 	}
 
 th     {
@@ -1131,6 +1127,9 @@ margin: 7.5px;
 float: left;
 }
 
+.alert    {		/*  alert senza margini  */
+margin-bottom: 0px !important;
+}
 /*   div   */
 div.azioni {
 height: 60px;
@@ -1172,9 +1171,7 @@ height: 65px;
 background-image: linear-gradient(top,#b8e4ff ,#2e94c0 );
 background-image: -moz-linear-gradient(top,#b8e4ff ,#2e94c0 );
 background-image: -webkit-linear-gradient(top,#b8e4ff ,#2e94c0 );
-background-image: -ms-linear-gradient(top,
-#b8e4ff ,
-#2e94c0 );
+background-image: -ms-linear-gradient(top,#b8e4ff ,#2e94c0 );
 font-size: 200%;
 font-weight: bolder;
 color: #ffffff;
@@ -1221,7 +1218,6 @@ float: left;
 width: 0%;
 background: transparent;
 color: #000;
-;
 }
 
 aside.right {
