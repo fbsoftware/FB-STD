@@ -29,7 +29,9 @@ if(isset($_SESSION['esito']))
           if ($_SESSION['esito'] == 58) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$IMM_SCA." ";
           if ($_SESSION['esito'] == 59) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$REC_ARC." ";
           if ($_SESSION['esito'] == 60) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$REC_RIP." ";          
-          echo "</div>";
+          if ($_SESSION['esito'] == 61) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$TMP_SEL." ";          
+ 
+ echo "</div>";
           }
 
      // warning

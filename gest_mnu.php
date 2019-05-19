@@ -39,8 +39,8 @@ $sql = "SELECT * FROM ".DB::$pref."mnu
       {       
       include('fields_mnu.php');
      echo "<tr>";
-  $f1 = new fieldi($bid,'bid',2,'');            
-  echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
+$f2 = new input(array($bid,'bid',2,'',$TT_SCEL,'ck'));     
+  echo "<td class='center'>"; $f2->field(); echo "</td>";
   $st = new fieldi($bstat,'bstat',2,'');        
   echo "<td class='center'>"; $st->field_st(); echo "</td>";
   ?>

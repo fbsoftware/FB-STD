@@ -1,8 +1,8 @@
 <?php
-$azione   =$_POST['submit'];
-$voce     =$_POST['voce'];
-$chiave   =$_POST['chiave'];
-$it       =$_POST['it'];
-$fr       =$_POST['fr'];
-$en       =$_POST['en'];
+$azione   =addslashes($_POST['submit']);
+$voce     =addslashes($_POST['voce']);
+$chiave   =addslashes($_POST['chiave']);
+$it       =addslashes($_POST['it']);
+$fr       =addslashes($_POST['fr']);
+$en       =addslashes($_POST['en']);
 ?>

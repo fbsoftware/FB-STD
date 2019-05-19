@@ -42,9 +42,9 @@ switch ($azione)
       $mnu = new DB_ins('mnu','bprog');                             
       $xxx = $mnu->insert();     
 echo  "<fieldset class='col-md-8'>";
-      $f3 = new field($xxx,'bprog',03,$PROG);          
-		$f3->field_i();      
-      $ts = new DB_tip_i('stato','bstat','',$ST,'');        
+$f2 = new input(array($xxx,'bprog',03,$PROG,$TT_PROG,'i'));     
+     $f2->field();     		
+      $ts = new DB_tip_i('stato','bstat','',$ST,$TT_ST);        
 		$ts->select();
       $f4 = new field('','bmenu',20,$NAME);                    
 		$f4->field_i();       
