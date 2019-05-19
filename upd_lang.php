@@ -100,7 +100,7 @@ foreach (glob('language/*.*') as $key => $gx)
 // cancellazione    
     case 'cancella' :
           $param    = array($SAV.'|cancella',$RET.'|ritorno');     
-          $bti      = new bottoni_str_par($LANG.' - '.$UPD_CONF_CANC,'lang','write_lang.php',$param);
+          $bti      = new bottoni_str_par($LANG.' - '.$DELCONF,'lang','write_lang.php',$param);
           $bti->btn();  
 
 if ($chiave == '')

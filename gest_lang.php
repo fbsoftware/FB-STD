@@ -43,7 +43,7 @@ foreach($lang as $chiave => $valore)
 	 $f0->field_ck(); 
 	 echo "</td>";
      echo "<td><strong>".$chiave."</strong></td>";
-     echo "<td>".$valore."</td>";
+     echo "<td>".stripslashes($valore)."</td>";
      echo "</tr>";
      }
      unset($chiave);

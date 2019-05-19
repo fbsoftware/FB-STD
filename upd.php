@@ -44,13 +44,13 @@ switch ($azione)
  
 // inserimento 
     case 'nuovo':
-     $btx = new bottoni_str_par('£titolo','£tab','write_£tab.php',array('salva|nuovo','ritorno'));     
+     $btx = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           $btx->btn();
 echo	"<fieldset class='col-md-7'>";          
      $ins = new DB_ins('£tab','£prog');
-     $f1 = new input(array($ins->insert(),'£prog',3,'Progressivo','Per ordinamento','i'));
+     $f1 = new input(array($ins->insert(),'£prog',3,$PROG,'Per ordinamento','i'));
           $f1->field();         
-     $ts = new DB_tip_i('stato','£stat','','Stato record','Attivo/sospeso'); 
+     $ts = new DB_tip_i('stato','£stat','',$ST,'Attivo/sospeso'); 
           $ts->select();
 	//-----------------------------------------------------------------
      $f3 = new input(array('','£campo',20,'£label','£tooltip','ia')); 
@@ -71,7 +71,7 @@ echo  "</form>";
  
 // modifica     
     case 'modifica':
-     $btx = new bottoni_str_par('£titolo','£tab','write_£tab.php',array('salva|modifica','ritorno'));     
+     $btx = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|modifica',$RET.'|ritorno'));     
      $btx->btn();
      $sql = "SELECT * FROM `".DB::$pref."£tab` 
                WHERE `£id` = $£id ";
@@ -81,9 +81,9 @@ echo  "</form>";
 
      $f1 = new input(array($£id,'£id',0,'','','h'));
           $f1->field();
-     $f1 = new input(array($£prog,'£prog',3,'Progressivo','Per ordinamento','i'));
+     $f1 = new input(array($£prog,'£prog',3,$PROG,'Per ordinamento','i'));
           $f1->field();         
-     $ts = new DB_tip_i('stato','£stat',$£stat,'Stato record','Attivo/sospeso'); 
+     $ts = new DB_tip_i('stato','£stat',$£stat,$ST,'Attivo/sospeso'); 
           $ts->select();
 	//-----------------------------------------------------------------
      $f3 = new input(array($£campo,'£campo',20,'£label','£tooltip','ia')); 
@@ -104,7 +104,7 @@ echo  "</form>";
  
 // cancellazione    
     case 'cancella' :
-$btg = new bottoni_str_par('£titolo','£tab','write_£tab.php',array('salva|cancella','ritorno'));     
+$btg = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|cancella',$RET.'|ritorno'));     
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."£tab` 
                WHERE `£id` = $£id  "; 
@@ -113,9 +113,9 @@ $btg = new bottoni_str_par('£titolo','£tab','write_£tab.php',array('salva|can
 	include('fields_£tab.php');
       $f0 = new input(array($£id,'£id',0,'','','h'));                        
 	 	$f0->field(); 
-      $f1 = new input(array($£prog,'£prog',3,'Progressivo','','r'));         
+      $f1 = new input(array($£prog,'£prog',3,$PROG,'','r'));         
 	 	$f1->field();       
-      $ts = new input(array($£stat,'£stat',1,'Stato record','','r'));        
+      $ts = new input(array($£stat,'£stat',1,$ST,'','r'));        
 	 	$ts->field();
 	//-----------------------------------------------------------------
      $f3 = new input(array($£campo,'£campo',20,'£label','£tooltip','r')); 

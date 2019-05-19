@@ -90,7 +90,7 @@ default:
 // cancellazione    
     case 'cancella' :
           $param  = array($SAV.'|cancella',$RET.'|ritorno');    
-          $btx    = new bottoni_str_par($TIP.' - '.$UPD_CONF_CANC,'xdb','write_xdb.php',$param);  
+          $btx    = new bottoni_str_par($TIP.' - '.$DELCONF,'xdb','write_xdb.php',$param);  
                $btx->btn(); 
       $sql = "SELECT * FROM `".DB::$pref."xdb` 
                            WHERE `xid` = $xid  ";    

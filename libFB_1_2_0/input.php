@@ -3,7 +3,7 @@
   Gestione dei campi input di form a 6 parametri
   1.0.0		tooltip left
 ============================================================================= */
-class input
+class input			extends TMP
 {
     public $label   = "";       // label campo database / testata
     public $valini  = "";       // valore campo database
@@ -160,15 +160,16 @@ case 'd3' :			// datepicker 3
 break;     
 
 case 'sn' :			// radio button 0=NO  1=SI
+		require_once("lingua_class.php");
 		if($this->valini == 0) 
         {
-        echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo' checked='checked'/>No";
-        echo  "<input id='state1' type='radio' value='1' name='$this->campo'/>Si";
+        echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo' checked='checked'/>$NONO";
+        echo  "<input id='state1' type='radio' value='1' name='$this->campo'/>$_SI";
         }                                     
         if($this->valini == 1) 
         {
-        echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo'/>No";
-        echo  "<input id='state1' type='radio' value='1' name='$this->campo' checked='checked' />Si";
+        echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo'/>$NONO";
+        echo  "<input id='state1' type='radio' value='1' name='$this->campo' checked='checked' />$_SI";
         }
 break; 
 		 

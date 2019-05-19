@@ -12,46 +12,38 @@
    * - pulisce il flag di selezionato template   
    * - assegna con '*' in base al parametro postato poi chiude il frame 
    * - altrimenti (ritorno) chiude solo il frame   
- ============================================================================*/
+ ============================================================================ */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once("connectDB.php");
-// DOCTYPE & head
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("include_head.php");
-require_once("jquery_link.php");
-require_once("bootstrap_link.php");
-require_once('lingua.php'); 
-$app->closeHead();
-
+require_once('lingua.php');
+require_once('connectDB.php');
 $num    = $_POST['scelto']; 
-$return = $_POST['submit'];
 
-switch($return)
+print_r($_POST);//debug
+
+switch($_POST['submit'])
 {
-case 'conferma':
-
-
-     $result = $PDO->query("UPDATE ".DB::$pref."tmp
-                            SET tsel =' ' ")
-             or die ('fix_tmp/conferma:'.mysql_error());   // pulisce
-     $result = $PDO->query("UPDATE ".DB::$pref."tmp
-                            SET   tsel ='*'  
-                            WHERE tprog='$num'")
-                            or die ('fix_tmp/conferma:'.mysql_error());   // seleziona
-     $url='';
-     $iframe='';
-     break;
+case 'Conferma':
+echo	$sql = ("UPDATE ".DB::$pref."tmp
+              SET tsel =' ' 
+			  WHERE ttipo != 'admin'");  
+		$PDO->exec($sql);    // pulisce
+//		$PDO->commit();
+		
+require_once('connectDB.php'); 
+echo	$sql = ("UPDATE ".DB::$pref."tmp
+			SET   tsel ='*'  
+			WHERE tcod='$num'");
+		$PDO->exec($sql);    // seleziona
+		$PDO->commit();
+			
+		$_SESSION['esito'] = 61;
+         header('location:admin.php?'.$_SESSION['location'].'');
+		break;
   
-case 'ritorno':
-header('location:admin.php?'.$_SESSION['location'].'');
-
-     break;
-  
-case 'chiudi':
-header('location:admin.php?urla=widget.php&pag=');
-     break;
+case 'Ritorno':
+          header('location:admin.php?'.$_SESSION['location'].'');     
+		  break;
 }
 
 ?>
