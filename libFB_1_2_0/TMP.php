@@ -19,20 +19,41 @@ class TMP       extends  DB
   public static $tmenu   	=  '';		// nome menu del template
   public static $tlang   	=  '';      // template - lingua
   public static $tcolor  	=  '';      // colore base del template
+  public static $tcod      	=  '';		// codice del template
+  public static $ttipo   	=  '';		// tipo template: sito-admin  
+  // slide
   public static $tslidebutt   = '';     // slide - bottoni navigazione
   public static $tslidetime   = 0;      // slide - tempo permanenza immagine
-  public static $tportitle    = '';     // portfolio - titolo
-  public static $tgliftitle   = '';     // glifi - titolo
+  // portfolio
+  public static $tportitle  = 0;        // titolo s-n
+  public static $tportit	=  '';		// titolo 
+  public static $tportext	=  '';		// testo   
+  // glifi
+  public static $tgliftit     = '';     // glifi - titolo
+  public static $tgliftitle   = 0;      // glifi - titolo s-n
   public static $tgliftext    = '';     // glifi - testo
-  public static $tglyforma    = '';     // glifi - forma  
-  public static $tglyreverse  = '';     // glifi - reverse color
-  public static $tcod      	=  '';		// codice del template
-  public static $ttipo   	=  '';		// tipo template: sito-admin
-  public static $tpromotitle=  '';		// titolo promo si-no
-  public static $tpromotit	=  '';		// titolo promo
-  public static $tpromotext	=  '';		// testo promo
-
-
+  public static $tgliforma    = '';     // glifi - forma  
+  public static $tglireverse  = '';     // glifi - reverse color
+  // promo
+  public static $tpromotitle=  0;		// titolo si-no
+  public static $tpromotit	=  '';		// titolo 
+  public static $tpromotext	=  '';		// testo 
+  // contatti
+  public static $tcttitle	=  0;		// titolo si-no
+  public static $tcttit		=  '';		// titolo 
+  public static $tcttext	=  '';		// testo 
+  // accordion
+  public static $taccotitle	=  0;		// titolo si-no
+  public static $taccotit		=  '';		// titolo 
+  public static $taccotext	=  '';		// testo 
+  // articoli in tab
+  public static $ttabtitle	=  0;		// titolo si-no
+  public static $ttabtit		=  '';		// titolo 
+  public static $ttabtext	=  '';		// testo 
+  // articoli in slide
+  public static $tsldtitle	=  0;		// titolo si-no
+  public static $tsldtit		=  '';		// titolo 
+  public static $tsldtext	=  '';		// testo 
 		function __construct($ambiente) 
 		{
 		self::$ambiente = $ambiente;
@@ -63,29 +84,51 @@ class TMP       extends  DB
 
               foreach($PDO->query($sql) as $row)
               { 
-               self::$tid     		= $row['tid'];
-               self::$tprog   		= $row['tprog'];
-               self::$tstat   		= $row['tstat'];
-               self::$tsel    		= $row['tsel'];
-               self::$ttdesc  		= $row['ttdesc'];
-               self::$tfolder 		= $row['tfolder'];
-               self::$tdesc   		= $row['tdesc'];
-               self::$tmenu   		= $row['tmenu'];
-               self::$tlang   		= $row['tlang'];
-               self::$tcolor  		= $row['tcolor'];
-               self::$tslidebutt    = $row['tslidebutt'];
-               self::$tslidetime    = $row['tslidetime'];
-               self::$tportitle     = $row['tportitle'];
-               self::$tglyforma     = $row['tglyforma'];
-               self::$tgliftitle    = $row['tgliftitle'];
-               self::$tgliftext     = $row['tgliftext'];
-               self::$tglyreverse   = $row['tglyreverse'];
+				self::$tid     		= $row['tid'];
+				self::$tprog   		= $row['tprog'];
+				self::$tstat   		= $row['tstat'];
+				self::$tsel    		= $row['tsel'];
+				self::$ttdesc  		= $row['ttdesc'];
+				self::$tfolder 		= $row['tfolder'];
+				self::$tdesc   		= $row['tdesc'];
+				self::$tmenu   		= $row['tmenu'];
+				self::$tlang   		= $row['tlang'];
+				self::$tcolor  		= $row['tcolor'];		// colore di base
 				self::$tcod      	= $row['tcod'];			// codice del template
 				self::$ttipo   		= $row['ttipo'];		// tipo template: sito-admin
-				self::$tpromotitle	= $row['tpromotitle'];	// titolo promo si-no
-				self::$tpromotit	= $row['tpromotit'];	// titolo promo
-				self::$tpromotext	= $row['tpromotext'];	// testo promo			   
-			   
+			   // slide
+               self::$tslidebutt    = $row['tslidebutt'];
+               self::$tslidetime    = $row['tslidetime'];
+			   // portfolio
+				self::$tportitle    = $row['tportitle'];	// titolo si-no
+				self::$tportit		= $row['tportit'];		// titolo 
+				self::$tportext		= $row['tportext'];		// testo 			   
+			   // glifi
+				self::$tgliforma     = $row['tgliforma'];
+				self::$tgliftit      = $row['tgliftit'];
+				self::$tgliftitle    = $row['tgliftitle'];
+				self::$tgliftext     = $row['tgliftext'];
+				self::$tglireverse   = $row['tglireverse'];
+				// promo
+				self::$tpromotitle	= $row['tpromotitle'];	// titolo si-no
+				self::$tpromotit	= $row['tpromotit'];	// titolo
+				self::$tpromotext	= $row['tpromotext'];	// testo 
+				// contatti
+				self::$tcttitle		= $row['tcttitle'];	// titolo si-no
+				self::$tcttit		= $row['tcttit'];	// titolo
+				self::$tcttext		= $row['tcttext'];	// testo 
+				// accordion
+				self::$taccotitle	= $row['taccotitle'];	// titolo si-no
+				self::$taccotit		= $row['taccotit'];	// titolo
+				self::$taccotext	= $row['taccotext'];	// testo 
+				// articoli in tab
+				self::$ttabtitle	= $row['ttabtitle'];	// titolo si-no
+				self::$ttabtit		= $row['ttabtit'];	// titolo
+				self::$ttabtext	= $row['ttabtext'];	// testo 				
+				// articoli in slide
+				self::$tsldtitle	= $row['tsldtitle'];	// titolo si-no
+				self::$tsldtit		= $row['tsldtit'];	// titolo
+				self::$tsldtext	= $row['tsldtext'];	// testo 				
                }
                return $row;   // per eventuale utilizzo
           }

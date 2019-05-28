@@ -28,6 +28,7 @@ include_once("connectDB.php");
 switch ($azione)
 {
 case 'nuovo':
+case 'copia':
           $sql = "INSERT INTO `".DB::$pref."xdb` 
                       (xid,xprog,xstat,xtipo,xcod,xdes) 
                       VALUES (NULL,'$xprog','$xtat','$xtipo','$xcod','$xdes')";

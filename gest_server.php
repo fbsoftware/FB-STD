@@ -1,7 +1,7 @@
 <?php
 //   bottoni gestione
 $param = array('ritorno');
-$btx   = new bottoni_str_par('Dati del server','config','index.php?urla=widget.php&pag=',$param);     
+$btx   = new bottoni_str_par('Dati del server','config','admin.php?urla=widget.php&pag=',$param);     
      $btx->btn();
 // zona messaggi
 $M = new msg($_SESSION['esito']); $M->msg();     

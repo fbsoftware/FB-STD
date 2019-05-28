@@ -11,7 +11,7 @@ class DB_sel_l          extends DB
   
     public function __construct($tabella,$prog,$valini,$campo,$select,$stato,$option,$label,$toolt)       
            { 
-           $this->tabella = $tabella;        // tabella
+           $this->tabella = $tabella;        // nome tabella
            $this->prog    = $prog;           // campo del progressivo di ordinamento
            $this->valini  = $valini;         // valore iniziale (if selected)
            $this->campo   = $campo;          // valore passato a POST

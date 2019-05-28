@@ -1,0 +1,29 @@
+<?php
+$oid     =$_POST['oid'];
+$oprog   =$_POST['oprog'];
+$ostat   =$_POST['ostat'];
+$ocod    =$_POST['ocod'];
+$odes    =addslashes($_POST['odes']); 
+$otmp    =$_POST['otmp'];
+$otit_sn  =$_POST['otit_sn'];
+$oimg1    =$_POST['oimg1']; 
+$otit1    =$_POST['otit1'];
+$otext1   =addslashes($_POST['otext1']);
+$olink1   =$_POST['olink1'];
+$oimg2    =$_POST['oimg2']; 
+$otit2    =$_POST['otit2'];
+$otext2   =addslashes($_POST['otext2']);
+$olink2   =$_POST['olink2'];
+$oimg3    =$_POST['oimg3']; 
+$otit3    =$_POST['otit3'];
+$otext3   =addslashes($_POST['otext3']);
+$olink3   =$_POST['olink3'];
+$oimg4    =$_POST['oimg4']; 
+$otit4    =$_POST['otit4'];
+$otext4   =addslashes($_POST['otext4']);
+$olink4   =$_POST['olink4'];
+$osino1	=$_POST['osino1'];
+$osino2	=$_POST['osino2'];
+$osino3	=$_POST['osino3'];
+$osino4	=$_POST['osino4'];
+?>

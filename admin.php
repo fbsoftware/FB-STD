@@ -11,7 +11,7 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
 require_once('loadLibraries.php');
-require_once('loadTemplateAdmin.php');  
+require_once('loadTemplateAdmin.php');	
 require_once("connectDB.php");
 // DOCTYPE & head
 $app = new Head('Gestione menu');
@@ -20,18 +20,41 @@ require_once("jquery_link.php");
 require_once("bootstrap_link.php");
 require_once("include_head.php");
 require_once('lingua.php'); 
-$app->closeHead();
+$app->closeHead(); 
 
 echo "<body>";
-require_once('request.php');
 
-//  template   
-include(TMP::$tfolder.'admin.php'); 	
+// test se richiesto login ============================
+     if(!isset($_COOKIE['admin']))
+          {header('location:login.php');}
 
+// parametri dall'url ================================
+include_once('request.php');
+
+// setta navigatore iniziale =======================
+require_once('set_nav_a.php');
+	
+// H E A D E R  =====================================
+require_once('moduli/header_a.php');       
+
+//  N A V I G A T O R E   ===========================
+echo    "<nav>"; 
+include_once('moduli/nav2a.php'); 	
+echo    "</nav>";   
+ 
+    //  C O R P O   =====================================             
+echo "<section id='corpo'>"; 
+if ($urla){
+          require_once $urla;
+          } 
+if ($dati){
+          require_once('component/content.php');    // componenti
+          }       
+echo "</section>" ;      //  FINE CORPO
+  
 //  footer + navigatore   ============================================= 
 require_once('moduli/footer.php'); 
-                               
+ 
 ob_end_flush();
-echo "</body>";
-echo "</html>";        
+echo "</body></html>";        
 ?>

@@ -18,8 +18,7 @@ require_once('loadTemplateAdmin.php');
 require_once('lingua.php');
 require_once('connectDB.php');
 $num    = $_POST['scelto']; 
-
-print_r($_POST);//debug
+//print_r($_POST);//debug
 
 switch($_POST['submit'])
 {
@@ -28,7 +27,6 @@ echo	$sql = ("UPDATE ".DB::$pref."tmp
               SET tsel =' ' 
 			  WHERE ttipo != 'admin'");  
 		$PDO->exec($sql);    // pulisce
-//		$PDO->commit();
 		
 require_once('connectDB.php'); 
 echo	$sql = ("UPDATE ".DB::$pref."tmp
@@ -44,6 +42,9 @@ echo	$sql = ("UPDATE ".DB::$pref."tmp
 case 'Ritorno':
           header('location:admin.php?'.$_SESSION['location'].'');     
 		  break;
+  
+case 'chiudi':
+          header('location:admin.php?urla=widget.php&pag=');     
+		  break;
 }
-
 ?>

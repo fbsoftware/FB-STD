@@ -27,7 +27,7 @@ $table  = $_POST['table'];
 
 // toolbar
 	$param  = array('ritorno');    
-	$btx    = new bottoni_str_par('Struttura della tabella : <strong>'.$table.'</strong>','config','index.php?'.$_SESSION['location'],$param);  
+	$btx    = new bottoni_str_par('Struttura della tabella : <strong>'.$table.'</strong>','config','admin.php?'.$_SESSION['location'],$param);  
 		$btx->btn();
 switch ($azione) 
      {

@@ -43,9 +43,8 @@ class bottoni_str_par
                }             
         public function btn()           //  bottoni gestione
           {      
-                // immagine ampiezza = 1
-				echo "<div class='row'>";
-
+				echo "<div class='row toolbar-color'>";
+				// immagine ampiezza = 1
                 echo "<div class='col-md-1'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{

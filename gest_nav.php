@@ -1,4 +1,4 @@
-﻿<?php   session_start();
+<?php   session_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 3.0   
@@ -30,23 +30,23 @@ echo "<div class='tableFixHead'>";
 echo "<table class='table table-hover table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";
-echo "<th style='width:2%;'>Scelta</th>";
-echo "<th style='width:2%;'>Stato</th>"; 
-echo "<th style='width:2%;'>Progressivo</th>"; 
-echo "<th>Menu</th>";
-echo "<th>VOCE</th>";
-echo "<th>Sottovoce</th>";
-echo "<th>Descrizione</th>";
-echo "<th>TIPO</th>";             
-echo "<th>Contenuto</th>";
-echo "<th>SEL</th>";
-echo "<th>ACC</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>";  
+echo "<th>$MENU</th>";
+echo "<th>$VOCE</th>";
+echo "<th>$SVOCE</th>";
+echo "<th>$DES</th>";
+echo "<th>$TIPO</th>";             
+echo "<th>$CONT</th>";
+echo "<th>$SEL</th>";
+echo "<th>$ACC</th>";
+echo "<th>$PARAM</th>";
 echo "</tr>";
 echo "</thead>";          
 	echo "<tbody>";
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
-               WHERE nmenu='".TMP::$tmenu."' 
                ORDER BY nprog";
             foreach($PDO->query($sql) as $row)             
   {  include('fields_nav.php');
@@ -66,7 +66,8 @@ echo "</thead>";
      <td><?php echo $ntipo ?></td>
      <td><?php echo $nsotvo ?></td>
      <td><?php echo $nselect ?></td>
-     <td><?php echo $naccesso ?></td>   
+     <td><?php echo $naccesso ?></td>  
+	 <td><?php echo $npag ?></td> 	 
 <?php 
   }
 	echo "</tr>";

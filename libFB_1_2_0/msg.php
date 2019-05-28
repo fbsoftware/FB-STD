@@ -38,7 +38,7 @@ public $numero = 0;           // variabile numero per if
                            
                     $f1 = new DB_decxdb('msg',$this->numero);
 					$message = $f1->decxdb();
-                    echo "&nbsp;&nbsp;&nbsp;&nbsp;".$message;
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;".$$message;
                     echo "</div>";                    
                       
                echo "</div>";           // col     
