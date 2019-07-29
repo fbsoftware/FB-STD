@@ -1,8 +1,7 @@
 <?php //  carousel slider     
  ?>
-<section id="slider">
-<div class="row">
-<div id='myCarousel' class='carousel slide row col-md-12' data-ride='carousel' data-interval='<?php echo TMP::$tslidetime; ?>'>
+<section id="slider" class="grid1 fb-col1">
+<div id='myCarousel' class='carousel slide' data-ride='carousel' data-interval='<?php echo TMP::$tslidetime; ?>'>
 <?php
  if (TMP::$tslidebutt === '1') 
  {  ?>
@@ -52,7 +51,7 @@ echo "<li data-target='#myCarousel' data-slide-to='".$count."'></li>";
                }
 ?>
         
-          <img src="<?php echo $row['slimg'] ?>" alt="<?php echo $row['slimg'] ?>" title="<?php echo $row['slalt'] ?>">
+          <img class="centro" src="<?php echo $row['slimg'] ?>" alt="<?php echo $row['slimg'] ?>" title="<?php echo $row['slalt'] ?>">
             
 <?php 
               echo	"<div class='carousel-caption'>";
@@ -84,6 +83,4 @@ echo "<li data-target='#myCarousel' data-slide-to='".$count."'></li>";
           }  
 ?>  
 </div>     <!-- #myCarousel -->
-</div>   <!-- row -->
-<br />
 </section>

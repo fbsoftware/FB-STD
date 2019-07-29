@@ -23,6 +23,13 @@ $app->closeHead();
      
 include_once('post_lay.php');
 $azione  =$_POST['submit'];      //print_r($_POST);//debug
+
+// test scelta effettuata sul pgm chiamante
+if (($azione == 'modifica' || $azione == 'cancella') && $lid == '') 
+          {
+          $_SESSION['esito'] = 4;
+          header('location:admin.php?'.$_SESSION['location'].'');
+          }
 echo "<section id='upd' class='container-fluid'";
 
 if (($azione == 'modifica' ||$azione == 'cancella') && $lid < 0) 
@@ -70,8 +77,10 @@ echo  "<fieldset class='col-md-6'>";
           $ts->select();
      $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
           $t2->getTemplate(); 
-     $ts = new DB_tip_i('tipo','ltipo',$ltipo,'Tipo modulo','Tipo modulo per comporre la pagina'); 
-          $ts->select();
+		  
+     $f1 = new input(array($ltipo,'ltipo',3,'Tipo modulo','Tipo modulo per comporre la pagina','r'));
+          $f1->field();         
+		  
 // scelta del file in base al tipo di modulo =============================================
 switch ($ltipo) {
 case 'artslide':
@@ -86,6 +95,7 @@ case 'arttab':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in tab');
           		$arg->select_label();       
 			break;
+case 'artsingle':
 case 'article':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo semplice');
           		$arg->select_label();       
@@ -95,19 +105,19 @@ case 'artimg':
           		$arg->select_label();       
 			break;
 case 'glyph':
-               $arg = new DB_sel_l('gly','gprog',$lcod,'gcod','lcod','gstat','gdes','Codice','Modulo con glifi');
+               $arg = new DB_sel_l('gly','gprog',$lcod,'gcod','lcod','gstat','gcod','Codice','Modulo con glifi');
           		$arg->select_label();       
 			break;
 case 'promo':
-               $arg = new DB_sel_l('prm','oprog',$lcod,'ocod','lcod','ostat','odes','Codice','Modulo con glifi');
+               $arg = new DB_sel_l('prm','oprog',$lcod,'ocod','lcod','ostat','ocod','Codice','Modulo con glifi');
           		$arg->select_label();       
 			break;
 case 'portfolio':
-               $arg = new DB_sel_l('por','pprog',$lcod,'pcod','lcod','pstat','pdes','Codice','Modulo portfolio');
+               $arg = new DB_sel_l('por','pprog',$lcod,'pcod','lcod','pstat','pcod','Codice','Modulo portfolio');
           		$arg->select_label();       
 			break;
 case 'slide':
-               $arg = new DB_sel_l('sld','slprog',$lcod,'slcod','lcod','slstat','sldes','Codice','Modulo slide di immagini');
+               $arg = new DB_sel_l('sld','slprog',$lcod,'slcod','lcod','slstat','slcod','Codice','Modulo slide di immagini');
           		$arg->select_label();       
 			break;
 case 'header':

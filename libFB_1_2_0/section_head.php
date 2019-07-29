@@ -25,14 +25,10 @@ public $color="";
              { 
 			   if ($this->sn > 0)
 			   {
-				//echo "<br />";
-				echo "<div class='row'>";  
-				echo "<div class='col-lg-12  fb-bgcolor-".$this->color."'>"; 
+				echo "<div class='grid1 fb-col1  fb-bgcolor-".$this->color."'>"; 
 				if (isset($this->tit)) { echo "<h1>".$this->tit."</h1>"; } 
 				if (isset($this->text)) { echo "<p>".$this->text."</p>"; }
-				echo "</div>";
-				echo "</div>"; 
-				//echo "<br />"; 
+								echo "</div>";
 			   }
              }
 }

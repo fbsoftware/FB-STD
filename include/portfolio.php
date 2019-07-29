@@ -16,7 +16,7 @@ echo "<section id='portfolio'>";
                 FROM `".DB::$pref."por`
                 WHERE ptmp= '".TMP::$tmenu."' 
                     and pstat <> 'A'
-				and pcod = '$lcod' 
+					and pcod = '$lcod' 
                 ORDER BY pprog ";
 				
 		$stmt = $PDO->prepare($sql);

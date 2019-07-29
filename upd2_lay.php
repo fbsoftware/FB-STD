@@ -47,58 +47,58 @@ case 'nuovo':
      $f3 = new input(array($ltipo,'ltipo',30,'Tipo','Tipo modulo per comporre la pagina','r')); 
           $f3->field(); 
 // scelta del file in base al tipo di modulo =============================================		
-//echo $ltipo;//debug
 switch ($ltipo) {
 case 'artslide':
-               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','ddes','Codice','Articolo in slide');
+               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','dcod','Codice','Articolo in slide');
           		$arg->select_label(); 
                $f4 = new input(array('artslide.php','linclude',50,'Programma','Programma da includere','r')); 
           		$f4->field();    
 			break;
 case 'arttab':
-               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','ddes','Codice','Articolo in tab');
+               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','dcod','Codice','Articolo in tab');
           		$arg->select_label();       
                $f4 = new input(array('arttab.php','linclude',50,'Programma','Programma da includere','r'));    
           		$f4->field();    
 			break;
 case 'artacc':
-               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','ddes','Codice','Articolo in accordion');
+               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','dcod','Codice','Articolo in accordion');
           		$arg->select_label();       
                $f4 = new input(array('artacc.php','linclude',50,'Programma','Programma da includere','r'));   
           		$f4->field();    
 			break;
 case 'artsingle':
-               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','ddes','Codice','Articolo semplice');
+case 'article':
+               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','dcod','Codice','Articolo semplice');
           		$arg->select_label();       
                $f4 = new input(array('artsingle.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
 case 'artimg':
-               $arg = new DB_sel_l('aim','iprog','','icod','lcod','istat','ides','Codice','Articolo con immagine');
+               $arg = new DB_sel_l('aim','iprog','','icod','lcod','istat','icod','Codice','Articolo con immagine');
           		$arg->select_label();       
                $f4 = new input(array('artimg.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
 case 'glyph':
-               $arg = new DB_sel_l('gly','gprog','','gcod','lcod','gstat','gdes','Codice','Modulo con glifi');
+               $arg = new DB_sel_l('gly','gprog','','gcod','lcod','gstat','gcod','Codice','Modulo con glifi');
           		$arg->select_label();       
                $f4 = new input(array('glyph.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
 case 'promo':
-               $arg = new DB_sel_l('prm','oprog','','ocod','lcod','ostat','odes','Codice','Modulo promo');
+               $arg = new DB_sel_l('prm','oprog','','ocod','lcod','ostat','ocod','Codice','Modulo promo');
           		$arg->select_label();       
                $f4 = new input(array('promo.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
 case 'portfolio':
-               $arg = new DB_sel_l('por','pprog','','pcod','lcod','pstat','pdes','Codice','Modulo portfolio');
+               $arg = new DB_sel_l('por','pprog','','pcod','lcod','pstat','pcod','Codice','Modulo portfolio');
           		$arg->select_label();       
                $f4 = new input(array('portfolio.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
 case 'slide':
-               $arg = new DB_sel_l('sld','slprog','','slcod','lcod','slstat','sldes','Codice','Modulo slide di immagini');
+               $arg = new DB_sel_l('sld','slprog','','slcod','lcod','slstat','slcod','Codice','Modulo slide di immagini');
           		$arg->select_label();       
                $f4 = new input(array('slide.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
@@ -115,8 +115,14 @@ case 'footer':
                $f4 = new input(array('footer.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
                break;
+case 'contatti':
+     		$f1 = new input(array('','lcod',30,'Codice','Contatti','i'));
+          		$f1->field();         
+               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));           
+          		$f4->field();    
+               break;
 default:
-	          echo	"Tipo modulo errato";
+	          echo	"Tipo modulo errato=".$ltipo;
 	break;
 }          
 // =======================================================================================
