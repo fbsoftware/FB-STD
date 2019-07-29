@@ -1,4 +1,5 @@
 <?php
+$count = 0; 
         $sql = "SELECT *
                 FROM `".DB::$pref."lay`
                 WHERE ltmp= '".TMP::$tmenu."' 

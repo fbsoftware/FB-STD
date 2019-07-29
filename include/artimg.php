@@ -1,6 +1,6 @@
 <?php
 echo	"<section id='artimg'>";
-$count = 0; 
+
 // cerca nel layout gli articoli con immagine
        $sql = "SELECT *
                 FROM `".DB::$pref."aim`
@@ -25,14 +25,16 @@ $count = 0;
  			</div>
  			<?php
 			$target	= "artimg".$count;
-			$modal	= new dialogo_modale($target,$iimgtit,$iimg,NULL,$iimgalt);
+			$modal	= new dialogo_modale($target,$iimgtit,$iimg,"",$iimgalt);
 				$modal->dialog();
                }
                elseif ($itipo == 'video')
                {
                include 'video.php';               	
                }
-          	include 'art-img.php';
+				include 'art-img.php';
+			    $count++;
+
           }
           
           //  immagine-video a destra
@@ -47,9 +49,10 @@ $count = 0;
   			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive" title="<?php echo $iimgtit; ?>"> 
  			</a> 
  			</div>
+ 			</div>
  			<?php
 			$target	= "artimg".$count;
-			$modal	= new dialogo_modale($target,$iimgtit,$iimg,'',$iimgalt);
+			$modal	= new dialogo_modale($target,$iimgtit,$iimg,"",$iimgalt);
 				$modal->dialog();
 	
                }
@@ -58,10 +61,11 @@ $count = 0;
                {
                include 'video.php';               	
                }
+				$count++;
+		  }
 
           }
           echo "</div>";     // row
-          $count++;
-     }     
+   //  }     
 ?>
 </section>

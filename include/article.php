@@ -12,10 +12,11 @@ $count = 0;
                     and dstat <> 'A' 
                 ORDER BY dprog ";
      foreach($PDO->query($sql) as $row)
-     {    include 'fields_asl.php'; 
-          include 'articolo.php';
-          $count++;
-     }  
-	  echo "</div>";
+		{    
+		 include 'fields_asl.php'; 
+         include 'articolo.php';
+         $count++;
+		}  
+	echo "</div>";
 	echo "</section>";
 ?>

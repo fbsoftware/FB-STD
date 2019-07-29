@@ -20,10 +20,13 @@
                 WHERE acap = '$dcap'
                     and astat <> 'A' 
                 ORDER BY aprog ";
-           foreach($PDO->query($sql) as $row)
-          {     
-          array_push($testo ,$row['atext']);	
-          array_push($titolo,$row['atit']);		
+	   foreach($PDO->query($sql) as $row)
+          { 
+			if ($row['atit']) // omette articoli vuoti
+			{
+			array_push($testo ,$row['atext']);	
+			array_push($titolo,$row['atit']);
+			}
           }
 	} 
 

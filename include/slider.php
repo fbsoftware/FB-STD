@@ -17,12 +17,14 @@
                     and slstat <> 'A' 
                 ORDER BY slprog ";
           foreach($PDO->query($sql) as $row)
-          {     //print_r($row);//debug
-if ($count == 0) { echo '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';}
+          {    
+/*if ($count == 0) { echo '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';}
 if ($count == 1) { echo '<li data-target="#myCarousel" data-slide-to="1"></li>';}
 if ($count == 2) { echo '<li data-target="#myCarousel" data-slide-to="2"></li>';}
 if ($count == 3) { echo '<li data-target="#myCarousel" data-slide-to="3"></li>';}
-if ($count == 4) { echo '<li data-target="#myCarousel" data-slide-to="4"></li>';}   	
+if ($count == 4) { echo '<li data-target="#myCarousel" data-slide-to="4"></li>';} */
+echo "<li data-target='#myCarousel' data-slide-to='".$count."'></li>";
+  	
       $count++;     
       }    ?>   
       </ol> 

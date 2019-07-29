@@ -21,14 +21,15 @@ include_once 'msg.php';
 echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>"; 
-echo "<th>Template</th>";
-echo "<th>Tipo</th>";
-echo "<th>Codice</th>"; 
-echo "<th>Descrizione</th>";
-echo "<th>Capitolo</th>"; 
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th>$COD</th>";
+echo "<th>$DESC</th>"; 
+echo "<th>$TEMP</th>";
+echo "<th>$TIPO</th>";
+echo "<th>$CAP</th>";
+echo "<th>$ART</th>"; 
 echo "</thead>";
 
 // transazione    
@@ -48,11 +49,12 @@ $PDO->beginTransaction();
   	echo "<td class='center'>"; $st->field_st(); echo "</td>";
 ?>
   <td><?php echo $dprog ?></td>
+  <td><?php echo $dcod  ?></td>
+  <td><?php echo $ddes  ?></td>  
   <td><?php echo $dtmp  ?></td> 
   <td><?php echo $dtipo ?></td> 
-  <td><?php echo $dcod  ?></td>
-  <td><?php echo $ddes  ?></td>
   <td><?php echo $dcap  ?></td>
+  <td><?php echo $dart  ?></td>
   <?php
      echo "</tr>";
      }

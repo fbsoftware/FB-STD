@@ -25,13 +25,13 @@ include_once 'msg.php';
 echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>";
-echo "<th>Codice</th>";
-echo "<th>Descrizione</th>"; 
-echo "<th>Tipo</th>";
-echo "<th>Template</th>";
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th>$COD</th>";
+echo "<th>$DESC</th>"; 
+echo "<th>$TIPO</th>";
+echo "<th>$TEMP</th>";
 echo "</thead>";
 
 // lettura database

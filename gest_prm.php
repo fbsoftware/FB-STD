@@ -25,13 +25,12 @@ include_once 'msg.php';
 echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scelta</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Progressivo</th>"; 
-echo "<th>Template</th>";
-echo "<th>Codice</th>"; 
-echo "<th>Descrizione</th>";
-
+echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%;'>$ST</th>";
+echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th>$TEMP</th>";
+echo "<th>$COD</th>";
+echo "<th>$DESC</th>"; 
 echo "</thead>";
 
 // lettura database
@@ -50,7 +49,7 @@ echo "</thead>";
      echo "<td class='center'>"; 
 		$st->field_st(); echo "</td>";   
      ?>   
-     <td><?php echo $oprog ?></td>
+     <td class="center"><?php echo $oprog ?></td>
      <td><?php echo $otmp ?></td>
      <td><?php echo $ocod ?></td>
      <td><?php echo htmlspecialchars($odes, ENT_QUOTES) ?></td>

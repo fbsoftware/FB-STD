@@ -15,11 +15,11 @@ public $text="";
 
         public function __construct($id,$header,$img,$link,$text)       
                { 
-               $this->id 	= $id;
-               $this->header 	= $header;
-               $this->img 	= $img;
-               $this->link 	= $link;
-               $this->text 	= $text;
+               $this->id 	 = $id;
+               $this->header = $header;
+               $this->img 	 = $img;
+               $this->link 	 = $link;
+               $this->text 	 = $text;
                }
                
          function dialog()

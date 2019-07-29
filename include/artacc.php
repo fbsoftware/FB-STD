@@ -50,9 +50,7 @@ echo "<div id='accordion'>";
 // lettura articoli
 for ($i = 0; $i < $count; ++$i) 
 		{
-			?>
-		<h3 class="fb-bgcolor-<?php echo TMP::$tcolor; ?>" >
-		<?php
+		echo "<h3>";
 		echo $titolo[$i];
 		echo "</h3>";
 		echo "<div>";

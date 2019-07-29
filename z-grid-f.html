@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="index,follow" />
+<style>
+/* GLOBAL STYLES */
+            
+* {
+    box-sizing: border-box;
+}
+            
+body {
+    background-color: #AAA;
+    background-size: 340px, auto;
+    margin: 50px;
+}
+          
+/* Each item in the grid contains numbers */
+.item  {
+    display: flex;													each grid item a Flex Container */
+    align-content: left;		
+    align-items: left;
+    font-size: 2em;
+    font-family: arial;
+    font-weight: bold;
+    background-color: #cacaca;
+}
+.container {
+    display: grid;
+    grid-template-columns: 500px 500px 500px ;
+/*	grid-template-rows: 300px 200px 100px;*/
+	grid-gap: 20px;
+}
+.containerx {
+    display: grid;
+	grid-template-columns: 250px 250px;
+}
+.itemy {
+    display: block;					 			
+    align-content: left;		
+    align-items: left;
+    font-size: 1em;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: pink;
+		border: 1px solid red;
+
+}
+p	{
+	font-size: 10pt;
+	align:left;
+}
+.containery {
+    display: grid;
+	grid-template-columns: 150px 350px;
+}
+.itema	{
+	background-color:aqua; 
+	border: 1px solid red;
+}
+
+img	{
+	padding:10px;
+}
+img.center		{
+   position:relative;
+   margin:auto;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+		<div class="item">
+			 <div class="containerx">
+				<div class="itemy">  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. Eius, maiores ad?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p>
+</div>
+				<div class="itemy">  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. Eius, maiores ad?Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
+</div>
+				<div class="itemy">  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p>
+</div>
+				<div class="itemy"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+				<img src="images/logo/logo.png" alt="" border="0" align="left" />
+				Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p>
+				</div>
+			</div> 
+	   </div>
+       <div class="item">
+		<img class="center" src="images/traduci.png" alt="" border="0"  /></div>
+       <div class="item"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p></div>
+       <div class="item">
+			<img src="images/archivi/art.png" alt="" border="0" align="left" width="" height="" /></div>
+       <div class="item">	   
+			<img src="images/archivi/config.png" alt="" border="0" align="left" width="" height="" />
+			</div>
+		
+       <div class="item">
+				<img src="images/archivi/lang.png" alt="" border="0" align="left" width="" height="" />
+	   </div>
+       <div class="item"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p></div>
+       <div class="item"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p></div>
+       <div class="item">
+	   			 <div class="containery">
+					<div class="itema"><p>Primo quadrante inserito in una cella di <b>grid</b>.</p></div>
+					<div class="itema"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p></div>
+					<div class="itema"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p></div>
+					<div class="itema"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. </p></div>
+				</div>
+		</div>
+   </div>
+</body>
+</html>

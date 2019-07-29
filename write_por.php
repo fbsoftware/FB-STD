@@ -11,11 +11,21 @@ ob_start();
  * ------------------------------------------------------------- 
  * Aggiornamento tabella 'por' per portfolio
  * =============================================================================  */
-include_once('include_gest.php');
+require_once('loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once("connectDB.php");
+// DOCTYPE & head
+$app = new Head('Gestione menu');
+$app->openHead();
+require_once("jquery_link.php");
+require_once("bootstrap_link.php");
+require_once("include_head.php");
+require_once('lingua.php'); 
+$app->closeHead();
 include_once('post_por.php');
 
 $azione = $_POST['submit'];
-//print_r($_POST); //debug
+print_r($_POST); //debug
 
 switch ($azione)
  {
