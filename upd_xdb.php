@@ -6,6 +6,8 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
+   *-------------------------------------------------------------------------
+   * 28/5/2019	aggiunta copia
 ============================================================================= */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
@@ -23,7 +25,7 @@ include_once('post_xdb.php');
 $azione  =$_POST['submit'];  
 
 // test scelta effettuata sul pgm chiamante
-if (($azione == 'modifica' || $azione == 'cancella') && $xid == '') 
+if (($azione == 'modifica' || $azione == 'cancella' || $azione == 'copia') && $xid == '') 
      {
      $_SESSION['esito'] = 4;
      $loc = "location:admin.php?".$_SESSION['location']."";
@@ -36,7 +38,7 @@ switch ($azione)
     case 'chiudi' :
 		header('location:admin.php?urla=widget.php&pag=');
 		break;
-default:
+//default: ???
 // inserimento 
     case 'nuovo':
     $param = array($SAV.'|nuovo',$RET.'|ritorno');
@@ -64,10 +66,9 @@ default:
           $btx->btn();
 
 // transazione 
-     $sql = "SELECT * FROM `".DB::$pref."xdb` where `xid` = $xid ";   
-     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-     $PDO = new PDO($con,DB::$user,DB::$pw);
-     $PDO->beginTransaction(); 
+     $sql = "SELECT * FROM `".DB::$pref."xdb` 
+			 WHERE `xid` = $xid ";   
+
      foreach($PDO->query($sql) as $row)
      {
      echo  "<fieldset class='col-md-6'>";
@@ -87,16 +88,43 @@ default:
 	 }
      echo    "</fieldset></form>";     
      break;
+
+// copia	 
+    case 'copia':
+    $param = array($SAV.'|nuovo',$RET.'|ritorno');
+    $btx   = new bottoni_str_par($TIP.' - '.$COPY,'xdb','write_xdb.php',$param);     
+         $btx->btn();
+// transazione 
+     $sql = "SELECT * FROM `".DB::$pref."xdb` 
+			 WHERE `xid` = $xid ";   
+
+     foreach($PDO->query($sql) as $row)
+     {
+     echo  "<fieldset class='col-md-6'>";
+     include('fields_xdb.php');
+      $xdb = new DB_ins('xdb','xprog');                      
+      $f1 = new input(array($xdb->insert(),'xprog',3,'Progressivo',' ','i'));     
+          $f1->field(); 
+      $ts = new DB_tip_i('stato','xstat',$xstat,'Stato record',''); 
+          $ts->select();
+      $f2 = new input(array($xtipo,'xtipo',5,'Tipo','','ir'));                
+          $f2->field(); 
+      $f3 = new input(array($xcod,'xcod',20,'Codice','','i'));               
+          $f3->field();  
+      $f4 = new input(array($xdes,'xdes',30,'Descrizione','','i'));          
+          $f4->field(); 
+	 }
+     echo    "</fieldset></form>";              
+     break;
+	 
 // cancellazione    
     case 'cancella' :
           $param  = array($SAV.'|cancella',$RET.'|ritorno');    
           $btx    = new bottoni_str_par($TIP.' - '.$DELCONF,'xdb','write_xdb.php',$param);  
                $btx->btn(); 
       $sql = "SELECT * FROM `".DB::$pref."xdb` 
-                           WHERE `xid` = $xid  ";    
-     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-     $PDO = new PDO($con,DB::$user,DB::$pw);
-     $PDO->beginTransaction(); 
+              WHERE `xid` = $xid  ";    
+
 foreach($PDO->query($sql) as $row)
     {
      include('fields_xdb.php');

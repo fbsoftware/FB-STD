@@ -1,4 +1,4 @@
-﻿<?php  session_start(); 
+<?php  session_start(); 
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 3.0    
@@ -7,7 +7,7 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */ 
-require_once("connectDB.php");
+require_once("connectDB.php");   
 
 // toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
@@ -21,6 +21,7 @@ require_once("connectDB.php");
 require_once 'msg.php';
  
 //   testata
+echo "<section id='table'>";
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
@@ -56,4 +57,5 @@ $f2 = new input(array($bid,'bid',2,'',$TT_SCEL,'ck'));
 	echo "</form>";
 	echo "</fieldset>";
 	echo "</div>";
+	echo "</section>";
 ?> 

@@ -13,7 +13,7 @@ require_once('lingua.php');
 require_once('connectDB.php');
 //   bottoni gestione
 $param = array('ritorno');
-$btx   = new bottoni_str_par('Strumenti di debug','config','index.php?urla=widget.php&pag=',$param);     
+$btx   = new bottoni_str_par('Strumenti di debug','config','admin.php?urla=widget.php&pag=',$param);     
      $btx->btn();     
      
 echo "<fieldset class='col-md-6'><legend>REQUEST</legend>";

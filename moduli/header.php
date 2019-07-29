@@ -1,6 +1,6 @@
 <?php
 echo    "<header>"; 
-echo  "<img src='images/logo_template.png' width='100%' alt='logo' title='logo del template'  >"; 
+echo  "<img src='".TMP::$tfolder."images/logo/logo.png' width='55px' alt='logo' title='logo del template'  >"; 
 echo    "</header>";  
 ?>          
    

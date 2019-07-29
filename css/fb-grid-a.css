@@ -1,0 +1,74 @@
+@charset 'utf-8';
+/* --------------------------------------------- */
+/*  GRIGLIE                                      */
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+
+.grid1	{
+    display: grid;
+	grid-template-rows; 300px;
+    grid-template-areas:
+    "promo1";
+	}	
+/* --------------------------------------------- */
+
+.grid2	{
+    display: grid;
+		grid-template-rows; 300px;
+    grid-template-areas:
+    "promo1 promo2";
+	}
+/* --------------------------------------------- */
+	
+.grid3	{
+    display: grid;
+	grid-template-rows; 300px;
+    grid-template-areas:
+    "promo1 promo2 promo3";
+	}	
+
+
+/* --------------------------------------------- */
+
+.grid4	{
+    display: grid;
+		grid-template-rows; 300px;
+    grid-template-areas:
+    "promo1 promo2 promo3 promo4";
+	}	
+/* --------------------------------------------- */
+
+.grid5	{
+    display: grid;
+		grid-template-rows; 300px;
+    grid-template-areas:
+    "promo1 promo2 promo3 promo4 promo5";
+	}	
+/* --------------------------------------------- */
+
+.fb-col1	{
+    grid-template-columns:  100% ;
+}
+
+.fb-col2	{
+    grid-template-columns:  50% 50% ;
+}
+
+.fb-col3	{
+    grid-template-columns:  33.3333333333333333% 
+							33.3333333333333333% 
+							33.3333333333333333%;
+}
+
+.fb-col4	{
+	grid-template-columns: 25% 25% 25% 25%;
+}
+
+.fb-col5	{
+	grid-template-columns: 20% 20% 20% 20% 20%;
+}
+/* --------------------------------------------- */
+
+.gutter		{	
+	gap:0px;
+}

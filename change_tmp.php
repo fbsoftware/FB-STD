@@ -14,7 +14,7 @@ require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
 require_once("connectDB.php");
 // DOCTYPE & head
-$app = new Head('Gestione menu');
+$app = new Head('Gestione templates');
 $app->openHead();
 require_once("jquery_link.php");
 require_once("bootstrap_link.php");

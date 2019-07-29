@@ -10,6 +10,8 @@
    * Gestione dei templates      
 ============================================================================= */
 require_once('connectDB.php');  
+require_once("lingua.php");
+//echo "lingua=".TMP::$tlang;//debug
      
 //   bottoni gestione
 $btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     

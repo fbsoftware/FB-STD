@@ -120,20 +120,18 @@ class fieldi
                         size='$this->lung' ></div>
                         ";
           } 
-                       
+                         
          public function field_st()   // input status
           {
-          if ($this->campo != 'A') 
-             {  echo "
-             <div>
+          if ($this->valini != 'A') 
+             {  echo "<div>
                       <label for='$this->campo'>$this->label</label>
                       <input type='image' class='nobord' src='images/ok.png' 
                       name='$this->campo' id='$this->campo' value='$this->valini'
                       height='16px' ></div>
                       ";}
              else 
-             {  echo "
-             <div>
+             {  echo "<div>
                       <label for='$this->campo'>$this->label</label>
                       <input type='image' class='nobord' src='images/stop.png'
                       name='$this->campo' id='$this->campo' value='$this->valini' 

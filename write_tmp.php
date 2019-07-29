@@ -26,7 +26,7 @@ include_once 'post_tmp.php';
 $azione   =$_POST['submit'];
 
 echo "<br />";   
-//print_r($_POST);//debug
+print_r($_POST);//debug
 
 // test validità codice  
 if (($tmenu <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
@@ -44,31 +44,54 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
-           $sql = "INSERT INTO `".DB::$pref."tmp` (tprog,tstat,tcod,tsel,tfolder,
+ echo          $sql = "INSERT INTO `".DB::$pref."tmp` (tprog,tstat,tcod,tsel,tfolder,
                        tdesc,tmenu,tlang,tslidebutt,tslidetime,tportitle,tcolor,
-                       tglyforma,tgliftitle,tgliftext,tglyreverse,ttipo,
-				   tpromotitle,tpromotit,tpromotext)  
+                       tgliforma,tgliftitle,tgliftext,tglireverse,ttipo,
+						tpromotitle,tpromotit,tpromotext,tgliftit,tportit,tportext,
+						tcttitle,tcttit,tcttext,taccotitle,taccotit,taccotext,
+						ttabtitle,ttabtit,ttabtext,tsldtitle,tsldtit,tsldtext)  
                        VALUES ('$tprog','$tstat','$tcod','$tsel','$tfolder','$tdesc',
                               '$tmenu','$tlang','$tslidebutt','$tslidetime',
-                              '$tportitle','$tcolor','$tglyforma','$tgliftitle',
-                              '$tgliftext','$tglyreverse','$ttipo',
-						 '$tpromotitle','$tpromotit','$tpromotext')";
+                              '$tportitle','$tcolor','$tgliforma','$tgliftitle',
+                              '$tgliftext','$tglireverse','$ttipo',
+						 '$tpromotitle','$tpromotit','$tpromotext','$tgliftit',
+						 '$tportit','$tportext',
+						 '$tcttitle','$tcttit','$tcttext','$taccotitle','$taccotit','$taccotext',
+						  '$ttabtitle','$ttaabtit','$ttabtext',
+						  '$tsldtitle','$tsldtit','$tsldtext')";
                         $PDO->exec($sql);    
                         $PDO->commit();
                         $_SESSION['esito'] = 54;
                         break;
 case 'modifica':
-echo           $sql = "UPDATE `".DB::$pref."tmp` 
+ echo          $sql = "UPDATE `".DB::$pref."tmp` 
                    SET tprog='$tprog',tstat='$tstat',tcod='$tcod',tsel='$tsel',
-                       tfolder='$tfolder',tdesc='$tdesc',
-                       tmenu='$tmenu',tlang='$tlang',tslidebutt='$tslidebutt',
-                       tslidetime='$tslidetime',tportitle='$tportitle',
-                       tcolor='$tcolor',tglyforma='$tglyforma',
-                       tgliftitle='$tgliftitle',tgliftext='$tgliftext',
-                       tglyreverse='$tglyreverse',ttipo='$ttipo',
-				   tpromotitle='$tpromotitle',
-				   tpromotit='$tpromotit', 
-				   tpromotext='$tpromotext'      
+						tfolder='$tfolder',tdesc='$tdesc',
+						tmenu='$tmenu',tlang='$tlang',tslidebutt='$tslidebutt',
+						tslidetime='$tslidetime',
+						tcolor='$tcolor',tgliforma='$tgliforma',
+						tgliftitle='$tgliftitle',tgliftext='$tgliftext',
+						tglireverse='$tglireverse',ttipo='$ttipo',
+						tpromotitle='$tpromotitle',
+						tpromotit='$tpromotit', 
+						tpromotext='$tpromotext', 
+						tgliftit='$tgliftit',
+						tportitle=$tportitle,
+						tportit='$tportit',
+						tportext='$tportext',
+						tcttitle=$tcttitle,
+						tcttit='$tcttit',
+						tcttext='$tcttext',
+						taccotitle=$taccotitle,
+						taccotit='$taccotit',
+						taccotext='$taccotext',
+						ttabtitle=$ttabtitle,
+						ttabtit='$ttabtit',
+						ttabtext='$ttabtext',
+						tsldtitle=$tsldtitle,
+						tsldtit='$tsldtit',
+						tsldtext='$tsldtext'
+				   
                    WHERE `tid`='$tid' ";
                    $PDO->exec($sql);    
                    $PDO->commit();

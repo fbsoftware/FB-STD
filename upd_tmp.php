@@ -45,13 +45,12 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
+// toolbar
           $bti = new bottoni_str_par($INS ,'tmp','write_tmp.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           	$bti->btn();
           
-     echo "<div class='row'>";
 // lato sinistro ===========================================================================
-     echo "<div class='col-md-6'>";
-     echo  "<fieldset>"; 
+     echo  "<fieldset class='col-md-6'><legend> Dati base </legend>"; 
      $tmp = new DB_ins('tmp','tprog');               
      $a   = new input(array(NULL,'tid',5,'','','h'));
           $a->field();
@@ -73,53 +72,90 @@ case 'nuovo':
           $arg->select_label();
      $tz = new DB_tip_i('lin','tlang','','Lingua','Lingua per traduzione label');        
           $tz->select(); 
-echo "</fieldset>"; 
-     
-// promo     
-     echo  "<fieldset><legend> Moduli promo </legend>";
-     $tz = new DB_tip_i('s-n','tpromotitle',0,'Titolo si-no','Visualizza o meno il titolo del modulo promo');        
-          $tz->select(); 
-     $input    = new input(array('','tpromotit',50,'Titolo promo','Titolo della sezione dei promo','i'));
-          $input->field();
-     $input    = new input(array('','tpromotext',50,'Testo promo','Testo della sezione dei promo','tx'));
-          $input->field();
-     echo "</fieldset>";
-     echo  "</div>";
-     
-// lato destro ===========================================================================
-// colore
-     echo  "<fieldset><legend> Colore di base </legend>";
       $tz = new DB_tip_i('color','tcolor','','Colore base','Colore di base di pulsanti,glifi,barre ecc.');        
           $tz->select(); 
-	echo "</fieldset>";
+echo "</fieldset>"; 
+// lato destro ===========================================================================
      
 // slide     
      echo  "<fieldset><legend> Slide </legend>";
      $tz = new DB_tip_i('s-n','tslidebutt',0,'Bottoni si-no','Visualizza o meno i bottoni di navigazione');        
           $tz->select(); 
-     $input = new input(array(0,'tslidetime',5,'Durata','Durata della slide in millisec','i'));
+     $input = new input(array(0,'tslidetime',5,'Durata','Durata in millisec','i'));
+          $input->field();
+     echo "</fieldset>";	 
+// promo     
+     echo  "<fieldset><legend> Moduli promo </legend>";
+     $tz = new DB_tip_i('s-n','tpromotitle',0,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
+          $tz->select(); 
+     $input    = new input(array('','tpromotit',50,'Titolo','Titolo della sezione dei promo','i'));
+          $input->field();
+     $input    = new input(array('','tpromotext',50,'Testo','Testo della sezione dei promo','tx'));
           $input->field();
      echo "</fieldset>";
+
      
+// accordion
+     echo  "<fieldset><legend> Accordion </legend>";
+     $tz = new DB_tip_i('s-n','taccotitle',0,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
+          $tz->select(); 
+     $input    = new input(array('','taccotit',50,'Titolo','Titolo della sezione dei promo','i'));
+          $input->field();
+     $input    = new input(array('','taccotext',50,'Testo','Testo della sezione dei promo','tx'));
+          $input->field();
+	echo "</fieldset>";
+
 // portfolio     
      echo  "<fieldset><legend> Portfolio </legend>";
-     $tz = new DB_tip_i('s-n','tportitle',0,'Titolo si-no','Visualizza o meno il titolo');        
+     $tz = new DB_tip_i('s-n','tportitle',0,'Mostra titolo','Visualizza o meno il titolo');        
           $tz->select(); 
+     $input    = new input(array('','tportit',50,'Titolo','Titolo della sezione portfolio','i'));
+          $input->field();
+     $input    = new input(array('','tportext',50,'Testo','Testo della sezione portfolio','tx'));
+          $input->field();     
      echo "</fieldset>";
-     
+// contatti     
+     echo  "<fieldset><legend> Contatti </legend>";
+     $tz = new DB_tip_i('s-n','tcttitle',0,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array('','tcttit',50,'Titolo','Titolo della sezione contatti','i'));
+          $input->field();
+     $input    = new input(array('','tcttext',50,'Testo','Testo della sezione contatti','tx'));
+          $input->field();     
+     echo "</fieldset>";  
+// articoli in tab     
+     echo  "<fieldset><legend> Articoli in tab </legend>";
+     $tz = new DB_tip_i('s-n','ttabtitle',0,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array('','ttabtit',50,'Titolo','Titolo della sezione slide','i'));
+          $input->field();
+     $input    = new input(array('','ttabtext',50,'Testo','Testo della sezione slide','tx'));
+          $input->field();     
+     echo "</fieldset>";  	
+// articoli in slide    
+     echo  "<fieldset><legend> Articoli in slide </legend>";
+     $tz = new DB_tip_i('s-n','tsldtitle',0,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array('','tsldtit',50,'Titolo','Titolo della sezione contatti','i'));
+          $input->field();
+     $input    = new input(array('','tsldtext',50,'Testo','Testo della sezione contatti','tx'));
+          $input->field();     
+     echo "</fieldset>"; 	 
 // glifi     
      echo  "<fieldset><legend> Glyph </legend>";
-     $input    = new input(array('','tgliftitle',50,'Titolo sezione','Titolo sezione dei glifi','i'));
-          $input->field();
-     $input    = new input(array('','tgliftext',50,'Testo sezione','Testo sezione dei glifi','tx'));
-          $input->field();
-      $tz = new DB_tip_i('forma','tglyforma','','Forma glifo','Forma tonda o quadrata');        
+    
+     $tz = new DB_tip_i('s-n','tgliftitle',0,'Mostra titolo','Visualizza o meno il titolo');        
           $tz->select(); 
-     $tz = new DB_tip_i('s-n','tglyreverse',0,'In reverse si-no','Mostra il glifo in reverse');        
+	$input = new input(array('','tgliftit',50,'Titolo','Titolo sezione dei glifi','i'));     
+     $input->field();   
+     $input    = new input(array('','tgliftext',50,'Testo','Testo sezione dei glifi','tx'));
+          $input->field();
+      $tz = new DB_tip_i('forma','tgliforma','','Forma glifo','Forma tonda o quadrata');        
+          $tz->select(); 
+     $tz = new DB_tip_i('s-n','tglireverse',0,'In reverse si-no','Mostra il glifo in reverse');        
           $tz->select(); 
      echo "</fieldset>";
      echo  "</div>";
-     echo  "</div>";    // row
      echo  "</form>";
         break;
  //==================================================================================     
@@ -128,8 +164,7 @@ echo "</fieldset>";
           $btm = new bottoni_str_par($TEMPLATES.' - '.$MOD ,'tmp','write_tmp.php',array($SAV.'|modifica',$RET.'|ritorno'));     
                $btm->btn();
 
-     echo "<div class='row'>";
-     echo  "<fieldset class='col-md-6'>";      
+     echo  "<fieldset class='col-md-6'><legend> Dati base </legend>";      
     $sql = "SELECT * FROM `".DB::$pref."tmp` where `tid` = $tid ";
      foreach($PDO->query($sql) as $row)
      {    
@@ -154,53 +189,94 @@ echo "</fieldset>";
           $arg->select_label();
      $tz = new DB_tip_i('lin','tlang',$tlang,'Lingua','Lingua per traduzione label');        
           $tz->select(); 
-echo "</fieldset>"; 
-// promo     
-     echo  "<fieldset><legend> Moduli promo </legend>";
-     $tz = new DB_tip_i('s-n','tpromotitle',$tpromotitle,'Titolo si-no','Visualizza o meno il titolo del modulo promo');        
+      $tz = new DB_tip_i('color','tcolor',$tcolor,'Colore base','Colore di base del template');        
           $tz->select(); 
-     $input    = new input(array($tpromotit,'tpromotit',50,'Titolo promo','Titolo della sezione dei promo','i'));
-          $input->field();
-     $input    = new input(array($tpromotext,'tpromotext',50,'Testo promo','Testo della sezione dei promo','tx'));
-          $input->field();
-     echo "</fieldset>";
- //==================================================================================     
-   
-     echo "<div class='col-md-6'>";     
-// colore   
-     echo  "<fieldset><legend> Colore di base </legend>";
-      $tz = new DB_tip_i('color','tcolor',$tcolor,'Colore base','Colore di base di pulsanti,glifi,barre ecc.');        
-          $tz->select(); 
-     echo  "</fieldset>";     
-     
+	echo "</fieldset>"; 
+	echo  "</div>";    // col
 
+ //=== lato destro =====================================================================     
+     echo "<div class='col-md-6'>";     
+     
 // slide     
      echo  "<fieldset><legend> Slide </legend>";
      $tz = new DB_tip_i('s-n','tslidebutt',$tslidebutt,'Bottoni si-no','Visualizza o meno i bottoni di navigazione');        
           $tz->select(); 
-     $param    =array($tslidetime,'tslidetime',5,'Durata','Durata della slide in millisec','i');
+     $param    =array($tslidetime,'tslidetime',5,'Durata','Durata in millisec','i');
      $input    = new input($param);
           $input->field();
      echo  "</fieldset>";
+// promo     
+     echo  "<fieldset><legend> Moduli promo </legend>";
+     $tz = new DB_tip_i('s-n','tpromotitle',$tpromotitle,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
+          $tz->select(); 
+     $input    = new input(array($tpromotit,'tpromotit',50,'Titolo','Titolo della sezione dei promo','i'));
+          $input->field();
+     $input    = new input(array($tpromotext,'tpromotext',50,'Testo','Testo della sezione dei promo','tx'));
+          $input->field();
+     echo "</fieldset>";
+   
+// accordion   
+     echo  "<fieldset><legend> Accordion </legend>";
+     $tz = new DB_tip_i('s-n','taccotitle',$taccotitle,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array($taccotit,'taccotit',50,'Titolo','Titolo della sezione accordion','i'));
+          $input->field();
+     $input    = new input(array($taccotext,'taccotext',50,'Testo','Testo della sezione accordion','tx'));
+          $input->field();  	 
+     echo  "</fieldset>";     
+
 // portfolio     
      echo  "<fieldset><legend> Portfolio </legend>";
-     $tz = new DB_tip_i('s-n','tportitle',$tportitle,'Titolo si-no','Visualizza o meno il titolo');        
+     $tz = new DB_tip_i('s-n','tportitle',$tportitle,'Mostra titolo','Visualizza o meno il titolo');        
           $tz->select(); 
+     $input    = new input(array($tportit,'tportit',50,'Titolo','Titolo della sezione portfolio','i'));
+          $input->field();
+     $input    = new input(array($tportext,'tportext',50,'Testo','Testo della sezione portfolio','tx'));
+          $input->field();   		  
+		  
      echo  "</fieldset>";
-     
+// contatti     
+     echo  "<fieldset><legend> Contatti </legend>";
+     $tz = new DB_tip_i('s-n','tcttitle',$tcttitle,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array($tcttit,'tcttit',50,'Titolo','Titolo della sezione contatti','i'));
+          $input->field();
+     $input    = new input(array($tcttext,'tcttext',50,'Testo','Testo della sezione contatti','tx'));
+          $input->field();     
+     echo "</fieldset>";  
+// articoli in tab     
+     echo  "<fieldset><legend> Articoli in tab </legend>";
+     $tz = new DB_tip_i('s-n','ttabtitle',$ttabtitle,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array($ttabtit,'ttabtit',50,'Titolo','Titolo della sezione contatti','i'));
+          $input->field();
+     $input    = new input(array($ttabtext,'ttabtext',50,'Testo','Testo della sezione contatti','tx'));
+          $input->field();     
+     echo "</fieldset>"; 
+// articoli in slide     
+     echo  "<fieldset><legend> Articoli in slide </legend>";
+     $tz = new DB_tip_i('s-n','tsldtitle',$tsldtitle,'Mostra titolo','Visualizza o meno il titolo');        
+          $tz->select(); 
+     $input    = new input(array($tsldtit,'tsldtit',50,'Titolo','Titolo della sezione contatti','i'));
+          $input->field();
+     $input    = new input(array($tsldtext,'tsldtext',50,'Testo','Testo della sezione contatti','tx'));
+          $input->field();     
+     echo "</fieldset>"; 	 
 // glifi     
      echo  "<fieldset><legend> Glyph </legend>";
-     $input    = new input(array($tgliftitle,'tgliftitle',50,'Titolo sezione','Titolo sezione dei glifi','i'));
-          $input->field();
-     $input    = new input(array($tgliftext,'tgliftext',50,'Testo sezione','Testo sezione dei glifi','tx'));
-          $input->field();
-     $tz = new DB_tip_i('forma','tglyforma',$tglyforma,'Forma glifo','Forma tonda o quadrata');        
+     $tz = new DB_tip_i('s-n','tgliftitle',$tgliftitle,'Mostra titolo','Visualizza o meno il titolo');        
           $tz->select(); 
-     $tz = new DB_tip_i('s-n','tglyreverse',$tglyreverse,'In reverse si-no','Mostra il glifo in reverse');        
+	$input = new input(array($tgliftit,'tgliftit',50,'Titolo','Titolo sezione dei glifi','i'));     
+		$input->field();     
+     $input    = new input(array($tgliftext,'tgliftext',50,'Testo','Testo sezione dei glifi','tx'));
+          $input->field();
+     $tz = new DB_tip_i('forma','tgliforma',$tgliforma,'Forma glifo','Forma tonda o quadrata');        
+          $tz->select(); 
+     $tz = new DB_tip_i('s-n','tglireverse',$tglireverse,'In reverse si-no','Mostra il glifo in reverse');        
           $tz->select(); 
      echo  "</fieldset>";
+	 
      echo  "</div>";    // col
-     echo  "</div>";    // row
      echo  "</form>";
           }
 break;

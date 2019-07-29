@@ -1,4 +1,4 @@
-﻿<?php   session_start();
+<?php   session_start();
 /*** Fausto Bresciani   fbsoftware.bresciani@gmail.com  www.fbsoftware.altervista.org
    * package		Gestione Associazione
    * versione 1.3
@@ -9,7 +9,6 @@
 =============================================================================
    *  Scelta della tabella 
 =============================================================================  */
-
 //   bottoni gestione
 $param  = array('mostra','chiudi');    
 $btx    = new bottoni_str_par('Struttura del database','config','vid_db.php',$param);  

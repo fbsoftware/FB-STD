@@ -14,7 +14,7 @@ if($file == $_SERVER['SCRIPT_FILENAME']) exit('Accesso non consentito') ;
 $accesso  =  $_COOKIE['accesso'];
         $sql = "SELECT * 
                 FROM `".DB::$pref."nav`  
-                WHERE nmenu='admin' and nstat <> 'A' and ndesc <= ' '
+                WHERE nmenu='".TMP::$tmenu."' and nstat <> 'A' and ndesc <= ' '
                 ORDER BY nprog";
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);

@@ -7,21 +7,22 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
-   * gestione tabella 'xdb' sipologie codificate.      
+   * gestione tabella 'xdb' sipologie codificate. 
+   * 28/5/2019	aggiunta copia
 ============================================================================= */ 
 require_once('connectDB.php');
 
  //   toolbar
-$param = array($NEW."|nuovo",$MOD."|modifica",$DEL."|cancella",$CLO."|chiudi");
+$param = array($NEW."|nuovo",$MOD."|modifica",$COPY."|copia",$DEL."|cancella",$CLO."|chiudi");
 $btx   = new bottoni_str_par($TIP,'xdb','upd_xdb.php',$param);     
      $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-     
+echo "Esito=".$_SESSION['esito']; //debug    
 // zona messaggi
 require_once 'msg.php';
-     
+   
 //echo "<div class='row'>";  
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 

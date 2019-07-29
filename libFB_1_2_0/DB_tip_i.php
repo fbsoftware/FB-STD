@@ -34,7 +34,7 @@ class DB_tip_i          extends DB
                }
                $con = "mysql:host=".self::$host.";dbname=".self::$db.""; 
                $PDO = new PDO($con,self::$user,self::$pw);
-               $PDO->beginTransaction();
+               $PDO->beginTransaction();			   
                $sql = "SELECT * FROM ".self::$pref."xdb
                   WHERE xtipo = '$this->tipo' and xstat <> 'A'       
                   ORDER BY xtipo,xdes";  
@@ -42,7 +42,7 @@ class DB_tip_i          extends DB
               foreach($PDO->query($sql) as $row)            
               {  
               if    ($row['xcod'] == $this->valini)
-                    {echo "<option selected='selected' value='".$row['xcod']."'>
+                    {echo "<option selected value='".$row['xcod']."'>
                        ".$row['xdes']."</option>"; }
               else
                     echo "<option value=".$row['xcod'].">".$row['xdes']."</option>"; 

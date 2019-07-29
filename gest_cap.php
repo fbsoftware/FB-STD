@@ -49,7 +49,7 @@ echo "<tbody>";
           echo "<td class='center'>";
                $f2 = new fieldi($cstat,'cstat',2,'');      
                     $f2->field_st(); echo "</td>";
-          echo "<td>".$cprog."</td>";
+          echo "<td class='center'>".$cprog."</td>";
           echo "<td>".$ccod."</td>";
           echo "<td>".htmlspecialchars($cdesc, ENT_QUOTES)."</td>";
           echo "<td>".$cmostra."</td>";

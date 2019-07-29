@@ -72,7 +72,7 @@ if(isset($_SESSION['errore']))
           if ($_SESSION['errore3'] == 1)      
           echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_URL."<br />"; 
           if ($_SESSION['errore4'] == 1)      
-          echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_DES."<br />"; 
+          echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_DESC."<br />"; 
           if ($_SESSION['errore5'] == 1)      
           echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_TIPO."<br />"; 
           echo "</div>";
