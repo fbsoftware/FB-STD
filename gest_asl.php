@@ -60,6 +60,7 @@ $PDO->beginTransaction();
      }
      echo "</tbody>";
      echo "</table>";
-     echo "</form>";
      echo "</div>";
+     echo "</form>";
+
 ?> 

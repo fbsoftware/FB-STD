@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $uid       =$_POST['uid'];
 $ustat     =$_POST['ustat'];
 $uprog     =$_POST['uprog'];

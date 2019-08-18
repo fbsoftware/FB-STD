@@ -19,7 +19,7 @@ $btx   = new bottoni_str_par($TIP,'xdb','upd_xdb.php',$param);
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-echo "Esito=".$_SESSION['esito']; //debug    
+
 // zona messaggi
 require_once 'msg.php';
    

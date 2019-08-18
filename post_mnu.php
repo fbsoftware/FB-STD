@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $bid          =$_POST['bid'];
 $bprog        =$_POST['bprog'];
 $bstat        =$_POST['bstat'];

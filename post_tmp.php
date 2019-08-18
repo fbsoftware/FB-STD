@@ -43,4 +43,6 @@ $ttabtext     	=addslashes($_POST['ttabtext']);
 $tsldtitle   	=$_POST['tsldtitle'];
 $tsldtit     	=$_POST['tsldtit'];
 $tsldtext     	=addslashes($_POST['tsldtext']);
+// editor di testo
+$teditor     	=$_POST['teditor'];
 ?>

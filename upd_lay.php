@@ -125,11 +125,19 @@ case 'header':
           		$f1->field();         
 			break;
 case 'footer':
-     		$f1 = new input(array($lcod,'lcod',30,'Codice','Footer','i'));
-          		$f1->field();         
+               $arg = new DB_sel_l('foo','fprog',$lcod,'fcod','lcod','fstat','fcod','Codice','Modulo footer');
+          		$arg->select_label();       
 			break;
+case 'contatti':
+//     		$f1 = new input(array('','lcod',30,'Codice','Contatti','i'));
+ //         		$f1->field();  
+               $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
+          		$arg->select_label();       
+               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));           
+          		$f4->field();    
+               break;
 default:
-	          echo	"Tipo modulo errato";
+	          echo	"Tipo modulo errato=".$ltipo;
 			break;
 }          
 // =======================================================================================

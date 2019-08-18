@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $id                 =$row['id'];
 $stato              =$row['stato'];
 $numero             =$row['numero'];                        

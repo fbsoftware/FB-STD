@@ -1,4 +1,4 @@
-﻿<?php session_start();   ob_start();  
+<?php session_start();   ob_start();  
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 1.3.4
@@ -21,9 +21,10 @@ require_once("bootstrap_link.php");
 require_once('lingua.php');
 $app->closeHead();
 
-require_once('tinys.php');
+require_once("editor.php");			// scelta editor
+
 require_once('post_art.php');
-if (isset($_POST['submit']))    $azione   =$_POST['submit'];  
+if (isset($_POST['submit']))   $azione   =$_POST['submit'];  
 $content  ='--- Inserire qui il testo ---';
 
 // test scelta effettuata sul pgm chiamante
@@ -40,7 +41,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
      $btx   = new bottoni_str_par($ARTS." - ".$INS,'art','write_art.php',$param);     
           $btx->btn();
           // contenitore
-     echo "<div class='col-md-7'>";        
+     echo "<div class='row'>";        
      echo  "<fieldset>"; 
       $art = new DB_ins('art','aprog');     
       $f3 = new input(array($art->insert(),'aprog',3,'Progressivo','','ia'));  
@@ -53,12 +54,12 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
           $cap->select_label();
       $f4 = new input(array('','atit',30,'Titolo','','i'));     
           $f4->field(); 
-//     $tz = new DB_tip_i('s-n','amostra',0,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
-//          $tz->select(); 
           $f6 = new input(array('','amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
-               $f6->field();  
-      $f9 = new input(array($content,'atext',30,'Testo','','tx'));  
-          $f9->field();       
+               $f6->field(); 
+		$f9 = new input(array($content,'atext',30,'Testo','','tx'));  
+			$f9->field(); 
+		echo "<script type='text/javascript'>CKEDITOR.replace('atext');	</script>";
+		
 echo "</fieldset>";
 echo "</div>";
 echo "</form>";
@@ -71,7 +72,7 @@ $param = array($SAV.'|modifica',$RET.'|ritorno');
 $btx   = new bottoni_str_par($ARTS." - ".$MOD,'art','write_art.php',$param);     
      $btx->btn();
      // contenitore
-     echo "<div class='col-md-7'>";     
+     echo "<div class='row'>";     
 // lettura database  
 $sql =  "SELECT * FROM `".DB::$pref."art` 
                      WHERE `aid` ='".$aid."' ";
@@ -95,14 +96,14 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $cap2->select_label();
       $f4 = new input(array($atit,'atit',30,'Titolo articolo','','i'));    
           $f4->field(); 
-//    $tz = new DB_tip_i('s-n','amostra',$amostra,'Mostra il titolo si-no','Visualizza o meno il titolo dell\'articolo');        
- //         $tz->select(); 
-          $f6 = new input(array($amostra,'amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
+         $f6 = new input(array($amostra,'amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
                $f6->field();  
 
      echo "<br />";
       $f9 = new input(array($atext,'atext',30,'Testo','','tx'));  
           $f9->field();
+	echo "<script>    CKEDITOR.replace( 'atext');    </script>>";
+
      }
 echo "</div>";           // col
 break;

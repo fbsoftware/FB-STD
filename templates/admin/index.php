@@ -1,4 +1,4 @@
-﻿<?php session_start();      ob_start();
+<?php session_start();      ob_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		Gestionale
    * versione 1.0    

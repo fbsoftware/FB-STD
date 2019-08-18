@@ -5,8 +5,8 @@
 body {
 margin: 0 10px 0;
 padding: 0;
-font-size: 10pt;
-width: 95%;
+font-size: 14px;
+width: 99%;
 background-color: #fcfcfc;
 font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }  
@@ -98,7 +98,6 @@ text-align: right;
 }
 
 .navbar-default .navbar-nav > li > a {
-  font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
   color: #333333;
@@ -184,64 +183,6 @@ text-align: right;
 }
 
 
-
-/* Flexslider */
-
-.flexslider {
- margin: 0 0 30px; 
- background: #f8f8f8; 
- border: 0;
- border-top: 3px solid #357ebd; 
- position: relative; 
- -webkit-border-radius: 0; 
- -moz-border-radius: 0; 
- -o-border-radius: 0; 
- border-radius: 0; 
-}
-.flex-control-paging li a {
- width: 12px; 
- height: 12px;
- padding: 2px;
- background: #357ebd; 
- cursor: pointer; 
- text-indent: -9999px; 
- -webkit-border-radius: 20px; 
- -moz-border-radius: 20px; 
- -o-border-radius: 20px; 
- border-radius: 20px; 
- box-shadow: none;
-}
-.slides li {position: relative;}
-.flex-caption {
- position: absolute;
- top: 35%;
- right: 8%;
-}
-.flex-caption-text span {
- display: inline-block;
- font-size: 34px;
- font-weight: bold;
- font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
- margin: 2px 0;
- padding: 0 15px;
- background-color: rgba(53, 126, 189, 0.8);
-}
-
-@media screen and (max-width: 767px) {
- .flex-control-nav, .flex-control-pager, .flex-caption {display: none;}
-}
-
-/* Sezione progetti in evidenza */
-
-.box-progetto {
- margin-bottom: 10px;
- padding: 15px;
- background-color: #86b6de;
- -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
-}
-.box-progetto h3, .box-progetto h4 {margin-top: 0;}
-
 /* Stile per sovrascrivere e modificare le immagini thumbnail di Bootstrap */
 
 .thumbnail,
@@ -306,7 +247,7 @@ blockquote {
 .panel-carousel-heading {
   margin: -15px -15px 15px;
   padding: 10px 15px;
-  font-size: 17.5px;
+  font-size: 125%;
   font-weight: 500;
 /*  background-color: #357ebd;  vedi:.fb-bgcolor-.....   */
   color: #fff;
@@ -320,7 +261,7 @@ blockquote {
 }
 
 .panel-carousel-control {
-  font-size: 16px;
+  font-size: 125%;
 }
 .panel-carousel-control:hover,
 .panel-carousel-control:focus {
@@ -412,7 +353,6 @@ float: left;
 
 select {
 color: blue;
-font-size: 10pt;
 }
 
 span.right {
@@ -421,19 +361,20 @@ float: right;
 
 textarea {
 color: blue;
-font-size: 10pt;
 }
 
 input {
 color: blue;
-font-size: 10pt;
-/* background: #ffffff; */
 border: 1px solid #aaaaaa;
+}
+
+input[type=checkbox]	{
+	width:  20px;
+	height: 20px;
 }
 
 input.req {
 color: blue;
-font-size: 10pt;
 background: #ffffff;
 border: 1px solid #ff0000;
 }
@@ -443,7 +384,7 @@ border: none;
 vertical-align: bottom;
 padding: 0 3px;
 cursor:auto;
-width: 25px;
+width: 18px;
 
 }
 
@@ -466,7 +407,6 @@ border-width: 0px;
 button {
 background: #dddddd;
 border: 1px solid #aaaaaa;
-font-size: 12pt;
 }
 
 
@@ -490,7 +430,6 @@ font-size: 12pt;
   margin: 0;
   background-color: transparent;
   border-radius: 0;
-  font-size: 16px;
 }
 
 .breadcrumb > li + li:before {
@@ -712,7 +651,6 @@ legend    {
      padding: 0 5px;
    /*  width: fit-content !important;  */
      font-weight: bold;
-     font-size: inherit;
      background-color: #e1e1e1;
 }
 /* Footer styles
@@ -740,13 +678,12 @@ div.primary {
 
 .container {
   width: auto;
-/*  max-width: 680px;    */
   padding: 0 15px;
 }
 .container .text-muted {
   margin: 20px 0;
 }
-.footertext {
+.white {
   color: #ffffff;
 }
 
@@ -812,7 +749,7 @@ div.footer {
     width: 100%;      
     padding: 0;
     margin-bottom: 20px;
-    font-size: 21px;
+    font-size: 150%;
     line-height: inherit;
     color: #333;
     border: 0;
@@ -832,7 +769,6 @@ div.footer {
 	z-index: 1070;
 	display: block;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 1.42857143;
@@ -1062,16 +998,19 @@ background: #444444;
     overflow-x: hidden;
   }
 h1.toolbar	{
-font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size:14pt;	
-font-weight: bold;
-margin-top: 10px;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:160%;	
+	font-weight: bold;
+	margin-top: 20px;
 }
-
+/*   TOOLBAR   */
+.toolbar-color	{
+	background-color:#f0f0f0;
+}
     /* TABELLA */
 .tableFixHead    { 
 	overflow-y: auto; 
-	height: 450px; 
+	height: 550px; 
 	clear:both;
 	}
 .tableFixHead th { 
@@ -1082,13 +1021,12 @@ margin-top: 10px;
 table  { 
 	border-collapse: collapse; 
 	width: 100%; 
-	font-size: 10pt;
+	font-size: 100%;		/* sovrascrive user agent */
 	border-bottom: 1px solid #ccc;	
 	}
 	
 td { 
 	padding: 8px 16px;
-	font-size: 10pt;
 	background: #fefefe;
 	padding: 5px;
 	border-left: 1px solid #ccc;
@@ -1096,7 +1034,6 @@ td {
 	}
 
 th     {
-	font-size: 10pt;
 	background: #ccc;
 	padding: 5px;
 	border-left: 1px solid #ccc;
@@ -1144,7 +1081,7 @@ clear: left;
 
 div.titolo {
 float: left;
-font-size: 25px;
+font-size: 175%;
 color: #07A1FF;
 }
 
@@ -1192,7 +1129,7 @@ border-right: 1px solid #aaaaaa;
 #corpo {
 float: left;
 width: 100%;
-min-height: 450px;
+min-height: 600px;
 background: #ffffff;
 border: 1px solid #aaaaaa;
 }
@@ -1234,4 +1171,9 @@ padding: 0;
 background-color: #55ABD2;
 border-radius: 0 0 7px 7px;
 padding: 5px 0;
+}
+/*  Stile per modificare e sovrascrivere la larghezza della textarea 
+    per impedire che i footer si affianchi al testo!*/
+.cke_reset	{
+	width:650px !important;
 }

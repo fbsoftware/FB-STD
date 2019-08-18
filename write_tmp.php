@@ -9,6 +9,7 @@
    * ------------------------------------------------------------------------
    * Scrittura sul DB tabella templates
 	*	1.0.0 nuova head
+	17/8/19  aggiunto campo "teditor"
 ============================================================================= */ 
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
@@ -49,7 +50,7 @@ case 'nuovo':
                        tgliforma,tgliftitle,tgliftext,tglireverse,ttipo,
 						tpromotitle,tpromotit,tpromotext,tgliftit,tportit,tportext,
 						tcttitle,tcttit,tcttext,taccotitle,taccotit,taccotext,
-						ttabtitle,ttabtit,ttabtext,tsldtitle,tsldtit,tsldtext)  
+						ttabtitle,ttabtit,ttabtext,tsldtitle,tsldtit,tsldtext,teditor)  
                        VALUES ('$tprog','$tstat','$tcod','$tsel','$tfolder','$tdesc',
                               '$tmenu','$tlang','$tslidebutt','$tslidetime',
                               '$tportitle','$tcolor','$tgliforma','$tgliftitle',
@@ -58,7 +59,7 @@ case 'nuovo':
 						 '$tportit','$tportext',
 						 '$tcttitle','$tcttit','$tcttext','$taccotitle','$taccotit','$taccotext',
 						  '$ttabtitle','$ttaabtit','$ttabtext',
-						  '$tsldtitle','$tsldtit','$tsldtext')";
+						  '$tsldtitle','$tsldtit','$tsldtext','$teditor')";
                         $PDO->exec($sql);    
                         $PDO->commit();
                         $_SESSION['esito'] = 54;
@@ -90,7 +91,8 @@ case 'modifica':
 						ttabtext='$ttabtext',
 						tsldtitle=$tsldtitle,
 						tsldtit='$tsldtit',
-						tsldtext='$tsldtext'
+						tsldtext='$tsldtext',
+						teditor='$teditor'
 				   
                    WHERE `tid`='$tid' ";
                    $PDO->exec($sql);    

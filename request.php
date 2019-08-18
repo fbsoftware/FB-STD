@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // parametri passati con l'url (ADMIN)
 $forma    = $_REQUEST['forma'];              // voce menu
 $sub      = $_REQUEST['sub'];               // sottovoce menu

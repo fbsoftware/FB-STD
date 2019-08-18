@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $xid    =$_POST['xid'];
 $xstat  =$_POST['xstat']; 
 $xprog  =$_POST['xprog'];

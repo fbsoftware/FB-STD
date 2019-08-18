@@ -9,7 +9,6 @@
    * ------------------------------------------------
    * gestione tabella glifi      
 ============================================================================= */
-$_SESSION['ambito']='sito';
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
 require_once("connectDB.php");
@@ -22,7 +21,7 @@ require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
 
-include('tinys.php'); 
+require_once("editor.php");			// scelta editor
 include_once('post_gly.php');
 
      $azione  =$_POST['submit'];     // print_r($_POST);//debug
@@ -37,11 +36,11 @@ echo "<section id='upd' class='container-fluid'>";
     
 switch ($azione)    
 { 
-// inserimento 
+// inserimento ======================================================================
     case 'nuovo':
      $btx = new bottoni_str_par('Icone','gly','write_gly.php',array('salva|nuovo','ritorno'));     
           $btx->btn();
-echo	"<fieldset class='col-md-7'>";          
+echo	"<fieldset class='row'>";          
      $gly = new DB_ins('gly','gprog');
      $f1 = new input(array($gly->insert(),'gprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();         
@@ -65,27 +64,27 @@ echo	"<fieldset class='col-md-7'>";
 <div>
 	<label for="gfa" data-toggle="tooltip" title="Codice glifo fa-...">Glifo</label>
      <input type="text" id="gfa" name="gfa" value="" size="30">
-	<button type="button" class="btn btn-primary" style="float:right; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Visualizza Glifi</a></button>
+	<button type="button" class="btn btn-primary" style="float:none; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Visualizza Glifi</a></button>
 </div>
 <?php
      $f5 = new input(array('','glink',50,'Link','Link per il titolo','i')); 
           $f5->field(); 
-echo "</fieldset>";
 
-echo	"<fieldset class='col-md-7'>";
      $f4 = new input(array('','gtext',50,'Testo','Testo del glifo','tx')); 
           $f4->field(); 
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('gtext');</script>"; }
 echo "</fieldset>";
 echo  "</form>";
       break;
 
-// modifica     
+// modifica  =========================================================================   
     case 'modifica':
      $btx = new bottoni_str_par('Icone','gly','write_gly.php',array('salva|modifica','ritorno'));     
      $btx->btn();
      $sql = "SELECT * FROM `".DB::$pref."gly` 
                WHERE `gid` = $gid ";
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset class='row'>"; 
      foreach($PDO->query($sql) as $row)
 	include('fields_gly.php');
 
@@ -113,28 +112,27 @@ echo  "</form>";
 <div>
 	<label for="gfa" data-toggle="tooltip" title="Codice glifo fa-...">Glifo</label>
      <input type="text" id="gfa" name="gfa" value="<?php echo $gfa ?>" size="30">
-	<button type="button" class="btn btn-basic btn-sm" style="float:right; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Glifi</a></button>
+	<button type="button" class="btn btn-basic btn-sm" style="float:none; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Glifi</a></button>
 </div>
 <?php       
 	$f5 = new input(array($glink,'glink',50,'Link','Link per il titolo','i')); 
           $f5->field(); 
-	echo "</fieldset>";
-	
-	echo	"<fieldset class='col-md-7'>"; 
+
      $f3 = new input(array($gtext,'gtext',50,'Testo','Testo del glifo','tx')); 
           $f3->field(); 
-	
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('gtext');</script>"; }	
 	echo "</fieldset>";
      echo    "</form>";
      break;
 
-// cancellazione    
+// cancellazione  ===================================================================  
     case 'cancella' :
 $btg = new bottoni_str_par('Icone','gly','write_gly.php',array('salva|cancella','ritorno'));     
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."gly` 
                WHERE `gid` = $gid  "; 
-	echo	"<fieldset class='col-md-7'>";  
+	echo	"<fieldset class='row'>"; 
      foreach($PDO->query($sql) as $row)
 	include('fields_gly.php');
       $f0 = new input(array($gid,'gid',0,'','','h'));                        

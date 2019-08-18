@@ -20,11 +20,12 @@ class DB_ins          extends DB
   
     public function __construct($tabella,$prog)       
            { 
-		   self::$con        = $con;
-		   self::$PDO        = $PDO;
-           $this->tabella = $tabella;
-           $this->prog    = $prog;     // campo del progressivo di ordinamento
+		   self::$con       = $con;
+		   self::$PDO       = $PDO;
+           $this->tabella 	= $tabella;
+           $this->prog    	= $prog;     // campo del progressivo di ordinamento
 			//parent::__construct(); 
+			self::$incr;//debug 
 
            }   
 

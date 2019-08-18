@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $xid     =$row['xid'];                        
 $xstat   =$row['xstat'];
 $xprog   =$row['xprog'];          

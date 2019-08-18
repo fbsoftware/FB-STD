@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /** FB_template versione 1.4
    Fausto Bresciani
    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta all'uso

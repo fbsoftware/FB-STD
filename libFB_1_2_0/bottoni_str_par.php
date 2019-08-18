@@ -5,11 +5,11 @@
  * parametri:  immagine e titolo della mappa
  *             tabella di database interessata
  *             programma di callback
- *             array diparametri (Bottoni da visualizzare)
+ *             array diparametri (Bottoni da visualizzare o altri parametri)
  *             livello di accesso (min=0 , max=9)
  * ----------------------------------------------------------------------
  * Metodi:
- *        btn()     per visualizzare
+ *        btn()     per visualizzare la toolbar
  * ----------------------------------------------------------------------
  * Note:  - ambiente Bootstrap 
  *        - controllo livello utente per accesso al singolo bottone se usata
@@ -17,6 +17,8 @@
  *        - protezione tasto invio (non ammesso)
  *	1.0.0	immagini tabella da images/archivi
  * 	1.0.1	solo se c'è immagine
+ * 5/8/2019	test se nei parametri esiste la stringa "enctype"
+ *			per inserire "multipart/form-data" per upload/download.
 ------------------------------------------------------------------------- */
           // funzione con parametri
 class bottoni_str_par         
@@ -48,7 +50,7 @@ class bottoni_str_par
                 echo "<div class='col-md-1'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{
-                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
+                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='50'> ";
 				}
 				echo    "</div>";
                 
@@ -59,18 +61,33 @@ class bottoni_str_par
                 
                 // bottoni ampiezza = 7
                 echo    "<div class='btn-group col-md-7 text-right'>"; 
-                echo    "<form method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;
+				if(in_array('enctype',$this->param)) 
+					{
+					echo "<form enctype='multipart/form-data' method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;
+					}
+				else
+					{
+					echo "<form method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;
+					}
+					
 				// accessi consentiti ai bottoni
 				$b5   = array('nuovo','modifica','cancella','archivia','cerca','ripristina','salva'); 
 				$b0   = array('chiudi','uscita','mostra','stampa','ritorno');
-				// scan bottoni
-				$length = count($this->param);
-               for ($i = 0; $i < $length; $i++) 
-	   {
-				// test se label diversa da azione
-               $act = $this->param[$i];
+				
+		// scan bottoni e bypass per parametri NON bottone (es.:enctype)
+		$length = count($this->param);
+	   for ($i = 0; $i < $length; $i++) 
+		{
+			// test per non bottone
+			if ($this->param[$i] == 'enctype') 
+				{
+					continue;
+				}
+		   
+			// test se label diversa da azione
+                $act = $this->param[$i];
 				$pos = strpos($this->param[$i], '|');
-			if ($pos === false) 
+			if ($pos === false) // bottone = comando+label
 				{
 				// controllo accesso al bottone 
 				if(in_array($act, $b5))  { $accesso_bottone = 5; }
@@ -82,7 +99,7 @@ class bottoni_str_par
 				}
 				}
 			else
-				{
+				{	// comando separato da label
 				list($label,$act)=explode('|',$this->param[$i]); 
                // controllo accesso al bottone 
                if(in_array($act, $b5))  { $accesso_bottone = 5; }

@@ -42,5 +42,8 @@ $ttabtext     	=addslashes($row['ttabtext']);
 // articoli in slide
 $tsldtitle   	=$row['tsldtitle'];
 $tsldtit     	=$row['tsldtit'];
-$tsldtext     	=addslashes($row['tsldtext']);             
+$tsldtext     	=addslashes($row['tsldtext']);  
+// editor di testo
+$teditor     	=$row['teditor'];
+           
 ?>

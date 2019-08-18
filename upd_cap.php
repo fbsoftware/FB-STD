@@ -20,6 +20,9 @@ require_once("jquery_link.php");
 require_once("bootstrap_link.php");
 require_once('lingua.php'); 
 $app->closeHead();
+
+require_once("editor.php");			// scelta editor
+
      
      // contenitore
      echo     "<div class='container'>"; 
@@ -27,7 +30,6 @@ $app->closeHead();
      echo     "<div class='row container'>";
 
 include_once('post_cap.php');   //print_r($_POST);//debug
-include('tinys.php');
 $azione  =$_POST['submit'];  
 $content =$QUI_TEXT;
  
@@ -48,7 +50,7 @@ switch ($azione)
                $bti->btn();
                echo "</div>";   // row
                echo "</div>";   // container
-          echo  "<fieldset class='col-md-8'>";               
+          echo  "<fieldset class='row'>";               
           $cap = new DB_ins('cap','cprog');                     
           $f3 = new input(array($cap->insert(),'cprog',03,'Progressivo','Per ordinamento','i'));        
                $f3->field();   
@@ -63,7 +65,9 @@ switch ($azione)
           $arg = new DB_sel_lt('arg','rprog','','rcod','carg','rstat','rdesc','Argomento','Argomento del capitolo');
              echo  $arg->select_lt();
           $f3 = new input(array(htmlspecialchars($content, ENT_QUOTES),'ctext',100,'Testo','Inserire il testo per il capitolo','tx'));        
-               $f3->field(); 
+               $f3->field();
+		echo "<script type='text/javascript'>CKEDITOR.replace('ctext');	</script>";
+			   
           echo  "</form>";  
           echo  "</fieldset>";
       break;
@@ -76,7 +80,7 @@ switch ($azione)
                echo "</div>";   // container
 
      
-      echo  "<fieldset class='col-md-7'>";  
+      echo  "<fieldset class='row'>";  
 	$sql = "SELECT * FROM `".DB::$pref."cap` where `cid` = $cid ";
 // transazione    
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
@@ -102,6 +106,8 @@ $PDO->beginTransaction();
              echo  $arg->select_lt();
           $f3 = new input(array(htmlspecialchars($ctext, ENT_QUOTES),'ctext',100,'Testo','Inserire il testo per il capitolo','tx'));        
                $f3->field(); 
+		echo "<script type='text/javascript'>CKEDITOR.replace('ctext');	</script>";
+
           echo "</fieldset>";  
           echo "</form>";
      }
@@ -115,7 +121,7 @@ $PDO->beginTransaction();
                echo "</div>";   // container
 
 
-      echo  "<fieldset class='col-md-7'>"; 
+      echo  "<fieldset class='row'>"; 
       $sql = "SELECT * 
               FROM `".DB::$pref."cap`
               WHERE `cid` = $cid  ";    
@@ -140,7 +146,7 @@ $PDO->beginTransaction();
                $f5->field();
              $f6 = new input(array($carg,'carg',1,'Argomento','','r'));            
                $f6->field();
-             $f7 = new input(array(htmlspecialchars($ctext, ENT_QUOTES),'ctext',33,'Capitolo','','txr'));            
+             $f7 = new input(array(htmlspecialchars($ctext, ENT_QUOTES),'ctext',33,'Capitolo','','r'));            
                $f7->field();
              echo  "</fieldset>";
              echo  "</form>";
