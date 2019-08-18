@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $nid     =$_POST['nid'];        
 $nprog   =$_POST['nprog'];   
 $nstat   =$_POST['nstat'];

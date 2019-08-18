@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $uid       =$row['uid'];
 $ustat     =$row['ustat'];
 $uprog     =$row['uprog'];

@@ -20,7 +20,14 @@ require_once("bootstrap_link.php");
 require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
-
+require_once("editor.php");				// scelta editor
+?>
+<style>
+.cke_reset	{
+	width:1000px !important;
+	}
+</style>
+<?php
 include('post_foo.php');
 $azione=$_POST['submit'];
    
@@ -38,7 +45,7 @@ case 'uscita':
     case 'nuovo':
      $btx = new bottoni_str_par('Nuovo Footer di pagina','foo','write_foo.php',array('salva|nuovo','ritorno'));     
           $btx->btn();
-echo	"<fieldset class='col-md-7'>";          
+echo	"<fieldset class='row'>";          
      $ins = new DB_ins('foo','fprog');
      $f1 = new input(array($ins->insert(),'fprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();         
@@ -71,15 +78,15 @@ case 'cnt' :
 		 break;
 	}	
 //==================================================================================     
-     
   
  $f3 = new input(array('','flink',20,'Link','Link se cliccato','i')); 
           $f3->field();  		  
-echo "</fieldset>";
 	// per textarea
-echo	"<fieldset class='col-md-7'>";
      $f4 = new input(array('','ftext',50,'Testo','£tooltip','tx')); 
           $f4->field(); 
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('ftext');</script>"; }
+
 echo "</fieldset>";
 echo  "</form>";
       break;

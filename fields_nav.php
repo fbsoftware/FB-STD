@@ -1,4 +1,4 @@
-﻿<?php   
+<?php   
 /** campi da 'nav' a variabili   */ 
              $nid     =$row['nid'];
              $nprog   =$row['nprog'];

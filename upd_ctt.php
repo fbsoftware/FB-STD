@@ -10,15 +10,7 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
-   * control di tabella 
-   * £tab
-   * £titolo
-   * £id
-   * £prog
-   * £stat
-   * £cod
-   * £des
-   * £tmp
+	18/8/19	uso dei tabs
 ============================================================================= */
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
@@ -32,7 +24,15 @@ require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
 
-include('tinys.php'); 					// se textarea
+echo "<script src='ckeditor/ckeditor.js'></script>"; 
+?>
+ <!-- tabs -->
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+<?php
 include_once('post_ctt.php');			// nome tabella
 
      $azione  =$_POST['submit'];     
@@ -51,10 +51,20 @@ switch ($azione)
  
 // inserimento 
     case 'nuovo':
-     $btx = new bottoni_str_par('Contatti','ctt','write_ctt.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
+     $btx = new bottoni_str_par('Contatti-nuovo','ctt','write_ctt.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           $btx->btn();
-echo "<div class='row'>";
-echo	"<fieldset class='col-md-6'>";          
+// testate di TABS
+?>
+	<div id="tabs">
+  <ul>
+	<li><a href="#tabs-0">Generale</a></li>
+    <li><a href="#tabs-1">Contatti</a></li>
+    <li><a href="#tabs-2">Note</a></li>
+  </ul>
+ <?php			
+         
+	echo "<div id='tabs-0' class='row'>";
+	echo "<fieldset>";         
      $ins = new DB_ins('ctt','eprog');
      $f1 = new input(array($ins->insert(),'eprog',3,$PROG,'Per ordinamento','i'));
           $f1->field();         
@@ -73,6 +83,11 @@ echo	"<fieldset class='col-md-6'>";
 		$co->select(); 
 $tw = new select_file('images/','','eimg',$IMG,'');
 	$tw->image();
+echo "</fieldset>";
+echo "</div>";	
+	
+	echo "<div id='tabs-1' class='row'>";
+	echo "<fieldset>"; 	
 	$f2 = new input(array('','email',50,$EMAIL,'','i'));     
 		$f2->field();
 	$f2 = new input(array('','epec',50,$PEC,'','i'));     
@@ -88,35 +103,49 @@ $tw = new select_file('images/','','eimg',$IMG,'');
 	$f2 = new input(array('','esede',50,$SEDE,'','i'));     
 		$f2->field();
 echo "</fieldset>";
+echo "</div>";
+
 	// per textarea
-echo	"<fieldset class='col-md-6'>";
+	echo "<div id='tabs-2' class='row'>";
+	echo "<fieldset>"; 
      $f4 = new input(array('','enote',50,$NOTE,'','tx')); 
           $f4->field(); 
+		echo "<script type='text/javascript'>CKEDITOR.replace('enote');	</script>";
+
 echo "</fieldset>";
 echo "</div>";
+
+echo "</div>";	// tabs
 echo  "</form>";
       break;
  //==================================================================================     
  
 // modifica     
     case 'modifica':
-     $btx = new bottoni_str_par('Contatti','ctt','write_ctt.php',array($SAV.'|modifica',$RET.'|ritorno'));     
+     $btx = new bottoni_str_par('Contatti-modifica','ctt','write_ctt.php',array($SAV.'|modifica',$RET.'|ritorno'));     
      $btx->btn();
      $sql = "SELECT * FROM `".DB::$pref."ctt` 
                WHERE `eid` = $eid ";
-			   
-	echo "<div class='row'>";
-	echo "<fieldset class='col-md-7'>"; 
+// testate di TABS
+?>
+	<div id="tabs">
+  <ul>
+	<li><a href="#tabs-0">Generale</a></li>
+    <li><a href="#tabs-1">Contatti</a></li>
+    <li><a href="#tabs-2">Note</a></li>
+  </ul>
+ <?php	
+// tabs-0 generale ------------------------------------------------------------------
+	echo "<div id='tabs-0' class='row'>";
+	echo "<fieldset>"; 
     foreach($PDO->query($sql) as $row)
 	include('fields_ctt.php');
-
      $f1 = new input(array($eid,'eid',0,'','','h'));
           $f1->field();
      $f1 = new input(array($eprog,'eprog',3,$PROG,'Per ordinamento','i'));
           $f1->field();         
      $ts = new DB_tip_i('stato','estat',$estat,$ST,'Attivo/sospeso'); 
           $ts->select();
-	//-----------------------------------------------------------------
      $f3 = new input(array($ecod,'ecod',20,$COD,'','ia')); 
           $f3->field(); 
      $f4 = new input(array($edes,'edes',20,$DESC,'','i'));           
@@ -127,9 +156,16 @@ echo  "</form>";
 		$f2->field();  
 	 $co = new DB_tip_i('tictt','etipo',$etipo,$TIPO,'');
 		$co->select(); 
-$tw = new select_file('images/',$eimg,'eimg',$IMG,'');
+	echo "<div>";	//--------------------
+	$tw = new select_file('images/',$eimg,'eimg',$IMG,'');
 	$tw->image();
-echo "<img src='".$eimg."' alt='' border='0' align='left' width='100' height=''' />";	
+	echo "<img src='".$eimg."' alt='' border='0' align='left' width='100' height='' />";	
+	echo "</div>";	//--------------------
+	echo "</fieldset>";
+	echo "</div>";
+// tabs-1 contatti -----------------------------------------------------------------
+	echo "<div id='tabs-1' class='row'>";
+	echo "<fieldset>"; 
 	$f2 = new input(array($email,'email',50,$EMAIL,'','i'));     
 		$f2->field();
 	$f2 = new input(array($epec,'epec',50,$PEC,'','i'));     
@@ -144,20 +180,25 @@ echo "<img src='".$eimg."' alt='' border='0' align='left' width='100' height='''
 		$f2->field();
 	$f2 = new input(array($esede,'esede',50,$SEDE,'','i'));     
 		$f2->field();
-echo "</fieldset>";
-	// per textarea
-echo	"<fieldset class='col-md-6'>";
+	echo "</fieldset>";
+	echo "</div>";
+// tabs-2 note --------------------------------------------------------------------
+	echo "<div id='tabs-2' class='row'>";
+	echo "<fieldset>"; 
+	echo	"<fieldset class='col-md-6'>";
      $f4 = new input(array($enote,'enote',50,$NOTE,'','tx')); 
           $f4->field(); 
-echo "</fieldset>";
-echo "</div>";
-     echo    "</form>";
+	echo "<script type='text/javascript'>CKEDITOR.replace('enote');	</script>";
+	echo "</fieldset>";
+	echo "</div>";
+echo "</div>";		// tabs
+ echo    "</form>";
      break;
  //==================================================================================     
  
 // cancellazione    
     case 'cancella' :
-$btg = new bottoni_str_par('Contatti','ctt','write_ctt.php',array($SAV.'|cancella',$RET.'|ritorno'));     
+$btg = new bottoni_str_par('Contatti-cancella','ctt','write_ctt.php',array($SAV.'|cancella',$RET.'|ritorno'));     
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."ctt` 
                WHERE `eid` = $eid  "; 
@@ -180,7 +221,7 @@ $btg = new bottoni_str_par('Contatti','ctt','write_ctt.php',array($SAV.'|cancell
 	 echo "</fieldset>"; 
 	// per textarea
 	echo	"<fieldset class='col-md-7'>"; 
-     $f3 = new input(array($enote,'',50,$NOTE,'','txr')); 
+     $f3 = new input(array($enote,'',50,$NOTE,'','r')); 
           $f3->field(); 
 	echo "</fieldset>";	 
 	 

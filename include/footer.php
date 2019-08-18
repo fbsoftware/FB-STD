@@ -1,6 +1,6 @@
 <?php
 echo	"<div id='footer' class='fb-bgcolor-".TMP::$tcolor."'>"; 
-echo	"<div class='row'>";
+
 // lettura footer elements
         $sql = "SELECT *
                 FROM `".DB::$pref."foo`
@@ -8,43 +8,66 @@ echo	"<div class='row'>";
                     and ftmp= '".TMP::$tmenu."' 
                     and fstat <> 'A' 
                 ORDER BY fprog ";
-          foreach($PDO->query($sql) as $row)
-          { 
+				
+		$stmt = $PDO->prepare($sql);
+		$stmt->execute();		
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		json_encode($rows);
+		$colonne = $stmt->rowCount();				
+				
+	echo "<div class='grid".$colonne." fb-col".$colonne."'>";
+		
+		foreach($rows as $row)
+			{
+// modulo tipo immagine
 		if ($row['ftipo'] == 'img') 
 		{
-		echo	"<div class='".$row['fcol']."'>";
-          echo	"<center><br />";
-          echo	"<img src='".$row['felemento']."' class='img-square' alt='".$row['felemento']."' height='100'>";
-          echo	"<br><h4 class='footertext'>".$row['ftit']."</h4>";
-          echo	"<h6 class='footertext'>".$row['ftext']."</h6>";
-          echo	"</center>";
+		  echo	"<div>";
+          echo	"<br />";
+          echo	"<img  class='center' src='".$row['felemento']."' alt='".$row['felemento']."'  width='' height='100'>";
+          if (isset($row['ftitolo'])) 		
+				{ echo	"<br><h4>".$row['ftitolo']."</h4>"; }
+		  if (isset($row['ftext'])) 		
+				{echo	"<p class='center transparent'>".$row['ftext']."</p>"; }
           echo	"</div>";
-  		}          
+  		}  
+// modulo tipo contatti        
 		if ($row['ftipo'] == 'cnt') 
 		{
-		echo	"<div class='".$row['fcol']."'>"; 
-          echo	"<center><br />";
-		echo	"<br><h4 class='footertext'>".$row['ftit']."</h4>";
-		echo	"</center>";
+			echo	"<div>"; 
+			if ($row['ftit'])
+			{
+			echo	"<h4>".$row['ftit']."</h4>";
+			}
 // lettura contatti
 
         $sql = "SELECT *
                 FROM `".DB::$pref."ctt`
-                WHERE '".$row['fcod']."' = '$lcod'
+                WHERE '".$row['fcod']."' = '".$lcod."'
                 	and ecod = '".$row['felemento']."'
                     and etmp= '".TMP::$tmenu."' 
                     and estat <> 'A' 
                 ORDER BY eprog ";		
           foreach($PDO->query($sql) as $row)
-          {		
-		echo	"<br /><span class='footertext'>".$row['email']."</span>";
-		echo	"<br /><span class='footertext'>".$row['epec']."</span>";
-		echo	"<br /><span class='footertext'>".$row['esito']."</span>";
-		echo	"<br /><span class='footertext'>".$row['esede']."</span>";
-		
-          echo	"</div>"; 
+          {	
+			if ($row['edes']) 
+				{
+				echo "<br />";
+				echo "<img class='center' src='".$row['eimg']."' alt='' border='0' align='middle' width='' height='100' />";	
+				echo "<br /><h4>".$row['edes']."</h4>"; 
+				}
+				
+				echo "<p class='center'>";
+				echo "<br />".$row['email'];
+				echo "<br />".$row['epec'];
+				echo "<br />".$row['esito'];
+				echo "<br />".$row['esede'];
+				
+				echo "</p>";
+			echo	"</div>";
+			
   		}          
-		}    // foreach  1
-		}    // foreach  2
+		}    // foreach  ctt
+		}    // foreach  foo
           echo	"</div>";			            
 ?>

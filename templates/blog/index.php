@@ -1,4 +1,4 @@
-﻿<?php session_start();      ob_start();
+<?php session_start();      ob_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		Gestionale
    * versione 1.0    
@@ -11,7 +11,7 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
 // prima voce menù
-$nav	= new setNav($_SESSION['ambito']);
+$nav	= new setNav(TMP::$ambiente);
 	$nav->setNav(); 
 //require_once("set_nav.php"); 
 echo	"<body>";

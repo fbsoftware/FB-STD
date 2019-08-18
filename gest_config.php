@@ -14,95 +14,41 @@ require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
 require_once('lingua.php');
 require_once('connectDB.php');
-
 ?>
 
   <script>
   $( function() {
-    $( document ).tooltip({
-      position: {
-        my: "center bottom-20",
-        at: "center top",
-        using: function( position, feedback ) {
-          $( this ).css( position );
-          $( "<div>" )
-            .addClass( "arrow" )
-            .addClass( feedback.vertical )
-            .addClass( feedback.horizontal )
-            .appendTo( this );
-        }
-      }
-    });
+    $( "#tabs" ).tabs();
   } );
-  </script>
-  <style>
-  .ui-tooltip, .arrow:after {
-    background: black;
-    border: 2px solid white;
-  }
-  .ui-tooltip {
-    padding: 10px 20px;
-    color: white;
-    border-radius: 20px;
-    font: bold 14px "Helvetica Neue", Sans-Serif;
-    text-transform: uppercase;
-    box-shadow: 0 0 7px black;
-  }
-  .arrow {
-    width: 70px;
-    height: 16px;
-    overflow: hidden;
-    position: absolute;
-    left: 50%;
-    margin-left: -35px;
-    bottom: -16px;
-  }
-  .arrow.top {
-    top: -16px;
-    bottom: auto;
-  }
-  .arrow.left {
-    left: 20%;
-  }
-  .arrow:after {
-    content: "";
-    position: absolute;
-    left: 20px;
-    top: -20px;
-    width: 25px;
-    height: 25px;
-    box-shadow: 6px 5px 9px -9px black;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-  .arrow.top:after {
-    bottom: -20px;
-    top: auto;
-  }
-  </style>
+  </script>  
+
+
 <?php
   
-$app->closeHead();
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
-     echo     "<div class='container well'>";
-     echo     "<div class='row space-before space-after'>"; 
-     echo     "<div class='col-md-12'>"; 
+?>
+
+<?php 
+
  //   bottoni gestione
 $param  = array('modifica','chiudi');  
 $btx    = new bottoni_str_par('Configurazione','config','write_config.php',$param);     
      $btx->btn();
-echo "</div>";
-echo "</div>";
+
+?>
+	<div id="tabs">
+  <ul>
+	<li><a href="#tabs-0">Generale</a></li>
+    <li><a href="#tabs-1">Database</a></li>
+    <li><a href="#tabs-2">Versione</a></li>
+  </ul>
+ <?php
 
 // dati di configurazione
-     echo     "<div class='row  space-before space-after'>";
-     echo "<div class='col-md-6'>" ;
-     echo "<fieldset><legend>&nbsp;Generali&nbsp;</legend>";
-  
-
+     echo "<div id='tabs-0' class='row'>";
+     echo "<fieldset>";
      $f8 = new input(array(DB::$root,'root',40,'Root sito','','i'));               
           $f8->field();   
      $f6 = new input(array(DB::$site,'site',20,'Cartella sito','','i'));           
@@ -129,8 +75,8 @@ echo "</fieldset>";
 echo "</div>";    
 
 // dati del database
-echo "<div class='col-md-6'>" ;
-echo "<fieldset><legend>&nbsp;Database&nbsp;</legend> ";
+     echo "<div id='tabs-1' class='row'>";
+     echo "<fieldset>";
      $f1 = new input(array(DB::$host,'host',30,'Host','','ir'));         
           $f1->field();   
      $f2 = new input(array(DB::$user,'user',20,'Utente','','ir'));        
@@ -145,8 +91,8 @@ echo "</fieldset>";
 echo "</div>";       // row
 
 // dati della versione
-echo "<div class='col-md-6'>" ;
-echo "<fieldset><legend>&nbsp;Versione&nbsp;</legend> ";
+     echo "<div id='tabs-2' class='row'>";
+     echo "<fieldset>";
      $f1 = new input(array(DB::$livello, 'livello' ,2,'Livello','','ir'));        
           $f1->field();
      $f0 = new input(array(DB::$rilascio,'rilascio',2,'Rilascio','','ir'));       
@@ -156,8 +102,6 @@ echo "<fieldset><legend>&nbsp;Versione&nbsp;</legend> ";
 echo "</fieldset>";
 echo "</div>";
 
-
+echo "</div>";       // tabs
 echo "</form>";
-echo "</div>";       // row
-echo "</div>";       // container
 ?>

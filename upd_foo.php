@@ -9,8 +9,8 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
    * control di tabella 
+	17/8/19	scelta editor
 ============================================================================= */
-$_SESSION['ambito']='sito';				// altrimenti:'admin'
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
 require_once("connectDB.php");
@@ -22,8 +22,14 @@ require_once("bootstrap_link.php");
 require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
-
-include('tinys.php'); 					// se textarea
+require_once("editor.php");				// scelta editor
+?>
+<style>
+.cke_reset	{
+	width:1000px !important;
+	}
+</style>
+<?php
 include_once('post_foo.php');			// nome tabella
 
      $azione  =$_POST['submit'];     
@@ -58,7 +64,7 @@ case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
      $btx->btn();
      $sql = "SELECT * FROM `".DB::$pref."foo` 
                WHERE `fid` = $fid ";
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset class='row'>"; 
      foreach($PDO->query($sql) as $row)
 	include('fields_foo.php');
 
@@ -98,9 +104,11 @@ case 'cnt' :
           $f3->field(); 		  
 	echo "</fieldset>";
 	// per textarea
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset class='row'>"; 
      $f3 = new input(array($ftext,'ftext',50,'Testo','£tooltip','tx')); 
-          $f3->field(); 
+          $f3->field();
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('ftext');</script>"; }		  
 	echo "</fieldset>";
      echo    "</form>";
      break;

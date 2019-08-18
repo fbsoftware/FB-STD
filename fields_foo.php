@@ -8,7 +8,7 @@ $ftipo     	=$row['ftipo'];
 $ftmp		=$row['ftmp'];
 $fcol      	=$row['fcol'];
 $felemento  =$row['felemento'];
-$ftitolo    =$row['ftitolo'];
-$ftext      =$row['ftext'];
+$ftitolo    =utf8_decode($row['ftitolo']);
+$ftext      =utf8_decode($row['ftext']);
 $flink      =$row['flink'];
 ?>

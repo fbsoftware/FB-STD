@@ -1,4 +1,4 @@
-﻿<?php session_start(); 
+<?php session_start(); 
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 2.0    
@@ -58,6 +58,7 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
 <?php              
      echo "<tr>";               
           }
-     echo "</table></div></form>";
-//     echo "</div></div>"; 
+     echo "</table>";
+     echo "</div>";
+     echo "</form>";
 ?>

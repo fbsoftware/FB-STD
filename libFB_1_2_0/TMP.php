@@ -54,6 +54,9 @@ class TMP       extends  DB
   public static $tsldtitle	=  0;		// titolo si-no
   public static $tsldtit		=  '';		// titolo 
   public static $tsldtext	=  '';		// testo 
+  // editor
+  public static $teditor	=  '';		// editor di testo 
+  
 		function __construct($ambiente) 
 		{
 		self::$ambiente = $ambiente;
@@ -124,11 +127,14 @@ class TMP       extends  DB
 				// articoli in tab
 				self::$ttabtitle	= $row['ttabtitle'];	// titolo si-no
 				self::$ttabtit		= $row['ttabtit'];	// titolo
-				self::$ttabtext	= $row['ttabtext'];	// testo 				
+				self::$ttabtext		= $row['ttabtext'];	// testo 				
 				// articoli in slide
 				self::$tsldtitle	= $row['tsldtitle'];	// titolo si-no
 				self::$tsldtit		= $row['tsldtit'];	// titolo
-				self::$tsldtext	= $row['tsldtext'];	// testo 				
+				self::$tsldtext		= $row['tsldtext'];	// testo 	
+				// editor di testo
+				self::$teditor		= $row['teditor'];	// editor di testo 	
+				
                }
                return $row;   // per eventuale utilizzo
           }

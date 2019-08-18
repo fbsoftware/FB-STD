@@ -22,7 +22,7 @@ require_once("bootstrap_link.php");
 require_once('lingua.php'); 
 $app->closeHead(); 
 
-require_once('tinys.php');
+require_once("editor.php");			// scelta editor
 require_once('post_arg.php');
 
 $azione   = $_POST['submit'];  
@@ -45,7 +45,7 @@ switch ($azione)
     case 'nuovo':       // inserimento 
      $bti = new bottoni_str_par($ARGS.' - '.$INS,'arg','write_arg.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           $bti->btn(); 
-		echo  "<fieldset class='col-md-8'>"; 
+		echo  "<fieldset class='row'>"; 
       $arg = new DB_ins('arg','rprog');                       
           $nr =  $arg->insert();
       $f1 = new input(array($nr,'rprog',3,$PROG,'Per ordinamento','i'));                   
@@ -60,6 +60,8 @@ switch ($azione)
           $sn->field();
       $sn = new input(array('Inserire un testo','rtext',1,$MOSTRAT,'Inserire un testo','tx'));                   
           $sn->field();  
+		echo "<script type='text/javascript'>CKEDITOR.replace('rtext');	</script>";
+		  
 		echo  "</fieldset>";     
 		echo  "</form>";
       break;
@@ -78,7 +80,7 @@ switch ($azione)
      foreach($PDO->query($sql) as $row)
      {
       include 'fields_arg.php'; 
-		echo  "<fieldset class='col-md-8'>"; 
+		echo  "<fieldset class='row'>"; 
       $f0 = new input(array($rid,'rid',1,'ID record','','h'));              
           $f0->field();    
       $f1 = new input(array($rprog,'rprog',3,$PROG,'Per ordinamento','i'));        
@@ -93,6 +95,7 @@ switch ($azione)
           $f4->field();
       $f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','tx'));        
           $f4->field();	
+		echo "<script type='text/javascript'>CKEDITOR.replace('rtext');	</script>";
 		echo  "</fieldset>";     
       echo  "</form>";
       }
@@ -115,7 +118,7 @@ break;
      foreach($PDO->query($sql) as $row)
 	{
      include('fields_arg.php');
-		echo  "<fieldset class='col-md-8'>"; 
+		echo  "<fieldset class='row'>"; 
 		$f0 = new field($rid,'rid',1,'ID record');            
 			$f0->field_h();    
 		$f1 = new field($rprog,'rprog',3,$PROG);      
@@ -128,7 +131,7 @@ break;
 			$f3->field_r();
 		$f4 = new field($rmostra,'rmostra',1,$MOSTRAT);   
 			$f4->field_r(); 
-		$f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','tx'));        
+		$f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','r'));        
 			$f4->field();         
 		echo  "</fieldset>";     
 		echo    "</form>";

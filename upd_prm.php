@@ -7,9 +7,9 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
-   * gestione tabella per 4 moduli promo     
+   * gestione tabella per 4 moduli promo    
+	17/8/19	scelta editor
 ============================================================================= */
-$_SESSION['ambito']='sito';
 require_once('loadLibraries.php');
 require_once('loadTemplateAdmin.php');
 require_once("connectDB.php");
@@ -19,13 +19,21 @@ $app->openHead();
 require_once("jquery_link.php");
 require_once("bootstrap_link.php");
 require_once("include_head.php");
-require_once('lingua.php'); 
+require_once('lingua.php');
 $app->closeHead(); 
+require_once("editor.php");			// scelta editor
+require_once('post_prm.php'); 
 
-include_once('post_prm.php');
-include('tinys.php');
- 
-     $azione  =$_POST['submit'];     // print_r($_POST);//debug
+?>
+ <!-- tabs -->
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+<?php  
+$azione  =$_POST['submit'];     
+// print_r($_POST);//debug
 
 if (($azione == 'modifica' ||$azione == 'cancella') && $oid < 1) 
      {
@@ -44,10 +52,18 @@ switch ($azione)
      $btx = new bottoni_str_par('Modulo promo','prm','write_prm.php',array('salva|nuovo','ritorno'));     
           $btx->btn();
 
-// generale
-
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Generale</legend>";          
+?>
+	<div id="tabs">
+  <ul>
+	<li><a href="#tabs-0">Generale</a></li>
+    <li><a href="#tabs-1">Promo-1</a></li>
+    <li><a href="#tabs-2">Promo-2</a></li>
+    <li><a href="#tabs-3">Promo-3</a></li>
+	<li><a href="#tabs-4">Promo-4</a></li>
+  </ul>
+ <?php
+	echo "<div id='tabs-0' class='row'>";
+	echo "<fieldset>"; 
      $prm = new DB_ins('prm','oprog');
      $f1 = new input(array($prm->insert(),'oprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();         
@@ -61,13 +77,13 @@ switch ($azione)
           $f4->field(); 
      $f3 = new input(array('','otit_sn',1,'Mostra Titolo','','sn')); 
           $f3->field(); 
-
 	echo "</fieldset>";
-	echo "</div>";		
+	echo "</div>";
      
 // primo promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Primo promo</legend>"; 
+	echo "<div id='tabs-1' class='row' >";
+
+	echo	"<fieldset class='col-md-12'>"; 
      $f3 = new input(array('','osino1',1,'Mostra promo 1','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg1','Immagine ','Immagine del promo');
@@ -78,12 +94,15 @@ switch ($azione)
           $f5->field(); 
      $f4 = new input(array('','otext1',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext1');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
      
-// secondo promo 
-	echo "<div class='row container'>";	
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Secondo promo</legend>"; 
+// secondo promo
+	echo "<div id='tabs-2' class='row' >";
+ 
+	echo	"<fieldset class='col-md-12'>"; 
      $f3 = new input(array('','osino2',1,'Mostra promo 2','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg2','Immagine ','Immagine del promo');
@@ -94,12 +113,14 @@ echo "</fieldset>";
           $f5->field(); 
      $f4 = new input(array('','otext2',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
-echo "</div>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext2');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
 
 // terzo promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Terzo promo</legend>"; 
+	echo "<div id='tabs-3' class='row' >";
+	echo	"<fieldset  class='col-md-12'>"; 
      $f3 = new input(array('','osino3',1,'Mostra promo 3','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg3','Immagine ','Immagine del promo');
@@ -110,11 +131,14 @@ echo "</div>";
           $f5->field(); 
      $f4 = new input(array('','otext3',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext3');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
      
 // quarto promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Quarto promo</legend>"; 
+	echo "<div id='tabs-4' class='row' >";
+	echo	"<fieldset>"; 
      $f3 = new input(array('','osino4',1,'Mostra promo 4','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg4','Immagine ','Immagine del promo');
@@ -125,7 +149,11 @@ echo "</fieldset>";
           $f5->field(); 
      $f4 = new input(array('','otext4',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext4');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
+echo "</div>";	// tabs
 echo  "</form>";
       break;
  //==================================================================================     
@@ -138,10 +166,19 @@ echo  "</form>";
                WHERE `oid` = $oid ";
      foreach($PDO->query($sql) as $row)
 	include('fields_prm.php');
-
+?>
+	<div id="tabs">
+  <ul>
+	<li><a href="#tabs-0">Generale</a></li>
+    <li><a href="#tabs-1">Promo-1</a></li>
+    <li><a href="#tabs-2">Promo-2</a></li>
+    <li><a href="#tabs-3">Promo-3</a></li>
+	<li><a href="#tabs-4">Promo-4</a></li>
+  </ul>
+ <?php
 // generale
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Generale</legend>";  
+	echo "<div id='tabs-0' class='row' >";
+	echo	"<fieldset>"; 
      $f1 = new input(array($oid,'oid',0,'','','h'));
           $f1->field();
      $ts = new DB_tip_i('stato','ostat',$ostat,'Stato record','Attivo/sospeso'); 
@@ -156,12 +193,12 @@ echo  "</form>";
           $f4->field(); 
      $f3 = new input(array($otit_sn,'otit_sn',1,'Mostra titolo','','sn')); 
           $f3->field(); 
-
 	echo "</fieldset>";
+	echo "</div>";	
      
 // primo promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Primo promo</legend>";
+	echo "<div id='tabs-1' class='row' >";
+	echo	"<fieldset>"; 
      $f3 = new input(array($osino1,'osino1',1,'Mostra promo 1','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/',$oimg1,'oimg1','Immagine ','Immagine del promo');
@@ -172,11 +209,14 @@ echo  "</form>";
           $f5->field(); 
      $f4 = new input(array($otext1,'otext1',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext1');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
      
 // secondo promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Secondo promo</legend>"; 
+	echo "<div id='tabs-2' class='row' >";
+	echo	"<fieldset>"; 
      $f3 = new input(array($osino2,'osino2',1,'Mostra promo 2','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/',$oimg2,'oimg2','Immagine ','Immagine del promo');
@@ -187,11 +227,14 @@ echo "</fieldset>";
           $f5->field(); 
      $f4 = new input(array($otext2,'otext2',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext2');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
 
-// terzo promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Terzo promo</legend>"; 
+// terzo promo
+	echo "<div id='tabs-3' class='row' >";
+	echo	"<fieldset>"; 
      $f3 = new input(array($osino3,'osino3',1,'Mostra promo 3','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/',$oimg3,'oimg3','Immagine ','Immagine del promo');
@@ -202,11 +245,14 @@ echo "</fieldset>";
           $f5->field(); 
      $f4 = new input(array($otext3,'otext3',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
-echo "</fieldset>";
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext3');</script>"; }
+	echo "</fieldset>";
+	echo "</div>";	
      
 // quarto promo 
-	echo	"<fieldset class='col-md-8'>"; 
-	echo	"<legend>Quarto promo</legend>"; 
+	echo "<div id='tabs-4' class='row' >";
+	echo	"<fieldset>"; 
      $f3 = new input(array($osino4,'osino4',1,'Mostra promo 4','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/',$oimg4,'oimg4','Immagine ','Immagine del promo');
@@ -217,7 +263,11 @@ echo "</fieldset>";
           $f5->field(); 
      $f4 = new input(array($otext4,'otext4',50,'Testo','Testo del promo','tx')); 
           $f4->field(); 
+if (TMP::$teditor == 'ckeditor') 
+	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext4');</script>"; }
 	echo "</fieldset>";
+	echo "</div>";	
+	echo "</div>";	// tabs
      echo    "</form>";
      break;
  //==================================================================================     

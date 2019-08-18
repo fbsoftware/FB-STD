@@ -9,7 +9,6 @@
 ============================================================================= 
    *    
 ============================================================================= */
-$_SESSION['ambito'] = 'sito';			
 require_once('loadLibraries.php');
 require_once('loadTemplateSito.php');	
 require_once("connectDB.php");

@@ -110,14 +110,17 @@ case 'header':
           		$f4->field();    
                break;
 case 'footer':
-     		$f1 = new input(array('','lcod',30,'Codice','Footer','i'));
-          		$f1->field();         
+               $arg = new DB_sel_l('foo','fprog','','fcod','lcod','fstat','fcod','Codice','Modulo footer');
+          		$arg->select_label();       
                $f4 = new input(array('footer.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
                break;
 case 'contatti':
-     		$f1 = new input(array('','lcod',30,'Codice','Contatti','i'));
-          		$f1->field();         
+ //    		$f1 = new input(array('','lcod',30,'Codice','Contatti','i'));
+  //        		$f1->field(); 
+               $arg = new DB_sel_l('ctt','eprog','','ecod','lcod','estat','ecod','Codice','Modulo contatti');
+          		$arg->select_label();       
+				
                $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
                break;

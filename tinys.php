@@ -1,4 +1,4 @@
-<?php   
+<?php  
 echo " 
 <link rel='stylesheet' type='text/css' href='tinymce/jscripts/tiny_mce/themes/advanced/skins/default/ui.css'>";
 ?>
@@ -6,16 +6,12 @@ echo "
 <script type="text/javascript">
 tinyMCE.init({
         // General options
-mode :              "textareas",
-theme :             "advanced",
-<?php 
-//echo "document_base_url : '".DB::$url."',";
-echo "document_base_url : 'http://localhost/fbot-boot/',";
-?>
-        
-relative_urls :     true,
-remove_script_host: true,
-plugins :           "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+		mode :              "textareas",
+		theme :             "advanced",
+		document_base_url : 'http://localhost/FB-STD/',
+		relative_urls :     true,
+		remove_script_host: true,
+		plugins :           "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
 
         // Theme options
         theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
@@ -32,7 +28,8 @@ plugins :           "autolink,lists,spellchecker,pagebreak,style,layer,table,sav
         skin_variant : "silver",
 /*
         // Example content CSS (should be your site CSS)   */
-        content_css : "css/example.css",
+        content_css : "css/stili-custom.css",
+
 /*
         // Drop lists for link/image/media/template dialogs
         template_external_list_url : "js/template_list.js",

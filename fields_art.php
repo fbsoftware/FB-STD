@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $aid       =$row['aid'];   
 $astat     =$row['astat'];
 $aprog     =$row['aprog'];

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // zona messaggi unificati
 if(isset($_SESSION['esito'])) 

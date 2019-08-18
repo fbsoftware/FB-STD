@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $aid       =$_POST['aid'];   
 $astat     =$_POST['astat'];
 $aprog     =$_POST['aprog'];
