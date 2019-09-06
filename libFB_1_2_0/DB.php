@@ -4,7 +4,6 @@
 class DB
 {      
         public static $con  = '';         // collegamento  
-        public static $PDO  = '';         // collegamento PDO
         public static $host = '';         // *host
         public static $user = '';         // *utente
         public static $db   = '';         // *database
@@ -24,15 +23,19 @@ class DB
         public static $author = '';       // *autore
         public static $keywords = '';     // *parole chiave
         public static $lib = '';          // *libreria standard
-		
+        public static $ambiente     =  '';	// ambiente: sito,admin
 //        public $mod_ins = 0;            // progressivo per inserimento moduli
         public $max = 0;                  // nuovo inserimento
 
   
-        public function __construct()     
+        public function __construct() 
+		
           {
-          $arr = parse_ini_file ('config.ini' , true );
-
+			  $filename = "config.ini";
+			  if (file_exists($filename)) {
+			  	$arr = parse_ini_file ("config.ini" , true );}
+			 else {
+				$arr = parse_ini_file ("../config.ini" , true );}
                   self::$livello   = $arr['versione']['livello'];
                   self::$rilascio  = $arr['versione']['rilascio'];
                   self::$modify    = $arr['versione']['modify'];

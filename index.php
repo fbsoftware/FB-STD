@@ -23,10 +23,10 @@ $app->closeHead();
 
 echo "<body id='body'>";
 // parametri passati con l'url e memorizzati 
-include 'request.php';		//var_dump($_SESSION);//debug
+require_once 'request.php';		//var_dump($_SESSION);//debug
 
 //  template   
-include(TMP::$tfolder.'index.php'); 
+require_once(TMP::$tfolder.'index.php'); 
 
 echo "</body>"; 
 echo "</html>";   

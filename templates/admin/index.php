@@ -10,8 +10,8 @@
    * 1.0.0	tolto codice inserito in: set_nav.php
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
-
-require_once('loadTemplateAdmin.php');  
+require_once('../../loadLibraries.php');
+require_once('../../admin/loadTemplateAdmin.php');  
 
 echo "<body>";
 // test se richiesto login ============================
