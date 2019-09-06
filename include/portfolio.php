@@ -29,7 +29,7 @@ echo "<section id='portfolio'>";
 		
 		foreach($rows as $row)
 			{
-			include'fields_por.php';
+			include'admin/fields_por.php';
 
 //-- Elementi di portfolio -->
 			echo "<div class='portfolio-thumbnail'>";

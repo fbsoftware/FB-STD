@@ -18,12 +18,12 @@ class DB_decxdb          extends DB
              
     public function decxdb()       // decodifica del campo chiave
            { 
-           $PDO = new DB('sito'); 
-              $con = "mysql:host=".self::$host.";dbname=".self::$db."";
-              $PDO = new PDO($con,self::$user,self::$pw);
+           $PDO = new DB(); 
+              $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+              $PDO = new PDO($con,DB::$user,DB::$pw);
               $PDO->beginTransaction();
            $sql="SELECT * 
-                 FROM ".self::$pref."xdb 
+                 FROM ".DB::$pref."xdb 
                  WHERE xstat !='A' 
                     and  xtipo = '".$this->tipo."'
                     and  xcod  = '".$this->campo." '" ;

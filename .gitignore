@@ -2,3 +2,4 @@
 libFB-1.1.1
 # ignora files di test
 z-*.php
+z-upload.html

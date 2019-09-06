@@ -13,7 +13,7 @@ $count = 0;
                 ORDER BY dprog ";
      foreach($PDO->query($sql) as $row)
 		{    
-		 include 'fields_asl.php'; 
+		 include 'admin/fields_asl.php'; 
          include 'articolo.php';
          $count++;
 		}  

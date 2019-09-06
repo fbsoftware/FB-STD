@@ -9,7 +9,7 @@ echo	"<section id='artimg'>";
 				and icod = '$lcod'  
                 ORDER BY iprog ";
      foreach($PDO->query($sql) as $row)
-     {    include 'fields_aim.php';   
+     {    include 'admin/fields_aim.php';   
           echo "<div class='row'>";
           //  immagine-video a sinistra                                       
           if ($iimgpos == 'sx') 

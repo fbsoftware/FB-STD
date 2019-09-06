@@ -16,7 +16,7 @@ $PDO->beginTransaction();
 				and ocod = '$lcod' LIMIT 1 ";
           foreach($PDO->query($sql) as $row)
      	{       //print_r($row);//debug
-		include'fields_prm.php';   
+		include'admin/fields_prm.php';   
 		if ($osino1 == 1) {$count++;} 
    	 	if ($osino2 == 1) {$count++;}
    	 	if ($osino3 == 1) {$count++;}

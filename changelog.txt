@@ -2,3 +2,4 @@ CHANGELOG
 29/04/2019	FB-STD-1.0.7	
 			uso di "spl_autoload_register"
 			messaggi con classe msg
+04/09/2019	connectDB.php persistente, inclusa in loadLibraries.php
