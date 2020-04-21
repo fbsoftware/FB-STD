@@ -3,26 +3,19 @@
      $('[data-toggle="tooltip"]').tooltip();
      });
 
-// back to top 
-    $(document).ready(function(){
-     $(window).scroll(function () {
-            if ($(this).scrollTop() > 50) {
-                $('#back-to-top').fadeIn();
-            } else {
-                $('#back-to-top').fadeOut();
-            }
-        });
-        // scroll body to 0px on click
-        $('#back-to-top').click(function () {
-            $('#back-to-top').tooltip('hide');
-            $('body,html').animate({
-                scrollTop: 0
-            }, 800);
-            return false;
-        });
-        
-        $('#back-to-top').tooltip('show');
-});
+// tornasu
+    window.addEventListener ("scroll",function(){
+
+    if (window.pageYOffset>300) {
+    document.getElementById ("tornasu").style.display= "block";
+    }
+
+    else if (window.pageYOffset<300) {
+    document.getElementById ("tornasu").style.display= "none";
+    }
+
+    val[0].innerHTML= "PageYOffset = "+window.pageYOffset
+    },!1);
 
 // sfondo campi di input -->
 
