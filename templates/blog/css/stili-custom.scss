@@ -1,4 +1,5 @@
-@charset 'utf-8';
+@import "variabili";
+@charset "utf-8" ;
 /*   ELEMENTI   */
 html {
   position: relative;
@@ -9,7 +10,7 @@ body {
 	padding: 0;
 	font-size: 10pt;
 	width: 95%;
-	background-color: #fcfcfc;
+	background-color: $basic-color;
 	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-rendering: optimizeLegibility;
 }
@@ -33,7 +34,7 @@ font-size: 2em;
 color: #a52a2a;
 }
 p.text-center	{
-	background: #cacaca;
+	background: $color-gray;
 	opacity: .75;
 } 
 Pre {
@@ -51,14 +52,16 @@ color: #008000;
 hr.slim   { 		 /* HR senza margini verticali  */
  margin-bottom: 0px;
  margin-top: 0px;
- background-color: #aaaaaa;
+ background-color: $color-gray;
  height: 1px;
 }
 
 h1	{
 		margin-left:10px;
 }
-
+h4	{
+	text-align:center;
+}
 /* LINK */
 a {
 text-decoration: none  !important
@@ -79,11 +82,12 @@ color: Navy;
 a:hover {
 color: Red;
 }
+
 /*  form  */
 .form-control {   /* Stile per modificare e sovrascrivere l'aspetto degli input di Bootstrap */
   height: 32px;
   padding: 6px 12px;
-  color: #333333;
+  color: $color-darkgrey;
   border-radius: 0;
 }
 
@@ -133,15 +137,15 @@ border: 0;
 }
 /*   FIELDSET   */
 fieldset {
-	background: #F5F5F5;
-	border: 1px solid #E3E3E3;
+	background: $basic-color;
+	border: 1px solid $color-gray;
 	border-radius: 4px;
 	padding: 5px;
 	margin-bottom: 5px;
 }
 fieldset.toolbar  {
-     background: #F5F5F5;
-     border: 1px solid #E3E3E3;
+     background: $basic-color;
+     border: 1px solid $color-gray;
      border-radius: 4px;
      padding: 5px;
      margin-top: 5px;
@@ -155,7 +159,7 @@ border-radius: 0;
 }
 
 fieldset.tabella {
-border: 1px solid #aaaaaa;
+border: 1px solid $color-gray;
 margin: 0;
 padding: 10px;
 border-radius: 7px;
@@ -209,7 +213,16 @@ img.login {
 form	{
   margin-block-end: 0em !important;	
 }
+input {
+color: blue;
+border: 1px solid $color-gray;
+}
 
+input.req {
+color: blue;
+background: #ffffff;
+border: 1px solid #ff0000;
+}
 input.titolo {
 	background: inherit;
 	color: blue;
@@ -230,8 +243,8 @@ input.nobord {
 }
 
 button {
-background: #dddddd;
-border: 1px solid #aaaaaa;
+background: $color-gray;
+border: 1px solid $color-gray;
 }
 
     /* TABELLA */
@@ -254,11 +267,15 @@ th, td {
 	}
 	
 th     { 
-	background:#eee; 
+	background:$basic-color; 
 	}
 
 td.center {
 	text-align: center;
+}
+
+tr td:last-child	{
+border-right: 1px solid $color-gray;
 }
 /* Footer */
 
@@ -282,7 +299,7 @@ background-image: -ms-linear-gradient(top,#b8e4ff ,#2e94c0 );
 font-size: 200%;
 font-weight: bolder;
 color: #ffffff;
-border: 1px solid #aaaaaa;
+border: 1px solid $color-gray;
 border-radius: 7px 7px 0 0;
 }
 
@@ -291,9 +308,9 @@ float: left;
 width: 100%;
 margin: 0;
 padding: 0;
-background-color: #dcdcdc;
-border-left: 1px solid #aaaaaa;
-border-right: 1px solid #aaaaaa;
+background-color: $color-gray;
+border-left: 1px solid $color-gray;
+border-right: 1px solid $color-gray;
 }
 
 article {
@@ -322,9 +339,9 @@ color: #000;
 div.widget {
 	float: left;
 	margin: 20px;
-	border: 2px solid #AAAAAA;
+	border: 2px solid $color-gray;
 	border-radius: 5px;
-	background: #CCCCCC;
+	background: $color-gray;
      width: 100%;
 }
 div.widget:hover {
@@ -332,7 +349,7 @@ div.widget:hover {
 	border-bottom-right-radius: 70% 25px;
      transition-property: border-bottom-right-radius;
      transition-duration: .5s;
-     background: #CCCCCC;
+     background: $color-gray;
 }
 div.primary {
   background:    linear-gradient(rgba( 51, 122, 183, 1),rgba(191, 225, 252, 0.45))
@@ -343,7 +360,7 @@ div.fb-container-sleek {
 	margin: 0px;
 }  
 div.footer {
-	background: #CCCCCC;
+	background: $color-gray;
 	;
 	display: block;
 	width: 100%;
@@ -351,9 +368,9 @@ div.footer {
 	margin-bottom: 20px;
 	font-size: 21px;
 	line-height: inherit;
-	color: #333;
+	color: $color-darkgrey;
 	border: 0;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid $color-gray;
 }
 
  div.success {
@@ -378,11 +395,29 @@ div.danger {
  div.basic {
 	background:    linear-gradient(rgba( 160,160,160, 1), rgba(160,160,160,  0.2));
 }
- 
+/* colore */
+.danger    {
+     color:#c9302c;
+}
+.primary    {
+     color:#337ab7;
+}
+.success    {
+     color:#5cb85c;
+}
+.info    {
+     color:#46b8da;
+}
+.warning    {
+     color:#ec971f;
+}
+.default    {
+     color:#ffffff;
+} 
 /* Stili per sovrascrivere e modificare il componente Accordion/collapse di Bootstrap */
 
 .panel {
-  border: 1px solid #dddddd;
+  border: 1px solid $color-gray;
   border-radius: 0;
 }
 
@@ -406,15 +441,15 @@ div.danger {
 
 .panel-default > .panel-heading {
   background-color: #5cb85c;
-  border-color: #dddddd;
+  border-color: $color-gray;
 }
 
 .panel-default > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #dddddd;
+  border-top-color: $color-gray;
 }
 
 .panel-default > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #dddddd;
+  border-bottom-color: $color-gray;
 }
 /* Pannelli dell'accordion basati sui panel di Bootstrap */
 
@@ -423,7 +458,7 @@ div.danger {
   margin-top: 15px;
   margin-bottom: 20px;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  border: 1px solid $color-gray;
   border-radius: 0;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -431,16 +466,17 @@ div.danger {
 .panel-carousel-heading {
   margin: -15px -15px 15px;
   padding: 10px 15px;
+
   font-size: 17.5px;
   font-weight: 500;
   color: #fff;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid $color-gray;
 }
 .panel-carousel-footer {
   margin: 15px -15px -15px;
   padding: 10px 15px;
   background-color: #ecf7ff;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid $color-gray;
 }
 
 .panel-carousel-control {
@@ -587,13 +623,13 @@ a[data-toggle="tooltip"] {
 	background: url(images/logo/logo.png) center bottom no-repeat;
 }
 .navbar-default {
-	background-color: #fcfcfc;
+	background-color: $basic-color;
 }
 .navbar-default .navbar-nav > li > a {
 	font-size: 14px;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #333333;
+	color: $color-darkgrey;
 	border-bottom: 1px solid #357ebd;
 }
 .navbar-default .navbar-nav > li > a:hover,                                              
@@ -632,12 +668,12 @@ a[data-toggle="tooltip"] {
 .navbar-default .navbar-nav > .open > a .caret,                                     
 .navbar-default .navbar-nav > .open > a:hover .caret,                                    
 .navbar-default .navbar-nav > .open > a:focus .caret {
-	border-top-color: #333;
-	border-bottom-color: #333;
+	border-top-color: $color-darkgrey;
+	border-bottom-color: $color-darkgrey;
 }
 .navbar-default .navbar-nav > .dropdown > a .caret {
-	border-top-color: #333;
-	border-bottom-color: #333;
+	border-top-color: $color-darkgrey;
+	border-bottom-color: $color-darkgrey;
 }
 /*   gruppo   */
 @media screen and (min-width: 768px) {
@@ -654,7 +690,7 @@ a[data-toggle="tooltip"] {
 /* Stili per sovrascrivere e modificare i bottoni standard di Bootstrap */
 
 .btn {
-  border: 01px solid #bbbbbb;
+  border: 01px solid $color-gray;
   border-radius: 4px;
   padding: 6px;
   margin: 4px;
@@ -743,7 +779,7 @@ ul.liv2>li>a {
 	color: white;
 	border-right: 0px;
 	font-weight: bold;
-	background: #444444;
+	background: $color-darkgrey;
 }
 .dropdown-menu {
 	padding: 0 0;
@@ -753,7 +789,7 @@ ul.liv2>li>a {
 }
 .dropdown-menu > li > a {
 	padding: 7px 10px;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid $color-gray;
 }
 
 /* colore-sfondo template */
@@ -783,14 +819,14 @@ ul.liv2>li>a {
 	color: #000000 !important;
 }
 .fb-bgcolor-basic {
-	background-color: #f5f5f5 !important;
+	background-color: $basic-color !important;
 	color: #000000 !important;
 }
 
 
 /* colore template */
 .fb-color-danger {
-	color: #a94442 !important; 
+	color: #c9302c !important; 
 }
 .fb-color-primary {
 	color: #357ebd !important;
@@ -799,7 +835,7 @@ ul.liv2>li>a {
 	color: #ffffff !important;
 }
 .fb-color-basic {
-	color: #f5f5f5 !important;
+	color: $basic-color !important;
 }
 
 
@@ -811,10 +847,10 @@ ul.liv2>li>a {
      height: 55px;
      position: fixed;
      display: block;
-     background-color: #cacaca;
+     background-color: $color-gray;
      padding: 10px 0 0 13px;
      border:1px solid #337eb7;
-     border-radius:4px ;
+     border-radius:50%;
 }
 .back-to-top {
     cursor: pointer;
@@ -823,7 +859,15 @@ ul.liv2>li>a {
     right: 20px;
     display:none;
 }
+.glyphicon-tondo	{
+	top: 8px;
+	left: 4px;
+}
 
+.fa-glyph-center 	{
+	display:block!important; 
+	text-align:center;
+}
 /*       FONT-SIZE           */
 .fb-fs1 {
 	font-size: 1em !important;
@@ -889,48 +933,51 @@ ul.liv2>li>a {
 .lime {
 	color: #00FF00;
 }
+.transparent{
+		background-color: transparent;
+}
 /* --------------------------------------------- */
 /*  GRIGLIE                                      */
 /* --------------------------------------------- */
 
 .grid1	{
     display: grid;
-	grid-template-rows; 300px;
+	grid-template-rows: flex;
     grid-template-areas:
     "promo1";
 	}	
 
 .grid2	{
     display: grid;
-		grid-template-rows; 300px;
+		grid-template-rows: flex;
     grid-template-areas:
     "promo1 promo2";
 	}
 	
 .grid3	{
     display: grid;
-	grid-template-rows; 300px;
+	grid-template-rows: flex;
     grid-template-areas:
     "promo1 promo2 promo3";
 	}	
 
 .grid4	{
     display: grid;
-		grid-template-rows; 300px;
+		grid-template-rows: flex;
     grid-template-areas:
     "promo1 promo2 promo3 promo4";
 	}	
 
 .grid5	{
     display: grid;
-		grid-template-rows; 300px;
+		grid-template-rows: flex;
     grid-template-areas:
     "promo1 promo2 promo3 promo4 promo5";
 	}	
 	
 .grid6	{
     display: grid;
-		grid-template-rows; 300px;
+		grid-template-rows: flex;
     grid-template-areas:
     "promo1 promo2 promo3 promo4 promo5 promo6";
 	}
@@ -971,14 +1018,85 @@ ul.liv2>li>a {
 .gutter		{	
 	gap:0px;
 }
+.well {
+     margin-top: 10px;
+}
+.container {
+  width: auto;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+.space-after  {
+     margin-top: 5px;
+}
+.space-before  {
+     margin-bottom: 5px;
+}
+/*       BORDO           */
 
+.bordato {
+	border: 1px solid;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #99ff99;
+}
+
+.row-center {
+	margin: 0 auto;
+}
+
+.no-padd {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+.text-big {
+	font-size: 36px;
+	-webkit-margin-sfter: 0px !important;
+	-webkit-margin-before: 0px !important;
+}
+/* autocomplete scrollabile */
+.ui-autocomplete {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal scrollbar */
+  }
+h1.toolbar	{
+font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:18pt;	
+font-weight: bold;
+margin-top: 10px;
+}
+
+/*  CLASSI  */
+.little {
+font-size: 50%;
+}
+
+.center {
+text-align: center;
+}
+.marchio {
+height: 50px;
+margin: 7.5px;
+float: left;
+}
+.alert    {		/*  alert senza margini  */
+margin-bottom: 0px !important;
+}
+.toolbar-color{
+	background:#AEDEFA;
+	margin: 0;
+}
 /*   ID   */
 #footer-copy {
  padding: 10px 0 0 0;
  border-top: 1px solid #fff;
 }
 #footer {
-	height: 200px;
+/*	height: 200px;  */
 }
 #wrapp {
 	height: 0;
@@ -997,30 +1115,14 @@ ul.liv2>li>a {
 	width: 100%;
 }
 
-#back-to-top {
-	cursor: pointer;
-	position: fixed;
-	bottom: 20px;
-	left: 20px;
-	display: none;
-}
+/* bottone go-to-top */
 
-#myBtn {
-	display: none;
+	#tornasu{
 	position: fixed;
-	bottom: 20px;
-	right: 30px;
-	z-index: 99;
-	font-size: 18px;
-	border: none;
-	outline: none;
-	background-color: red;
-	color: white;
-	cursor: pointer;
-	padding: 15px;
-	border-radius: 4px;
-}
-#myBtn:hover {
-	background-color: #555;
-}
- 
+	bottom: 0px;
+	right: 0px;
+	display: none;
+	padding:10px;
+	}
+
+

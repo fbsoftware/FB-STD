@@ -4,17 +4,16 @@ $count = 0;
      echo "<div class='row'>";
 //   cerca nel layout gli articoli che posiziona in righe 
 //   secondo le dimensioni delle colonne.
+
         $sql = "SELECT *
-                FROM `".DB::$pref."asl`
-                WHERE dtmp = '".TMP::$tcod."'
-                    and dtipo = 'article'
-                    and dcod = '$lcod'
-                    and dstat <> 'A' 
-                ORDER BY dprog ";
+                FROM `".DB::$pref."art`
+                WHERE atit = '$lcod'
+                    and astat <> 'A' 
+                ORDER BY aprog ";
      foreach($PDO->query($sql) as $row)
 		{    
-		 include 'admin/fields_asl.php'; 
-         include 'articolo.php';
+		 $atit      =$row['atit'];
+         require 'articolo.php';
          $count++;
 		}  
 	echo "</div>";

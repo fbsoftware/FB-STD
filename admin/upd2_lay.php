@@ -65,11 +65,16 @@ case 'artacc':
                $f4 = new input(array('artacc.php','linclude',50,'Programma','Programma da includere','r'));   
           		$f4->field();    
 			break;
-case 'artsingle':
-case 'article':
-               $arg = new DB_sel_l('asl','dprog','','dcod','lcod','dstat','dcod','Codice','Articolo semplice');
+case 'artsingle':  // da verificare, altrimenti usare -article-
+               $arg = new DB_sel_l('art','aprog','','atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
           		$arg->select_label();       
                $f4 = new input(array('artsingle.php','linclude',50,'Programma','Programma da includere','r'));           
+          		$f4->field();    
+			break;
+case 'article':
+               $arg = new DB_sel_l('art','aprog','','atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
+          		$arg->select_label();       
+               $f4 = new input(array('article.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
 case 'artimg':

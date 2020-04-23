@@ -28,11 +28,11 @@
 		   if ($glink > '') 
 				{
 				echo	"<a href='".$glink."' target='_new'>";
-				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-border'></i></a>";
+				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-border 				fa-glyph-center'></i></a>";
 				}
 			else 
 				{
-				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-border'></i></a>";
+				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-border fa-glyph-center'></i></a>";
    				} 
 			//echo	"</div>"; 
 			

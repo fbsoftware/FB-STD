@@ -95,8 +95,11 @@ case 'arttab':
           		$arg->select_label();       
 			break;
 case 'artsingle':
-case 'article':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo semplice');
+          		$arg->select_label();       
+			break;
+case 'article':
+               $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
           		$arg->select_label();       
 			break;
 case 'artimg':

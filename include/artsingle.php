@@ -2,7 +2,7 @@
 echo	"<section id='artsingle'>";
 $count = 0; 
 // cerca nel layout gli articoli singoli
-       $sql = "SELECT *
+echo       $sql = "SELECT *
                 FROM `".DB::$pref."ars`
                 WHERE itmp = '".TMP::$tcod."'
                     and istat <> 'A' 
