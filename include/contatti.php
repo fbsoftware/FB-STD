@@ -52,8 +52,8 @@ $head	= new section_head(TMP::$tcttitle,TMP::$tcttit,TMP::$tcttext,TMP::$tcolor)
                     <input name="addendo1" type="text" id="addendo1" size="1" readonly="" value="1"> +   
                     <input name="addendo2" type="text" id="addendo2" size="1" readonly="" value="1"> =
                     <input name="risultato" type="text" id="risultato" size="2"> 
-                    <label class="wide" id="risultato-label" for="risultato">Inserisci il risultato (*) </label>
-                  <br />"(*) Per dimostrare che sei un umano."
+                    <label class="wide" id="risultato-label" for="risultato">Inserisci il risultato 
+                  <br />Per dimostrare che sei un umano.</label>
                 </div>
            </div>  
      
