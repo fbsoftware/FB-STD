@@ -1,0 +1,101 @@
+/*     C O L O R I           */
+
+.blue {
+	color: $blue-color;
+}
+
+.black {
+	color: $black-color;
+}
+.white {
+	color: $white-color;
+}
+.transparent{
+		background-color: transparent;
+}
+.danger    {
+     color:$danger-color;
+}
+.primary    {
+     color:$primary-color;
+}
+.success    {
+     color:$success-color;
+}
+.info    {
+     color:$info-color;
+}
+.warning    {
+     color:$warning-color;
+}
+.default    {
+     color:$white-color;
+} 
+ div.success {
+	background:    linear-gradient(rgba( 92,184,92, 1), rgba(92,184,92, 0.2));
+}
+
+div.danger {
+	background:    linear-gradient(rgba( 201,48,44, 1), rgba(201,48,44, 0.2));
+}
+ 
+ div.info {
+	background:    linear-gradient(rgba( 70,184,218, 1), rgba(70,184,218, 0.2));
+}
+ 
+ div.warning {
+	background:    linear-gradient(rgba( 236,151,31, 1), rgba(236,151,31, 0.2));
+}
+ 
+ div.default {
+	background:    linear-gradient(rgba( 118,118,118, 1), rgba(118,118,118, 0.2));
+}
+ div.basic {
+	background:    linear-gradient(rgba( 160,160,160, 1), rgba(160,160,160,  0.2));
+}
+/* colore-sfondo template */
+.fb-bgcolor-danger {
+	background-color: $danger-color !important;
+	color: $white-color !important;
+}
+.fb-bgcolor-primary {
+	background-color: $primary-color !important;
+	color: $white-color !important;
+}
+.fb-bgcolor-success {
+	background-color: $success-color !important;
+	color: $white-color !important;
+}
+
+.fb-bgcolor-info {
+	background-color: $info-color !important;
+	color: $white-color !important;
+}
+.fb-bgcolor-warning {
+	background-color: $warning-color !important;
+	color: $white-color !important;
+}
+.fb-bgcolor-default {
+	background-color: $white-color !important;
+	color: $black-color !important;
+}
+.fb-bgcolor-basic {
+	background-color: $lightgrey-color !important;
+	color: $black-color !important;
+}
+
+
+/* colore template */
+.fb-color-danger {
+	color: $danger-color !important; 
+}
+.fb-color-primary {
+	color: $primary-color !important;
+}
+.fb-color-default {
+	color: $white-color !important;
+}
+.fb-color-basic {
+	color: $lightgrey-color !important;
+}
+

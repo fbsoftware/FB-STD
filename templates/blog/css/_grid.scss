@@ -1,0 +1,49 @@
+/* --------------------------------------------- */
+/*  GRIGLIE                                      */
+/* --------------------------------------------- */
+
+.grid1	{
+    display: grid;
+	grid-template-rows: flex;
+    grid-template-areas:
+    "promo1";
+	}	
+
+.grid2	{
+    display: grid;
+		grid-template-rows: flex;
+    grid-template-areas:
+    "promo1 promo2";
+	}
+	
+.grid3	{
+    display: grid;
+	grid-template-rows: flex;
+    grid-template-areas:
+    "promo1 promo2 promo3";
+	}	
+
+.grid4	{
+    display: grid;
+		grid-template-rows: flex;
+    grid-template-areas:
+    "promo1 promo2 promo3 promo4";
+	}	
+
+.grid5	{
+    display: grid;
+		grid-template-rows: flex;
+    grid-template-areas:
+    "promo1 promo2 promo3 promo4 promo5";
+	}	
+	
+.grid6	{
+    display: grid;
+		grid-template-rows: flex;
+    grid-template-areas:
+    "promo1 promo2 promo3 promo4 promo5 promo6";
+	}
+	
+.gutter		{	
+	gap:0px;
+}

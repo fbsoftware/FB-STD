@@ -21,6 +21,7 @@
           {     
           $dcap     =    $rowx['dcap'];
           $ddes     =    $rowx['ddes'];
+
 // lettura articoli della categoria
            $titolo = array();
            $testo  = array();
@@ -30,10 +31,10 @@
                     and astat <> 'A' 
                 ORDER BY aprog ";
            foreach($PDO->query($sql) as $row)
-          {     
-          array_push($testo ,$row['atext']);
-          array_push($titolo,$row['atit']);
-          }
+			{     
+			array_push($testo ,$row['atext']);
+			array_push($titolo,$row['atit']);
+			}
 		  }
 // conto gli articoli del capitolo
 $count = count($testo);         
@@ -45,9 +46,8 @@ if ($count != 0)
 	$head = new section_head(TMP::$taccotitle,TMP::$taccotit,TMP::$taccotext,TMP::$tcolor);
 		$head->head();
 
-echo "<div id='accordion'>";
-
 // lettura articoli
+echo "<div id='accordion'>";
 for ($i = 0; $i < $count; ++$i) 
 		{
 		echo "<h3>";

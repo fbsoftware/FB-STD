@@ -1,0 +1,348 @@
+@charset "utf-8" ;
+@import "variabili";
+
+@import "colors";
+@import "forms";
+@import "link";
+@import "fieldset";
+@import "tabella";
+@import "img";
+@import "accordion";
+@import "tooltip";
+@import "navbar";
+@import "ul-nav2-liv2";
+@import "totop";
+@import "grid";
+@import "colonne";
+@import "font-size";
+
+/*   ELEMENTI HTML  */
+html {
+	
+  min-height: 100%;
+}
+body {
+	margin: 10px auto;
+	padding: 0;
+	font-size: 10pt;
+	width: 95%;
+	background-color: $lightgrey-color;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-rendering: optimizeLegibility;
+}
+/* Stile per modificare e sovrascrivere i blockquote di Bootstrap */
+blockquote {
+ border-left: 5px solid $primary-color;
+}
+
+p {
+margin: 0;
+padding: 0.5em 1em;
+text-align: left;
+color: $black-color;
+}
+
+.p:first-letter {
+float: left;
+padding-right: 0.1em;
+line-height: 0.5em;
+font-size: 2em;
+color: $success-color;
+}
+p.text-center	{
+	background: $grey-color;
+	opacity: .75;
+} 
+Pre {
+color: $black-color;
+line-height: 1.2em;
+margin: 0 0 5px 0;
+font-size:14pt;
+}
+
+
+hr {
+color: $black-color;
+}
+
+hr.slim   { 		 /* HR senza margini verticali  */
+ margin-bottom: 0px;
+ margin-top: 0px;
+ background-color: $grey-color;
+ height: 1px;
+}
+
+h1	{
+		margin-left:10px;
+}
+
+h4	{
+	text-align:center;
+}
+
+span.right {
+float: right;
+}
+iframe {
+border: 0;
+}
+
+footer {
+background-color: $white-color;
+ padding: 10px;
+}
+
+footer a, footer a:hover {
+	color: $success-color;
+}
+header {
+float: left;
+width: 100%;
+margin: 0;
+height: 65px;
+background-image: linear-gradient(top,$info-color ,darken($info-color,35%) );
+background-image: -moz-linear-gradient(top,$info-color ,darken($info-color,35%) );
+background-image: -webkit-linear-gradient(top,$info-color ,darken($info-color,35%) );
+background-image: -ms-linear-gradient(top,$info-color ,darken($info-color,35%) );
+font-size: 200%;
+font-weight: bolder;
+color: $white-color;
+border: 1px solid $grey-color;
+border-radius: 7px 7px 0 0;
+}
+
+nav {
+float: left;
+width: 100%;
+margin: 0;
+padding: 0;
+background-color: $grey-color;
+border-left: 1px solid $grey-color;
+border-right: 1px solid $grey-color;
+}
+
+article {
+float: left;
+width: 100%;
+color: $black-color;
+background: transparent;
+}
+
+aside.left {
+float: left;
+width: 0%;
+background: transparent;
+color: $black-color;
+}
+
+aside.right {
+float: left;
+width: 0%;
+background: transparent;
+color: $black-color;
+}
+
+
+/*   CLASSI DIV   */
+div.widget {
+	float: left;
+	margin: 20px;
+	border: 2px solid $grey-color;
+	border-radius: 5px;
+	background: $grey-color;
+     width: 100%;
+}
+div.widget:hover {
+  	box-shadow: 3px 5px 10px rgba(0,0,0,0.75);       
+	border-bottom-right-radius: 70% 25px;
+     transition-property: border-bottom-right-radius;
+     transition-duration: .5s;
+     background: $grey-color;
+}
+div.primary {
+  background:    linear-gradient(rgba( 51, 122, 183, 1),rgba(191, 225, 252, 0.45))
+    } 
+ 
+div.fb-container-sleek {
+	padding: 0px;
+	margin: 0px;
+}  
+div.footer {
+	background: $grey-color;
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 20px;
+	font-size: 21px;
+	line-height: inherit;
+	color: $darkgrey-color;
+	border: 0;
+	border-bottom: 1px solid $grey-color;
+}
+
+/* Stili per sovrascrivere e modificare i bottoni standard di Bootstrap */
+
+.btn {
+  border: 01px solid $grey-color;
+  border-radius: 4px;
+  padding: 6px;
+  margin: 4px;
+  font-size: 14pt;
+}
+.btn:focus {
+  outline: 0;
+}
+.btn-round-bottom {
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+
+.dropdown-menu {
+	padding: 0 0;
+	border-radius: 0;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.175);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.175);
+}
+.dropdown-menu > li > a {
+	padding: 7px 10px;
+	border-bottom: 1px solid $grey-color;
+}
+
+.glyphicon-tondo	{
+	top: 8px;
+	left: 4px;
+}
+
+.fa-glyph-center 	{
+	display:block!important; 
+	text-align:center;
+}
+
+/*       RAGGIO           */
+
+.fb-rad0 {
+	border-radius: 0px;
+}
+.fb-rad2 {
+	border-radius: 2px;
+}
+.fb-rad5 {
+	border-radius: 5px;
+}
+.fb-rad7 {
+	border-radius: 7px;
+}
+.fb-rad50 {
+	border-radius: 50%;
+}
+
+
+/* --------------------------------------------- */
+
+.well {
+     margin-top: 10px;
+}
+.container {
+  width: auto;
+  padding: 0 15px;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+.space-after  {
+     margin-top: 5px;
+}
+.space-before  {
+     margin-bottom: 5px;
+}
+/*       BORDO           */
+
+.bordato {
+	border: 1px solid;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: $success-color;
+}
+
+.row-center {
+	margin: 0 auto;
+}
+
+.no-padd {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+
+/* autocomplete scrollabile */
+.ui-autocomplete {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden; /* prevent horizontal scrollbar */
+  }
+
+
+/*  CLASSI  */
+.little {
+font-size: 50%;
+}
+
+.center {
+text-align: center;
+}
+.marchio {
+height: 50px;
+margin: 7.5px;
+float: left;
+}
+.alert    {		/*  alert senza margini  */
+margin-bottom: 0px !important;
+}
+.toolbar-color{
+	background:$info-color;
+	margin: 0;
+}
+h1.toolbar	{
+font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:18pt;	
+font-weight: bold;
+margin-top: 10px;
+}
+
+/*   ID   */
+#footer-copy {
+ padding: 10px 0 0 0;
+ border-top: 1px solid $white-color;
+}
+#footer {
+/*	height: 200px;  */
+}
+#wrapp {
+	height: 0;
+	margin-bottom: 16px;
+	margin-left: 30px;
+	overflow: hidden;
+	padding-bottom: 67.5%;
+	padding-top: 25px;
+	position: relative;
+}
+#player {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+/* bottone go-to-top */
+
+	#tornasu{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	display: none;
+	padding:10px;
+	}
+
+

@@ -55,6 +55,14 @@ foreach($PDO->query($sql) as $row)
 				include'include/article.php';
 				}
             	break;
+
+            case 'artsingle':
+				if (file_exists('include/artsingle.php')) 
+				{	
+				include'include/article.php';
+				}
+            	break;
+               
                
             case 'artslide':
 				if (file_exists('include/artslide.php')) 

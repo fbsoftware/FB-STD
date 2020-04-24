@@ -17,9 +17,26 @@ $nav	= new setNav(TMP::$ambiente);
 echo	"<body>";
 //-- CONTENUTO DELLA PAGINA ...
 echo	"<div class='container-fluid well'>";
+echo	"<a name='inizio'></a>";
 include 'layout.php';  
 include 'goBack.php';  
 echo	"</div>";
+?>
+<script type="text/javascript">
+    window.addEventListener ("scroll",function(){
+
+    if (window.pageYOffset>300) {
+    document.getElementById ("tornasu").style.display= "block";
+    }
+
+    else if (window.pageYOffset<300) {
+    document.getElementById ("tornasu").style.display= "none";
+    }
+
+    val[0].innerHTML= "PageYOffset = "+window.pageYOffset
+    },!1);
+</script>
+<?php
 echo	"</body>";
 echo	"</html>";
 ?>

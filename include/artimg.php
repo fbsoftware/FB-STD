@@ -1,7 +1,7 @@
 <?php
 echo	"<section id='artimg'>";
 
-// cerca nel layout gli articoli con immagine
+// cerca gli articoli con immagine
        $sql = "SELECT *
                 FROM `".DB::$pref."aim`
                 WHERE itmp = '".TMP::$tcod."'
@@ -9,9 +9,15 @@ echo	"<section id='artimg'>";
 				and icod = '$lcod'  
                 ORDER BY iprog ";
      foreach($PDO->query($sql) as $row)
-     {    include 'admin/fields_aim.php';   
-          echo "<div class='row'>";
+     {    require 'admin/fields_aim.php'; 
+	 
+		// ampiezza colonne
+		$num_colart	=	$iartcol;
+		$num_colvid	=	$iimgcol;
+		$titolo_art =   $iart;
+
           //  immagine-video a sinistra                                       
+          echo "<div class='row'>";
           if ($iimgpos == 'sx') 
           {
                if ($itipo == 'img') 
@@ -28,11 +34,12 @@ echo	"<section id='artimg'>";
 			$modal	= new dialogo_modale($target,$iimgtit,$iimg,"",$iimgalt);
 				$modal->dialog();
                }
-               elseif ($itipo == 'video')
+               
+			   elseif ($itipo == 'video')
                {
-               include 'video.php';               	
+                require 'video.php';               	
                }
-				include 'art-img.php';
+				require 'art-img.php';
 			    $count++;
 
           }
@@ -40,7 +47,7 @@ echo	"<section id='artimg'>";
           //  immagine-video a destra
           elseif ($iimgpos == 'dx') 
           {
-          include 'art-img.php';
+          require 'art-img.php';
                if ($itipo == 'img') 
                {  ?>
                <div class="<?php echo $iimgcol; ?>">
@@ -59,7 +66,7 @@ echo	"<section id='artimg'>";
                // video
                elseif ($itipo == 'video')
                {
-               include 'video.php';               	
+               require 'video.php';               	
                }
 				$count++;
 		  }
