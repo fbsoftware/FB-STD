@@ -47,26 +47,25 @@ $head	= new section_head(TMP::$tcttitle,TMP::$tcttit,TMP::$tcttext,TMP::$tcolor)
 			  </div>
 <!-- ================================================================================= -->
  <div class="row">                  
-            <div class="col-xs-4 col-sm-4">
+            <div class="col-xs-3 col-sm-3">
             	<div id="risultato-block" class="form-group">  
                     <input name="addendo1" type="text" id="addendo1" size="1" readonly="" value="1"> +   
                     <input name="addendo2" type="text" id="addendo2" size="1" readonly="" value="1"> =
                     <input name="risultato" type="text" id="risultato" size="2"> 
-                    <label class="control-label" id="risultato-label" for="risultato">Inserisci il risultato (*) </label>
-                  <p>(*) Per dimostrare che sei un umano.</p>
+                    <label class="wide" id="risultato-label" for="risultato">Inserisci il risultato (*) </label>
+                  <br />"(*) Per dimostrare che sei un umano."
                 </div>
            </div>  
      
-            <div class="col-xs-4 col-sm-4 text-center">    
+            <div class="col-xs-3 col-sm-3 text-center">    
                     <button id="submitButton" type="submit" style="min-width:200px" 
 				class="btn-<?php echo TMP::$tcolor; ?> btn-lg">Invia</button>
             </div>
                     
-             <div class="col-xs-4 col-sm-4">  
+             <div class="col-xs-6 col-sm-6">  
                   <div id="privacy-block" class="checkbox form-group">
-                    <label class="control-label" for="privacy" id="privacy-label">
-                      <input type="checkbox" name="privacy" id="privacy">Acconsento</label>
-               <br /><p>Al trattamento dei miei dati personali in base alle normative attualmente vigenti. <br></p>         
+                    <label class="wide" for="privacy" id="privacy-label">
+                      <input type="checkbox" name="privacy" id="privacy">Acconsento al trattamento dei miei dati personali in base alle normative attualmente vigenti. </label>         
                  </div>
             </div> 
  		</div>     <!-- row --> 
