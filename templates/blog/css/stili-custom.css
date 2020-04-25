@@ -539,7 +539,7 @@ a[data-toggle="tooltip"] {
 
   .navbar-default .navbar-nav > li > a:hover,
   .navbar-default .navbar-nav > li > a:focus {
-    border-top: 2px solid #428bca;
+    border: 2px solid #428bca;
     padding-top: 13px; } }
 /*       UL-NAV2           */
 ul.nav2 {
