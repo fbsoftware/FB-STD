@@ -4,7 +4,7 @@ ul.nav2 {
 	float: left;
 	margin: 0;
 	padding: 0;
-	background: gainsboro;
+	background: $lightgrey-color;
 	list-style: none;
 	font: 1.2em Verdana;
 	font-weight: bold;
@@ -38,8 +38,8 @@ ul.nav2 a:visited {
 ul.nav2 a:hover,                                                                          
 ul.nav2 a:focus,                                                                        
 ul.nav2 a:active {
-	background-color: gainsboro;
-	color: deeppink;
+	background-color: $lightgrey-color;
+	color: $danger-color;
 	text-decoration: none;
 }
 ul.nav2 li:hover ul.liv2 {
@@ -49,7 +49,7 @@ ul.nav2 li:hover ul.liv2 {
 	width: 13%;
 	padding: 0;
 	margin: 0;
-	background: gainsboro;
+	background: $lightgrey-color;
 }
 
 /*       UL-LIV2           */
@@ -61,7 +61,7 @@ ul.liv2 {
 	width: 13%;
 	padding: 0;
 	margin: 0;
-	background: gainsboro;
+	background: $lightgrey-color;
 }
 ul.liv2 li {
 	list-style: none;
@@ -70,7 +70,7 @@ ul.liv2 li {
 	width: 100%;
 }
 ul.liv2>li>a {
-	color: white;
+	color: $white-color;
 	border-right: 0px;
 	font-weight: bold;
 	background: $darkgrey-color;
