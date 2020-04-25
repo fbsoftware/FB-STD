@@ -7,7 +7,10 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */  
- 
+require_once('../loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('../lingua.php');
+
 //   bottoni gestione
 	$param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
 	$btx   = new bottoni_str_par($UTES,'ute','upd_ute.php',$param);     
@@ -20,8 +23,9 @@
 require_once 'msg.php';
 
 //   testate
+echo "<section id='table'>"; 
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
+echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<th style='width:2%;'>Scelta</th>";
 echo "<th style='width:2%;'>Stato</th>";
@@ -29,7 +33,7 @@ echo "<th style='width:2%;'>Progressivo</th>";
 echo "<th>Utente</th>";
 echo "<th>Livello accesso</th>";
 echo "<th>Numero utente</th>";
- 
+echo "</thead>";  
 // transazione
      $sql = "SELECT * FROM `".DB::$pref."ute`
           ORDER BY username";
@@ -47,9 +51,10 @@ echo "<th>Numero utente</th>";
      <td><?php echo $uaccesso ?></td>
      <td><?php echo $uiscritto ?></td> 
 <?php              
-     echo "<tr>";
+     echo "</tr>";
      }
      echo "</table>"; 
 	echo "</div>";
+	echo "</section>";
 	echo "</form>";
 ?>

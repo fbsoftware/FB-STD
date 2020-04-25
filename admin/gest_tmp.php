@@ -9,7 +9,9 @@
    * -------------------------------------------------------------------------
    * Gestione dei templates      
 ============================================================================= */
-     
+require_once('../loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('../lingua.php');     
 //   bottoni gestione
 $btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
@@ -21,8 +23,9 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php'; 
 
 //  testata di tabella 
+echo "<section id='table'>"; 
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-bordered table-condensed'>";
+echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<tr>";
 echo "<th style='width:2%;'>Scelta</th>";
@@ -38,7 +41,6 @@ echo "<th>Lingua</th>";
 echo "</tr>";
 echo "</thead>";
 
-echo "<tbody>";
 // mostra la tabella  --------------------------------------------------
      $sql = "  SELECT * 
                FROM `".DB::$pref."tmp` 
@@ -72,8 +74,8 @@ echo "<tbody>";
 <?php
      echo "</tr>";
           }
-     echo "</tbody>";
-     echo "</table>";
-     echo "</form>";
-     echo "</div>";     
+     echo "</table>"; 
+	echo "</div>";
+	echo "</section>";
+	echo "</form>";    
 ?> 

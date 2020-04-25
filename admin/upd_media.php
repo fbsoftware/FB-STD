@@ -11,43 +11,32 @@
    *==========================================================================*/
 require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('../lingua.php');
+
 $azione  = $_POST['submit'];
 $img_del = $_POST['img_del'];
-//print_r($_POST);//debug
-  
+print_r($_POST);//debug
+   
+// mappe di gestione
 switch ($azione)
-{     
+{      
      case 'upload':             // scelta img da caricare
-			$param = array('enctype','Upload|upload',$CLO.'|chiudi');
-				$btc = new bottoni_str_par('Media - Upload Immagini','img','write_media.php',$param);
+	  //   bottoni gestione
+		$param = array('upload','chiudi','enctype');		  
+        $btc = new bottoni_str_par('Immagini soci','img','write_media.php',$param);
 			$btc->btn();
-			echo "<div'><fieldset>";
-			echo "<input type='file' name='file' id='file' size='300000'>";
-			echo "</fieldset>";
-			echo "</div>";
-			echo "</form>";
-          break;
-
-      case 'chiudi' :
+	   echo "<div class='tabella'><fieldset>";
+	   echo "<input type='file' name='file' id='file' size='300000'>";
+	   echo "</fieldset></div></form>";
           break; 
-	 
-     case 'cancella'   :            // conferma cancellazione
-          echo "<div>";
-			$param = array('cancella',$CLO.'|chiudi');
-			$btc = new bottoni_str_par('Media - conferma cancellazione','img','write_media.php',$param);
-				$btc->btn();		  
-		  echo "<fieldset>";
-		  // visualizza immagine
-          $path=$img_del;
-          $d = new imgdim($img_del,400,600);
+ 
+ case 'cancella'   :            // conferma cancellazione
+			$param = array('cancella','ritorno');
+          $btc = new bottoni_str_par('Immagini - conferma cancellazione','img','write_media.php',$param); 
+         $btc->btn();
+          echo "<div class='tabella'><fieldset>";
+          $path=DB::$dir_imm.$img_del;
+          $d = new imgdim($path,400,600);
           $d->maxdim();
           if (($d->height <= 400) && ($d->width <= 600) )
                echo "<img src='$path' width='".$d->width."' alt='x' border='1' />";
@@ -55,34 +44,39 @@ switch ($azione)
                echo "<img src='$path' width='".$d->width."' alt='x' border='1' />";
           elseif (isset($d->height) && $d->height > 0)  
                echo "<img src='$path' height='".$d->height."' alt='x' border='1' />";
-			// -------------------
+			   	echo "<br />".$img_del;
           echo "<input type='hidden' name='img_del' value='$img_del' />";          
-          echo "</fieldset>";
-		  echo "</form>";
-		  echo "</div>";
+          echo "</fieldset></form></div>";
           break;
           
      case 'download':
-		  // toolbar
-		$param  = array('enctype','download',$CLO.'|chiudi');    
-		$btx    = new bottoni_str_par('Download media','img','download.php',$param);  
-			$btx->btn();
-		  echo "<fieldset>";
-          $path= $img_del;
-          $d = new imgdim($img_del,400,600);
+		  $param = array('download','ritorno');
+          $btx = new bottoni_str_par('Download Immagini','img','write_media.php',$param);    
+          $btx->btn();
+                // passa solo i parametri
+          echo "<div class='tabella'><fieldset>";
+          $path= DB::$dir_imm.$img_del;
+          $d = new imgdim($path,400,600);
           $d->maxdim();
           if (($d->height <= 400) && ($d->width <= 600) )
                echo "<img src='$path' width='$d->width' alt='x' border='1' />";
           elseif (isset($d->width) && $d->width > 0)   
                echo "<img src='$path' width='$d->width' alt='x' border='1' />";  
           elseif (isset($d->height) && $d->height > 0)  
-				echo "<img src='$path' height='$d->height' alt='x' border='1' />";
-			// -----------------	
-			echo "<input type='hidden' name='img_del' value='$img_del' />"; 
-			echo "</fieldset>";
-			echo "</form>";
+               echo "<img src='$path' height='$d->height' alt='x' border='1' />"; 
+				echo "<br />".$img_del;
+          echo "<input type='hidden' name='img_del' value='$img_del' />"; 
+          echo "</fieldset></form></div>";
           break; 
-     default;     
-}
+		  
+     case 'chiudi' :
+	 case 'ritorno' : 
+	  header('location:admin.php?urla=widget.php&pag=');
+          break; 
+		
+     default:     
+          header('location:admin.php?'.$_SESSION['location'].'');
+     	break;
 
+}
 ?>
