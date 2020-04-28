@@ -28,11 +28,8 @@ La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di 
 
 ![toolbar 1][4] 
 
-[4]: tutorial/toolbar-1.PNG
+[4]: tutorial/toolbar.phg
 
-![toolbar 2][5] 
-
-[5]: tutorial/toolbar-2.PNG
 
 ## INSTALLAZIONE IN LOCALE
 Per installare la libreria in locale necessita:
