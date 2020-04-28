@@ -26,9 +26,9 @@ La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di 
 
 - toolbar con immagine - testo e bottoni di comando
 
-![toolbar 1][4] 
+![toolbar][4] 
 
-[4]: tutorial/toolbar.phg
+[4]: tutorial/toolbar.png
 
 
 ## INSTALLAZIONE IN LOCALE
