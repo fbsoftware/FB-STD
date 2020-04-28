@@ -790,37 +790,6 @@ ul.liv2 > li > a {
   top: 8px;
   left: 4px; }
 
-/*       FONT-SIZE           */
-.fb-fs1 {
-  font-size: 1em !important; }
-
-.fb-fs2 {
-  font-size: 2em !important; }
-
-.fb-fs3 {
-  font-size: 3em !important; }
-
-.fb-fs4 {
-  font-size: 4em !important; }
-
-.fb-fs5 {
-  font-size: 5em !important; }
-
-/*       RAGGIO           */
-.fb-rad0 {
-  border-radius: 0px; }
-
-.fb-rad2 {
-  border-radius: 2px; }
-
-.fb-rad5 {
-  border-radius: 5px; }
-
-.fb-rad7 {
-  border-radius: 7px; }
-
-.fb-rad50 {
-  border-radius: 50%; }
 
 /*     C O L O R I           */
 .red {
