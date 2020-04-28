@@ -9,6 +9,9 @@
    * ==========================================================================
    * Gestione articoli 
    * ======================================================================= */
+require_once('../loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('../lingua.php');
 
    //   bottoni gestione
 $param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
@@ -21,7 +24,8 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 // zona messaggi
 require_once 'msg.php';
 
-//  mostra tabella 
+//  mostra tabella
+echo "<section id='table'>"; 
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
@@ -42,22 +46,23 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
           { 
-           include('fields_art.php'); 
-          echo "<tr>";                  
-           $f1 = new fieldi($aid,'aid',2,'');           
-  echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
-           $f2 = new fieldi($astat,'astat',2,'');       
-  echo "<td class='center'>"; $f2->field_st(); echo "</td>";
+			include('fields_art.php'); 
+			echo "<tr>";                  
+			$f1 = new fieldi($aid,'aid',2,'');           
+			echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
+			$f2 = new fieldi($astat,'astat',2,'');       
+			echo "<td class='center'>"; $f2->field_st(); echo "</td>";
   ?>
-<td><?php echo $aprog ?></td>
-<td><?php echo $atit ?></td>
-<td><?php echo $aarg ?></td>
-<td><?php echo $acap ?></td>
-<td><?php echo $amostra ?></td> 
+			<td><?php echo $aprog ?></td>
+			<td><?php echo $atit ?></td>
+			<td><?php echo $aarg ?></td>
+			<td><?php echo $acap ?></td>
+			<td><?php echo $amostra ?></td> 
 <?php              
-     echo "<tr>";               
+			echo "</tr>";               
           }
-     echo "</table>";
-     echo "</div>";
-     echo "</form>";
+     echo "</table>"; 
+	echo "</div>";
+	echo "</section>";
+	echo "</form>";
 ?>

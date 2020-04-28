@@ -126,14 +126,14 @@ class fieldi
           if ($this->valini != 'A') 
              {  echo "<div>
                       <label for='$this->campo'>$this->label</label>
-                      <input type='image' class='nobord' src='images/ok.png' 
+                      <input type='image' class='nobord' src='images/bottoni//ok.png' 
                       name='$this->campo' id='$this->campo' value='$this->valini'
                       height='16px' ></div>
                       ";}
              else 
              {  echo "<div>
                       <label for='$this->campo'>$this->label</label>
-                      <input type='image' class='nobord' src='images/stop.png'
+                      <input type='image' class='nobord' src='images/bottoni/stop.png'
                       name='$this->campo' id='$this->campo' value='$this->valini' 
                       height='16px' ></div>
                       &nbsp;";}

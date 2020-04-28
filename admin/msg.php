@@ -3,7 +3,8 @@
 // zona messaggi unificati
 if(isset($_SESSION['esito'])) 
      {
-     echo "<div class='col-md-6'>";
+	 echo	 "<div class='row'>";
+     echo "<div class='col-md-12'>";
      // errori
 
      if ($_SESSION['esito'] > -1  && $_SESSION['esito'] < 51)      // 0 - 50
@@ -89,6 +90,6 @@ if(isset($_SESSION['errore']))
      unset($_SESSION['errore4']);
      unset($_SESSION['errore5']);
      }               
-    
+     echo "</div>";
 
 ?>

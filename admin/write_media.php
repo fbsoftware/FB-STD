@@ -11,60 +11,96 @@
 ============================================================================= */
 require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-//print_r($_POST);//debug
-echo " ";
+require_once('../lingua.php');
+ 
+print_r($_POST);//debug
 $azione  = $_POST['submit'];
 $img_del = $_POST['img_del'];
 
 // mostra stringa bottoni o chiude
 switch ($azione)
 {   
-		  
-     case 'chiudi' :
-			$_SESSION['esito'] = 2; 
-          break; 
-    
-	 case 'cancella':
-          unlink($img_del);
+     case 'uscita':
+	 case 'ritorno':	 
+          $_SESSION['esito'] = 2; 
+     	break;
+// ======================= cancella =============================          
+		 
+     case 'cancella':
+	 echo "<br />images/".$img_del;
+          unlink("images/".$img_del);
           $_SESSION['esito'] = 56;
      	break;
-          
+// ======================= upload =============================          
      case 'upload':
-          if ($_FILES['file']['error'] > 0)
-          {
-          echo "ERRORE! Return Code: " . $_FILES['file']['error'] . "<br />";
-          $_SESSION['esito'] = 0;
-          break;
-          }
+print_r($_POST);//debug	 
+// per prima cosa verifico che il file sia stato effettivamente caricato
+if (!isset($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name'])) 
+{
+  echo 'Non hai inviato nessun file...';
+  exit;    
+}
           else    
-          {   
-          $temp = "temp/";
-          move_uploaded_file($_FILES['file']['tmp_name'],'images/'. $_FILES['file']['name']);
+		  {
+echo "<br />".$uploadDir = 'images/';
+echo "<br />".$userfile_tmp = $_FILES['file']['tmp_name']; 
+echo "<br />".$userfile_name = $_FILES['file']['name'];
+echo "<br />".$userfile_tmp."-". $uploaDdir.$userfile_name;
+echo "<br />images/".$_FILES['file']['name'];
+if (move_uploaded_file($userfile_tmp, "images/".$_FILES['file']['name']))
+ {
+  //Se l'operazione è andata a buon fine...
+  echo 'File inviato con successo.';
+}else{
+  //Se l'operazione è fallta...
+  echo 'Upload NON valido!'; 
+}
           $_SESSION['esito'] = 57;
+		  }
           break;
-          }
+// ======================= download =============================          
 		  
      case 'download':
-			echo "<form id='down' method='post' action='download.php'>
-			<input type='hidden' name='img_del' id='img_del' value='".$img_del."'/>
-			<input type='submit' value='Conferma download' />
-			</form>";
-			$_SESSION['esito'] = 58;
-     	     break;
-			   
-	default	:
-		echo "Azione non prevista=".$azione;
-		  break;
-
+//impostiamo la cartella in cui sono presenti i file per il download   
+$dir = "images/";    
+$path = $dir . $img_del;    
+  
+// eseguiamo alcuni controlli preventivi  
+if($img_del==''){  
+    exit('Nessun file indicato');  
+    }  
+else if(!is_file($path)){    
+    exit('Il file non esiste');    
+    }    
+else if(!is_readable($path)){    
+    exit('Il file non ha i permessi per essere scaricato');    
+    }    
+      
+// otteniamo alcune info sul file     
+$info = pathinfo( $path );    
+$extension = $info['extension']; // estensione    
+$size = filesize($path); // dimensione in byte    
+$time_file = date( 'r', filemtime( $path ) ); // time ultima modifica    
+   
+// inviamo gli opportuni headers   
+header('Content-Type: application/octet-stream');    
+header('Content-Disposition: attachment; filename="'. basename($path) .'"');     
+header('Content-Transfer-Encoding: binary');    
+header('Content-Length: ' . $size);    
+header('Last-Modified: ' . $time_file);    
+header('Expires: 0');    
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');    
+header('Pragma: public');    
+      
+// eliminiamo eventuale output inviato    
+ ob_end_flush(); 
+    
+// leggiamo il file e inviamo l'output     
+@readfile($path) or die('SERVER ERROR!');    
+$_SESSION['esito'] = 58;
+     break;
 }
-//         header('location:admin.php?'.$_SESSION['location'].'');
-		 
+
+header('location:admin.php?'.$_SESSION['location'].'');
+
 ?>

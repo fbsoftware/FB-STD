@@ -11,6 +11,9 @@
    * Aggiunto "nhead" per gestire header per ogni voce menu (Max.9).
    * 1.0.0	nuovo head breve
 =============================================================================  */
+require_once('../loadLibraries.php');
+require_once('loadTemplateAdmin.php');
+require_once('../lingua.php');
 
   //   toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
@@ -24,8 +27,9 @@
 require_once 'msg.php';
   
      // mostra la tabella filtrata --------------------------------------------------
+echo "<section id='table'>"; 
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-bordered table-condensed'>"; 
+echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";
 echo "<th style='width:2%;'>$SCEL</th>";
@@ -42,7 +46,7 @@ echo "<th>$ACC</th>";
 echo "<th>$PARAM</th>";
 echo "</tr>";
 echo "</thead>";          
-	echo "<tbody>";
+
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
                ORDER BY nprog";
@@ -65,12 +69,13 @@ echo "</thead>";
      <td><?php echo $nsotvo ?></td>
      <td><?php echo $nselect ?></td>
      <td><?php echo $naccesso ?></td>  
-	 <td><?php echo $npag ?></td> 	 
+	 <td><?php echo $npag ?></td> 
+	 
 <?php 
-  }
 	echo "</tr>";
- 	echo "</tbody>";
-	echo "</table>";
+  }
+     echo "</table>"; 
 	echo "</div>";
+	echo "</section>";
 	echo "</form>";
 ?> 

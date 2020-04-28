@@ -1,8 +1,9 @@
 <?php
+// libreria standard FB-CODE su GitHub
 echo "<link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>";
+
+echo "<link rel='stylesheet' 
+		href='https://fbsoftware.github.io/FB-CODE/css/stili-custom.css'>";
+echo "<script src='https://fbsoftware.github.io/FB-CODE/js/date_picker_it.js'></script>";
+echo "<script src='https://fbsoftware.github.io/FB-CODE/js/FBbase.js'></script>";
 ?>	
-	<script src='js/date_picker_it.js'></script>
-	<script src='js/FBbase.js'></script>
-	
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
