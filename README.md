@@ -1,4 +1,5 @@
-# FB-STD   libreria standard di sviluppo app.
+# FB-STD   libreria standard di sviluppo app. Versione: 2.0.0
+La versione 2.0.0 prevede l'utilizzo della struttura "flex".
 ## CARATTERISTICHE
 ### Libreria di base per qualsiasi gestione che permetta di:
 - gestire tabelle di database MYSQL anche combinate fra di loro
