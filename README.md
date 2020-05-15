@@ -18,7 +18,7 @@ La versione 2.0.0 prevede l'utilizzo della struttura "flex".
 - utilizzo della libreria Jquery
 
 ## LIBRERIA DI CLASSI
-La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di gestire:
+La cartella `libFB-2.0.0` contiene le classi sviluppate da FB che permettono di gestire:
 - campi di input form
 
 ![fields][7] 
@@ -32,7 +32,7 @@ La cartella `libFB-1.1.1` contiene le classi sviluppate da FB che permettono di 
 [4]: tutorial/toolbar.png
 
 
-## INSTALLAZIONE IN LOCALE
+## INSTALLAZIONE IN LOCALE (Da utilizzare quando la versione 2 sarà definitiva!)
 Per installare la libreria in locale necessita:
 - web server locale (Come ad esempio XAMPP, di seguito si fa riferimento a XAMPP)
 - effettuare il `download.zip` del repository `FB-STD` 
