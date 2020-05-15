@@ -19,6 +19,7 @@
  * 	1.0.1	solo se c'è immagine
  * 5/8/2019	test se nei parametri esiste la stringa "enctype"
  *			per inserire "multipart/form-data" per upload/download.
+ * 15/5/2020	struttura FLEX
 ------------------------------------------------------------------------- */
           // funzione con parametri
 class bottoni_str_par         
@@ -44,10 +45,11 @@ class bottoni_str_par
                     }  
                }             
         public function btn()           //  bottoni gestione
-          {      
-				echo "<div class='row toolbar-color'>";
+          { 
+echo "<link rel='stylesheet' type='text/css' href='../templates/admin/css/styles-flexo.css' />";
+				echo "<div class='flex j-between toolbar-color'>";
 				// immagine ampiezza = 1
-                echo "<div class='col-md-1'>";
+                echo "<div class='item'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{
                 echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='50'> ";
@@ -55,12 +57,12 @@ class bottoni_str_par
 				echo    "</div>";
                 
                 // titolo ampiezza = 4
-                echo "<div class='col-md-4 text-center'>";
+                echo "<div class='item text-center'>";
                 echo "<h1 class='toolbar'>&nbsp;".$this->titolo."</h1>";
                 echo    "</div>";
                 
                 // bottoni ampiezza = 7
-                echo    "<div class='btn-group col-md-7 text-right'>"; 
+                echo    "<div class='item btn-group text-right'>"; 
 				if(in_array('enctype',$this->param)) 
 					{
 					echo "<form enctype='multipart/form-data' method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;
@@ -112,7 +114,7 @@ class bottoni_str_par
 				}
 		}	// endfor
                 echo    "</div>";
-				echo    "</div>";	// row
+				echo    "</div>";	// toolbar
 
 	}	// end function
 }	// end class
