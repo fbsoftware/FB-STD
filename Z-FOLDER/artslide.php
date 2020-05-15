@@ -6,18 +6,24 @@ echo	"<section id='artslide'>";
 $arr 	= array();
 $arrt	= array();			
 // cerca nel layout le slide
-        $sql = "SELECT *
+echo   "<br />ASL=".     $sql = "SELECT *
                 FROM `".DB::$pref."asl`
                 WHERE dtmp = '".TMP::$tmenu."'
                     and dtipo = 'artslide'
                     and dstat <> 'A'
+					and dcod = '$lcod'
                 ORDER BY dprog ";
         foreach($PDO->query($sql) as $row2)
 		{   	
+          $dcap     =    $row2['dcap'];
+          $ddes     =    $row2['ddes'];
+
 // lettura articoli della categoria
-        $sql = "SELECT *
+           $titolo = array();
+           $testo  = array();
+echo   "<br />ART=".       $sql = "SELECT *
                 FROM `".DB::$pref."art`
-                WHERE acap = '".$row2['dcap']."'
+                WHERE acap = '".$dcap."'
                     and astat <> 'A' 
                 ORDER BY aprog ";
 			foreach($PDO->query($sql) as $row)
@@ -27,8 +33,10 @@ $arrt	= array();
 			$arrt[] = $row['atit'];
 			};   	// lettuta art
 		};        	// lettura asl
-?>
 
+print_r($arr);
+print_r($arrt);
+?>
 <div id="carouselExampleControls" class="carousel slide" data-ride='carousel' data-interval='<?php echo TMP::$tslidetime ?>'>			
 	<div class='carousel-inner'>
    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

@@ -64,12 +64,12 @@ foreach($PDO->query($sql) as $row)
             	break;
                
                
-            case 'artslide':
+/*            case 'artslide':
 				if (file_exists('include/artslide.php')) 
 				{	
 				include'include/artslide.php';
 				}
-            	break;
+            	break;*/
                
             case 'arttab':
 				if (file_exists('include/arttab.php')) 
@@ -85,6 +85,12 @@ foreach($PDO->query($sql) as $row)
 				}
             	break;
                
+            case 'artcol':
+				if (file_exists('include/arttab.php')) 
+				{	
+				include'include/artcol.php';
+				}
+            	break;
                
             case 'glyph':
 				if (file_exists('include/glifi.php')) 

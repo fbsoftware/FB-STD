@@ -83,6 +83,12 @@ case 'artimg':
                $f4 = new input(array('artimg.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
 			break;
+case 'artcol':
+               $arg = new DB_sel_l('arc','hprog','','hcod','lcod','hstat','hcod','Codice','Articolo in colonne');
+          		$arg->select_label();       
+               $f4 = new input(array('artcol.php','linclude',50,'Programma','Programma da includere','r'));           
+          		$f4->field();    
+			break;
 case 'glyph':
                $arg = new DB_sel_l('gly','gprog','','gcod','lcod','gstat','gcod','Codice','Modulo con glifi');
           		$arg->select_label();       

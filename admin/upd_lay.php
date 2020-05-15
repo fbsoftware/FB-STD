@@ -106,6 +106,10 @@ case 'artimg':
                $arg = new DB_sel_l('aim','iprog',$lcod,'icod','lcod','istat','icod','Codice','Articolo con immagine');
           		$arg->select_label();       
 			break;
+case 'artcol':
+               $arg = new DB_sel_l('arc','hprog',$lcod,'hcod','lcod','hstat','hcod','Codice','Articolo in colonne');
+          		$arg->select_label();       
+			break;
 case 'glyph':
                $arg = new DB_sel_l('gly','gprog',$lcod,'gcod','lcod','gstat','gcod','Codice','Modulo con glifi');
           		$arg->select_label();       
