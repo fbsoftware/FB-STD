@@ -58,7 +58,7 @@ if(isset($_SESSION['esito']))
 // zona messaggi unificati
 if(isset($_SESSION['errore'])) 
      {
-     echo "<div class='col-md-6'>";
+     echo "<div class='col-md-12'>";
      // errori
 
      if ($_SESSION['errore'] > -1  && $_SESSION['errore'] < 51)      // 0 - 50

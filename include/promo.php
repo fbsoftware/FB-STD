@@ -13,10 +13,11 @@ $PDO->beginTransaction();
                 FROM `".DB::$pref."prm`
                 WHERE otmp= '".TMP::$tmenu."' 
                     and ostat <> 'A'
-				and ocod = '$lcod' LIMIT 1 ";
+				and ocod = '$lcod'";
           foreach($PDO->query($sql) as $row)
      	{       //print_r($row);//debug
-		include'admin/fields_prm.php';   
+		include'admin/fields_prm.php'; 
+		
 		if ($osino1 == 1) {$count++;} 
    	 	if ($osino2 == 1) {$count++;}
    	 	if ($osino3 == 1) {$count++;}
@@ -41,9 +42,10 @@ $PDO->beginTransaction();
 		
             
 //-- Pannello -->
+	if ($otit_sn == 1) {
 		$head	= new section_head(TMP::$tpromotitle,TMP::$tpromotit,TMP::$tpromotext,TMP::$tcolor);
 			$head->head();
-          
+	}          
 // elementi promo
 		  
 	echo "<div class='row'>";
