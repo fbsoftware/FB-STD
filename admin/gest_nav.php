@@ -51,7 +51,7 @@ echo "</thead>";
                FROM `".DB::$pref."nav` 
                ORDER BY nprog";
             foreach($PDO->query($sql) as $row)             
-  {  include('fields_nav.php');
+  {  require('fields_nav.php');
 
 
      echo "<tr>";

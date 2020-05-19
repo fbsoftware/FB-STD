@@ -21,7 +21,7 @@ echo "<body>";
 //          {setcookie('admin','admin',time()-1,'','','');}
 
 // parametri dall'url ================================
-include_once('request.php');
+require_once('request.php');
 
 // setta navigatore iniziale =======================
 require_once('set_nav.php');
@@ -31,7 +31,7 @@ require_once('moduli/header_a.php');
 
 //  N A V I G A T O R E   ===========================
 echo    "<nav>"; 
-if  (TMP::$tmenu == 'admin') {	include('moduli/nav2.php'); }	
+if  (TMP::$tmenu == 'admin') {	require('moduli/nav2.php'); }	
 echo    "</nav>";   
  
     //  C O R P O   =====================================             

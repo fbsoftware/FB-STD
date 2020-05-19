@@ -21,7 +21,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once('post_arg.php');
+require_once('post_arg.php');
 $azione  =$_POST['submit'];
 
 // test validità codice  

@@ -9,26 +9,27 @@
 ============================================================================= 
    * 1.0.0	tolto codice inserito in: set_nav.php
 			tolto bottone di exit inserito in moduli/nav2.php
+	19/5/20	percorso assoluto DB::$ROOT
 ============================================================================= */
 require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');	
-require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."connectDB.php");
+require_once(DB::$ROOT."connectDB.php");
 $app = new Head('Gestione menu');
 $app->openHead();
-require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."jquery_link.php");
-require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."bootstrap_link.php");
-require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."include_head.php");
-require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."lingua.php"); 
+require_once(DB::$ROOT."jquery_link.php");
+require_once(DB::$ROOT."bootstrap_link.php");
+require_once(DB::$ROOT."include_head.php");
+require_once(DB::$ROOT."lingua.php"); 
 $app->closeHead(); 
 
-echo "<body>";
+echo "<body class='admin'>";
 
 // test se richiesto login ============================
      if(!isset($_COOKIE['admin']))
           {header('location:login.php');}
 
 // parametri dall'url ================================
-include_once($_SERVER['DOCUMENT_ROOT'].DB::$root."request.php");
+require_once(DB::$ROOT."request.php");
 
 // setta navigatore iniziale =======================
 require_once('set_nav_a.php');
@@ -38,22 +39,23 @@ require_once('moduli/header_a.php');
 
 //  N A V I G A T O R E   ===========================
 echo    "<nav>"; 
-include_once('moduli/nav2a.php'); 	
+require_once('moduli/nav2a.php'); 	
 echo    "</nav>";   
  
     //  C O R P O   =====================================             
-echo "<section id='corpo'>"; 
+//echo "<section id='corpo'>"; 
 if ($urla){
           require_once $urla;
           } 
 if ($dati){
           require_once('component/content.php');    // componenti
           }       
-echo "</section>" ;      //  FINE CORPO
+//echo "</section>" ;      //  FINE CORPO
   
 //  footer + navigatore   ============================================= 
 require_once('moduli/footer.php'); 
- 
-ob_end_flush();
-echo "</body></html>";        
+
+echo "</body>"; 
+echo "</html>";   
+ob_end_flush();    
 ?>

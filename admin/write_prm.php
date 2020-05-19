@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once('post_prm.php');
+require_once('post_prm.php');
            
 $azione   =    $_POST['submit'];          print_r($_POST);//debug
 

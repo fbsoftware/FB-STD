@@ -18,8 +18,8 @@ echo	"<body>";
 //-- CONTENUTO DELLA PAGINA ...
 echo	"<div class='container-fluid well'>";
 echo	"<a name='inizio'></a>";
-include 'layout.php';  
-include 'goBack.php';  
+require 'layout.php';  
+require 'goBack.php';  
 echo	"</div>";
 ?>
 <script type="text/javascript">

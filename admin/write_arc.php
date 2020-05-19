@@ -19,7 +19,7 @@ require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
 //----------------------------------------------
-include_once('post_arc.php');
+require_once('post_arc.php');
    
 $azione   =    $_POST['submit'];       print_r($_POST);//debug
 

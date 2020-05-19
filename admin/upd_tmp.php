@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include('post_tmp.php');
+require('post_tmp.php');
 $azione   =$_POST['submit']; 
  
 // test scelta effettuata sul pgm chiamante
@@ -167,7 +167,7 @@ echo "</fieldset>";
     $sql = "SELECT * FROM `".DB::$pref."tmp` where `tid` = $tid ";
      foreach($PDO->query($sql) as $row)
      {    
-     include_once('fields_tmp.php');
+     require_once('fields_tmp.php');
      $a    = new input(array($tid,'tid',5,'','','h'));
           $a->field();
      $b    = new input(array($tprog,'tprog',5,'Progressivo','Progressivo per ordinamento','i'));
@@ -288,7 +288,7 @@ break;
      $sql = "SELECT * FROM `".DB::$pref."tmp` where `tid` = $tid ";
           foreach($PDO->query($sql) as $row)
           {    
-          include_once('fields_tmp.php');
+          require_once('fields_tmp.php');
      echo "<div class='row'>";
      echo  "<fieldset class='col-md-6'>";  
           $f0 = new input(array($tid,'tid',1,'','','h'));                 

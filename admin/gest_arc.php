@@ -17,7 +17,7 @@
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 //  mostra tabella
 echo "<div class='tableFixHead'>";
@@ -38,7 +38,7 @@ echo "</thead>";
 
           foreach($PDO->query($sql) as $row)      
           {   
-     include('fields_arc.php');      
+     require('fields_arc.php');      
      echo "<tr>";  
      $f1 = new fieldi($hid,'hid',2,'');               
      echo "<td class='center'>"; 

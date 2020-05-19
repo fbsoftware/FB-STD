@@ -22,7 +22,7 @@ $PDO->beginTransaction();
         echo "<ul class='nav2'>"; 
 foreach($PDO->query($sql) as $row)  
 {
-include'fields_nav.php';
+require'fields_nav.php';
               
        if ( ($nli == $forma) && ($accesso >= $naccesso) )   // voce corrente
           {  
@@ -35,7 +35,7 @@ include'fields_nav.php';
 				{
 				echo "<a class='current' href='admin.php?forma=".$nli."&sub=".$row['ndesc']."&content=".$ntipo."&urla=".$nsotvo."&pag=".$npag."'>".$nli."</a>";            
 				}
-          include('moduli/liv2a.php');
+          require('moduli/liv2a.php');
           echo "</li>";
           }
     else              // altre voci  
@@ -52,7 +52,7 @@ include'fields_nav.php';
               {                              
                 echo "<a href='admin.php?forma=".$nli."&sub=".$row['ndesc']."&content=".$ntipo."&urla=".$nsotvo."&pag=".$npag."'>".$nli."</a>";
               }
-            include('moduli/liv2a.php');
+            require('moduli/liv2a.php');
             echo "</li>";
           }
      }

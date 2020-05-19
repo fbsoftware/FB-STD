@@ -21,7 +21,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once 'post_tmp.php';
+require_once 'post_tmp.php';
 $azione   =$_POST['submit'];
 
 echo "<br />";   

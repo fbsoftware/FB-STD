@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once 'post_sld.php';
+require_once 'post_sld.php';
 $azione=$_POST['submit'];          //print_r($_POST); //debug 
 
 // test scelta effettuata dal pgm chiamante
@@ -90,7 +90,7 @@ case 'modifica':
        echo  "<fieldset class='col-md-6' >";              
      foreach($PDO->query($sql) as $row)
      { 
-      include('fields_sld.php');  
+      require('fields_sld.php');  
 $f0 = new input(array($slid,'slid',1,$ID,'','h'));                 
      $f0->field();
 $f  = new input(array($slprog,'slprog','5','Progressivo','Per serializzare','i'));
@@ -129,7 +129,7 @@ case 'cancella':
       echo  "<fieldset class='col-md-6' >";
 foreach($PDO->query($sql) as $row)
      {   
-     include('fields_sld.php'); 
+     require('fields_sld.php'); 
 
      $f0 = new input(array($slid,'slid',5,'ID record','','h'));                
           $f0->field();

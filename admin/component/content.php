@@ -32,28 +32,28 @@ if (isset ($ntipo))
 switch ($content)  // analizzo tutti i tipi di contenuto
 {     
 case  'art' : // lettura articoli
-     include_once('component/cont_art.php');      
+     require_once('component/cont_art.php');      
       break;
 case  'cap' : // lettura capitoli
-     include_once('component/cont_cap.php');      
+     require_once('component/cont_cap.php');      
       break;
 case  'arg' : // lettura argomenti
-     include_once('component/cont_arg.php');
+     require_once('component/cont_arg.php');
      break;
 case  'vid' : // lettura videoclip YouTube
-     include_once('component/cont_vid.php');
+     require_once('component/cont_vid.php');
      break;
 case  'gal' : // lettura gallery Picasa
-     include_once('component/cont_gal.php');
+     require_once('component/cont_gal.php');
      break; 
 case  'url' :  //link esterno
-      include_once('component/cont_url.php');
+      require_once('component/cont_url.php');
      break;
 case  'lnk' : //link interno 
-      include_once('component/cont_lnk.php');
+      require_once('component/cont_lnk.php');
      break;
 case  'htm' : //pagina custom 
-      include_once('component/cont_htm.php');
+      require_once('component/cont_htm.php');
      break;
 case  'cnt' :  // contatti
      break;

@@ -37,7 +37,7 @@ foreach($PDO->query($sql2) as $row2)
           $cmostra = $row2['cmostra']; 
           $ccod    = $row2['ccod']; 
           if ($cmostra == 1) {  echo $ctext;   }
-          include 'cont_artarg.php'; 
+          require 'cont_artarg.php'; 
           }                   
 
 ?>

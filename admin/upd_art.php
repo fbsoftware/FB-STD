@@ -82,7 +82,7 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      {
-     include_once('fields_art.php');
+     require_once('fields_art.php');
      echo  "<fieldset>";
       $f2 = new input(array($aid,'aid',03,'','','h'));          
           $f2->field();
@@ -124,7 +124,7 @@ break;
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      {
-     include_once('fields_art.php');
+     require_once('fields_art.php');
      echo  "<fieldset>";
       $f2 = new input(array($aid,'aid',03,'','','h'));             
           $f2->field();

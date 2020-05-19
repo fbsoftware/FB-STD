@@ -81,7 +81,7 @@ case 'modifica':
 			 WHERE `nid` = $nid ";
 	foreach($PDO->query($sql) as $row)
 	{
-      include('fields_nav.php');          
+      require('fields_nav.php');          
       echo  "<fieldset >";
 	  echo "<div col-md-6'>";
       $f0  = new field($nid,'nid',1,'ID record');                   
@@ -171,7 +171,7 @@ case 'cancella':
 			 WHERE `nid` = $nid ";
     foreach($PDO->query($sql) as $row)
 	{
-    include('fields_nav.php');  
+    require('fields_nav.php');  
       echo "<fieldset>";
       echo  "<div class=col-md-6>";
 $f0 = new field($nid,'nid',1,'ID record');                     

@@ -40,7 +40,7 @@ $sql = "SELECT * FROM ".DB::$pref."mnu
 		ORDER BY bprog";
 	foreach($PDO->query($sql) as $row)
       {       
-		include('fields_mnu.php');
+		require('fields_mnu.php');
 		echo "<tr>";
 		$f2 = new input(array($bid,'bid',2,'',$TT_SCEL,'ck'));     
 		echo "<td class='center'>"; $f2->field(); echo "</td>";

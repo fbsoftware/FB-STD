@@ -6,5 +6,5 @@ $lcod     =$_POST['lcod'];
 $ldesc    =$_POST['ldesc'];
 $ltmp     =$_POST['ltmp'];
 $ltipo    =$_POST['ltipo']; 
-$linclude =$_POST['linclude'];
+$lrequire =$_POST['lrequire'];
 ?>

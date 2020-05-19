@@ -29,7 +29,7 @@ require_once("editor.php");				// scelta editor
 	}
 </style>
 <?php
-include_once('post_foo.php');			// nome tabella
+require_once('post_foo.php');			// nome tabella
 
      $azione  =$_POST['submit'];     
 
@@ -65,7 +65,7 @@ case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
                WHERE `fid` = $fid ";
 	echo	"<fieldset class='row'>"; 
      foreach($PDO->query($sql) as $row)
-	include('fields_foo.php');
+	require('fields_foo.php');
 
      $f1 = new input(array($fid,'fid',0,'','','h'));
           $f1->field();
@@ -121,7 +121,7 @@ $btg = new bottoni_str_par('Cancella Footer di pagina','foo','write_foo.php',arr
                WHERE `fid` = $fid  "; 
 	echo	"<fieldset class='col-md-7'>";  
      foreach($PDO->query($sql) as $row)
-	include('fields_foo.php');
+	require('fields_foo.php');
       $f0 = new input(array($fid,'fid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($fprog,'fprog',3,'Progressivo','','r'));         

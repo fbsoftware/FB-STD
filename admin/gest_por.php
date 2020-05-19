@@ -12,7 +12,7 @@ $btx->btn();
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";
@@ -37,7 +37,7 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
               
             foreach($PDO->query($sql2) as $row)             
-  {  include('fields_por.php');
+  {  require('fields_por.php');
      echo "<tr>";
   $f1 = new fieldi($pid,'pid',2,'');            
   echo "<td class='center'>"; $f1->field_ck(); echo "</td>";

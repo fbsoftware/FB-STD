@@ -31,7 +31,7 @@ require_once("editor.php");				// scelta editor
   } );
   </script>
 <?php
-include_once('post_ctt.php');			// nome tabella
+require_once('post_ctt.php');			// nome tabella
 
      $azione  =$_POST['submit'];     
 
@@ -137,7 +137,7 @@ echo  "</form>";
 	echo "<div id='tabs-0' class='row'>";
 	echo "<fieldset>"; 
     foreach($PDO->query($sql) as $row)
-	include('fields_ctt.php');
+	require('fields_ctt.php');
      $f1 = new input(array($eid,'eid',0,'','','h'));
           $f1->field();
      $f1 = new input(array($eprog,'eprog',3,$PROG,'Per ordinamento','i'));
@@ -202,7 +202,7 @@ $btg = new bottoni_str_par('Contatti-cancella','ctt','write_ctt.php',array($SAV.
                WHERE `eid` = $eid  "; 
 	echo	"<fieldset class='col-md-7'>";  
      foreach($PDO->query($sql) as $row)
-	include('fields_ctt.php');
+	require('fields_ctt.php');
       $f0 = new input(array($eid,'eid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($eprog,'eprog',3,$PROG,'','r'));         

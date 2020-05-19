@@ -253,60 +253,60 @@ class bottoni
                }
                        
         public function bt_nuovo()     // nuovo  
-          {       include('lingua.php');
+          {       require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/new_f1.png' height='25'/>$NEW</button>";
                   }
         public function bt_help()     // help   
-          {       //include('lingua.php');
+          {       //require('lingua.php');
           echo    "<a href='help00.php?file_h=testi/".$this->action.".txt' target='_self'>
                   <button class='big' type='button' id='$this->action'>
                   <img src='images/con_info.png' height='25'/>Aiuto</button></a>";
                   }          
         public function bt_salva()     // salva  
-          {       include('lingua.php');
+          {       require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>        
                    <img src='images/save_f2.png' height='25'/>$SAV</button>";
                   }          
         public function bt_uscita()     // uscita  
-          {       include('lingua.php');
+          {       require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/cancel_f2.png' height='28'/>$USC</button>";
                     $_SESSION['esito'] = 2;
                   }          
         public function bt_modifica()     // modifica  
-          {       include('lingua.php');
+          {       require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/edit_f2.png' height='25'/>$MOD</button>";
                   }
         public function bt_cancella()     // cancella  
-          {       include('lingua.php');
+          {       require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/delete.png' height='25'/>$DEL</button>";
                   } 
         public function bt_chiudi()     // chiusura mappa  
-          {       include('lingua.php');
+          {       require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/close.jpg' height='25'/>$CLO</button>";
                   } 
         public function bt_upld()     // upload files  
-          {       //include('lingua.php');
+          {       //require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/upld.png' height='25'/>Upload</button>";
                   } 
         public function bt_dwnld()     // download files  
-          {       //include('lingua.php');
+          {       //require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/down.png' height='25'/>Download</button>";
                   } 
 
         public function bt_email()     // email  
-          {       //include('lingua.php');
+          {       //require('lingua.php');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>        
                    <img src='images/email_2.png' height='25'/>Invia</button>";
                   }          
         public function bt_reset()     // reset form 
-          {       //include('lingua.php');
+          {       //require('lingua.php');
           echo    "<button class='big' type='reset' name='reset' value='$this->action' id='$this->action'>        
                    <img src='administrator/images/cancel_f2.png' height='25'/>Resetta</button>";
                   } 

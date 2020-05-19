@@ -39,7 +39,7 @@ $lcod="port-f1";//<=========  parametro  =======================================
 		
 		foreach($rows as $row)
 			{
-				include'fields_por.php';
+				require'fields_por.php';
 
 //-- Elementi di portfolio -->
 

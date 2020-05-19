@@ -23,7 +23,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once('post_ctt.php');
+require_once('post_ctt.php');
            
 $azione   =    $_POST['submit'];          
 print_r($_POST);//debug

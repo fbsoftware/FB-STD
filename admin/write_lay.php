@@ -19,7 +19,7 @@ require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
-include_once('post_lay.php');
+require_once('post_lay.php');
    
 $azione   =    $_POST['submit'];       print_r($_POST);//debug
 							
@@ -45,9 +45,9 @@ switch ($azione)
 {
 case 'nuovo':
            $sql = "INSERT INTO `".DB::$pref."lay` 
-                      (lid,lprog,lstat,ltipo,lcod,ldesc,ltmp,linclude) 
+                      (lid,lprog,lstat,ltipo,lcod,ldesc,ltmp,lrequire) 
                       VALUES (NULL,$lprog,'$ltat','$ltipo','$lcod','$ldesc',
-                                   '$ltmp','$linclude')";
+                                   '$ltmp','$lrequire')";
                       $PDO->exec($sql);    
                       $PDO->commit();
                       $_SESSION['esito'] = 54;                      
@@ -56,7 +56,7 @@ case 'nuovo':
 case 'modifica':
            $sql = "UPDATE `".DB::$pref."lay` 
                    SET lprog=$lprog,lstat='$lstat',lcod='$lcod',ldesc='$ldesc',
-                         ltipo='$ltipo',ltmp='$ltmp',linclude='$linclude'  
+                         ltipo='$ltipo',ltmp='$ltmp',lrequire='$lrequire'  
                    WHERE lid= $lid ";
                   $PDO->exec($sql);    
                   $PDO->commit();

@@ -9,5 +9,5 @@
    * -------------------------------------------------------------------------
    * Scrittura dei contenuti di tipo html/php custom.      
 =============================================================================*/
- if (($nsotvo > ' ') &&  ($nsotvo != '#'))  include_once("$nsotvo");
+ if (($nsotvo > ' ') &&  ($nsotvo != '#'))  require_once("$nsotvo");
 ?>

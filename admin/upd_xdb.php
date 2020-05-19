@@ -71,7 +71,7 @@ switch ($azione)
      foreach($PDO->query($sql) as $row)
      {
      echo  "<fieldset class='col-md-6'>";
-     include('fields_xdb.php');
+     require('fields_xdb.php');
       $f0 = new input(array($xid,'xid',0,'','','h'));                        
           $f0->field(); 
       $f1 = new input(array($xprog,'xprog',3,'Progressivo','','i'));         
@@ -100,7 +100,7 @@ switch ($azione)
      foreach($PDO->query($sql) as $row)
      {
      echo  "<fieldset class='col-md-6'>";
-     include('fields_xdb.php');
+     require('fields_xdb.php');
       $xdb = new DB_ins('xdb','xprog');                      
       $f1 = new input(array($xdb->insert(),'xprog',3,'Progressivo',' ','i'));     
           $f1->field(); 
@@ -126,7 +126,7 @@ switch ($azione)
 
 foreach($PDO->query($sql) as $row)
     {
-     include('fields_xdb.php');
+     require('fields_xdb.php');
      echo  "<fieldset class='col-md-6'>";
       $f0 = new input(array($xid,'xid',0,'','','h'));                        
           $f0->field(); 

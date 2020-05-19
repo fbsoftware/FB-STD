@@ -35,13 +35,13 @@ require_once("connectDB.php");
                 ORDER BY nprog";
           foreach($PDO->query($sql) as $row)
        { 
-          include 'fields_nav.php';
+          require 'fields_nav.php';
    //    print_r($row);//debug  
         if ($row['npag'] == 1) 
                 {  
                 echo "<li class='dropdown'>
                       <a href='localhost/fbot-boot/". $row['nsotvo']."' class='dropdown-toggle' data-toggle='dropdown'>".$row['nli']."<span class='caret'></span></a>"; 
-               include('liv2.php');
+               require('liv2.php');
                echo "</li>";
                 }
         if ($row['npag'] == 0)   

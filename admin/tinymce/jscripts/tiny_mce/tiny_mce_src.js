@@ -6925,7 +6925,7 @@ tinymce.dom.TreeWalker = function(start_node, root_node) {
 	};
 
 	// This is the XHTML 1.0 transitional elements with it's children packed to reduce it's size
-	// we will later include the attributes here and use it as a default for valid elements but it
+	// we will later require the attributes here and use it as a default for valid elements but it
 	// requires us to rewrite the serializer engine
 	unpack({
 		Z : '#|H|K|N|O|P',
@@ -13268,7 +13268,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 						while (node[sibling_name] && !isBlock(node[sibling_name])) {
 							node = node[sibling_name];
 
-							// Break on BR but include it will be removed later on
+							// Break on BR but require it will be removed later on
 							// we can't remove it now since we need to check if it can be wrapped
 							if (isEq(node, 'br'))
 								break;

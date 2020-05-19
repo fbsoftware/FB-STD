@@ -134,7 +134,7 @@ class txt
                {
                $codvid=array();
                $testoi=$testo[$i];
-               include substr($testo[$i],5,25);
+               require substr($testo[$i],5,25);
                }
 
 

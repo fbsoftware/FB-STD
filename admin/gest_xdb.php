@@ -46,7 +46,7 @@ echo "<tbody>";
      $PDO->beginTransaction(); 
       foreach($PDO->query($sql) as $row)
           {   
-          include('fields_xdb.php');
+          require('fields_xdb.php');
           echo "<tr>";
           echo "<td class='center'>";       
           $f0 = new fieldi($xid,'xid',2,'');           

@@ -164,7 +164,7 @@ echo  "</form>";
      $sql = "SELECT * FROM `".DB::$pref."prm` 
                WHERE `oid` = $oid ";
      foreach($PDO->query($sql) as $row)
-	include('fields_prm.php');
+	require('fields_prm.php');
 ?>
 	<div id="tabs">
   <ul>
@@ -279,7 +279,7 @@ $btg = new bottoni_str_par('Modulo promo','prm','write_prm.php',array('salva|can
                WHERE `oid` = $oid  "; 
 	echo	"<fieldset class='col-md-6'>";  
      foreach($PDO->query($sql) as $row)
-	include('fields_prm.php');
+	require('fields_prm.php');
       $f0 = new input(array($oid,'oid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($oprog,'oprog',3,'Progressivo','','r'));         

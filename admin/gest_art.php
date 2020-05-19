@@ -46,7 +46,7 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
           { 
-			include('fields_art.php'); 
+			require('fields_art.php'); 
 			echo "<tr>";                  
 			$f1 = new fieldi($aid,'aid',2,'');           
 			echo "<td class='center'>"; $f1->field_ck(); echo "</td>";

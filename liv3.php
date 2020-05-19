@@ -9,7 +9,7 @@
 =============================================================================== 
   Crea il 2° livello del navigatore principale.
 =============================================================================== */
-include 'call_ok.php';
+require 'call_ok.php';
 require_once("connectDB.php");
        $sql3 = "SELECT * 
                 FROM `".DB::$pref."nav`  

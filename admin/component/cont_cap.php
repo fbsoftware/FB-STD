@@ -30,6 +30,6 @@ foreach($PDO->query($sql) as $row)
         }
         if ($cmostra == 1) {  echo $ctext;   }
       }     
-include_once 'cont_artcap.php';      
+require_once 'cont_artcap.php';      
         
 ?>

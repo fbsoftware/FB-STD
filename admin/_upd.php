@@ -32,8 +32,8 @@ require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
 
-include('tinys.php'); 					// se textarea
-include_once('post_£tab.php');			// nome tabella
+require('tinys.php'); 					// se textarea
+require_once('post_£tab.php');			// nome tabella
 
      $azione  =$_POST['submit'];     
 
@@ -84,7 +84,7 @@ echo  "</form>";
                WHERE `£id` = $£id ";
 	echo	"<fieldset class='col-md-7'>"; 
      foreach($PDO->query($sql) as $row)
-	include('fields_£tab.php');
+	require('fields_£tab.php');
 
      $f1 = new input(array($£id,'£id',0,'','','h'));
           $f1->field();
@@ -117,7 +117,7 @@ $btg = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|can
                WHERE `£id` = $£id  "; 
 	echo	"<fieldset class='col-md-7'>";  
      foreach($PDO->query($sql) as $row)
-	include('fields_£tab.php');
+	require('fields_£tab.php');
       $f0 = new input(array($£id,'£id',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($£prog,'£prog',3,$PROG,'','r'));         

@@ -1,5 +1,7 @@
 <?php
-
+/* =========================================================================
+	19/5/20	aggiunto DB::$ROOT = root assoluta, cioè localhost/...
+   =======================================================================*/
 
 class DB
 {      
@@ -10,7 +12,7 @@ class DB
         public static $pw   = '';         // *password
         public static $pref = '';         // *prefisso archivi
         public static $incr = 0;          // *incremento per inserimento  
-        public static $root = '';         // *root - localhost
+        public static $root = '';         // *root - sito
         public static $site = '';         // *nome del sito
         public static $sep = '';          // *separatore directory
         public static $dir_imm = '';      // *directory immagini
@@ -23,10 +25,10 @@ class DB
         public static $author = '';       // *autore
         public static $keywords = '';     // *parole chiave
         public static $lib = '';          // *libreria standard
-        public static $ambiente     =  '';	// ambiente: sito,admin
+        public static $ambiente  =  '';	  // ambiente: sito,admin
 //        public $mod_ins = 0;            // progressivo per inserimento moduli
         public $max = 0;                  // nuovo inserimento
-
+		public static $ROOT = '';         // ROOT assoluta = localhost/...
   
         public function __construct() 
 		
@@ -57,6 +59,7 @@ class DB
                   self::$url        = $arr['config']['url'];
                   self::$author     = $arr['config']['author'];
                   self::$keywords   = $arr['config']['keywords'];
+				  self::$ROOT       = $_SERVER['DOCUMENT_ROOT'].self::$root;
           return $arr;
          }
 				  

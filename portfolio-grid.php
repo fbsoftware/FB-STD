@@ -64,7 +64,7 @@ $count    = 0;
                 ORDER BY pprog ";
           foreach($PDO->query($sql) as $row)
                {    
-               include'fields_por.php';
+               require'fields_por.php';
 		   
 
 //-- Elementi di portfolio -->

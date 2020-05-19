@@ -11,7 +11,7 @@ $btx->btn();
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";
@@ -30,7 +30,7 @@ echo "<tbody>";
                FROM `".DB::$pref."sld` 
                ORDER BY slprog";
             foreach($PDO->query($sql2) as $row)             
-  {  include('fields_sld.php');
+  {  require('fields_sld.php');
      echo "<tr>";
   $f1 = new fieldi($slid,'slid',2,'');            
   echo "<td class='center'>"; 

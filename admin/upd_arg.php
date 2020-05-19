@@ -78,7 +78,7 @@ switch ($azione)
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      {
-      include 'fields_arg.php'; 
+      require 'fields_arg.php'; 
 		echo  "<fieldset class='row'>"; 
       $f0 = new input(array($rid,'rid',1,'ID record','','h'));              
           $f0->field();    
@@ -116,7 +116,7 @@ break;
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
 	{
-     include('fields_arg.php');
+     require('fields_arg.php');
 		echo  "<fieldset class='row'>"; 
 		$f0 = new field($rid,'rid',1,'ID record');            
 			$f0->field_h();    

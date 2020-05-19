@@ -40,7 +40,7 @@ echo "<tbody>";
                ORDER BY cprog";
      foreach($PDO->query($sql) as $row)
      {
-          include('fields_cap.php');   
+          require('fields_cap.php');   
           echo "<tr>";
           echo "<td class='center fc'>";
                $f1 = new fieldi($cid,'cid',2,'');          

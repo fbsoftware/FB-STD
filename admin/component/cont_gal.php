@@ -9,7 +9,7 @@
    * -------------------------------------------------------------------------
    * Scrittura dei contenuti di tipo gal - foto gallery.      
 =============================================================================*/
-include_once('classi/DB_tmp.php');  // parametri del template    
+require_once('classi/DB_tmp.php');  // parametri del template    
 $temp = new DB_tmp('sito');   $temp->read_tmp();
 $sql2 = "SELECT * 
                FROM `".DB::$pref."gal` 
@@ -18,7 +18,7 @@ $sql2 = "SELECT *
       if(mysql_num_rows($result)!=0)
 {
       while($row  = mysql_fetch_array($result))
-      { include("../".DB::$site."/administrator/fields_gal.php");
+      { require("../".DB::$site."/administrator/fields_gal.php");
        if ($gmostra == 1)  {echo "<h3>".$gtit."</h3>"; }
        echo $gtexta;
 echo  "<embed type='application/x-shockwave-flash' ";

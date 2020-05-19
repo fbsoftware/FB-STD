@@ -16,7 +16,7 @@
       if (mysql_num_rows($result))
          {
          while($row  = mysql_fetch_array($result))
-                     { include("../".DB::$site."/administrator/fields_tmp.php"); }        
+                     { require("../".DB::$site."/administrator/fields_tmp.php"); }        
          }
         
       $sql2 = "SELECT * 
@@ -26,7 +26,7 @@
       if (mysql_num_rows($result))
 {
       while($row  = mysql_fetch_array($result))
-      { include("../".DB::$site."/administrator/fields_vid.php"); 
+      { require("../".DB::$site."/administrator/fields_vid.php"); 
         
        if ($vmostra == 1)  {echo "<h3>".$vtit."</h3>"; }
        echo $vtexta;
