@@ -1,4 +1,17 @@
-<?php   
+<?php
+/* ==========================================================
+	16/5/20	struttura FLEX
+   ========================================================*/
+?>
+<style type='text/css'>
+img.promo	{
+	height:200px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style> 
+<?php  
 echo	"<section id='promo'>";
 
 // transazione    
@@ -7,8 +20,6 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 
 // Conta i moduli promo da mostrare per il template
-//  per calcolare la larghezza delle colonne. 
-	$count    = 0;
         $sql = "SELECT *
                 FROM `".DB::$pref."prm`
                 WHERE otmp= '".TMP::$tmenu."' 
@@ -16,68 +27,68 @@ $PDO->beginTransaction();
 				and ocod = '$lcod'";
           foreach($PDO->query($sql) as $row)
      	{       //print_r($row);//debug
-		include'admin/fields_prm.php'; 
+		require'admin/fields_prm.php'; 
 		
-		if ($osino1 == 1) {$count++;} 
-   	 	if ($osino2 == 1) {$count++;}
-   	 	if ($osino3 == 1) {$count++;}
-   	 	if ($osino4 == 1) {$count++;}
-		switch ($count) 
-		{
-	case 1:
-		$colonna = "col-md-12";
- 		break;
-	case 2:
-		$colonna = "col-md-6";
- 		break;
-	case 3:
-		$colonna = "col-md-4";
- 		break;
-	case 4:
-		$colonna = "col-md-3";
- 		break;
-  	default:
-  		break;
-  		}
-		
-            
-//-- Pannello -->
-	if ($otit_sn == 1) {
-		$head	= new section_head(TMP::$tpromotitle,TMP::$tpromotit,TMP::$tpromotext,TMP::$tcolor);
-			$head->head();
-	}          
+// stampa il titolo se richiesto
+	if ($otit_sn == 1) 
+	{
+		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		if (isset(TMP::$tpromotit)) { echo "<h1>".TMP::$tpromotit."</h1>"; } 
+				if (isset(TMP::$tpromotext)) { echo "<p>".TMP::$tpromotext."</p>"; }
+		echo "</div>";	
+	}  
+       
 // elementi promo
-		  
-	echo "<div class='row'>";
+	echo "<div class='f-flex fd-row jc-center  ai-start'>";
 	if ($osino1 == 1) 
 		{  
-	 	$promo1	= new promo($colonna,$olink1,$oimg1,$otit1,$otext1,'1');
-	 		$promo1->show(); 
-		$target	= "promo1";
+         	echo "<div class='f-dim1'>";
+			echo "<a data-target='#promo1".$lcod."' data-toggle='modal'>";
+			echo "<img class='promo' src='".$oimg1."' alt='".$oimg1."'>";
+			echo "</a>";
+			echo "<h4 class='service-heading'>".$otit1."</h4>";
+			echo "<span class='text-muted'>".$otext1."</span>";
+			echo "</div>"; 			
+		$target	= "promo1".$lcod;
 		$modal	= new dialogo_modale($target,$otit1,$oimg1,'',$otext2);
 			$modal->dialog();
 		}
 	if ($osino2 == 1) 
 		{  
-	 	$promo2	= new promo($colonna,$olink2,$oimg2,$otit2,$otext2,2);
-	 		$promo2->show(); 
-		$target	= "promo2";
+         	echo	"<div class='f-dim1'>";
+			echo	"<a data-target='#promo2".$lcod."' data-toggle='modal'>";
+			echo "<img class='promo' src='".$oimg2."' alt='".$oimg2."' height='200px'>";
+			echo "</a>";
+			echo "<h4 class='service-heading'>".$otit2."</h4>";
+			echo "<span class='text-muted'>".$otext2."</span>";
+			echo "</div>";
+		$target	= "promo2".$lcod;
 		$modal	= new dialogo_modale($target,$otit2,$oimg2,'',$otext2);
 			$modal->dialog();
 		}
 	if ($osino3 == 1) 
 		{  
-	 	$promo3	= new promo($colonna,$olink3,$oimg3,$otit3,$otext3,3);
-	 		$promo3->show(); 
-		$target	= "promo3";
+         	echo	"<div class='f-dim1'>";
+			echo	"<a data-target='#promo3".$lcod."' data-toggle='modal'>";
+			echo "<img class='promo' src='".$oimg3."' alt='".$oimg3."'>";
+			echo "</a>";
+			echo "<h4 class='service-heading'>".$otit3."</h4>";
+			echo "<span class='text-muted'>".$otext3."</span>";
+			echo "</div>"; 
+		$target	= "promo3".$lcod;
 		$modal	= new dialogo_modale($target,$otit3,$oimg3,'',$otext3);
 			$modal->dialog();
 		}
 	if ($osino4 == 1) 
 		{  
-	 	$promo4	= new promo($colonna,$olink4,$oimg4,$otit4,$otext4,4);
-	 		$promo4->show(); 
-		$target	= "promo4";
+         	echo	"<div class='f-dim1'>";
+			echo	"<a data-target='#promo4".$lcod."' data-toggle='modal'>";
+			echo "<img class='promo' src='".$oimg4."' alt='".$oimg4."'>";
+			echo "</a>";
+			echo "<h4 class='service-heading'>".$otit4."</h4>";
+			echo "<span class='text-muted'>".$otext4."</span>";
+			echo "</div>";
+		$target	= "promo4".$lcod;
 		$modal	= new dialogo_modale($target,$otit4,$oimg4,'',$otext4);
 			$modal->dialog();
 		}

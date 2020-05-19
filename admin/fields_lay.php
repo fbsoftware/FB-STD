@@ -6,5 +6,5 @@ $lcod     =$row['lcod'];
 $ldesc    =$row['ldesc'];
 $ltmp     =$row['ltmp'];
 $ltipo    =$row['ltipo']; 
-$linclude =$row['linclude'];
+$lrequire =$row['lrequire'];
 ?>

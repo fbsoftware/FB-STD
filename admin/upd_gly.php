@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 require_once("editor.php");			// scelta editor
-include_once('post_gly.php');
+require_once('post_gly.php');
 
      $azione  =$_POST['submit'];     // print_r($_POST);//debug
 
@@ -84,7 +84,7 @@ echo  "</form>";
                WHERE `gid` = $gid ";
 	echo	"<fieldset class='row'>"; 
      foreach($PDO->query($sql) as $row)
-	include('fields_gly.php');
+	require('fields_gly.php');
 
      $f1 = new input(array($gid,'gid',0,'','','h'));
           $f1->field();
@@ -132,7 +132,7 @@ $btg = new bottoni_str_par('Icone','gly','write_gly.php',array('salva|cancella',
                WHERE `gid` = $gid  "; 
 	echo	"<fieldset class='row'>"; 
      foreach($PDO->query($sql) as $row)
-	include('fields_gly.php');
+	require('fields_gly.php');
       $f0 = new input(array($gid,'gid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($gprog,'gprog',3,'Progressivo','','r'));         

@@ -20,7 +20,7 @@ require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
      
-include_once('post_lay.php');
+require_once('post_lay.php');
 $azione  =$_POST['submit'];      //print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
@@ -65,7 +65,7 @@ $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 foreach($PDO->query($sql) as $row)
-include('fields_lay.php');
+require('fields_lay.php');
 
 echo  "<fieldset class='col-md-6'>";
      $f1 = new input(array($lid,'lid',3,'','','h'));
@@ -139,7 +139,7 @@ case 'contatti':
  //         		$f1->field();  
                $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
           		$arg->select_label();       
-               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));           
+               $f4 = new input(array('contatti.php','lrequire',50,'Programma','Programma da requirere','r'));           
           		$f4->field();    
                break;
 default:
@@ -149,7 +149,7 @@ default:
 // =======================================================================================
      $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));           
           $f4->field();
-     $f4 = new input(array($linclude,'linclude',20,'Include','Programma da includere','r'));           
+     $f4 = new input(array($lrequire,'lrequire',20,'require','Programma da requirere','r'));           
           $f4->field();
      echo    "</fieldset></form>";
      break;
@@ -165,7 +165,7 @@ $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 foreach($PDO->query($sql) as $row)
-include('fields_lay.php');
+require('fields_lay.php');
 
 echo  "<fieldset class='col-md-6'>";
       $f0 = new input(array($lid,'lid',0,'','','h'));                        

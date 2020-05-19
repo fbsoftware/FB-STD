@@ -47,7 +47,7 @@ echo "</thead>";
                ORDER BY `tprog` ";
           foreach($PDO->query($sql) as $row)      
           {
-           include('fields_tmp.php');
+           require('fields_tmp.php');
      echo "<tr>";
 	echo "<td class='center'>"; 
 	$f0 = new fieldi($tid,'tid',2,'');            

@@ -28,7 +28,7 @@ require_once("editor.php");			// scelta editor
      echo     "<div class='form-horizontal'>";                
      echo     "<div class='row container'>";
 
-include_once('post_cap.php');   //print_r($_POST);//debug
+require_once('post_cap.php');   //print_r($_POST);//debug
 $azione  =$_POST['submit'];  
 $content =$QUI_TEXT;
  
@@ -88,7 +88,7 @@ $PDO->beginTransaction();
 
      foreach($PDO->query($sql) as $row)
      {
-     include('fields_cap.php');
+     require('fields_cap.php');
      $f0 = new input(array($cid,'cid',1,'','','h'));              
           $f0->field();    
           $f3 = new input(array($cprog,'cprog',03,'Progressivo','Per ordinamento','i'));        
@@ -130,7 +130,7 @@ $PDO->beginTransaction();
           $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)                            
              {
-             include('fields_cap.php'); 
+             require('fields_cap.php'); 
              $f0 = new input(array($cid,'cid',1,'ID record','','h'));              
                $f0->field();    
              $f1 = new input(array($cprog,'cprog',3,'Progressivo','','r'));        

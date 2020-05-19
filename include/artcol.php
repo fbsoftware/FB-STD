@@ -17,7 +17,7 @@ $count    = 0;
 				and hcod = '$lcod'";
           foreach($PDO->query($sql) as $row)
      	{       //print_r($row);//debug
-		include'admin/fields_arc.php'; 
+		require'admin/fields_arc.php'; 
 	
 		if ($hsino1 == 1) {$count++;} 
    	 	if ($hsino2 == 1) {$count++;}

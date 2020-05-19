@@ -22,7 +22,7 @@
 
 		foreach($rows as $row)
 			{		  
-          include'admin/fields_gly.php';			   
+          require'admin/fields_gly.php';			   
 			   
 		   echo	"<div>";
 		   if ($glink > '') 

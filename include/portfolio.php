@@ -25,11 +25,11 @@ echo "<section id='portfolio'>";
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 
-	echo "<div class='grid".$colonne." fb-col".$colonne."'>";
+	echo "<div class='grid".$colonne." fb-col".$colonne." fb-bgcolor-".TMP::$tcolor."'>";
 		
 		foreach($rows as $row)
 			{
-			include'admin/fields_por.php';
+			require'admin/fields_por.php';
 
 //-- Elementi di portfolio -->
 			echo "<div class='portfolio-thumbnail'>";

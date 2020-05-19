@@ -11,7 +11,7 @@ $btx = new bottoni_str_par('Articoli slide/tab','asl','upd_asl.php',array('nuovo
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";
@@ -37,7 +37,7 @@ $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
      foreach($PDO->query($sql2) as $row)             
-  	{ include('fields_asl.php');
+  	{ require('fields_asl.php');
      echo "<tr>";
   	$f1 = new fieldi($did,'did',5,'');            
   	echo "<td class='center'>"; $f1->field_ck(); echo "</td>";

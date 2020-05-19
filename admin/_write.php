@@ -19,7 +19,7 @@
 	£link	campo prefisso + link 
 	£tmp	campo prefisso + template   
 ============================================================================= */ 
-include_once('post_£tab.php');
+require_once('post_£tab.php');
            
 $azione   =    $_POST['submit'];          
 //print_r($_POST);//debug

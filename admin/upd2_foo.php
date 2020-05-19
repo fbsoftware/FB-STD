@@ -27,7 +27,7 @@ require_once("editor.php");				// scelta editor
 	}
 </style>
 <?php
-include('post_foo.php');
+require('post_foo.php');
 $azione=$_POST['submit'];
    
 // mostra stringa bottoni

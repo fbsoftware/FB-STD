@@ -1,6 +1,6 @@
 /*! jQuery UI - v1.12.1 - 2016-09-14
 * http://jqueryui.com
-* Includes: widget.js, position.js, data.js, disable-selection.js, effect.js, effects/effect-blind.js, effects/effect-bounce.js, effects/effect-clip.js, effects/effect-drop.js, effects/effect-explode.js, effects/effect-fade.js, effects/effect-fold.js, effects/effect-highlight.js, effects/effect-puff.js, effects/effect-pulsate.js, effects/effect-scale.js, effects/effect-shake.js, effects/effect-size.js, effects/effect-slide.js, effects/effect-transfer.js, focusable.js, form-reset-mixin.js, jquery-1-7.js, keycode.js, labels.js, scroll-parent.js, tabbable.js, unique-id.js, widgets/accordion.js, widgets/autocomplete.js, widgets/button.js, widgets/checkboxradio.js, widgets/controlgroup.js, widgets/datepicker.js, widgets/dialog.js, widgets/draggable.js, widgets/droppable.js, widgets/menu.js, widgets/mouse.js, widgets/progressbar.js, widgets/resizable.js, widgets/selectable.js, widgets/selectmenu.js, widgets/slider.js, widgets/sortable.js, widgets/spinner.js, widgets/tabs.js, widgets/tooltip.js
+* requires: widget.js, position.js, data.js, disable-selection.js, effect.js, effects/effect-blind.js, effects/effect-bounce.js, effects/effect-clip.js, effects/effect-drop.js, effects/effect-explode.js, effects/effect-fade.js, effects/effect-fold.js, effects/effect-highlight.js, effects/effect-puff.js, effects/effect-pulsate.js, effects/effect-scale.js, effects/effect-shake.js, effects/effect-size.js, effects/effect-slide.js, effects/effect-transfer.js, focusable.js, form-reset-mixin.js, jquery-1-7.js, keycode.js, labels.js, scroll-parent.js, tabbable.js, unique-id.js, widgets/accordion.js, widgets/autocomplete.js, widgets/button.js, widgets/checkboxradio.js, widgets/controlgroup.js, widgets/datepicker.js, widgets/dialog.js, widgets/draggable.js, widgets/droppable.js, widgets/menu.js, widgets/mouse.js, widgets/progressbar.js, widgets/resizable.js, widgets/selectable.js, widgets/selectmenu.js, widgets/slider.js, widgets/sortable.js, widgets/spinner.js, widgets/tabs.js, widgets/tooltip.js
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
 (function( factory ) {
@@ -1308,7 +1308,7 @@ var disableSelection = $.fn.extend( {
 //>>label: Effects Core
 //>>group: Effects
 // jscs:disable maximumLineLength
-//>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
+//>>description: Extends the internal jQuery effects. requires morphing and easing. Required by all other effects.
 // jscs:enable maximumLineLength
 //>>docs: http://api.jqueryui.com/category/effects-core/
 //>>demos: http://jqueryui.com/effect/
@@ -1736,11 +1736,11 @@ color.fn = jQuery.extend( color.prototype, {
 		}
 		return prefix + hsla.join() + ")";
 	},
-	toHexString: function( includeAlpha ) {
+	toHexString: function( requireAlpha ) {
 		var rgba = this._rgba.slice(),
 			alpha = rgba.pop();
 
-		if ( includeAlpha ) {
+		if ( requireAlpha ) {
 			rgba.push( ~~( alpha * 255 ) );
 		}
 
@@ -1872,7 +1872,7 @@ each( spaces, function( spaceName, space ) {
 	// Makes red() green() blue() alpha() hue() saturation() lightness()
 	each( props, function( key, prop ) {
 
-		// Alpha is included in more than one space
+		// Alpha is required in more than one space
 		if ( color.fn[ key ] ) {
 			return;
 		}
@@ -3529,7 +3529,7 @@ var effectsEffectSize = $.effects.define( "size", function( options, done ) {
 		hProps = hProps.concat( [ "marginLeft", "marginRight" ] );
 
 		// Only animate children with width attributes specified
-		// TODO: is this right? should we include anything with css width specified as well
+		// TODO: is this right? should we require anything with css width specified as well
 		element.find( "*[width]" ).each( function() {
 			var child = $( this ),
 				childOriginal = $.effects.scaledDimensions( child ),
@@ -4210,10 +4210,10 @@ var labels = $.fn.labels = function() {
 
 
 
-var scrollParent = $.fn.scrollParent = function( includeHidden ) {
+var scrollParent = $.fn.scrollParent = function( requireHidden ) {
 	var position = this.css( "position" ),
 		excludeStaticParent = position === "absolute",
-		overflowRegex = includeHidden ? /(auto|scroll|hidden)/ : /(auto|scroll)/,
+		overflowRegex = requireHidden ? /(auto|scroll|hidden)/ : /(auto|scroll)/,
 		scrollParent = this.parents().filter( function() {
 			var parent = $( this );
 			if ( excludeStaticParent && parent.css( "position" ) === "static" ) {
@@ -8273,7 +8273,7 @@ $.extend( Datepicker.prototype, {
 	 *
 	 * @param  format string - the expected format of the date
 	 * @param  value string - the date in the above format
-	 * @param  settings Object - attributes include:
+	 * @param  settings Object - attributes require:
 	 *					shortYearCutoff  number - the cutoff year for determining the century (optional)
 	 *					dayNamesShort	string[7] - abbreviated names of the days from Sunday (optional)
 	 *					dayNames		string[7] - names of the days from Sunday (optional)
@@ -8487,7 +8487,7 @@ $.extend( Datepicker.prototype, {
 	 *
 	 * @param  format string - the desired format of the date
 	 * @param  date Date - the date value to format
-	 * @param  settings Object - attributes include:
+	 * @param  settings Object - attributes require:
 	 *					dayNamesShort	string[7] - abbreviated names of the days from Sunday (optional)
 	 *					dayNames		string[7] - names of the days from Sunday (optional)
 	 *					monthNamesShort string[12] - abbreviated names of the months (optional)
@@ -9948,7 +9948,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		// 1. The position of the helper is absolute, so it's position is calculated based on the
 		// next positioned parent
 		// 2. The actual offset parent is a child of the scroll parent, and the scroll parent isn't
-		// the document, which means that the scroll is included in the initial calculation of the
+		// the document, which means that the scroll is required in the initial calculation of the
 		// offset of the parent, and never recalculated upon drag
 		if ( this.cssPosition === "absolute" && this.scrollParent[ 0 ] !== document &&
 				$.contains( this.scrollParent[ 0 ], this.offsetParent[ 0 ] ) ) {
@@ -16313,7 +16313,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 		// 1. The position of the helper is absolute, so it's position is calculated based on the
 		// next positioned parent
 		// 2. The actual offset parent is a child of the scroll parent, and the scroll parent isn't
-		// the document, which means that the scroll is included in the initial calculation of the
+		// the document, which means that the scroll is required in the initial calculation of the
 		// offset of the parent, and never recalculated upon drag
 		if ( this.cssPosition === "absolute" && this.scrollParent[ 0 ] !== this.document[ 0 ] &&
 				$.contains( this.scrollParent[ 0 ], this.offsetParent[ 0 ] ) ) {
@@ -16321,7 +16321,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 			po.top += this.scrollParent.scrollTop();
 		}
 
-		// This needs to be actually done for all browsers, since pageX/pageY includes this
+		// This needs to be actually done for all browsers, since pageX/pageY requires this
 		// information with an ugly IE fix
 		if ( this.offsetParent[ 0 ] === this.document[ 0 ].body ||
 				( this.offsetParent[ 0 ].tagName &&

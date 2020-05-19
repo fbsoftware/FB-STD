@@ -21,7 +21,7 @@ require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
 //----------------------------------------------
-include_once('post_por.php');
+require_once('post_por.php');
 
 $azione = $_POST['submit'];
 print_r($_POST); //debug

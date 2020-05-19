@@ -39,7 +39,7 @@ echo "<tbody>";
      FROM ".DB::$pref."arg
      ORDER BY rprog";
           foreach($PDO->query($sql) as $row)
-  { include('fields_arg.php');
+  { require('fields_arg.php');
      echo "<tr>";
      echo "<td class='center'>";
      $f1= new fieldi($rid,'rid',2,'');

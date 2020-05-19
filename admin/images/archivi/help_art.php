@@ -10,9 +10,9 @@
    * Visualizza articolo per help      
 =============================================================================*/
 echo  "<link rel='stylesheet' type='text/css' href='css/style.css'>";
-include_once('classi/bottoni.php'); 
-include_once('classi/FB.class.php');
-include_once 'classi/DB.php';
+require_once('classi/bottoni.php'); 
+require_once('classi/FB.class.php');
+require_once 'classi/DB.php';
 $db1 = new DB();       $db1->openDB();
 $azione = $_POST['submit'];
 $dati  = $_REQUEST['pgm'];

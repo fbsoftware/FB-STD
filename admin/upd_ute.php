@@ -78,7 +78,7 @@ case 'modifica':
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      {
-      include('fields_ute.php') ;
+      require('fields_ute.php') ;
       $f2 = new input(array($uid,'uid',0,'','','h'));                         
           $f2->field();             
       $f3 = new input(array($uprog,'uprog',03,'Progressivo','','i'));         
@@ -114,7 +114,7 @@ case 'cancella':
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      {
-      include('fields_ute.php') ;
+      require('fields_ute.php') ;
       $f2 = new input(array($uid,'uid',0,'','','h'));                        
           $f2->field();
       $f2 = new input(array($uprog,'uprog',03,'Progressivo','','r'));        

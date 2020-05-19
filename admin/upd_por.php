@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once('post_por.php');
+require_once('post_por.php');
 $azione=$_POST['submit'];          //print_r($_POST); //debug 
 echo "<section id='upd' class='container-fluid'";
 
@@ -90,7 +90,7 @@ case 'modifica':
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      { 
-      include('fields_por.php');  
+      require('fields_por.php');  
 echo  "<fieldset class='col-sm-6'>";
      $f0 = new input(array($pid,'pid',1,'','','h'));                 
         $f0->field();
@@ -144,7 +144,7 @@ case 'cancella':
         $PDO->beginTransaction(); 
         foreach($PDO->query($sql) as $row)
      {   
-     include('fields_por.php'); 
+     require('fields_por.php'); 
      echo  "<fieldset class='col-md-6'>";
      $f0 = new input(array($pid,'pid',5,'ID record','','h'));                
                 $f0->field();

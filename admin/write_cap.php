@@ -21,7 +21,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include('post_cap.php');
+require('post_cap.php');
 
 $azione  =$_POST['submit'];
 

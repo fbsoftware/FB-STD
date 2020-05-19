@@ -3,6 +3,8 @@
   Modulo promo
   Metodi:
   show()         emette promo
+  ...........................................................................
+  16/5/20	struttura FLEX
 ============================================================================= */
      class promo
 {
@@ -24,15 +26,15 @@ public $count="";
                }
                
          function show()
-          { 
+			{ 
          	echo	"<div class='".$this->colonna." text-center'>";
-      	echo	"<a data-target='#promo".$this->count."' data-toggle='modal'>";
-		echo "<img src='".$this->img."' alt='".$this->img."' width='100%'>";
-		echo "</a>";
-          echo "<h4 class='service-heading'>".$this->titolo."</h4>";
-          echo "<span class='text-muted'>".$this->testo."</span>";
-          echo "</div>"; 
-     	}
+			echo	"<a data-target='#promo".$this->count."' data-toggle='modal'>";
+			echo "<img src='".$this->img."' alt='".$this->img."' width='100%'>";
+			echo "</a>";
+			echo "<h4 class='service-heading'>".$this->titolo."</h4>";
+			echo "<span class='text-muted'>".$this->testo."</span>";
+			echo "</div>"; 
+			}
 }
 
 ?>

@@ -18,8 +18,8 @@ require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
-//----------------------------------------------include_once('post_asl.php');
-include_once('post_asl.php');
+//----------------------------------------------require_once('post_asl.php');
+require_once('post_asl.php');
 $azione  =$_POST['submit'];    // print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
@@ -76,7 +76,7 @@ echo	"<fieldset class='col-md-6'>";
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
      { 
-     include('fields_asl.php');
+     require('fields_asl.php');
  //   print_r($row);//debug
       $f4 = new input(array($did,'did',5,'','','h'));
           $f4->field(); 
@@ -115,7 +115,7 @@ echo	"<fieldset class='col-md-6'>";
      $PDO = new PDO($con,DB::$user,DB::$pw);
      $PDO->beginTransaction(); 
      foreach($PDO->query($sql) as $row)
-	include('fields_asl.php');
+	require('fields_asl.php');
      {
       $f0 = new input(array($did,'did',0,'','','h'));                        
 	 	$f0->field(); 

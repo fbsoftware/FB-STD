@@ -39,7 +39,7 @@ echo "</thead>";
           ORDER BY username";
      foreach($PDO->query($sql) as $row)
      {
-     include('fields_ute.php');                 
+     require('fields_ute.php');                 
      echo "<tr>";
 		$f1 = new fieldi($uid,'uid',2,'');           
      echo "<td class='center'>"; $f1->field_ck(); echo "</td>";

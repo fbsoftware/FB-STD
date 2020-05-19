@@ -7,11 +7,11 @@
 	padding: 5px;
 }
 fieldset {
-@include	fieldset();
+@require	fieldset();
 	margin-bottom: 5px;
 }
 fieldset.toolbar  {
-@include	fieldset();
+@require	fieldset();
      margin-top: 5px;
 	 height: 55px;
 }

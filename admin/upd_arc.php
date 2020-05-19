@@ -87,7 +87,7 @@ echo  "</form>";
      $sql = "SELECT * FROM `".DB::$pref."arc` 
                WHERE `hid` = $hid ";
      foreach($PDO->query($sql) as $row)
-	include('fields_arc.php');
+	require('fields_arc.php');
 
 	echo "<div class='row' >";
 	echo	"<fieldset>"; 
@@ -135,7 +135,7 @@ $btg = new bottoni_str_par('Modulo articolo-colonne','arc','write_arc.php',array
                WHERE `hid` = $hid  "; 
 	echo	"<fieldset class='col-md-6'>";  
      foreach($PDO->query($sql) as $row)
-	include('fields_arc.php');
+	require('fields_arc.php');
       $f0 = new input(array($hid,'hid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($hprog,'hprog',3,'Progressivo','','r'));         

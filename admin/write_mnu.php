@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once('post_mnu.php');
+require_once('post_mnu.php');
 $azione  =$_POST['submit'];
 //print_r($_POST);//debug
 switch ($azione)

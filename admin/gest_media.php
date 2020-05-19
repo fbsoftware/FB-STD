@@ -20,7 +20,7 @@ $btx   = new bottoni_str_par('Gestione dei media','img','upd_media.php',$param);
      $btx->btn();
 	 
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 // emette tebella con immagini
 ?>

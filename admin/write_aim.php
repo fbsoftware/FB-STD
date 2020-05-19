@@ -19,7 +19,7 @@ require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
 //----------------------------------------------
-include_once('post_aim.php');
+require_once('post_aim.php');
 // transazione    
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);

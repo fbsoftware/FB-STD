@@ -12,7 +12,7 @@ $btx      = new bottoni_str_par($AIM,'aim','upd_aim.php',$param);
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";
@@ -32,7 +32,7 @@ echo "</thead>";
                ORDER BY iprog";
 
      foreach($PDO->query($sql) as $row)            
-  {  include('fields_aim.php');
+  {  require('fields_aim.php');
      echo "<tr>";
      echo "<td class='center'>";
      $f1 = new fieldi($iid,'iid',5,'');            

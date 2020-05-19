@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once('post_aim.php');
+require_once('post_aim.php');
 $azione  =$_POST['submit'];     //print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
@@ -87,7 +87,7 @@ $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 foreach($PDO->query($sql) as $row)
-include('fields_aim.php');
+require('fields_aim.php');
 
 echo "<div class='row'>";
 echo  "<fieldset class='col-md-6'>";
@@ -139,7 +139,7 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 foreach($PDO->query($sql) as $row)
 	{
-	include('fields_aim.php');
+	require('fields_aim.php');
 echo "<div class='row'>";
 echo  "<fieldset class='col-md-6'>";
       $f0 = new input(array($iid,'iid',0,'','','h'));                        

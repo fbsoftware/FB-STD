@@ -22,7 +22,7 @@ require_once('connectDB.php');
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
      
 // zona messaggi
-include_once 'msg.php';
+require_once 'msg.php';
 
 //  mostra tabella
 echo "<div class='tableFixHead'>";
@@ -44,7 +44,7 @@ echo "</thead>";
 
           foreach($PDO->query($sql) as $row)      
           {   
-     include('fields_£tab.php');      
+     require('fields_£tab.php');      
      echo "<tr>";  
      $f1 = new fieldi($£id,'£id',2,'');               
      echo "<td class='center'>"; 

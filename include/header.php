@@ -39,7 +39,7 @@
                 ORDER BY nprog";
           foreach($PDO->query($sql) as $row)
        { 
-          include 'admin/fields_nav.php';
+          require 'admin/fields_nav.php';
 // echo "<br />npag=".$npag.";nli=".$nli.";Tipo=".$ntipo;//debug
         if ($row['npag'] == '1') 
                 {  

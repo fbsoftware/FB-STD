@@ -21,7 +21,7 @@ require_once("bootstrap_link.php");
 require_once('lingua.php'); 
 $app->closeHead();
 
-include_once 'post_lang.php';      //print_r($_POST);//debug
+require_once 'post_lang.php';      //print_r($_POST);//debug
 switch ($azione)
 {
 case 'nuovo':

@@ -10,7 +10,7 @@ parent node.  This means that if a block encapsulates a node,
 e.g <p><span>text</span></p>, then only the styles in the block are
 recognized, not those in the span.
 
-When selecting text that includes multiple blocks at the same level (peers),
+When selecting text that requires multiple blocks at the same level (peers),
 this plug-in accumulates the specified styles in all of the surrounding blocks
 and populates the dialogue checkboxes accordingly.  There is no differentiation
 between styles set in all the blocks versus styles set in some of the blocks.

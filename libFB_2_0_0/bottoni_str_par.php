@@ -46,10 +46,10 @@ class bottoni_str_par
                }             
         public function btn()           //  bottoni gestione
           { 
-echo "<link rel='stylesheet' type='text/css' href='../templates/admin/css/styles-flexo.css' />";
-				echo "<div class='flex j-between toolbar-color'>";
+
+				echo "<div class='f-flex jc-between toolbar-color'>";
 				// immagine ampiezza = 1
-                echo "<div class='item'>";
+                echo "<div class='f-item'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{
                 echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='50'> ";
@@ -57,12 +57,12 @@ echo "<link rel='stylesheet' type='text/css' href='../templates/admin/css/styles
 				echo    "</div>";
                 
                 // titolo ampiezza = 4
-                echo "<div class='item text-center'>";
+                echo "<div class='f-item text-center'>";
                 echo "<h1 class='toolbar'>&nbsp;".$this->titolo."</h1>";
                 echo    "</div>";
                 
                 // bottoni ampiezza = 7
-                echo    "<div class='item btn-group text-right'>"; 
+                echo    "<div class='f-item btn-group text-right'>"; 
 				if(in_array('enctype',$this->param)) 
 					{
 					echo "<form enctype='multipart/form-data' method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;

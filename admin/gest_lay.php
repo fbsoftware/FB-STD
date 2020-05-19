@@ -44,7 +44,7 @@ echo "<tbody>";
 
           foreach($PDO->query($sql) as $row)      
           {   
-     include('fields_lay.php');      
+     require('fields_lay.php');      
      echo "<tr>";  
      echo "<td class='center'>"; 
      $f1 = new input(array($lid,'lid',2,'','','ck'));
@@ -56,7 +56,7 @@ echo "<tbody>";
           <td><?php echo htmlspecialchars($ldesc, ENT_QUOTES) ?></td>
           <td><?php echo $ltipo ?></td> 
           <td><?php echo $ltmp ?></td>
-          <td><?php echo $linclude ?></td>  
+          <td><?php echo $lrequire ?></td>  
             
 <?php
      echo "</tr>";

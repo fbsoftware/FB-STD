@@ -18,11 +18,11 @@
 /* Stile per modificare e sovrascrivere l'aspetto degli input di Bootstrap */
 
 form	{
-  @include	margin-block-end();	
+  @require	margin-block-end();	
 }
 
 .form-control { 
-  @include	margin-block-end();	
+  @require	margin-block-end();	
   height: 32px;
   padding: 6px 12px;
   color: $darkgrey-color;
@@ -34,7 +34,7 @@ margin :0 50% 0 50%;
 }
 
 form.bottoni {
-  @include	margin-block-end();	
+  @require	margin-block-end();	
 float: left;
 }
 
@@ -52,17 +52,17 @@ font-size: 10pt;
 /*  LABEL  */
 
  label    {
-	@include	label();
+	@require	label();
 	width: 150px;
  }
  
  label.short {
-	@include	label();
+	@require	label();
 	width: 10%;
 }
 
  label.wide {
-	@include	label();
+	@require	label();
 	width: 100%;
 }
 input {

@@ -71,7 +71,7 @@ echo  "</form>";
 			   WHERE `bid` = ".$bid."  ";    
      foreach($PDO->query($sql) as $row)
 	 {
-      include('fields_mnu.php');
+      require('fields_mnu.php');
      $f1 = new input(array($bid,'bid',1,'','','h'));                         
 		$f1->field();     
      $ts = new DB_tip_i('stato','bstat',$bstat,'Stato record','');
@@ -103,7 +103,7 @@ echo  "</form>";
 				WHERE `bid` = $bid  ";    
 	foreach($PDO->query($sql) as $row)
 	{
-	include('fields_mnu.php'); 
+	require('fields_mnu.php'); 
 	echo  "<fieldset class='col-md-8'>";
      $f1 = new field($bid,'bid',1,'');                   
 		$f1->field_h();     

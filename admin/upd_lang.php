@@ -20,7 +20,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include_once 'post_lang.php';           
+require_once 'post_lang.php';           
 //print_r($_POST);//debug
  
      // contenitore

@@ -22,7 +22,7 @@ require_once('../lingua.php');
 $app->closeHead();
 //----------------------------------------------
 
-include('post_nav.php');
+require('post_nav.php');
 @$azione=$_POST['submit'];
    
 // mostra stringa bottoni
