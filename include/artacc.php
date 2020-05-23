@@ -1,3 +1,8 @@
+<?php
+/* =========================================================
+	Articoli in ACCORDION
+   =======================================================*/
+?>
 <section id="artacc">
 
   <script>
@@ -8,7 +13,6 @@
     });
   } );
   </script>
-
 <?php
 // cerca nel layout gli articoli per accordion
  $sql = "SELECT *FROM `".DB::$pref."asl`
@@ -41,10 +45,13 @@ $count = count($testo);
 
 if ($count != 0) 
 	{
-
-// Pannello 
-	$head = new section_head(TMP::$taccotitle,TMP::$taccotit,TMP::$taccotext,TMP::$tcolor);
-		$head->head();
+// pannello
+		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		echo "<div class='f-dim1'>";
+		if (isset(TMP::$taccotit)) { echo "<h1>".TMP::$taccotit."</h1>"; } 
+				if (isset(TMP::$taccotext)) { echo "<p>".TMP::$taccotext."</p>"; }
+		echo "</div>";
+		echo "</div>";		
 
 // lettura articoli
 echo "<div id='accordion'>";

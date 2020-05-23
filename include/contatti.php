@@ -1,8 +1,10 @@
 <?php
 echo	"<section id='contatti'>";
 // pannello
-$head	= new section_head(TMP::$tcttitle,TMP::$tcttit,TMP::$tcttext,TMP::$tcolor);
-	$head->head();
+		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		if (isset(TMP::$tcttit)) { echo "<h1>".TMP::$tcttit."</h1>"; } 
+				if (isset(TMP::$tcttext)) { echo "<p>".TMP::$tcttext."</p>"; }
+		echo "</div>";	
 ?>            
             <form id="contatti" method="post">
 			
