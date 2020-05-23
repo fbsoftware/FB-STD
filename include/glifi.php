@@ -1,9 +1,14 @@
 <section id="glyph">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 <?php
-		$head	= new section_head(TMP::$tgliftitle,TMP::$tgliftit,TMP::$tgliftext,TMP::$tcolor);
-			$head->head();
-
+// pannello
+		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		echo "<div class='f-dim1'>";
+		if (isset(TMP::$tgliftit)) { echo "<h1>".TMP::$tgliftit."</h1>"; } 
+				if (isset(TMP::$tgliftext)) { echo "<p>".TMP::$tgliftext."</p>"; }
+		echo "</div>";
+		echo "</div>";	
+		
 // lettura glifi per il template
         $sql = "SELECT *
                 FROM `".DB::$pref."gly`
@@ -18,13 +23,13 @@
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 		  
-		echo "<div class='grid".$colonne." fb-col".$colonne."'>";
+		echo "<div class='f-flex fd-row jc-center  ai-start'>";
 
 		foreach($rows as $row)
 			{		  
           require'admin/fields_gly.php';			   
 			   
-		   echo	"<div>";
+		   echo "<div class='f-dim1'>";
 		   if ($glink > '') 
 				{
 				echo	"<a href='".$glink."' target='_new'>";

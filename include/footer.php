@@ -1,5 +1,5 @@
 <?php
-echo	"<div id='footer' class='fb-bgcolor-".TMP::$tcolor."'>"; 
+echo	"<div id='footer' class='f-flex fd-row fb-bgcolor-".TMP::$tcolor."'>"; 
 
 // lettura footer elements
         $sql = "SELECT *
@@ -15,14 +15,13 @@ echo	"<div id='footer' class='fb-bgcolor-".TMP::$tcolor."'>";
 		json_encode($rows);
 		$colonne = $stmt->rowCount();				
 				
-	echo "<div class='grid".$colonne." fb-col".$colonne."'>";
-		
 		foreach($rows as $row)
 			{
+				
 // modulo tipo immagine
 		if ($row['ftipo'] == 'img') 
 		{
-		  echo	"<div>";
+		  echo "<div class='f-dim1'>";
           echo	"<br />";
           echo	"<img  class='center' src='".$row['felemento']."' alt='".$row['felemento']."'  width='' height='100'>";
           if (isset($row['ftitolo'])) 		
@@ -34,7 +33,7 @@ echo	"<div id='footer' class='fb-bgcolor-".TMP::$tcolor."'>";
 // modulo tipo contatti        
 		if ($row['ftipo'] == 'cnt') 
 		{
-			echo	"<div>"; 
+			echo "<div class='f-dim1'>"; 
 			if ($row['ftit'])
 			{
 			echo	"<h4>".$row['ftit']."</h4>";

@@ -24,52 +24,39 @@ class imgTable
 	}
 /************************************************
  * @method:   putTable()
- * @description:Emette la tabella con immagini
+ * @description:Emette immagini
  * **********************************************/
   public function putTable()
      {
 		 $array_file=array();
+echo    "<div class='f-flex fd-row f-dim1 '>";
+		 
 // lettura directory
 foreach (glob($this->path."*.*") as $key => $gx)
 {    $array_file[$key] = $gx; }
+
 // cartella immagini generali sel sito, mostro i file in una tabella
-echo    "<div class='tabella'>";
-echo    "<table cellpadding='10'>";
-echo    "<tr>";
-//---------------------------------------------------------
-echo    "<td>";
+
+
 $conto2=count($array_file);
 for($b=0; $b<$conto2; $b++)
-{
-    $file_ext = substr($array_file[$b], strripos($array_file[$b], '.'));
-    if  ($file_ext=='.jpg'  ||$file_ext=='.JPG'
+		{
+		
+		echo "<div class='f-item cell-120'>";
+		echo "<input type='checkbox' value=''/>";
+		$file_ext = substr($array_file[$b], strripos($array_file[$b], '.'));
+		if  ($file_ext=='.jpg'  ||$file_ext=='.JPG'
        ||$file_ext=='.png'  ||$file_ext=='.PNG'
        ||$file_ext=='.gif'  ||$file_ext=='.GIF'
        ||$file_ext=='.bmp'  ||$file_ext=='.BMP'
        ||$file_ext=='.ico'  ||$file_ext=='.ICO')
         {
-        // link
-        echo  "<a href='".$array_file[$b]."' target='_blank'>";
-        // verifica dimensioni
-        $dim = getimagesize($array_file[$b]);
-        $x=$dim['0'];    $y=$dim['1'];
-         // nei limiti entrambe le dimensioni
-        if($x <= $this->width && $y <= $this->height) {
-          echo    "<img class='img-centro' src='".$array_file[$b]."' height='".$y."' float='left'>"; }
-        else { $vx = $this->width/$x;   $vy = $this->height/$y;
-        // adeguo la + critica fra le dimensioni
-               if($vx <= $vy) {echo    "<img  class='img-centro' src='".$array_file[$b]."' width='".$this->width."' float='left'>";}  else  {
-        echo    "<img class='img-centro'  src='".$array_file[$b]."' height='".$this->height."' float='left'>"; }
-        }
-        echo    "</a><br >".$array_file[$b] = str_replace($dirimm,'',$array_file[$b]);
-                // 4 immagini per riga
-                $nn=$nn+1;    // per iniziare da 1 e non da zero
-            if   ($nn%$this->numero == 0)  { echo"</tr><tr><td>";}
-            else {echo"</td><td>";}
-        }
-}
-//---------------------------------------------------------
-echo    "</tr></table></div>";
-     }
-} // END class imgTable
+        echo  "<a href='".$array_file[$b]."' target='_blank'>";// link
+        echo    "<img class='img-tab' src='".$array_file[$b]."' >";
+		echo "</div>";
+		}
+		}
+echo "</div>";
+	 }
+ }
 ?>

@@ -31,8 +31,12 @@
 	} 
 
 // pannello
-		$head	= new section_head(TMP::$ttabtitle,TMP::$ttabtit,TMP::$ttabtext,TMP::$tcolor);
-			$head->head();
+		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		echo "<div class='f-dim1'>";
+		if (isset(TMP::$ttabtit)) { echo "<h1>".TMP::$ttabtit."</h1>"; } 
+				if (isset(TMP::$ttabtext)) { echo "<p>".TMP::$ttabtext."</p>"; }
+		echo "</div>";
+		echo "</div>";
 ?>			
   <script>
   $( function() {
