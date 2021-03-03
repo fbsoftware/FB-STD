@@ -10,11 +10,12 @@ $tdesc    	=addslashes($_POST['tdesc']);
 $tmenu    	=addslashes($_POST['tmenu']);
 $tlang    	=$_POST['tlang'];
 $tcolor   	=$_POST['tcolor'];
+$teditor   	=$_POST['teditor'];
 // slide
 $tslidebutt    =$_POST['tslidebutt'];
 $tslidetime    =$_POST['tslidetime'];
 // portfolio 
-$tportitle     =$_POST['tportitle'];
+$tportitle    =$_POST['tportitle'];
 $tportit      =$_POST['tportit'];
 $tportext     =addslashes($_POST['tportext']);
 // glifi
@@ -28,9 +29,9 @@ $tpromotitle   =$_POST['tpromotitle'];
 $tpromotit     =$_POST['tpromotit'];
 $tpromotext    =addslashes($_POST['tpromotext']);
 // contatti
-$tcttitle   =$_POST['tcttitle'];
-$tcttit     =$_POST['tcttit'];
-$tcttext     =addslashes($_POST['tcttext']);  
+$tcttitle   	=$_POST['tcttitle'];
+$tcttit     	=$_POST['tcttit'];
+$tcttext     	=addslashes($_POST['tcttext']);  
 // accordion
 $taccotitle   	=$_POST['taccotitle'];
 $taccotit     	=$_POST['taccotit'];

@@ -16,17 +16,17 @@ require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
 echo "<div class='tableFixHead'>";
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
+echo "<table class='table table-hover  table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>Tmp.</th>";
 echo "<th>Codice</th>"; 
 echo "<th>Descrizione</th>";
 echo "<th>Articolo</th>";
 echo "</thead>";
-      
+echo "<tbody>";      
     $sql = "  SELECT * 
                FROM `".DB::$pref."aim` 
                ORDER BY iprog";

@@ -22,8 +22,6 @@ if ($count == 1) { echo '<li data-target="#myCarousel" data-slide-to="1"></li>';
 if ($count == 2) { echo '<li data-target="#myCarousel" data-slide-to="2"></li>';}
 if ($count == 3) { echo '<li data-target="#myCarousel" data-slide-to="3"></li>';}
 if ($count == 4) { echo '<li data-target="#myCarousel" data-slide-to="4"></li>';} 
-echo "<li data-target='#myCarousel' data-slide-to='".$count."'></li>";
-  	
       $count++;     
       }    ?>   
       </ol> 
@@ -51,7 +49,7 @@ echo "<li data-target='#myCarousel' data-slide-to='".$count."'></li>";
                }
 ?>
         
-          <img class="centro" src="<?php echo $row['slimg'] ?>" alt="<?php echo $row['slimg'] ?>" title="<?php echo $row['slalt'] ?>">
+          <img src="<?php echo $row['slimg'] ?>" alt="<?php echo $row['slimg'] ?>" title="<?php echo $row['slalt'] ?>">
             
 <?php 
               echo	"<div class='carousel-caption'>";
@@ -59,10 +57,10 @@ echo "<li data-target='#myCarousel' data-slide-to='".$count."'></li>";
               if (($row['slcaption'] > '') || ($row['sldesc'] > '')) 
 		    {
               echo	"<h1>".$row['slcaption']."</h1>";
-              echo	"<p class='text-center'>".$row['sldesc']."</p>";	
+              echo	"<p class='center'>".$row['sldesc']."</p>";	
               }
               if (($row['slink'] > '') || ($row['slinkcap'] > '')) {
-              echo	"<p class='text-center'><a class='btn btn-lg btn-".TMP::$tcolor." page-scroll' href='".$row['slink']."' role='button' target='_new'>".$row['slinkcap']."</a></p>";              	
+              echo	"<p class='center'><a class='btn btn-lg btn-".TMP::$tcolor." page-scroll' href='".$row['slink']."' role='button' target='_new'>".$row['slinkcap']."</a></p>";              	
               }
 
               echo	"</div>";   //-- .carousel-caption -- 

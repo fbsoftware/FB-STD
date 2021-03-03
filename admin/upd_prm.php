@@ -15,7 +15,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -82,7 +82,7 @@ switch ($azione)
 // primo promo 
 	echo "<div id='tabs-1' class='row' >";
 
-	echo	"<fieldset class='col-md-12'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array('','osino1',1,'Mostra promo 1','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg1','Immagine ','Immagine del promo');
@@ -101,7 +101,7 @@ if (TMP::$teditor == 'ckeditor')
 // secondo promo
 	echo "<div id='tabs-2' class='row' >";
  
-	echo	"<fieldset class='col-md-12'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array('','osino2',1,'Mostra promo 2','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg2','Immagine ','Immagine del promo');
@@ -119,7 +119,7 @@ if (TMP::$teditor == 'ckeditor')
 
 // terzo promo 
 	echo "<div id='tabs-3' class='row' >";
-	echo	"<fieldset  class='col-md-12'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array('','osino3',1,'Mostra promo 3','','sn')); 
           $f3->field(); 
       $tw = new select_file('images/','','oimg3','Immagine ','Immagine del promo');
@@ -277,7 +277,7 @@ $btg = new bottoni_str_par('Modulo promo','prm','write_prm.php',array('salva|can
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."prm` 
                WHERE `oid` = $oid  "; 
-	echo	"<fieldset class='col-md-6'>";  
+	echo	"<fieldset>";  
      foreach($PDO->query($sql) as $row)
 	require('fields_prm.php');
       $f0 = new input(array($oid,'oid',0,'','','h'));                        

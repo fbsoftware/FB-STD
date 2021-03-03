@@ -7,9 +7,6 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= */ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('../lingua.php');
 
 // toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
@@ -25,16 +22,17 @@ require_once 'msg.php';
 //   testata
 echo "<section id='table'>";
 echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
+echo "<table class='table table-hover table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>$NAME</th>";
 echo "<th>$TIPO</th>";
 echo "<th>$DESC</th>";
 echo "<th>$SEL</th>";
 echo "</thead>";   
+echo "<tbody>";
 
 $sql = "SELECT * FROM ".DB::$pref."mnu 
 		ORDER BY bprog";
@@ -55,6 +53,7 @@ $sql = "SELECT * FROM ".DB::$pref."mnu
 <?php
      echo "</tr>";               
           }
+		  echo "</tbody>";
      echo "</table>"; 
 	echo "</div>";
 	echo "</section>";

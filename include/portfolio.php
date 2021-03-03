@@ -10,10 +10,10 @@ echo "<section id='portfolio'>";
 // stampa il titolo se richiesto
 	if (TMP::$tportitle == 1) 
 	{
-		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
-		echo "<div class='f-dim1'>";
-		if (isset(TMP::$tportit)) { echo "<h1>".TMP::$tportit."</h1>"; } 
-				if (isset(TMP::$tportext)) { echo "<p>".TMP::$tportext."</p>"; }
+		echo "<div class='f-flex fd-row fb-bgcolor-".TMP::$tcolor."'>"; 
+		echo "<div>";
+		if (TMP::$tportit > " ")  { echo "<h1>".TMP::$tportit."</h1>"; } 
+		if (TMP::$tportext > " ") { echo "<p>".TMP::$tportext."</p>"; }
 		echo "</div>";
 		echo "</div>";
 	}  
@@ -32,26 +32,28 @@ echo "<section id='portfolio'>";
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 
-echo "<div class='f-flex fd-row jc-between  ai-stretch'>";
+echo "<div class='f-flex fd-row jc-around fw'>";
 		
 		foreach($rows as $row)
 			{
 			require'admin/fields_por.php';
 
 			//-- Elementi di portfolio -->
-			echo "<div class='f-dim1'>";
-			echo "<a data-toggle='modal' href='#portfolio".$pid."'>";
-			echo "<img src='".$pimg."' alt='".$pimg."' width='250'>  </a>";
+			echo "<div>";
+			echo "<p><a data-toggle='modal' href='#portfolio".$pid."'>";
+			echo "<img class='img-fit' src='".$pimg."' alt='".$pimg."'>  </a>";
 
 			//-- .portfolio-caption -->
 			echo "<div class='portfolio-caption'>";
-			echo "<h4 class='text-center'>".$pcapt."</h4>";
+			echo "<h3 class='center'>".$pcapt."</h3>";
 			echo "</div>";
 			
 			//-- dialogo modale --
 			$target	= "portfolio".$pid;
 			$modal	= new dialogo_modale($target,$pmheader,$pimg,$pmlink,$pmtext);
 			$modal->dialog();
+			echo "</p>";
+
 			echo "</div>";		//-- elemento -->
 			} 			
 

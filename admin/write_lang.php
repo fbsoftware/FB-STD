@@ -9,16 +9,16 @@
    * ------------------------------------------------------------------------
    * gestione descrizionbi in lingua
 ============================================================================= */ 
-require_once('loadLibraries.php');
+require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once("connectDB.php");
+require_once("../connectDB.php");
 // DOCTYPE & head
 $app = new Head('Gestione menu');
 $app->openHead();
-require_once("include_head.php");
-require_once("jquery_link.php");
-require_once("bootstrap_link.php");
-require_once('lingua.php'); 
+require_once("../include_head.php");
+require_once("../jquery_link.php");
+//require_once("../bootstrap_link.php");
+require_once('../lingua.php'); 
 $app->closeHead();
 
 require_once 'post_lang.php';      //print_r($_POST);//debug

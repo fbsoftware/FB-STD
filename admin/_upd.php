@@ -27,7 +27,7 @@ require_once("connectDB.php");
 $app = new Head('Gestione £titolo');
 $app->openHead();
 require_once("jquery_link.php");
-require_once("bootstrap_link.php");
+//require_once("bootstrap_link.php");
 require_once("include_head.php");
 require_once('lingua.php'); 
 $app->closeHead();
@@ -53,7 +53,7 @@ switch ($azione)
     case 'nuovo':
      $btx = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           $btx->btn();
-echo	"<fieldset class='col-md-7'>";          
+echo	"<fieldset>";          
      $ins = new DB_ins('£tab','£prog');
      $f1 = new input(array($ins->insert(),'£prog',3,$PROG,'Per ordinamento','i'));
           $f1->field();         
@@ -68,7 +68,7 @@ echo	"<fieldset class='col-md-7'>";
           $f3->field(); 
 echo "</fieldset>";
 	// per textarea
-echo	"<fieldset class='col-md-7'>";
+echo	"<fieldset>";
      $f4 = new input(array('','£text',50,'£label','£tooltip','tx')); 
           $f4->field(); 
 echo "</fieldset>";
@@ -82,7 +82,7 @@ echo  "</form>";
      $btx->btn();
      $sql = "SELECT * FROM `".DB::$pref."£tab` 
                WHERE `£id` = $£id ";
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset>"; 
      foreach($PDO->query($sql) as $row)
 	require('fields_£tab.php');
 
@@ -101,7 +101,7 @@ echo  "</form>";
           $f3->field(); 		  
 	echo "</fieldset>";
 	// per textarea
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array($£text,'£text',50,'£label','£tooltip','tx')); 
           $f3->field(); 
 	echo "</fieldset>";
@@ -115,7 +115,7 @@ $btg = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|can
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."£tab` 
                WHERE `£id` = $£id  "; 
-	echo	"<fieldset class='col-md-7'>";  
+	echo	"<fieldset>";  
      foreach($PDO->query($sql) as $row)
 	require('fields_£tab.php');
       $f0 = new input(array($£id,'£id',0,'','','h'));                        
@@ -133,7 +133,7 @@ $btg = new bottoni_str_par('£titolo','£tab','write_£tab.php',array($SAV.'|can
           $f3->field(); 
 	 echo "</fieldset>"; 
 	// per textarea
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array($£text,'£text',50,'£label','£tooltip','tx')); 
           $f3->field(); 
 	echo "</fieldset>";	 

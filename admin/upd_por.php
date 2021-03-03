@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -22,7 +22,6 @@ $app->closeHead();
 
 require_once('post_por.php');
 $azione=$_POST['submit'];          //print_r($_POST); //debug 
-echo "<section id='upd' class='container-fluid'";
 
 // test scelta effettuata dal pgm chiamante
 if (($azione == 'modifica' || $azione == 'cancella') && $pid <= 0) 
@@ -45,7 +44,7 @@ case 'nuovo':
                 $bti->btn();  
 
 // dati di base
-echo  "<fieldset class='col-sm-6'>";
+echo  "<fieldset>";
      $PDO = new DB_ins('por','pprog');                                
      $nr=$PDO->insert();
         $f  =    new input(array($nr,'pprog',5,'Progressivo','Per serializzare','i'));
@@ -91,7 +90,7 @@ case 'modifica':
      foreach($PDO->query($sql) as $row)
      { 
       require('fields_por.php');  
-echo  "<fieldset class='col-sm-6'>";
+echo  "<fieldset>";
      $f0 = new input(array($pid,'pid',1,'','','h'));                 
         $f0->field();
         $campo  =    array($pprog,'pprog',5,'Progressivo','Per serializzare','i');
@@ -145,7 +144,7 @@ case 'cancella':
         foreach($PDO->query($sql) as $row)
      {   
      require('fields_por.php'); 
-     echo  "<fieldset class='col-md-6'>";
+     echo  "<fieldset>";
      $f0 = new input(array($pid,'pid',5,'ID record','','h'));                
                 $f0->field();
      $f1 = new input(array($pprog,'pprog',3,'Progressivo','','r'));          
@@ -165,8 +164,6 @@ case 'chiudi' :
             header($loc);                           
        break;               
 } 
-echo	"</section>";		
-
 
 ob_end_flush();  
 ?>

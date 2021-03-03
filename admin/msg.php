@@ -3,8 +3,8 @@
 // zona messaggi unificati
 if(isset($_SESSION['esito'])) 
      {
-	 echo	 "<div class='row'>";
-     echo "<div class='col-md-12'>";
+	 echo	 "<div class='f-flex fd-row jc-start'>";
+     echo "<div class='f-item'>";
      // errori
 
      if ($_SESSION['esito'] > -1  && $_SESSION['esito'] < 51)      // 0 - 50
@@ -21,7 +21,7 @@ if(isset($_SESSION['esito']))
      // successo
      if ($_SESSION['esito'] > 50  && $_SESSION['esito'] < 101)    // 51 - 100
           {
-     echo "<div class='alert alert-success'>";
+     echo "<div class='alert alert-success f-item'>";
           if ($_SESSION['esito'] == 53) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$REC_CAN." ";
           if ($_SESSION['esito'] == 54) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$REC_ADD." ";
           if ($_SESSION['esito'] == 55) echo "<img src='images/ok.png' height=20 alt='ok'>&nbsp;&nbsp;".$REC_MOD." ";
@@ -38,7 +38,7 @@ if(isset($_SESSION['esito']))
      // warning
      if ($_SESSION['esito'] > 100  && $_SESSION['esito'] < 151)    // 101 - 150
           {
-      echo "<div class='alert alert-warning'>";
+      echo "<div class='alert alert-warning f-item'>";
           if ($_SESSION['esito'] == 101)    echo "<img src='images/xdb.png' height=20 alt='nota'>&nbsp;&nbsp;".$NOTA." "; 
            echo "</div>";
           }      
@@ -46,7 +46,7 @@ if(isset($_SESSION['esito']))
      // info
      if ($_SESSION['esito'] > 150  && $_SESSION['esito'] < 201)    // 151 - 200
           {
-     echo "<div class='alert alert-info'>";
+     echo "<div class='alert alert-info f-item'>";
           if ($_SESSION['esito'] == 151)     echo "<img src='images/info.png' height=20 alt='info'>&nbsp;&nbsp;".$INFO." "; 
           echo "</div>";
           }      
@@ -58,12 +58,12 @@ if(isset($_SESSION['esito']))
 // zona messaggi unificati
 if(isset($_SESSION['errore'])) 
      {
-     echo "<div class='col-md-12'>";
+     echo "<div class='f-flex fd-row jc-start'>";
      // errori
 
      if ($_SESSION['errore'] > -1  && $_SESSION['errore'] < 51)      // 0 - 50
           {
-      echo "<div class='alert alert-danger'>";
+      echo "<div class='alert alert-danger f-item'>";
           if ($_SESSION['errore0'] == 1)      
           echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_COD."<br />"; 
           if ($_SESSION['errore1'] == 1)      
@@ -80,8 +80,8 @@ if(isset($_SESSION['errore']))
           }  
 
           echo "</div>";
-          echo "</div><br/>";
-
+          echo "</div>";
+			echo "<br/>";
      unset($_SESSION['errore']);
      unset($_SESSION['errore0']);
      unset($_SESSION['errore1']);

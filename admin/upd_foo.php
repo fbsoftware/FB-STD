@@ -16,7 +16,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -28,6 +28,11 @@ require_once("editor.php");				// scelta editor
 	width:1000px !important;
 	}
 </style>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
 <?php
 require_once('post_foo.php');			// nome tabella
 
@@ -59,21 +64,26 @@ case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
 
 // modifica     
     case 'modifica':
+ 	
      $btx = new bottoni_str_par('Modifica Footer di pagina','foo','write_foo.php',array('salva|modifica','ritorno'));     
      $btx->btn();
+	 echo "<div  id='tabs'>";
+	echo "<ul>
+	<li><a href='#tab1' >Dati base</a></li>
+	<li><a href='#tab2' >Testo</a></li>
+	</ul>"; 
      $sql = "SELECT * FROM `".DB::$pref."foo` 
                WHERE `fid` = $fid ";
-	echo	"<fieldset class='row'>"; 
+			   
+	echo "<fieldset id='tab1'>"; 
      foreach($PDO->query($sql) as $row)
 	require('fields_foo.php');
-
      $f1 = new input(array($fid,'fid',0,'','','h'));
           $f1->field();
      $f1 = new input(array($fprog,'fprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();         
      $ts = new DB_tip_i('stato','fstat',$fstat,'Stato record','Attivo/sospeso'); 
           $ts->select();
-	//-----------------------------------------------------------------
      $f3 = new input(array($fcod,'fcod',20,'Codice','£tooltip','ia')); 
           $f3->field(); 
      $f4 = new input(array($fdes,'fdes',20,'Descrizione','£tooltip','i'));           
@@ -82,10 +92,11 @@ case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
           $ti->field();		  
 	 $te = new getTmp($ftmp,'ftmp','Template','Template che visualizza il footer');
 		$te->getTemplate();
-	 $co = new DB_tip_i('col','fcol',$fcol,'Colonna','Ampiezza della colonna');
+	 $co = new DB_tip_i('col','fcol',$fcol,'Ampiezza colonna','Ampiezza della colonna');
 		$co->select();
-	 $ca = new DB_tip_i('tifoo','ftipo',$ftipo,'Tipo','Tipo elemento di footer');
-		$ca->select(); //==================================================================================     
+	$input = new input(array($ftipo,'ftipo',20,'Tipo','Tipo elemento di footer','r'));     
+     $input->field();     
+//==================================================================================     
 switch ($ftipo)	
 	{
 case 'img' :
@@ -97,19 +108,21 @@ case 'cnt' :
           $f4->select_lt();
 		 break;
 	}	
-//==================================================================================     
   
      $f3 = new input(array($flink,'flink',20,'Link','Link se cliccato','i')); 
           $f3->field(); 		  
 	echo "</fieldset>";
+//==================================================================================     
+	
 	// per textarea
-	echo	"<fieldset class='row'>"; 
+	echo	"<fieldset id='tab2'>"; 
      $f3 = new input(array($ftext,'ftext',50,'Testo','£tooltip','tx')); 
           $f3->field();
 if (TMP::$teditor == 'ckeditor') 
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('ftext');</script>"; }		  
 	echo "</fieldset>";
-     echo    "</form>";
+	echo "</div>";
+    echo "</form>";
      break;
  //==================================================================================     
  
@@ -119,7 +132,7 @@ $btg = new bottoni_str_par('Cancella Footer di pagina','foo','write_foo.php',arr
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."foo` 
                WHERE `fid` = $fid  "; 
-	echo	"<fieldset class='col-md-7'>";  
+	echo	"<fieldset>";  
      foreach($PDO->query($sql) as $row)
 	require('fields_foo.php');
       $f0 = new input(array($fid,'fid',0,'','','h'));                        
@@ -137,7 +150,7 @@ $btg = new bottoni_str_par('Cancella Footer di pagina','foo','write_foo.php',arr
           $f3->field(); 
 	 echo "</fieldset>"; 
 	// per textarea
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array($ftext,'ftext',50,'Testo','£tooltip','tx')); 
           $f3->field(); 
 	echo "</fieldset>";	 

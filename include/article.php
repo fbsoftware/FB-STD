@@ -1,20 +1,27 @@
 <?php
+//   cerca nel layout l'articolo richiesto
 echo "<section id='article'>";
 $count = 0; 
-     echo "<div class='row'>";
-//   cerca nel layout gli articoli che posiziona in righe 
-//   secondo le dimensioni delle colonne.
-
+     echo "<div class='f-flex fd-row'>";
         $sql = "SELECT *
                 FROM `".DB::$pref."art`
                 WHERE atit = '$lcod'
                     and astat <> 'A' 
                 ORDER BY aprog ";
      foreach($PDO->query($sql) as $row)
-		{    
-		 $atit      =$row['atit'];
-         require 'articolo.php';
-         $count++;
+		{ 
+		 echo "<div>";
+		  if ($row['amostra'] == 1) 
+			{
+			echo "<h1>".$row['atit']."</h1>";
+			}
+		  // ricerca articolo
+                   
+          $art = new getArt($row['atit']);
+          $art->getFieldsdArt();
+          $a = new txt($art->atext);
+          $a->ingloba();
+          echo "</div>";
 		}  
 	echo "</div>";
 	echo "</section>";

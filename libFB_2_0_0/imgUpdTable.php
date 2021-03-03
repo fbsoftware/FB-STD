@@ -14,7 +14,7 @@ class imgUpdTable    extends imgTable
 	public $height = 0;          // altezza max immagine
 	public $width  = 0;          // larghezza max immagine
 	public $numero = 0;          // celle per riga
-	public $callbk = 0;          // action del form
+	public $callbk = "";          // action del form
 	// costruttore
   public function __construct($path,$height,$width,$numero,$callbk)
 	{
@@ -30,10 +30,20 @@ class imgUpdTable    extends imgTable
  * **********************************************/
   public function putUpdTable()
      {
-
 // lettura directory
-foreach (glob($this->path."*.*") as $key => $gx)
-{    $array_file[$key] = $gx; }
+
+
+
+echo $path_img = $this->path;
+//$path_img ="../templates/blog/images/logo/";
+
+
+
+$array_file=array();
+//foreach (glob($path_img) as $key => $gx)
+foreach (glob($this->path."*.*") as $array_filex)
+{    array_push($array_file,$array_filex); }
+//print_r($array_file);//debug
 
 // cartella immagini generali sel sito, mostro i file in una tabella
 echo    "<div class='tabella'>";
@@ -55,8 +65,8 @@ for($b=0; $b<$conto2; $b++)
      echo "<form method='post' action='".$this->callbk.".php'>";
         // verifica dimensioni
         $dim = getimagesize($array_file[$b]);
-        $x=$dim['0'];    $y=$dim['1'];
-
+        $x=$dim['0'];    
+		$y=$dim['1'];
         // link
         echo  "<a class='img' href='".$array_file[$b]."' target='_blank'>";
 
@@ -65,11 +75,13 @@ for($b=0; $b<$conto2; $b++)
           {
           echo    "<img class='img-centro' src='".$array_file[$b]."' width='".$x."' float='left'>";
           }
+		  
         else
           {   // adeguo la larghezza
           echo    "<img  class='img-centro' src='".$array_file[$b]."' width='".$this->width."' float='left'>";
           }
-        echo    "</a><br >".$array_file[$b] = str_replace($this->path,'',$array_file[$b]);
+        //echo    "</a><br >".$array_file[$b] = str_replace($this->path,'',$array_file[$b]);
+        echo    "</a><br >".$array_file[$b];
 
         // bottone di cancellazione
 		echo "<div class='row'>";

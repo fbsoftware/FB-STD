@@ -1,7 +1,6 @@
 <?php
 
 $host="localhost"; 
-
 $root="root"; 
 $root_password=""; 
 

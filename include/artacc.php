@@ -46,12 +46,15 @@ $count = count($testo);
 if ($count != 0) 
 	{
 // pannello
+	if (TMP::$taccotitle == 1) 
+	{
 		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
 		echo "<div class='f-dim1'>";
-		if (isset(TMP::$taccotit)) { echo "<h1>".TMP::$taccotit."</h1>"; } 
-				if (isset(TMP::$taccotext)) { echo "<p>".TMP::$taccotext."</p>"; }
+		if (TMP::$taccotit > " ")  { echo "<h1>".TMP::$taccotit."</h1>"; } 
+		if (TMP::$taccotext > " ") { echo "<p>".TMP::$taccotext."</p>"; }
 		echo "</div>";
-		echo "</div>";		
+		echo "</div>";	
+	}	
 
 // lettura articoli
 echo "<div id='accordion'>";

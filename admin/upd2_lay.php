@@ -15,7 +15,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione layout');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -35,7 +35,7 @@ case 'nuovo':
 	$param = array('nuovo','ritorno');
 	$btx   = new bottoni_str_par('Layout sito','nav','write_lay.php',$param);     
      $btx->btn();
-      echo  "<fieldset class='col-md-6'>";  
+      echo  "<fieldset>";  
      $xdb = new DB_ins('lay','lprog');
      $f1 = new input(array($xdb->insert(),'lprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();         

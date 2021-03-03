@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -43,7 +43,6 @@ switch ($azione)
       $db_ute = new DB_ins('ute','uprog');                       
       $nmax = $db_ute->insert();
 
-     echo "<div class='col-md-7'>";        
      echo  "<fieldset>"; 
       $f3 = new input(array($nmax,'uprog',03,'Progressivo','','i'));           
           $f3->field();        
@@ -58,16 +57,15 @@ switch ($azione)
      $f7 = new input(array('','uiscritto',3,'Nr.utente','','i'));           
           $f7->field();   
      echo "</fieldset>";
-     echo "</div>";
      echo "</form>";
       break;
  //==================================================================================     
     
 case 'modifica':
+echo "UTENTE=".$UTES;//debug
      $param = array($SAV.'|modifica',$RET.'|ritorno');
      $btx   = new bottoni_str_par($UTES.' - '.$MOD,'ute','write_ute.php',$param);     
           $btx->btn();
-     echo "<div class='col-md-7'>";
      echo  "<fieldset>";    
       
 // transazione
@@ -95,7 +93,6 @@ case 'modifica':
           $f7->field(); 
      }
      echo "</fieldset>";
-     echo "</div>";
      echo "</form>";
       break;
  //==================================================================================     
@@ -104,7 +101,6 @@ case 'cancella':
      $param = array($SAV.'|cancella',$RET.'|ritorno');
      $btx   = new bottoni_str_par($DELCONF,'ute','write_ute.php',$param);     
           $btx->btn();
-     echo "<div class='col-md-7'>";
      echo  "<fieldset>";      
 // transazione  
      $sql = "SELECT * FROM `".DB::$pref."ute` 
@@ -131,7 +127,6 @@ case 'cancella':
           $f7->field(); 
      }
      echo "</fieldset>";
-     echo "</div>";
      echo "</form>";     
       break;
 

@@ -33,8 +33,8 @@
 // pannello
 		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
 		echo "<div class='f-dim1'>";
-		if (isset(TMP::$ttabtit)) { echo "<h1>".TMP::$ttabtit."</h1>"; } 
-				if (isset(TMP::$ttabtext)) { echo "<p>".TMP::$ttabtext."</p>"; }
+		if (TMP::$ttabtit > " ")  { echo "<h1>".TMP::$ttabtit."</h1>"; } 
+		if (TMP::$ttabtext > " ") { echo "<p>".TMP::$ttabtext."</p>"; }
 		echo "</div>";
 		echo "</div>";
 ?>			
@@ -45,8 +45,7 @@
   </script>
 
  <!-- articoli -->
-<div class="row">
-<div class="col-md-12">
+<div class="f-flex fd-column">
 <div id="tabs">
 <?php
 // lettura titoli per tab
@@ -70,7 +69,6 @@ for ($i = 0; $i < $count; ++$i)
     echo "</div>";                
 	}  
 echo "</div>";		// #tabs -->
-echo "</div>";    	// col-md-6 -->
-echo "</div>";    	// row -->
+echo "</div>";    	// flex -->
 echo "</section>";
 ?>

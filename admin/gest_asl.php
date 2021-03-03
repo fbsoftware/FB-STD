@@ -17,9 +17,9 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>$COD</th>";
 echo "<th>$DESC</th>"; 
 echo "<th>$TEMP</th>";
@@ -27,7 +27,7 @@ echo "<th>$TIPO</th>";
 echo "<th>$CAP</th>";
 echo "<th>$ART</th>"; 
 echo "</thead>";
-
+echo "<tbody>";
 // transazione    
    
     $sql2 = "  SELECT * 
@@ -44,7 +44,7 @@ $PDO->beginTransaction();
   	$st = new fieldi($dstat,'dstat',2,'');        
   	echo "<td class='center'>"; $st->field_st(); echo "</td>";
 ?>
-  <td><?php echo $dprog ?></td>
+  <td class="center"><?php echo $dprog ?></td>
   <td><?php echo $dcod  ?></td>
   <td><?php echo $ddes  ?></td>  
   <td><?php echo $dtmp  ?></td> 

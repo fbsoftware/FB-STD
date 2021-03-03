@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -36,7 +36,7 @@ switch ($azione)
           $param    = array($SAV.'|nuovo',$RET.'|ritorno');     
           $bti      = new bottoni_str_par($LANG.' - '.$UPD_INSER,'lang','write_lang.php',$param);
                $bti->btn();  
-          echo  "<fieldset class='col-md-7'>"; 
+          echo  "<fieldset>"; 
           $f4 = new input(array('','voce',50,'Descrizione','Descrizione da tradurre','ia'));          
           $f4->field();
 // lettura directory language
@@ -71,7 +71,7 @@ if ($chiave == '')
      header($loc);
      }
      $options=array('autoSave'=>true, 'readOnly'=>false);
-     echo  "<fieldset class='col-md-7'>"; 
+     echo  "<fieldset>"; 
       $f4 = new input(array($_POST['chiave'],'voce',50,'Descrizione','Descrizione da tradurre','ia'));       
           $f4->field();
           
@@ -109,7 +109,7 @@ if ($chiave == '')
      header($loc);
      }
      $options=array('autoSave'=>true, 'readOnly'=>false);
-      echo  "<fieldset class='col-md-7'>"; 
+      echo  "<fieldset>"; 
       $f4 = new input(array($_POST['chiave'],'voce',50,'Descrizione','Descrizione da tradurre','ia'));
           $f4->field();
 // lettura directory language

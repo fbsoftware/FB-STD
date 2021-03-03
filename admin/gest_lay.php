@@ -25,9 +25,9 @@ echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";  
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>$COD</th>";
 echo "<th>$DESC</th>"; 
 echo "<th>$TIPO</th>";
@@ -35,7 +35,6 @@ echo "<th>$TEMP</th>";
 echo "<th>$INCL</th>";
 echo "</tr>"; 
 echo "</thead>";
-
 echo "<tbody>"; 
 // lettura database
      $sql =   "SELECT * 
@@ -62,6 +61,8 @@ echo "<tbody>";
      echo "</tr>";
      }
      echo "</tbody>"; 
-     echo "</table></form></div>";
+     echo "</table>";
+	 echo "</form>";
+	 echo "</div>";
      echo "</div>";     // col
 ?>

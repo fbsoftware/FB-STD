@@ -17,7 +17,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -183,7 +183,7 @@ echo  "</form>";
 // tabs-2 note --------------------------------------------------------------------
 	echo "<div id='tabs-2' class='row'>";
 	echo "<fieldset>"; 
-	echo	"<fieldset class='col-md-6'>";
+	echo	"<fieldset>";
      $f4 = new input(array($enote,'enote',50,$NOTE,'','tx')); 
           $f4->field(); 
 	echo "<script type='text/javascript'>CKEDITOR.replace('enote');	</script>";
@@ -200,7 +200,7 @@ $btg = new bottoni_str_par('Contatti-cancella','ctt','write_ctt.php',array($SAV.
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."ctt` 
                WHERE `eid` = $eid  "; 
-	echo	"<fieldset class='col-md-7'>";  
+	echo	"<fieldset>";  
      foreach($PDO->query($sql) as $row)
 	require('fields_ctt.php');
       $f0 = new input(array($eid,'eid',0,'','','h'));                        
@@ -218,7 +218,7 @@ $btg = new bottoni_str_par('Contatti-cancella','ctt','write_ctt.php',array($SAV.
           $f3->field(); 
 	 echo "</fieldset>"; 
 	// per textarea
-	echo	"<fieldset class='col-md-7'>"; 
+	echo	"<fieldset>"; 
      $f3 = new input(array($enote,'',50,$NOTE,'','r')); 
           $f3->field(); 
 	echo "</fieldset>";	 

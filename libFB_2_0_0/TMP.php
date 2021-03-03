@@ -20,7 +20,8 @@ class TMP       extends  DB
   public static $tlang   	=  '';      // template - lingua
   public static $tcolor  	=  '';      // colore base del template
   public static $tcod      	=  '';		// codice del template
-  public static $ttipo   	=  '';		// tipo template: sito-admin  
+  public static $ttipo   	=  '';		// tipo template: sito-admin 
+  public static $teditor	=  '';		// editor di testo  
   // slide
   public static $tslidebutt   = '';     // slide - bottoni navigazione
   public static $tslidetime   = 0;      // slide - tempo permanenza immagine
@@ -54,8 +55,6 @@ class TMP       extends  DB
   public static $tsldtitle	=  0;		// titolo si-no
   public static $tsldtit		=  '';		// titolo 
   public static $tsldtext	=  '';		// testo 
-  // editor
-  public static $teditor	=  '';		// editor di testo 
   
 		function __construct($ambiente) 
 		{
@@ -97,6 +96,7 @@ class TMP       extends  DB
 				self::$tmenu   		= $row['tmenu'];
 				self::$tlang   		= $row['tlang'];
 				self::$tcolor  		= $row['tcolor'];		// colore di base
+				self::$teditor 		= $row['teditor'];      // editore di testi
 				self::$tcod      	= $row['tcod'];			// codice del template
 				self::$ttipo   		= $row['ttipo'];		// tipo template: sito-admin
 			   // slide

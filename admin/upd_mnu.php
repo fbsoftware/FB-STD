@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -44,7 +44,7 @@ switch ($azione)
 		$btx->btn();
       $mnu = new DB_ins('mnu','bprog');                             
       $xxx = $mnu->insert();     
-echo  "<fieldset class='col-md-8'>";
+echo  "<fieldset>";
 $f2 = new input(array($xxx,'bprog',03,$PROG,$TT_PROG,'i'));     
      $f2->field();     		
       $ts = new DB_tip_i('stato','bstat','',$ST,$TT_ST);        
@@ -66,7 +66,7 @@ echo  "</form>";
 	$btx    = new bottoni_str_par($MENU.' - '.$UPD_MODIF,'mnu','write_mnu.php',$param);  
 		$btx->btn();
 
-	echo  "<fieldset class='col-md-8'>";  
+	echo  "<fieldset>";  
       $sql = "SELECT * FROM `".DB::$pref."mnu` 
 			   WHERE `bid` = ".$bid."  ";    
      foreach($PDO->query($sql) as $row)
@@ -104,7 +104,7 @@ echo  "</form>";
 	foreach($PDO->query($sql) as $row)
 	{
 	require('fields_mnu.php'); 
-	echo  "<fieldset class='col-md-8'>";
+	echo  "<fieldset>";
      $f1 = new field($bid,'bid',1,'');                   
 		$f1->field_h();     
      $ts = new field($bstat,'bstat',1,'Stato record');   

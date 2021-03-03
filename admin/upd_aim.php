@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -40,8 +40,7 @@ switch ($azione)
      $param    = array('salva|nuovo','ritorno');
      $btx      = new bottoni_str_par($AIM,'aim','write_aim.php',$param);     
      $btx->btn();
-	echo "<div class='row'>";
-     echo  "<fieldset class='col-md-6'>";  
+     echo  "<fieldset>";  
       $xdb = new DB_ins('aim','iprog');                      
       $f1 = new input(array($xdb->insert(),'iprog',3,'Progressivo','Per ordinamento','i'));         
            $f1->field();     
@@ -70,7 +69,6 @@ switch ($azione)
       $f  = new DB_tip_i('posim','iimgpos','','Posizione immagine','Posizione immagine destra-sinistra');
           $f->select();
 echo "</fieldset>";
-echo "</div>";
 echo "</form>";
       break;
 
@@ -89,8 +87,7 @@ $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
 require('fields_aim.php');
 
-echo "<div class='row'>";
-echo  "<fieldset class='col-md-6'>";
+echo  "<fieldset>";
       $f4 = new input(array($iid,'iid',5,'','','h'));
           $f4->field(); 
       $f1 = new input(array($iprog,'iprog',3,'Progressivo','Progressivo per ordinamento','i'));         
@@ -121,7 +118,6 @@ echo  "<fieldset class='col-md-6'>";
           $f->select();
 
 echo "</fieldset>";
-echo "</div>";
 echo "</form>";
 break;
  
@@ -140,8 +136,7 @@ $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
 	{
 	require('fields_aim.php');
-echo "<div class='row'>";
-echo  "<fieldset class='col-md-6'>";
+echo  "<fieldset>";
       $f0 = new input(array($iid,'iid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($iprog,'iprog',3,'Progressivo','','r'));         
@@ -156,7 +151,6 @@ echo  "<fieldset class='col-md-6'>";
       	$f4->field(); 
      }
 echo "</fieldset>";
-echo "</div>";
 echo "</form>";
       break;  
       

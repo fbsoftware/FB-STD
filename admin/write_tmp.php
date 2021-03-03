@@ -8,14 +8,16 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * Scrittura sul DB tabella templates
-	*	1.0.0 nuova head
+	* 1.0.0 nuova head
+	* 30/5/20	tolto tsld... perchè non utilizzato (Rimangono i campi sul database)
+	* 07/02/21	gestito editor di testi
 ============================================================================= */ 
 require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -25,7 +27,7 @@ require_once 'post_tmp.php';
 $azione   =$_POST['submit'];
 
 echo "<br />";   
-print_r($_POST);//debug
+//print_r($_POST);//debug
 
 // test validità codice  
 if (($tmenu <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
@@ -48,7 +50,7 @@ case 'nuovo':
                        tgliforma,tgliftitle,tgliftext,tglireverse,ttipo,
 						tpromotitle,tpromotit,tpromotext,tgliftit,tportit,tportext,
 						tcttitle,tcttit,tcttext,taccotitle,taccotit,taccotext,
-						ttabtitle,ttabtit,ttabtext,tsldtitle,tsldtit,tsldtext)  
+						ttabtitle,ttabtit,ttabtext,tsldtitle,tsldtit,tsldtext,teditor)  
                        VALUES ('$tprog','$tstat','$tcod','$tsel','$tfolder','$tdesc',
                               '$tmenu','$tlang','$tslidebutt','$tslidetime',
                               '$tportitle','$tcolor','$tgliforma','$tgliftitle',
@@ -56,8 +58,7 @@ case 'nuovo':
 						 '$tpromotitle','$tpromotit','$tpromotext','$tgliftit',
 						 '$tportit','$tportext',
 						 '$tcttitle','$tcttit','$tcttext','$taccotitle','$taccotit','$taccotext',
-						  '$ttabtitle','$ttaabtit','$ttabtext',
-						  '$tsldtitle','$tsldtit','$tsldtext')";
+						  '$ttabtitle','$ttaabtit','$ttabtext','$teditor')";
                         $PDO->exec($sql);    
                         $PDO->commit();
                         $_SESSION['esito'] = 54;
@@ -87,9 +88,7 @@ case 'modifica':
 						ttabtitle=$ttabtitle,
 						ttabtit='$ttabtit',
 						ttabtext='$ttabtext',
-						tsldtitle=$tsldtitle,
-						tsldtit='$tsldtit',
-						tsldtext='$tsldtext'
+						teditor='$teditor'
 				   
                    WHERE `tid`='$tid' ";
                    $PDO->exec($sql);    

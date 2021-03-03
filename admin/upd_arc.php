@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -133,7 +133,7 @@ $btg = new bottoni_str_par('Modulo articolo-colonne','arc','write_arc.php',array
      $btg->btn();
       $sql = "SELECT * FROM `".DB::$pref."arc` 
                WHERE `hid` = $hid  "; 
-	echo	"<fieldset class='col-md-6'>";  
+	echo	"<fieldset>";  
      foreach($PDO->query($sql) as $row)
 	require('fields_arc.php');
       $f0 = new input(array($hid,'hid',0,'','','h'));                        

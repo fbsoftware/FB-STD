@@ -16,7 +16,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -41,7 +41,6 @@ case 'nuovo':
 	$btx    = new bottoni_str_par($VOCI_MENU.' - '.$NEW,'nav','write_nav.php',$param);  
 		$btx->btn();
 echo "<fieldset >";
-echo  "<div class='col-md-6'>";
       $nav = new DB_ins('nav','nprog');   
 		$num = $nav->insert();
       $f1 = new field($num,'nprog',3,'Progressivo');       
@@ -91,7 +90,6 @@ case 'ifr':
 	  $f2 = new input(array('','nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
 		$f2->field();     
 	echo  "</fieldset>"; 
-	echo "</div>";
 	echo "</form>";      
       break;
 }

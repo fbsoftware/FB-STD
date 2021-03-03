@@ -6,10 +6,7 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
-============================================================================= */  
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('../lingua.php');
+============================================================================= */
 
 //   bottoni gestione
 	$param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
@@ -27,13 +24,13 @@ echo "<section id='table'>";
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>Scelta</th>";
-echo "<th style='width:2%;'>Stato</th>";
-echo "<th style='width:2%;'>Progressivo</th>"; 
+echo "<th style='width:2%; text-align:center;'>Scelta</th>";
+echo "<th style='width:2%; text-align:center;'>Stato</th>";
+echo "<th style='width:2%; text-align:center;'>Progressivo</th>"; 
 echo "<th>Utente</th>";
 echo "<th>Livello accesso</th>";
-echo "<th>Numero utente</th>";
-echo "</thead>";  
+echo "</thead>"; 
+echo "<tbody>"; 
 // transazione
      $sql = "SELECT * FROM `".DB::$pref."ute`
           ORDER BY username";
@@ -49,10 +46,10 @@ echo "</thead>";
      <td class='center'><?php echo $uprog ?></td>
      <td><?php echo $username ?></td>
      <td><?php echo $uaccesso ?></td>
-     <td><?php echo $uiscritto ?></td> 
 <?php              
      echo "</tr>";
      }
+	 echo "</tbody>";
      echo "</table>"; 
 	echo "</div>";
 	echo "</section>";
