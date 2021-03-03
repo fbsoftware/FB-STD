@@ -42,12 +42,13 @@ if ($urla){
           } 
 if ($dati){
           require_once('component/content.php');    // componenti
-          }       
+          } 
+
+//  footer ============================================= 
+require_once('moduli/footer.php'); 
+		  
 echo "</section>" ;      //  FINE CORPO
   
-//  footer + navigatore   ============================================= 
-require_once('moduli/footer.php'); 
-                               
 ob_end_flush();
 echo "</body></html>";        
 ?>

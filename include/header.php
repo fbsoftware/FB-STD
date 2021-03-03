@@ -10,12 +10,15 @@
   Visualizza il navigatore principale nei due livelli previsti
 =============================================================================== */
 ?>
-<section id="header">
-<div class="container-fluid">
-<div class="row">
+<section id="header" class="f-flex fd-row jc-between">
+<!-- <div class="container-fluid"> -->
+<div class="f-item">
+              <img src="<?php echo TMP::$tfolder; ?>images/logo/logo.png" alt="logo" title="Logo" height="80">           
+             </div>  
+
       <!-- Static navbar -->
+<div class="f-item ai-center ">  
       <nav class="navbar navbar-default">
-      
         
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -24,13 +27,10 @@
               <span class='icon-bar'></span>
               <span class='icon-bar'></span>
             </button>
-            <div> 
-              <img src="<?php echo TMP::$tfolder; ?>images/logo/logo.png" alt="logo" title="Logo" height="80"style="margin-right:50px;">           
-             </div>   
+ 
           </div>
-          
+		<div>          
             <ul class='nav navbar-nav'> 
-
  <?php 
  // lettura voci menu 
         $sql = "SELECT *
@@ -71,7 +71,9 @@
         }            
            echo "</ul>"; 
 ?>
-</div>  <!--- row -->  
-</div>  <!--- container -->
+</div>	<!--- navbar --> 
 </nav>
+</div>	
+
+
 </section>

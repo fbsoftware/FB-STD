@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -53,7 +53,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
           $cap->select_label();
       $f4 = new input(array('','atit',30,'Titolo','','i'));     
           $f4->field(); 
-          $f6 = new input(array('','amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
+          $f6 = new input(array('','amostra',0,'Mostra il titolo','SI = mostra il titolo','sn'));         
                $f6->field(); 
 		$f9 = new input(array($content,'atext',30,'Testo','','tx'));  
 			$f9->field(); 
@@ -96,7 +96,7 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $cap2->select_label();
       $f4 = new input(array($atit,'atit',30,'Titolo articolo','','i'));    
           $f4->field(); 
-         $f6 = new input(array($amostra,'amostra',0,'Mostra il testo','SI = mostra il titolo','sn'));         
+         $f6 = new input(array($amostra,'amostra',0,'Mostra il titolo','SI = mostra il titolo','sn'));         
                $f6->field();  
 
      echo "<br />";

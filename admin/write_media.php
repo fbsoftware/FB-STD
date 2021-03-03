@@ -15,7 +15,6 @@ require_once('../lingua.php');
  
 print_r($_POST);//debug
 $azione  = $_POST['submit'];
-$img_del = $_POST['img_del'];
 
 // mostra stringa bottoni o chiude
 switch ($azione)
@@ -36,25 +35,23 @@ switch ($azione)
 print_r($_POST);//debug	 
 // per prima cosa verifico che il file sia stato effettivamente caricato
 if (!isset($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name'])) 
-{
-  echo 'Non hai inviato nessun file...';
-  exit;    
-}
-          else    
-		  {
-echo "<br />".$uploadDir = 'images/';
-echo "<br />".$userfile_tmp = $_FILES['file']['tmp_name']; 
-echo "<br />".$userfile_name = $_FILES['file']['name'];
-echo "<br />".$userfile_tmp."-". $uploaDdir.$userfile_name;
-echo "<br />images/".$_FILES['file']['name'];
+	{
+	echo 'Non hai inviato nessun file...';
+	exit;    
+	}
+else    
+	{
+	echo "<br />".$uploadDir = 'images/';
+	echo "<br />".$userfile_tmp = $_FILES['file']['tmp_name']; 
+	echo "<br />".$userfile_name = $_FILES['file']['name'];
+	echo "<br />".$userfile_tmp."-". $uploaDdir.$userfile_name;
+	echo "<br />images/".$_FILES['file']['name'];
 if (move_uploaded_file($userfile_tmp, "images/".$_FILES['file']['name']))
- {
-  //Se l'operazione è andata a buon fine...
-  echo 'File inviato con successo.';
-}else{
-  //Se l'operazione è fallta...
-  echo 'Upload NON valido!'; 
-}
+	{   //Se l'operazione è andata a buon fine...
+	echo 'File inviato con successo.';  }
+else{	//Se l'operazione è fallta...
+	echo 'Upload NON valido!'; 
+	}
           $_SESSION['esito'] = 57;
 		  }
           break;
@@ -62,19 +59,14 @@ if (move_uploaded_file($userfile_tmp, "images/".$_FILES['file']['name']))
 		  
      case 'download':
 //impostiamo la cartella in cui sono presenti i file per il download   
-$dir = "images/";    
-$path = $dir . $img_del;    
+$path = $img_del;    
   
 // eseguiamo alcuni controlli preventivi  
-if($img_del==''){  
-    exit('Nessun file indicato');  
-    }  
-else if(!is_file($path)){    
-    exit('Il file non esiste');    
-    }    
-else if(!is_readable($path)){    
-    exit('Il file non ha i permessi per essere scaricato');    
-    }    
+if($img_del == ''){  exit('Nessun file indicato');  }  
+
+else if(!is_file($path)){   exit('Il file non esiste');   }    
+
+else if(!is_readable($path)){  exit('Il file non ha i permessi per essere scaricato');   }    
       
 // otteniamo alcune info sul file     
 $info = pathinfo( $path );    

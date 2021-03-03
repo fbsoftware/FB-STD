@@ -9,9 +9,7 @@
    * -------------------------------------------------------------------------
    * Gestione dei templates      
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('../lingua.php');     
+  
 //   bottoni gestione
 $btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
@@ -28,9 +26,9 @@ echo "<div class='tableFixHead'>";
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
 echo "<tr>";
-echo "<th style='width:2%;'>Scelta</th>";
-echo "<th style='width:2%;'>Stato</th>";
-echo "<th style='width:2%;'>Progressivo</th>"; 
+echo "<th style='width:2%; text-align:center;'>Scelta</th>";
+echo "<th style='width:2%; text-align:center;'>Stato</th>";
+echo "<th style='width:2%; text-align:center;'>Progressivo</th>"; 
 echo "<th>Selezionato</th>";
 echo "<th>Codice</th>";
 echo "<th>Tipo</th>";
@@ -40,7 +38,7 @@ echo "<th>Menù</th>";
 echo "<th>Lingua</th>";
 echo "</tr>";
 echo "</thead>";
-
+echo "<tbody>";
 // mostra la tabella  --------------------------------------------------
      $sql = "  SELECT * 
                FROM `".DB::$pref."tmp` 
@@ -74,6 +72,7 @@ echo "</thead>";
 <?php
      echo "</tr>";
           }
+		  echo "</tbody>";
      echo "</table>"; 
 	echo "</div>";
 	echo "</section>";

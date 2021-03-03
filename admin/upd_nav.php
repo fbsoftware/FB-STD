@@ -16,7 +16,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -83,7 +83,6 @@ case 'modifica':
 	{
       require('fields_nav.php');          
       echo  "<fieldset >";
-	  echo "<div col-md-6'>";
       $f0  = new field($nid,'nid',1,'ID record');                   
 		$f0->field_h();
       $f1  = new field($nprog,'nprog',3,'Progressivo');             
@@ -156,7 +155,6 @@ case 'url':
 	  $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));     
 		$f2->field();     
 	echo  "</fieldset>"; 
-	echo "</div>";
 	echo "</form>";
       break;
 }    
@@ -173,7 +171,6 @@ case 'cancella':
 	{
     require('fields_nav.php');  
       echo "<fieldset>";
-      echo  "<div class=col-md-6>";
 $f0 = new field($nid,'nid',1,'ID record');                     
 	$f0->field_h();
 $f1 = new field($nprog,'nprog',3,'Progressivo');               
@@ -207,7 +204,6 @@ $tz = new field($naccesso,'naccesso',1,'Livello accesso');
 $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','txr'));     
 	$f2->field();  
       echo  "</fieldset>"; 
-      echo  "</div>"; 
 	}
       echo  "</form>"; 
       break;

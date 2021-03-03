@@ -15,7 +15,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione layout');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -45,18 +45,18 @@ switch ($azione)
 {
 case 'nuovo':
            $sql = "INSERT INTO `".DB::$pref."lay` 
-                      (lid,lprog,lstat,ltipo,lcod,ldesc,ltmp,lrequire) 
+                      (lid,lprog,lstat,ltipo,lcod,ldesc,ltmp,linclude) 
                       VALUES (NULL,$lprog,'$ltat','$ltipo','$lcod','$ldesc',
-                                   '$ltmp','$lrequire')";
+                                   '$ltmp','$linclude')";
                       $PDO->exec($sql);    
                       $PDO->commit();
                       $_SESSION['esito'] = 54;                      
                       break;
 
 case 'modifica':
-           $sql = "UPDATE `".DB::$pref."lay` 
+           echo $sql = "UPDATE `".DB::$pref."lay` 
                    SET lprog=$lprog,lstat='$lstat',lcod='$lcod',ldesc='$ldesc',
-                         ltipo='$ltipo',ltmp='$ltmp',lrequire='$lrequire'  
+                         ltipo='$ltipo',ltmp='$ltmp',linclude='$linclude'  
                    WHERE lid= $lid ";
                   $PDO->exec($sql);    
                   $PDO->commit();

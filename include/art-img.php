@@ -1,6 +1,9 @@
 <?php
+/* --------------------------------
+	28/02/21	struttura flex
+----------------------------------- */
           // ricerca articolo
-          echo "<div class='$num_colart'>";     // colonne dell'articolo     
+          echo "<div class='f-item'>";  // flex     
           $art = new getArt($titolo_art);
           $art->getFieldsdArt();
           $a = new txt($art->atext);

@@ -24,15 +24,15 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>$COD</th>";
 echo "<th>$DESC</th>"; 
 echo "<th>$TIPO</th>";
 echo "<th>$TEMP</th>";
 echo "</thead>";
-
+echo "<tbody>";
 // lettura database
      $sql =   "SELECT * 
                FROM ".DB::$pref."foo 
@@ -51,7 +51,7 @@ $f2 = new input(array($fstat,'fstat',2,'','tooltip','st'));
 		echo "</td>";  
     		
      ?>   
-     <td><?php echo $fprog ?></td>
+     <td class="center"><?php echo $fprog ?></td>
      <td><?php echo $fcod ?></td>
      <td><?php echo htmlspecialchars($fdes, ENT_QUOTES) ?></td>
      <td><?php echo $ftipo ?></td>

@@ -22,14 +22,13 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 // zona messaggi
 require_once 'msg.php';
    
-//echo "<div class='row'>";  
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";                
-echo "<th style='width:2%;'>Scelta</th>";
-echo "<th style='width:2%;'>Stato</th>";
-echo "<th style='width:2%;'>Progressivo</th>"; 
+echo "<th style='width:2%; text-align:center;'>Scelta</th>";
+echo "<th style='width:2%; text-align:center;'>Stato</th>";
+echo "<th style='width:2%; text-align:center;'>Progressivo</th>"; 
 echo "<th>Tipo</th>"; 
 echo "<th>Codice</th>"; 
 echo "<th>Descrizione</th>";
@@ -68,5 +67,5 @@ echo "<tbody>";
           echo "</table>";
           echo "</form>";
           echo "</div>";
-//         echo "</div>";
+
 ?> 

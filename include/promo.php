@@ -19,7 +19,7 @@ $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 
-// Conta i moduli promo da mostrare per il template
+// Cerca i moduli promo da mostrare per il template
         $sql = "SELECT *
                 FROM `".DB::$pref."prm`
                 WHERE otmp= '".TMP::$tmenu."' 
@@ -33,20 +33,20 @@ $PDO->beginTransaction();
 	if ($otit_sn == 1) 
 	{
 		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
-		if (isset(TMP::$tpromotit)) { echo "<h1>".TMP::$tpromotit."</h1>"; } 
-				if (isset(TMP::$tpromotext)) { echo "<p>".TMP::$tpromotext."</p>"; }
+		if (TMP::$tpromotit > " ") { echo "<h1>".TMP::$tpromotit."</h1>"; } 
+		if (TMP::$tpromotext > " ") { echo "<p>".TMP::$tpromotext."</p>"; }
 		echo "</div>";	
 	}  
        
 // elementi promo
-	echo "<div class='f-flex fd-row jc-center  ai-start'>";
+	echo "<div class='f-flex fd-row jc-center ai-start'>";
 	if ($osino1 == 1) 
 		{  
          	echo "<div class='f-dim1'>";
 			echo "<a data-target='#promo1".$lcod."' data-toggle='modal'>";
 			echo "<img class='promo' src='".$oimg1."' alt='".$oimg1."'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit1."</h4>";
+			echo "<h4 class='service-heading'>".$otit1."</h3>";
 			echo "<span class='text-muted'>".$otext1."</span>";
 			echo "</div>"; 			
 		$target	= "promo1".$lcod;
@@ -59,7 +59,7 @@ $PDO->beginTransaction();
 			echo	"<a data-target='#promo2".$lcod."' data-toggle='modal'>";
 			echo "<img class='promo' src='".$oimg2."' alt='".$oimg2."' height='200px'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit2."</h4>";
+			echo "<h4 class='service-heading'>".$otit2."</h3>";
 			echo "<span class='text-muted'>".$otext2."</span>";
 			echo "</div>";
 		$target	= "promo2".$lcod;
@@ -72,7 +72,7 @@ $PDO->beginTransaction();
 			echo	"<a data-target='#promo3".$lcod."' data-toggle='modal'>";
 			echo "<img class='promo' src='".$oimg3."' alt='".$oimg3."'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit3."</h4>";
+			echo "<h4 class='service-heading'>".$otit3."</h3>";
 			echo "<span class='text-muted'>".$otext3."</span>";
 			echo "</div>"; 
 		$target	= "promo3".$lcod;
@@ -85,7 +85,7 @@ $PDO->beginTransaction();
 			echo	"<a data-target='#promo4".$lcod."' data-toggle='modal'>";
 			echo "<img class='promo' src='".$oimg4."' alt='".$oimg4."'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit4."</h4>";
+			echo "<h4 class='service-heading'>".$otit4."</h3>";
 			echo "<span class='text-muted'>".$otext4."</span>";
 			echo "</div>";
 		$target	= "promo4".$lcod;

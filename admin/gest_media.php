@@ -15,8 +15,8 @@ require_once('../lingua.php');
 $_SESSION['location'] = $_SERVER['QUERY_STRING']; 
 
  //   bottoni gestione
-$param = array('upload','chiudi');
-$btx   = new bottoni_str_par('Gestione dei media','img','upd_media.php',$param);     
+$param = array('salva','chiudi');
+$btx   = new bottoni_str_par('Gestione dei media - tipo','img','gest_media2.php',$param);     
      $btx->btn();
 	 
 // zona messaggi
@@ -24,12 +24,8 @@ require_once 'msg.php';
 
 // emette tebella con immagini
 ?>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
+
 <?php
-     $im = new imgUpdTable('images/',120,50,11,'upd_media');
-     $im->putUpdTable();
+        $f = new DB_tip_i('pathi','pcol','','Path immagini','Path immagini da gestire');
+                $f->select();
+

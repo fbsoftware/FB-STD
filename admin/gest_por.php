@@ -18,13 +18,13 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th>Scel</th>";
-echo "<th>Stato</th>"; 
-echo "<th>Prg</th>"; 
-echo "<th>- Ampiezza colonna -</th>";
+echo "<th style='width:2%; text-align:center;'>Scel</th>";
+echo "<th style='width:2%; text-align:center;'>Stato</th>"; 
+echo "<th style='width:2%; text-align:center;'>Progressivo</th>"; 
+echo "<th>Ampiezza colonna</th>";
 echo "<th>Tmp.</th>";
-echo "<th>- Codice</th>"; 
-echo "<th>---- Descrizione --- --- ---</th>";
+echo "<th>Codice</th>"; 
+echo "<th>Descrizione</th>";
 echo "</thead>";
 
 echo "<tbody>";         
@@ -44,7 +44,7 @@ $PDO->beginTransaction();
   $st = new fieldi($pstat,'pstat',2,'');        
   echo "<td class='center'>"; $st->field_st(); echo "</td>";
   ?>
-  <td><?php echo $pprog ?></td>
+  <td class="center"><?php echo $pprog ?></td>
   <td><?php echo $pcol ?></td>
   <td><?php echo $ptmp ?></td>  
   <td><?php echo $pcod ?></td>

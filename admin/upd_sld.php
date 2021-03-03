@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -52,7 +52,7 @@ case 'nuovo':
                $bti->btn();  
 
 // dati di base
-echo  "<fieldset class='col-md-6'>";
+echo  "<fieldset>";
 $PDO = new DB_ins('sld','slprog');                                
 $f  = new input(array($PDO->insert(),'slprog',5,'Progressivo','Per serializzare','i'));
      $f->field();
@@ -87,7 +87,7 @@ case 'modifica':
        $sql = "SELECT * 
                FROM `".DB::$pref."sld` 
                WHERE `slid` = '$slid' ";
-       echo  "<fieldset class='col-md-6' >";              
+       echo  "<fieldset>";              
      foreach($PDO->query($sql) as $row)
      { 
       require('fields_sld.php');  
@@ -126,7 +126,7 @@ case 'cancella':
      $sql = "SELECT * 
                FROM `".DB::$pref."sld` 
                WHERE `slid` = $slid ";
-      echo  "<fieldset class='col-md-6' >";
+      echo  "<fieldset>";
 foreach($PDO->query($sql) as $row)
      {   
      require('fields_sld.php'); 

@@ -9,6 +9,7 @@ $count = 0;
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
+
 foreach($PDO->query($sql) as $row)
           { 
           $lcod     =   $row['lcod'];     
@@ -51,7 +52,7 @@ foreach($PDO->query($sql) as $row)
                
             case 'article':
 				if (file_exists('include/article.php')) 
-				{	
+				{
 				require'include/article.php';
 				}
             	break;

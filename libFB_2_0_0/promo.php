@@ -27,7 +27,7 @@ public $count="";
                
          function show()
 			{ 
-         	echo	"<div class='".$this->colonna." text-center'>";
+         	echo	"<div class='".$this->colonna." center'>";
 			echo	"<a data-target='#promo".$this->count."' data-toggle='modal'>";
 			echo "<img src='".$this->img."' alt='".$this->img."' width='100%'>";
 			echo "</a>";

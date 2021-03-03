@@ -14,7 +14,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -44,7 +44,7 @@ switch ($azione)
     $btx   = new bottoni_str_par($TIP.' - '.$INS,'xdb','write_xdb.php',$param);     
          $btx->btn();
          
-     echo  "<fieldset class='col-md-6'>";  
+     echo  "<fieldset>";  
       $xdb = new DB_ins('xdb','xprog');                      
       $f1 = new input(array($xdb->insert(),'xprog',3,'Progressivo',' ','i'));     
           $f1->field();
@@ -70,7 +70,7 @@ switch ($azione)
 
      foreach($PDO->query($sql) as $row)
      {
-     echo  "<fieldset class='col-md-6'>";
+     echo  "<fieldset>";
      require('fields_xdb.php');
       $f0 = new input(array($xid,'xid',0,'','','h'));                        
           $f0->field(); 
@@ -99,7 +99,7 @@ switch ($azione)
 
      foreach($PDO->query($sql) as $row)
      {
-     echo  "<fieldset class='col-md-6'>";
+     echo  "<fieldset>";
      require('fields_xdb.php');
       $xdb = new DB_ins('xdb','xprog');                      
       $f1 = new input(array($xdb->insert(),'xprog',3,'Progressivo',' ','i'));     
@@ -127,7 +127,7 @@ switch ($azione)
 foreach($PDO->query($sql) as $row)
     {
      require('fields_xdb.php');
-     echo  "<fieldset class='col-md-6'>";
+     echo  "<fieldset>";
       $f0 = new input(array($xid,'xid',0,'','','h'));                        
           $f0->field(); 
       $f1 = new input(array($xprog,'xprog',3,'Progressivo','','r'));         

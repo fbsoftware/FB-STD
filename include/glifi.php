@@ -2,10 +2,11 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 <?php
 // pannello
+
 		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
 		echo "<div class='f-dim1'>";
-		if (isset(TMP::$tgliftit)) { echo "<h1>".TMP::$tgliftit."</h1>"; } 
-				if (isset(TMP::$tgliftext)) { echo "<p>".TMP::$tgliftext."</p>"; }
+		if (TMP::$tgliftit > " ")  { echo "<h1>".TMP::$tgliftit."</h1>"; } 
+		if (TMP::$tgliftext > " ") { echo "<p>".TMP::$tgliftext."</p>"; }
 		echo "</div>";
 		echo "</div>";	
 		
@@ -41,7 +42,7 @@
    				} 
 			//echo	"</div>"; 
 			
-          	echo	"<h4 class='service-heading'>$gtitle</h4>";
+          	echo	"<h3 class='center'>$gtitle</h4>";
                echo	"<p class='text-muted'>$gtext</p>";
                echo	"</div>";
  		}              

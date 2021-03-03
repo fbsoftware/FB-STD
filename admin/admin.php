@@ -17,7 +17,7 @@ require_once(DB::$ROOT."connectDB.php");
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once(DB::$ROOT."jquery_link.php");
-require_once(DB::$ROOT."bootstrap_link.php");
+//require_once(DB::$ROOT."bootstrap_link.php");
 require_once(DB::$ROOT."include_head.php");
 require_once(DB::$ROOT."lingua.php"); 
 $app->closeHead(); 
@@ -43,18 +43,19 @@ require_once('moduli/nav2a.php');
 echo    "</nav>";   
  
     //  C O R P O   =====================================             
-//echo "<section id='corpo'>"; 
+echo "<section id='corpo' class='f-flex fd-column'   style='height:450px'>"; 
 if ($urla){
           require_once $urla;
           } 
 if ($dati){
           require_once('component/content.php');    // componenti
-          }       
-//echo "</section>" ;      //  FINE CORPO
-  
-//  footer + navigatore   ============================================= 
-require_once('moduli/footer.php'); 
+          }  
 
+//  footer ============================================= 
+require_once('moduli/footer.php');
+		  
+echo "</section>" ;      //  FINE CORPO
+  
 echo "</body>"; 
 echo "</html>";   
 ob_end_flush();    

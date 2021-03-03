@@ -17,7 +17,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -26,7 +26,7 @@ $app->closeHead();
 require_once('post_ctt.php');
            
 $azione   =    $_POST['submit'];          
-print_r($_POST);//debug
+//print_r($_POST);//debug
 
 // test validità codice  
 if (($ecod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))

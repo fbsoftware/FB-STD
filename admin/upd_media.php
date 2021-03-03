@@ -15,7 +15,7 @@ require_once('../lingua.php');
 
 $azione  = $_POST['submit'];
 $img_del = $_POST['img_del'];
-print_r($_POST);//debug
+//print_r($_POST);//debug
    
 // mappe di gestione
 switch ($azione)
@@ -35,7 +35,7 @@ switch ($azione)
           $btc = new bottoni_str_par('Immagini - conferma cancellazione','img','write_media.php',$param); 
          $btc->btn();
           echo "<div class='tabella'><fieldset>";
-          $path=DB::$dir_imm.$img_del;
+          $path = $img_del;
           $d = new imgdim($path,400,600);
           $d->maxdim();
           if (($d->height <= 400) && ($d->width <= 600) )
@@ -55,7 +55,7 @@ switch ($azione)
           $btx->btn();
                 // passa solo i parametri
           echo "<div class='tabella'><fieldset>";
-          $path= DB::$dir_imm.$img_del;
+          $path= $img_del;
           $d = new imgdim($path,400,600);
           $d->maxdim();
           if (($d->height <= 400) && ($d->width <= 600) )

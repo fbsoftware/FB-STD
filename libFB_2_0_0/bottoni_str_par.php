@@ -47,17 +47,17 @@ class bottoni_str_par
         public function btn()           //  bottoni gestione
           { 
 
-				echo "<div class='f-flex jc-between toolbar-color'>";
+				echo "<div class='f-flex fd-row jc-between toolbar-color'>";
 				// immagine ampiezza = 1
                 echo "<div class='f-item'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{
-                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='50'> ";
+                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
 				}
 				echo    "</div>";
                 
                 // titolo ampiezza = 4
-                echo "<div class='f-item text-center'>";
+                echo "<div class='f-item center'>";
                 echo "<h1 class='toolbar'>&nbsp;".$this->titolo."</h1>";
                 echo    "</div>";
                 
@@ -112,7 +112,7 @@ class bottoni_str_par
                          <img src=images/bottoni/".$label.".png alt='".$label."' height=25 />".$label."</button>";
                }
 				}
-		}	// endfor
+				}	// endfor
                 echo    "</div>";
 				echo    "</div>";	// toolbar
 

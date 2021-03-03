@@ -9,11 +9,8 @@
    * ==========================================================================
    * Gestione articoli 
    * ======================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('../lingua.php');
 
-   //   bottoni gestione
+   //   toolbar
 $param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
 $btx   = new bottoni_str_par($ARTS,'art','upd_art.php',$param);     
      $btx->btn();
@@ -29,15 +26,15 @@ echo "<section id='table'>";
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>$TIT</th>"; 
 echo "<th>$ARG</th>"; 
 echo "<th>$CAP</th>";
 echo "<th>$S_N_TIT</th>"; 
 echo "</thead>";
-       
+ echo "<tbody>";      
 $sql =    "SELECT * FROM `".DB::$pref."art` 
                        ORDER BY `aprog` ";
 // transazione    
@@ -53,7 +50,7 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
 			$f2 = new fieldi($astat,'astat',2,'');       
 			echo "<td class='center'>"; $f2->field_st(); echo "</td>";
   ?>
-			<td><?php echo $aprog ?></td>
+			<td class="center"><?php echo $aprog ?></td>
 			<td><?php echo $atit ?></td>
 			<td><?php echo $aarg ?></td>
 			<td><?php echo $acap ?></td>
@@ -61,6 +58,7 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
 <?php              
 			echo "</tr>";               
           }
+		  echo "</tbody>";
      echo "</table>"; 
 	echo "</div>";
 	echo "</section>";

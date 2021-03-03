@@ -31,7 +31,7 @@ echo	"<div class='modal fade' id='".$this->id."'>";
 		echo	"<div class='modal-content'>";   
 			echo	"<div class='modal-header'>";    
 			echo	"<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";    
-			echo	"<h4 class='modal-title'>".$this->header."</h4>";
+			echo	"<h3 class='modal-title'>".$this->header."</h4>";
 			echo	"</div>";   	
 echo	"<div class='modal-body'>";    	
 echo	"<img src='".$this->img."' alt='".$this->img."' class='img-responsive'>";    	

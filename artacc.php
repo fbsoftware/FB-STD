@@ -37,7 +37,7 @@
 
  <!-- articoli -->
 <div class="row">
-<div class="col-md-6">
+<div>
 <div id="segnalazioni-tab">
  <ul class="nav nav-tabs">
  

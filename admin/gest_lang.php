@@ -25,7 +25,7 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;''>$SCEL</th>";
 echo "<th>$STR-$COD</th>";
 echo "<th>$STR-$TRANSLATE</th>";
 echo "</thead>";

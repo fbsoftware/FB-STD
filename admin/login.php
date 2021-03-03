@@ -14,7 +14,7 @@ require_once("../connectDB.php");
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -25,13 +25,12 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 echo  "<body>";
 
 //  controllo utente
-     echo     "<div class='container' style='margin: 50px auto 0 30%'>"; 
-     echo     "<div class='form-horizontal'>";                
-     echo     "<fieldset class='row well col-md-6'>";
+     echo     "<div class='f-flex fd-row jc-center ai-center'>"; 
+              
+     echo     "<fieldset class='f-flex fd-column jc-center ai-center' style='width:400px;height:400px;'>";
  
-echo  "<h3 class='center'><img src='images/logo/logo.png' alt='logo.png, 1,6kB' title='logo' height='75''>";
-echo  "Collegamento</h3>"; 
-echo  "<hr >"; 
+echo  "<h3 class='center'><img src='images/logo/logo.png' alt='logo.png, 1,6kB' title='logo' height='75' style='margin-right:30px'>";
+echo  "&nbsp;&nbsp;&nbsp;&nbsp;Collegamento&nbsp;&nbsp;&nbsp;&nbsp;</h3>"; 
           
 //   prepara il modulo del login  
 echo  "<form name='modulo' action='login_test.php' method='post'>";
@@ -40,8 +39,8 @@ echo  "<form name='modulo' action='login_test.php' method='post'>";
      $f1->field();
  $f2 = new input(array('','pass',20,'Password','','pw'));         
      $f2->field();
-
-echo  "<div class='login'>";
+echo  "<hr >"; 
+echo  "<div class='f-flex jc-center'>";
 echo  "<button class='btn btn-primary' type='submit' name='submit' value='Login' >Accedi</button>";
 echo  "<button class='btn btn-danger' type='reset' name='submit_back' value='Resetta' >Resetta</button>"; 
 
@@ -60,7 +59,7 @@ echo  "<button class='btn btn-danger' type='reset' name='submit_back' value='Res
 echo  "</div>";
 echo  "</form>";
 echo  "</fieldset>";
-echo  "</div>";			// form
+
 echo  "</div>";			// container
 echo  "</body>";
 echo  "</html>";

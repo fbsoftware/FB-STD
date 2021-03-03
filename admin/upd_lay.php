@@ -15,7 +15,7 @@ require_once('loadTemplateAdmin.php');
 $app = new Head('Gestione layout');
 $app->openHead();
 require_once("../jquery_link.php");
-require_once("../bootstrap_link.php");
+//require_once("../bootstrap_link.php");
 require_once("../include_head.php");
 require_once('../lingua.php'); 
 $app->closeHead();
@@ -47,7 +47,7 @@ switch ($azione)
     $param	= array('salva|nuovo','ritorno') ;
      $btx = new bottoni_str_par($LAY." - ".$NEW,'lay','upd2_lay.php',$param);     
           $btx->btn();
-      echo  "<fieldset class='col-md-6'>";          
+      echo  "<fieldset>";          
      $ts = new DB_tip_i('tipo','ltipo','','Tipo modulo','Tipo modulo per comporre la pagina'); 
           $ts->select();
 	echo  "</fieldset>";
@@ -67,7 +67,7 @@ $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
 require('fields_lay.php');
 
-echo  "<fieldset class='col-md-6'>";
+echo  "<fieldset>";
      $f1 = new input(array($lid,'lid',3,'','','h'));
           $f1->field(); 
      $f1 = new input(array($lprog,'lprog',3,'Progressivo','Per ordinamento','i'));
@@ -135,11 +135,9 @@ case 'footer':
           		$arg->select_label();       
 			break;
 case 'contatti':
-//     		$f1 = new input(array('','lcod',30,'Codice','Contatti','i'));
- //         		$f1->field();  
                $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
           		$arg->select_label();       
-               $f4 = new input(array('contatti.php','lrequire',50,'Programma','Programma da requirere','r'));           
+               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));           
           		$f4->field();    
                break;
 default:
@@ -149,7 +147,7 @@ default:
 // =======================================================================================
      $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));           
           $f4->field();
-     $f4 = new input(array($lrequire,'lrequire',20,'require','Programma da requirere','r'));           
+     $f4 = new input(array($linclude,'linclude',20,'Prgramma','Programma da eseguirere','r'));           
           $f4->field();
      echo    "</fieldset></form>";
      break;
@@ -167,7 +165,7 @@ $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
 require('fields_lay.php');
 
-echo  "<fieldset class='col-md-6'>";
+echo  "<fieldset>";
       $f0 = new input(array($lid,'lid',0,'','','h'));                        
 	 	$f0->field(); 
       $f1 = new input(array($lprog,'lprog',3,'Progressivo','','r'));         

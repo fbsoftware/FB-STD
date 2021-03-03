@@ -1,10 +1,13 @@
 <?php
 echo	"<section id='contatti'>";
 // pannello
+// stampa il titolo se richiesto
+
 		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
-		if (isset(TMP::$tcttit)) { echo "<h1>".TMP::$tcttit."</h1>"; } 
-				if (isset(TMP::$tcttext)) { echo "<p>".TMP::$tcttext."</p>"; }
-		echo "</div>";	
+		if (TMP::$tcttit > ' ') { echo "<h1>".TMP::$tcttit."</h1>"; } 
+		if (TMP::$tcttext > ' ') { echo "<p>".TMP::$tcttext."</p>"; }
+		echo "</div>";
+
 ?>            
             <form id="contatti" method="post">
 			
@@ -59,7 +62,7 @@ echo	"<section id='contatti'>";
                 </div>
            </div>  
      
-            <div class="col-xs-3 col-sm-3 text-center">    
+            <div class="col-xs-3 col-sm-3 center">    
                     <button id="submitButton" type="submit" style="min-width:200px" 
 				class="btn-<?php echo TMP::$tcolor; ?> btn-lg">Invia</button>
             </div>

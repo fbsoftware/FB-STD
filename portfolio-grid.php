@@ -6,7 +6,7 @@ require_once("connectDB.php");
 $app = new Head('Gestione menu');
 $app->openHead();
 require_once("jquery_link.php");
-require_once("bootstrap_link.php");
+//require_once("bootstrap_link.php");
 require_once("include_head.php");
 require_once('lingua.php'); 
 ?>
@@ -73,7 +73,7 @@ $count    = 0;
 		echo "<a data-toggle='modal' href='#portfolio".$count."'>";
 		echo "<img src='".$pimg."' alt='".$pimg."'>  </a>";
 			echo "<div class='portfolio-caption'>";
-			echo "<h4 class='text-center'>".$pcapt."</h4>";
+			echo "<h3 class='center'>".$pcapt."</h4>";
 			echo "</div>";		//-- .portfolio-caption -->
 		echo "</div>";		//-- .portfolio-thumbnail -->
 		//-- dialogo modale --

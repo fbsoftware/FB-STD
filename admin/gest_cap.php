@@ -25,14 +25,13 @@ require_once 'msg.php';
 echo "<div class='tableFixHead'>";    
 echo "<table class='table table-striped table-bordered table-condensed'>"; 
 echo "<thead>"; 
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>"; 
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
 echo "<th>$COD</th>";
 echo "<th>$DESC</th>";
 echo "<th>$S_N_TIT</th>";
 echo "</thead>";
-
 echo "<tbody>"; 
  // lettura database
      $sql = "  SELECT * 
@@ -53,7 +52,8 @@ echo "<tbody>";
           echo "<td>".htmlspecialchars($cdesc, ENT_QUOTES)."</td>";
           echo "<td>".$cmostra."</td>";
           echo "</tr>";
-     }
+     }		
+		echo "</tbody>";
           echo "</table>";
           echo "</form>";
           echo "</div>";     // col

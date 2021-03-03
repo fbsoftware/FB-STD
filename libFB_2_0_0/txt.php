@@ -38,8 +38,11 @@ class txt
                if ($width  <= 0)   $width=480;
                if ($height <= 0)   $height=360;
                echo "<div id='wrapp'>
-               <iframe id='player'  src='https://www.youtube.com/embed/".$codvid."'
-               frameborder='0' allowfullscreen>
+               <iframe id='player'  src='https://www.youtube.com/embed/".$codvid."' 
+			    type='text/html' 
+			   width='".$width."' 
+			   height='".$height."' 
+			   frameborder='0' allowfullscreen='0'>
                </iframe></div><br />";
                }
 // gallery Picasa
@@ -137,14 +140,11 @@ class txt
                require substr($testo[$i],5,25);
                }
 
-
-
 // altrimenti mantengo il testo originario
                else
                {
                echo $this->testo[$i];
                }
-
           }
      }
      }

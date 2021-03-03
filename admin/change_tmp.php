@@ -23,7 +23,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 		
 // selezione template                 
-     echo  "<div id=login class='col-md-6' style='clear:both;margin:0 25% 0;'>";
+     echo  "<div id=login style='width:400px;height:400px;clear:both;margin:0 25% 0;'>";
      echo  "<fieldset class='center'>";
      echo  "<select name='scelto' class='img-centro'>";
      $sql= "    SELECT * 

@@ -29,20 +29,20 @@ class imgTable
   public function putTable()
      {
 		 $array_file=array();
-echo    "<div class='f-flex fd-row f-dim1 '>";
+echo    "<div class='f-flex fd-row fw'>";
 		 
 // lettura directory
 foreach (glob($this->path."*.*") as $key => $gx)
 {    $array_file[$key] = $gx; }
 
 // cartella immagini generali sel sito, mostro i file in una tabella
-
-
+$foto = 0;
+$riga = $this->numero;
 $conto2=count($array_file);
 for($b=0; $b<$conto2; $b++)
 		{
 		
-		echo "<div class='f-item cell-120'>";
+		echo "<div class='f-item' style='width: 10%;'>";
 		echo "<input type='checkbox' value=''/>";
 		$file_ext = substr($array_file[$b], strripos($array_file[$b], '.'));
 		if  ($file_ext=='.jpg'  ||$file_ext=='.JPG'
@@ -51,12 +51,20 @@ for($b=0; $b<$conto2; $b++)
        ||$file_ext=='.bmp'  ||$file_ext=='.BMP'
        ||$file_ext=='.ico'  ||$file_ext=='.ICO')
         {
-        echo  "<a href='".$array_file[$b]."' target='_blank'>";// link
-        echo    "<img class='img-tab' src='".$array_file[$b]."' >";
-		echo "</div>";
+        echo  "<a href='".$array_file[$b]."' target='_blank'>";	
+		$lato = new img_dim($array_file[$b]);
+		$max = $lato-->maxdim();
+		if ($max == "L") 
+			{  echo "<img src='".$array_file[$b]."'  width='".$this->width."' >";
+		} else {
+				echo "<img src='".$array_file[$b]."'  width='".$this->height."' >";
 		}
+		echo "</a>";
 		}
 echo "</div>";
+		}
+echo "</div>";
+		
 	 }
  }
 ?>

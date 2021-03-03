@@ -1,4 +1,7 @@
 <?php
+/* --------------------------------
+	28/02/21	struttura flex
+----------------------------------- */
 echo	"<section id='artimg'>";
 
 // cerca gli articoli con immagine
@@ -17,15 +20,16 @@ echo	"<section id='artimg'>";
 		$titolo_art =   $iart;
 
           //  immagine-video a sinistra                                       
-          echo "<div class='row'>";
+          echo "<div class='f-flex fd-col jc-evenly'>";		// flex
           if ($iimgpos == 'sx') 
           {
                if ($itipo == 'img') 
                { ?>
-               <div class="<?php echo $iimgcol; ?>">
+                              
+			<div class="f-item"> 	<!-- flex -->
  			<div class="portfolio-thumbnail">
  			<a data-toggle="modal"  href="#artimg<?php echo $count; ?>">
-  			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive" title="<?php echo $iimgtit; ?>"> 
+  			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive img-h300" title="<?php echo $iimgtit; ?>"> 
  			</a> 
  			</div>
  			</div>
@@ -50,10 +54,10 @@ echo	"<section id='artimg'>";
           require 'art-img.php';
                if ($itipo == 'img') 
                {  ?>
-               <div class="<?php echo $iimgcol; ?>">
+               <div class="f-item">
  			<div class="portfolio-thumbnail">
  			<a data-toggle="modal"  href="#artimg<?php echo $count; ?>">
-  			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive" title="<?php echo $iimgtit; ?>"> 
+  			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive img-h300" title="<?php echo $iimgtit; ?>"> 
  			</a> 
  			</div>
  			</div>

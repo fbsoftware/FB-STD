@@ -11,9 +11,6 @@
    * Aggiunto "nhead" per gestire header per ogni voce menu (Max.9).
    * 1.0.0	nuovo head breve
 =============================================================================  */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-require_once('../lingua.php');
 
   //   toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
@@ -32,21 +29,20 @@ echo "<div class='tableFixHead'>";
 echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
 echo "<thead>";
 echo "<tr>";
-echo "<th style='width:2%;'>$SCEL</th>";
-echo "<th style='width:2%;'>$ST</th>";
-echo "<th style='width:2%;'>$PROG</th>";  
+echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
+echo "<th style='width:2%; text-align:center;'>$ST</th>";
+echo "<th style='width:2%; text-align:center;'>$PROG</th>";  
 echo "<th>$MENU</th>";
 echo "<th>$VOCE</th>";
 echo "<th>$SVOCE</th>";
 echo "<th>$DES</th>";
 echo "<th>$TIPO</th>";             
 echo "<th>$CONT</th>";
-echo "<th>$SEL</th>";
 echo "<th>$ACC</th>";
 echo "<th>$PARAM</th>";
 echo "</tr>";
 echo "</thead>";          
-
+echo "<tbody>";
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
                ORDER BY nprog";
@@ -67,14 +63,14 @@ echo "</thead>";
      <td><?php echo $ntesto ?></td>
      <td><?php echo $ntipo ?></td>
      <td><?php echo $nsotvo ?></td>
-     <td><?php echo $nselect ?></td>
      <td><?php echo $naccesso ?></td>  
 	 <td><?php echo $npag ?></td> 
 	 
 <?php 
 	echo "</tr>";
   }
-     echo "</table>"; 
+	echo "</tbody>";
+	echo "</table>"; 
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";
