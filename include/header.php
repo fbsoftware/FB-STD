@@ -6,31 +6,20 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
-=============================================================================== 
+==================================================================================     
   Visualizza il navigatore principale nei due livelli previsti
 =============================================================================== */
 ?>
-<section id="header" class="f-flex fd-row jc-between">
-<!-- <div class="container-fluid"> -->
-<div class="f-item">
+<section id="header">
+<!-- ==================================================== -->
+  <section id="nav">
+    <div class="wrapper">
+      <nav class="site-nav">
               <img src="<?php echo TMP::$tfolder; ?>images/logo/logo.png" alt="logo" title="Logo" height="80">           
-             </div>  
-
-      <!-- Static navbar -->
-<div class="f-item ai-center ">  
-      <nav class="navbar navbar-default">
-        
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class='sr-only'>Toggle navigation</span>
-              <span class='icon-bar'></span>
-              <span class='icon-bar'></span>
-              <span class='icon-bar'></span>
-            </button>
- 
-          </div>
-		<div>          
-            <ul class='nav navbar-nav'> 
+        <div class="menu-toggle">
+          <div class="hamburger"></div>
+        </div>
+        <ul class="open desktop">
  <?php 
  // lettura voci menu 
         $sql = "SELECT *
@@ -40,11 +29,10 @@
           foreach($PDO->query($sql) as $row)
        { 
           require 'admin/fields_nav.php';
-// echo "<br />npag=".$npag.";nli=".$nli.";Tipo=".$ntipo;//debug
-        if ($row['npag'] == '1') 
+         if ($row['npag'] == '1') 
                 {  
-                echo "<li class='dropdown'> 
-                      <a href='".DB::$host.DB::$sep.DB::$site.DB::$sep.$row['nsotvo']."' class='dropdown-toggle' data-toggle='dropdown'>".$row['nli']."<span class='caret'></span></a>";
+                echo "<li> 
+                      <a href='".DB::$host.DB::$sep.DB::$site.DB::$sep.$row['nsotvo']."'>".$row['nli']."</a>";
 			$voce = $row['nli'];
                require_once("/liv3.php");
                echo "</li>";
@@ -71,9 +59,18 @@
         }            
            echo "</ul>"; 
 ?>
-</div>	<!--- navbar --> 
-</nav>
-</div>	
+      </nav>
+    </div>
+  </section>
 
-
+<!-- ==================================================== -->
+<script type="text/javascript">
+$.noConflict();
+jQuery(document).ready(function($) {
+  $('.menu-toggle').on('click', function() {
+    $('ul').slideToggle();
+    $(this).toggleClass('open');
+  });
+});
+</script>
 </section>

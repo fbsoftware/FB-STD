@@ -20,37 +20,36 @@
 require_once 'msg.php';
 
 //   testate
-echo "<section id='table'>"; 
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>Scelta</th>";
-echo "<th style='width:2%; text-align:center;'>Stato</th>";
-echo "<th style='width:2%; text-align:center;'>Progressivo</th>"; 
-echo "<th>Utente</th>";
-echo "<th>Livello accesso</th>";
-echo "</thead>"; 
-echo "<tbody>"; 
+echo "<section id='ute'>"; 
+
+echo "<div class='table fb-h80'>"; 
+
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>Utente</div>";
+echo "<div class='td'>Livello accesso</div>";
+echo "</div>";
+
 // transazione
      $sql = "SELECT * FROM `".DB::$pref."ute`
           ORDER BY username";
      foreach($PDO->query($sql) as $row)
      {
      require('fields_ute.php');                 
-     echo "<tr>";
-		$f1 = new fieldi($uid,'uid',2,'');           
-     echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
-		$f2 = new fieldi($ustat,'ustat',2,'');       
-     echo "<td class='center'>"; $f2->field_st(); echo "</td>";
+     echo "<div class='tr'>";
+		$f2 = new input(array($uid,'uid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($ustat,'ustat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>";
 ?>
-     <td class='center'><?php echo $uprog ?></td>
-     <td><?php echo $username ?></td>
-     <td><?php echo $uaccesso ?></td>
+     <div class='td'><?php echo $uprog ?></div>
+     <div class='td'><?php echo $username ?></div>
+     <div class='td'><?php echo $uaccesso ?></div>
 <?php              
-     echo "</tr>";
-     }
-	 echo "</tbody>";
-     echo "</table>"; 
+     echo "</div>";               
+          }
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";

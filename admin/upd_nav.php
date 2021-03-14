@@ -32,15 +32,6 @@ if (($azione == 'modifica' || $azione == 'cancella') && $nid == '')
           header('location:admin.php?'.$_SESSION['location'].'');
           }
 
-// mostra stringa bottoni
-switch ($azione)
-{      
-
-       case 'cancella' :
-       break;
-       
-             
-}
 switch ($azione)
 {
 //==================================================================================     
@@ -49,12 +40,12 @@ case '':
 	$_SESSION['esito'] = 4;
 	header('location:admin.php?'.$_SESSION['location'].'');
       break;
-//==================================================================================     
-
-case 'chiudi' :
-		header('location:admin.php?urla=widget.php&pag=');
+//==================================================================================    
+    case 'ritorno' :
+		$_SESSION['esito'] = 2;
+		$loc = "location:admin.php?".$_SESSION['location']."";
+		header($loc);
 		break;
-default:
 //==================================================================================     
 
 case 'nuovo':    // scelta tipo voce, prosegue su: upd2_nav.php
@@ -83,43 +74,46 @@ case 'modifica':
 	{
       require('fields_nav.php');          
       echo  "<fieldset >";
-      $f0  = new field($nid,'nid',1,'ID record');                   
-		$f0->field_h();
-      $f1  = new field($nprog,'nprog',3,'Progressivo');             
-		$f1->field_i();
-      $ts  = new DB_tip_i('stato','nstat',$nstat,'Stato record','');   
+      $f0  = new input(array($nid,'nid',1,'ID record','','h'));                   
+		$f0->field();
+		
+      $f1  = new input(array($nprog,'nprog',3,'Progressivo','Progressivo di caricamento','i'));           
+		$f1->field();
+		
+		
+      $ts  = new DB_tip_i('stato','nstat',$nstat,'Stato record','Record attivo/annullato');   
 		$ts->select();
       $mnu = new DB_sel_l('mnu','bprog',$nmenu,'bmenu',
-                          'nmenu','bstat','bmenu','Menu','');  
+                          'nmenu','bstat','bmenu','Menu','Nome menù');  
 		$mnu->select_label();
-      $f2 = new field($nli,'nli',20,'Voce');                        
-		$f2->field_i();
-      $f4 = new field($ndesc,'ndesc',20,'Sottovoce');               
-		$f4->field_i();      
-      $f3 = new field($ntesto,'ntesto',25,'Descrizione');           
-		$f3->field_i();
-      $tv = new field($ntipo,'ntipo',10,'Tipo voce');               
-		$tv->field_r();
+      $f2 = new input(array($nli,'nli',20,'Voce','Voce di menù','i'));                        
+		$f2->field();
+      $f4 = new input(array($ndesc,'ndesc',20,'Sottovoce','Sottooce di menù','i'));               
+		$f4->field();      
+      $f3 = new input(array($ntesto,'ntesto',25,'Descrizione','Descrizione voce di menù','i'));           
+		$f3->field();
+      $tv = new input(array($ntipo,'ntipo',10,'Tipo voce','Tipo voce di menù','r'));               
+		$tv->field();
 switch ($ntipo)
 {      
 case 'arg':
-       $t = new DB_sel_l('arg','rdesc',$nsotvo,'rcod','nsotvo','rstat','rdesc','Argomento','');
+       $t = new DB_sel_l('arg','rdesc',$nsotvo,'rcod','nsotvo','rstat','rdesc','Argomento','Argomento dell\'articolo');
        echo $t->select_label()."<br >"; 
 		break;
  
  case 'cap':
-       $t = new DB_sel_l('cap','cdesc',$nsotvo,'ccod','nsotvo','cstat','cdesc','Capitolo','');
+       $t = new DB_sel_l('cap','cdesc',$nsotvo,'ccod','nsotvo','cstat','cdesc','Capitolo','Capitolo dell\'articolo');
        echo $t->select_label()."<br >"; 
 		break;
 
 case 'art':
-       $t = new DB_sel_l('art','atit',$nsotvo,'atit','nsotvo','astat','atit','Articolo','');
+       $t = new DB_sel_l('art','atit',$nsotvo,'atit','nsotvo','astat','atit','Articolo','Articolo');
        echo $t->select_label()."<br >"; 
 		break;
      
 case 'lnk':
-       $ty = new field($nsotvo,'nsotvo',30,'Link interno');    
-	   echo $ty->field_i(); 
+       $ty = new input(array($nsotvo,'nsotvo',30,'Link interno','Link interno','i'));    
+	   echo $ty->field(); 
 		break;
         
 case 'ifr':
@@ -129,26 +123,26 @@ case 'ifr':
 		break;        
        
 case 'htm':
-       $tx = new field($nsotvo,'nsotvo',30,'Pagina HTML custom');    
-	   echo $tx->field_i(); 
+       $tx = new input(array($nsotvo,'nsotvo',30,'Pagina HTML custom','Pagina HTML personalizzata','i'));    
+	   echo $tx->field(); 
 		break;
         
 case 'url':
-       $tz = new field($nsotvo,'nsotvo',30,'Link esterno');    
-	   echo $tz->field_i(); 
+       $tz = new input(array($nsotvo,'nsotvo',30,'Link esterno','Link esterno al programma','i'));    
+	   echo $tz->field(); 
 		break;
 }
-      $tg = new DB_tip_i('trg','ntarget',$ntarget,'Target','');        
+      $tg = new DB_tip_i('trg','ntarget',$ntarget,'Target','Target:_blank ...');        
 		$tg->select(); 
-      $f6 = new input(array($nselect,'nselect',1,'Voce corrente (*)','','i'));    
+      $f6 = new input(array($nselect,'nselect',1,'Voce corrente (*)','Voce selezionata','i'));    
 		$f6->field(); 
-      $f7 = new input(array($ntitle,'ntitle',1,'(1)Titoli, (0)dettaglio','','i'));
+      $f7 = new input(array($ntitle,'ntitle',1,'(1)Titoli, (0)dettaglio','1-Mostra solo i titoli  0-mostra tutto','i'));
 		$f7->field();
-      $f8 = new input(array($nhead,'nhead',1,'(1)Header specifico','','i'));      
+      $f8 = new input(array($nhead,'nhead',1,'(1)Header specifico','1-esiste un header specifico','i'));      
 		$f8->field();
-      $fa = new input(array($npag,'npag',1,'Parametro','','i'));                  
+      $fa = new input(array($npag,'npag',1,'Parametro','Parametro opzionale','i'));                  
 		$fa->field();
-      $tz = new input(array($naccesso,'naccesso',1,'Livello accesso','','i'));    
+      $tz = new input(array($naccesso,'naccesso',1,'Livello accesso','Livello di accesso utente','i'));    
 		$tz->field();
 	}
 

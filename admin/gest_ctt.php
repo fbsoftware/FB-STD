@@ -23,18 +23,19 @@
 // zona messaggi
 require_once 'msg.php';
 
-//  mostra tabella
-echo "<div class='tableFixHead'>";
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>"; 
-echo "<th>$TEMP</th>";
-echo "</thead>";
-echo "<tbody>";
+//   mostra la tabella filtrata --------------------------------------------------
+echo "<section id='ctt'>"; 
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$TEMP</div>";
+echo "</div>"; 
 // lettura database
      $sql =   "SELECT * 
                FROM ".DB::$pref."ctt 
@@ -44,25 +45,21 @@ echo "<tbody>";
           foreach($PDO->query($sql) as $row)      
           {   
      require('fields_ctt.php');      
-     echo "<tr>";  
-     $f1 = new fieldi($eid,'eid',2,'');               
-     echo "<td class='center'>"; 
-		$f1->field_ck(); echo "</td>";   
-     $st = new fieldi($estat,'estat',2,'');           
-     echo "<td class='center'>"; 
-		$st->field_st(); echo "</td>"; 
-		
-     ?>   
-     <td class="center"><?php echo $eprog ?></td>
-     <td><?php echo $ecod ?></td>
-     <td><?php echo $edes ?></td>
-     <td><?php echo $etmp ?></td>
-            
+			echo "<div class='tr'>";
+		$f2 = new input(array($eid,'eid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($estat,'estat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>";		
+?>   
+     <div class='td'><?php echo $eprog ?></div>
+     <div class='td'><?php echo $ecod ?></div>
+     <div class='td'><?php echo $edes ?></div>
+     <div class='td'><?php echo $etmp ?></div>
+     </div>
+     
 <?php
-     echo "</tr>";
-     }
-     echo "</tbody>";
-     echo "</table>";
-     echo "</form>";
-     echo "</div>";
+    }
+	echo "</div>";
+	echo "</section>";
+	echo "</form>";
 ?>

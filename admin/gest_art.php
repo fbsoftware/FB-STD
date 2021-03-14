@@ -8,7 +8,9 @@
    * all'uso anche improprio di FB open template.
    * ==========================================================================
    * Gestione articoli 
-   * ======================================================================= */
+============================================================================= 
+	07.03.21	tolto bootstrap sostituito da flex    
+=============================================================================*/ 
 
    //   toolbar
 $param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
@@ -22,19 +24,20 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 
 //  mostra tabella
-echo "<section id='table'>"; 
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$TIT</th>"; 
-echo "<th>$ARG</th>"; 
-echo "<th>$CAP</th>";
-echo "<th>$S_N_TIT</th>"; 
-echo "</thead>";
- echo "<tbody>";      
+echo "<section id='art'>"; 
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$TIT</div>";
+echo "<div class='td'>$ARG</div>";
+echo "<div class='td'>$CAP</div>";
+echo "<div class='td'>$S_N_TIT</div>";
+echo "</div>"; 
+     
 $sql =    "SELECT * FROM `".DB::$pref."art` 
                        ORDER BY `aprog` ";
 // transazione    
@@ -44,22 +47,20 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
      foreach($PDO->query($sql) as $row)
           { 
 			require('fields_art.php'); 
-			echo "<tr>";                  
-			$f1 = new fieldi($aid,'aid',2,'');           
-			echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
-			$f2 = new fieldi($astat,'astat',2,'');       
-			echo "<td class='center'>"; $f2->field_st(); echo "</td>";
+		echo "<div class='tr'>";
+		$f2 = new input(array($aid,'aid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($astat,'astat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>";
   ?>
-			<td class="center"><?php echo $aprog ?></td>
-			<td><?php echo $atit ?></td>
-			<td><?php echo $aarg ?></td>
-			<td><?php echo $acap ?></td>
-			<td><?php echo $amostra ?></td> 
+			<div class="td"><?php echo $aprog ?></div>
+			<div class='td'><?php echo $atit ?></div>
+			<div class='td'><?php echo $aarg ?></div>
+			<div class='td'><?php echo $acap ?></div>
+			<div class='td'><?php echo $amostra ?></div> 
 <?php              
-			echo "</tr>";               
+     echo "</div>";               
           }
-		  echo "</tbody>";
-     echo "</table>"; 
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";

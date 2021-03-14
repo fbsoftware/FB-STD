@@ -52,9 +52,8 @@ if ($dati){
           }  
 
 //  footer ============================================= 
-require_once('moduli/footer.php');
-		  
-echo "</section>" ;      //  FINE CORPO
+//require_once('moduli/footer.php');
+//echo "</section>" ;      //  FINE CORPO
   
 echo "</body>"; 
 echo "</html>";   

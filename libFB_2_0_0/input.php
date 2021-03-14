@@ -2,6 +2,7 @@
 /**=============================================================================== 
   Gestione dei campi input di form a 6 parametri
   1.0.0		tooltip left
+  03.03.21	no-bootstrap
 ============================================================================= */
 class input			extends TMP
 {
@@ -29,8 +30,7 @@ class input			extends TMP
 		   // label non serve per tipo = h/star  
 			echo "<div>";   
               if (($this->tipo !== 'h') && ($this->tipo !== 'star'))
- // no-boot                 { echo "<label for='$this->campo' data-toggle='tooltip' data-placement='top' title='$this->pch'>$this->label</label>"; }
-                  { echo "<label for='$this->campo' data-toggle='tooltip' data-placement='top' title='$this->pch'>$this->label</label>"; }
+                  { echo "<label for='$this->campo' title='$this->pch'>$this->label</label>"; }
  switch ($this->tipo) {
 case 'ck':      // check box
                 echo "<input type='checkbox' id='$this->campo' name='$this->campo'
@@ -179,6 +179,46 @@ break;
         }
      echo "</div>";          
      }
+/* ---------------------------------------------------------------------------
+	05/03/21	STESSE FUNZIONI NON INCAPSULATE IN UN <DIV> e senza label
+	--------------------------------------------------------------------------*/
+        public function field_n()
+
+{  
+ switch ($this->tipo) 
+ {
+case 'ck-n':      // check box
+                echo "<input type='checkbox' id='$this->campo' name='$this->campo'
+                         value=$this->valini size='$this->lung'  ";
+                if ($this->valini === 1) { echo "checked";} 
+                echo ">";
+ break;
+ case 'star-n':     // immagine stella
+          if ($this->valini == '*') 
+               {
+               echo "<input type='image' class='titolo' 
+                    name='$this->campo' value= '$this->valini' 
+                    src='images/star.png' height='24px' width='42px'>"; 
+               }
+          else
+               { 
+               echo "<input type='image' class='titolo' 
+                    name='$this->campo' value= '$this->valini' 
+                    src='images/null.png '>"; 
+               } 
+break;
+case 'st-n':            // input status
+                    if ($this->valini != 'A')
+                        { echo "<input type='image' class='nobord'
+                            src='images/ok.png' height='16px' width='16px'
+                          name='$this->campo' id='$this->campo' value='$this->valini' >";}
+                    else
+                        {echo "<input type='image' class='nobord' src='images/stop.png' height='16px'
+                         name='$this->campo' id='$this->campo' value='$this->valini' width='16px' >";}
+break;
+ } 
+}
+		  
 }
 
 ?>

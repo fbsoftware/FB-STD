@@ -34,7 +34,7 @@ while (false !== ($filename = readdir($dh)))
 //closedir($path_parts);
 sort($files);
 echo "<fieldset class='input'><div>
-          <label for='$this->campo'>$this->label</label>";
+          <label for='$this->campo' title='$this->label'>$this->label</label>";
 echo "<select name='$this->campo'>";
 echo "<option value=''>Scegliere il file</option>";
 

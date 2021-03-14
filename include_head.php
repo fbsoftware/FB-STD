@@ -1,5 +1,6 @@
 <?php
 /* libreria standard FB-CODE su GitHub
+--------------------------------------
 03/03/21	aggiunto tooltip.js
 --------------------------------------*/
 echo "<link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>";

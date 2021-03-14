@@ -38,7 +38,7 @@ switch ($azione)
 
      $btx      = new bottoni_str_par('Articoli normali-slide-tab','asl','write_asl.php',array('salva|nuovo','ritorno'));     
      $btx->btn();
-    echo	"<fieldset>";
+    echo	"<fieldset class='f-flex fd-column'>";
       $xdb = new DB_ins('asl','dprog');                      
            $nr=$xdb->insert();
       $f1 = new input(array($xdb->insert(),'dprog',3,'Progressivo','Per ordinamento','i'));         
@@ -67,7 +67,7 @@ switch ($azione)
     case 'modifica':
      $btx = new bottoni_str_par('Articoli normali-slide-tab','asl','write_asl.php',array('salva|modifica','ritorno'));     
           $btx->btn();
-echo	"<fieldset>"; 
+echo	"<fieldset class='f-flex fd-column'>"; 
     $sql = "SELECT * FROM `".DB::$pref."asl` 
     			WHERE `did` = $did ";
      // transazione    
@@ -107,7 +107,7 @@ break;
     case 'cancella' :
      $btx      = new bottoni_str_par('Articoli normali-slide-tab','asl','write_asl.php',array('salva|cancella','ritorno'));     
      $btx->btn();
-echo	"<fieldset>"; 
+echo	"<fieldset class='f-flex fd-column'>"; 
       $sql = "SELECT * FROM `".DB::$pref."asl` 
                            WHERE `did` = $did  ";    
      // transazione    
