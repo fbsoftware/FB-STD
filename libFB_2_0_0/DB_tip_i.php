@@ -27,8 +27,7 @@ class DB_tip_i          extends DB
                echo "<div>"; 
                if ($this->label > '')
                {
-               echo "<label for='$this->nome' data-toggle='tooltip' 
-			title='$this->toolt' name='$this->toolt'>$this->label</label>";
+               echo "<label for='$this->nome' title='$this->toolt' name='$this->toolt'>$this->label</label>";
                echo "<select name='$this->nome'";
                echo " ><br >";
                }

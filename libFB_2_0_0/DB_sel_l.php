@@ -26,13 +26,13 @@ class DB_sel_l          extends DB
            {
            echo "<div>";
                if ($this->label > '')
-           echo "<label for='$this->select'><a href='#' data-toggle='tooltip' title='$this->toolt'>$this->label</a></label>";
+           echo "<label for='$this->select' title='$this->toolt'>$this->label</label>";
            echo "<select name='$this->select'>";
           $con = "mysql:host=".self::$host.";dbname=".self::$db."";
           $PDO = new PDO($con,self::$user,self::$pw);
           $PDO->beginTransaction();
 
- echo             $sql="SELECT * 
+              $sql="SELECT * 
                     FROM ".self::$pref.$this->tabella." 
                     WHERE ".$this->stato." !='A' 
                     ORDER BY ".$this->campo." ";
@@ -48,7 +48,8 @@ class DB_sel_l          extends DB
                        </option>"; 
                        echo $row[$this->campo]."<br >";}                  
             }  
-           echo "</select></div>";
-          }
+           echo "</select>";          
+		   echo "</div>";          
+		   }
 }
 ?>

@@ -96,7 +96,7 @@ class bottoni_str_par
 				if(in_array($act, $b0))  { $accesso_bottone = 0; }
 				if ($this->accesso >= $accesso_bottone) 
 				{
-				echo    "<button class='btn btn-default btn-md' type='submit' name='submit' value='".$act."' id='".$act."'>
+				echo    "<button class='fb-bgcolor-basic fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
                          <img src=images/bottoni/".$act.".png alt='".$act."' height=25 />".$act."</button>";
 				}
 				}
@@ -108,7 +108,7 @@ class bottoni_str_par
                if(in_array($act, $b0))  { $accesso_bottone = 0; }
                if ($this->accesso >= $accesso_bottone) 
                {
-               echo    "<button class='btn btn-default btn-md' type='submit' name='submit' value='".$act."' id='".$act."'>
+               echo    "<button class='fb-bgcolor-basic fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
                          <img src=images/bottoni/".$label.".png alt='".$label."' height=25 />".$label."</button>";
                }
 				}

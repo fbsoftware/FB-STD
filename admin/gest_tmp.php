@@ -10,7 +10,7 @@
    * Gestione dei templates      
 ============================================================================= */
   
-//   bottoni gestione
+//   toolbar
 $btx = new bottoni_str_par($TEMPLATES,'tmp','upd_tmp.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
 
@@ -21,24 +21,22 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php'; 
 
 //  testata di tabella 
-echo "<section id='table'>"; 
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<tr>";
-echo "<th style='width:2%; text-align:center;'>Scelta</th>";
-echo "<th style='width:2%; text-align:center;'>Stato</th>";
-echo "<th style='width:2%; text-align:center;'>Progressivo</th>"; 
-echo "<th>Selezionato</th>";
-echo "<th>Codice</th>";
-echo "<th>Tipo</th>";
-echo "<th>Percorso</th>";
-echo "<th>Descrizione</th>";
-echo "<th>Menù</th>";
-echo "<th>Lingua</th>";
-echo "</tr>";
-echo "</thead>";
-echo "<tbody>";
+echo "<section id='tmp'>";
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>";  
+echo "<div class='td'>Selezionato</div>";
+echo "<div class='td'>Codice</div>";
+echo "<div class='td'>Tipo</div>";
+echo "<div class='td'>Percorso</div>";
+echo "<div class='td'>Descrizione</div>";
+echo "<div class='td'>Menù</div>";
+echo "<div class='td'>Lingua</div>";
+echo "</div>"; 
 // mostra la tabella  --------------------------------------------------
      $sql = "  SELECT * 
                FROM `".DB::$pref."tmp` 
@@ -46,35 +44,30 @@ echo "<tbody>";
           foreach($PDO->query($sql) as $row)      
           {
            require('fields_tmp.php');
-     echo "<tr>";
-	echo "<td class='center'>"; 
-	$f0 = new fieldi($tid,'tid',2,'');            
-     	$f0->field_ck(); 
-	echo "</td>";
-	echo "<td class='center'>"; 
-	$f2 = new fieldi($tstat,'tstat',2,'');        
-     	$f2->field_st(); 
-	echo "</td>";
+		echo "<div class='tr'>";
+		$f2 = new input(array($tid,'tid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($tstat,'tstat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>";		   
+
 ?>
-	<td class="center"><?php echo $tprog ?></td>
+	<div class="td"><?php echo $tprog ?></div>
 <?php 
-	echo "<td class='center'>"; 
-	$f2 = new input(array($tsel,'tsel',1,'','tooltip','star'));     
-     $f2->field();     	
-	echo "</td>"; 
+	echo "<div class='td'>"; 
+	$f2 = new input(array($tsel,'tsel',1,'','tooltip','star-n'));     
+     $f2->field_n();     	
+	echo "</div>"; 
 ?>
-	<td><?php echo $tcod ?></td>
-	<td><?php echo $ttipo ?></td>
-	<td><?php echo $tfolder ?></td>
-	<td><?php echo $tdesc ?></td>
-	<td><?php echo $tmenu ?></td>
-	<td><?php echo $tlang ?></td>
+	<div class='td'><?php echo $tcod ?></div>
+	<div class='td'><?php echo $ttipo ?></div>
+	<div class='td'><?php echo $tfolder ?></div>
+	<div class='td'><?php echo $tdesc ?></div>
+	<div class='td'><?php echo $tmenu ?></div>
+	<div class='td'><?php echo $tlang ?></div>
 <?php
-     echo "</tr>";
+     echo "</div>";               
           }
-		  echo "</tbody>";
-     echo "</table>"; 
 	echo "</div>";
 	echo "</section>";
-	echo "</form>";    
+	echo "</form>";  
 ?> 

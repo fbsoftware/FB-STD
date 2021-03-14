@@ -32,7 +32,7 @@
 <!-- sezione 
 <!-- Pannello -->
 <div class="row">
-<div class="col-lg-12 fb-bgcolor-<?php echo TMP::$tcolor; ?>"><h1><?php echo $ddes; ?></h1></div>
+<div class="col-lg-12 fb-bgcolor-sec"><h1><?php echo $ddes; ?></h1></div>
 </div>
 
  <!-- articoli -->
@@ -51,7 +51,7 @@ foreach ( $titolo as $chiave => $valore)
                }
       //    else
                {
-               echo "<li><a class='fb-color-".TMP::$tcolor." fb-bgcolor-default' href='#tab-".$chiave."' data-toggle='tab'>$valore</a></li>";
+               echo "<li><a class='fb-bgcolor-sec' href='#tab-".$chiave."' data-toggle='tab'>$valore</a></li>";
                }   
 } 
  ?>    

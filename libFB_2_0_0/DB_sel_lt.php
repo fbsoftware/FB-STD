@@ -34,7 +34,7 @@ class DB_sel_lt          extends DB
            {
            echo "<div>";
                if ($this->label > '')
-           echo "<label for='$this->select'><a href='#' data-toggle='tooltip' title='$this->toolt'>$this->label</a></label>"; 
+           echo "<label for='$this->select' title='$this->toolt'>$this->label</label>"; 
            echo "<select name='$this->select'>";
           $con = "mysql:host=".self::$host.";dbname=".self::$db."";
           $PDO = new PDO($con,self::$user,self::$pw);

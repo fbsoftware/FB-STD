@@ -6,8 +6,9 @@
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
-============================================================================= */ 
-
+============================================================================= 
+	07.03.21	tolto bootstrap sostituito da flex    
+=============================================================================*/ 
 // toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');    
 	$btx    = new bottoni_str_par($MENU,'mnu','upd_mnu.php',$param);  
@@ -20,41 +21,40 @@
 require_once 'msg.php';
  
 //   testata
-echo "<section id='table'>";
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-hover table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$NAME</th>";
-echo "<th>$TIPO</th>";
-echo "<th>$DESC</th>";
-echo "<th>$SEL</th>";
-echo "</thead>";   
-echo "<tbody>";
+echo "<section id='mnu'>";
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$NAME</div>";
+echo "<div class='td'>$TIPO</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$SEL</div>";
+echo "</div>";   
+
 
 $sql = "SELECT * FROM ".DB::$pref."mnu 
 		ORDER BY bprog";
 	foreach($PDO->query($sql) as $row)
       {       
 		require('fields_mnu.php');
-		echo "<tr>";
-		$f2 = new input(array($bid,'bid',2,'',$TT_SCEL,'ck'));     
-		echo "<td class='center'>"; $f2->field(); echo "</td>";
-		$st = new fieldi($bstat,'bstat',2,'');        
-		echo "<td class='center'>"; $st->field_st(); echo "</td>";
+		echo "<div class='tr'>";
+		$f2 = new input(array($bid,'bid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($bstat,'bstat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>";
   ?>
-		<td class="center"><?php echo $bprog ?></td>
-		<td><?php echo $bmenu ?></td>
-		<td><?php echo $btipo ?></td>
-		<td><?php echo $btesto ?></td>
-		<td><?php echo $bselect ?></td>
+		<div class='td'><?php echo $bprog ?></div>
+		<div class='td'><?php echo $bmenu ?></div>
+		<div class='td'><?php echo $btipo ?></div>
+		<div class='td'><?php echo $btesto ?></div>
+		<div class='td'><?php echo $bselect ?></div>
 <?php
-     echo "</tr>";               
+     echo "</div>";               
           }
-		  echo "</tbody>";
-     echo "</table>"; 
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";

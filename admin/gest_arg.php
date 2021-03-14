@@ -21,41 +21,39 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 // zona messaggi
 require_once 'msg.php';
 
-//  mostra tabella
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>";
-echo "<th>$S_N_TIT</th>";
-echo "</thead>";
-echo "<tbody>";
+//   mostra la tabella filtrata --------------------------------------------------
+echo "<section id='arg'>"; 
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$S_N_TIT</div>";
+echo "</div>"; 
+
  // lettura database
      $sql = "   SELECT * 
      FROM ".DB::$pref."arg
      ORDER BY rprog";
           foreach($PDO->query($sql) as $row)
   { require('fields_arg.php');
-     echo "<tr>";
-     echo "<td class='center'>";
-     $f1= new fieldi($rid,'rid',2,'');
-          $f1->field_ck();     
-     echo "</td>";
-     echo "<td class='center'>";                       
-     $f2 = new fieldi($rstat,'rstat',2,'');
-          $f2->field_st();
-     echo "</td>";
-     echo "<td class='center'>$rprog</td>";
-     echo "<td>".htmlspecialchars($rcod, ENT_QUOTES)."</td>";
-     echo "<td>".htmlspecialchars($rdesc, ENT_QUOTES)."</td>";
-     echo "<td>$rmostra</td>" ;
-     echo "</tr>";
+			echo "<div class='tr'>";
+		$f2 = new input(array($rid,'rid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($rstat,'rstat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>"; 
+	 
+     echo "<div class='td'>$rprog</div>";
+     echo "<div class='td'>".htmlspecialchars($rcod, ENT_QUOTES)."</div>";
+     echo "<div class='td'>".htmlspecialchars($rdesc, ENT_QUOTES)."</div>";
+     echo "<div class='td'>$rmostra</div>" ;
+     echo "</div>";
 } 
-	echo "</tbody>";
-	echo "</table>";
+	echo "</div>";
+	echo "</section>";
 	echo "</form>";
-	echo "</div>";     // col
 ?>

@@ -9,9 +9,10 @@
    * ------------------------------------------------------------------------
    * gestione tabella 'cap' capitoli. 
    * 2.0 aggiunto codice argomento del capitolo.        
-============================================================================= */ 
+	07.03.21	tolto bootstrap sostituito da flex    
+=============================================================================*/ 
 
-//   bottoni gestione
+//   toolbar
 $btx = new bottoni_str_par($CAP,'cap','upd_cap.php',array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi'));     
      $btx->btn();
      
@@ -22,40 +23,38 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 
 //   mostra la tabella filtrata --------------------------------------------------
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>";
-echo "<th>$S_N_TIT</th>";
-echo "</thead>";
-echo "<tbody>"; 
+echo "<section id='cap'>"; 
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$S_N_TIT</div>";
+echo "</div>"; 
  // lettura database
      $sql = "  SELECT * 
                FROM ".DB::$pref."cap
                ORDER BY cprog";
      foreach($PDO->query($sql) as $row)
      {
-          require('fields_cap.php');   
-          echo "<tr>";
-          echo "<td class='center fc'>";
-               $f1 = new fieldi($cid,'cid',2,'');          
-                    $f1->field_ck(); echo "</td>";
-          echo "<td class='center'>";
-               $f2 = new fieldi($cstat,'cstat',2,'');      
-                    $f2->field_st(); echo "</td>";
-          echo "<td class='center'>".$cprog."</td>";
-          echo "<td>".$ccod."</td>";
-          echo "<td>".htmlspecialchars($cdesc, ENT_QUOTES)."</td>";
-          echo "<td>".$cmostra."</td>";
-          echo "</tr>";
-     }		
-		echo "</tbody>";
-          echo "</table>";
-          echo "</form>";
-          echo "</div>";     // col
-          echo "</div>";     // row
+          require('fields_cap.php'); 
+			echo "<div class='tr'>";
+		$f2 = new input(array($cid,'cid',2,'',$TT_SCEL,'ck-n'));     
+		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
+		$st = new input(array($cstat,'cstat',2,'','','st-n'));        
+		echo "<div class='td'>"; $st->field_n(); echo "</div>";
+		
+          echo "<div class='td'>".$cprog."</div>";
+          echo "<div class='td'>".$ccod."</div>";
+          echo "<div class='td'>".htmlspecialchars($cdesc, ENT_QUOTES)."</div>";
+          echo "<div class='td'>".$cmostra."</div>";
+          echo "</div>";
+      }
+	echo "</div>";
+	echo "</section>";
+	echo "</form>";
 ?> 

@@ -21,15 +21,16 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 // zona messaggi
 require_once 'msg.php';
 
-// mostra la tabella
-echo "<div class='tableFixHead'>";    
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;''>$SCEL</th>";
-echo "<th>$STR-$COD</th>";
-echo "<th>$STR-$TRANSLATE</th>";
-echo "</thead>";
-echo "<tbody>";
+//   mostra la tabella filtrata --------------------------------------------------
+echo "<section id='cap'>"; 
+
+echo "<div class='table fb-h80'>"; 
+   
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$STR-$COD</div>";
+echo "<div class='td'>$STR-$TRANSLATE</div>";
+echo "</div>"; 
 
  // lettura it.ini
 $lang = parse_ini_file("language/".TMP::$tlang.".ini");
@@ -37,18 +38,17 @@ $lang = parse_ini_file("language/".TMP::$tlang.".ini");
 ksort($lang);
 foreach($lang as $chiave => $valore)
      {  $$chiave=$valore;
-     echo "<tr>";
-     echo "<td class='center'>"; 
+     echo "<div class='tr'>";
+     echo "<div class='td'>"; 
      $f0 = new fieldi($chiave,'chiave',0,''); 
 	 $f0->field_ck(); 
-	 echo "</td>";
-     echo "<td><strong>".$chiave."</strong></td>";
-     echo "<td>".stripslashes($valore)."</td>";
-     echo "</tr>";
+	 echo "</div>";
+     echo "<div class='td'><strong>".$chiave."</strong></div>";
+     echo "<div class='td'>".stripslashes($valore)."</div>";
+     echo "</div>";
      }
      unset($chiave);
-     echo "</tbody>";
-     echo "</table>";
-     echo "</fieldset>";     // col
-     echo "</form>";
+	echo "</div>";
+	echo "</section>";
+	echo "</form>";
 ?> 

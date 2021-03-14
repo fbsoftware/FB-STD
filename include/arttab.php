@@ -31,7 +31,7 @@
 	} 
 
 // pannello
-		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		echo "<div class='f-flex fd-column fb-bgcolor-sec'>"; 
 		echo "<div class='f-dim1'>";
 		if (TMP::$ttabtit > " ")  { echo "<h1>".TMP::$ttabtit."</h1>"; } 
 		if (TMP::$ttabtext > " ") { echo "<p>".TMP::$ttabtext."</p>"; }
@@ -55,7 +55,7 @@ $count = count($testo);
 for ($i = 0; $i < $count; ++$i)
 	{
 ?>		
-	<li class="fb-bgcolor-<?php echo TMP::$tcolor; ?>">
+	<li class="fb-bgcolor-sec">
 	<?php
 	echo "<a href='#tab-".$i."' >".$titolo[$i]."</a></li>";	  
 	}

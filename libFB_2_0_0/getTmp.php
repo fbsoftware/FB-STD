@@ -34,7 +34,7 @@ class getTmp          extends  DB
               $con = "mysql:host=".self::$host.";dbname=".self::$db."";
               $PDO = new PDO($con,self::$user,self::$pw);
               $PDO->beginTransaction();
-     echo "<div><label for='$this->nome'><a href='#' data-toggle='tooltip' title='".$this->toolt."'>$this->label</a></label>";
+     echo "<div><label for='$this->nome' title='".$this->toolt."'>$this->label</label>";
      echo "<select name='$this->nome'>";
      $sql="    SELECT * 
                FROM ".DB::$pref."tmp 

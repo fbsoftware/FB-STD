@@ -42,7 +42,7 @@ else {
 sort($files);
 echo "<br />";
 $nx=count($files);
- echo "<label for='$this->campo'><a href='#' data-toggle='tooltip' title=$this->toolt>$this->label</a></label>";
+ echo "<label for='$this->campo' title=$this->toolt>$this->label</label>";
  echo "<select name='$this->campo'>";
 for ($n=0; $n<$nx ;$n++ ) 
 {
@@ -80,7 +80,7 @@ echo "</select>";
      }
      closedir($f);                           //chiudo la directory
            echo "<fieldset class='input'><div>
-                 <label for='$this->campo'><a href='#' data-toggle='tooltip' title='$this->toolt'>$this->label</a></label>";    
+                 <label for='$this->campo' title='$this->toolt'>$this->label</label>";    
            echo "<select name='$this->campo'>";
            echo "<option value=''>".NULL."</option>";
            $conto2=count($array_file);

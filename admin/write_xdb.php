@@ -21,7 +21,8 @@ $app->closeHead();
 //----------------------------------------------
       
 require_once 'post_xdb.php';
-$azione  =$_POST['submit'];    //print_r($_POST); //debug
+$azione  =$_POST['submit'];    
+//print_r($_POST); //debug
 
 switch ($azione)
 {

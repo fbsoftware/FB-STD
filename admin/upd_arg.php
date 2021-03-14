@@ -10,16 +10,7 @@
    * gestione tabella argomenti  
 	* 1.0.0	nuova head
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//---------------------------------------------- 
+require_once('init_admin.php');
 
 require_once("editor.php");			// scelta editor
 require_once('post_arg.php');
@@ -33,18 +24,14 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1)
 	  $_SESSION['esito'] = 4;
       header('location:admin.php?'.$_SESSION['location'].'');
      }
-	 
-// contenitore
-echo     "<div class='container form-horizontal'>"; 
-echo     "<div class='row container'>";
 
-// mostra stringa bottoni o chiude
+// mostra toolbar e form
 switch ($azione)
 { 
     case 'nuovo':       // inserimento 
      $bti = new bottoni_str_par($ARGS.' - '.$INS,'arg','write_arg.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
           $bti->btn(); 
-		echo  "<fieldset class='row'>"; 
+		echo  "<fieldset class='f-flex fd-column'>"; 
       $arg = new DB_ins('arg','rprog');                       
           $nr =  $arg->insert();
       $f1 = new input(array($nr,'rprog',3,$PROG,'Per ordinamento','i'));                   
@@ -53,14 +40,13 @@ switch ($azione)
           $ts->select();
       $f2 = new input(array('','rcod',10,$COD,'Codice dell&#39;argomento','ia'));                     
           $f2->field();
-      $f3 = new input(array('','rdesc',50,$DESC,'Descrizione dell&#39;argomento','i'));                   
+      $f3 = new input(array('','rdesc',50,$DESC,'','i'));                   
           $f3->field();
       $sn = new input(array('','rmostra',1,$MOSTRAT,'Mostra testo si-no','sn'));                   
           $sn->field();
-      $sn = new input(array('Inserire un testo','rtext',1,$MOSTRAT,'Inserire un testo','tx'));                   
+      $sn = new input(array('Inserire un testo','rtext',1,'Descrizione dell&#39;argomento','Inserire un testo','tx'));                   
           $sn->field();  
 		echo "<script type='text/javascript'>CKEDITOR.replace('rtext');	</script>";
-		  
 		echo  "</fieldset>";     
 		echo  "</form>";
       break;
@@ -79,7 +65,7 @@ switch ($azione)
      foreach($PDO->query($sql) as $row)
      {
       require 'fields_arg.php'; 
-		echo  "<fieldset class='row'>"; 
+		echo  "<fieldset class='f-flex fd-column'>"; 
       $f0 = new input(array($rid,'rid',1,'ID record','','h'));              
           $f0->field();    
       $f1 = new input(array($rprog,'rprog',3,$PROG,'Per ordinamento','i'));        
@@ -103,7 +89,7 @@ break;
 // cancellazione    
     case 'cancella' :
 // toolbar
-	$param  = array($SAV.'|cancella',$RET.'|ritorno');    
+	$param  = array($DEL.'|cancella',$RET.'|ritorno');    
 	$btx    = new bottoni_str_par($ARG.' - '.$DELCONF,'arg','write_arg.php',$param);  
 		$btx->btn();
 		
@@ -117,7 +103,7 @@ break;
      foreach($PDO->query($sql) as $row)
 	{
      require('fields_arg.php');
-		echo  "<fieldset class='row'>"; 
+		echo  "<fieldset class='f-flex fd-column'>"; 
 		$f0 = new field($rid,'rid',1,'ID record');            
 			$f0->field_h();    
 		$f1 = new field($rprog,'rprog',3,$PROG);      
@@ -147,7 +133,6 @@ break;
     default:
   echo $OP_INVAL;    
      }
-	  echo  "</div>";	//row
-	  echo  "</div>";	// container
+
 ob_end_flush();
 ?></html>

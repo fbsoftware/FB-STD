@@ -34,8 +34,10 @@ if (($azione == 'modifica' || $azione == 'cancella' || $azione == 'copia') && $x
 switch ($azione)
 { // controllo
     case '':
-    case 'chiudi' :
-		header('location:admin.php?urla=widget.php&pag=');
+    case 'ritorno' :
+		$_SESSION['esito'] = 2;
+		$loc = "location:admin.php?".$_SESSION['location']."";
+		header($loc);
 		break;
 //default: ???
 // inserimento 

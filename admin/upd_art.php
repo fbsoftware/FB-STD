@@ -9,16 +9,7 @@
    --------------------------------------------------------------------------
    28/04/2019	mostra il titolo con select
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('init_admin.php');
 
 require_once("editor.php");			// scelta editor
 
@@ -40,8 +31,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
      $btx   = new bottoni_str_par($ARTS." - ".$INS,'art','write_art.php',$param);     
           $btx->btn();
           // contenitore
-     echo "<div class='row'>";        
-     echo  "<fieldset>"; 
+     echo  "<fieldset class='f-flex fd-column'>"; 
       $art = new DB_ins('art','aprog');     
       $f3 = new input(array($art->insert(),'aprog',3,'Progressivo','','ia'));  
           $f3->field();
@@ -61,7 +51,6 @@ if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
 		
 echo "</fieldset>";
-echo "</div>";
 echo "</form>";
         break;
      }
@@ -71,8 +60,7 @@ echo "</form>";
 $param = array($SAV.'|modifica',$RET.'|ritorno');
 $btx   = new bottoni_str_par($ARTS." - ".$MOD,'art','write_art.php',$param);     
      $btx->btn();
-     // contenitore
-     echo "<div class='row'>";     
+     
 // lettura database  
 $sql =  "SELECT * FROM `".DB::$pref."art` 
                      WHERE `aid` ='".$aid."' ";
@@ -83,7 +71,7 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
      foreach($PDO->query($sql) as $row)
      {
      require_once('fields_art.php');
-     echo  "<fieldset>";
+     echo  "<fieldset class='f-flex fd-column'>";
       $f2 = new input(array($aid,'aid',03,'','','h'));          
           $f2->field();
       $f3 = new input(array($aprog,'aprog',03,'Progressivo','','i'));    
@@ -106,7 +94,7 @@ if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
 
      }
-echo "</div>";           
+           
 break;
     }
     
@@ -125,7 +113,7 @@ break;
      foreach($PDO->query($sql) as $row)
      {
      require_once('fields_art.php');
-     echo  "<fieldset>";
+     echo  "<fieldset class='f-flex fd-column'>";
       $f2 = new input(array($aid,'aid',03,'','','h'));             
           $f2->field();
       $f3 = new input(array($aprog,'aprog',03,'Progressivo','','r'));       
