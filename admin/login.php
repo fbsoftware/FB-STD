@@ -31,18 +31,18 @@ echo  "<form name='modulo' action='login_test.php' method='post'>";
  
 echo  "<div class='f-flex jc-center'>";
 echo  "<button class='fb-bgcolor-primary fb-p05 fb-rad7 fb-m05' type='submit' name='submit' value='Login' ><span class='ui-icon ui-icon-person'></span>Accedi</button>";
-echo  "<button class='fb-bgcolor-danger fb-p05 fb-rad7 fb-m05' type='reset' name='submit_back' value='Resetta' ><span class='ui-icon ui-icon-transferthick-e-w'></span>Resetta</button>"; 
+echo  "<button class='fb-bgcolor-accent fb-p05 fb-rad7 fb-m05' type='reset' name='submit_back' value='Resetta' ><span class='ui-icon ui-icon-transferthick-e-w'></span>Resetta</button>"; 
 echo  "</div>";
 echo  "</form>";
 // se errori ...
 echo "<div>";
 	if  ($_COOKIE['err'] == 1) 
 		{
-		echo  "<p class='fb-bgcolor-danger center'><b>Credenziali NON VALIDE !</b></p>" ;
+		echo  "<p class='fb-bgcolor-accent center'><b>Credenziali NON VALIDE !</b></p>" ;
 		}
 	if 	($_COOKIE['err'] == 2) 
 		{
-		echo  "<p class='fb-bgcolor-danger center'><b>Utente sconosciuto !</b></p>" ;
+		echo  "<p class='fb-bgcolor-accent center'><b>Utente sconosciuto !</b></p>" ;
 		}
 	else
 		{

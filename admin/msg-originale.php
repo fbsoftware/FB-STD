@@ -9,7 +9,7 @@ if(isset($_SESSION['esito']))
 
      if ($_SESSION['esito'] > -1  && $_SESSION['esito'] < 51)      // 0 - 50
           {
-      echo "<div class='fb-bgcolor-danger fb-p05 fb-rad7'>";
+      echo "<div class='fb-bgcolor-accent fb-p05 fb-rad7'>";
           if ($_SESSION['esito'] == 0)      echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$OP_DEL_ERR." "; 
           if ($_SESSION['esito'] == 1)      echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$OP_INV." ";
           if ($_SESSION['esito'] == 2)      echo "<img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$OP_ANN_UTE." ";
@@ -66,27 +66,27 @@ if(isset($_SESSION['errore']))
      if ($_SESSION['errore'] > -1  && $_SESSION['errore'] < 51)      // 0 - 50
           {
           if ($_SESSION['errore0'] == 1) 
-		  echo "<div class='fb-bgcolor-danger  fb-p05 fb-rad7'>
+		  echo "<div class='fb-bgcolor-accent  fb-p05 fb-rad7'>
           <img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_COD."</div>"; 
 	  
           if ($_SESSION['errore1'] == 1)
-			echo "<div class='fb-bgcolor-danger  fb-p05 fb-rad7'>			  
+			echo "<div class='fb-bgcolor-accent  fb-p05 fb-rad7'>			  
           <img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_IMPO."</div>";
 	  
           if ($_SESSION['errore2'] == 1)
-          echo "<div class='fb-bgcolor-danger  fb-p05 fb-rad7'>			  
+          echo "<div class='fb-bgcolor-accent  fb-p05 fb-rad7'>			  
           <img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_MAIL."</div>"; 
 	  
           if ($_SESSION['errore3'] == 1)
-          echo "<div class='fb-bgcolor-danger  fb-p05 fb-rad7'>			  
+          echo "<div class='fb-bgcolor-accent  fb-p05 fb-rad7'>			  
           <img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_URL."</div>"; 
 	  
           if ($_SESSION['errore4'] == 1) 
-          echo "<div class='fb-bgcolor-danger  fb-p05 fb-rad7'>			  
+          echo "<div class='fb-bgcolor-accent  fb-p05 fb-rad7'>			  
           <img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_DESC."</div>"; 
 	  
           if ($_SESSION['errore5'] == 1) 
-		  echo "<div class='fb-bgcolor-danger  fb-p05 fb-rad7'>			  
+		  echo "<div class='fb-bgcolor-accent  fb-p05 fb-rad7'>			  
           <img src='images/stop.png' height=20 alt='stop'>&nbsp;&nbsp;".$ERR_TIPO."</div>"; 
 	  
           }  

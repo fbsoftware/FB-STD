@@ -61,7 +61,7 @@ require'fields_nav.php';
 
 //  bottone logout
 echo "<form class='bottoni' method='post' action='login.php'>";
-echo "<button class='fb-bgcolor-danger fb-p025 fb-rad7' type='submit' name='submit' value='chiudi'> ";
+echo "<button class='fb-bgcolor-accent fb-p025 fb-rad7' type='submit' name='submit' value='chiudi'> ";
 echo "<img src='images/bottoni/esci.png' alt='esci' height='25'>";
         
 echo $EXIT;
