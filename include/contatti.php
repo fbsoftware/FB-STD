@@ -8,8 +8,9 @@ echo	"<section id='contatti'>";
 		echo "</div>";
 
 ?>            
-            <form id="contatti" method="post">
-			<div class="f-flex fd-column fb-bgcolor-pri">
+			<div class="f-flex fd-row">             
+			<div class="f-flex fd-column f-dim1">
+			<form id="contatti" method="post">
                 <div> 
                       <div id="nome-block" class="form-group">
                         <label class="control-label" for="nome" id="nome-label">Nome (*) </label>
@@ -43,11 +44,18 @@ echo	"<section id='contatti'>";
                 <div id="messaggio-block" class="form-group">   
                     <label class="control-label" id="messaggio-label" for="messaggio"> Messaggio (*)<br />Max. 200 caratteri.</label><br>
                     
-					<textarea style="width:50%; min-height:200px" id="messaggio" name="messaggio" maxlength="200" placeholder="Inserisci Messaggio"></textarea>
+					<textarea style="width:60%; min-height:200px" id="messaggio" name="messaggio" maxlength="200" placeholder="Inserisci Messaggio"></textarea>
                 </div>
             </div>    
 		</div>
+<!-- ==   == -->
+<div class="f-flex fd-column f-dim1">
+<img src="https://unsplash.it/640/425" alt="?" border="0" align="left" width="?" height="?" />
+</div>
+</div>		
+
 <!-- ================================================================================= -->
+
  <div class="f-flex fd-row jc-between fb-bgcolor-pri">                  
             <div>
             	<div id="risultato-block" class="form-group">  

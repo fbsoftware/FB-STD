@@ -8,7 +8,7 @@
 echo "<section id='portfolio'>";
 
 // stampa il titolo se richiesto
-	if (TMP::$tportitle == 1) 
+	if ((TMP::$tportitle == 1) && ($cnt <= 0))
 	{
 		echo "<div class='f-flex fd-row  fb-bgcolor-pri'>"; 
 		echo "<div>";
@@ -16,7 +16,9 @@ echo "<section id='portfolio'>";
 		if (TMP::$tportext > " ") { echo "<p>".TMP::$tportext."</p>"; }
 		echo "</div>";
 		echo "</div>";
+		$cnt = 1;	
 	}  
+
             
 // lettura portfolio
         $sql = "SELECT *

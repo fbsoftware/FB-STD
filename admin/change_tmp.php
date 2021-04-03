@@ -42,7 +42,7 @@ require_once 'msg.php';
 
 echo  "<div class='f-flex jc-center'>";
 echo  "<button class='fb-bgcolor-primary fb-p05 fb-rad7 fb-m05' type='submit' name='submit' value='Conferma'>Conferma</button>";
-echo  "<button class='fb-bgcolor-danger fb-p05 fb-rad7 fb-m05' type='reset' name='submit' value='Ritorno'>Ripristina</button>";
+echo  "<button class='fb-bgcolor-accent fb-p05 fb-rad7 fb-m05' type='reset' name='submit' value='Ritorno'>Ripristina</button>";
 echo  "</div>";
 echo  "</form>";
 
