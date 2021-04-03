@@ -51,7 +51,7 @@ echo	"<section id='contatti'>";
  <div class="f-flex fd-row jc-between fb-bgcolor-pri">                  
             <div>
             	<div id="risultato-block" class="form-group">  
-				<label id="risultato-label" for="risultato">Inserisci il risultato 
+				<label class="label30" id="risultato-label" for="risultato">Inserisci il risultato 
                   <br />Per dimostrare che sei un umano.</label>
                     <input name="addendo1" type="text" id="addendo1" size="1" readonly="" value="1"> +   
                     <input name="addendo2" type="text" id="addendo2" size="1" readonly="" value="1"> =
