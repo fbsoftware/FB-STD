@@ -7,18 +7,11 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
-   * gestione componente articoli slide-tab-normali-singoli     
+   * gestione componente articoli slide-tab-normali-singoli 
+	25.03.21	aggiunto si-no titolo sezione
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------require_once('post_asl.php');
+require_once('init_admin.php');
+//----------------------------------------------
 require_once('post_asl.php');
 $azione  =$_POST['submit'];    // print_r($_POST);//debug
 
@@ -50,7 +43,15 @@ switch ($azione)
       $f1 = new input(array('','dcod',20,'Codice','Codice modulo','ia'));         
            $f1->field();     
       $f1 = new input(array('','ddes',50,'Descrizione','Descrizione modulo','i'));         
-           $f1->field();     
+           $f1->field(); 
+// 25.03.21
+     $f3 = new input(array('','dtit_sn',1,'Mostra Titolo','Mostrare il titolo accordion s/n','sn')); 
+          $f3->field(); 
+     $f3 = new input(array('','dtit',50,'Titolo','Titolo accordion','i')); 
+          $f3->field(); 
+     $f3 = new input(array('','dtext',50,'Testo','Testo accordion','tx')); 
+          $f3->field(); 
+//---------------------		  
       $ts = new DB_tip_i('tipo','dtipo','','Tipo modulo','Tipo modulo: slide o tab'); 
           $ts->select();
       $f4 =    new DB_sel_lt('cap','cprog','','ccod','dcap','cstat','cdesc','Capitolo','Capitolo di cui usare gli articoli.');
@@ -90,7 +91,15 @@ echo	"<fieldset class='f-flex fd-column'>";
            $f1->field();     
       $f1 = new input(array($ddes,'ddes',50,'Descrizione','Descrizione modulo','i'));         
            $f1->field();     
-      $ts = new DB_tip_i('tipo','dtipo',$dtipo,'Tipo modulo','Tipo modulo: slide o tab'); 
+// 25.03.21
+     $f3 = new input(array($dtit_sn,'dtit_sn',1,'Mostra Titolo','Mostrare il titolo accordion s/n','sn')); 
+          $f3->field(); 
+     $f3 = new input(array($dtit,'dtit',50,'Titolo','Titolo accordion','i')); 
+          $f3->field(); 
+     $f3 = new input(array($dtext,'dtext',50,'Testo','Testo accordion','tx')); 
+          $f3->field(); 
+//---------------------		
+		   $ts = new DB_tip_i('tipo','dtipo',$dtipo,'Tipo modulo','Tipo modulo: slide o tab'); 
           $ts->select();
       $f4 =    new DB_sel_lt('cap','cprog',$dcap,'ccod','dcap','cstat','cdesc','Capitolo','Capitolo di cui usare gli articoli.');
           $f4->select_lt();    

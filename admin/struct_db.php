@@ -18,7 +18,7 @@ $btx    = new bottoni_str_par('Struttura del database','config','vid_db.php',$pa
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
   
 //  filtro la tabella da visualizzare
-echo "<div><fieldset class='input'><div>";
+echo "<div><fieldset><div>";
 $tb = new DB_sel_table(DB::$pref);
 	$tb->select_table() ;
 echo "</fieldset>";

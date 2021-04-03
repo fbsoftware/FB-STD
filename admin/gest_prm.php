@@ -9,8 +9,10 @@
    * ------------------------------------------------------------------------
    * gestione tabella 'prm' moduli 'promo'    
 ============================================================================= */ 
+require_once('init_admin.php');
 //   bottoni gestione
-	$btx = new bottoni_str_par('Moduli promo','prm','upd_prm.php',array('nuovo','modifica','cancella','chiudi'));     
+	$param = array('nuovo','modifica','cancella','chiudi');
+	$btx = new bottoni_str_par('Moduli promo','prm','upd_prm.php',$param);     
      	$btx->btn();
 
 // memorizza location iniziale

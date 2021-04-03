@@ -7,17 +7,10 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
-   * aggiornamento tabella 'asl'      
+   * aggiornamento tabella 'asl'   
+	25.03.21	aggiunto si-no titolo sezione
 ============================================================================= */ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
+require_once('init_admin.php');
 //----------------------------------------------
 require_once('post_asl.php');
    
@@ -40,9 +33,9 @@ switch ($azione)
 {
 case 'nuovo':
 echo           $sql = "INSERT INTO `".DB::$pref."asl` 
-                      (did,dprog,dstat,dtmp,dcod,ddes,dcap,dtipo,dcol,dart) 
+                      (did,dprog,dstat,dtmp,dcod,ddes,dcap,dtipo,dcol,dart,dtit_sn,dtit,dtext) 
                       VALUES (NULL,'$dprog','$dstat','$dtmp','$dcod','$ddes',
-                                   '$dcap','$dtipo','$dcol','$dart')";
+                                   '$dcap','$dtipo','$dcol','$dart','$dtit_sn','$dtit','$dtext')";
                       $PDO->exec($sql);    
                       $PDO->commit();
                       $_SESSION['esito'] = 54;                      
@@ -51,7 +44,8 @@ echo           $sql = "INSERT INTO `".DB::$pref."asl`
 case 'modifica':
 echo           $sql = "UPDATE `".DB::$pref."asl` 
                    SET dprog='$dprog',dstat='$dstat',dtmp='$dtmp',dcod='$dcod',ddes='$ddes',
-                         dcap='$dcap', dtipo='$dtipo',dcol='$dcol',dart='$dart'
+                         dcap='$dcap', dtipo='$dtipo',dcol='$dcol',dart='$dart',
+						 dtit_sn='$dtit_sn',dtit='$dtit',dtext='$dtext'
                     WHERE did= '$did' ";
                $PDO->exec($sql);    
                $PDO->commit();

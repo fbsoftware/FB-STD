@@ -1,5 +1,5 @@
 <?php
-echo	"<div id='footer' class='f-flex fd-row fb-bgcolor-".TMP::$tcolor."'>"; 
+echo	"<div id='footer' class='f-flex fd-row  fb-bgcolor-sec jc-around fw'>"; 
 
 // lettura footer elements
         $sql = "SELECT *
@@ -21,9 +21,9 @@ switch ($row['ftipo'])
 {
 // modulo tipo immagine e/o testo
     case 'img':	
-			echo "<div class='".$row['fcol']."'>";
-			echo	"<img  class='center' src='".$row['felemento']."' alt='".$row['felemento']."'   height='100'>";
-			echo	"<p class='center transparent little''>";
+			echo "<div class='f-dim1'>";
+			echo	"<img  class='center promo' src='".$row['felemento']."' alt='".$row['felemento']."'>";
+			echo	"<p class='center little''>";
 			if (isset($row['ftitolo'])) 		
 				{ echo	"<h3 class='center'>".$row['ftitolo']."</h3>"; }
 			if (isset($row['ftext'])) 	{ echo	$row['ftext']; }
@@ -43,12 +43,12 @@ switch ($row['ftipo'])
                 ORDER BY eprog ";		
           foreach($PDO->query($sql) as $row)
           {	
-		  echo "<div class='".$row['fcol']."'>";
+		  echo "<div class='f-dim1'>";
+		  echo "<p class='center little'>";
 			if ($row['eimg']) 
-				{	echo "<img class='center' src='".$row['eimg']."' alt='' border='0' align='middle' height='100' />";  }
+				{	echo "<img class='center promo' src='".$row['eimg']."' alt='' border='0' />";  }
 			if ($row['ftit'])
 				{  echo	"<h3 class='center'>".$row['ftit']."</h3>";	}
-			echo "<p class='center little'>";
 			if ($row['edes']) 	{ echo "<h3 class='center'>".$row['edes']."</h3>"; }
 				echo "<br />".$row['email'];
 				echo "<br />".$row['epec'];

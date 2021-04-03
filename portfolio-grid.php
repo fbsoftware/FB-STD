@@ -72,7 +72,7 @@ $count    = 0;
 		echo "<div class='portfolio-thumbnail'>";
 		echo "<a data-toggle='modal' href='#portfolio".$count."'>";
 		echo "<img src='".$pimg."' alt='".$pimg."'>  </a>";
-			echo "<div class='portfolio-caption'>";
+			echo "<div>";
 			echo "<h3 class='center'>".$pcapt."</h4>";
 			echo "</div>";		//-- .portfolio-caption -->
 		echo "</div>";		//-- .portfolio-thumbnail -->

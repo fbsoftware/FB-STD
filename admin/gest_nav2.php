@@ -12,7 +12,9 @@
    * 1.0.0	nuovo head breve
 =============================================================================  */
 require_once('init_admin.php');
- 
+
+ if ($_POST['submit'] == 'chiudi') 
+               header('location:admin.php?urla=widget.php&pag=');        ;
   //   toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$RET.'|ritorno');    
 	$btx    = new bottoni_str_par($VOCI_MENU,'nav','upd_nav.php',$param);  

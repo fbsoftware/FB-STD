@@ -3,7 +3,7 @@
 <?php
 // pannello
 
-		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
+		echo "<div class='f-flex fd-column  fb-bgcolor-pri'>"; 
 		echo "<div class='f-dim1'>";
 		if (TMP::$tgliftit > " ")  { echo "<h1>".TMP::$tgliftit."</h1>"; } 
 		if (TMP::$tgliftext > " ") { echo "<p>".TMP::$tgliftext."</p>"; }
@@ -34,16 +34,16 @@
 		   if ($glink > '') 
 				{
 				echo	"<a href='".$glink."' target='_new'>";
-				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-border 				fa-glyph-center'></i></a>";
+				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-glyph-center'></i></a>";
 				}
 			else 
 				{
-				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-border fa-glyph-center'></i></a>";
+				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-glyph-center'></i></a>";
    				} 
 			//echo	"</div>"; 
 			
           	echo	"<h3 class='center'>$gtitle</h4>";
-               echo	"<p class='text-muted'>$gtext</p>";
+               echo	"<p class='text-muted'>".$gtext."</p>";
                echo	"</div>";
  		}              
                   

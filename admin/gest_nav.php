@@ -12,7 +12,7 @@
 
   //   toolbar
 $param  = array('mostra','chiudi');  
-$btx   = new bottoni_str_par('Scelta menù ','nav','gest_nav2.php',$param);     
+$btx   = new bottoni_str_par('Scelta menù per voci ','nav','gest_nav2.php',$param);     
      $btx->btn();
       
 // memorizza location iniziale

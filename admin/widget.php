@@ -14,7 +14,8 @@ require_once("loadTemplateAdmin.php");
 require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."lingua.php");
 require_once($_SERVER['DOCUMENT_ROOT'].DB::$root."connectDB.php");
 echo "<div class=''>";
-echo "<img src='images/logo/logo.png' alt='LOGO' title='logo' >";
+echo "<img src='images/logo/logo.png' alt='LOGO' title='logo'   
+		style='display:block; margin-left: auto; margin-right: auto; margin-top:10em;'>";
 echo "</div>";
 // resetto tutti gli errori
      unset($_SESSION['esito']);

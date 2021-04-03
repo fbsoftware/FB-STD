@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<title>title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="index,follow" />
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<style type="text/css">
+.slicknav_menu {
+display: none;
+}
+ @media screen and (max-width: 40em) {
+.js #menu {
+display: none;
+}
+.js .slicknav_menu {
+display: block;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+$('#menu').slicknav({
+
+// Label for menu button. 
+// Use an empty string for no label.
+'label' : 'MENU', 
+
+// If true, the mobile menu is a copy of the original.
+'duplicate': true, 
+
+// The duration of the sliding animation.
+'duration': true, 
+
+// Easing used for open animations.
+'easingOpen': 'swing', 
+
+// Easing used for close animations.
+'easingClose': 'swing', 
+
+// open / close symbols
+closedSymbol: '&#9658;',
+openedSymbol: '&#9660;',
+
+// Element, jQuery object, or jQuery selector string to prepend the mobile menu to.
+'prependTo': 'body', 
+
+// Element, jQuery object, or jQuery selector string to append the mobile menu to.
+appendTo: '',
+
+// Element type for parent menu items.
+'parentTag': 'a', 
+
+// Close menu when a link is clicked.
+'closeOnClick': false,
+
+// Allow clickable links as parent elements.
+allowParentLinks: false,
+
+// If false, parent links will be separated from the sub-menu toggle.
+nestedParentLinks: true,
+
+// Show children of parent links by default.
+showChildren: false,
+
+// Remove IDs from all menu elements.
+removeIds: true,
+
+// Remove classes from all menu elements.
+removeClasses: false,
+
+// Remove styles from all menu elements.
+removeStyles: false,
+
+// Add branding to menu bar.
+brand: '',
+
+// <a href="https://www.jqueryscript.net/animation/">Animation</a> library. Currently supports "jquery" and "velocity".
+animations: 'jquery',
+
+// Called after SlickNav creation
+init: function () {},
+
+// Called before menu or sub-menu opened
+beforeOpen: function () {},
+
+// Called before menu or sub-menu closed
+beforeClose: function () {},
+
+// Called after menu or sub-menu opened.
+afterOpen: function () {},
+
+// Called after menu or sub-menu closed.
+afterClose: function () {}
+
+});
+
+});
+</script>
+</head>
+
+<body>
+<ul id="menu">
+<li>Home
+<ul>
+<li><a href="https://www.jqueryscript.net/Blog/">Blog</a></li>
+<li>jQuery Plugins
+<ul>
+<li><a href="https://www.jqueryscript.net/jquery-plugins/">Latest</a></li>
+<li><a href="https://www.jqueryscript.net/popular/">Most Popular</a></li>
+<li><a href="https://www.jqueryscript.net/recommended/">Recommended</a></li>
+</ul>
+</li>
+<li><a href="#">Publishing</a></li>
+</ul>
+</li>
+<li><a href="#">Top <a href="https://www.jqueryscript.net/menu/">Menu</a> 2</a></li>
+<li>Top Menu 3</li>
+<li>Top Menu 4
+<ul>
+<li><a href="#">item 1</a></li>
+<li><a href="#">item 2</a></li>
+<li><a href="#">item 3</a></li>
+</ul>
+</li>
+</ul>
+</body>
+</html>
