@@ -38,7 +38,7 @@ if(isset($_SESSION['esito']))
      // warning
      if ($_SESSION['esito'] > 100  && $_SESSION['esito'] < 151)    // 101 - 150
           {
-      echo "<div class='fb-bgcolor-warning  fb-p05 fb-rad7'>";
+      echo "<div class='fb-bgcolor-pri  fb-p05 fb-rad7'>";
           if ($_SESSION['esito'] == 101)    echo "<img src='images/xdb.png' height=20 alt='nota'>&nbsp;&nbsp;".$NOTA." "; 
            echo "</div>";
           }      
@@ -46,7 +46,7 @@ if(isset($_SESSION['esito']))
      // info
      if ($_SESSION['esito'] > 150  && $_SESSION['esito'] < 201)    // 151 - 200
           {
-     echo "<div class='fb-bgcolor-info  fb-p05 fb-rad7'>";
+     echo "<div class='fb-bgcolor-pri  fb-p05 fb-rad7'>";
           if ($_SESSION['esito'] == 151)     echo "<img src='images/info.png' height=20 alt='info'>&nbsp;&nbsp;".$INFO." "; 
           echo "</div>";
           }      
