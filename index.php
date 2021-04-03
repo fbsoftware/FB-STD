@@ -9,17 +9,7 @@
 ============================================================================= 
    *    
 ============================================================================= */
-require_once('loadLibraries.php');
-require_once('loadTemplateSito.php');	
-require_once("connectDB.php");
-// DOCTYPE & head
-$app = new Head('Gestione sito');
-$app->openHead();
-require_once("jquery_link.php");
-//require_once("bootstrap_link.php");
-require_once("include_head.php");
-require_once('lingua.php'); 
-$app->closeHead();
+require_once('init_site.php');
 
 echo "<body id='body'>";
 // parametri passati con l'url e memorizzati 

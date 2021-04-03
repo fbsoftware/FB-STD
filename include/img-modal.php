@@ -1,6 +1,6 @@
 <?php   ?>
 <div class="<?php echo $iimgcol; ?>">
- <div class="portfolio-thumbnail">
+ <div>
  <a data-toggle="modal"  href="#artimg<?php echo $count; ?>">
   <img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive" title="<?php echo $iimgtit; ?>"> 
  </a> 

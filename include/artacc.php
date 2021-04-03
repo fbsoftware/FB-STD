@@ -1,6 +1,6 @@
 <?php
 /* =========================================================
-	Articoli in ACCORDION
+	Articoli di un capitolo in ACCORDION
    =======================================================*/
 ?>
 <section id="artacc">
@@ -11,21 +11,31 @@
       collapsible: true,
 	  heightStyle: "content"
     });
+    $( "#accordion p" ).addClass(' fb-bgcolor-pri');
   } );
   </script>
 <?php
+
 // cerca nel layout gli articoli per accordion
- $sql = "SELECT *FROM `".DB::$pref."asl`
+		$sql = "SELECT *FROM `".DB::$pref."asl`
                 WHERE dtmp = '".TMP::$tmenu."'
                     and dtipo = 'artacc'                
                     and dstat <> 'A' 
                     and dcod = '$lcod'
                 ORDER BY dprog ";
-          foreach($PDO->query($sql) as $rowx)
-          {     
-          $dcap     =    $rowx['dcap'];
-          $ddes     =    $rowx['ddes'];
-
+          foreach($PDO->query($sql) as $row)
+          {  
+			require('admin/fields_asl.php');	
+			// stampa il titolo dell'accordion se richiesto
+		
+	if ($dtit_sn == 1) 
+	{
+		echo "<div class='f-flex fd-column ui-state-default ui-widget-content'>"; 
+		if ($dtit > " ") { echo "<h1>".$dtit."</h1>"; } 
+		if ($dtext > " ") { echo $dtext; }
+		echo "</div>";	
+	}  
+  
 // lettura articoli della categoria
            $titolo = array();
            $testo  = array();
@@ -41,24 +51,11 @@
 			}
 		  }
 // conto gli articoli del capitolo
-$count = count($testo);         
-
-if ($count != 0) 
-	{
-// pannello
-	if (TMP::$taccotitle == 1) 
-	{
-		echo "<div class='f-flex fd-column fb-bgcolor-".TMP::$tcolor."'>"; 
-		echo "<div class='f-dim1'>";
-		if (TMP::$taccotit > " ")  { echo "<h1>".TMP::$taccotit."</h1>"; } 
-		if (TMP::$taccotext > " ") { echo "<p>".TMP::$taccotext."</p>"; }
-		echo "</div>";
-		echo "</div>";	
-	}	
+	$count = count($testo);         
 
 // lettura articoli
-echo "<div id='accordion'>";
-for ($i = 0; $i < $count; ++$i) 
+	echo "<div id='accordion'>";
+	for ($i = 0; $i < $count; ++$i) 
 		{
 		echo "<h3>";
 		echo $titolo[$i];
@@ -68,7 +65,6 @@ for ($i = 0; $i < $count; ++$i)
 		$a->ingloba();
 		echo "</div>";                
 		}
-    }
  ?>    
 </div>    <!-- accordion -->
 </section>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <head> 
+<link rel="stylesheet" href="https://fbsoftware.github.io/FB-CODE/css/stili-custom.css"> 
+		
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+            <script "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script "text/javascript" src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+ </head>
+        <div class="slider">
+            <div><img src="images/PAM.png" title="Pesca a mosca"></div>
+            <div><img src="images/neve.jpg" title="Pesca anche con la neve"></div>
+            <div><img src="images/aereo.png" title="Aereo personale"></div>
+            <div><img src="images/trota.jpg" title="Trotella con sommersa"></div>
+            <div><img src="images/mosche.jpg" title="Contenitore di artificiali"></div>
+            <div><img src="images/flyfishing1.jpg" title="Pescatore in azione"></div>
+        </div>
+        <script>
+            $('.slider').bxSlider({
+                autoControls: true,
+                auto: true,
+                pager: false,
+                slideWidth: 1270,
+                mode: 'fade',
+                captions: false,
+                speed: 1000
+            });
+        </script>
+    </body>
+</html>

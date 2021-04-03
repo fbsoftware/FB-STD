@@ -10,17 +10,14 @@
   Visualizza il navigatore principale nei due livelli previsti
 =============================================================================== */
 ?>
-<section id="header">
-<!-- ==================================================== -->
-  <section id="nav">
-    <div class="wrapper">
-      <nav class="site-nav">
-              <img src="<?php echo TMP::$tfolder; ?>images/logo/logo.png" alt="logo" title="Logo" height="80">           
-        <div class="menu-toggle">
-          <div class="hamburger"></div>
-        </div>
-        <ul class="open desktop">
+<section id="header" class="f-flex fd-row jc-start ai-center fw fb-bgcolor-sec">
+					
+						<img src="images/icofbot.png">
+					
  <?php 
+echo "<div class='ui-widget'>";
+
+
  // lettura voci menu 
         $sql = "SELECT *
                 FROM `".DB::$pref."nav`
@@ -31,11 +28,11 @@
           require 'admin/fields_nav.php';
          if ($row['npag'] == '1') 
                 {  
-                echo "<li> 
-                      <a href='".DB::$host.DB::$sep.DB::$site.DB::$sep.$row['nsotvo']."'>".$row['nli']."</a>";
+                echo "
+                      <a class='ui-button ui-widget' href='".DB::$host.DB::$sep.DB::$site.DB::$sep.$row['nsotvo']."'>".$row['nli']."</a>";
 			$voce = $row['nli'];
                require_once("/liv3.php");
-               echo "</li>";
+               echo "";
                 }
 //        if ($row['npag'] == '0') 
 		else  
@@ -45,10 +42,10 @@
                 case 'lnk':
                 case 'art':
                 case 'htm':
-                    	echo "<li><a href='".$row['nsotvo']."'>".$row['nli']."</a></li>";
+                    	echo "<a class='ui-button ui-widget' href='".$row['nsotvo']."'>".$row['nli']."</a>";
                 	     break;
                 case 'ifr':
-                      	echo "<li><a header(location:'".$row['nsotvo']."')>".$row['nli']."</a></li>";                
+                      	echo "<a class='ui-button ui-widget' header(location:'".$row['nsotvo']."')>".$row['nli']."</a>";                
                 		break;       
                 default:
                 	
@@ -56,21 +53,9 @@
                 }
                 }    
 
-        }            
-           echo "</ul>"; 
+        } 
+echo "</div>";
+echo "</section>";	
 ?>
-      </nav>
-    </div>
-  </section>
 
-<!-- ==================================================== -->
-<script type="text/javascript">
-$.noConflict();
-jQuery(document).ready(function($) {
-  $('.menu-toggle').on('click', function() {
-    $('ul').slideToggle();
-    $(this).toggleClass('open');
-  });
-});
-</script>
-</section>
+

@@ -15,13 +15,22 @@ $PDO->beginTransaction();
      	{       
 		//print_r($row);//debug
 		require'admin/fields_arc.php'; 
+		
+// stampa il titolo se richiesto
+	if ($htit_sn == 1) 
+	{
+		echo "<div class='f-flex fd-column  fb-bgcolor-pri'>"; 
+		if ($htit > " ") { echo "<h1>".$htit."</h1>"; } 
+		if ($htext > " ") { echo $htext; }
+		echo "</div>";	
+	}  		
 	
 // articoli in colonne
-	echo "<div class='f-flex fd-row jc-start'>";
+	echo "<div class='f-flex fd-row jc-start fnw'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-item f-dim1' >";
+          echo "<div>";
 			echo "<div>";
           $art = new getArt($htit1);
           $art->getFieldsdArt();
@@ -33,7 +42,7 @@ $PDO->beginTransaction();
 	if ($hsino2 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-item f-dim1'>";  
+          echo "<div>";  
 echo "<div>";		  
           $art = new getArt($htit2);
           $art->getFieldsdArt();
@@ -45,7 +54,7 @@ echo "<div>";
 	if ($hsino3 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-item f-dim1'>"; 
+          echo "<div>"; 
 echo "<div>";		  
           $art = new getArt($htit3);
           $art->getFieldsdArt();
@@ -57,7 +66,7 @@ echo "<div>";
 	if ($hsino4 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-item f-dim1'>";   
+          echo "<div>";   
 echo "<div>";		  
           $art = new getArt($htit4);
           $art->getFieldsdArt();

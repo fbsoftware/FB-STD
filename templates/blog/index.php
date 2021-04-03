@@ -16,11 +16,11 @@ $nav	= new setNav(TMP::$ambiente);
 //require_once("set_nav.php"); 
 echo	"<body>";
 //-- CONTENUTO DELLA PAGINA ...
-echo	"<div class='container-fluid well'>";
+//echo	"<div class='container-fluid well'>";
 echo	"<a name='inizio'></a>";
 require 'layout.php';  
 require 'goBack.php';  
-echo	"</div>";
+//echo	"</div>";
 ?>
 <script type="text/javascript">
     window.addEventListener ("scroll",function(){

@@ -46,7 +46,7 @@ $lcod="port-f1";//<=========  parametro  =======================================
 		echo "<div class='portfolio-thumbnail'>";
 		echo "<a data-toggle='modal' href='#portfolio".$pid."'>";
 		echo "<img src='".$pimg."' alt='".$pimg."'>  </a>";
-			echo "<div class='portfolio-caption'>";
+			echo "<div>";
 			echo "<h4 class='center'>".$pcapt."</h4>";
 			echo "</div>";		//-- .portfolio-caption -->
 		echo "</div>";		//-- .portfolio-thumbnail -->

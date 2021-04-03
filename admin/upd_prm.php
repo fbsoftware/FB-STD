@@ -8,17 +8,10 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
    * gestione tabella per 4 moduli promo    
-	17/8/19	scelta editor
+	17/8/19		scelta editor
+	23.03.21	aggiunto titolo e testo da ex template
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
+require_once('init_admin.php');
 //----------------------------------------------
 require_once("editor.php");			// scelta editor
 require_once('post_prm.php'); 
@@ -70,11 +63,15 @@ switch ($azione)
           $ts->select();
       $t = new getTmp('','otmp','Template','Scelta del template che utilizza il promo');
           $t->getTemplate(); 
-     $f3 = new input(array('','ocod',20,'Codice','Codice promo','ia')); 
+     $f3 = new input(array('','ocod',20,'Codice','Codice promo per layout','ia')); 
           $f3->field(); 
-     $f4 = new input(array('','odes',30,'Descrizione','Descrizione promo','i'));           
+     $f4 = new input(array('','odes',30,'Descrizione','Descrizione promo per layout','i'));           
           $f4->field(); 
-     $f3 = new input(array('','otit_sn',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array('','otit_sn',1,'Mostra Titolo','Mostrare il titolo del promo s/n','sn')); 
+          $f3->field(); 
+     $f3 = new input(array('','otit',50,'Titolo','Titolo del promo','i')); 
+          $f3->field(); 
+     $f3 = new input(array('','otext',50,'Testo','Testo del promo','tx')); 
           $f3->field(); 
 	echo "</fieldset>";
 	echo "</div>";
@@ -192,7 +189,11 @@ echo  "</form>";
           $f4->field(); 
      $f3 = new input(array($otit_sn,'otit_sn',1,'Mostra titolo','','sn')); 
           $f3->field(); 
-	echo "</fieldset>";
+     $f3 = new input(array($otit,'otit',50,'Titolo','Titolo del promo','i')); 
+          $f3->field(); 
+     $f3 = new input(array($otext,'otext',50,'Testo','Testo del promo','tx')); 
+          $f3->field();
+		  echo "</fieldset>";
 	echo "</div>";	
      
 // primo promo 

@@ -11,18 +11,9 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 	19/5/20	percorso assoluto DB::$ROOT
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');	
-require_once(DB::$ROOT."connectDB.php");
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once(DB::$ROOT."jquery_link.php");
-//require_once(DB::$ROOT."bootstrap_link.php");
-require_once(DB::$ROOT."include_head.php");
-require_once(DB::$ROOT."lingua.php"); 
-$app->closeHead(); 
+require_once('init_admin.php');
 
-echo "<body class='admin'>";
+echo "<body class='admin'>";			
 
 // test se richiesto login ============================
      if(!isset($_COOKIE['admin']))

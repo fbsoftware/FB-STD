@@ -9,17 +9,7 @@
    * ------------------------------------------------------------------------
    * aggiornamento tabella 'prm'      
 ============================================================================= */ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once('post_prm.php');
            
 $azione   =    $_POST['submit'];          print_r($_POST);//debug
@@ -41,13 +31,13 @@ switch ($azione)
 {
 case 'nuovo':
 echo           $sql = "INSERT INTO `".DB::$pref."prm` 
-                      (oid,oprog,ostat,otmp,ocod,odes,otit_sn,
+                      (oid,oprog,ostat,otmp,ocod,odes,otit_sn,otit,otext,
 				  oimg1,otit1,otext1,olink1,
 				  oimg2,otit2,otext2,olink2,
 				  oimg3,otit3,otext3,olink3,
 				  oimg4,otit4,otext4,olink4,
 				  osino1,osino2,osino3,osino4) 
-               	VALUES (NULL,$oprog,'$ostat','$otmp','$ocod','$odes','$otit_sn',
+               	VALUES (NULL,$oprog,'$ostat','$otmp','$ocod','$odes','$otit_sn','$otit','$otext',
                                    '$oimg1','$otit1','$otext1','$olink1',
 							'$oimg2','$otit2','$otext2','$olink2',
 							'$oimg3','$otit3','$otext3','$olink3',
@@ -61,7 +51,7 @@ echo           $sql = "INSERT INTO `".DB::$pref."prm`
 case 'modifica':
            $sql = "UPDATE `".DB::$pref."prm` 
                    SET oprog=$oprog,ostat='$ostat',ocod='$ocod',odes='$odes',
-                         otmp='$otmp',otit_sn='$otit_sn',
+                         otmp='$otmp',otit_sn='$otit_sn',otit='$otit',otext='$otext',
 					oimg1='$oimg1',oimg2='$oimg2',oimg3='$oimg3',oimg4='$oimg4',
 					otit1='$otit1',otit2='$otit2',otit3='$otit3',otit4='$otit4',
                          otext1='$otext1',otext2='$otext2',otext3='$otext3',otext4='$otext4',
@@ -87,6 +77,7 @@ case 'ritorno':
    
 default:
   echo "Operazione invalida";
+  break;
 }
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);

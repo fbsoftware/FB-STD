@@ -7,17 +7,10 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
-   * gestione tabella per 4 moduli articoli in colonne   
+   * gestione tabella per 4 moduli articoli in colonne
+	23.03.21	aggiunto titolo e testo da mostrare o meno  
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
+require_once('init_admin.php');
 //----------------------------------------------
 require_once("editor.php");			// scelta editor
 require_once('post_arc.php'); 
@@ -42,7 +35,7 @@ switch ($azione)
      $btx = new bottoni_str_par('Articoli in colonne','arc','write_arc.php',array('salva|nuovo','ritorno'));     
           $btx->btn();
 
-	echo "<div class='row'>";
+	echo "<div class='f-flex fd-row'>";
 	echo "<fieldset>"; 
      $arc = new DB_ins('arc','hprog');
      $f1 = new input(array($arc->insert(),'hprog',3,'Progressivo','Per ordinamento','i'));
@@ -55,19 +48,27 @@ switch ($azione)
           $f3->field(); 
      $f4 = new input(array('','hdes',30,'Descrizione','Descrizione promo','i'));           
           $f4->field(); 
-     $f3 = new input(array('','hsino1',1,'Mostra Titolo','','sn')); 
+		  //--- 23.03.21
+     $f3 = new input(array('','htit_sn',1,'Mostra Titolo','Mostrare un titolo s/n','sn')); 
+          $f3->field(); 
+     $f3 = new input(array('','htit',50,'Titolo','Titolo da mostrare','i')); 
+          $f3->field(); 
+     $f3 = new input(array('','htext',50,'Testo','Testo da mostrare','tx')); 
+          $f3->field(); 
+		  //---
+     $f3 = new input(array('','hsino1',1,'Mostra articolo','Articolo da mostrare o no','sn')); 
           $f3->field(); 
       $f4 =    new DB_sel_lt('art','aprog','','atit','htit1','astat','atit','Articolo 1','Titolo articolo da mostrare.');
           $f4->select_lt();   
-     $f3 = new input(array('','hsino2',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array('','hsino2',1,'Mostra articolo','Articolo da mostrare o no','sn')); 
           $f3->field(); 		  
       $f4 =    new DB_sel_lt('art','aprog','','atit','htit2','astat','atit','Articolo 2','Titolo articolo da mostrare.');
           $f4->select_lt();
-     $f3 = new input(array('','hsino3',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array('','hsino3',1,'Mostra articolo','Articolo da mostrare o no','sn')); 
           $f3->field(); 	  
       $f4 =    new DB_sel_lt('art','aprog','','atit','htit3','astat','atit','Articolo 3','Titolo articolo da mostrare.');
           $f4->select_lt();   
-     $f3 = new input(array('','hsino4',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array('','hsino4',1,'Mostra articolo','Articolo da mostrare o no','sn')); 
           $f3->field(); 
       $f4 =    new DB_sel_lt('art','aprog','','atit','htit4','astat','atit','Articolo 4','Titolo articolo da mostrare.');
           $f4->select_lt();  
@@ -103,19 +104,27 @@ echo  "</form>";
           $f3->field(); 
      $f4 = new input(array($hdes,'hdes',30,'Descrizione','Descrizione articoli in colonna','i')); 
 			$f4->field();
-	 $f3 = new input(array($hsino1,'hsino1',1,'Mostra Titolo','','sn')); 
+		  //--- 23.03.21
+     $f3 = new input(array($htit_sn,'htit_sn',1,'Mostra Titolo','Mostrare un titolo s/n','sn')); 
+          $f3->field(); 
+     $f3 = new input(array($htit,'htit',50,'Titolo','Titolo da mostrare','i')); 
+          $f3->field(); 
+     $f3 = new input(array($htext,'htext',50,'Testo','Testo da mostrare','tx')); 
+          $f3->field(); 
+		  //---
+	 $f3 = new input(array($hsino1,'hsino1',1,'Mostra articolo','','sn')); 
           $f3->field(); 
       $f4 =    new DB_sel_lt('art','aprog',$htit1,'atit','htit1','astat','atit','Articolo 1','Titolo articolo da mostrare.');
           $f4->select_lt();   
-     $f3 = new input(array($hsino2,'hsino2',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array($hsino2,'hsino2',1,'Mostra articolo','','sn')); 
           $f3->field(); 		  
       $f4 =    new DB_sel_lt('art','aprog',$htit2,'atit','htit2','astat','atit','Articolo 2','Titolo articolo da mostrare.');
           $f4->select_lt();
-     $f3 = new input(array($hsino3,'hsino3',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array($hsino3,'hsino3',1,'Mostra articolo','','sn')); 
           $f3->field(); 	  
       $f4 =    new DB_sel_lt('art','aprog',$htit3,'atit','htit3','astat','atit','Articolo 3','Titolo articolo da mostrare.');
           $f4->select_lt();   
-     $f3 = new input(array($hsino4,'hsino4',1,'Mostra Titolo','','sn')); 
+     $f3 = new input(array($hsino4,'hsino4',1,'Mostra articolo','','sn')); 
           $f3->field(); 
       $f4 =    new DB_sel_lt('art','aprog',$htit4,'atit','htit4','astat','atit','Articolo 4','Titolo articolo da mostrare.');
           $f4->select_lt();  

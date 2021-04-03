@@ -4,7 +4,8 @@
 * @pakage		TMP class
   Classe per la gestione della tabella 'tmp' dei template
 =============================================================================== 
-	30.4.2019	aggiunti i campi mancanti esistenti nella struttura della tabella
+	30.4.2019	aggiunti i campi mancanti esistenti nella struttura della tabella.
+	23.03.21	riportati i dati dei singoli moduli sul file di ogni modulo.
 =============================================================================== */
 class TMP       extends  DB
 
@@ -35,18 +36,20 @@ class TMP       extends  DB
   public static $tgliftext    = '';     // glifi - testo
   public static $tgliforma    = '';     // glifi - forma  
   public static $tglireverse  = '';     // glifi - reverse color
-  // promo
+  /* promo
   public static $tpromotitle=  0;		// titolo si-no
   public static $tpromotit	=  '';		// titolo 
-  public static $tpromotext	=  '';		// testo 
+  public static $tpromotext	=  '';		// testo */
   // contatti
   public static $tcttitle	=  0;		// titolo si-no
   public static $tcttit		=  '';		// titolo 
   public static $tcttext	=  '';		// testo 
-  // accordion
+  /*
+	// accordion
   public static $taccotitle	=  0;		// titolo si-no
   public static $taccotit		=  '';		// titolo 
   public static $taccotext	=  '';		// testo 
+*/
   // articoli in tab
   public static $ttabtitle	=  0;		// titolo si-no
   public static $ttabtit		=  '';		// titolo 
@@ -112,18 +115,20 @@ class TMP       extends  DB
 				self::$tgliftitle    = $row['tgliftitle'];
 				self::$tgliftext     = $row['tgliftext'];
 				self::$tglireverse   = $row['tglireverse'];
-				// promo
+				/* promo
 				self::$tpromotitle	= $row['tpromotitle'];	// titolo si-no
 				self::$tpromotit	= $row['tpromotit'];	// titolo
-				self::$tpromotext	= $row['tpromotext'];	// testo 
+				self::$tpromotext	= $row['tpromotext'];	// testo */
 				// contatti
 				self::$tcttitle		= $row['tcttitle'];	// titolo si-no
 				self::$tcttit		= $row['tcttit'];	// titolo
 				self::$tcttext		= $row['tcttext'];	// testo 
-				// accordion
+				/*
+	// accordion
 				self::$taccotitle	= $row['taccotitle'];	// titolo si-no
 				self::$taccotit		= $row['taccotit'];	// titolo
 				self::$taccotext	= $row['taccotext'];	// testo 
+*/
 				// articoli in tab
 				self::$ttabtitle	= $row['ttabtitle'];	// titolo si-no
 				self::$ttabtit		= $row['ttabtit'];	// titolo
