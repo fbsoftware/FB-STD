@@ -14,7 +14,7 @@ public $titolo="";
 	function openHead() 
     { 
 	echo "<!DOCTYPE html>";
-	echo "<html lang="it">";
+	echo "<html lang='it'>";
 	echo "<head>";
     echo "<title>".DB::$page_title." - ".$this->titolo."</title>";
 	echo "<meta charset='utf-8'>";
