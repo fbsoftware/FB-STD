@@ -35,7 +35,7 @@ echo "<div class='td'>Tipo</div>";
 echo "<div class='td'>Percorso</div>";
 echo "<div class='td'>Descrizione</div>";
 echo "<div class='td'>Menù</div>";
-echo "<div class='td'>Lingua</div>";
+echo "<div class='td'>Tema</div>";
 echo "</div>"; 
 // mostra la tabella  --------------------------------------------------
      $sql = "  SELECT * 
@@ -63,7 +63,7 @@ echo "</div>";
 	<div class='td'><?php echo $tfolder ?></div>
 	<div class='td'><?php echo $tdesc ?></div>
 	<div class='td'><?php echo $tmenu ?></div>
-	<div class='td'><?php echo $tlang ?></div>
+	<div class='td'><?php echo $tcolor ?></div>
 <?php
      echo "</div>";               
           }

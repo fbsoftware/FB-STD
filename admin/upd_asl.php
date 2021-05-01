@@ -11,7 +11,6 @@
 	25.03.21	aggiunto si-no titolo sezione
 ============================================================================= */
 require_once('init_admin.php');
-//----------------------------------------------
 require_once('post_asl.php');
 $azione  =$_POST['submit'];    // print_r($_POST);//debug
 
@@ -21,7 +20,7 @@ if (($azione == 'modifica' ||  $azione == 'cancella') && $did < 1)
      $_SESSION['esito'] = 4;
           header('location:admin.php?'.$_SESSION['location'].'');
      }
- 
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>"; 
 echo "<section id='upd' class='container-fluid'>";
 
 switch ($azione)    
@@ -56,8 +55,7 @@ switch ($azione)
           $ts->select();
       $f4 =    new DB_sel_lt('cap','cprog','','ccod','dcap','cstat','cdesc','Capitolo','Capitolo di cui usare gli articoli.');
           $f4->select_lt();    
-      $ts = new DB_tip_i('col','dcol','','Colonna','Ampiezza della colonna'); 
-          $ts->select();
+
       $f4 = new DB_sel_lt('art','aprog','','atit','dart','astat','atit','Articolo','Articolo da mostrare.');
           $f4->select_lt();
 	echo	"</fieldset>";    
@@ -103,8 +101,7 @@ echo	"<fieldset class='f-flex fd-column'>";
           $ts->select();
       $f4 =    new DB_sel_lt('cap','cprog',$dcap,'ccod','dcap','cstat','cdesc','Capitolo','Capitolo di cui usare gli articoli.');
           $f4->select_lt();    
-      $ts = new DB_tip_i('col','dcol',$dcol,'Colonna','Ampiezza della colonna'); 
-          $ts->select();
+
       $f4 = new DB_sel_lt('art','aprog',$dart,'atit','dart','astat','atit','Articolo','Articolo da mostrare.');
           $f4->select_lt();
 	echo	"</fieldset>";   
@@ -155,6 +152,7 @@ echo	"<fieldset class='f-flex fd-column'>";
   echo "Operazione invalida";    
      }
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();  
 ?>
 

@@ -9,16 +9,7 @@
    * ------------------------------------------------------------------------
    * Scrittura tabella '£tab'      
 ============================================================================= */ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('init_admin.php');
 require_once('post_foo.php');
            
 $azione   =    $_POST['submit'];          
@@ -41,7 +32,6 @@ if (($fdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
-
 switch ($azione)
 {
 case 'nuovo':

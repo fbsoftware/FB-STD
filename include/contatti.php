@@ -1,14 +1,20 @@
+<section id='contatti'>
+  <script>
+  $( function() {
+  $( ".fb-primary p" ).addClass('fb-primary');
+    $( ".fb-primary h1" ).addClass('fb-primary');
+  } );
+  </script>
 <?php
-echo	"<section id='contatti'>";
 // stampa il titolo se richiesto
 
-		echo "<div class='f-flex fd-column  fb-bgcolor-pri'>"; 
+		echo "<div class='f-flex fd-column  fb-primary'>"; 
 		if (TMP::$tcttit > ' ') { echo "<h1>".TMP::$tcttit."</h1>"; } 
 		if (TMP::$tcttext > ' ') { echo "<p>".TMP::$tcttext."</p>"; }
 		echo "</div>";
 
 ?>            
-			<div class="f-flex fd-row">             
+			<div class="f-flex fd-row  fb-content">             
 			<div class="f-flex fd-column f-dim1">
 			<form id="contatti" method="post">
                 <div> 
@@ -56,7 +62,7 @@ echo	"<section id='contatti'>";
 
 <!-- ================================================================================= -->
 
- <div class="f-flex fd-row jc-between fb-bgcolor-pri">                  
+ <div class="f-flex fd-row jc-between fb-content">                  
             <div>
             	<div id="risultato-block" class="form-group">  
 				<label class="label30" id="risultato-label" for="risultato">Inserisci il risultato 
@@ -73,11 +79,12 @@ echo	"<section id='contatti'>";
             </div>
                     
              <div>  
-                  <div id="privacy-block" class="checkbox form-group">
-                    <label for="privacy" id="privacy-label">
-                      <input type="checkbox" name="privacy" id="privacy" class="selector ui-checkboxradio ui-corner-all">Acconsento al trattamento dei miei dati personali in base alle normative attualmente vigenti. </label>         
+                  
+                    <label for="privacy" id="privacy-label">Acconsento al trattamento dei miei dati personali in base alle normative attualmente vigenti. </label></div>
+					<div id="privacy-block" class="checkbox form-group">
+                      <input type="checkbox" name="privacy" id="privacy" class="selector ui-checkboxradio ui-corner-all">         
                  </div>
-            </div> 
+             
  		</div>     <!-- row --> 
 <!-- ================================================================================= -->		       
 		</form>

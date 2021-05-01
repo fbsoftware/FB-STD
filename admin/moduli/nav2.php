@@ -62,7 +62,7 @@ require'fields_nav.php';
 //  bottone logout
 echo "<div style='float:right;'>";
 echo "<form class='bottoni' method='post' action='login.php'>";
-echo "<button class='fb-bgcolor-pri fb-p025' type='submit' name='submit' value='chiudi'> ";        
+echo "<button class='fb-primary fb-p025' type='submit' name='submit' value='chiudi'> ";        
 echo $EXIT;
 echo "</button>";
 echo "</form>";   

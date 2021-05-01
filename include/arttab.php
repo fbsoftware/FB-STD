@@ -2,9 +2,11 @@
   <script>
   $( function() {
     $( "#arttab" ).tabs();
- 
- $( "#arttab p" ).addClass('ui-state-default'); 
-  } 
+   } 
+  );
+    $( function() {
+    $( "div[role='tabpanel']" ).removeClass("ui-widget-content");
+   } 
   );
   </script>
 <?php
@@ -47,7 +49,7 @@
 // pannello se richiesto
 if ($rowx['dtit_sn'] == 1) 
 {
-		echo "<div class='f-flex fd-column  fb-bgcolor-pri'>"; 
+		echo "<div class='f-flex fd-column  fb-primary'>"; 
 		if ($rowx['dtit'] > " ")  { echo "<h1>".$rowx['dtit']."</h1>"; } 
 		if ($rowx['dtext'] > " ") { echo "<p>".$rowx['dtext']."</p>"; }
 		echo "</div>";
@@ -55,7 +57,7 @@ if ($rowx['dtit_sn'] == 1)
 
 ?>			
  <!-- articoli -->
-<div id = "arttab">
+<div id = "articl" class="fb-content">
 <?php
 // lettura degli articoli del capitolo
 

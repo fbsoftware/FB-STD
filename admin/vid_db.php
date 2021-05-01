@@ -9,19 +9,11 @@
 =============================================================================
    *  visualizza struttura tabella database
 =============================================================================  */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('init_admin.php');
 //print_r($_POST);//debug
 $azione = $_POST['submit'];
 $table  = $_POST['table'];
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";     
 
 // toolbar
 	$param  = array('ritorno');    
@@ -47,34 +39,33 @@ if (isset($table))
      {
 $sql = "SHOW FULL COLUMNS FROM ".$table;
 
-echo "<div class='tableFixHead'>";    
-          echo "<table class='table table-striped table-bordered table-condensed'>"; 
-          echo '<tr>
-				<th>Campo</th>
-				<th>Tipo</th>
-				<th>Null</th>
-				<th>Default<th>
-				Extra</th>
-				<th>Descrizione</th>
-				</tr>';
+echo "<div class='table fb-h80'>"; 
+echo "<div class='th'>"; 
+echo "<div class='td'>Campo</div>";
+echo "<div class='td'>Tipo</div>";
+echo "<div class='td'>Null</div>";
+echo "<div class='td'>Default</div>";
+echo "<div class='td'>Extra</div>";
+echo "<div class='td'>Descrizione</div>";				
+echo "</div>";
      //     while($row2 = mysql_fetch_row($result2))
 			foreach($PDO->query($sql) as $row)
   
                {
-               echo '<tr>';
-               echo '<td class="fc">',$row[0],'</td>';
-               echo '<td>',$row[1],'</td>';  // nome campo
-               echo '<td>',$row[3],'</td>';  // tipo campo
-               echo '<td>',$row[4],'</td>';  // key si-no
-               echo '<td>',$row[6],'</td>';  // extra
-               echo '<td>',$row[8],'</td>';  // descrizione
-               echo '</tr>';               
+               echo "<div class='tr'>";
+               echo "<div class='td'>".$row[0]."</div>";
+               echo "<div class='td'>".$row[1]."</div>";  // nome campo
+               echo "<div class='td'>".$row[3]."</div>";  // tipo campo
+               echo "<div class='td'>".$row[4]."</div>";  // key si-no
+               echo "<div class='td'>".$row[6]."</div>";  // extra
+               echo "<div class='td'>".$row[8]."</div>";  // descrizione
+               echo "</div>";               
                }
-
-          echo '</table>';
-echo '</div>';          
+			   
+			echo '</div>';          
           break;
 
      }
 }
+echo "</body>";
 ?>

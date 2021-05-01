@@ -10,15 +10,15 @@ if(isset($_SESSION['esito']))
      if ($_SESSION['esito'] > -1  && $_SESSION['esito'] < 51)      // 0 - 50
           {
       echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>";
-          if ($_SESSION['esito'] == 0)      echo "<p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          if ($_SESSION['esito'] == 0)      echo "<p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$OP_DEL_ERR."</p>" ;            
-          if ($_SESSION['esito'] == 1)      echo "<p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          if ($_SESSION['esito'] == 1)      echo "<p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$OP_INV."</p>";                
-          if ($_SESSION['esito'] == 2)      echo "<p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          if ($_SESSION['esito'] == 2)      echo "<p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$OP_ANN_UTE."</p>";            
-          if ($_SESSION['esito'] == 4)      echo "<p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          if ($_SESSION['esito'] == 4)      echo "<p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$EFF_SCELTA."</p>";            
-          if ($_SESSION['esito'] == 5)      echo "<p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          if ($_SESSION['esito'] == 5)      echo "<p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$PAG_EFFE."</p>";          
           echo "</div>";
           }  
@@ -81,32 +81,32 @@ if(isset($_SESSION['errore']))
           {
           if ($_SESSION['errore0'] == 1) 
 		  echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>
-          <p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          <p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$ERR_COD."</div>"; 
 	  
           if ($_SESSION['errore1'] == 1)
 			echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>			  
-          <p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          <p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$ERR_IMPO."</div>";
 	  
           if ($_SESSION['errore2'] == 1)
           echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>			  
-          <p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          <p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$ERR_MAIL."</div>"; 
 	  
           if ($_SESSION['errore3'] == 1)
           echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>			  
-          <p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          <p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$ERR_URL."</div>"; 
 	  
           if ($_SESSION['errore4'] == 1) 
           echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>			  
-          <p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          <p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$ERR_DESC."</div>"; 
 	  
           if ($_SESSION['errore5'] == 1) 
 		  echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>			  
-          <p class='fb-p1 fb-color-default'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
+          <p class='fb-p1'><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>
 		<strong>Attenzione!</strong>&nbsp;&nbsp;".$ERR_TIPO."</div>"; 
 	  
           }  

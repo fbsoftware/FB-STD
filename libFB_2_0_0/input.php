@@ -26,7 +26,7 @@ class input			extends TMP
 
         public function field()
 		
-          {  
+          { 
 		   // label non serve per tipo = h/star  
 			echo "<div>";   
               if (($this->tipo !== 'h') && ($this->tipo !== 'star'))
@@ -108,7 +108,7 @@ case 'ir':          // input text obbligatorio
 break;
 
 case 't' :          // input testate di colonna
-                        echo "<input disabled class='blue' value='$this->label' size='$this->lung'>";
+                        echo "<input disabled class='fb-color-blue' value='$this->label' size='$this->lung'>";
 break;
 
 case 'h':            // input hidden (Lunghezza e label facoltative)

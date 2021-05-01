@@ -31,8 +31,8 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $eid < 1)
      $_SESSION['esito'] = 4;
      header('location:gest_ctt.php');
      }
-     
-echo "<section id='upd_ctt' class='container-fluid'>";
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";    
+echo "<section id='upd_ctt'>";
     
 switch ($azione)    
 { 
@@ -52,7 +52,7 @@ switch ($azione)
   </ul>
  <?php			
          
-	echo "<div id='tabs-0' class='row'>";
+	echo "<div id='tabs-0'>";
 	echo "<fieldset>";         
      $ins = new DB_ins('ctt','eprog');
      $f1 = new input(array($ins->insert(),'eprog',3,$PROG,'Per ordinamento','i'));
@@ -75,8 +75,7 @@ $tw = new select_file('images/','','eimg',$IMG,'');
 echo "</fieldset>";
 echo "</div>";	
 	
-	echo "<div id='tabs-1' class='row'>";
-	echo "<fieldset>"; 	
+	echo "<div id='tabs-1'>";
 	$f2 = new input(array('','email',50,$EMAIL,'','i'));     
 		$f2->field();
 	$f2 = new input(array('','epec',50,$PEC,'','i'));     
@@ -91,11 +90,10 @@ echo "</div>";
 		$f2->field();
 	$f2 = new input(array('','esede',50,$SEDE,'','i'));     
 		$f2->field();
-echo "</fieldset>";
 echo "</div>";
 
 	// per textarea
-	echo "<div id='tabs-2' class='row'>";
+	echo "<div id='tabs-2'>";
 	echo "<fieldset>"; 
      $f4 = new input(array('','enote',50,$NOTE,'','tx')); 
           $f4->field(); 
@@ -174,7 +172,6 @@ echo  "</form>";
 // tabs-2 note --------------------------------------------------------------------
 	echo "<div id='tabs-2' class='row'>";
 	echo "<fieldset>"; 
-	echo	"<fieldset>";
      $f4 = new input(array($enote,'enote',50,$NOTE,'','tx')); 
           $f4->field(); 
 	echo "<script type='text/javascript'>CKEDITOR.replace('enote');	</script>";
@@ -232,5 +229,6 @@ $btg = new bottoni_str_par('Contatti-cancella','ctt','write_ctt.php',array($SAV.
           
     } 
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>

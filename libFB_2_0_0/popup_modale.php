@@ -30,11 +30,13 @@ public $text="";
  
 //-- popup modale --> 
 echo	"<div class='popup' popup-name='".$this->id."' id='".$this->id."' style='z-index:10'>"; 
-		echo	"<div class='popup-content'>";  
+		echo	"<div class='popup-content fb-primary'>";  
 //------------------------------------------
 //titolo
-	echo	"<div>";    
+	echo	"<div class='fb-primary'>";    
 	echo	"<h3>".$this->header."</h3>";
+	// bottone di chiusura del popup	
+	echo "<a class='close-button trasp' popup-close='".$this->id."' href='javascript:void(0)'>x</a>";
 	echo	"</div>";   
 // immagine			
 	echo	"<div>";    	
@@ -45,8 +47,7 @@ echo	"<div class='popup' popup-name='".$this->id."' id='".$this->id."' style='z-
 	echo "<p>".$this->text."</p>";
 	echo "</div>";
 	
-// bottone di chiusura del popup	
-	echo "<a class='close-button' popup-close='".$this->id."' href='javascript:void(0)'>x</a>";
+
 //------------------------------------------
 	echo "</div>";	// .popup-content		
 	echo "</div>"; 	// .popup

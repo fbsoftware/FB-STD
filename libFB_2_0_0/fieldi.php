@@ -75,7 +75,7 @@ class fieldi
         public function field_t()   // input testate di colonna
           {    echo "<div>
                      <label for='$this->campo'>$this->label</label>
-                     <input disabled='disabled' class='blue' 
+                     <input disabled='disabled' class='fb-color-blue' 
                      value='$this->label' size='$this->lung'>
                      </div>"; 
           } 

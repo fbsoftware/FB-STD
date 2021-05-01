@@ -12,22 +12,12 @@
 	* 30/5/20	tolto tsld... perchè non utilizzato (Rimangono i campi sul database)
 	* 07/02/21	gestito editor di testi
 ============================================================================= */ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once 'post_tmp.php';
 $azione   =$_POST['submit'];
 
 echo "<br />";   
-//print_r($_POST);//debug
+print_r($_POST);//debug
 
 // test validità codice  
 if (($tmenu <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
@@ -48,17 +38,34 @@ case 'nuovo':
  echo          $sql = "INSERT INTO `".DB::$pref."tmp` (tprog,tstat,tcod,tsel,tfolder,
                        tdesc,tmenu,tlang,tslidebutt,tslidetime,tportitle,tcolor,
                        tgliforma,tgliftitle,tgliftext,tglireverse,ttipo,
-						tpromotitle,tpromotit,tpromotext,tgliftit,tportit,tportext,
-						tcttitle,tcttit,tcttext,taccotitle,taccotit,taccotext,
-						ttabtitle,ttabtit,ttabtext,tsldtitle,tsldtit,tsldtext,teditor)  
+						tgliftit,tportit,tportext,
+						tcttitle,tcttit,tcttext,
+						ttabtitle,ttabtit,ttabtext,teditor,
+						tpri_color,		
+						tx_pri_color,   
+						tsec_color,     
+						tx_sec_color,   
+						tbg_color,      
+						tx_color,       
+						tbutton_color , 
+						tx_button_color)  
+						
                        VALUES ('$tprog','$tstat','$tcod','$tsel','$tfolder','$tdesc',
                               '$tmenu','$tlang','$tslidebutt','$tslidetime',
                               '$tportitle','$tcolor','$tgliforma','$tgliftitle',
                               '$tgliftext','$tglireverse','$ttipo',
-						 '$tpromotitle','$tpromotit','$tpromotext','$tgliftit',
+						 '$tgliftit',
 						 '$tportit','$tportext',
-						 '$tcttitle','$tcttit','$tcttext','$taccotitle','$taccotit','$taccotext',
-						  '$ttabtitle','$ttaabtit','$ttabtext','$teditor')";
+						 '$tcttitle','$tcttit','$tcttext',
+						  '$ttabtitle','$ttaabtit','$ttabtext','$teditor',
+						  '$tpri_color',		
+						  '$tx_pri_color',   
+						  '$tsec_color',     
+						  '$tx_sec_color',   
+						  '$tbg_color',      
+						  '$tx_color',       
+						  '$tbutton_color',  
+						  '$tx_button_color')";
                         $PDO->exec($sql);    
                         $PDO->commit();
                         $_SESSION['esito'] = 54;
@@ -72,9 +79,6 @@ case 'modifica':
 						tcolor='$tcolor',tgliforma='$tgliforma',
 						tgliftitle='$tgliftitle',tgliftext='$tgliftext',
 						tglireverse='$tglireverse',ttipo='$ttipo',
-						tpromotitle='$tpromotitle',
-						tpromotit='$tpromotit', 
-						tpromotext='$tpromotext', 
 						tgliftit='$tgliftit',
 						tportitle=$tportitle,
 						tportit='$tportit',
@@ -82,13 +86,19 @@ case 'modifica':
 						tcttitle=$tcttitle,
 						tcttit='$tcttit',
 						tcttext='$tcttext',
-						taccotitle=$taccotitle,
-						taccotit='$taccotit',
-						taccotext='$taccotext',
 						ttabtitle=$ttabtitle,
 						ttabtit='$ttabtit',
 						ttabtext='$ttabtext',
-						teditor='$teditor'
+						teditor='$teditor',
+						tpri_color	   ='$tpri_color',	   
+						tx_pri_color   ='$tx_pri_color',   
+						tsec_color     ='$tsec_color',     
+						tx_sec_color   ='$tx_sec_color',   
+						tbg_color      ='$tbg_color',      
+						tx_color       ='$tx_color',       
+						tbutton_color  ='$tbutton_color',  
+						tx_button_color='$tx_button_color'
+						
 				   
                    WHERE `tid`='$tid' ";
                    $PDO->exec($sql);    

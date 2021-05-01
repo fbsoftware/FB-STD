@@ -12,8 +12,7 @@
 	19/5/20	percorso assoluto DB::$ROOT
 ============================================================================= */
 require_once('init_admin.php');
-
-echo "<body class='admin'>";			
+echo "<body class='admin'>";
 
 // test se richiesto login ============================
      if(!isset($_COOKIE['admin']))
@@ -29,7 +28,7 @@ require_once('set_nav_a.php');
 require_once('moduli/header_a.php');       
 
 //  N A V I G A T O R E   ===========================
-echo    "<nav>"; 
+echo    "<nav class='f-flex fd-row jc-start ai-center fw'>"; 
 require_once('moduli/nav2a.php'); 	
 echo    "</nav>";   
  

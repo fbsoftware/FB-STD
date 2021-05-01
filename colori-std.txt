@@ -1,0 +1,12 @@
+<style type="text/css">
+:root	{
+--pri-color: 		<?php echo TMP::$tpri_color; ?>;
+--sec-color: 		<?php echo TMP::$tsec_color; ?>;
+--tx-pri-color:		<?php echo TMP::$tx_pri_color; ?>;
+--tx-sec-color:		<?php echo TMP::$tx_sec_color; ?>;
+--bg-color: 		<?php echo TMP::$tbg_color; ?>;
+--tx-color: 		<?php echo TMP::$tx_color; ?>;
+--button-color:		<?php echo TMP::$tbutton_color; ?>;
+--tx-button-color:	<?php echo TMP::$tx_button_color; ?>;
+}
+</style>

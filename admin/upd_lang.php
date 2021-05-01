@@ -9,28 +9,14 @@
    *-------------------------------------------------------------------------
    * gestione descrizionbi in lingua
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once 'post_lang.php';           
 //print_r($_POST);//debug
- 
-     // contenitore
-     echo     "<div class='container form-horizontal'>"; 
-     echo     "<div class='row container'>";
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>"; 
 
 switch ($azione)
 {
 //==================================================================================     
-
     case 'nuovo':    // inserimento
 
           $param    = array($SAV.'|nuovo',$RET.'|ritorno');     
@@ -138,7 +124,6 @@ foreach (glob('language/*.*') as $key => $gx)
     default:
 
 }
-     echo "</div>";
-     echo "</div>";
+echo "</body>";
 ob_end_flush();
 ?>

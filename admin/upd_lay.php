@@ -9,17 +9,7 @@
    * ------------------------------------------------
    * gestione tabella 'lay'   
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-// DOCTYPE & head
-$app = new Head('Gestione layout');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-     
+require_once('init_admin.php');     
 require_once('post_lay.php');
 $azione  =$_POST['submit'];      //print_r($_POST);//debug
 
@@ -29,6 +19,7 @@ if (($azione == 'modifica' || $azione == 'cancella') && $lid == '')
           $_SESSION['esito'] = 4;
           header('location:admin.php?'.$_SESSION['location'].'');
           }
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'";
 
 if (($azione == 'modifica' ||$azione == 'cancella') && $lid < 0) 
@@ -147,9 +138,11 @@ default:
 // =======================================================================================
      $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));           
           $f4->field();
-     $f4 = new input(array($linclude,'linclude',20,'Prgramma','Programma da eseguirere','r'));           
+     $f4 = new input(array($linclude,'linclude',50,'Programma','Programma da eseguire','r'));           
           $f4->field();
-     echo    "</fieldset></form>";
+
+	echo  "</fieldset>";
+	echo  "</form>";
      break;
 
 // cancellazione    
@@ -197,5 +190,6 @@ $loc = "location:admin.php?urla=widget.php&pag=";
 } 
 
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>

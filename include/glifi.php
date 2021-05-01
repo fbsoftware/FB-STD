@@ -1,9 +1,16 @@
 <section id="glyph">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
-<?php
+  <script>
+  $( function() {
+  $( ".fb-primary p" ).addClass('fb-primary');
+    $( ".fb-primary h1" ).addClass('fb-primary');
+	 $( "i" ).addClass('fb-color-accent');
+  } );
+  </script>
+ <?php
 // pannello
 
-		echo "<div class='f-flex fd-column  fb-bgcolor-pri'>"; 
+		echo "<div class='f-flex fd-column  fb-primary'>"; 
 		echo "<div class='f-dim1'>";
 		if (TMP::$tgliftit > " ")  { echo "<h1>".TMP::$tgliftit."</h1>"; } 
 		if (TMP::$tgliftext > " ") { echo "<p>".TMP::$tgliftext."</p>"; }
@@ -24,7 +31,7 @@
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 		  
-		echo "<div class='f-flex fd-row jc-center  ai-start'>";
+		echo "<div class='f-flex fd-row jc-center  ai-start fb-content'>";
 
 		foreach($rows as $row)
 			{		  
@@ -33,7 +40,7 @@
 		   echo "<div class='f-dim1'>";
 		   if ($glink > '') 
 				{
-				echo	"<a href='".$glink."' target='_new'>";
+				echo	"<a class='trasp' href='".$glink."' target='_new'>";
 				echo	"<i class='".$gfa." ".$gdim." ".$gcolor." fa-glyph-center'></i></a>";
 				}
 			else 

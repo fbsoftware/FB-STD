@@ -52,7 +52,7 @@ class bottoni_str_par
                 echo "<div class='f-item'>";
 				if (file_exists("images/archivi/".$this->tabella.".png"))
 				{
-                echo "<img src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
+                echo "<img class='marchio' src='images/archivi/".$this->tabella.".png' alt='manca img' height='40'> ";
 				}
 				echo    "</div>";
                 
@@ -62,7 +62,7 @@ class bottoni_str_par
                 echo    "</div>";
                 
                 // bottoni ampiezza = 7
-                echo    "<div class='f-item btn-group text-right'>"; 
+                echo    "<div class='f-item'>"; 
 				if(in_array('enctype',$this->param)) 
 					{
 					echo "<form enctype='multipart/form-data' method='post' id='".$this->tabella."' action='".$this->callbk."' onkeypress='return event.keyCode != 13;'>" ;
@@ -96,7 +96,7 @@ class bottoni_str_par
 				if(in_array($act, $b0))  { $accesso_bottone = 0; }
 				if ($this->accesso >= $accesso_bottone) 
 				{
-				echo    "<button class='fb-bgcolor-basic fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
+				echo    "<button class='fb-button fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
                          <img src=images/bottoni/".$act.".png alt='".$act."' height=25 />".$act."</button>";
 				}
 				}
@@ -108,7 +108,7 @@ class bottoni_str_par
                if(in_array($act, $b0))  { $accesso_bottone = 0; }
                if ($this->accesso >= $accesso_bottone) 
                {
-               echo    "<button class='fb-bgcolor-basic fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
+               echo    "<button class='fb-button fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
                          <img src=images/bottoni/".$label.".png alt='".$label."' height=25 />".$label."</button>";
                }
 				}

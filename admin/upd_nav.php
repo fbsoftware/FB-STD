@@ -11,17 +11,7 @@
    * Gestito livello di accesso     
    * 1.0.0	nuova toolbar
 ============================================================================*/ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-  
+require_once('init_admin.php');
 require_once('post_nav.php');
 $azione=$_POST['submit'];
       
@@ -31,7 +21,7 @@ if (($azione == 'modifica' || $azione == 'cancella') && $nid == '')
           $_SESSION['esito'] = 4;
           header('location:admin.php?'.$_SESSION['location'].'');
           }
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 {
 //==================================================================================     
@@ -201,7 +191,7 @@ $f2 = new input(array($nmetakey,'nmetakey',33,'Meta keywords','Keywords assegnat
 	}
       echo  "</form>"; 
       break;
-  
 } 
+echo "</body>";
 ob_end_flush();  
 ?> 

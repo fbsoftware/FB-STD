@@ -6,11 +6,18 @@
    riferimenti ai vari componenti.
    -------------------------------------------------------------*/  
 echo "<section id='portfolio'>";
-
+?>
+  <script>
+  $( function() {
+  $( ".fb-primary p" ).addClass('fb-primary');
+    $( ".fb-primary h1" ).addClass('fb-primary');
+  } );
+  </script>
+<?php
 // stampa il titolo se richiesto
 	if ((TMP::$tportitle == 1) && ($cnt <= 0))
 	{
-		echo "<div class='f-flex fd-row  fb-bgcolor-pri'>"; 
+		echo "<div class='f-flex fd-row  fb-primary'>"; 
 		echo "<div>";
 		if (TMP::$tportit > " ")  { echo "<h1>".TMP::$tportit."</h1>"; } 
 		if (TMP::$tportext > " ") { echo "<p>".TMP::$tportext."</p>"; }
@@ -34,7 +41,7 @@ echo "<section id='portfolio'>";
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 
-echo "<div class='f-flex fd-row jc-around'>";
+echo "<div class='f-flex fd-row jc-around fb-content'>";
 		
 		foreach($rows as $row)
 			{
@@ -43,7 +50,7 @@ echo "<div class='f-flex fd-row jc-around'>";
 			// portfolio-elemento immagine  
 			echo "<div>";
 			$target	= "portfolio".$pid;
-			echo "<p><a popup-open='".$target."' href='javascript:void(0)'>";
+			echo "<p><a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='img-fit' src='".$pimg."' alt='".$pimg."'>  </a>";
 
 			// portfolio-caption e bottone 

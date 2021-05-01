@@ -18,8 +18,22 @@ require_once('init_admin.php');
     $( "#tabs" ).tabs();
   } );
   </script>
+  <style type="text/css">
+div.demo	{
+	margin:1rem;
+	float:left;
+	width:200px;
+	height:100px;
+	border:1px solid black;
+  }
+p.demo	{
+	font-weight:900;
+}
+  </style>
 <?php
 //----------------------------------------------
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
+
 require('post_tmp.php');
 $azione   =$_POST['submit']; 
  
@@ -51,10 +65,11 @@ case 'nuovo':
 // UL per tabs
 ?>
 <ul>
-	<li><a href="#tab1" >Dati base</a></li>
+	<li><a href="#tab0" >Dati base</a></li>
+	<li><a href="#tab1" >Colori</a></li>
 	<li><a href="#tab2" >Slide</a></li>
-	<li><a href="#tab3" >Promo</a></li>
-	<li><a href="#tab4" >Accordion</a></li>
+<!-- <li><a href="#tab3" >Promo</a></li> 
+	<li><a href="#tab4" >Accordion</a></li> -->
 	<li><a href="#tab5" >Portfolio</a></li>
 	<li><a href="#tab6" >Contatti</a></li>
 	<li><a href="#tab7" >Articoli in tabs</a></li>
@@ -64,7 +79,7 @@ case 'nuovo':
 <?php         
 
 // dati base
-     echo  "<fieldset id='tab1'>"; 
+	      echo  "<fieldset id='tab0'>"; 
      $tmp = new DB_ins('tmp','tprog');               
      $a   = new input(array(NULL,'tid',5,'','','h'));
           $a->field();
@@ -86,11 +101,32 @@ case 'nuovo':
           $arg->select_label();
      $tz = new DB_tip_i('lin','tlang','','Lingua','Lingua per traduzione label');        
           $tz->select(); 
-      $tz = new DB_tip_i('color','tcolor','','Colore base','Colore di base di pulsanti,glifi,barre ecc.'); 
+      $tz = new DB_tip_i('color','tcolor','','Colore template','Colore di base di pulsanti,glifi,barre ecc.'); 
           $tz->select(); 
      $tw = new DB_tip_i('edit','teditor','','Editor di testo','Programma di editor di testo');        
           $tw->select(); 
 echo "</fieldset>"; 
+
+// colori di base
+     echo  "<fieldset id='tab1'>"; 
+     $f = new input(array('#ffffff','tpri_color',10,'Colore primario','olore primario','ic'));
+          $f->field();
+	$f = new input(array('#ffffff','tx_pri_color',10,'Testo primario','Colore testo primario','ic'));
+          $f->field();
+	$f = new input(array('#ffffff','tsec_color',10,'Colore secondario','Colore secondario','ic'));
+          $f->field();
+	$f = new input(array('#ffffff','tx_sec_color',10,'Testo secondario','Colore testo secondario','ic'));
+          $f->field();
+     $f = new input(array('#ffffff','tbg_color',10,'Sfondo testo','Colore di sfondo del testo','ic'));
+          $f->field();
+	$f = new input(array('#ffffff','tx_color',10,'Colore testo','Colore del testo','ic'));
+          $f->field();
+	$f = new input(array('#ffffff','tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
+          $f->field();
+	$f = new input(array('#ffffff','tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
+          $f->field();
+echo "</fieldset>"; 
+echo "</div>";
 
 // slide     
      echo  "<fieldset id='tab2' >";
@@ -99,7 +135,7 @@ echo "</fieldset>";
      $input = new input(array(0,'tslidetime',5,'Durata','Durata in millisec','i'));
           $input->field();
      echo "</fieldset>";	 
-// promo     
+/* promo     
      echo  "<fieldset id='tab3' >";
      $tz = new DB_tip_i('s-n','tpromotitle',0,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
           $tz->select(); 
@@ -119,7 +155,7 @@ echo "</fieldset>";
      $input    = new input(array('','taccotext',50,'Testo','Testo della sezione di accordion','tx'));
           $input->field();
 	echo "</fieldset>";
-
+*/
 // portfolio     
      echo  "<fieldset id='tab5' >";
      $tz = new DB_tip_i('s-n','tportitle',0,'Mostra titolo','Visualizza o meno il titolo');        
@@ -180,10 +216,11 @@ echo "</fieldset>";
 // UL per tabs
 ?>
 <ul>
-	<li><a href="#tab1" >Dati base</a></li>
+	<li><a href="#tab0" >Dati base</a></li>
+	<li><a href="#tab1" >Colori</a></li>
 	<li><a href="#tab2" >Slide</a></li>
-	<li><a href="#tab3" >Promo</a></li>
-	<li><a href="#tab4" >Accordion</a></li>
+<!-- <li><a href="#tab3" >Promo</a></li> 
+	<li><a href="#tab4" >Accordion</a></li> -->
 	<li><a href="#tab5" >Portfolio</a></li>
 	<li><a href="#tab6" >Contatti</a></li>
 	<li><a href="#tab7" >Articoli in tabs</a></li>
@@ -193,7 +230,7 @@ echo "</fieldset>";
 <?php         
 
 // dati base
-     echo  "<fieldset id='tab1'>";      
+     echo  "<fieldset id='tab0'>";      
     $sql = "SELECT * FROM `".DB::$pref."tmp` where `tid` = $tid ";
      foreach($PDO->query($sql) as $row)
      {    
@@ -223,6 +260,41 @@ echo "</fieldset>";
      $tz = new DB_tip_i('edit','teditor',$teditor,'Editor di testo','Programma di editor di testo');        
           $tz->select(); 		  
 	echo "</fieldset>"; 
+
+// colori di base
+     echo  "<fieldset id='tab1'>"; 
+     $f = new input(array($tpri_color,'tpri_color',10,'Colore primario','Colore primario','ic'));
+          $f->field();
+	$f = new input(array($tx_pri_color,'tx_pri_color',10,'Testo primario','Colore testo primario','ic'));
+          $f->field();
+	$f = new input(array($tsec_color,'tsec_color',10,'Colore secondario','Colore secondario','ic'));
+          $f->field();
+	$f = new input(array($tx_sec_color,'tx_sec_color',10,'Testo secondario','Colore testo secondario','ic'));
+          $f->field();
+     $f = new input(array($tbg_color,'tbg_color',10,'Sfondo testo','Colore di sfondo del testo','ic'));
+          $f->field();
+	$f = new input(array($tx_color,'tx_color',10,'Colore testo','Colore del testo','ic'));
+          $f->field();
+	$f = new input(array($tbutton_color,'tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
+          $f->field();
+	$f = new input(array($tx_button_color,'tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
+          $f->field();
+// DEMO COLORI
+echo "<div>";
+
+echo "<div class='demo' style='background:".$tpri_color."'>
+		  <p class='demo' style='color:".$tx_pri_color."'>Primario</p></div>";
+echo "<div class='demo'  style='background:".$tsec_color."'>
+		  <p class='demo' style='color:".$tx_sec_color."'>Secondario</p></div>";
+echo "<div class='demo'  style='background:".$tbg_color."'>
+		  <p class='demo' style='color:".$tx_color."'>Testo</p></div>";
+echo "<div class='demo'  style='background:".$tbutton_color."'>
+		  <p class='demo' style='color:".$tx_button_color."'>Bottone</p></div>";
+echo "</div>";
+
+echo "</fieldset>"; 
+echo "</div>";
+
      
 // slide     
      echo  "<fieldset id='tab2'>";
@@ -233,7 +305,7 @@ echo "</fieldset>";
           $input->field();
      echo  "</fieldset>";
 	 
-// promo     
+/* promo     
      echo  "<fieldset id='tab3'>";
      $tz = new DB_tip_i('s-n','tpromotitle',$tpromotitle,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
           $tz->select(); 
@@ -252,7 +324,7 @@ echo "</fieldset>";
      $input    = new input(array($taccotext,'taccotext',50,'Testo','Testo della sezione accordion','tx'));
           $input->field();  	 
      echo  "</fieldset>";     
-
+	*/
 // portfolio     
      echo  "<fieldset id='tab5'>";
      $tz = new DB_tip_i('s-n','tportitle',$tportitle,'Mostra titolo','Visualizza o meno il titolo');        
@@ -358,5 +430,6 @@ case 'chiudi' :
      echo "</div>";
 	 echo "</div>";
 	 echo "</div>";
+	 echo "</body>"; 
 ob_end_flush();
 ?>

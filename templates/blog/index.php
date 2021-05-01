@@ -13,14 +13,11 @@
 // prima voce menù
 $nav	= new setNav(TMP::$ambiente);
 	$nav->setNav(); 
-//require_once("set_nav.php"); 
-echo	"<body>";
+
 //-- CONTENUTO DELLA PAGINA ...
-//echo	"<div class='container-fluid well'>";
 echo	"<a name='inizio'></a>";
 require 'layout.php';  
 require 'goBack.php';  
-//echo	"</div>";
 ?>
 <script type="text/javascript">
     window.addEventListener ("scroll",function(){
@@ -37,6 +34,4 @@ require 'goBack.php';
     },!1);
 </script>
 <?php
-echo	"</body>";
-echo	"</html>";
 ?>

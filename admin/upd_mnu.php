@@ -9,17 +9,7 @@
 =============================================================================
    *   
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once('post_mnu.php'); 
 
 // test scelta effettuata sul pgm chiamante
@@ -29,7 +19,7 @@ if (($azione == 'modifica' || $azione == 'cancella' ) && $bid == '')
 	$_SESSION['esito'] = 4;
 	header('location:admin.php?'.$_SESSION['location'].'');	
 	}
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 // mostra toolbar 
 switch ($azione)
 {	case '':
@@ -127,7 +117,6 @@ echo  "</fieldset></form>";
       default:
               echo "upd_mnu.php - Operazione invalida: azione=".$azione;    
 }
+echo "</body>";
 ob_end_flush();
 ?>
-</body>
-</html>

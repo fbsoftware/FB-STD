@@ -11,7 +11,8 @@
       collapsible: true,
 	  heightStyle: "content"
     });
-    $( "#accordion p" ).addClass(' fb-bgcolor-pri');
+	    $( "#accordion .ui-accordion-content .ui-widget-content" ).removeClass('ui-widget-content');
+    $( "#accordion .ui-accordion-content .ui-widget-content" ).addClass('fb-content');
   } );
   </script>
 <?php
@@ -30,7 +31,7 @@
 		
 	if ($dtit_sn == 1) 
 	{
-		echo "<div class='f-flex fd-column ui-state-default ui-widget-content'>"; 
+		echo "<div class='f-flex fd-column ui-state-default fb-primary'>"; 
 		if ($dtit > " ") { echo "<h1>".$dtit."</h1>"; } 
 		if ($dtext > " ") { echo $dtext; }
 		echo "</div>";	
@@ -57,10 +58,11 @@
 	echo "<div id='accordion'>";
 	for ($i = 0; $i < $count; ++$i) 
 		{
+		
 		echo "<h3>";
 		echo $titolo[$i];
 		echo "</h3>";
-		echo "<div>";
+		echo "<div class='fb-content'>";
 		$a = new txt($testo[$i]);
 		$a->ingloba();
 		echo "</div>";                

@@ -14,7 +14,9 @@
 require_once('init_admin.php');
 
  if ($_POST['submit'] == 'chiudi') 
-               header('location:admin.php?urla=widget.php&pag=');        ;
+               header('location:admin.php?urla=widget.php&pag=');        
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";     
+
   //   toolbar
 	$param  = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$RET.'|ritorno');    
 	$btx    = new bottoni_str_par($VOCI_MENU,'nav','upd_nav.php',$param);  
@@ -32,7 +34,7 @@ echo "<div class='td'>$PROG</div>";
 echo "<div class='td'>$MENU</div>";
 echo "<div class='td'>$VOCE</div>";
 echo "<div class='td'>$SVOCE</div>";
-echo "<div class='td'>$DES</div>";
+echo "<div class='td'>$DESC</div>";
 echo "<div class='td'>$TIPO</div>";             
 echo "<div class='td'>$CONT</div>";
 echo "<div class='td'>$ACC</div>";
@@ -43,12 +45,12 @@ if ($_POST['menu'] == 'tutti')
 	{    
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
-               ORDER BY nli, nprog";} 
+               ORDER BY nprog,nli ";} 
 else {
      $sql = "  SELECT * 
                FROM `".DB::$pref."nav` 
 			   WHERE nmenu = '".$_POST['menu']."'
-               ORDER BY nli, nprog";}    
+               ORDER BY nprog,nli";}    
 			   
             foreach($PDO->query($sql) as $row)             
   {  require('fields_nav.php');
@@ -75,4 +77,5 @@ else {
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";
+	echo "</body>";
 ?> 

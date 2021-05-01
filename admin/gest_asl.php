@@ -14,22 +14,21 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
-echo "<div class='tableFixHead'>";
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>"; 
-echo "<th>$TEMP</th>";
-echo "<th>$TIPO</th>";
-echo "<th>$CAP</th>";
-echo "<th>$ART</th>"; 
-echo "</thead>";
-echo "<tbody>";
+echo "<div class='table fb-h80'>"; 
+
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>"; 
+echo "<div class='td'>$TEMP</div>";
+echo "<div class='td'>$TIPO</div>";
+echo "<div class='td'>$CAP</div>";
+echo "<div class='td'>$ART</div>"; 
+echo "</div>";
+
 // transazione    
-   
     $sql2 = "  SELECT * 
                FROM `".DB::$pref."asl` 
                ORDER BY dprog ";
@@ -38,24 +37,24 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
      foreach($PDO->query($sql2) as $row)             
   	{ require('fields_asl.php');
-     echo "<tr>";
+	
+     echo "<div class='tr'>";  
+     echo "<div class='td'>"; 
   	$f1 = new fieldi($did,'did',5,'');            
-  	echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
+  	 $f1->field_ck(); echo "</div>";
   	$st = new fieldi($dstat,'dstat',2,'');        
-  	echo "<td class='center'>"; $st->field_st(); echo "</td>";
+  	echo "<div class='td'>"; $st->field_st(); echo "</div>";
 ?>
-  <td class="center"><?php echo $dprog ?></td>
-  <td><?php echo $dcod  ?></td>
-  <td><?php echo $ddes  ?></td>  
-  <td><?php echo $dtmp  ?></td> 
-  <td><?php echo $dtipo ?></td> 
-  <td><?php echo $dcap  ?></td>
-  <td><?php echo $dart  ?></td>
+  <div class='td'><?php echo $dprog ?></div>
+  <div class='td'><?php echo $dcod  ?></div>
+  <div class='td'><?php echo $ddes  ?></div>  
+  <div class='td'><?php echo $dtmp  ?></div> 
+  <div class='td'><?php echo $dtipo ?></div> 
+  <div class='td'><?php echo $dcap  ?></div>
+  <div class='td'><?php echo $dart  ?></div>
   <?php
-     echo "</tr>";
+     echo "</div>";
      }
-     echo "</tbody>";
-     echo "</table>";
      echo "</div>";
      echo "</form>";
 

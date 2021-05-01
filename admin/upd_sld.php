@@ -9,17 +9,7 @@
    * ------------------------------------------------------------------------
    * gestione tabella 'sld' - CONTROL
 ============================================================================*/ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once 'post_sld.php';
 $azione=$_POST['submit'];          //print_r($_POST); //debug 
 
@@ -30,6 +20,7 @@ if (($azione == 'modifica' || $azione == 'cancella') && $slid <= 0)
      $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
      }
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'>";
 
 // test scelta effettuata dal pgm chiamante
@@ -150,7 +141,7 @@ foreach($PDO->query($sql) as $row)
             header($loc);                          
        break; 
 	echo	"</section>";		
-     
 } 
+echo "</body>";
 ob_end_flush();  
 ?> 

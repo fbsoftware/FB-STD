@@ -10,19 +10,12 @@
    * 2.0 aggiunto argomento del capitolo.
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once("editor.php");			// scelta editor
-
      
-     // contenitore
-     echo     "<div class='container'>"; 
-     echo     "<div class='form-horizontal'>";                
-     echo     "<div class='row container'>";
-
 require_once('post_cap.php');   //print_r($_POST);//debug
 $azione  =$_POST['submit'];  
 $content =$QUI_TEXT;
- 
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>"; 
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' || $azione == 'cancella') && ($cid < 1)) 
      {
@@ -38,8 +31,6 @@ switch ($azione)
 
           $bti = new bottoni_str_par($CAP.' - '.$INS,'cap','write_cap.php',array($SAV.'|nuovo',$RET.'|ritorno'));     
                $bti->btn();
-               echo "</div>";   // row
-               echo "</div>";   // container
           echo  "<fieldset class='row'>";               
           $cap = new DB_ins('cap','cprog');                     
           $f3 = new input(array($cap->insert(),'cprog',03,'Progressivo','Per ordinamento','i'));        
@@ -66,10 +57,7 @@ switch ($azione)
     case 'modifica':
           $bti = new bottoni_str_par($CAP.' - '.$MOD,'cap','write_cap.php',array($SAV.'|modifica',$RET.'|ritorno'));     
                $bti->btn();
-               echo "</div>";   // row
-               echo "</div>";   // container
-
-     
+    
       echo  "<fieldset class='row'>";  
 	$sql = "SELECT * FROM `".DB::$pref."cap` where `cid` = $cid ";
 // transazione    
@@ -107,9 +95,6 @@ $PDO->beginTransaction();
     case 'cancella' :
           $bti = new bottoni_str_par($CAP.' - '.$DELCONF,'cap','write_cap.php',array($SAV.'|cancella',$RET.'|ritorno'));     
                $bti->btn();
-               echo "</div>";   // row
-               echo "</div>";   // container
-
 
       echo  "<fieldset class='row'>"; 
       $sql = "SELECT * 
@@ -153,5 +138,6 @@ $PDO->beginTransaction();
     default:
   echo "Operazione invalida";    
      }
+	 echo "</body>";
 ob_end_flush();
 ?>

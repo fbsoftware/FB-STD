@@ -3,7 +3,7 @@
  * 15/5/2020	struttura FLEX
 ===========================================================*/
 echo "<header  style='margin-top :10px ;'>"; 
-echo "<div class='f-flex fd-row jc-between'>";
+echo "<div class='f-flex fd-row jc-between fb-primary'>";
 
 echo "<div class=''>";
 echo "<img class='marchio' src='images/logo/logo.png' alt='logo.png' title='logo'>";

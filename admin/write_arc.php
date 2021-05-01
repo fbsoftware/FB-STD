@@ -61,7 +61,7 @@ case 'cancella':
   
 case 'ritorno':
                $_SESSION['esito'] = 2;
-               header('location:gest_arc.php');
+               header('location:admin.php?'.$_SESSION['location'].'');
                break;
    
 default:
