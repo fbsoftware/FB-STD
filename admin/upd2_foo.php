@@ -9,16 +9,7 @@
    * ------------------------------------------
    * Inserimento in base al tipo footer   
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('init_admin.php');
 require_once("editor.php");				// scelta editor
 ?>
 <style>
@@ -29,7 +20,7 @@ require_once("editor.php");				// scelta editor
 <?php
 require('post_foo.php');
 $azione=$_POST['submit'];
-   
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";   
 // mostra stringa bottoni
 switch ($azione)
 {    
@@ -59,8 +50,7 @@ echo	"<fieldset class='row'>";
           $ti->field();		  
 	 $te = new getTmp('','ftmp','Template','Template che visualizza il footer');
 		$te->getTemplate();
-	 $co = new DB_tip_i('col','fcol','','Colonna','Ampiezza della colonna');
-		$co->select();
+
      $ti = new input(array($ftipo,'ftipo',20,'Tipo','Tipo elemento di footer','r')); 
           $ti->field();	
 	  
@@ -92,5 +82,5 @@ echo  "</form>";
  //==================================================================================     
  
 } 
-
+echo "</body>";
 ?> 

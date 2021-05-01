@@ -1,0 +1,152 @@
+<style type="text/css">
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+h3 {
+  padding-left: 32px;
+}
+
+body {
+  width: 664px;
+  margin: 0 auto;
+  padding-top: 8px;
+  line-height: 1.4;
+}
+
+.ruler {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 32px;
+}
+
+.ruler span {
+  position: relative;
+  flex-basis: 100px;
+  text-indent: -10px;
+}
+
+.ruler span:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background-color: #000;
+  top: -28px;
+  left: 0;
+  transform: translateX(-50%);
+  backface-visibility: hidden;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #a66eff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .box--two {
+    animation: move2 3s linear infinite;
+  }
+
+  .box--three {
+    animation: move3 3.15s linear infinite;
+  }
+}
+
+.wrapper {
+  background-color: #eee;
+  padding: 20px 32px 0;
+}
+
+.keyframe {
+  border: 2px solid black;
+  width: 102px;
+  height: 100px;
+  position: absolute;
+  display: block;
+  top: -100px;
+  margin-left: -1px;
+  padding: 12px;
+}
+
+.keyframe-end {
+  left: 532px;
+}
+
+.keyframe-mid {
+  left: 232px;
+}
+
+@keyframes move3 {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  40% {
+    transform: translate3d(200px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(500px, 0, 0);
+  }
+}
+
+@keyframes move2 {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(500px, 0, 0);
+  }
+}
+
+</style>
+
+<h3>Two keyframes</h3>
+<section class="wrapper">
+  <div class="box box--two"></div>
+</section>
+
+<article class="ruler">
+  <div class="keyframe keyframe-start">
+    First keyframe
+  </div>
+  <span>0px</span>
+  <span>100px</span>
+  <span>200px</span>
+  <span>300px</span>
+  <span>400px</span>
+  <span>500px</span>
+  <div class="keyframe keyframe-end">
+    Last keyframe
+  </div>
+</article>
+
+<h3>Three keyframes</h3>
+<section class="wrapper">
+  <div class="box box--three"></div>
+</section>
+
+<article class="ruler">
+  <div class="keyframe keyframe-start">
+    First keyframe
+  </div>
+  <span>0px</span>
+  <span>100px</span>
+  <span>200px</span>
+    <div class="keyframe keyframe-mid">
+    Second keyframe
+  </div>
+  <span>300px</span>
+  <span>400px</span>
+  <span>500px</span>
+  <div class="keyframe keyframe-end">
+    Last keyframe
+  </div>
+</article>

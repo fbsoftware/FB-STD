@@ -87,12 +87,12 @@ for($b=0; $b<$conto2; $b++)
 		echo "<div class='row'>";
 	//	echo "<div>";
         echo "<input type='hidden' name='img_del' value='$array_file[$b]'>";
-        echo "<button name='submit' type='submit' value='cancella' class='fb-bgcolor-default'>
+        echo "<button name='submit' type='submit' value='cancella' class='fb-primary'>
 				<img src='images/bottoni/cancella.png' width='18' vspace='0'
 				alt='canc' align='left'></button>";
         // bottone di download e chiusura form
         echo "<input type='hidden' name='img_del' value='$array_file[$b]'>";
-        echo "<button name='submit' type='submit' value='download' 			class='fb-bgcolor-default'>
+        echo "<button name='submit' type='submit' value='download' 			class='fb-primary'>
 				<img src='images/bottoni/download.png' width='18' vspace='0'
 				alt='download' align='right'></button>";
 	//	echo "</div>";

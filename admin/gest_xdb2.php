@@ -11,6 +11,7 @@
    * 28/5/2019	aggiunta copia
 ============================================================================= */ 
 require_once('init_admin.php');
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";     
 
  //   toolbar
 $param = array($NEW."|nuovo",$MOD."|modifica",$COPY."|copia",$DEL."|cancella",$RET."|ritorno");
@@ -67,4 +68,5 @@ else {
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";
+	echo "</body>";
 ?> 

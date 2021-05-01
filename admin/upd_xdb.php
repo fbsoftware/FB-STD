@@ -9,17 +9,7 @@
    *-------------------------------------------------------------------------
    * 28/5/2019	aggiunta copia
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-     
+require_once('init_admin.php');
 require_once('post_xdb.php');
 $azione  =$_POST['submit'];  
 
@@ -30,7 +20,7 @@ if (($azione == 'modifica' || $azione == 'cancella' || $azione == 'copia') && $x
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 { // controllo
     case '':
@@ -149,5 +139,6 @@ foreach($PDO->query($sql) as $row)
     default:
   echo "Operazione invalida";    
 }
+echo "</body>";
 ob_end_flush();
 ?>

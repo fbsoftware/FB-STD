@@ -19,14 +19,14 @@ $PDO->beginTransaction();
 // stampa il titolo se richiesto
 	if ($htit_sn == 1) 
 	{
-		echo "<div class='f-flex fd-column  fb-bgcolor-pri'>"; 
+		echo "<div class='f-flex fd-column  fb-primary'>"; 
 		if ($htit > " ") { echo "<h1>".$htit."</h1>"; } 
 		if ($htext > " ") { echo $htext; }
 		echo "</div>";	
 	}  		
 	
 // articoli in colonne
-	echo "<div class='f-flex fd-row jc-start fnw'>";
+	echo "<div class='f-flex fd-row jc-start fnw fb-content'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo

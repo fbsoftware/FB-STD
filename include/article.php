@@ -2,7 +2,7 @@
 //   cerca nel layout l'articolo richiesto
 echo "<section id='article'>";
 $count = 0; 
-     echo "<div class='f-flex fd-row'>";
+     echo "<div class='f-flex fd-row fb-content'>";
         $sql = "SELECT *
                 FROM `".DB::$pref."art`
                 WHERE atit = '$lcod'

@@ -16,7 +16,7 @@ require_once('../lingua.php');
 $azione  = $_POST['submit'];
 $img_del = $_POST['img_del'];
 //print_r($_POST);//debug
-   
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";   
 // mappe di gestione
 switch ($azione)
 {      
@@ -77,6 +77,6 @@ switch ($azione)
      default:     
           header('location:admin.php?'.$_SESSION['location'].'');
      	break;
-
 }
+echo "</body>";
 ?>

@@ -9,16 +9,7 @@
    * ------------------------------------------------
    * gestione tabella glifi      
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('init_admin.php');
 require_once("editor.php");			// scelta editor
 require_once('post_gly.php');
 
@@ -29,7 +20,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $gid < 1)
      $_SESSION['esito'] = 4;
      header('location:gest_gly.php');
      }
-     
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";     
 echo "<section id='upd' class='container-fluid'>";
     
 switch ($azione)    
@@ -50,8 +41,7 @@ echo	"<fieldset class='row'>";
           $f3->field(); 
      $f4 = new input(array('','gdes',30,'Descrizione','Descrizione glifo','i'));           
           $f4->field();  
-     $ts = new DB_tip_i('col','gcol','','Colonna','Ampiezza della colonna');
-          $ts->select(); 
+
      $ts = new DB_tip_i('dim','gdim','','Dimensione','Dimensione glifo');
           $ts->select(); 
      $ts = new DB_tip_i('color','gcolor','','Colore','');
@@ -62,7 +52,7 @@ echo	"<fieldset class='row'>";
 <div>
 	<label for="gfa" data-toggle="tooltip" title="Codice glifo fa-...">Glifo</label>
      <input type="text" id="gfa" name="gfa" value="" size="30">
-	<button type="button" class="btn btn-primary" style="float:none; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Visualizza Glifi</a></button>
+	<button type="button" class="fb-secondary fb-p05 fb-rad7 fb-m05" style="float:none; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Visualizza Glifi</a></button>
 </div>
 <?php
      $f5 = new input(array('','glink',50,'Link','Link per il titolo','i')); 
@@ -98,8 +88,7 @@ echo  "</form>";
           $f3->field(); 
      $f4 = new input(array($gdes,'gdes',30,'Descrizione','Descrizione glifo','i'));           
           $f4->field();  
-     $ta = new DB_tip_i('col','gcol',$gcol,'Colonna','Ampiezza della colonna');
-          $ta->select(); 
+
      $tb = new DB_tip_i('dim','gdim',$gdim,'Dimensione','Dimensione glifo');
           $tb->select(); 
      $tc = new DB_tip_i('color','gcolor',$gcolor,'Colore','');
@@ -110,7 +99,7 @@ echo  "</form>";
 <div>
 	<label for="gfa" data-toggle="tooltip" title="Codice glifo fa-...">Glifo</label>
      <input type="text" id="gfa" name="gfa" value="<?php echo $gfa ?>" size="30">
-	<button type="button" class="btn btn-basic btn-sm" style="float:none; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Glifi</a></button>
+	<button type="button" class="fb-secondary fb-p05 fb-rad7 fb-m05" style="float:none; margin-top:0px !important;"><a href="https://www.w3schools.com/icons/icons_reference.asp" target="_new">Glifi</a></button>
 </div>
 <?php       
 	$f5 = new input(array($glink,'glink',50,'Link','Link per il titolo','i')); 
@@ -165,5 +154,6 @@ $btg = new bottoni_str_par('Icone','gly','write_gly.php',array('salva|cancella',
     } 
 
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>

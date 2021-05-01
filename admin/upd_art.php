@@ -10,9 +10,7 @@
    28/04/2019	mostra il titolo con select
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once("editor.php");			// scelta editor
-
 require_once('post_art.php');
 if (isset($_POST['submit']))   $azione   =$_POST['submit'];  
 $content  ='--- Inserire qui il testo ---';
@@ -23,6 +21,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
 	  $_SESSION['esito'] = 4;
       header('location:admin.php?'.$_SESSION['location'].'');
      }
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";	 
  switch ($azione)
 {
     case 'nuovo':
@@ -142,8 +141,6 @@ case 'chiudi' :
 default:          
           echo "<br />art-upd=".$azione;   
 }
+echo "</body>";
 ob_end_flush();
 ?>
-
-</body>
-</html>

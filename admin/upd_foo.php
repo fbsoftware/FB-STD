@@ -11,16 +11,7 @@
    * control di tabella 
 	17/8/19	scelta editor
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+require_once('init_admin.php');
 require_once("editor.php");				// scelta editor
 ?>
 <style>
@@ -43,7 +34,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $fid < 1)
      $_SESSION['esito'] = 4;
      header('location:gest_foo.php');
      }
-     
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>"; 
 echo "<section id='upd' class='container-fluid'>";
     
 switch ($azione)    
@@ -92,8 +83,7 @@ case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
           $ti->field();		  
 	 $te = new getTmp($ftmp,'ftmp','Template','Template che visualizza il footer');
 		$te->getTemplate();
-	 $co = new DB_tip_i('col','fcol',$fcol,'Ampiezza colonna','Ampiezza della colonna');
-		$co->select();
+
 	$input = new input(array($ftipo,'ftipo',20,'Tipo','Tipo elemento di footer','r'));     
      $input->field();     
 //==================================================================================     
@@ -173,5 +163,6 @@ $btg = new bottoni_str_par('Cancella Footer di pagina','foo','write_foo.php',arr
           
     } 
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>

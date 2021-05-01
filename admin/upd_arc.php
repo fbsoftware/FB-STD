@@ -11,7 +11,6 @@
 	23.03.21	aggiunto titolo e testo da mostrare o meno  
 ============================================================================= */
 require_once('init_admin.php');
-//----------------------------------------------
 require_once("editor.php");			// scelta editor
 require_once('post_arc.php'); 
 
@@ -23,8 +22,8 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $hid < 1)
      $_SESSION['esito'] = 4;
      header('location:gest_arc.php');
      }
-
-echo "<section id='upd' class='container-fluid'>";
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
+echo "<section id='upd'>";
      
 switch ($azione)    
 { 
@@ -177,5 +176,6 @@ $btg = new bottoni_str_par('Modulo articolo-colonne','arc','write_arc.php',array
     } 
 
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>

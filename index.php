@@ -7,11 +7,11 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 ============================================================================= 
-   *    
+   * 20/04/2021		colore di sfondo nel <body>   
 ============================================================================= */
 require_once('init_site.php');
-
-echo "<body id='body'>";
+// tema
+echo "<body>";
 // parametri passati con l'url e memorizzati 
 require_once 'request.php';		//var_dump($_SESSION);//debug
 

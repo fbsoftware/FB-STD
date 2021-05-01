@@ -20,7 +20,7 @@ if (($azione == 'modifica' || $azione == 'cancella') && $pid <= 0)
      $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
      }
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 {
 case NULL:
@@ -47,13 +47,11 @@ echo  "<fieldset>";
                 $f->field();
         $t = new getTmp('','ptmp','Template','Template che visualizza la slide');
         $t->getTemplate();  
-        $f = new DB_tip_i('col','pcol','','Colonna','Ampiezza della colonna');
-                $f->select();
         $tw = new select_file('images/','','pimg','Immagine ','Path immagine portfolio');
                 $tw->image(); 
         $f  = new input(array(' ','palt',30,'Testo alternativo','Testo alternativo immagine','i'));
                 $f->field();
-        $f  = new input(array('','pcapt',50,'Titolo','Titolo','','i'));
+        $f  = new input(array('','pcapt',50,'Titolo','Titolo','i'));
                 $f->field();
         $f  = new input(array('','pmheader',50,'Testata-modal','Testata della mappa modal','i'));
                 $f->field();
@@ -96,8 +94,7 @@ echo  "<fieldset>";
                         $f->field();
         $t = new getTmp($ptmp,'ptmp','Template','Template che visualizza la slide');
         $t->getTemplate(); 
-        $f  =    new DB_tip_i('col','pcol',$pcol,'Colonna','Ampiezza della colonna');
-                $f->select();
+
         $tw = new select_file('images/',$pimg,'pimg','Immagine ','Path immagine portfolio');
                 $tw->image(); 
         $campo  =    array($palt,'palt',30,'Testo alternativo','Testo alternativo immagine','i');
@@ -154,6 +151,6 @@ case 'chiudi' :
             header($loc);                           
        break;               
 } 
-
+echo "</body>";
 ob_end_flush();  
 ?>

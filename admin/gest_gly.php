@@ -21,17 +21,16 @@
 require_once 'msg.php';
 
 //  mostra tabella
-echo "<div class='tableFixHead'>";
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>"; 
-echo "<th>$TEMP</th>";
-echo "</thead>";
-echo "<tbody>";
+echo "<div class='table fb-h80'>"; 
+
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$TEMP</div>";
+echo "</div>";   
 // lettura database
      $sql =   "SELECT * 
                FROM ".DB::$pref."gly 
@@ -41,23 +40,21 @@ echo "<tbody>";
           foreach($PDO->query($sql) as $row)      
           {   
      require('fields_gly.php');      
-     echo "<tr>";  
+     echo "<div class='tr'>";  
      $f1 = new fieldi($gid,'gid',2,'');               
-     echo "<td class='center'>"; 
-		$f1->field_ck(); echo "</td>";   
+     echo "<div class='td'>"; 
+		$f1->field_ck(); echo "</div>";   
      $st = new fieldi($gstat,'gstat',2,'');           
-     echo "<td class='center'>"; 
-		$st->field_st(); echo "</td>";   
+     echo "<div class='td'>"; 
+		$st->field_st(); echo "</div>";   
      ?>   
-     <td class="center"><?php echo $gprog ?></td>
-     <td><?php echo $gcod ?></td>
-     <td><?php echo htmlspecialchars($gdes, ENT_QUOTES) ?></td>
-     <td><?php echo $gtmp ?></td>       
+     <div class='td'><?php echo $gprog ?></div>
+     <div class='td'><?php echo $gcod ?></div>
+     <div class='td'><?php echo htmlspecialchars($gdes, ENT_QUOTES) ?></div>
+     <div class='td'><?php echo $gtmp ?></div>       
 <?php
-     echo "</tr>";
+     echo "</div>";
      }
-     echo "</tbody>";
-     echo "</table>";
      echo "</form>";
      echo "</div>";
 ?>

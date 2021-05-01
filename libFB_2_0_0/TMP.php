@@ -23,6 +23,15 @@ class TMP       extends  DB
   public static $tcod      	=  '';		// codice del template
   public static $ttipo   	=  '';		// tipo template: sito-admin 
   public static $teditor	=  '';		// editor di testo  
+// colori base
+  public static $tpri_color			=  '';		// primario
+  public static $tx_pri_color       =  '';		// testo primario
+  public static $tsec_color         =  '';		// secondario
+  public static $tx_sec_color       =  '';      // testo secondario
+  public static $tbg_color          =  '';      // sfondo testo
+  public static $tx_color           =  '';		// testo
+  public static $tbutton_color      =  '';		// bottone
+  public static $tx_button_color    =  '';		// testo bottone
   // slide
   public static $tslidebutt   = '';     // slide - bottoni navigazione
   public static $tslidetime   = 0;      // slide - tempo permanenza immagine
@@ -54,10 +63,10 @@ class TMP       extends  DB
   public static $ttabtitle	=  0;		// titolo si-no
   public static $ttabtit		=  '';		// titolo 
   public static $ttabtext	=  '';		// testo 
-  // articoli in slide
+  /* articoli in slide
   public static $tsldtitle	=  0;		// titolo si-no
   public static $tsldtit		=  '';		// titolo 
-  public static $tsldtext	=  '';		// testo 
+  public static $tsldtext	=  '';		// testo */
   
 		function __construct($ambiente) 
 		{
@@ -123,23 +132,30 @@ class TMP       extends  DB
 				self::$tcttitle		= $row['tcttitle'];	// titolo si-no
 				self::$tcttit		= $row['tcttit'];	// titolo
 				self::$tcttext		= $row['tcttext'];	// testo 
-				/*
-	// accordion
+				/* 	// accordion
 				self::$taccotitle	= $row['taccotitle'];	// titolo si-no
 				self::$taccotit		= $row['taccotit'];	// titolo
 				self::$taccotext	= $row['taccotext'];	// testo 
-*/
+				*/
 				// articoli in tab
 				self::$ttabtitle	= $row['ttabtitle'];	// titolo si-no
 				self::$ttabtit		= $row['ttabtit'];	// titolo
 				self::$ttabtext		= $row['ttabtext'];	// testo 				
-				// articoli in slide
+				/* articoli in slide
 				self::$tsldtitle	= $row['tsldtitle'];	// titolo si-no
 				self::$tsldtit		= $row['tsldtit'];	// titolo
-				self::$tsldtext		= $row['tsldtext'];	// testo 	
+				self::$tsldtext		= $row['tsldtext'];	// testo 	*/
 				// editor di testo
 				self::$teditor		= $row['teditor'];	// editor di testo 	
-				
+				// colori base
+				self::$tpri_color		  =$row['tpri_color'];			// primario
+				self::$tx_pri_color       =$row['tx_pri_color'];   	// testo primario
+				self::$tsec_color         =$row['tsec_color'];     	// secondario
+				self::$tx_sec_color       =$row['tx_sec_color'];       // testo secondario
+				self::$tbg_color          =$row['tbg_color'];          // sfondo testo
+				self::$tx_color           =$row['tx_color'];       	// testo
+				self::$tbutton_color      =$row['tbutton_color'];  	// bottone
+				self::$tx_button_color    =$row['tx_button_color'];	// testo bottone
                }
                return $row;   // per eventuale utilizzo
           }

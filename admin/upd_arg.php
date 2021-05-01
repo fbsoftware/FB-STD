@@ -11,20 +11,17 @@
 	* 1.0.0	nuova head
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once("editor.php");			// scelta editor
 require_once('post_arg.php');
-
 $azione   = $_POST['submit'];  
 $rtext    = $QUI_TEXT;
-
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1) 
      {
 	  $_SESSION['esito'] = 4;
       header('location:admin.php?'.$_SESSION['location'].'');
      }
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 // mostra toolbar e form
 switch ($azione)
 { 
@@ -133,6 +130,6 @@ break;
     default:
   echo $OP_INVAL;    
      }
-
+echo "</body>";
 ob_end_flush();
 ?></html>

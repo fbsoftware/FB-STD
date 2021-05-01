@@ -9,17 +9,7 @@
    -------------------------------------------------------------------------
    28/04/2019	tabellato accesso
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once('post_ute.php') ;          
 //print_r($_POST);//debug
 $azione    =$_POST['submit'];          
@@ -31,7 +21,7 @@ if (!isset($uid) && ($azione != 'nuovo'))
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)          
 {
  //==================================================================================     
@@ -138,6 +128,6 @@ case 'chiudi' :
 default:  echo "azione errata";
  
 }
-
+echo "</body>";
 ob_end_flush();
 ?> 

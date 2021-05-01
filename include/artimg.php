@@ -3,6 +3,14 @@
 	28/02/21	struttura flex
 ----------------------------------- */
 echo	"<section id='artimg'>";
+?>
+  <script>
+  $( function() {
+  $( ".fb-primary p" ).addClass('fb-primary');
+    $( ".fb-primary h1" ).addClass('fb-primary');
+  } );
+  </script>
+<?php
 // cerca gli articoli con immagine
        $sql = "SELECT *
                 FROM `".DB::$pref."aim`
@@ -13,7 +21,7 @@ echo	"<section id='artimg'>";
      foreach($PDO->query($sql) as $row)
      {    require 'admin/fields_aim.php'; 
 	 		$titolo_art =   $iart;
-		echo "<div class='f-flex fd-row jc-center fw'>";		// flex
+		echo "<div class='f-flex fd-row jc-center fw fb-content'>";		// flex
 
 		//  immagine/video a sinistra ============================================                                      
           if ($iimgpos == 'sx') 

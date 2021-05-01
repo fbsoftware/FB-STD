@@ -21,18 +21,17 @@
 require_once 'msg.php';
 
 //  mostra tabella
-echo "<div class='tableFixHead'>";
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>"; 
-echo "<th>$TIPO</th>";
-echo "<th>$TEMP</th>";
-echo "</thead>";
-echo "<tbody>";
+echo "<div class='table fb-h80'>"; 
+
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$TIPO</div>";
+echo "<div class='td'>$TEMP</div>";
+echo "</div>"; 
 // lettura database
      $sql =   "SELECT * 
                FROM ".DB::$pref."foo 
@@ -41,27 +40,26 @@ echo "<tbody>";
           foreach($PDO->query($sql) as $row)      
           {   
      require('fields_foo.php');      
-     echo "<tr>";  
+     echo "<div class='tr'>";  
      $f1 = new fieldi($fid,'fid',2,'');               
-     echo "<td class='center'>"; 
-		$f1->field_ck(); echo "</td>";   
-     echo "<td class='center'>"; 
+     echo "<div class='td'>"; 
+		$f1->field_ck(); echo "</div>";   
+     echo "<div class='td'>"; 
 $f2 = new input(array($fstat,'fstat',2,'','tooltip','st'));     
      $f2->field(); 
-		echo "</td>";  
+		echo "</div>";  
     		
      ?>   
-     <td class="center"><?php echo $fprog ?></td>
-     <td><?php echo $fcod ?></td>
-     <td><?php echo htmlspecialchars($fdes, ENT_QUOTES) ?></td>
-     <td><?php echo $ftipo ?></td>
-	 <td><?php echo $ftmp ?></td>
+     <div class='td'><?php echo $fprog ?></div>
+     <div class='td'><?php echo $fcod ?></div>
+     <div class='td'><?php echo htmlspecialchars($fdes, ENT_QUOTES) ?></div>
+     <div class='td'><?php echo $ftipo ?></div>
+	 <div class='td'><?php echo $ftmp ?></div>
             
 <?php
-     echo "</tr>";
+     echo "</div>";
      }
-     echo "</tbody>";
-     echo "</table>";
+
      echo "</form>";
      echo "</div>";
 ?>

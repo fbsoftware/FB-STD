@@ -24,7 +24,7 @@ require_once 'msg.php';
 //   mostra la tabella filtrata --------------------------------------------------
 echo "<section id='arg'>"; 
 
-echo "<div class='table fb-h80'>"; 
+
    
 echo "<div class='th'>"; 
 echo "<div class='td'>$SCEL</div>";
@@ -41,7 +41,7 @@ echo "</div>";
      ORDER BY rprog";
           foreach($PDO->query($sql) as $row)
   { require('fields_arg.php');
-			echo "<div class='tr'>";
+		echo "<div class='tr'>";
 		$f2 = new input(array($rid,'rid',2,'',$TT_SCEL,'ck-n'));     
 		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
 		$st = new input(array($rstat,'rstat',2,'','','st-n'));        

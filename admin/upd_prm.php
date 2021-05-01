@@ -12,28 +12,28 @@
 	23.03.21	aggiunto titolo e testo da ex template
 ============================================================================= */
 require_once('init_admin.php');
-//----------------------------------------------
 require_once("editor.php");			// scelta editor
 require_once('post_prm.php'); 
-
 ?>
  <!-- tabs -->
   <script>
   $( function() {
-    $( "#tabs" ).tabs();
+	    $( "#tabs" ).tabs();
+    $( "input[type=radio]" ).checkboxradio();
+	 $( "div.radio" ).controlgroup();
   } );
   </script>
 <?php  
 $azione  =$_POST['submit'];     
 // print_r($_POST);//debug
-
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 if (($azione == 'modifica' ||$azione == 'cancella') && $oid < 1) 
      {
      $_SESSION['esito'] = 4;
      header('location:gest_prm.php');
      }
 
-echo "<section id='upd' class='container-fluid'>";
+echo "<section id='upd'>";
      
 switch ($azione)    
 { 
@@ -55,7 +55,7 @@ switch ($azione)
   </ul>
  <?php
 	echo "<div id='tabs-0' class='row'>";
-	echo "<fieldset>"; 
+	echo "<fieldset class='ui-widget-content'>"; 
      $prm = new DB_ins('prm','oprog');
      $f1 = new input(array($prm->insert(),'oprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();         
@@ -313,5 +313,6 @@ $btg = new bottoni_str_par('Modulo promo','prm','write_prm.php',array('salva|can
     } 
 
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>

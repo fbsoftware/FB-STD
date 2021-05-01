@@ -14,6 +14,7 @@ require_once('../lingua.php');
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING']; 
+echo "<body class='admin'>";     
 
  //   bottoni gestione
 $param = array('upload','chiudi');
@@ -34,3 +35,5 @@ table, th, td {
 <?php
      $im = new imgUpdTable($_POST['pcol'],120,50,11,'upd_media');
      $im->putUpdTable();
+	 echo "</body>";
+?>

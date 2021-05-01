@@ -12,10 +12,9 @@
    * 1.0.0	nuova head
 ============================================================================= */ 
 require_once('init_admin.php');
-
 require('post_nav.php');
 @$azione=$_POST['submit'];
-   
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";   
 // mostra stringa bottoni
 switch ($azione)
 {    
@@ -85,5 +84,6 @@ case 'ifr':
       break;
 }
 } 
+echo "</body>";
 ob_end_flush();
 ?> 

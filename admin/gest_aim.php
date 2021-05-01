@@ -15,43 +15,41 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
-echo "<div class='tableFixHead'>";
-echo "<table class='table table-hover  table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>Tmp.</th>";
-echo "<th>Codice</th>"; 
-echo "<th>Descrizione</th>";
-echo "<th>Articolo</th>";
-echo "</thead>";
-echo "<tbody>";      
+echo "<div class='table fb-h80'>"; 
+
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>Tmp.</div>";
+echo "<div class='td'>Codice</div>"; 
+echo "<div class='td'>Descrizione</div>";
+echo "<div class='td'>Articolo</div>";
+echo "</div>";
+    
     $sql = "  SELECT * 
                FROM `".DB::$pref."aim` 
                ORDER BY iprog";
 
      foreach($PDO->query($sql) as $row)            
   {  require('fields_aim.php');
-     echo "<tr>";
-     echo "<td class='center'>";
+     echo "<div class='tr'>";  
+     echo "<div class='td'>"; 
      $f1 = new fieldi($iid,'iid',5,'');            
-     $f1->field_ck(); echo "</td>";
-     echo "<td class='center'>";  
+     $f1->field_ck(); echo "</div>";
+     echo "<div class='td'>";  
      $st = new fieldi($istat,'istat',2,'');        
-     $st->field_st(); echo "</td>";
+     $st->field_st(); echo "</div>";
     
   ?>
-  <td><?php echo $iprog ?></td>
-  <td><?php echo $itmp  ?></td>  
-  <td><?php echo $icod  ?></td>
-  <td><?php echo $ides  ?></td>
-  <td><?php echo $iart  ?></td>
+  <div class='td'><?php echo $iprog ?></div>
+  <div class='td'><?php echo $itmp  ?></div>  
+  <div class='td'><?php echo $icod  ?></div>
+  <div class='td'><?php echo $ides  ?></div>
+  <div class='td'><?php echo $iart  ?></div>
   <?php
-     echo "</tr>";
+     echo "</div>";	// tr
      }
-     echo "</tbody>";
-     echo "</table>";
      echo "</form>";
      echo "</div>";
 ?> 

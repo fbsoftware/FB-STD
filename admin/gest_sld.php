@@ -14,40 +14,37 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
-echo "<div class='tableFixHead'>";
-echo "<table class='table table-striped table-bordered table-condensed'>"; 
-echo "<thead>"; 
-echo "<th style='width:2%; text-align:center;'>$SCEL</th>";
-echo "<th style='width:2%; text-align:center;'>$ST</th>";
-echo "<th style='width:2%; text-align:center;'>$PROG</th>"; 
-echo "<th>$COD</th>";
-echo "<th>$DESC</th>"; 
-echo "<th>$TEMP</th>";
-echo "</thead>";
+echo "<div class='table fb-h80'>"; 
 
-echo "<tbody>";      
+echo "<div class='th'>"; 
+echo "<div class='td'>$SCEL</div>";
+echo "<div class='td'>$ST</div>";
+echo "<div class='td'>$PROG</div>"; 
+echo "<div class='td'>$COD</div>";
+echo "<div class='td'>$DESC</div>";
+echo "<div class='td'>$TEMP</div>";
+echo "</div>";       
     $sql2 = "  SELECT * 
                FROM `".DB::$pref."sld` 
                ORDER BY slprog";
             foreach($PDO->query($sql2) as $row)             
   {  require('fields_sld.php');
-     echo "<tr>";
+     echo "<div class='tr'>";
   $f1 = new fieldi($slid,'slid',2,'');            
-  echo "<td class='center'>"; 
-  	$f1->field_ck(); echo "</td>";
+  echo "<div class='td'>"; 
+  	$f1->field_ck(); echo "</div>";
   $st = new fieldi($slstat,'slstat',2,'');        
-  echo "<td class='center'>"; 
-  	$st->field_st(); echo "</td>";
+  echo "<div class='td'>"; 
+  	$st->field_st(); echo "</div>";
   ?>
-  <td class="center"><?php echo $slprog ?></td>
-  <td><?php echo $slcod ?></td>
-  <td><?php echo $slde ?></td>
-  <td><?php echo $sltmp ?></td>
+  <div class='td'><?php echo $slprog ?></div>
+  <div class='td'><?php echo $slcod ?></div>
+  <div class='td'><?php echo $slde ?></div>
+  <div class='td'><?php echo $sltmp ?></div>
   <?php
-     echo "</tr>";
+     echo "</div>";
      }
-     echo "</tbody>";
-     echo "</table>";
+
      echo "</form>";
      echo "</div>";
 ?> 

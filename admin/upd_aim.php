@@ -9,20 +9,9 @@
    * ------------------------------------------------
    * gestione componente articolo con immagine      
 ============================================================================= */
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
-
+require_once('init_admin.php');
 require_once('post_aim.php');
 $azione  =$_POST['submit'];     //print_r($_POST);//debug
-
 // test scelta effettuata sul pgm chiamante
 if (($azione == 'modifica' || $azione == 'cancella') && $iid < 1) 
      {
@@ -30,8 +19,8 @@ if (($azione == 'modifica' || $azione == 'cancella') && $iid < 1)
      $loc = "location:index.php?".$_SESSION['location']."";
           header($loc);
      }
- 
-echo "<section id='upd' class='container-fluid'>";
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
+echo "<section id='upd'>";
 
 switch ($azione)    
 { 
@@ -58,14 +47,12 @@ switch ($azione)
           $f4->field();  
       $f4 =    new DB_sel_lt('art','aprog','','atit','atit','astat','atit','Articolo','Titolo articolo da usare.');
           $f4->select_lt();    
-      $f  = new DB_tip_i('col','iartcol','','Colonna testo','Ampiezza della colonna per articolo');
-          $f->select();
+
       $tw = new select_file('images/','','iimg','Immagine ','Path immagine articolo');
           $tw->image(); 
       $f4 = new input(array('','iimgtit',20,'Titolo immagine','Titolo della immagine','i'));
           $f4->field(); 
-      $f  = new DB_tip_i('col','iimgcol','','Colonna immagine','Ampiezza della colonna per immagine');
-          $f->select();
+
       $f  = new DB_tip_i('posim','iimgpos','','Posizione immagine','Posizione immagine destra-sinistra');
           $f->select();
 echo "</fieldset>";
@@ -106,14 +93,12 @@ echo  "<fieldset>";
           $f4->field();  
       $f4 =    new DB_sel_lt('art','aprog',$iart,'atit','iart','astat','atit','Articolo','Titolo articolo da usare.');
           $f4->select_lt();    
-      $f  = new DB_tip_i('col','iartcol',$iartcol,'Colonna testo','Ampiezza della colonna per articolo');
-          $f->select();
+
       $tw = new select_file('images/',$iimg,'iimg','Immagine ','Path immagine articolo');
           $tw->image(); 
       $f4 = new input(array($iimgtit,'iimgtit',20,'Titolo immagine','Titolo della immagine','i'));
           $f4->field(); 
-      $f  = new DB_tip_i('col','iimgcol',$iimgcol,'Colonna immagine','Ampiezza della colonna per immagine');
-          $f->select();
+
       $f  = new DB_tip_i('posim','iimgpos',$iimgpos,'Posizione immagine','Posizione immagine destra-sinistra');
           $f->select();
 
@@ -166,5 +151,6 @@ echo "</form>";
   echo "Operazione invalida";    
      }
      echo "</section>";
+	 echo "</body>";
 ob_end_flush();
 ?>
