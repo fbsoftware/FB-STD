@@ -15,7 +15,7 @@ echo	"<div id='footer' class='f-flex fd-row  fb-secondary jc-around fw'>";
 #footer p	{
 		background-color: var(--sec-color);
 	border: 1.5px solid var(--sec-color);
-	color: var(--bg-color);
+	color: var(--black-color);
 }
 </style>
 

@@ -45,10 +45,10 @@ class TMP       extends  DB
   public static $tgliftext    = '';     // glifi - testo
   public static $tgliforma    = '';     // glifi - forma  
   public static $tglireverse  = '';     // glifi - reverse color
-  /* promo
+  // promo
   public static $tpromotitle=  0;		// titolo si-no
   public static $tpromotit	=  '';		// titolo 
-  public static $tpromotext	=  '';		// testo */
+  public static $tpromotext	=  '';		// testo 
   // contatti
   public static $tcttitle	=  0;		// titolo si-no
   public static $tcttit		=  '';		// titolo 
@@ -124,10 +124,10 @@ class TMP       extends  DB
 				self::$tgliftitle    = $row['tgliftitle'];
 				self::$tgliftext     = $row['tgliftext'];
 				self::$tglireverse   = $row['tglireverse'];
-				/* promo
+				// promo
 				self::$tpromotitle	= $row['tpromotitle'];	// titolo si-no
 				self::$tpromotit	= $row['tpromotit'];	// titolo
-				self::$tpromotext	= $row['tpromotext'];	// testo */
+				self::$tpromotext	= $row['tpromotext'];	// testo 
 				// contatti
 				self::$tcttitle		= $row['tcttitle'];	// titolo si-no
 				self::$tcttit		= $row['tcttit'];	// titolo

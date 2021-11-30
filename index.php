@@ -15,7 +15,7 @@ echo "<body>";
 // parametri passati con l'url e memorizzati 
 require_once 'request.php';		//var_dump($_SESSION);//debug
 
-//  template   
+//  index del template   
 require_once(TMP::$tfolder.'index.php'); 
 
 echo "</body>"; 

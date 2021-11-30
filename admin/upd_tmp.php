@@ -68,8 +68,8 @@ case 'nuovo':
 	<li><a href="#tab0" >Dati base</a></li>
 	<li><a href="#tab1" >Colori</a></li>
 	<li><a href="#tab2" >Slide</a></li>
-<!-- <li><a href="#tab3" >Promo</a></li> 
-	<li><a href="#tab4" >Accordion</a></li> -->
+	<li><a href="#tab3" >Promo</a></li> 
+	<li><a href="#tab4" >Accordion</a></li> 
 	<li><a href="#tab5" >Portfolio</a></li>
 	<li><a href="#tab6" >Contatti</a></li>
 	<li><a href="#tab7" >Articoli in tabs</a></li>
@@ -135,7 +135,7 @@ echo "</div>";
      $input = new input(array(0,'tslidetime',5,'Durata','Durata in millisec','i'));
           $input->field();
      echo "</fieldset>";	 
-/* promo     
+// promo     
      echo  "<fieldset id='tab3' >";
      $tz = new DB_tip_i('s-n','tpromotitle',0,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
           $tz->select(); 
@@ -145,7 +145,7 @@ echo "</div>";
           $input->field();
      echo "</fieldset>";
 
-     
+ /*    
 // accordion
      echo  "<fieldset id='tab4' >";
      $tz = new DB_tip_i('s-n','taccotitle',0,'Mostra titolo','Visualizza o meno il titolo del modulo accordion');        
@@ -219,8 +219,8 @@ echo "</div>";
 	<li><a href="#tab0" >Dati base</a></li>
 	<li><a href="#tab1" >Colori</a></li>
 	<li><a href="#tab2" >Slide</a></li>
-<!-- <li><a href="#tab3" >Promo</a></li> 
-	<li><a href="#tab4" >Accordion</a></li> -->
+    <li><a href="#tab3" >Promo</a></li> 
+	<li><a href="#tab4" >Accordion</a></li> 
 	<li><a href="#tab5" >Portfolio</a></li>
 	<li><a href="#tab6" >Contatti</a></li>
 	<li><a href="#tab7" >Articoli in tabs</a></li>
@@ -305,7 +305,7 @@ echo "</div>";
           $input->field();
      echo  "</fieldset>";
 	 
-/* promo     
+// promo     
      echo  "<fieldset id='tab3'>";
      $tz = new DB_tip_i('s-n','tpromotitle',$tpromotitle,'Mostra titolo','Visualizza o meno il titolo del modulo promo');        
           $tz->select(); 
@@ -314,7 +314,7 @@ echo "</div>";
      $input    = new input(array($tpromotext,'tpromotext',50,'Testo','Testo della sezione dei promo','tx'));
           $input->field();
      echo "</fieldset>";
-   
+/*   
 // accordion   
      echo  "<fieldset id='tab4'>";
      $tz = new DB_tip_i('s-n','taccotitle',$taccotitle,'Mostra titolo','Visualizza o meno il titolo');        

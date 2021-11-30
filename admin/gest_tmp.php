@@ -23,7 +23,7 @@ require_once 'msg.php';
 //  testata di tabella 
 echo "<section id='tmp'>";
 
-echo "<div class='table fb-h80'>"; 
+echo "<div class='table fb-hv80'>"; 
    
 echo "<div class='th'>"; 
 echo "<div class='td'>$SCEL</div>";
