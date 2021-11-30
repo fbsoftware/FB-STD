@@ -9,9 +9,14 @@
    } 
   );
   </script>
+ <style type="text/css">
+ /* toglie il padding per allineare le section */
+ .ui-tabs{
+	 padding: 0 !important;
+ }
+</style> 
 <?php
 // cerca nel layout gli articoli per i tab
-
 		$sql = "SELECT *
                 FROM `".DB::$pref."asl`
                 WHERE dtmp = '".TMP::$tmenu."'
@@ -23,9 +28,7 @@
 	{     
           $dcap 	= $rowx['dcap'];
           $ddes 	= $rowx['ddes'];
-		  $dtit_sn 	= $rowx['$dtit_sn'];
-		  $dtit    	= $rowx['$dtit'];
-		  $dtext   	= $rowx['$dtext'];
+
 // lettura articoli della categoria
            $titolo = array();
            $testo  = array();
@@ -47,11 +50,11 @@
 	} 
 
 // pannello se richiesto
-if ($rowx['dtit_sn'] == 1) 
+	if (TMP::$ttabtitle == 1) 
 {
 		echo "<div class='f-flex fd-column  fb-primary'>"; 
-		if ($rowx['dtit'] > " ")  { echo "<h1>".$rowx['dtit']."</h1>"; } 
-		if ($rowx['dtext'] > " ") { echo "<p>".$rowx['dtext']."</p>"; }
+		if (TMP::$ttabtit > " ")  { echo "<h1>".TMP::$ttabtit."</h1>"; } 
+		if (TMP::$ttabtext > " ") { echo "<p>".TMP::$ttabtext."</p>"; }
 		echo "</div>";
 }
 

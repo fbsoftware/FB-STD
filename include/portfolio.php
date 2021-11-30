@@ -51,13 +51,13 @@ echo "<div class='f-flex fd-row jc-around fb-content'>";
 			echo "<div>";
 			$target	= "portfolio".$pid;
 			echo "<p><a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
-			echo "<img class='img-fit' src='".$pimg."' alt='".$pimg."'>  </a>";
+			echo "<img class='img-fit fb-hp150' src='".$pimg."' alt='".$pimg."'>  </a>";
 
 			// portfolio-caption e bottone 
 			echo "<div>";
 			echo "<h3 class='center'>".$pcapt."</h3>";
 				if ($pmlink >= ' ') 
-	{ 	echo "<div class='widget'><a class='ui-button ui-widget' href='".$pmlink."' target='_new'>".$pmtext."</a></div>";} 
+	{ 	echo "<div class='center'><a class='fb-button fb-p025 fb-rad5 fb-upper' href='".$pmlink."' target='_new'>".$pmtext."</a></div>";} 
 			echo "</div>";
 			
 			// dialogo modale 

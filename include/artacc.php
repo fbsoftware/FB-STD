@@ -12,7 +12,7 @@
 	  heightStyle: "content"
     });
 	    $( "#accordion .ui-accordion-content .ui-widget-content" ).removeClass('ui-widget-content');
-    $( "#accordion .ui-accordion-content .ui-widget-content" ).addClass('fb-content');
+        $( "#accordion .ui-accordion-content .ui-widget-content" ).addClass('fb-content');
   } );
   </script>
 <?php

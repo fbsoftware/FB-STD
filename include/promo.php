@@ -30,11 +30,11 @@ $PDO->beginTransaction();
 		require'admin/fields_prm.php'; 
 
 // stampa il titolo del promo se richiesto
-	if ($otit_sn == 1) 
+	if (TMP::$tpromotitle == 1) 
 	{
 		echo "<div class='f-flex fd-column  fb-primary'>"; 
-		if ($otit > " ") { echo "<h1>".$otit."</h1>"; } 
-		if ($otext > " ") { echo $otext; }
+		if (TMP::$tpromotit > " ") { echo "<h1>".TMP::$tpromotit."</h1>"; } 
+		if (TMP::$tpromotext > " ") { echo TMP::$tpromotext; }
 		echo "</div>";	
 	}  
        

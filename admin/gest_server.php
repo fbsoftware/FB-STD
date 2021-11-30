@@ -8,7 +8,7 @@ $btx   = new bottoni_str_par('Dati del server','config','admin.php?urla=widget.p
 // zona messaggi
 $M = new msg($_SESSION['esito']); $M->msg();     
 
-echo "<div class='table fb-h80'>"; 
+echo "<div class='table fb-hv80'>"; 
 
 echo "<div class='th'>"; 
 echo "<div class='td'>Variabile</div>";

@@ -33,10 +33,10 @@ $tgliftitle    =$row['tgliftitle'];
 $tgliftit      =$row['tgliftit'];
 $tgliftext     =$row['tgliftext'];
 $tglyreverse   =$row['tglireverse'];
-/* promo
+// promo
 $tpromotitle   	=$row['tpromotitle'];
 $tpromotit     	=$row['tpromotit'];
-$tpromotext     =$row['tpromotext'];  */   
+$tpromotext     =$row['tpromotext'];     
 // contatti
 $tcttitle   	=$row['tcttitle'];
 $tcttit     	=$row['tcttit'];

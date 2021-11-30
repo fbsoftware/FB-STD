@@ -39,7 +39,7 @@ if (isset($table))
      {
 $sql = "SHOW FULL COLUMNS FROM ".$table;
 
-echo "<div class='table fb-h80'>"; 
+echo "<div class='table fb-hv80'>"; 
 echo "<div class='th'>"; 
 echo "<div class='td'>Campo</div>";
 echo "<div class='td'>Tipo</div>";

@@ -22,7 +22,7 @@ require_once('init_admin.php');
 require_once 'msg.php';
 
 //  mostra tabella
-echo "<div class='table fb-h80'>"; 
+echo "<div class='table fb-hv80'>"; 
 echo "<div class='th'>"; 
 echo "<div class='td'>$SCEL</div>";
 echo "<div class='td'>$ST</div>";

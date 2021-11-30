@@ -10,7 +10,8 @@
    * Scrittura sul DB tabella templates
 	* 1.0.0 nuova head
 	* 30/5/20	tolto tsld... perchè non utilizzato (Rimangono i campi sul database)
-	* 07/02/21	gestito editor di testi
+	* 07/02/21	gestito editor di testi e colori
+	
 ============================================================================= */ 
 require_once('init_admin.php');
 require_once 'post_tmp.php';
@@ -48,7 +49,8 @@ case 'nuovo':
 						tbg_color,      
 						tx_color,       
 						tbutton_color , 
-						tx_button_color)  
+						tx_button_color,
+						tpromotitle,tpromotit,tpromotext)  
 						
                        VALUES ('$tprog','$tstat','$tcod','$tsel','$tfolder','$tdesc',
                               '$tmenu','$tlang','$tslidebutt','$tslidetime',
@@ -65,13 +67,14 @@ case 'nuovo':
 						  '$tbg_color',      
 						  '$tx_color',       
 						  '$tbutton_color',  
-						  '$tx_button_color')";
+						  '$tx_button_color',
+						  '$tpromotitle','$tpromotit','$tpromotext')";
                         $PDO->exec($sql);    
                         $PDO->commit();
                         $_SESSION['esito'] = 54;
                         break;
 case 'modifica':
- echo          $sql = "UPDATE `".DB::$pref."tmp` 
+           $sql = "UPDATE `".DB::$pref."tmp` 
                    SET tprog='$tprog',tstat='$tstat',tcod='$tcod',tsel='$tsel',
 						tfolder='$tfolder',tdesc='$tdesc',
 						tmenu='$tmenu',tlang='$tlang',tslidebutt='$tslidebutt',
@@ -97,7 +100,10 @@ case 'modifica':
 						tbg_color      ='$tbg_color',      
 						tx_color       ='$tx_color',       
 						tbutton_color  ='$tbutton_color',  
-						tx_button_color='$tx_button_color'
+						tx_button_color='$tx_button_color',
+						tpromotitle=$tpromotitle,
+						tpromotit='$tpromotit',
+						tpromotext='$tpromotext'
 						
 				   
                    WHERE `tid`='$tid' ";

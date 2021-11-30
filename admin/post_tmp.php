@@ -33,10 +33,10 @@ $tgliftitle    =$_POST['tgliftitle'];
 $tgliftit      =$_POST['tgliftit'];
 $tgliftext     =addslashes($_POST['tgliftext']);
 $tglyreverse   =$_POST['tglyreverse'];
-/* promo
+// promo
 $tpromotitle   =$_POST['tpromotitle'];
 $tpromotit     =$_POST['tpromotit'];
-$tpromotext    =addslashes($_POST['tpromotext']);*/
+$tpromotext    =addslashes($_POST['tpromotext']);
 // contatti
 $tcttitle   	=$_POST['tcttitle'];
 $tcttit     	=$_POST['tcttit'];

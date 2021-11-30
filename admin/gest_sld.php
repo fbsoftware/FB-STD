@@ -14,7 +14,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 require_once 'msg.php';
 
 // mostra la tabella filtrata --------------------------------------------------
-echo "<div class='table fb-h80'>"; 
+echo "<div class='table fb-hv80'>"; 
 
 echo "<div class='th'>"; 
 echo "<div class='td'>$SCEL</div>";

@@ -15,7 +15,7 @@ $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";     
   
 //  controllo utente
-     echo     "<div class='f-flex fd-c jc-center ai-center fb-content'>"; 
+     echo     "<div class='f-flex fd-c jc-center ai-center'>"; 
      echo     "<fieldset  class='fb-w25'>";
 
 echo  "<h3 class='center'><img src='images/logo/logo.png' alt='logo.png, 1,6kB' title='logo' height='75' >";
