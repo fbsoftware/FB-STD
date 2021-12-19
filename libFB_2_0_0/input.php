@@ -1,5 +1,5 @@
-<?php  
-/**=============================================================================== 
+<?php
+/**===============================================================================
   Gestione dei campi input di form a 6 parametri
   1.0.0		tooltip left
   03.03.21	no-bootstrap
@@ -14,9 +14,9 @@ class input			extends TMP
     public $tipo    = "";       // tipo di campo
     public $param   =  array(); // parametri
         public function __construct($param)
-               { 
-               $this->valini   = $param[0];             
-               $this->campo    = $param[1];               
+               {
+               $this->valini   = $param[0];
+               $this->campo    = $param[1];
                $this->lung     = $param[2];
                $this->label    = $param[3];
                $this->pch      = $param[4];
@@ -25,33 +25,33 @@ class input			extends TMP
 
 
         public function field()
-		
-          { 
-		   // label non serve per tipo = h/star  
-			echo "<div>";   
+
+          {
+		   // label non serve per tipo = h/star
+			echo "<div>";
               if (($this->tipo !== 'h') && ($this->tipo !== 'star'))
                   { echo "<label for='$this->campo' title='$this->pch'>$this->label</label>"; }
  switch ($this->tipo) {
 case 'ck':      // check box
                 echo "<input type='checkbox' id='$this->campo' name='$this->campo'
                          value=$this->valini size='$this->lung'  ";
-                if ($this->valini === 1) { echo "checked";} 
+                if ($this->valini === 1) { echo "checked";}
                 echo ">";
  break;
 
  case 'star':     // immagine stella
-          if ($this->valini == '*') 
+          if ($this->valini == '*')
                {
-               echo "<input type='image' class='titolo' 
-                    name='$this->campo' value= '$this->valini' 
-                    src='images/star.png '>"; 
+               echo "<input type='image' class='titolo'
+                    name='$this->campo' value= '$this->valini'
+                    src='images/star.png '>";
                }
           else
-               { 
-               echo "<input type='image' class='titolo' 
-                    name='$this->campo' value= '$this->valini' 
-                    src='images/null.png '>"; 
-               } 
+               {
+               echo "<input type='image' class='titolo'
+                    name='$this->campo' value= '$this->valini'
+                    src='images/null.png '>";
+               }
 break;
 
 case 'pw':      // input password
@@ -143,69 +143,76 @@ case 'ipr':			// input text + placeholder + required
 break;
 
 case 'd1' :			// datepicker 1
-        echo "<input type='text' id='datepicker1' 
-                     name='$this->campo' value='$this->valini' 
+        echo "<input type='text' id='datepicker1'
+                     name='$this->campo' value='$this->valini'
                      size='$this->lung'>";
 break;
 
 case 'd2' :			// datepicker 2
-        echo "<input type='text' id='datepicker2' 
-                     name='$this->campo' value='$this->valini' 
-                     size='$this->lung'>";
-break;     
+        echo "<input type='text' id='datepicker2'
+                     name='$this->campo' value='$this->valini'
+                     size='$this->lung' $this->pch='dd-mm-yyyy'
+                     onkeyup='
+                         var v = $this->valini;
+                         if (v.match(/^\d{2}$/) !== null) {
+                            $this->valini = v + '-';
+                         } else if (v.match(/^\d{2}\-\d{2}$/) !== null) {
+                             $this->valini = v + '-';
+                         }'>";
+break;
 
 case 'd3' :			// datepicker 3
-        echo "<input type='text' id='datepicker3' 
-                     name='$this->campo' value='$this->valini' 
+        echo "<input type='text' id='datepicker3'
+                     name='$this->campo' value='$this->valini'
                      size='$this->lung'>";
-break;     
+break;
 
 case 'sn' :			// radio button 0=NO  1=SI
 		require_once("lingua_class.php");
-		if($this->valini == 0) 
+		if($this->valini == 0)
         {
         echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo' checked='checked'/>NO&nbsp;&nbsp;&nbsp;";
         echo  "<input id='state1' type='radio' value='1' name='$this->campo'/>SI";
-        }                                     
-        if($this->valini == 1) 
+        }
+        if($this->valini == 1)
         {
         echo  "<input id='state1' type='radio' value='1' name='$this->campo' checked='checked' />SI&nbsp;&nbsp;&nbsp;";
         echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo'/>NO";
         }
-break; 
-		 
+break;
+
 default:
 break;
         }
-     echo "</div>";          
+     echo "</div>";
      }
 /* ---------------------------------------------------------------------------
 	05/03/21	STESSE FUNZIONI NON INCAPSULATE IN UN <DIV> e senza label
 	--------------------------------------------------------------------------*/
         public function field_n()
 
-{  
- switch ($this->tipo) 
+{
+ switch ($this->tipo)
  {
 case 'ck-n':      // check box
                 echo "<input type='checkbox' id='$this->campo' name='$this->campo'
                          value=$this->valini size='$this->lung'  ";
-                if ($this->valini === 1) { echo "checked";} 
+                if ($this->valini === 1) { echo "checked";}
                 echo ">";
  break;
  case 'star-n':     // immagine stella
-          if ($this->valini == '*') 
+          if ($this->valini == '*')
                {
-               echo "<input type='image' class='titolo' 
-                    name='$this->campo' value= '$this->valini' 
-                    src='images/star.png' height='24px' width='42px'>"; 
+               echo "<input type='image' class='titolo'
+                    name='$this->campo' value= '$this->valini'
+                    src='images/star.png' height='24px' width='42px'>";
                }
           else
-               { 
-               echo "<input type='image' class='titolo' 
-                    name='$this->campo' value= '$this->valini' 
-                    src='images/null.png '>"; 
-               } 
+               {
+               echo "<input type='image' class='titolo'
+                    name='$this->campo' value= '$this->valini'
+                    src='images/null.png '>";
+               }
 break;
 case 'st-n':            // input status
                     if ($this->valini != 'A')
@@ -216,9 +223,9 @@ case 'st-n':            // input status
                         {echo "<input type='image' class='nobord' src='images/stop.png' height='16px'
                          name='$this->campo' id='$this->campo' value='$this->valini' width='16px' >";}
 break;
- } 
+ }
 }
-		  
+
 }
 
 ?>

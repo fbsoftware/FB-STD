@@ -25,16 +25,16 @@ class imgdim
 
         public function maxdim()
           {
-          $pathimg = $this->img;
+          $pathimg = ltrim($this->img);
           $dim=array();
           $dim = getimagesize($pathimg);
           $x=$dim['0'];   $this->imgl = $x;
           $y=$dim['1'];   $this->imga = $y;
 
           // nei limiti entrambe le dimensioni
-               if($this->imgl <= $this->lun && $this->imga <= $this->alt)
+               if (($this->imgl <= $this->lun) && ($this->imga <= $this->alt))
                          {
-                         echo "<img src='$this->img' width='$this->imgl' alt='$this->imga' border='1' />";
+                         echo "<img class='fb-imgdim' src='$this->img' width='$this->imgl' alt='$this->imga' border='1' />";
                          }
                else      {
                          $vx = $this->lun/$this->imgl;
@@ -42,9 +42,9 @@ class imgdim
 
                          // adeguo la + critica fra le dimensioni
                          if($vx < $vy)  {$this->width = $this->lun;
-                              echo "<img src='$this->img' width='$this->lun' alt='$this->img' border='1' />"; }
+                              echo "<img class='fb-imgdim' src='$this->img' width='$this->lun' alt='$this->img' border='1' />"; }
                            else     {      $this->height= $this->alt;
-                              echo "<img src='$this->img' height='$this->alt' alt='$this->img' border='1' />";}
+                              echo "<img class='fb-imgdim' src='$this->img' height='$this->alt' alt='$this->img' border='1' />";}
                           }
           }
 }
