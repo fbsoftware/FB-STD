@@ -93,7 +93,7 @@ break;
 
 case 'ia':      // input text con autofocus
                     echo "<input type='text' id='$this->campo' name='$this->campo'
-                        value='$this->valini' size='$this->lung' autofocus>
+                        value='".htmlentities($this->valini, ENT_QUOTES, 'UTF-8')."' size='$this->lung' autofocus>
                          <script>
                          if (!('autofocus' in document.createElement('input')))
                          {
@@ -104,7 +104,7 @@ break;
 
 case 'ir':          // input text obbligatorio
                         echo "<input type='text' required='Compilare questo campo'  name='$this->campo'
-                            id='$this->campo' value='$this->valini' size='$this->lung' >";
+                            id='$this->campo' value='".htmlentities($this->valini, ENT_QUOTES, 'UTF-8')."' size='$this->lung' >";
 break;
 
 case 't' :          // input testate di colonna
@@ -133,12 +133,12 @@ break;
 
 case 'ip':          // input text + placeholder
                     echo "<input type='text' id='$this->campo' name='$this->campo'
-                        value='$this->valini' size='$this->lung'  placeholder='$this->pch' >";
+                        value='".htmlentities($this->valini, ENT_QUOTES, 'UTF-8')."' size='$this->lung'  placeholder='$this->pch' >";
 break;
 
 case 'ipr':			// input text + placeholder + required
                     echo "<input type='text' required='Compilare questo campo'
-                     name='$this->campo' id='$this->campo' value='$this->valini'
+                     name='$this->campo' id='$this->campo' value='".htmlentities($this->valini, ENT_QUOTES, 'UTF-8')."'
                      size='$this->lung' placeholder='$this->pch' >";
 break;
 
@@ -151,14 +151,7 @@ break;
 case 'd2' :			// datepicker 2
         echo "<input type='text' id='datepicker2'
                      name='$this->campo' value='$this->valini'
-                     size='$this->lung' $this->pch='dd-mm-yyyy'
-                     onkeyup='
-                         var v = $this->valini;
-                         if (v.match(/^\d{2}$/) !== null) {
-                            $this->valini = v + '-';
-                         } else if (v.match(/^\d{2}\-\d{2}$/) !== null) {
-                             $this->valini = v + '-';
-                         }'>";
+                     size='$this->lung'>";
 break;
 
 case 'd3' :			// datepicker 3
