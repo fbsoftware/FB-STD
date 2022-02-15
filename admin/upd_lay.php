@@ -1,20 +1,20 @@
-<?php session_start();      ob_start();  
+<?php session_start();      ob_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
-   * versione 3.1    
+   * versione 3.1
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
    * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
-   * gestione tabella 'lay'   
+   * gestione tabella 'lay'
 ============================================================================= */
-require_once('init_admin.php');     
+require_once('init_admin.php');
 require_once('post_lay.php');
 $azione  =$_POST['submit'];      //print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
-if (($azione == 'modifica' || $azione == 'cancella') && $lid == '') 
+if (($azione == 'modifica' || $azione == 'cancella') && $lid == '')
           {
           $_SESSION['esito'] = 4;
           header('location:admin.php?'.$_SESSION['location'].'');
@@ -22,172 +22,172 @@ if (($azione == 'modifica' || $azione == 'cancella') && $lid == '')
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'";
 
-if (($azione == 'modifica' ||$azione == 'cancella') && $lid < 0) 
+if (($azione == 'modifica' ||$azione == 'cancella') && $lid < 0)
      {
      $_SESSION['esito'] = 4;
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
-     
-    echo     "<div class='container form-horizontal'>"; 
+
+    echo     "<div class='container form-horizontal'>";
     echo     "<div class='row container'>";
-switch ($azione)    
-{ 
-// inserimento 
+switch ($azione)
+{
+// inserimento
     case 'nuovo':
-    $param	= array('salva|nuovo','ritorno') ;
-     $btx = new bottoni_str_par($LAY." - ".$NEW,'lay','upd2_lay.php',$param);     
+    $param	= array('nuovo','ritorno') ;
+     $btx = new bottoni_str_par('Layout - nuovo','lay','upd2_lay.php',$param);
           $btx->btn();
-      echo  "<fieldset>";          
-     $ts = new DB_tip_i('tipo','ltipo','','Tipo modulo','Tipo modulo per comporre la pagina'); 
+      echo  "<fieldset>";
+     $ts = new DB_tip_i('tipo','ltipo','','Tipo modulo','Tipo modulo per comporre la pagina');
           $ts->select();
 	echo  "</fieldset>";
 	echo  "</form>";
       break;
-          
-// modifica     
+
+// modifica
     case 'modifica':
-$btx      = new bottoni_str_par($LAY." - ".$MOD,'lay','write_lay.php',array('salva|modifica','ritorno'),9);     
-     $btx->btn();
-     $sql = "SELECT * FROM `".DB::$pref."lay` 
+$btx      = new bottoni_str_par('Layout -modifica','lay','write_lay.php',array('modifica','ritorno'));
+            $btx->btn();
+     $sql = "SELECT * FROM `".DB::$pref."lay`
                WHERE `lid` = $lid ";
-// transazione    
+// transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction(); 
+$PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
 require('fields_lay.php');
 
 echo  "<fieldset>";
      $f1 = new input(array($lid,'lid',3,'','','h'));
-          $f1->field(); 
+          $f1->field();
      $f1 = new input(array($lprog,'lprog',3,'Progressivo','Per ordinamento','i'));
-          $f1->field();         
-     $ts = new DB_tip_i('stato','lstat',$lstat,'Stato record','Attivo/sospeso'); 
+          $f1->field();
+     $ts = new DB_tip_i('stato','lstat',$lstat,'Stato record','Attivo/sospeso');
           $ts->select();
      $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
-          $t2->getTemplate(); 
-		  
+          $t2->getTemplate();
+
      $f1 = new input(array($ltipo,'ltipo',3,'Tipo modulo','Tipo modulo per comporre la pagina','r'));
-          $f1->field();         
-		  
+          $f1->field();
+
 // scelta del file in base al tipo di modulo =============================================
 switch ($ltipo) {
 case 'artslide':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in slide');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'artacc':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in accordion');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'arttab':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in tab');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'artsingle':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo semplice');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'article':
                $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'artimg':
                $arg = new DB_sel_l('aim','iprog',$lcod,'icod','lcod','istat','icod','Codice','Articolo con immagine');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'artcol':
                $arg = new DB_sel_l('arc','hprog',$lcod,'hcod','lcod','hstat','hcod','Codice','Articolo in colonne');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'glyph':
                $arg = new DB_sel_l('gly','gprog',$lcod,'gcod','lcod','gstat','gcod','Codice','Modulo con glifi');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'promo':
                $arg = new DB_sel_l('prm','oprog',$lcod,'ocod','lcod','ostat','ocod','Codice','Modulo con glifi');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'portfolio':
                $arg = new DB_sel_l('por','pprog',$lcod,'pcod','lcod','pstat','pcod','Codice','Modulo portfolio');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'slide':
                $arg = new DB_sel_l('sld','slprog',$lcod,'slcod','lcod','slstat','slcod','Codice','Modulo slide di immagini');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'header':
      		$f1 = new input(array($lcod,'lcod',30,'Codice','Header con navigatore','i'));
-          		$f1->field();         
+          		$f1->field();
 			break;
 case 'footer':
                $arg = new DB_sel_l('foo','fprog',$lcod,'fcod','lcod','fstat','fcod','Codice','Modulo footer');
-          		$arg->select_label();       
+          		$arg->select_label();
 			break;
 case 'contatti':
                $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
-          		$arg->select_label();       
-               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));           
-          		$f4->field();    
+          		$arg->select_label();
+               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));
+          		$f4->field();
                break;
 default:
 	          echo	"Tipo modulo errato=".$ltipo;
 			break;
-}          
+}
 // =======================================================================================
-     $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));           
+     $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));
           $f4->field();
-     $f4 = new input(array($linclude,'linclude',50,'Programma','Programma da eseguire','r'));           
+     $f4 = new input(array($linclude,'linclude',50,'Programma','Programma da eseguire','r'));
           $f4->field();
 
 	echo  "</fieldset>";
 	echo  "</form>";
      break;
 
-// cancellazione    
+// cancellazione
     case 'cancella' :
-$btx = new bottoni_str_par($LAY." - ".$DEL,'lay','write_lay.php',array('salva|cancella','ritorno'));     
+$btx = new bottoni_str_par('Layout - conferma cancellazione','lay','write_lay.php',array('cancella','ritorno'));     
      $btx->btn();
-      $sql = "SELECT * FROM `".DB::$pref."lay` 
-               WHERE `lid` = $lid  ";    
-// transazione    
+      $sql = "SELECT * FROM `".DB::$pref."lay`
+               WHERE `lid` = $lid  ";
+// transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction(); 
+$PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
 require('fields_lay.php');
 
 echo  "<fieldset>";
-      $f0 = new input(array($lid,'lid',0,'','','h'));                        
-	 	$f0->field(); 
-      $f1 = new input(array($lprog,'lprog',3,'Progressivo','','r'));         
-	 	$f1->field();       
-      $ts = new input(array($lstat,'lstat',1,'Stato record','','r'));        
+      $f0 = new input(array($lid,'lid',0,'','','h'));
+	 	$f0->field();
+      $f1 = new input(array($lprog,'lprog',3,'Progressivo','','r'));
+	 	$f1->field();
+      $ts = new input(array($lstat,'lstat',1,'Stato record','','r'));
 	 	$ts->field();
-      $f2 = new input(array($ltipo,'ltipo',5,'Tipo','','r'));                
-	 	$f2->field(); 
-      $f3 = new input(array($lcod,'lcod',20,'Codice','','r'));               
-	 	$f3->field();  
-      $f4 = new input(array(htmlspecialchars($ldesc, ENT_QUOTES),'ldesc',30,'Descrizione','','r'));          
-      	$f4->field(); 
+      $f2 = new input(array($ltipo,'ltipo',5,'Tipo','','r'));
+	 	$f2->field();
+      $f3 = new input(array($lcod,'lcod',20,'Codice','','r'));
+	 	$f3->field();
+      $f4 = new input(array(htmlspecialchars($ldesc, ENT_QUOTES),'ldesc',30,'Descrizione','','r'));
+      	$f4->field();
       echo    "</fieldset></form>";
       break;
-        
+
     case 'ritorno' :
 $loc = "location:admin.php?".$_SESSION['location']."";
-     header($loc);  
+     header($loc);
     break;
-    
+
      case 'chiudi':
 $loc = "location:admin.php?urla=widget.php&pag=";
-     header($loc);                          
+     header($loc);
           break;
 
     default:
-          echo "Operazione invalida";    
-                                                       
-} 
+          echo "Operazione invalida";
+
+}
 
      echo "</section>";
 	 echo "</body>";

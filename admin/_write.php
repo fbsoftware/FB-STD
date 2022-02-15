@@ -10,27 +10,27 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
-	£tab	nome tabella 
-	£id		campo prefisso + id
-	£stat	campo prefisso + stato
-	£prog	campo prefisso + progressivo
-	£cod	campo prefisso + codice
-	£des	campo prefisso + descrizione
-	£link	campo prefisso + link 
-	£tmp	campo prefisso + template   
+	Â£tab	nome tabella 
+	Â£id		campo prefisso + id
+	Â£stat	campo prefisso + stato
+	Â£prog	campo prefisso + progressivo
+	Â£cod	campo prefisso + codice
+	Â£des	campo prefisso + descrizione
+	Â£link	campo prefisso + link 
+	Â£tmp	campo prefisso + template   
 ============================================================================= */ 
-require_once('post_£tab.php');
+require_once('post_Â£tab.php');
            
 $azione   =    $_POST['submit'];          
 //print_r($_POST);//debug
 
-// test validità codice  
-if (($£cod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
+// test validitÃ  codice  
+if (($Â£cod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
           $_SESSION['errore'] = 1;
           $_SESSION['errore0'] = 1;
           }
-// test validità descrizione   
+// test validitÃ  descrizione   
 if (($gdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
           $_SESSION['errore'] = 1;
@@ -45,27 +45,27 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
-           $sql = "INSERT INTO `".DB::$pref."£tab` 
-							(£id,£prog,£stat,£tmp,£cod,£des,£col,£link,) 
-                      VALUES (NULL,$£prog,'$£stat','$£tmp','$£cod','$£des','$£col','$£link')";
+           $sql = "INSERT INTO `".DB::$pref."Â£tab` 
+							(Â£id,Â£prog,Â£stat,Â£tmp,Â£cod,Â£des,Â£col,Â£link,) 
+                      VALUES (NULL,$Â£prog,'$Â£stat','$Â£tmp','$Â£cod','$Â£des','$Â£col','$Â£link')";
                       $PDO->exec($sql);    
                       $PDO->commit();
                       $_SESSION['esito'] = 54;                      
                       break;
 
 case 'modifica':
-           $sql = "UPDATE `".DB::$pref."£tab` 
-                   SET £prog=$£prog,£stat='$£stat',£cod='$£cod',£des='$£des',
-                         £tmp='$£tmp',£col='$£col',gtext='$gtext',£link='$£link'  
-                   WHERE £id= $£id ";
+           $sql = "UPDATE `".DB::$pref."Â£tab` 
+                   SET Â£prog=$Â£prog,Â£stat='$Â£stat',Â£cod='$Â£cod',Â£des='$Â£des',
+                         Â£tmp='$Â£tmp',Â£col='$Â£col',gtext='$gtext',Â£link='$Â£link'  
+                   WHERE Â£id= $Â£id ";
                   $PDO->exec($sql);    
                   $PDO->commit();
                   $_SESSION['esito'] = 55;
                   break;
   
 case 'cancella':
-            $sql = "DELETE from `".DB::$pref."£tab` 
-                    WHERE £id= '$£id' ";
+            $sql = "DELETE from `".DB::$pref."Â£tab` 
+                    WHERE Â£id= '$Â£id' ";
                     $PDO->exec($sql);    
                     $PDO->commit();
                     $_SESSION['esito'] = 53;

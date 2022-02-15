@@ -89,7 +89,7 @@ if(isset($_SESSION['esito']))
      if ($_SESSION['esito'] > 150  && $_SESSION['esito'] < 201)    // 151 - 200
           {
      echo "<div class='fb-highlight'>";
-          if ($_SESSION['esito'] == 151)     echo "<p class='fb-p1'><img src='".DB::$dir_imm."info.png' alt='info' height='25' />
+          if ($_SESSION['esito'] == 151)     echo "<p class='fb-p1'><img src='".DB::$dir_imm."attenzione.png' alt='info' height='25' />
             &nbsp;&nbsp;Informazione</p>";
           echo "</div>";
           }

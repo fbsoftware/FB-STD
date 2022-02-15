@@ -1,43 +1,34 @@
 <?php session_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
-   * versione 3.1    
+   * versione 3.1
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
    * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
 	* ------------------------------------------------------------------------
-	* aggiornamento tabella 'arg' 
+	* aggiornamento tabella 'arg'
 	* 1.0.0	nuova head
-============================================================================= */ 
-require_once('../loadLibraries.php');
-require_once('loadTemplateAdmin.php');
-$app = new Head('Gestione menu');
-$app->openHead();
-require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once("../include_head.php");
-require_once('../lingua.php'); 
-$app->closeHead();
-//----------------------------------------------
+============================================================================= */
+require_once('init_admin.php');
 
 require_once('post_arg.php');
 $azione  =$_POST['submit'];
 
-// test validit‡ codice  
+// test validit√† codice
 if (($rcod <= '') && (($azione != 'cancella') && ($azione != 'ritorno')))
           {
           $_SESSION['errore'] = 1;
           $_SESSION['errore0'] = 1;
           }
 
-// test validit‡ descrizione   
+// test validit√† descrizione
 if (($rdesc <= '') && (($azione != 'cancella') && ($azione != 'ritorno')))
           {
           $_SESSION['errore'] = 1;
           $_SESSION['errore4'] = 1;
           }
-          
+
 switch ($azione)
 {
 case 'ritorno':
@@ -48,9 +39,9 @@ case 'ritorno':
 
 case 'nuovo':
 echo     $sql = "INSERT INTO `".DB::$pref."arg`
-                         (rid,rprog,rstat,rcod,rdesc,rtext,rmostra) 
+                         (rid,rprog,rstat,rcod,rdesc,rtext,rmostra)
                          VALUES (NULL,'$rprog','$rstat','$rcod','$rdesc','$rtext','$rmostra')";
-               $PDO->exec($sql);    
+               $PDO->exec($sql);
                $PDO->commit();
                $_SESSION['esito'] = 54;
                break;
@@ -58,16 +49,16 @@ echo     $sql = "INSERT INTO `".DB::$pref."arg`
 case 'modifica':
      $sql = "UPDATE `".DB::$pref."arg`
                   SET rprog='$rprog',rstat='$rstat',rcod='$rcod',rdesc='$rdesc',
-                      rtext='$rtext',rmostra='$rmostra' 
+                      rtext='$rtext',rmostra='$rmostra'
                   WHERE rid= '$rid' ";
-                  $PDO->exec($sql);    
+                  $PDO->exec($sql);
                   $PDO->commit();
                   $_SESSION['esito'] = 55;
                         break;
 case 'cancella':
      $sql = "DELETE from `".DB::$pref."arg`
                   WHERE rid= '$rid' ";
-                  $PDO->exec($sql);    
+                  $PDO->exec($sql);
                   $PDO->commit();
                   $_SESSION['esito'] = 53;
                 break;
@@ -76,4 +67,4 @@ default:
 }
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
-?> 
+?>

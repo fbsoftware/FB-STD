@@ -17,8 +17,8 @@ $app = new Head('Gestione menu');
 $app->openHead();
 require_once("../include_head.php");
 require_once("../jquery_link.php");
-//require_once("../bootstrap_link.php");
-require_once('../lingua.php'); 
+ 
+require_once('../ '); 
 $app->closeHead();
 
 require_once 'post_lang.php';      //print_r($_POST);//debug

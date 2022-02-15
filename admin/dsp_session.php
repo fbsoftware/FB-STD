@@ -1,15 +1,15 @@
-<?php   session_start(); 
+<?php   session_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
-   * versione 2.0    
+   * versione 2.0
    * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
    * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
 ============================================================================= */
 require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');
-require_once('../lingua.php');
+
 ?>
  <!-- tabs -->
   <script>
@@ -17,12 +17,12 @@ require_once('../lingua.php');
     $( "#tabs" ).tabs();
   } );
   </script>
-<?php 
+<?php
 
 //   toolbar
 $param = array('ritorno');
-$btx   = new bottoni_str_par('Strumenti di debug','config','admin.php?urla=widget.php&pag=',$param);     
-     $btx->btn();     
+$btx   = new bottoni_str_par('Strumenti di debug','config','admin.php?urla=widget.php&pag=',$param);
+     $btx->btn();
 ?>
 	<div id="tabs">
   <ul>
@@ -32,7 +32,7 @@ $btx   = new bottoni_str_par('Strumenti di debug','config','admin.php?urla=widge
     <li><a href="#tabs-3">Post</a></li>
 	<li><a href="#tabs-4">Get</a></li>
   </ul>
-  
+
  <?php
 echo "<div id='tabs-0' class='row'>";
 echo "<fieldset>";
@@ -53,7 +53,7 @@ echo "</div>";
 echo "<div id='tabs-2' class='row'>";
 echo "<fieldset>";
 if (isset($_COOKIE))
-     {   echo "<table class='table table-striped table-bordered table-condensed'>"; 
+     {   echo "<table class='table table-striped table-bordered table-condensed'>";
          echo "<tr><th>Nome</th><th>Valore</th></tr>";
     foreach ($_COOKIE as $name => $value)
           {
@@ -86,5 +86,5 @@ echo "</div>";
 
 	echo "</div>";	// tabs
 echo "</form>";
-  
+
 ?>

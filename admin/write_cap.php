@@ -1,83 +1,83 @@
 <?php session_start();
 /*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
-   * versione 3.1    
+   * versione 3.1
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
    * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
-   * aggiornamento tabella 'cap' 
-   * 2.0 aggiunto argomento del capitolo.         
-============================================================================= */ 
+   * aggiornamento tabella 'cap'
+   * 2.0 aggiunto argomento del capitolo.
+============================================================================= */
 require_once('init_admin.php');
 
 require('post_cap.php');
 
 $azione  =$_POST['submit'];
 
-// test validità codice  
+// test validitÃ  codice
+$_SESSION['esito'] = array();
 if (($ccod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
-          }
-// test validità descrizione   
+          { array_push($_SESSION['esito'],'151'); }
+// test validitÃ  descrizione
 if (($cdesc <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
-          }
+          { array_push($_SESSION['esito'],'154'); }
 
 switch ($azione)
 {
 case 'nuovo':
      $sql = "INSERT INTO `".DB::$pref."cap`
-                         (cid,cprog,cstat,ccod,cdesc,ctext,cmostra,carg) 
+                         (cid,cprog,cstat,ccod,cdesc,ctext,cmostra,carg)
                          VALUES (NULL,'$cprog','$cstat','$ccod','$cdesc','$ctext','$cmostra','$carg')";
-// transazione    
+// transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction(); 
-               $PDO->exec($sql);    
+$PDO->beginTransaction();
+               $PDO->exec($sql);
                $PDO->commit();
-               $_SESSION['esito'] = 54;
+               { array_push($_SESSION['esito'],'54'); }
+               //$_SESSION['esito'] = 54;
                break;
 
 case 'modifica':
      $sql = "UPDATE `".DB::$pref."cap`
                   SET cprog='$cprog',cstat='$cstat',ccod='$ccod',cdesc='$cdesc',
-                      ctext='$ctext',cmostra='$cmostra' ,carg='$carg'  
+                      ctext='$ctext',cmostra='$cmostra' ,carg='$carg'
                   WHERE cid= '$cid' ";
-// transazione    
+// transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction(); 
+$PDO->beginTransaction();
 
-                  $PDO->exec($sql);    
+                  $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 55;
+                  //$_SESSION['esito'] = 55;
+                  { array_push($_SESSION['esito'],'55'); }
                   break;
 case 'cancella':
      $sql = "DELETE from `".DB::$pref."cap`
                   WHERE cid= '$cid' ";
-// transazione    
+// transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction(); 
+$PDO->beginTransaction();
 
-                  $PDO->exec($sql);    
+                  $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 53;
+                  //$_SESSION['esito'] = 53;
+                  { array_push($_SESSION['esito'],'53'); }
                   break;
 case 'ritorno':
-               $_SESSION['esito'] = 2;
+               //$_SESSION['esito'] = 2;
+               { $_SESSION = array($_SESSION['esito'],'2'); }
                header('location:gest_cap.php');
                break;
-                   
+
 default:
-                    $_SESSION['esito'] = 0;
+                    //$_SESSION['esito'] = 0;
+                    { array_push($_SESSION['esito'],'0'); }
 }
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
-?> 
+?>
