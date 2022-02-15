@@ -70,8 +70,8 @@ require'fields_nav.php';
 //  bottone logout
 echo "<form class='bottoni' method='post' action='login.php'>";
 echo "<button class='fb-accent fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='chiudi'> ";
-echo "<img src='https://fbsoftware.github.io/FB-CODE/images/uscita.png' alt='uscita' height='25'>";
-echo "&nbsp;&nbsp;&nbsp;&nbsp;".$EXIT;
+echo "<img src='".DB::$dir_imm."uscita.png' alt='uscita' height='25'>";
+echo "&nbsp;&nbsp;&nbsp;&nbsp;Uscita";
 echo "</button>";
 echo "</form>";
 ?>

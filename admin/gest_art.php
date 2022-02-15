@@ -8,44 +8,37 @@
    * all'uso anche improprio di FB open template.
    * ==========================================================================
    * Gestione articoli
-=============================================================================
-	07.03.21	tolto bootstrap sostituito da flex
-=============================================================================*/
-require_once('init_admin.php');
+   * ======================================================================= */
+
    //   toolbar
-$param = array($NEW.'|nuovo',$MOD.'|modifica',$DEL.'|cancella',$CLO.'|chiudi');
-$btx   = new bottoni_str_par($ARTS,'art','upd_art.php',$param);
+$param = array('nuovo','modifica','cancella','chiudi');
+$btx   = new bottoni_str_par('Articoli','art','upd_art.php',$param);
      $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-require_once 'msg.php';
-
-// prefisso eventuale
- echo  "<fieldset class='fb-w25'>";
-$f3 = new input(array('','progre',10,'Parti dal progressivo:',' ','i'));
-    $f3->field();
- echo  "</fieldset>";
+$parm = $_SESSION['esito'];
+$m = new msg($parm);
+$m->msg();
 
 //  mostra tabella
-echo "<section id='art'>";
-echo "<div class='table fb-hv80'>";
-echo "<div class='th'>";
-echo "<div class='td'>$SCEL</div>";
-echo "<div class='td'>$ST</div>";
-echo "<div class='td'>$PROG</div>";
-echo "<div class='td'>$COD</div>";
-echo "<div class='td'>Categoria</div>";
-echo "<div class='td'>$TIT</div>";
-echo "<div class='td'>$PREZ</div>";
-//echo "<div class='td'>$DESC</div>";
-//echo "<div class='td'>$IMG</div>";
-echo "</div>";
-
+echo "<section id='table'>";
+echo "<div class='tableFixHead'>";
+echo "<table class='table table-hover table-striped table-bordered table-condensed'>";
+echo "<thead>";
+echo "<th style='width:2%; text-align:center;'>Scelta</th>";
+echo "<th style='width:2%; text-align:center;'>Stato</th>";
+echo "<th style='width:2%; text-align:center;'>Progr.</th>";
+echo "<th>Titolo</th>";
+echo "<th>Argomento</th>";
+echo "<th>Capitolo</th>";
+echo "<th>Si/No titolo</th>"; 
+echo "</thead>";
+ echo "<tbody>";
 $sql =    "SELECT * FROM `".DB::$pref."art`
-                       ORDER BY `aprez` DESC";
+                       ORDER BY `aprog` ";
 // transazione
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
      $PDO = new PDO($con,DB::$user,DB::$pw);
@@ -53,22 +46,22 @@ $sql =    "SELECT * FROM `".DB::$pref."art`
      foreach($PDO->query($sql) as $row)
           {
 			require('fields_art.php');
-		echo "<div class='tr'>";
-		$f2 = new input(array($aid,'aid',2,'',$TT_SCEL,'ck'));
-		echo "<div class='td'>"; $f2->field(); echo "</div>";
-		$st = new input(array($astat,'astat',2,'','','st'));
-		echo "<div class='td'>"; $st->field(); echo "</div>";
+			echo "<tr>";
+			$f1 = new fieldi($aid,'aid',2,'');
+			echo "<td class='center'>"; $f1->field_ck(); echo "</td>";
+			$f2 = new fieldi($astat,'astat',2,'');
+			echo "<td class='center'>"; $f2->field_st(); echo "</td>";
   ?>
-			<div class="td"><?php echo $aid ?></div>
-			<div class='td'><?php echo $acod ?></div>
-			<div class='td'><?php echo $acat ?></div>
-			<div class='td'><?php echo $atit ?></div>
-			<div class='td'><?php echo $aprez ?></div>
-<!--			<div class='td'><?php echo $ades ?></div>
-			<div class='td'><?php echo $aimg ?></div>  -->
+			<td class="center"><?php echo $aprog ?></td>
+			<td><?php echo $atit ?></td>
+			<td><?php echo $aarg ?></td>
+			<td><?php echo $acap ?></td>
+			<td><?php echo $amostra ?></td>
 <?php
-     echo "</div>";
+			echo "</tr>";
           }
+		  echo "</tbody>";
+     echo "</table>";
 	echo "</div>";
 	echo "</section>";
 	echo "</form>";

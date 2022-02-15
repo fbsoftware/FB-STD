@@ -161,7 +161,6 @@ case 'd3' :			// datepicker 3
 break;
 
 case 'sn' :			// radio button 0=NO  1=SI
-		require_once("lingua_class.php");
 		if($this->valini == 0)
         {
         echo  "<input id='state0' type='radio' value='0' name='$this->campo' id='$this->campo' checked='checked'/>NO&nbsp;&nbsp;&nbsp;";

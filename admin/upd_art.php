@@ -10,7 +10,9 @@
    28/04/2019	mostra il titolo con select
 ============================================================================= */
 require_once('init_admin.php');
+
 require_once("editor.php");			// scelta editor
+
 require_once('post_art.php');
 if (isset($_POST['submit']))   $azione   =$_POST['submit'];
 $content  ='--- Inserire qui il testo ---';
@@ -21,16 +23,16 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
 	  $_SESSION['esito'] = 4;
       header('location:admin.php?'.$_SESSION['location'].'');
      }
-echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
  switch ($azione)
 {
     case 'nuovo':
     {
-     $param = array('salva|nuovo','ritorno');
-     $btx   = new bottoni_str_par($ARTS." - ".$INS,'art','write_art.php',$param);
+     $param = array('nuovo','ritorno');
+     $btx   = new bottoni_str_par('Articoli - nuovo','art','write_art.php',$param);
           $btx->btn();
           // contenitore
-     echo  "<fieldset class='f-flex fd-column'>";
+     echo "<div class='row'>";
+     echo  "<fieldset>";
       $art = new DB_ins('art','aprog');
       $f3 = new input(array($art->insert(),'aprog',3,'Progressivo','','ia'));
           $f3->field();
@@ -46,34 +48,22 @@ echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
                $f6->field();
 		$f9 = new input(array($content,'atext',30,'Testo','','tx'));
 			$f9->field();
-      // prova----------------------------------------------------
-      $f9 = new input(array($data,'atext',10,'Data','','d2'));
-        $f9->field();
-      ?>
-        <input type="text" name="date" placeholder="dd-mm-yyyy" onkeyup="
-  var date = this.value;
-  if (date.match(/^\d{2}$/) !== null) {
-     this.value = date + '-';
-  } else if (date.match(/^\d{2}\-\d{2}$/) !== null) {
-     this.value = date + '-';
-  }" maxlength="10">
-  <?php
-        // prova----------------------------------------------------
-
 if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
 
 echo "</fieldset>";
+echo "</div>";
 echo "</form>";
         break;
      }
 
     case 'modifica':
 {   // record in modifica
-$param = array($SAV.'|modifica',$RET.'|ritorno');
-$btx   = new bottoni_str_par($ARTS." - ".$MOD,'art','write_art.php',$param);
+$param = array('modifica','ritorno');
+$btx   = new bottoni_str_par('Articoli - modifica','art','write_art.php',$param);
      $btx->btn();
-
+     // contenitore
+     echo "<div class='row'>";
 // lettura database
 $sql =  "SELECT * FROM `".DB::$pref."art`
                      WHERE `aid` ='".$aid."' ";
@@ -84,7 +74,7 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
      foreach($PDO->query($sql) as $row)
      {
      require_once('fields_art.php');
-     echo  "<fieldset class='f-flex fd-column'>";
+     echo  "<fieldset>";
       $f2 = new input(array($aid,'aid',03,'','','h'));
           $f2->field();
       $f3 = new input(array($aprog,'aprog',03,'Progressivo','','i'));
@@ -107,14 +97,14 @@ if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
 
      }
-
+echo "</div>";
 break;
     }
 
     case 'cancella' :
     {
-     $param = array($SAV.'|cancella',$RET.'|ritorno');
-     $btx   = new bottoni_str_par($ARTS." - ".$DELCONF,'art','write_art.php',$param);
+     $param = array('cancella','ritorno');
+     $btx   = new bottoni_str_par('Articoli - conferma cancellazione','art','write_art.php',$param);
           $btx->btn();
      $sql = "SELECT *
                FROM `".DB::$pref."art`
@@ -126,7 +116,7 @@ break;
      foreach($PDO->query($sql) as $row)
      {
      require_once('fields_art.php');
-     echo  "<fieldset class='f-flex fd-column'>";
+     echo  "<fieldset>";
       $f2 = new input(array($aid,'aid',03,'','','h'));
           $f2->field();
       $f3 = new input(array($aprog,'aprog',03,'Progressivo','','r'));
@@ -155,6 +145,8 @@ case 'chiudi' :
 default:
           echo "<br />art-upd=".$azione;
 }
-echo "</body>";
 ob_end_flush();
 ?>
+
+</body>
+</html>

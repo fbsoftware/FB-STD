@@ -8,7 +8,7 @@ $app->openHead();
 require_once("jquery_link.php");
 //require_once("bootstrap_link.php");
 require_once("include_head.php");
-require_once('lingua.php'); 
+require_once(' '); 
 $app->closeHead();
 
 echo "<body> ";
@@ -29,11 +29,11 @@ $lcod="port-f1";//<=========  parametro  =======================================
 					and pcod = '$lcod' 
                 ORDER BY pprog ";
 				
-		$stmt = $PDO->prepare($sql);
-		$stmt->execute();		
-		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		Statomt = $PDO->prepare($sql);
+		Statomt->execute();		
+		$rows = Statomt->fetchAll(PDO::FETCH_ASSOC);
 		json_encode($rows);
-		$colonne = $stmt->rowCount();
+		$colonne = Statomt->rowCount();
 
 	echo "<div class='grid".$colonne." fb-col".$colonne."'>";
 		

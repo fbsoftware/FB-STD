@@ -97,7 +97,7 @@ class bottoni_str_par
 				if ($this->accesso >= $accesso_bottone)
 				{
 				echo    "<button class='fb-button fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
-                         <img src='https://fbsoftware.github.io/FB-CODE/images/bottoni/".$act.".png' alt='".$act."' height=25 />".$act."</button>";
+                         <img src='".DB::$dir_imm."bottoni/".$act.".png' alt='".$act."' height=25 />".$act."</button>";
 				}
 				}
 			else
@@ -109,7 +109,7 @@ class bottoni_str_par
                if ($this->accesso >= $accesso_bottone)
                {
                echo    "<button class='fb-button fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='".$act."' id='".$act."'>
-                         <img src='https://fbsoftware.github.io/FB-CODE/images/bottoni/".$label.".png' alt='".$label."' height=25 />".$label."</button>";
+                         <img src='".DB::$dir_imm."bottoni/".$label.".png' alt='".$label."' height=25 />".$label."</button>";
                }
 				}
 				}	// endfor

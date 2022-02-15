@@ -10,7 +10,7 @@
    * Scrittura dei contenuti di tipo gal - foto gallery.      
 =============================================================================*/
 require_once('classi/DB_tmp.php');  // parametri del template    
-$temp = new DB_tmp('sito');   $temp->read_tmp();
+ Template = new DB_tmp('sito');    Template->read_tmp();
 $sql2 = "SELECT * 
                FROM `".DB::$pref."gal` 
                WHERE gcod='$nsotvo' and gstat <> 'A'"; 
@@ -28,7 +28,7 @@ if ( $gheigh == 0) {echo " height='300'";}  else {echo " height='".$gheigh."'";}
 echo  "flashvars='host=picasaweb.google.com";
 if ( $gcaptions == 1)     {echo "&captions=1";}           else {echo "";}
 if ( $gnoauto == 1)       {echo "&noautoplay=1";}         else {echo "";} 
-if ( $temp->colchi != '') {echo "&RGB=0x".$temp->colchi;} else {echo "&RGB=0xffffff";}       
+if (  Template->colchi != '') {echo "&RGB=0x". Template->colchi;} else {echo "&RGB=0xffffff";}       
 echo  "&hl=it&feat=flashalbum&feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Ffbsoftware.bresciani%2Falbumid%".$nsotvo."%3Falt%3Drss%26kind%3Dphoto%26hl%3Dit' ";
 echo  "pluginspage='http://www.macromedia.com/go/getflashplayer'></embed>";     
 }

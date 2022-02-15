@@ -253,60 +253,60 @@ class bottoni
                }
                        
         public function bt_nuovo()     // nuovo  
-          {       require('lingua.php');
+          {       require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/new_f1.png' height='25'/>$NEW</button>";
                   }
         public function bt_help()     // help   
-          {       //require('lingua.php');
+          {       //require(' ');
           echo    "<a href='help00.php?file_h=testi/".$this->action.".txt' target='_self'>
                   <button class='big' type='button' id='$this->action'>
                   <img src='images/con_info.png' height='25'/>Aiuto</button></a>";
                   }          
         public function bt_salva()     // salva  
-          {       require('lingua.php');
+          {       require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>        
                    <img src='images/save_f2.png' height='25'/>$SAV</button>";
                   }          
         public function bt_uscita()     // uscita  
-          {       require('lingua.php');
+          {       require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/cancel_f2.png' height='28'/>$USC</button>";
                     $_SESSION['esito'] = 2;
                   }          
         public function bt_modifica()     // modifica  
-          {       require('lingua.php');
+          {       require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/edit_f2.png' height='25'/>$MOD</button>";
                   }
         public function bt_cancella()     // cancella  
-          {       require('lingua.php');
+          {       require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/delete.png' height='25'/>$DEL</button>";
                   } 
         public function bt_chiudi()     // chiusura mappa  
-          {       require('lingua.php');
+          {       require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/close.jpg' height='25'/>$CLO</button>";
                   } 
         public function bt_upld()     // upload files  
-          {       //require('lingua.php');
+          {       //require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/upld.png' height='25'/>Upload</button>";
                   } 
         public function bt_dwnld()     // download files  
-          {       //require('lingua.php');
+          {       //require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>
                   <img src='images/down.png' height='25'/>Download</button>";
                   } 
 
         public function bt_email()     // email  
-          {       //require('lingua.php');
+          {       //require(' ');
           echo    "<button class='big' type='submit' name='submit' value='$this->action' id='$this->action'>        
                    <img src='images/email_2.png' height='25'/>Invia</button>";
                   }          
         public function bt_reset()     // reset form 
-          {       //require('lingua.php');
+          {       //require(' ');
           echo    "<button class='big' type='reset' name='reset' value='$this->action' id='$this->action'>        
                    <img src='administrator/images/cancel_f2.png' height='25'/>Resetta</button>";
                   } 

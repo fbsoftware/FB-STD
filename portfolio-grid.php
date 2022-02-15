@@ -8,7 +8,7 @@ $app->openHead();
 require_once("jquery_link.php");
 //require_once("bootstrap_link.php");
 require_once("include_head.php");
-require_once('lingua.php'); 
+require_once(' '); 
 ?>
 	<link rel="stylesheet" type="text/css" href="css/fb-grid.css" />
 <?php

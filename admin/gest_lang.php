@@ -19,7 +19,9 @@ $btx      = new bottoni_str_par($LANG,'lang','upd_lang.php',array($NEW.'|nuovo',
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-require_once 'msg.php';
+$parm = $_SESSION['esito'];
+$m = new msg($parm);
+$m->msg();
 
 //   mostra la tabella filtrata --------------------------------------------------
 echo "<section id='cap'>"; 
@@ -27,9 +29,9 @@ echo "<section id='cap'>";
 echo "<div class='table fb-hv80'>"; 
    
 echo "<div class='th'>"; 
-echo "<div class='td'>$SCEL</div>";
-echo "<div class='td'>$STR-$COD</div>";
-echo "<div class='td'>$STR-$TRANSLATE</div>";
+echo "<div class='td'>Scelta</div>";
+echo "<div class='td'>StatoR-$COD</div>";
+echo "<div class='td'>StatoR-$TRANSLATE</div>";
 echo "</div>"; 
 
  // lettura it.ini

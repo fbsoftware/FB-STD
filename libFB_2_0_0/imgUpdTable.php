@@ -1,11 +1,10 @@
 <?php
 /**
- * @class:      imgUpdTable
- *
- * @description:Tabella con immagini dimensionate e celle per riga
- *               e possibilità di upload/download.
- * @author Fausto Bresciani <fbsoftware@libero.it>
- * @version 0.1
+  class:      imgUpdTable
+  description:Tabella con immagini dimensionate e celle per riga
+                e possibilità di upload/download.
+ author Fausto Bresciani <fbsoftware@libero.it>
+ version 0.1
  */
 class imgUpdTable    extends imgTable
 { // BEGIN class imgUpdTable
@@ -18,8 +17,8 @@ class imgUpdTable    extends imgTable
 	// costruttore
   public function __construct($path,$height,$width,$numero,$callbk)
 	{
-	 $this->path   = $path ;
-	 $this->height = $height ;
+	   $this->path   = $path ;
+	   $this->height = $height ;
      $this->width  = $width ;
      $this->numero = $numero ;
      $this->callbk = $callbk ;
@@ -31,13 +30,8 @@ class imgUpdTable    extends imgTable
   public function putUpdTable()
      {
 // lettura directory
-
-
-
-echo $path_img = $this->path;
+$path_img = $this->path;
 //$path_img ="../templates/blog/images/logo/";
-
-
 
 $array_file=array();
 //foreach (glob($path_img) as $key => $gx)
@@ -65,7 +59,7 @@ for($b=0; $b<$conto2; $b++)
      echo "<form method='post' action='".$this->callbk.".php'>";
         // verifica dimensioni
         $dim = getimagesize($array_file[$b]);
-        $x=$dim['0'];    
+        $x=$dim['0'];
 		$y=$dim['1'];
         // link
         echo  "<a class='img' href='".$array_file[$b]."' target='_blank'>";
@@ -75,7 +69,7 @@ for($b=0; $b<$conto2; $b++)
           {
           echo    "<img class='img-centro' src='".$array_file[$b]."' width='".$x."' float='left'>";
           }
-		  
+
         else
           {   // adeguo la larghezza
           echo    "<img  class='img-centro' src='".$array_file[$b]."' width='".$this->width."' float='left'>";
@@ -89,16 +83,16 @@ for($b=0; $b<$conto2; $b++)
         echo "<input type='hidden' name='img_del' value='$array_file[$b]'>";
         echo "<button name='submit' type='submit' value='cancella' class='fb-primary'>
 				<img src='images/bottoni/cancella.png' width='18' vspace='0'
-				alt='canc' align='left'></button>";
+				alt='canc' align='left'>Cancella</button>";
         // bottone di download e chiusura form
         echo "<input type='hidden' name='img_del' value='$array_file[$b]'>";
         echo "<button name='submit' type='submit' value='download' 			class='fb-primary'>
 				<img src='images/bottoni/download.png' width='18' vspace='0'
-				alt='download' align='right'></button>";
+				alt='download' align='right'>Download</button>";
 	//	echo "</div>";
 		echo "</div>";
 		echo "</form>";
-		  
+
 
 
                 // immagini per riga

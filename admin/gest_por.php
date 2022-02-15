@@ -5,46 +5,50 @@
 
 //   bottoni gestione
 $param    = array('nuovo','modifica','cancella','chiudi');
-$btx      = new bottoni_str_par($POR,'por','upd_por.php',$param);     
+$btx      = new bottoni_str_par('Portfolio','por','upd_por.php',$param);
 $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-require_once 'msg.php';
+$parm = $_SESSION['esito'];
+$m = new msg($parm);
+$m->msg();
 
 // mostra la tabella filtrata --------------------------------------------------
-echo "<div class='table fb-hv80'>"; 
+echo "<div class='table fb-hv80'>";
 
-echo "<div class='th'>"; 
-echo "<div class='td'>$SCEL</div>";
-echo "<div class='td'>$ST</div>";
-echo "<div class='td'>$PROG</div>"; 
-echo "<div class='td'>$TEMP</div>";
-echo "<div class='td'>$COD</div>";
-echo "<div class='td'>$DESC</div>"; 
+echo "<div class='th'>";
+echo "<div class='td'>Scelta</div>";
+echo "<div class='td'>Stato</div>";
+echo "<div class='td'>Progr.</div>";
+echo "<div class='td'> Template</div>";
+echo "<div class='td'>Codice</div>";
+echo "<div class='td'>Descrizione</div>";
 echo "</div>";
-       
-    $sql2 = "  SELECT * 
-               FROM `".DB::$pref."por` 
+
+    $sql2 = "  SELECT *
+               FROM `".DB::$pref."por`
                ORDER BY pprog";
-// transazione    
+// transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction(); 
-              
-            foreach($PDO->query($sql2) as $row)             
+$PDO->beginTransaction();
+
+            foreach($PDO->query($sql2) as $row)
   {  require('fields_por.php');
-  
+
      echo "<div class='tr'>";
-  $f1 = new fieldi($pid,'pid',2,'');            
-  echo "<div class='td'>"; $f1->field_ck(); echo "</div>";
-  $st = new fieldi($pstat,'pstat',2,'');        
-  echo "<div class='td'>"; $st->field_st(); echo "</div>";
+  $f1 = new fieldi($pid,'pid',2,'');
+  echo "<div class='td'>";
+    $f1->field_ck(); echo "</div>";
+  $st = new fieldi($pstat,'pstat',2,'');
+  echo "<div class='td'>";
+    $st->field_st(); echo "</div>";
   ?>
   <div class='td'><?php echo $pprog ?></div>
-  <div class='td'><?php echo $ptmp ?></div>  
+  <div class='td'><?php echo $ptmp ?></div>
   <div class='td'><?php echo $pcod ?></div>
   <div class='td'><?php echo $pdes ?></div>
   <?php
@@ -53,4 +57,4 @@ $PDO->beginTransaction();
 
      echo "</form>";
      echo "</div>";
-?> 
+?>
