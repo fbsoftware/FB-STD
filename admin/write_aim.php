@@ -19,16 +19,15 @@ $PDO->beginTransaction();
 $azione = $_POST['submit'];    print_r($_POST);//debug
 
 // test validità codice
+$_SESSION['esito'] = array();
 if (($icod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
+          array_push($_SESSION['esito'],'151');
           }
 // test validità descrizione
 if (($ides <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
+          array_push($_SESSION['esito'],'154');
           }
 
 switch ($azione)
@@ -41,7 +40,7 @@ case 'nuovo':
                       '$iimg','$iimgtit','$iimgcol','$iimgpos','$itipo','$ivideo','$iimgalt')";
                       $PDO->exec($sql);
                       $PDO->commit();
-                      $_SESSION['esito'] = 54;
+                      array_push($_SESSION['esito'],'54');
                       break;
 
 case 'modifica':
@@ -52,7 +51,7 @@ echo           $sql = "UPDATE `".DB::$pref."aim`
                    WHERE iid= '$iid' ";
                   $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 55;
+                  array_push($_SESSION['esito'],'55');
                   break;
 
 case 'cancella':
@@ -60,11 +59,11 @@ case 'cancella':
                     WHERE iid= '$iid' ";
                     $PDO->exec($sql);
                     $PDO->commit();
-                    $_SESSION['esito'] = 53;
+                    array_push($_SESSION['esito'],'53');
                     break;
 
 case 'ritorno':
-               $_SESSION['esito'] = 2;
+               array_push($_SESSION['esito'],'2');
                $loc = "location:admin.php?".$_SESSION['location']."";
                     header($loc);
                break;

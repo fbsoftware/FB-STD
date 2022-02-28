@@ -12,7 +12,7 @@
 =============================================================================*/
 // toolbar
 	$param  = array('nuovo','modifica','cancella','chiudi');
-	$btx    = new bottoni_str_par('Tabella dei menù','mnu','call_upd_mnu.php',$param);
+	$btx    = new bottoni_str_par('Tabella dei menù','mnu','upd_mnu.php',$param);
 		$btx->btn();
 
 // memorizza location iniziale

@@ -27,9 +27,12 @@ require_once('post_prm.php');
 $azione  =$_POST['submit'];
 // print_r($_POST);//debug
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
+
+// scelta obbligatoria
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $oid < 1)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      header('location:gest_prm.php');
      }
 

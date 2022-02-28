@@ -13,9 +13,10 @@ require_once('init_admin.php');
 require_once('post_aim.php');
 $azione  =$_POST['submit'];     //print_r($_POST);//debug
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella') && $iid < 1)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
      }

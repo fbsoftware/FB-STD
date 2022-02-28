@@ -38,9 +38,10 @@ require('post_tmp.php');
 $azione   =$_POST['submit'];
 
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella') && ($tid < 1))
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }

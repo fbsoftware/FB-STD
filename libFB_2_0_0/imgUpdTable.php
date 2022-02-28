@@ -14,6 +14,7 @@ class imgUpdTable    extends imgTable
 	public $width  = 0;          // larghezza max immagine
 	public $numero = 0;          // celle per riga
 	public $callbk = "";          // action del form
+	public $path_img = "";
 	// costruttore
   public function __construct($path,$height,$width,$numero,$callbk)
 	{
@@ -22,19 +23,15 @@ class imgUpdTable    extends imgTable
      $this->width  = $width ;
      $this->numero = $numero ;
      $this->callbk = $callbk ;
-	}
+		 	}
 /************************************************
  * @method:   putTable()
  * @description:Emette la tabella con immagini
  * **********************************************/
   public function putUpdTable()
      {
-// lettura directory
-$path_img = $this->path;
-//$path_img ="../templates/blog/images/logo/";
 
 $array_file=array();
-//foreach (glob($path_img) as $key => $gx)
 foreach (glob($this->path."*.*") as $array_filex)
 {    array_push($array_file,$array_filex); }
 //print_r($array_file);//debug
@@ -56,8 +53,8 @@ for($b=0; $b<$conto2; $b++)
        ||$file_ext=='.ico'  ||$file_ext=='.ICO')
         {
      // form per gestione
-     echo "<form method='post' action='".$this->callbk.".php'>";
-        // verifica dimensioni
+     echo "<form method='post' action='".$this->callbk."'>";
+				// verifica dimensioni
         $dim = getimagesize($array_file[$b]);
         $x=$dim['0'];
 		$y=$dim['1'];

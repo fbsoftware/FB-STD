@@ -15,17 +15,16 @@ require_once('post_prm.php');
 $azione   =    $_POST['submit'];
 print_r($_POST);//debug
 
-// test validit� codice
+// test validità codice
+$_SESSION['esito'] = array();
 if (($ocod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
+          array_push($_SESSION['esito'],'151');
           }
-// test validit� descrizione
+// test validità descrizione
 if (($odes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
+          array_push($_SESSION['esito'],'154');
           }
 
 switch ($azione)
@@ -46,7 +45,7 @@ echo           $sql = "INSERT INTO `".DB::$pref."prm`
 							$osino1,$osino2,$osino3,$osino4)";
                       $PDO->exec($sql);
                       $PDO->commit();
-                      $_SESSION['esito'] = 54;
+                      array_push($_SESSION['esito'],'54');
                       break;
 
 case 'modifica':
@@ -61,7 +60,7 @@ case 'modifica':
                    WHERE oid= $oid ";
                   $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 55;
+                  array_push($_SESSION['esito'],'55');
                   break;
 
 case 'cancella':
@@ -69,11 +68,11 @@ case 'cancella':
                     WHERE oid= '$oid' ";
                     $PDO->exec($sql);
                     $PDO->commit();
-                    $_SESSION['esito'] = 53;
+                    array_push($_SESSION['esito'],'53');
                     break;
 
 case 'ritorno':
-               $_SESSION['esito'] = 2;
+               array_push($_SESSION['esito'],'2');
                break;
 
 default:

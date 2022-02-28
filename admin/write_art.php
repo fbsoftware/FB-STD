@@ -10,16 +10,15 @@
    * Scrive il nuovo articolo.
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once('post_art.php');
 $azione =$_POST['submit'];
 //print_r($_POST);//debug
-
+$_SESSION['esito'] = array();
 switch ($azione)
 {
 case 'ritorno':
                {
-               $_SESSION['esito'] = 2;
+               array_push($_SESSION['esito'],'2');
                $loc = "location:admin.php?".$_SESSION['location']."";
                header($loc);
                break; }
@@ -32,7 +31,7 @@ case 'nuovo' :
                           '$acap','$amostra') ";
                $PDO->exec($sql);
                $PDO->commit();
-               $_SESSION['esito'] = 54;
+               array_push($_SESSION['esito'],'54');
                break;
                }
 
@@ -44,7 +43,7 @@ case 'modifica' :
                          WHERE `aid` = '$aid' ");
                $PDO->exec($sql);
                $PDO->commit();
-               $_SESSION['esito'] = 55;
+               array_push($_SESSION['esito'],'55');
                break;
                }
 
@@ -53,10 +52,10 @@ case 'cancella':
                $sql= ("DELETE FROM `".DB::$pref."art` where `aprog` = '$aprog' ");
                $PDO->exec($sql);
                $PDO->commit();
-               $_SESSION['esito'] = 53;
+               array_push($_SESSION['esito'],'53');
                break; }
 
-default :      $_SESSION['esito'] = 0;
+default :      array_push($_SESSION['esito'],'0');
 }
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);

@@ -11,9 +11,7 @@
    * 2.0 aggiunto argomento del capitolo.
 ============================================================================= */
 require_once('init_admin.php');
-
-require('post_cap.php');
-
+require_once('post_cap.php');
 $azione  =$_POST['submit'];
 
 // test validità codice
@@ -71,11 +69,10 @@ $PDO->beginTransaction();
 case 'ritorno':
                //$_SESSION['esito'] = 2;
                { $_SESSION = array($_SESSION['esito'],'2'); }
-               header('location:gest_cap.php');
+               header("location:admin.php?".$_SESSION['location']."");
                break;
 
 default:
-                    //$_SESSION['esito'] = 0;
                     { array_push($_SESSION['esito'],'0'); }
 }
      $loc = "location:admin.php?".$_SESSION['location']."";

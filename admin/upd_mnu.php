@@ -12,13 +12,12 @@
 require_once('init_admin.php');
 require_once('post_mnu.php');
 $_SESSION['esito'] = array();     // per la gestione dei messaggi
+
 // test scelta effettuata sul pgm chiamante
 if (isset($_POST['submit']))   $azione  =$_POST['submit'];
-echo $azione;//debug
 if (($azione == 'modifica' || $azione == 'cancella' ) && $bid == '')
 	{
 	array_push($_SESSION['esito'],'4');
-	print_r($_SESSION['esito']);//debug
 	header('location:admin.php?'.$_SESSION['location'].'');
 	}
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";

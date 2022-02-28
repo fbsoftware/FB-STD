@@ -16,17 +16,16 @@ require_once('post_arc.php');
 $azione   =    $_POST['submit'];
 print_r($_POST);//debug
 
-// test validit� codice
+// test validità codice
+$_SESSION['esito'] = array();
 if (($hcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
+          array_push($_SESSION['esito'],'151');
           }
-// test validit� descrizione
+// test validità descrizione
 if (($hdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
+          array_push($_SESSION['esito'],'154');
           }
 
 switch ($azione)
@@ -38,7 +37,7 @@ echo           $sql = "INSERT INTO `".DB::$pref."arc`
                                    '$hsino1','$htit1','$hsino2','$htit2','$hsino3','$htit3','$hsino4','$htit4','$htit_sn','$htit','$htext')";
                       $PDO->exec($sql);
                       $PDO->commit();
-                      $_SESSION['esito'] = 54;
+                      array_push($_SESSION['esito'],'54');
                       break;
 
 case 'modifica':
@@ -49,7 +48,7 @@ echo           $sql = "UPDATE `".DB::$pref."arc`
                     WHERE hid= '$hid' ";
                $PDO->exec($sql);
                $PDO->commit();
-               $_SESSION['esito'] = 55;
+               array_push($_SESSION['esito'],'55');
                break;
 
 case 'cancella':
@@ -57,11 +56,11 @@ case 'cancella':
                     WHERE hid= '$hid' ";
                     $PDO->exec($sql);
                     $PDO->commit();
-                    $_SESSION['esito'] = 53;
+                    array_push($_SESSION['esito'],'53');
                     break;
 
 case 'ritorno':
-               $_SESSION['esito'] = 2;
+               array_push($_SESSION['esito'],'2');
                header('location:admin.php?'.$_SESSION['location'].'');
                break;
 

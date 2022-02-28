@@ -123,10 +123,24 @@ case 'htm':
 	   echo $tx->field();
 		break;
 
+case 'cnt':
+      $tw = new select_root($nsotvo,'nsotvo','Html/php pers.');
+      $tw->select_dir();
+      echo    "<br />";
+      break;
 case 'url':
        $tz = new input(array($nsotvo,'nsotvo',30,'Link esterno','Link esterno al programma','i'));
 	   echo $tz->field();
 		break;
+
+    case 'ifr':
+          $tw = new select_root($nsotvo,'nsotvo','Programma in iframe');
+          $tw->select_dir();
+          echo    "<br />";
+          break;
+    default:
+    echo "Tipo voce errata=".$ntipo;//debug
+    break;
 }
       $tg = new DB_tip_i('trg','ntarget',$ntarget,'Target','Target:_blank ...');
 		$tg->select();

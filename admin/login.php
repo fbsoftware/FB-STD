@@ -30,7 +30,7 @@ echo  "<form name='modulo' action='login_test.php' method='post'>";
      $f2->field();
 
 echo  "<div class='f-flex jc-center'>";
-echo  "<button class='fb-secondary fb-p05 fb-rad7 fb-m05' type='submit' name='submit' value='Login' ><img src='".DB::$dir_imm."utente.png' alt='utente' height='25' />&nbsp;&nbsp;&nbsp;&nbsp;Accedi</button>";
+echo  "<button class='fb-button fb-p05 fb-rad7 fb-m05' type='submit' name='submit' value='Login' ><img src='".DB::$dir_imm."utente.png' alt='utente' height='25' />&nbsp;&nbsp;&nbsp;&nbsp;Accedi</button>";
 echo  "<button class='fb-accent fb-p05 fb-rad7 fb-m05' type='reset' name='submit_back' value='Resetta' ><img src='".DB::$dir_imm."annulla.png' alt='annulla' height='25' />&nbsp;&nbsp;&nbsp;&nbsp;Resetta</button>";
 echo  "</div>";
 echo  "</form>";

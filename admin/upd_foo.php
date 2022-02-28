@@ -29,9 +29,11 @@ require_once('post_foo.php');			// nome tabella
 
      $azione  =$_POST['submit'];
 
+// test scelta effettuata
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $fid < 1)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      header('location:admin.php?'.$_SESSION['location'].'');
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
@@ -75,11 +77,11 @@ case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
           $f1->field();
      $ts = new DB_tip_i('stato','fstat',$fstat,'Stato record','Attivo/sospeso');
           $ts->select();
-     $f3 = new input(array($fcod,'fcod',20,'Codice','£tooltip','ia'));
+     $f3 = new input(array($fcod,'fcod',20,'Codice','','ia'));
           $f3->field();
-     $f4 = new input(array($fdes,'fdes',20,'Descrizione','£tooltip','i'));
+     $f4 = new input(array($fdes,'fdes',20,'Descrizione','','i'));
           $f4->field();
-     $ti = new input(array($ftitolo,'ftitolo',20,'Titolo','£tooltip','i'));
+     $ti = new input(array($ftitolo,'ftitolo',20,'Titolo','','i'));
           $ti->field();
 	 $te = new getTmp($ftmp,'ftmp','Template','Template che visualizza il footer');
 		$te->getTemplate();
@@ -106,7 +108,7 @@ case 'cnt' :
 
 	// per textarea
 	echo	"<fieldset id='tab2'>";
-     $f3 = new input(array($ftext,'ftext',50,'Testo','£tooltip','tx'));
+     $f3 = new input(array($ftext,'ftext',50,'Testo','','tx'));
           $f3->field();
 if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('ftext');</script>"; }
@@ -132,35 +134,23 @@ $btg = new bottoni_str_par('Footer - conferma cancellazione','foo','write_foo.ph
       $ts = new input(array($fstat,'fstat',1,'Stato record','','r'));
 	 	$ts->field();
 	//-----------------------------------------------------------------
-     $f3 = new input(array($fcod,'fcod',20,'Codice','£tooltip','r'));
+     $f3 = new input(array($fcod,'fcod',20,'Codice','','r'));
           $f3->field();
-     $f4 = new input(array($fdes,'fdes',20,'Descrizione','£tooltip','r'));
+     $f4 = new input(array($fdes,'fdes',20,'Descrizione','','r'));
           $f4->field();
-     $f3 = new input(array($ftipo,'ftipo',20,'Tipo','£tooltip','r'));
+     $f3 = new input(array($ftipo,'ftipo',20,'Tipo','','r'));
           $f3->field();
 	 echo "</fieldset>";
 	// per textarea
 	echo	"<fieldset>";
-     $f3 = new input(array($ftext,'ftext',50,'Testo','£tooltip','tx'));
+     $f3 = new input(array($ftext,'ftext',50,'Testo','','tx'));
           $f3->field();
 	echo "</fieldset>";
-
       echo    "</form>";
       break;
 
-    case 'ritorno' :
-          $loc = "location:admin.php?".$_SESSION['location']."";
-               header($loc);
-    break;
-
-     case 'chiudi':
-          $loc = "location:admin.php?urla=widget.php&pag=";
-               header($loc);
-          break;
-
     default:
           echo "Operazione invalida";
-
     }
      echo "</section>";
 	 echo "</body>";

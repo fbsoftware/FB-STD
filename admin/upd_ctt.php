@@ -11,7 +11,9 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
 	18/8/19	uso dei tabs
+  20/02/22  ignorato 'ecat'
 ============================================================================= */
+ 
 require_once('init_admin.php');
 require_once("editor.php");				// scelta editor
 ?>
@@ -23,12 +25,13 @@ require_once("editor.php");				// scelta editor
   </script>
 <?php
 require_once('post_ctt.php');			// nome tabella
+$azione  =$_POST['submit'];
 
-     $azione  =$_POST['submit'];
-
+// test scelta effettuata sul pgm chiamante
+     $_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $eid < 1)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      header('location:admin.php?'.$_SESSION['location'].'');
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
@@ -66,8 +69,8 @@ switch ($azione)
           $f4->field();
      $t2 = new getTmp('','etmp','Template','Scelta del template');
           $t2->getTemplate();
-	$f2 = new input(array('','ecat',20,'Categoria','','i'));
-		$f2->field();
+	//$f2 = new input(array('','ecat',20,'Categoria','','i'));
+		//$f2->field();
 	 $co = new DB_tip_i('tictt','etipo','','Tipo','');
 		$co->select();
 $tw = new select_file('images/','','eimg','Immagine','');
@@ -139,8 +142,8 @@ echo  "</form>";
           $f4->field();
      $t2 = new getTmp($etmp,'etmp','Template','Scelta del template');
           $t2->getTemplate();
-	$f2 = new input(array($ecat,'ecat',20,'Categoria','','i'));
-		$f2->field();
+	//$f2 = new input(array($ecat,'ecat',20,'Categoria','','i'));
+		//$f2->field();
 	 $co = new DB_tip_i('tictt','etipo',$etipo,'Tipo','');
 		$co->select();
 	echo "<div>";	//--------------------

@@ -17,17 +17,12 @@ require_once('post_sld.php');
 $azione = $_POST['submit'];    //print_r($_POST); //debug
 
 // test validità codice
+$_SESSION['esito'] = array();
 if (($slcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
-          }
-// test validità descrizione   
+          {          array_push($_SESSION['esito'],'151');          }
+// test validità descrizione
 if (($slde <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
-          }
+          {          array_push($_SESSION['esito'],'154');          }
 
 switch ($azione)
  {
@@ -39,7 +34,7 @@ case 'nuovo':
                     '$slimg','$slalt','$slcaption','$sldesc','$slinkcap','$slink')";
      		$PDO -> exec($sql);
      		$PDO -> commit();
-     		$_SESSION['esito'] = 54;
+     		array_push($_SESSION['esito'],'54');
      	break;
 
 case 'modifica':
@@ -50,7 +45,7 @@ case 'modifica':
                   WHERE slid=$slid";
      		$PDO -> exec($sql);
      		$PDO -> commit();
-     		$_SESSION['esito'] = 55;
+     		array_push($_SESSION['esito'],'55');
      	break;
 
 case 'cancella':
@@ -58,14 +53,14 @@ case 'cancella':
                   WHERE slid='$slid'";
 		     $PDO -> exec($sql);
      		$PDO -> commit();
-     		$_SESSION['esito'] = 53;
+     		array_push($_SESSION['esito'],'53');
      	break;
 
 case 'uscita':
-     $_SESSION['esito'] = 2;
+     array_push($_SESSION['esito'],'2');
      break;
 default:
-     $_SESSION['esito'] = 0;
+     array_push($_SESSION['esito'],'0');
      break;
     }
 

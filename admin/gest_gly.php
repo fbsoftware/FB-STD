@@ -18,7 +18,7 @@
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$parm = $_SESSION['esito'];
+$parm = $_SESSION['esito'];		
 $m = new msg($parm);
 $m->msg();
 
@@ -44,7 +44,7 @@ echo "</div>";
      require('fields_gly.php');
      echo "<div class='tr'>";
      $f1 = new fieldi($gid,'gid',2,'');
-     echo "<div class='td'>"; 
+     echo "<div class='td'>";
 		$f1->field_ck(); echo "</div>";
      $st = new fieldi($gstat,'gstat',2,'');
      echo "<div class='td'>";

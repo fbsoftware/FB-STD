@@ -13,24 +13,17 @@
 
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once('post_ctt.php');
-
 $azione   =    $_POST['submit'];
 //print_r($_POST);//debug
 
-// test validit� codice
+// test validità codice
+$_SESSION['esito'] = array();
 if (($ecod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
-          }
-// test validit� descrizione
+          {          array_push($_SESSION['esito'],'151');          }
+// test validità descrizione
 if (($edes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
-          }
+          {          array_push($_SESSION['esito'],'154');          }
 
 // transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
@@ -46,7 +39,7 @@ case 'nuovo':
                       VALUES (NULL,$eprog,'$estat','$etmp','$ecod','$edes','$ecat','$etipo','$eimg','$email','$epec','$esito','$etel','$efax','$ecel','$esede','$enote')";
                       $PDO->exec($sql);
                       $PDO->commit();
-                      $_SESSION['esito'] = 54;
+                      array_push($_SESSION['esito'],'54');
                       break;
 
 case 'modifica':
@@ -58,7 +51,7 @@ echo           $sql = "UPDATE `".DB::$pref."ctt`
                    WHERE eid= $eid ";
                   $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 55;
+                  array_push($_SESSION['esito'],'55');
                   break;
 
 case 'cancella':
@@ -66,11 +59,11 @@ case 'cancella':
                     WHERE eid= '$eid' ";
                     $PDO->exec($sql);
                     $PDO->commit();
-                    $_SESSION['esito'] = 53;
+                    array_push($_SESSION['esito'],'53');
                     break;
 
 case 'ritorno':
-               $_SESSION['esito'] = 2;
+               array_push($_SESSION['esito'],'2');
                break;
 
 default:
