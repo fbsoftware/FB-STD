@@ -11,7 +11,7 @@ $btx = new bottoni_str_par('Articoli slide/tab','asl','upd_asl.php',array('nuovo
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 
 // zona messaggi
-$parm = $_SESSION['esito'];
+$parm = $_SESSION['esito'];     
 $m = new msg($parm);
 $m->msg();
 

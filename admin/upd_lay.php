@@ -14,23 +14,17 @@ require_once('post_lay.php');
 $azione  =$_POST['submit'];      //print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella') && $lid == '')
           {
-          $_SESSION['esito'] = 4;
+          array_push($_SESSION['esito'],'4');
           header('location:admin.php?'.$_SESSION['location'].'');
           }
+
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'";
-
-if (($azione == 'modifica' ||$azione == 'cancella') && $lid < 0)
-     {
-     $_SESSION['esito'] = 4;
-$loc = "location:admin.php?".$_SESSION['location']."";
-     header($loc);
-     }
-
-    echo     "<div class='container form-horizontal'>";
-    echo     "<div class='row container'>";
+echo "<div class='container form-horizontal'>";
+echo "<div class='row container'>";
 switch ($azione)
 {
 // inserimento
@@ -47,7 +41,7 @@ switch ($azione)
 
 // modifica
     case 'modifica':
-$btx      = new bottoni_str_par('Layout -modifica','lay','write_lay.php',array('modifica','ritorno'));
+$btx      = new bottoni_str_par('Layout - modifica','lay','write_lay.php',array('modifica','ritorno'));
             $btx->btn();
      $sql = "SELECT * FROM `".DB::$pref."lay`
                WHERE `lid` = $lid ";
@@ -67,11 +61,7 @@ echo  "<fieldset>";
           $ts->select();
      $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
           $t2->getTemplate();
-
-     $f1 = new input(array($ltipo,'ltipo',3,'Tipo modulo','Tipo modulo per comporre la pagina','r'));
-          $f1->field();
-
-// scelta del file in base al tipo di modulo =============================================
+// scelta del file in base al codice tipo di modulo =============================================
 switch ($ltipo) {
 case 'artslide':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in slide');
@@ -128,8 +118,6 @@ case 'footer':
 case 'contatti':
                $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
           		$arg->select_label();
-               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da includere','r'));
-          		$f4->field();
                break;
 default:
 	          echo	"Tipo modulo errato=".$ltipo;
@@ -138,6 +126,8 @@ default:
 // =======================================================================================
      $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));
           $f4->field();
+     $f1 = new input(array($ltipo,'ltipo',3,'Tipo modulo','Tipo modulo per comporre la pagina','r'));
+          $f1->field();
      $f4 = new input(array($linclude,'linclude',50,'Programma','Programma da eseguire','r'));
           $f4->field();
 
@@ -147,7 +137,7 @@ default:
 
 // cancellazione
     case 'cancella' :
-$btx = new bottoni_str_par('Layout - conferma cancellazione','lay','write_lay.php',array('cancella','ritorno'));     
+$btx = new bottoni_str_par('Layout - conferma cancellazione','lay','write_lay.php',array('cancella','ritorno'));
      $btx->btn();
       $sql = "SELECT * FROM `".DB::$pref."lay`
                WHERE `lid` = $lid  ";
@@ -175,7 +165,8 @@ echo  "<fieldset>";
       break;
 
     case 'ritorno' :
-$loc = "location:admin.php?".$_SESSION['location']."";
+    array_push($_SESSION['esito'],'2');
+    $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
     break;
 
@@ -185,7 +176,7 @@ $loc = "location:admin.php?urla=widget.php&pag=";
           break;
 
     default:
-          echo "Operazione invalida";
+          array_push($_SESSION['esito'],'1');
 
 }
 

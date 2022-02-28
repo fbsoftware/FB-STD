@@ -11,19 +11,20 @@ require_once('init_admin.php');
 require_once('post_ute.php');
 $azione=$_POST['submit'];
 //print_r($_POST);//debug
+$_SESSION['esito'] = array();
+
 // cripto la password
 $pwmd5=md5($upassword);
 
 switch ($azione)
 {
-
 case 'nuovo':
                $sql = "INSERT INTO `".DB::$pref."ute`
                          (uid,ustat,uprog,username,upassword,uaccesso,uiscritto)
                       VALUES ('$uid','$ustat','$uprog','$username','$pwmd5','$uaccesso','$uiscritto')" ;
                     $PDO->exec($sql);
                     $PDO->commit();
-                    $_SESSION['esito'] = 54;
+                    array_push($_SESSION['esito'],'54');
                     break;
 
 case 'modifica':
@@ -34,7 +35,7 @@ case 'modifica':
                       WHERE `uid`= '$uid' ";
                       $PDO->exec($sql);
                       $PDO->commit();
-                      $_SESSION['esito'] = 55;
+                      array_push($_SESSION['esito'],'55');
                         break;
 
 case 'cancella':
@@ -42,12 +43,12 @@ case 'cancella':
                       WHERE `uid`= '$uid' ";
                       $PDO->exec($sql);
                       $PDO->commit();
-                      $_SESSION['esito'] = 53;
+                      array_push($_SESSION['esito'],'53');
                         break;
 
 
 case 'ritorno':
-          $_SESSION['esito'] = 2;
+          array_push($_SESSION['esito'],'2');
           $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
 }

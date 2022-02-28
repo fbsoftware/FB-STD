@@ -14,9 +14,10 @@ require_once('post_por.php');
 $azione=$_POST['submit'];          //print_r($_POST); //debug
 
 // test scelta effettuata dal pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella') && $pid <= 0)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
      }
@@ -24,7 +25,7 @@ echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 {
 case NULL:
-          $_SESSION['esito'] = 1;
+          array_push($_SESSION['esito'],'1');
           $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
       break;
@@ -41,23 +42,23 @@ echo  "<fieldset>";
                 $f->field();
         $ts = new DB_tip_i('stato','pstat','','Stato record','Attivo-sospeso');
                 $ts->select();
-        $f  =    new input(array(' ','pcod',30,'Codice portfolio','Codice da assegnare','i'));
+        $f  =    new input(array('','pcod',30,'Codice portfolio','Codice da assegnare','i'));
                 $f->field();
-        $f  =    new input(array(' ','pdes',30,'Descrizione ','Descrizione portfolio','i'));
+        $f  =    new input(array('','pdes',30,'Descrizione ','Descrizione portfolio','i'));
                 $f->field();
         $t = new getTmp('','ptmp','Template','Template che visualizza la slide');
         $t->getTemplate();
         $tw = new select_file('images/','','pimg','Immagine ','Path immagine portfolio');
                 $tw->image();
-        $f  = new input(array(' ','palt',30,'Testo alternativo','Testo alternativo immagine','i'));
+        $f  = new input(array('','palt',30,'Testo alternativo','Testo alternativo immagine','i'));
                 $f->field();
         $f  = new input(array('','pcapt',50,'Titolo','Titolo','i'));
                 $f->field();
         $f  = new input(array('','pmheader',50,'Testata-modal','Testata della mappa modal','i'));
                 $f->field();
-        $f  = new input(array(' ','pmtext',30,'Testo-modal','Testo della mappa modal','i'));
+        $f  = new input(array('','pmtext',30,'Testo-modal','Testo della mappa modal','i'));
                 $f->field();
-        $f  = new input(array(' ','pmlink',50,'Link','URL del link del portfolio','i'));
+        $f  = new input(array('','pmlink',50,'Link','URL del link del portfolio','i'));
                 $f->field();
       echo  "</fieldset>";
       break;

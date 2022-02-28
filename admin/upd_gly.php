@@ -12,12 +12,13 @@
 require_once('init_admin.php');
 require_once("editor.php");			// scelta editor
 require_once('post_gly.php');
+$azione  =$_POST['submit'];     // print_r($_POST);//debug
 
-     $azione  =$_POST['submit'];     // print_r($_POST);//debug
-
+// test scelta effettuata
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $gid < 1)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      header('location:gest_gly.php');
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
@@ -137,11 +138,6 @@ $btg = new bottoni_str_par('Icone - conferma cancellazione','gly','write_gly.php
 	 echo "</fieldset>";
       echo    "</form>";
       break;
-
-    case 'ritorno' :
-          $loc = "location:admin.php?".$_SESSION['location']."";
-               header($loc);
-    break;
 
      case 'chiudi':
           $loc = "location:admin.php?urla=widget.php&pag=";

@@ -10,27 +10,32 @@
    * Caricamento/cancellazione immagini - esecuzione
 ============================================================================= */
 require_once('init_admin.php');
-
 print_r($_POST);//debug
 $azione  = $_POST['submit'];
+$_SESSION['esito'] = array();
 
 // mostra stringa bottoni o chiude
 switch ($azione)
 {
      case 'uscita':
+     array_push($_SESSION['esito'],'2');
+     $loc = "location:admin.php?urla=widget.php&pag=";
+     header($loc);
+  break;
 	 case 'ritorno':
-          $_SESSION['esito'] = 2;
+          array_push($_SESSION['esito'],'2');
+          header('location:admin.php?'.$_SESSION['location'].'');
      	break;
 // ======================= cancella =============================
 
      case 'cancella':
 	 echo "<br />images/".$img_del;
           unlink("images/".$img_del);
-          $_SESSION['esito'] = 56;
+          array_push($_SESSION['esito'],'56');
+          header('location:admin.php?'.$_SESSION['location'].'');
      	break;
 // ======================= upload =============================
      case 'upload':
-print_r($_POST);//debug
 // per prima cosa verifico che il file sia stato effettivamente caricato
 if (!isset($_FILES['file']) || !is_uploaded_file($_FILES['file']['tmp_name']))
 	{
@@ -42,20 +47,26 @@ else
 	echo "<br />".$uploadDir = 'images/';
 	echo "<br />".$userfile_tmp = $_FILES['file']['tmp_name'];
 	echo "<br />".$userfile_name = $_FILES['file']['name'];
-	echo "<br />".$userfile_tmp."-". $uploaDdir.$userfile_name;
+	echo "<br />".$userfile_tmp."\". $uploaDdir.$userfile_name";
 	echo "<br />images/".$_FILES['file']['name'];
 if (move_uploaded_file($userfile_tmp, "images/".$_FILES['file']['name']))
 	{   //Se l'operazione è andata a buon fine...
-	echo 'File inviato con successo.';  }
+	echo 'File inviato con successo.';
+  //header('location:admin.php?'.$_SESSION['location'].'');
+  }
 else{	//Se l'operazione è fallta...
-	echo 'Upload NON valido!';
+  {
+	 array_push($_SESSION['esito'],'3');
+   //header('location:admin.php?'.$_SESSION['location'].'');
 	}
-          $_SESSION['esito'] = 57;
-		  }
+          array_push($_SESSION['esito'],'57');
+          //header('location:admin.php?'.$_SESSION['location'].'');
+  }
+}
           break;
 // ======================= download =============================
 
-     case 'download':
+case 'download':
 //impostiamo la cartella in cui sono presenti i file per il download
 $path = $img_del;
 
@@ -87,10 +98,10 @@ header('Pragma: public');
 
 // leggiamo il file e inviamo l'output
 @readfile($path) or die('SERVER ERROR!');
-$_SESSION['esito'] = 58;
+array_push($_SESSION['esito'],'58');
      break;
 }
 
-header('location:admin.php?'.$_SESSION['location'].'');
+//header('location:admin.php?'.$_SESSION['location'].'');
 
 ?>

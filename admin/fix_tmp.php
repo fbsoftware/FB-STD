@@ -30,7 +30,8 @@ echo	$sql = ("UPDATE ".DB::$pref."tmp
 			WHERE tcod='$num'");
 		$PDO->exec($sql);    // seleziona
 		$PDO->commit();
-		$_SESSION['esito'] = 61;
+    $_SESSION['esito'] = array();
+		array_push($_SESSION['esito'],'61');
           header('location:admin.php?'.$_SESSION['location'].'');
 		break;
 

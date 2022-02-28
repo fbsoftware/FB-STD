@@ -11,16 +11,16 @@
 ============================================================================= */
 require_once('init_admin.php');
 require_once("editor.php");			// scelta editor
-
 require_once('post_cap.php');   //print_r($_POST);//debug
 $azione  =$_POST['submit'];
-$content ='Inserire quì il testo';
+$content ='Inserire qui il testo';
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
+
 // test scelta effettuata sul pgm chiamante
 $_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella') && ($cid < 1))
      {
-     array_push($_SESSION['esito'],'4');
+       array_push($_SESSION['esito'],'4');
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }

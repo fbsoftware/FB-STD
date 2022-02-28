@@ -11,28 +11,33 @@
 	* 1.0.0	nuova head
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once('post_arg.php');
 $azione  =$_POST['submit'];
-
+/*
 // test validità codice
+$_SESSION['esito'] = array();
 if (($rcod <= '') && (($azione != 'cancella') && ($azione != 'ritorno')))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore0'] = 1;
+          array_push($_SESSION['esito'],'151');
           }
 
 // test validità descrizione
 if (($rdesc <= '') && (($azione != 'cancella') && ($azione != 'ritorno')))
           {
-          $_SESSION['errore'] = 1;
-          $_SESSION['errore4'] = 1;
+          array_push($_SESSION['esito'],'154');
           }
+*/
+if (($azione != 'cancella') && ($azione != 'ritorno'))
+{
+  $m = new testNoDati($rcod,$rdesc);
+  $m->alert();
+}
+
 
 switch ($azione)
 {
 case 'ritorno':
-               $_SESSION['esito'] = 2;
+      array_push($_SESSION['esito'],'2');
 			$loc = "location:admin.php?".$_SESSION['location']."";
      		header($loc);
      	     break;
@@ -43,7 +48,7 @@ echo     $sql = "INSERT INTO `".DB::$pref."arg`
                          VALUES (NULL,'$rprog','$rstat','$rcod','$rdesc','$rtext','$rmostra')";
                $PDO->exec($sql);
                $PDO->commit();
-               $_SESSION['esito'] = 54;
+               array_push($_SESSION['esito'],'54');
                break;
 
 case 'modifica':
@@ -53,17 +58,17 @@ case 'modifica':
                   WHERE rid= '$rid' ";
                   $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 55;
+                  array_push($_SESSION['esito'],'55');
                         break;
 case 'cancella':
      $sql = "DELETE from `".DB::$pref."arg`
                   WHERE rid= '$rid' ";
                   $PDO->exec($sql);
                   $PDO->commit();
-                  $_SESSION['esito'] = 53;
+                  array_push($_SESSION['esito'],'53');
                 break;
 default:
-               $_SESSION['esito'] = 1;
+               array_push($_SESSION['esito'],'1');
 }
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);

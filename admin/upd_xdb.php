@@ -14,9 +14,10 @@ require_once('post_xdb.php');
 $azione  =$_POST['submit'];
 
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella' || $azione == 'copia') && $xid == '')
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }
@@ -25,7 +26,7 @@ switch ($azione)
 { // controllo
     case '':
     case 'ritorno' :
-		$_SESSION['esito'] = 2;
+		array_push($_SESSION['esito'],'2');
 		$loc = "location:admin.php?".$_SESSION['location']."";
 		header($loc);
 		break;
@@ -33,7 +34,7 @@ switch ($azione)
 // inserimento
     case 'nuovo':
     $param = array('nuovo','ritorno');
-    $btx   = new bottoni_str_par('Tipologie - nuovo','xdb','write_xdb.php',$param);
+    $btx   = new bottoni_str_par('Tipologie - nuovo','xdb','write_xdb.php?tab=xdb',$param);
          $btx->btn();
 
      echo  "<fieldset>";
@@ -48,6 +49,8 @@ switch ($azione)
           $f3->field();
       $f4 = new input(array('','xdes',30,'Descrizione',' ','i'));
           $f4->field();
+          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
+              $f4->field();
      echo  "</fieldset></form>";
       break;
 // modifica
@@ -76,13 +79,15 @@ switch ($azione)
           $f3->field();
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','i'));
           $f4->field();
+          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
+              $f4->field();
 	 }
      echo    "</fieldset></form>";
      break;
 
 // copia
     case 'copia':
-    $param = array('nuovo','ritorno');
+    $param = array('copia','ritorno');
     $btx   = new bottoni_str_par('Tipologie - copia','xdb','write_xdb.php',$param);
          $btx->btn();
 // transazione
@@ -104,13 +109,15 @@ switch ($azione)
           $f3->field();
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','i'));
           $f4->field();
+          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
+              $f4->field();
 	 }
      echo    "</fieldset></form>";
      break;
 
 // cancellazione
     case 'cancella' :
-          $param  = array('cancella','ritorno');    
+          $param  = array('cancella','ritorno');
           $btx    = new bottoni_str_par('Tipologie - conferma cancellazione','xdb','write_xdb.php',$param);
                $btx->btn();
       $sql = "SELECT * FROM `".DB::$pref."xdb`
@@ -132,6 +139,8 @@ foreach($PDO->query($sql) as $row)
           $f3->field();
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','r'));
           $f4->field();
+          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
+              $f4->field();
       }
      echo    "</fieldset></form>";
       break;

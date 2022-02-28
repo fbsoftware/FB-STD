@@ -13,10 +13,17 @@ ob_start();
  * =============================================================================  */
 require_once('init_admin.php');
 require_once('post_por.php');
-
+$_SESSION['esito'] = array();
 $azione = $_POST['submit'];
 print_r($_POST); //debug
 
+// test validità codice
+$_SESSION['esito'] = array();
+if (($pcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
+          {          array_push($_SESSION['esito'],'151');          }
+// test validità descrizione
+if (($pdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
+          {          array_push($_SESSION['esito'],'154');          }
 switch ($azione)
  {
 case 'nuovo':
@@ -31,7 +38,7 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction();
      $PDO -> exec($sql);
      $PDO -> commit();
-     $_SESSION['esito'] = 54;
+     array_push($_SESSION['esito'],'54');
      break;
 
 case 'modifica':
@@ -46,7 +53,7 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction();
      $PDO -> exec($sql);
      $PDO -> commit();
-     $_SESSION['esito'] = 55;
+     array_push($_SESSION['esito'],'55');
      break;
 
 case 'cancella':
@@ -58,16 +65,16 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction();
      $PDO -> exec($sql);
      $PDO -> commit();
-     $_SESSION['esito'] = 53;
+     array_push($_SESSION['esito'],'53');
      break;
 
 case 'ritorno':
-     $_SESSION['esito'] = 2;
+     array_push($_SESSION['esito'],'2');
      $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
      break;
 default:
-     $_SESSION['esito'] = 0;
+     array_push($_SESSION['esito'],'0');
      break;
     }
 

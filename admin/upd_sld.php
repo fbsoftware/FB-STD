@@ -14,27 +14,20 @@ require_once 'post_sld.php';
 $azione=$_POST['submit'];          //print_r($_POST); //debug
 
 // test scelta effettuata dal pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' || $azione == 'cancella') && $slid <= 0)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'>";
 
-// test scelta effettuata dal pgm chiamante
-if (($azione == 'modifica' || $azione == 'cancella') && $slid < 0)
-     {
-     $_SESSION['esito'] = 4;
-     $loc = "location:admin.php?".$_SESSION['location']."";
-          header($loc);
-     }
-
 switch ($azione)
 {
 case NULL:
-          $_SESSION['esito'] = 1;
+          array_push($_SESSION['esito'],'1');
     header('location:gest_sld.php');
       break;
 case 'nuovo':

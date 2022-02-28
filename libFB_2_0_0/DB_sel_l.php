@@ -36,6 +36,7 @@ class DB_sel_l          extends DB
                     FROM ".self::$pref.$this->tabella."
                     WHERE ".$this->stato." !='A'
                     ORDER BY ".$this->campo." ";
+
           foreach($PDO->query($sql) as $row)
             {
                if ($row[$this->campo] == $this->valini)

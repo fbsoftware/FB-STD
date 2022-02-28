@@ -2,7 +2,7 @@
 /*** -------------------------------------------------------------------------
    * Gestione della tabella 'asl' articoli slide/tab
 =========================================================e====================  */
-
+imap_msgno
 //   bottoni gestione
 $btx = new bottoni_str_par('Articoli slide/tab','asl','upd_asl.php',array('nuovo','modifica','cancella','chiudi'));
           $btx->btn();

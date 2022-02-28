@@ -33,7 +33,10 @@ $m = new msg($parm);
 $m->msg();
 
 // emette tabella con immagini
-     $im = new imgUpdTable($_POST['pcol'],120,50,7,'upd_media');
+     $im = new imgUpdTable($_POST['pcol'],120,50,7,'upd_media.php?path='.$_POST['pcol'].'');
      $im->putUpdTable();
+     // memorizza il path scelto
+       echo "<input type='hidden' name='img_path' value='".$_POST['pcol']."' />";
+    echo "</form>";
 	 echo "</body>";
 ?>

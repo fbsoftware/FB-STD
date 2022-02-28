@@ -14,11 +14,12 @@ require_once('init_admin.php');
 require_once("editor.php");			// scelta editor
 require_once('post_arg.php');
 $azione   = $_POST['submit'];
-$rtext    = $QUI_TEXT;
+$rtext    = "Inserire quì il testo";
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1)
      {
-	  $_SESSION['esito'] = 4;
+	    array_push($_SESSION['esito'],'4');
       header('location:admin.php?'.$_SESSION['location'].'');
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
@@ -128,7 +129,7 @@ break;
     }
 
     default:
-  echo $OP_INVAL;
+  echo "Operazione invalida";
      }
 echo "</body>";
 ob_end_flush();

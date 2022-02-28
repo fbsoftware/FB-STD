@@ -10,7 +10,6 @@
    * Caricamento media
    *==========================================================================*/
 require_once('init_admin.php');
-
 $azione  = $_POST['submit'];
 $img_del = $_POST['img_del'];
 //print_r($_POST);//debug
@@ -67,8 +66,10 @@ switch ($azione)
           break;
 
      case 'chiudi' :
+          header('location:admin.php?'.$_SESSION['location'].'');
+          break;
 	 case 'ritorno' :
-	  header('location:admin.php?urla=widget.php&pag=');
+	        header('location:admin.php?urla=widget.php&pag=');
           break;
 
      default:

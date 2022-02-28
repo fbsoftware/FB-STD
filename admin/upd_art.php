@@ -10,7 +10,6 @@
    28/04/2019	mostra il titolo con select
 ============================================================================= */
 require_once('init_admin.php');
-
 require_once("editor.php");			// scelta editor
 
 require_once('post_art.php');
@@ -18,9 +17,10 @@ if (isset($_POST['submit']))   $azione   =$_POST['submit'];
 $content  ='--- Inserire qui il testo ---';
 
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
      {
-	  $_SESSION['esito'] = 4;
+	    array_push($_SESSION['esito'],'4');
       header('location:admin.php?'.$_SESSION['location'].'');
      }
  switch ($azione)
@@ -28,7 +28,7 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
     case 'nuovo':
     {
      $param = array('nuovo','ritorno');
-     $btx   = new bottoni_str_par('Articoli - nuovo','art','write_art.php',$param);
+     $btx   = new bottoni_str_par('Articoli - nuovo','art','write_xdb.php',$param);
           $btx->btn();
           // contenitore
      echo "<div class='row'>";
@@ -50,7 +50,8 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
 			$f9->field();
 if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
-
+  $f4 = new input(array('art','tab',30,'Tabella',' ','h'));
+      $f4->field();
 echo "</fieldset>";
 echo "</div>";
 echo "</form>";
@@ -95,7 +96,8 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $f9->field();
 if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
-
+  $f4 = new input(array('art','tab',30,'Tabella',' ','h'));
+      $f4->field();
      }
 echo "</div>";
 break;
@@ -133,6 +135,8 @@ break;
           $f8->field();
       $f9 = new input(array($atext,'atext',33,'Testo','','r'));
           $f9->field();
+          $f4 = new input(array('art','tab',30,'Tabella',' ','h'));
+              $f4->field();
      }
 echo    "</form>";
     break;

@@ -15,10 +15,11 @@ require_once('post_asl.php');
 $azione  =$_POST['submit'];    // print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||  $azione == 'cancella') && $did < 1)
      {
-     $_SESSION['esito'] = 4;
-          header('location:admin.php?'.$_SESSION['location'].'');
+     array_push($_SESSION['esito'],'4');
+     header('location:admin.php?'.$_SESSION['location'].'');
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'>";
@@ -111,7 +112,7 @@ break;
 
 // cancellazione
     case 'cancella' :
-     $btx      = new bottoni_str_par('Articoli normali,slide,tab - conferma cancellazione','asl','write_asl.php',array('cancella','ritorno'));     
+     $btx      = new bottoni_str_par('Articoli normali,slide,tab - conferma cancellazione','asl','write_asl.php',array('cancella','ritorno'));
      $btx->btn();
 echo	"<fieldset class='f-flex fd-column'>";
       $sql = "SELECT * FROM `".DB::$pref."asl`

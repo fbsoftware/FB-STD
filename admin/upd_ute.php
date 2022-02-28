@@ -14,10 +14,11 @@ require_once('post_ute.php') ;
 //print_r($_POST);//debug
 $azione    =$_POST['submit'];
 
-// mostra stringa bottoni o chiude
+// test scelta effettuata sul pgm chiamante
+$_SESSION['esito'] = array();
 if (!isset($uid) && ($azione != 'nuovo'))
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
      }

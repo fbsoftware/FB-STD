@@ -1,9 +1,8 @@
 <?php
-$xid     =$row['xid'];                        
+$xid     =$row['xid'];
 $xstat   =$row['xstat'];
-$xprog   =$row['xprog'];          
-$xcod    =$row['xcod'];
+$xprog   =$row['xprog'];
 $xtipo   =$row['xtipo'];
-$xdes    =htmlspecialchars($row['xdes']);
-$xdes    = htmlspecialchars($xdes,ENT_QUOTES);
+$xcod    =htmlentities($row['xcod'], ENT_QUOTES, "UTF-8");
+$xdes    =htmlentities($row['xdes'], ENT_QUOTES, "UTF-8");
 ?>

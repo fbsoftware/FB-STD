@@ -16,10 +16,11 @@ require_once('post_arc.php');
 
 $azione  =$_POST['submit'];
 // print_r($_POST);//debug
-
+// test sceltab effettuata
+$_SESSION['esito'] = array();
 if (($azione == 'modifica' ||$azione == 'cancella') && $hid < 1)
      {
-     $_SESSION['esito'] = 4;
+     array_push($_SESSION['esito'],'4');
      header('location:admin.php?'.$_SESSION['location'].'');
      }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
@@ -161,6 +162,7 @@ $btg = new bottoni_str_par('Modulo articolo in colonne - conferma cancellazione'
       break;
 
     case 'ritorno' :
+          array_push($_SESSION['esito'],'2');
           $loc = "location:admin.php?".$_SESSION['location']."";
                header($loc);
     break;
