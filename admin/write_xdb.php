@@ -7,16 +7,21 @@
     Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
     all'uso anche improprio di FB open template.
     ------------------------------------------------------------------------
-    aggiornamento tabella $_REQUEST['tab']
-    ------------------------------------------------------------------------
-   27/02/2022 utilizzo delle include generali
+01/03/2022	aggiunta copia nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-$tab = "post_".$_POST['tab'].".php";
-require_once ("$tab");
+require_once ("post_".$_SESSION['tab'].".php");
 $azione  =$_POST['submit'];
 print_r($_POST); //debug
 $_SESSION['esito'] = array();
+
+// test campi mancanti
+if (($azione != 'cancella') && ($azione != 'ritorno'))
+{
+  $m = new testNoDati($xcod,$xdes);
+  $m->alert();
+}
+
 switch ($azione)
 {
 case 'nuovo':
@@ -38,6 +43,7 @@ case 'ritorno':
 
   echo "Operazione invalida";
 }
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?>

@@ -11,17 +11,16 @@
 	* 1.0.0	nuova head
 ============================================================================= */
 require_once('init_admin.php');
+$_SESSION['tab'] = "arg";
 require_once("editor.php");			// scelta editor
 require_once('post_arg.php');
 $azione   = $_POST['submit'];
 $rtext    = "Inserire quì il testo";
+
 // test scelta effettuata sul pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' ||$azione == 'cancella') && $rid < 1)
-     {
-	    array_push($_SESSION['esito'],'4');
-      header('location:admin.php?'.$_SESSION['location'].'');
-     }
+             $scelta = new testSiScelta($rid,$azione);
+               $scelta->alert_s();
+
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 // mostra toolbar e form
 switch ($azione)
@@ -84,6 +83,43 @@ switch ($azione)
       }
 break;
 
+// modifica
+    case 'copia':
+     $btm = new bottoni_str_par('Argomenti - copia','arg','write_arg.php',array('copia','ritorno'));
+          $btm->btn();
+	$sql = "SELECT *
+			FROM `".DB::$pref."arg`
+			WHERE `rid` = $rid " ;
+// transazione
+     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+     $PDO = new PDO($con,DB::$user,DB::$pw);
+     $PDO->beginTransaction();
+     foreach($PDO->query($sql) as $row)
+     {
+      require 'fields_arg.php';
+		echo  "<fieldset class='f-flex fd-column'>";
+      $f0 = new input(array($rid,'rid',1,'ID record','','h'));
+          $f0->field();
+          $arg = new DB_ins('arg','rprog');
+              $nr =  $arg->insert();
+          $f1 = new input(array($nr,'rprog',3,'Progressivo','Per ordinamento','i'));
+              $f1->field();
+      $ts = new DB_tip_i('stato','rstat',$rstat,'Stato','Attivo-sospeso');
+          $ts->select();
+      $f2 = new input(array(htmlspecialchars($rcod, ENT_QUOTES),'rcod',10,'Codice','Codice dell&#39;argomento','ia'));
+          $f2->field();
+      $f3 = new input(array(htmlspecialchars($rdesc, ENT_QUOTES),'rdesc',50,'Descrizione','Descrizione dell&#39;argomento','i'));
+          $f3->field();
+      $f4 = new input(array($rmostra,'rmostra',1,'Mostra titolo','SI-NO per mostrare il titolo dell argomento','sn'));
+          $f4->field();
+      $f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','tx'));
+          $f4->field();
+		echo "<script type='text/javascript'>CKEDITOR.replace('rtext');	</script>";
+		echo  "</fieldset>";
+      echo  "</form>";
+      }
+break;
+
 // cancellazione
     case 'cancella' :
 // toolbar
@@ -116,7 +152,7 @@ break;
 			$f4->field_r();
 		$f4 = new input(array($rtext,'rtext',30,'Testo','Testo dell\'argomento','r'));
 			$f4->field();
-		echo  "</fieldset>";
+    echo  "</fieldset>";
 		echo    "</form>";
 
 	}

@@ -11,61 +11,30 @@
    * 2.0 aggiunto argomento del capitolo.
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_cap.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione  =$_POST['submit'];
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($ccod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          { array_push($_SESSION['esito'],'151'); }
-// test validità descrizione
-if (($cdesc <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          { array_push($_SESSION['esito'],'154'); }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($ccod,$cdesc);
+               $m->alert();
+             }
 
 switch ($azione)
 {
 case 'nuovo':
-     $sql = "INSERT INTO `".DB::$pref."cap`
-                         (cid,cprog,cstat,ccod,cdesc,ctext,cmostra,carg)
-                         VALUES (NULL,'$cprog','$cstat','$ccod','$cdesc','$ctext','$cmostra','$carg')";
-// transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-$PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction();
-               $PDO->exec($sql);
-               $PDO->commit();
-               { array_push($_SESSION['esito'],'54'); }
-               //$_SESSION['esito'] = 54;
-               break;
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
 
 case 'modifica':
-     $sql = "UPDATE `".DB::$pref."cap`
-                  SET cprog='$cprog',cstat='$cstat',ccod='$ccod',cdesc='$cdesc',
-                      ctext='$ctext',cmostra='$cmostra' ,carg='$carg'
-                  WHERE cid= '$cid' ";
-// transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-$PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction();
+            include('DB_modifica.php');
+                        break;
 
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  //$_SESSION['esito'] = 55;
-                  { array_push($_SESSION['esito'],'55'); }
-                  break;
 case 'cancella':
-     $sql = "DELETE from `".DB::$pref."cap`
-                  WHERE cid= '$cid' ";
-// transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-$PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction();
-
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  //$_SESSION['esito'] = 53;
-                  { array_push($_SESSION['esito'],'53'); }
-                  break;
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
                //$_SESSION['esito'] = 2;
                { $_SESSION = array($_SESSION['esito'],'2'); }
@@ -75,6 +44,7 @@ case 'ritorno':
 default:
                     { array_push($_SESSION['esito'],'0'); }
 }
+    unset($_SESSION['tab']);
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?>

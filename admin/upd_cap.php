@@ -11,25 +11,20 @@
 ============================================================================= */
 require_once('init_admin.php');
 require_once("editor.php");			// scelta editor
-require_once('post_cap.php');   //print_r($_POST);//debug
+$_SESSION['tab'] = "cap";
+require_once("post_".$_SESSION['tab'].".php");   //print_r($_POST);//debug
 $azione  =$_POST['submit'];
 $content ='Inserire qui il testo';
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 
 // test scelta effettuata sul pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' || $azione == 'cancella') && ($cid < 1))
-     {
-       array_push($_SESSION['esito'],'4');
-     $loc = "location:admin.php?".$_SESSION['location']."";
-     header($loc);
-     }
+$scelta = new testSiScelta($cid,$azione);
+$scelta->alert_s();
 
 switch ($azione)
 {
 // inserimento
     case 'nuovo':
-
           $bti = new bottoni_str_par('Capitoli - nuovo','cap','write_cap.php',array('nuovo','ritorno'));
                $bti->btn();
           echo  "<fieldset class='row'>";
@@ -92,6 +87,44 @@ $PDO->beginTransaction();
      }
      break;
 
+     // copia
+         case 'copia':
+               $bti = new bottoni_str_par('Capitoli - copia','cap','write_cap.php',array('copia','ritorno'));
+                    $bti->btn();
+
+           echo  "<fieldset class='row'>";
+     	$sql = "SELECT * FROM `".DB::$pref."cap` where `cid` = $cid ";
+     // transazione
+     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+     $PDO = new PDO($con,DB::$user,DB::$pw);
+     $PDO->beginTransaction();
+
+          foreach($PDO->query($sql) as $row)
+          {
+          require('fields_cap.php');
+          $f0 = new input(array($cid,'cid',1,'','','h'));
+               $f0->field();
+               $cap = new DB_ins('cap','cprog');
+               $f3 = new input(array($cap->insert(),'cprog',03,'Progressivo','Per ordinamento','i'));
+                    $f3->field();
+               $ts = new DB_tip_i('stato','cstat',$cstat,'Stato record','Attivo-sospeso');
+                    $ts->select();
+               $f4 = new input(array($ccod,'ccod',10,'Codice capitolo','Codice da assegnare al capitolo','ia'));
+                    $f4->field();
+               $f5 = new input(array($cdesc,'cdesc',50,'Descrizione','Descrizione da assegnare al capitolo','i'));
+                    $f5->field();
+               $f6 = new input(array($cmostra,'cmostra',1,'Mostra il testo','SI = mostra il titolo','sn'));
+                    $f6->field();
+               $arg = new DB_sel_lt('arg','rprog',$carg,'rcod','carg','rstat','rdesc','Argomento','Argomento del capitolo');
+                  echo  $arg->select_lt();
+               $f3 = new input(array(htmlspecialchars($ctext, ENT_QUOTES),'ctext',100,'Testo','Inserire il testo per il capitolo','tx'));
+                    $f3->field();
+     		echo "<script type='text/javascript'>CKEDITOR.replace('ctext');	</script>";
+
+               echo "</fieldset>";
+               echo "</form>";
+          }
+          break;
 // cancellazione
     case 'cancella' :
           $bti = new bottoni_str_par('Capitoli - conferma cancellazione','cap','write_cap.php',array('cancella','ritorno'));

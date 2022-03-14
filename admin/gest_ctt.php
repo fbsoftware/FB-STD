@@ -14,12 +14,12 @@
 ============================================================================= */
 
 //   bottoni gestione
-	$btx = new bottoni_str_par('Contatti','ctt','upd_ctt.php',array('nuovo','modifica','cancella','chiudi'));
+	$btx = new bottoni_str_par('Contatti','ctt','upd_ctt.php',array('nuovo','modifica','copia','cancella','chiudi'));
      	$btx->btn();
 
 // memorizza location iniziale
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-
+$_SESSION['tab'] = "ctt";
 // zona messaggi
 $parm = $_SESSION['esito'];
 $m = new msg($parm);
@@ -52,7 +52,7 @@ echo "</div>";
 		echo "<div class='td'>";
 			$f2->field_n(); echo "</div>";
 		$s = new input(array($estat,'estat',2,'','','st-n'));
-		echo "<div class='td'>"; 
+		echo "<div class='td'>";
 			$s->field_n(); echo "</div>";
 ?>
      <div class='td'><?php echo $eprog ?></div>

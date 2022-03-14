@@ -13,9 +13,10 @@
 =============================================================================*/
 
 //   toolbar
-$btx = new bottoni_str_par('Capitoli','cap','upd_cap.php',array('nuovo','modifica','cancella','chiudi'));
+$btx = new bottoni_str_par('Capitoli','cap','upd_cap.php',array('nuovo','modifica','copia','cancella','chiudi'));
      $btx->btn();
 //print_r($_SESSION['esito']);
+
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
 

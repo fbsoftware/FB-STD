@@ -12,13 +12,13 @@
    * 1.0.0	nuovo head breve
 =============================================================================  */
 require_once('init_admin.php');
-
+$_SESSION['tab'] = "nav";
  if ($_POST['submit'] == 'chiudi')
   header('location:admin.php?urla=widget.php&pag=');
-echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
   //   toolbar
-	$param  = array('nuovo','modifica','cancella','ritorno');
+	$param  = array('nuovo','modifica','copia','cancella','ritorno');
 	$btx    = new bottoni_str_par('Voci di menù','nav','upd_nav.php',$param);
 		$btx->btn();
 

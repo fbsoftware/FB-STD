@@ -10,53 +10,41 @@
    * Scrive il nuovo articolo.
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_art.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione =$_POST['submit'];
 //print_r($_POST);//debug
 $_SESSION['esito'] = array();
+
+// test campi mancanti
+if (($azione != 'cancella') && ($azione != 'ritorno')) {
+  $m = new testNoDati($atit,$atext);
+  $m->alert();
+}
+
 switch ($azione)
 {
 case 'ritorno':
-               {
                array_push($_SESSION['esito'],'2');
                $loc = "location:admin.php?".$_SESSION['location']."";
                header($loc);
-               break; }
-
-case 'nuovo' :
-               {
-               $sql = "INSERT INTO `".DB::$pref."art`
-                    ( `aid`,`astat`,`aprog`,`atit`,`aalias`,`atext`,`aarg`,`acap`,`amostra`)
-               VALUES (NULL ,'$astat','$aprog','$atit','$aalias','$atext','$aarg',
-                          '$acap','$amostra') ";
-               $PDO->exec($sql);
-               $PDO->commit();
-               array_push($_SESSION['esito'],'54');
                break;
-               }
 
-case 'modifica' :
-               {
-               $sql = ("UPDATE `".DB::$pref."art`
-                         SET `atext`='$atext',`acap`='$acap',`aarg`='$aarg',`atit`='$atit',
-                              `aprog`='$aprog',`amostra`='$amostra',`astat`='$astat'
-                         WHERE `aid` = '$aid' ");
-               $PDO->exec($sql);
-               $PDO->commit();
-               array_push($_SESSION['esito'],'55');
-               break;
-               }
+case 'nuovo':
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
+
+case 'modifica':
+            include('DB_modifica.php');
+                        break;
 
 case 'cancella':
-               {
-               $sql= ("DELETE FROM `".DB::$pref."art` where `aprog` = '$aprog' ");
-               $PDO->exec($sql);
-               $PDO->commit();
-               array_push($_SESSION['esito'],'53');
-               break; }
+            include('DB_cancella.php');
+                        break;
 
 default :      array_push($_SESSION['esito'],'0');
 }
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 

@@ -11,11 +11,12 @@
 ============================================================================= */
 
 //   toolbar
-$btx = new bottoni_str_par('Templates','tmp','upd_tmp.php',array('nuovo','modifica','cancella','chiudi'));
+$btx = new bottoni_str_par('Templates','tmp','upd_tmp.php',array('nuovo','modifica','copia','cancella','chiudi'));
      $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
+$_SESSION['tab'] = "tmp";
 
 // zona messaggi
 $parm = $_SESSION['esito'];
@@ -24,9 +25,7 @@ $m->msg();
 
 //  testata di tabella
 echo "<section id='tmp'>";
-
 echo "<div class='table fb-hv80'>";
-
 echo "<div class='th'>";
 echo "<div class='td'>Scelta</div>";
 echo "<div class='td'>Stato</div>";
@@ -52,7 +51,7 @@ echo "</div>";
     $f2->field_n(); echo "</div>";
 		$f = new input(array($tstat,'tstat',2,'','','st-n'));
 		echo "<div class='td'>";
-    $f->field_n(); echo "</div>";		   
+    $f->field_n(); echo "</div>";
 
 ?>
 	<div class="td"><?php echo $tprog ?></div>

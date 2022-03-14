@@ -11,22 +11,15 @@
 	* 1.0.0	nuova head
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_arg.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione  =$_POST['submit'];
-/*
-// test validità codice
-$_SESSION['esito'] = array();
-if (($rcod <= '') && (($azione != 'cancella') && ($azione != 'ritorno')))
-          {
-          array_push($_SESSION['esito'],'151');
-          }
 
-// test validità descrizione
-if (($rdesc <= '') && (($azione != 'cancella') && ($azione != 'ritorno')))
-          {
-          array_push($_SESSION['esito'],'154');
-          }
-*/
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($rcod,$rdesc);
+               $m->alert();
+             }
 if (($azione != 'cancella') && ($azione != 'ritorno'))
 {
   $m = new testNoDati($rcod,$rdesc);
@@ -42,34 +35,22 @@ case 'ritorno':
      		header($loc);
      	     break;
 
-case 'nuovo':
-echo     $sql = "INSERT INTO `".DB::$pref."arg`
-                         (rid,rprog,rstat,rcod,rdesc,rtext,rmostra)
-                         VALUES (NULL,'$rprog','$rstat','$rcod','$rdesc','$rtext','$rmostra')";
-               $PDO->exec($sql);
-               $PDO->commit();
-               array_push($_SESSION['esito'],'54');
-               break;
+           case 'nuovo':
+           case 'copia':
+                       include('DB_nuovo.php');
+                               break;
 
-case 'modifica':
-     $sql = "UPDATE `".DB::$pref."arg`
-                  SET rprog='$rprog',rstat='$rstat',rcod='$rcod',rdesc='$rdesc',
-                      rtext='$rtext',rmostra='$rmostra'
-                  WHERE rid= '$rid' ";
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  array_push($_SESSION['esito'],'55');
-                        break;
-case 'cancella':
-     $sql = "DELETE from `".DB::$pref."arg`
-                  WHERE rid= '$rid' ";
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  array_push($_SESSION['esito'],'53');
-                break;
+           case 'modifica':
+                       include('DB_modifica.php');
+                                   break;
+
+           case 'cancella':
+                       include('DB_cancella.php');
+                                   break;
 default:
                array_push($_SESSION['esito'],'1');
 }
+unset($_SESSION['tab']);
      $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?>

@@ -12,7 +12,7 @@
    * 1.0.0	nuova head
 ============================================================================= */
 require_once('init_admin.php');
-require('post_nav.php');
+require_once("post_".$_SESSION['tab'].".php");
 @$azione=$_POST['submit'];
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 // mostra stringa bottoni
@@ -28,7 +28,7 @@ case 'nuovo':
      {
 // toolbar
 	$param  = array('nuovo','ritorno');
-	$btx    = new bottoni_str_par('Voci di menù - nuovo','nav','write_nav.php',$param);  
+	$btx    = new bottoni_str_par('Voci di menù - nuovo','nav','write_nav.php',$param);
 		$btx->btn();
 echo "<fieldset >";
       $nav = new DB_ins('nav','nprog');

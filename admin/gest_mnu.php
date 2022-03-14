@@ -11,8 +11,8 @@
 	09/02/22	action=include()
 =============================================================================*/
 // toolbar
-	$param  = array('nuovo','modifica','cancella','chiudi');
-	$btx    = new bottoni_str_par('Tabella dei menù','mnu','upd_mnu.php',$param);
+	$param  = array('nuovo','modifica','copia','cancella','chiudi');
+	$btx    = new bottoni_str_par('Menù','mnu','upd_mnu.php',$param);
 		$btx->btn();
 
 // memorizza location iniziale

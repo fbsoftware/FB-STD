@@ -4,9 +4,9 @@ Effettua la modifica di un record in una tabella di database.
 Il database è già connesso e la transazione pronta.
 --------------------------------------------------------------*/
 // lettura campi della tabella e composizione stringa SQL
-  if (isset($_POST['tab']))
+  if (isset($_SESSION['tab']))
        {
-  $sql = "SHOW FULL COLUMNS FROM ".DB::$pref.$_POST['tab']." ";
+  $sql = "SHOW FULL COLUMNS FROM ".DB::$pref.$_SESSION['tab']." ";
 
 // compone stringhe per SQL
 $valori = "";
@@ -33,7 +33,7 @@ $valori = substr($valori,0,($l-1));
 }  // isset
 
 // esecuzione SQL
-        $sql = "UPDATE `".DB::$pref.$_POST['tab']."` SET ".$valori."    WHERE ".$chiave." ";
+echo        $sql = "UPDATE `".DB::$pref.$_SESSION['tab']."` SET ".$valori."    WHERE ".$chiave." ";
         $PDO->exec($sql);
         $PDO->commit();
         array_push($_SESSION['esito'],'55');

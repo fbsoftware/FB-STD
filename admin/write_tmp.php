@@ -14,16 +14,18 @@
 
 ============================================================================= */
 require_once('init_admin.php');
-require_once 'post_tmp.php';
+require_once("post_".$_SESSION['tab'].".php");
 $azione   =$_POST['submit'];
 
 echo "<br />";
 print_r($_POST);//debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($tmenu <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          { array_push($_SESSION['esito'],'151'); }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($tcod,$tdesc);
+               $m->alert();
+             }
 
      // transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
@@ -34,92 +36,23 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
- echo          $sql = "INSERT INTO `".DB::$pref."tmp` (tprog,tstat,tcod,tsel,tfolder,
-                       tdesc,tmenu,tlang,tslidebutt,tslidetime,tportitle,tcolor,
-                       tgliforma,tgliftitle,tgliftext,tglireverse,ttipo,
-						tgliftit,tportit,tportext,
-						tcttitle,tcttit,tcttext,
-						ttabtitle,ttabtit,ttabtext,teditor,
-						tpri_color,
-						tx_pri_color,
-						tsec_color,
-						tx_sec_color,
-						tbg_color,
-						tx_color,
-						tbutton_color ,
-						tx_button_color,
-						tpromotitle,tpromotit,tpromotext)
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
 
-                       VALUES ('$tprog','$tstat','$tcod','$tsel','$tfolder','$tdesc',
-                              '$tmenu','$tlang','$tslidebutt','$tslidetime',
-                              '$tportitle','$tcolor','$tgliforma','$tgliftitle',
-                              '$tgliftext','$tglireverse','$ttipo',
-						 '$tgliftit',
-						 '$tportit','$tportext',
-						 '$tcttitle','$tcttit','$tcttext',
-						  '$ttabtitle','$ttaabtit','$ttabtext','$teditor',
-						  '$tpri_color',
-						  '$tx_pri_color',
-						  '$tsec_color',
-						  '$tx_sec_color',
-						  '$tbg_color',
-						  '$tx_color',
-						  '$tbutton_color',
-						  '$tx_button_color',
-						  '$tpromotitle','$tpromotit','$tpromotext')";
-                        $PDO->exec($sql);
-                        $PDO->commit();
-                        array_push($_SESSION['esito'],'54');
-                        break;
 case 'modifica':
-           $sql = "UPDATE `".DB::$pref."tmp`
-                   SET tprog='$tprog',tstat='$tstat',tcod='$tcod',tsel='$tsel',
-						tfolder='$tfolder',tdesc='$tdesc',
-						tmenu='$tmenu',tlang='$tlang',tslidebutt='$tslidebutt',
-						tslidetime='$tslidetime',
-						tcolor='$tcolor',tgliforma='$tgliforma',
-						tgliftitle='$tgliftitle',tgliftext='$tgliftext',
-						tglireverse='$tglireverse',ttipo='$ttipo',
-						tgliftit='$tgliftit',
-						tportitle=$tportitle,
-						tportit='$tportit',
-						tportext='$tportext',
-						tcttitle=$tcttitle,
-						tcttit='$tcttit',
-						tcttext='$tcttext',
-						ttabtitle=$ttabtitle,
-						ttabtit='$ttabtit',
-						ttabtext='$ttabtext',
-						teditor='$teditor',
-						tpri_color	   ='$tpri_color',
-						tx_pri_color   ='$tx_pri_color',
-						tsec_color     ='$tsec_color',
-						tx_sec_color   ='$tx_sec_color',
-						tbg_color      ='$tbg_color',
-						tx_color       ='$tx_color',
-						tbutton_color  ='$tbutton_color',
-						tx_button_color='$tx_button_color',
-						tpromotitle=$tpromotitle,
-						tpromotit='$tpromotit',
-						tpromotext='$tpromotext'
+            include('DB_modifica.php');
+                        break;
 
-
-                   WHERE `tid`='$tid' ";
-                   $PDO->exec($sql);
-                   $PDO->commit();
-                   array_push($_SESSION['esito'],'55');
-                   break;
 case 'cancella':
-           $sql = "DELETE from `".DB::$pref."tmp` where tid= '$tid' ";
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  array_push($_SESSION['esito'],'53');
-                  break;
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
           array_push($_SESSION['esito'],'2');
           header('location:gest_tmp.php');
           break;
 }
+unset($_SESSION['tab']);
 header('location:admin.php?'.$_SESSION['location'].'');
 ob_end_flush();
 

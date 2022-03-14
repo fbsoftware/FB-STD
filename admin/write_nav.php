@@ -11,52 +11,38 @@
    * Gestito livello di accesso
 =============================================================================*/
 require_once('init_admin.php');
-require_once('post_nav.php');
+require_once("post_".$_SESSION['tab'].".php");
 $_SESSION['esito'] = array();
 $azione=$_POST['submit'];
 //print_r($_POST);//debug
+
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($nmenu,$nli);
+               $m->alert();
+             }
 switch ($azione)
 {
 case 'nuovo':
-               $sql = "INSERT INTO `".DB::$pref."nav`
-                      (nid,nprog,nstat,nmenu,nli,ntesto,
-                       ndesc,nselect,ntarget,ntipo,npag,nsotvo,nhead,ntitle,naccesso,
-					   nmetakey)
-                      VALUES (NULL,'$nprog','$nstat', '$nmenu','$nli','$ntesto',
-                        '$ndesc', '$nselect', '$ntarget', '$ntipo', '$npag',
-                         '$nsotvo','$nhead','$ntitle','$naccesso','$nmetakey')";
-				$PDO->exec($sql);
-				$PDO->commit();
-        array_push($_SESSION['esito'],'54');
-				 break;
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
 
 case 'modifica':
-     $sql = "UPDATE `".DB::$pref."nav`
-                  SET nprog='$nprog',nstat='$nstat',nmenu='$nmenu',
-                      nli='$nli',ntesto='$ntesto' ,ntarget='$ntarget',ndesc='$ndesc' ,
-                      nselect='$nselect',npag='$npag',ntipo='$ntipo',nsotvo='$nsotvo',
-                      nhead='$nhead',ntitle='$ntitle',naccesso='$naccesso',
-					  nmetakey='$nmetakey'
-                  WHERE nid='$nid'";
-				$PDO->exec($sql);
-				$PDO->commit();
-        array_push($_SESSION['esito'],'55');
-                  break;
+            include('DB_modifica.php');
+                        break;
 
 case 'cancella':
-     $sql = "DELETE from `".DB::$pref."nav`
-                  WHERE nid='$nid'";
-		$PDO->exec($sql);
-		$PDO->commit();
-    array_push($_SESSION['esito'],'53');
-		  break;
-
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
     array_push($_SESSION['esito'],'2');
 		   break;
 
 default :     array_push($_SESSION['esito'],'1');
 }
-	header('location:admin.php?'.$_SESSION['location'].'');
+  unset($_SESSION['tab']);
+  header('location:admin.php?'.$_SESSION['location'].'');
 ob_end_flush();
 ?>

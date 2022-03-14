@@ -1,15 +1,18 @@
 <?php  session_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
-   * package		FB open template
-   * versione 1.02
-   * copyright	Copyright (C) 2022 - 2023 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
+/**
+    Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+    package		FB open template
+    versione 1.02
+    copyright	Copyright (C) 2022 - 2023 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+------------------------------------------------------------------------------
+01/03/2022	aggiunta copia nuove include in "write"
 ============================================================================= */
 
 //   bottoni gestione
-	$param = array('nuovo','modifica','cancella','chiudi');
+	$param = array('nuovo','modifica','copia','cancella','chiudi');
 	$btx   = new bottoni_str_par('Utenti','ute','upd_ute.php',$param);
 		$btx->btn();
 
@@ -41,7 +44,7 @@ echo "</div>";
      {
      require('fields_ute.php');
      echo "<div class='tr'>";
-		$f2 = new input(array($uid,'uid',2,'','Spuntare per scegliere l elemento','ck-n'));     
+		$f2 = new input(array($uid,'uid',2,'','Spuntare per scegliere l elemento','ck-n'));
 		echo "<div class='td'>"; $f2->field_n(); echo "</div>";
 		$f = new input(array($ustat,'ustat',2,'','','st-n'));
 		echo "<div class='td'>"; $f->field_n(); echo "</div>";

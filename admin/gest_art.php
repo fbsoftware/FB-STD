@@ -11,7 +11,7 @@
    * ======================================================================= */
 
    //   toolbar
-$param = array('nuovo','modifica','cancella','chiudi');
+$param = array('nuovo','modifica','copia','cancella','chiudi');
 $btx   = new bottoni_str_par('Articoli','art','upd_art.php',$param);
      $btx->btn();
 
@@ -34,7 +34,7 @@ echo "<th style='width:2%; text-align:center;'>Progr.</th>";
 echo "<th>Titolo</th>";
 echo "<th>Argomento</th>";
 echo "<th>Capitolo</th>";
-echo "<th>Si/No titolo</th>"; 
+echo "<th>Si/No titolo</th>";
 echo "</thead>";
  echo "<tbody>";
 $sql =    "SELECT * FROM `".DB::$pref."art`

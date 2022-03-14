@@ -10,6 +10,7 @@
    28/04/2019	mostra il titolo con select
 ============================================================================= */
 require_once('init_admin.php');
+$_SESSION['tab'] = "art";
 require_once("editor.php");			// scelta editor
 
 require_once('post_art.php');
@@ -17,16 +18,12 @@ if (isset($_POST['submit']))   $azione   =$_POST['submit'];
 $content  ='--- Inserire qui il testo ---';
 
 // test scelta effettuata sul pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
-     {
-	    array_push($_SESSION['esito'],'4');
-      header('location:admin.php?'.$_SESSION['location'].'');
-     }
+             $scelta = new testSiScelta($aid,$azione);
+               $scelta->alert_s();
+
  switch ($azione)
 {
     case 'nuovo':
-    {
      $param = array('nuovo','ritorno');
      $btx   = new bottoni_str_par('Articoli - nuovo','art','write_xdb.php',$param);
           $btx->btn();
@@ -50,16 +47,12 @@ if (($azione == 'modifica' ||$azione == 'cancella') && $aid < 1)
 			$f9->field();
 if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
-  $f4 = new input(array('art','tab',30,'Tabella',' ','h'));
-      $f4->field();
 echo "</fieldset>";
 echo "</div>";
 echo "</form>";
         break;
-     }
 
     case 'modifica':
-{   // record in modifica
 $param = array('modifica','ritorno');
 $btx   = new bottoni_str_par('Articoli - modifica','art','write_art.php',$param);
      $btx->btn();
@@ -96,12 +89,52 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
           $f9->field();
 if (TMP::$teditor == 'ckeditor')
 	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
-  $f4 = new input(array('art','tab',30,'Tabella',' ','h'));
-      $f4->field();
      }
 echo "</div>";
 break;
-    }
+
+case 'copia':
+// record in copia
+$param = array('copia','ritorno');
+$btx   = new bottoni_str_par('Articoli - copia','art','write_art.php',$param);
+ $btx->btn();
+ // contenitore
+ echo "<div class='row'>";
+// lettura database
+$sql =  "SELECT * FROM `".DB::$pref."art`
+                 WHERE `aid` ='".$aid."' ";
+
+ $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+ $PDO = new PDO($con,DB::$user,DB::$pw);
+ $PDO->beginTransaction();
+ foreach($PDO->query($sql) as $row)
+ {
+ require_once('fields_art.php');
+ echo  "<fieldset>";
+  $f2 = new input(array($aid,'aid',03,'','','h'));
+      $f2->field();
+      $art = new DB_ins('art','aprog');
+      $f3 = new input(array($art->insert(),'aprog',3,'Progressivo','','ia'));
+          $f3->field();
+  $ts    = new DB_tip_i('stato','astat',$astat,'Stato record','');
+      $ts->select();
+  $arg2 = new DB_sel_l('arg','rprog',$aarg,'rcod','aarg','rstat','rdesc','Argomento','');
+      $arg2->select_label();
+  $cap2 = new DB_sel_l('cap','cprog',$acap,'ccod','acap','cstat','cdesc','Capitolo','');
+      $cap2->select_label();
+  $f4 = new input(array($atit,'atit',30,'Titolo articolo','','i'));
+      $f4->field();
+     $f6 = new input(array($amostra,'amostra',0,'Mostra il titolo','SI = mostra il titolo','sn'));
+           $f6->field();
+
+ echo "<br />";
+  $f9 = new input(array($atext,'atext',30,'Testo','','tx'));
+      $f9->field();
+if (TMP::$teditor == 'ckeditor')
+{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
+ }
+echo "</div>";
+break;
 
     case 'cancella' :
     {
@@ -135,8 +168,6 @@ break;
           $f8->field();
       $f9 = new input(array($atext,'atext',33,'Testo','','r'));
           $f9->field();
-          $f4 = new input(array('art','tab',30,'Tabella',' ','h'));
-              $f4->field();
      }
 echo    "</form>";
     break;

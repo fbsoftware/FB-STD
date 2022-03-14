@@ -10,17 +10,15 @@
    * 28/5/2019	aggiunta copia
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_xdb.php');
+$_SESSION['tab'] = "xdb";
+//print_r($_POST);//debug
 $azione  =$_POST['submit'];
+$xid  =$_POST['xid'];
 
 // test scelta effettuata sul pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' || $azione == 'cancella' || $azione == 'copia') && $xid == '')
-     {
-     array_push($_SESSION['esito'],'4');
-     $loc = "location:admin.php?".$_SESSION['location']."";
-     header($loc);
-     }
+$scelta = new testSiScelta($xid,$azione);
+  $scelta->alert_s();
+
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 { // controllo
@@ -49,8 +47,6 @@ switch ($azione)
           $f3->field();
       $f4 = new input(array('','xdes',30,'Descrizione',' ','i'));
           $f4->field();
-          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
-              $f4->field();
      echo  "</fieldset></form>";
       break;
 // modifica
@@ -79,8 +75,6 @@ switch ($azione)
           $f3->field();
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','i'));
           $f4->field();
-          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
-              $f4->field();
 	 }
      echo    "</fieldset></form>";
      break;
@@ -109,8 +103,6 @@ switch ($azione)
           $f3->field();
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','i'));
           $f4->field();
-          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
-              $f4->field();
 	 }
      echo    "</fieldset></form>";
      break;
@@ -139,8 +131,6 @@ foreach($PDO->query($sql) as $row)
           $f3->field();
       $f4 = new input(array($xdes,'xdes',30,'Descrizione','','r'));
           $f4->field();
-          $f4 = new input(array('xdb','tab',30,'Tabella',' ','h'));
-              $f4->field();
       }
      echo    "</fieldset></form>";
       break;

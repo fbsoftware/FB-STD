@@ -10,9 +10,8 @@
    * gestione tabella 'arg' argomenti.
    * 22/12/2013 incasellamento in tabella
 ============================================================================= */
-
 //   toolbar
-     $btx = new bottoni_str_par('Argomenti','arg','upd_arg.php',array('nuovo','modifica','cancella','chiudi'));
+     $btx = new bottoni_str_par('Argomenti','arg','upd_arg.php',array('nuovo','modifica','copia','cancella','chiudi'));
           $btx->btn();
 
 // memorizza location iniziale

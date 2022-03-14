@@ -1,9 +1,9 @@
 <?php
-    $rid    =$row['rid'];                        
+    $rid    =$row['rid'];
     $rstat  =$row['rstat'];
-    $rprog  =$row['rprog'];          
+    $rprog  =$row['rprog'];
     $rcod   =$row['rcod'];
-    $rdesc  =$row['rdesc'];     
-    $rtext  =$row['rtext'];     
-    $rmostra=$row['rmostra']; 
+    $rdesc  =$row['rdesc'];
+    $rtext  =$row['rtext'];
+    $rmostra=$row['rmostra'];
 ?>

@@ -10,33 +10,32 @@
    *
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_mnu.php');
+$_SESSION['tab'] = "mnu";
+require_once("post_".$_SESSION['tab'].".php");
+$azione  =$_POST['submit'];
 $_SESSION['esito'] = array();     // per la gestione dei messaggi
 
 // test scelta effettuata sul pgm chiamante
-if (isset($_POST['submit']))   $azione  =$_POST['submit'];
-if (($azione == 'modifica' || $azione == 'cancella' ) && $bid == '')
-	{
-	array_push($_SESSION['esito'],'4');
-	header('location:admin.php?'.$_SESSION['location'].'');
-	}
-echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
+             $scelta = new testSiScelta($bid,$azione);
+               $scelta->alert_s();
 
+echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 // toolbar
+
 switch ($azione)
-{	case '':
-    case 'chiudi' :
+{
+	case 'chiudi' :
 	header('location:admin.php?urla=widget.php&pag=');
 	break;
 //==================================================================================
     case 'nuovo':
 	 //   toolbar
 	$param  = array('nuovo','ritorno');
-	$btx    = new bottoni_str_par('Menù - inserimento','mnu','write_mnu.php',$param);
+	$btx    = new bottoni_str_par('Menù - nuovo','mnu','write_mnu.php',$param);
 		$btx->btn();
+echo  "<fieldset>";
       $mnu = new DB_ins('mnu','bprog');
       $xxx = $mnu->insert();
-echo  "<fieldset>";
 $f2 = new input(array($xxx,'bprog',03,'Progressivo','','i'));
      $f2->field();
       $ts = new DB_tip_i('stato','bstat','','Stato','');
@@ -83,6 +82,40 @@ echo  "</form>";
 	  echo "</form>";
 
       break;
+
+			//==================================================================================
+			    case 'copia':  // toolbar modifica
+					$param  = array('copia','ritorno');
+				$btx    = new bottoni_str_par('Menù - copia','mnu','write_mnu.php',$param);
+					$btx->btn();
+
+				echo  "<fieldset>";
+			      $sql = "SELECT * FROM `".DB::$pref."mnu`
+						   WHERE `bid` = ".$bid."  ";
+			     foreach($PDO->query($sql) as $row)
+				 {
+			      require('fields_mnu.php');
+			     $f1 = new input(array($bid,'bid',1,'','','h'));
+					$f1->field();
+			     $ts = new DB_tip_i('stato','bstat',$bstat,'Stato record','');
+					$ts->select();
+					$mnu = new DB_ins('mnu','bprog');
+		      $xxx = $mnu->insert();
+		$f2 = new input(array($xxx,'bprog',03,'Progressivo','','i'));
+		     $f2->field();
+			     $f4 = new field($bmenu,'bmenu',20,'Nome');
+					$f4->field_i();
+			     $tt = new DB_tip_i('menu','btipo',$btipo,'Tipo menu','');
+					$tt->select();
+			     $f6 = new field($btesto,'btesto',50,'Titolo');
+					$f6->field_i();
+				$f2 = new input(array($bselect,'bselect',1,'Selezionato','','sn'));
+					$f2->field();
+				 }
+			      echo "</fieldset>";
+				  echo "</form>";
+
+			      break;
 //==================================================================================
 
     case 'cancella' :

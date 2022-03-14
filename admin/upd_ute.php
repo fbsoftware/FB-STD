@@ -1,27 +1,24 @@
 <?php   session_start();      ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
-   * package		FB open template
-   * versione 1.1
-   * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
+/**
+    Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+    package		FB open template
+    copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
    -------------------------------------------------------------------------
    28/04/2019	tabellato accesso
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_ute.php') ;
+$_SESSION['tab'] = "ute";
 //print_r($_POST);//debug
 $azione    =$_POST['submit'];
+$uid  =$_POST['uid'];
 
 // test scelta effettuata sul pgm chiamante
-$_SESSION['esito'] = array();
-if (!isset($uid) && ($azione != 'nuovo'))
-     {
-     array_push($_SESSION['esito'],'4');
-     $loc = "location:admin.php?".$_SESSION['location']."";
-     header($loc);
-     }
+             $scelta = new testSiScelta($uid,$azione);
+               $scelta->alert_s();
+
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 {
@@ -31,10 +28,10 @@ switch ($azione)
       $param = array('nuovo','ritorno');
       $btx   = new bottoni_str_par('Utenti - nuovo','ute','write_ute.php',$param);
            $btx->btn();
-      $db_ute = new DB_ins('ute','uprog');
-      $nmax = $db_ute->insert();
 
      echo  "<fieldset>";
+     $db_ute = new DB_ins('ute','uprog');
+     $nmax = $db_ute->insert();
       $f3 = new input(array($nmax,'uprog',03,'Progressivo','','i'));
           $f3->field();
       $ts = new DB_tip_i('stato','ustat','','Stato record','');
@@ -85,12 +82,51 @@ case 'modifica':
      echo "</fieldset>";
      echo "</form>";
       break;
+      //==================================================================================
+
+     case 'copia':
+          $param = array('copia','ritorno');
+          $btx   = new bottoni_str_par('Utenti - copia','ute','write_ute.php',$param);
+               $btx->btn();
+
+          echo  "<fieldset>";
+          // transazione
+               $sql = "SELECT * FROM `".DB::$pref."ute`
+                         WHERE `uid` = $uid ";
+               $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+               $PDO = new PDO($con,DB::$user,DB::$pw);
+               $PDO->beginTransaction();
+               foreach($PDO->query($sql) as $row)
+               {
+                require('fields_ute.php') ;
+           $f2 = new input(array($uid,'uid',0,'','','h'));
+               $f2->field();
+               $db_ute = new DB_ins('ute','uprog');
+               $nmax = $db_ute->insert();
+                $f3 = new input(array($nmax,'uprog',03,'Progressivo','','i'));
+                    $f3->field();
+           $ts = new DB_tip_i('stato','ustat',$ustat,'Stato record','');
+               $ts->select();
+           $f4 = new input(array($username,'username',20,'Utente','','i'));
+               $f4->field();
+           $f5 = new input(array($upassword,'upassword',40,'Password','','pw'));
+               $f5->field();
+           $f6  = new DB_tip_i('acc','uaccesso',$uaccesso,'Accesso','Livello di accesso alle funzioni 0=minimo, 9=massimo');
+     		$f6->select();
+     //      $f7 = new input(array($uiscritto,'uiscritto',3,'Nr.utente','','i'));
+       //        $f7->field();
+          }
+          echo "</fieldset>";
+          echo "</form>";
+           break;
+
  //==================================================================================
 
 case 'cancella':
      $param = array('cancella','ritorno');
      $btx   = new bottoni_str_par('Utenti - conferma cancellazione','ute','write_ute.php',$param);
           $btx->btn();
+
      echo  "<fieldset>";
 // transazione
      $sql = "SELECT * FROM `".DB::$pref."ute`
