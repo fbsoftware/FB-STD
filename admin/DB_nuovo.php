@@ -4,9 +4,9 @@ Effettua la scrittura di un record in una tabella di database.
 Il database è già connesso e la transazione pronta.
 --------------------------------------------------------------*/
 // lettura campi della tabella
-  if (isset($_POST['tab']))
+  if (isset($_SESSION['tab']))
        {
-  $sql = "SHOW FULL COLUMNS FROM ".DB::$pref.$_POST['tab']." ";
+  $sql = "SHOW FULL COLUMNS FROM ".DB::$pref.$_SESSION['tab']." ";
   $campi = "(";
   $valori = "VALUES(";
   $i   = 0;
@@ -39,7 +39,7 @@ $l = strlen($valori);
 $valori = substr($valori,0,($l-1));
 $valori .= ")";
 }  // isset
-        $sql = "INSERT INTO `".DB::$pref.$_POST['tab']."` $campi $valori ";
+        $sql = "INSERT INTO `".DB::$pref.$_SESSION['tab']."` $campi $valori ";
         $PDO->exec($sql);
         $PDO->commit();
         array_push($_SESSION['esito'],'54');
