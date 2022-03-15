@@ -13,7 +13,7 @@
 require_once('init_admin.php');
 $_SESSION['tab'] = "arg";
 require_once("editor.php");			// scelta editor
-require_once('post_arg.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione   = $_POST['submit'];
 $rtext    = "Inserire quì il testo";
 
