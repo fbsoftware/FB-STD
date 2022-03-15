@@ -10,6 +10,7 @@
    * ------------------------------------------------
    * control di tabella
 	17/8/19	scelta editor
+	15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
 require_once("editor.php");				// scelta editor
@@ -24,25 +25,21 @@ require_once("editor.php");				// scelta editor
     $( "#tabs" ).tabs();
   } );
   </script>
+
 <?php
-require_once('post_foo.php');			// nome tabella
+require_once("post_".$_SESSION['tab'].".php");			// nome tabella
+$azione  =$_POST['submit'];
 
-     $azione  =$_POST['submit'];
+// test scelta effettuata sul pgm chiamante
+             $scelta = new testSiScelta($fid,$azione);
+               $scelta->alert_s();
 
-// test scelta effettuata
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' ||$azione == 'cancella') && $fid < 1)
-     {
-     array_push($_SESSION['esito'],'4');
-     header('location:admin.php?'.$_SESSION['location'].'');
-     }
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'>";
 
 switch ($azione)
 {
  //==================================================================================
-
 case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
     {
 	$param  = array('nuovo','ritorno');
@@ -118,6 +115,69 @@ if (TMP::$teditor == 'ckeditor')
      break;
  //==================================================================================
 
+ // copia
+     case 'copia':
+
+      $btx = new bottoni_str_par('Footer - copia','foo','write_foo.php',array('copia','ritorno'));
+      $btx->btn();
+ 	 echo "<div  id='tabs'>";
+ 	echo "<ul>
+ 	<li><a href='#tab1' >Dati base</a></li>
+ 	<li><a href='#tab2' >Testo</a></li>
+ 	</ul>";
+      $sql = "SELECT * FROM `".DB::$pref."foo`
+                WHERE `fid` = $fid ";
+
+ 	echo "<fieldset id='tab1'>";
+      foreach($PDO->query($sql) as $row)
+ 	require('fields_foo.php');
+      $f1 = new input(array($fid,'fid',0,'','','h'));
+           $f1->field();
+					 $ins = new DB_ins('foo','fprog');
+			     $f1 = new input(array($ins->insert(),'fprog',3,'Progressivo','Per ordinamento','i'));
+			          $f1->field();
+      $ts = new DB_tip_i('stato','fstat',$fstat,'Stato record','Attivo/sospeso');
+           $ts->select();
+      $f3 = new input(array($fcod,'fcod',20,'Codice','','ia'));
+           $f3->field();
+      $f4 = new input(array($fdes,'fdes',20,'Descrizione','','i'));
+           $f4->field();
+      $ti = new input(array($ftitolo,'ftitolo',20,'Titolo','','i'));
+           $ti->field();
+ 	 $te = new getTmp($ftmp,'ftmp','Template','Template che visualizza il footer');
+ 		$te->getTemplate();
+
+ 	$input = new input(array($ftipo,'ftipo',20,'Tipo','Tipo elemento di footer','r'));
+      $input->field();
+ //==================================================================================
+ switch ($ftipo)
+ 	{
+ case 'img' :
+       $tw = new select_file('images/',$felemento,'felemento','Immagine ','Path immagine');
+           $tw->image();
+ 		 break;
+ case 'cnt' :
+       $f4 =    new DB_sel_lt('ctt','eprog',$felemento,'ecod','felemento','estat','edes','Contatto','Scegliere il contatto da mostrare');
+           $f4->select_lt();
+ 		 break;
+ 	}
+
+      $f3 = new input(array($flink,'flink',20,'Link','Link se cliccato','i'));
+           $f3->field();
+ 	echo "</fieldset>";
+ //==================================================================================
+
+ 	// per textarea
+ 	echo	"<fieldset id='tab2'>";
+      $f3 = new input(array($ftext,'ftext',50,'Testo','','tx'));
+           $f3->field();
+ if (TMP::$teditor == 'ckeditor')
+ 	{  echo "<script type='text/javascript'>CKEDITOR.replace('ftext');</script>"; }
+ 	echo "</fieldset>";
+ 	echo "</div>";
+     echo "</form>";
+      break;
+  //==================================================================================
 // cancellazione
     case 'cancella' :
 $btg = new bottoni_str_par('Footer - conferma cancellazione','foo','write_foo.php',array('cancella','ritorno'));

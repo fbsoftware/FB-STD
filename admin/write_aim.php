@@ -8,9 +8,10 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * aggiornamento tabella 'aim' articolo con immagine.
+   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_aim.php');
+require_once("post_".$_SESSION['tab'].".php");
 // transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
@@ -18,50 +19,27 @@ $PDO->beginTransaction();
 
 $azione = $_POST['submit'];    print_r($_POST);//debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($icod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'151');
-          }
-// test validità descrizione
-if (($ides <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'154');
-          }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($icod,$ides);
+               $m->alert();
+             }
 
 switch ($azione)
 {
 case 'nuovo':
-           $sql = "INSERT INTO `".DB::$pref."aim`
-                      (iid,iprog,istat,itmp,icod,ides,iart,iartcol,iimg,iimgtit,iimgcol,
-                         iimgpos,itipo,ivideo,iimgalt)
-                      VALUES (NULL,'$iprog','$istat','$itmp','$icod','$ides','$iart','$iartcol',
-                      '$iimg','$iimgtit','$iimgcol','$iimgpos','$itipo','$ivideo','$iimgalt')";
-                      $PDO->exec($sql);
-                      $PDO->commit();
-                      array_push($_SESSION['esito'],'54');
-                      break;
-
-case 'modifica':
-echo           $sql = "UPDATE `".DB::$pref."aim`
-                   SET iprog='$iprog',istat='$istat',itmp='$itmp',icod='$icod',ides='$ides',iart='$iart',
-                        iartcol='$iartcol',iimg='$iimg',iimgtit='$iimgtit',iimgcol='$iimgcol' ,
-                        iimgpos='$iimgpos',itipo='$itipo',ivideo='$ivideo',iimgalt='$iimgalt'
-                   WHERE iid= '$iid' ";
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  array_push($_SESSION['esito'],'55');
-                  break;
-
-case 'cancella':
-            $sql = "DELETE from `".DB::$pref."aim`
-                    WHERE iid= '$iid' ";
-                    $PDO->exec($sql);
-                    $PDO->commit();
-                    array_push($_SESSION['esito'],'53');
+case 'copia':
+            include('DB_nuovo.php');
                     break;
 
+case 'modifica':
+            include('DB_modifica.php');
+                        break;
+
+case 'cancella':
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
                array_push($_SESSION['esito'],'2');
                $loc = "location:admin.php?".$_SESSION['location']."";
@@ -72,7 +50,7 @@ default:
   echo "Operazione invalida";
   break;
 }
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
-
 ?>

@@ -1,21 +1,24 @@
 <?php  session_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
-   * package		FB open template
-   * versione 3.1
-   * copyright	Copyright (C) 2022 - 2023 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
-   * ------------------------------------------------------------------------
-   * gestione tabella 'foo'.
+/**
+ Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+    package		FB open template
+    versione 3.1
+    copyright	Copyright (C) 2022 - 2023 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+    ------------------------------------------------------------------------
+    gestione tabella 'foo'.
+	 15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 
 //   bottoni gestione
-	$btx = new bottoni_str_par('Footer','foo','upd_foo.php',array('nuovo','modifica','cancella','chiudi'));     
+	$btx = new bottoni_str_par('Footer','foo','upd_foo.php',array('nuovo','modifica','copia','cancella','chiudi'));
      	$btx->btn();
 
 // memorizza location iniziale
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
+		 $_SESSION['tab'] = "foo";
 
 // zona messaggi
 $parm = $_SESSION['esito'];
@@ -24,7 +27,6 @@ $m->msg();
 
 //  mostra tabella
 echo "<div class='table fb-hv80'>";
-
 echo "<div class='th'>";
 echo "<div class='td'>Scelta</div>";
 echo "<div class='td'>Stato</div>";

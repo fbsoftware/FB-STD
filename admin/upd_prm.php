@@ -13,7 +13,7 @@
 ============================================================================= */
 require_once('init_admin.php');
 require_once("editor.php");			// scelta editor
-require_once('post_prm.php');
+require_once("post_".$_SESSION['tab'].".php");
 ?>
  <!-- tabs -->
   <script>
@@ -28,13 +28,9 @@ $azione  =$_POST['submit'];
 // print_r($_POST);//debug
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 
-// scelta obbligatoria
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' ||$azione == 'cancella') && $oid < 1)
-     {
-     array_push($_SESSION['esito'],'4');
-     header('location:gest_prm.php');
-     }
+// test scelta effettuata sul pgm chiamante
+             $scelta = new testSiScelta($oid,$azione);
+               $scelta->alert_s();
 
 echo "<section id='upd'>";
 
@@ -46,7 +42,6 @@ switch ($azione)
     case 'nuovo':
      $btx = new bottoni_str_par('Modulo promo - nuovo','prm','write_prm.php',array('nuovo','ritorno'));
           $btx->btn();
-
 ?>
 	<div id="tabs">
   <ul>
@@ -275,6 +270,124 @@ if (TMP::$teditor == 'ckeditor')
      break;
  //==================================================================================
 
+ // copia
+     case 'copia':
+      $btx = new bottoni_str_par('Modulo promo - copia','prm','write_prm.php',array('copia','ritorno'));
+      $btx->btn();
+      $sql = "SELECT * FROM `".DB::$pref."prm`
+                WHERE `oid` = $oid ";
+      foreach($PDO->query($sql) as $row)
+ 	require('fields_prm.php');
+ ?>
+ 	<div id="tabs">
+   <ul>
+ 	<li><a href="#tabs-0">Generale</a></li>
+     <li><a href="#tabs-1">Promo-1</a></li>
+     <li><a href="#tabs-2">Promo-2</a></li>
+     <li><a href="#tabs-3">Promo-3</a></li>
+ 	<li><a href="#tabs-4">Promo-4</a></li>
+   </ul>
+  <?php
+ // generale
+ 	echo "<div id='tabs-0' class='row' >";
+ 	echo	"<fieldset>";
+      $f1 = new input(array($oid,'oid',0,'','','h'));
+           $f1->field();
+      $ts = new DB_tip_i('stato','ostat',$ostat,'Stato record','Attivo/sospeso');
+           $ts->select();
+           $prm = new DB_ins('prm','oprog');
+           $f1 = new input(array($prm->insert(),'oprog',3,'Progressivo','Per ordinamento','i'));
+                $f1->field();
+       $t = new getTmp($otmp,'otmp','Template','Scelta del template che utilizza il promo');
+           $t->getTemplate();
+      $f3 = new input(array($ocod,'ocod',20,'Codice','Codice promo','ia'));
+           $f3->field();
+      $f4 = new input(array($odes,'odes',30,'Descrizione','Descrizione promo','i'));
+           $f4->field();
+      $f3 = new input(array($otit_sn,'otit_sn',1,'Mostra titolo','','sn'));
+           $f3->field();
+      $f3 = new input(array($otit,'otit',50,'Titolo','Titolo del promo','i'));
+           $f3->field();
+      $f3 = new input(array($otext,'otext',50,'Testo','Testo del promo','tx'));
+           $f3->field();
+ 		  echo "</fieldset>";
+ 	echo "</div>";
+
+ // primo promo
+ 	echo "<div id='tabs-1' class='row' >";
+ 	echo	"<fieldset>";
+      $f3 = new input(array($osino1,'osino1',1,'Mostra promo 1','','sn'));
+           $f3->field();
+       $tw = new select_file('images/',$oimg1,'oimg1','Immagine ','Immagine del promo');
+           $tw->image();
+      $f3 = new input(array($otit1,'otit1',50,'Titolo','Titolo promo','i'));
+           $f3->field();
+      $f5 = new input(array($olink1,'olink1',50,'Link','Link per il titolo','i'));
+           $f5->field();
+      $f4 = new input(array($otext1,'otext1',50,'Testo','Testo del promo','tx'));
+           $f4->field();
+ if (TMP::$teditor == 'ckeditor')
+ 	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext1');</script>"; }
+ 	echo "</fieldset>";
+ 	echo "</div>";
+
+ // secondo promo
+ 	echo "<div id='tabs-2' class='row' >";
+ 	echo	"<fieldset>";
+      $f3 = new input(array($osino2,'osino2',1,'Mostra promo 2','','sn'));
+           $f3->field();
+       $tw = new select_file('images/',$oimg2,'oimg2','Immagine ','Immagine del promo');
+           $tw->image();
+      $f3 = new input(array($otit2,'otit2',50,'Titolo','Titolo promo','i'));
+           $f3->field();
+      $f5 = new input(array($olink2,'olink2',50,'Link','Link per il titolo','i'));
+           $f5->field();
+      $f4 = new input(array($otext2,'otext2',50,'Testo','Testo del promo','tx'));
+           $f4->field();
+ if (TMP::$teditor == 'ckeditor')
+ 	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext2');</script>"; }
+ 	echo "</fieldset>";
+ 	echo "</div>";
+
+ // terzo promo
+ 	echo "<div id='tabs-3' class='row' >";
+ 	echo	"<fieldset>";
+      $f3 = new input(array($osino3,'osino3',1,'Mostra promo 3','','sn'));
+           $f3->field();
+       $tw = new select_file('images/',$oimg3,'oimg3','Immagine ','Immagine del promo');
+           $tw->image();
+      $f3 = new input(array($otit3,'otit3',50,'Titolo','Titolo promo','i'));
+           $f3->field();
+      $f5 = new input(array($olink3,'olink3',50,'Link','Link per il titolo','i'));
+           $f5->field();
+      $f4 = new input(array($otext3,'otext3',50,'Testo','Testo del promo','tx'));
+           $f4->field();
+ if (TMP::$teditor == 'ckeditor')
+ 	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext3');</script>"; }
+ 	echo "</fieldset>";
+ 	echo "</div>";
+
+ // quarto promo
+ 	echo "<div id='tabs-4' class='row' >";
+ 	echo	"<fieldset>";
+      $f3 = new input(array($osino4,'osino4',1,'Mostra promo 4','','sn'));
+           $f3->field();
+       $tw = new select_file('images/',$oimg4,'oimg4','Immagine ','Immagine del promo');
+           $tw->image();
+      $f3 = new input(array($otit4,'otit4',50,'Titolo','Titolo promo','i'));
+           $f3->field();
+      $f5 = new input(array($olink4,'olink4',50,'Link','Link per il titolo','i'));
+           $f5->field();
+      $f4 = new input(array($otext4,'otext4',50,'Testo','Testo del promo','tx'));
+           $f4->field();
+ if (TMP::$teditor == 'ckeditor')
+ 	{  echo "<script type='text/javascript'>CKEDITOR.replace('otext4');</script>"; }
+ 	echo "</fieldset>";
+ 	echo "</div>";
+ 	echo "</div>";	// tabs
+      echo    "</form>";
+      break;
+  //======================
 // cancellazione
     case 'cancella' :
 $btg = new bottoni_str_par('Modulo promo - cancellazione','prm','write_prm.php',array('cancella','ritorno'));

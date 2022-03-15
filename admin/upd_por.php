@@ -8,19 +8,16 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * gestione tabella 'por' - CONTROL
+   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================*/
 require_once('init_admin.php');
-require_once('post_por.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione=$_POST['submit'];          //print_r($_POST); //debug
 
-// test scelta effettuata dal pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' || $azione == 'cancella') && $pid <= 0)
-     {
-     array_push($_SESSION['esito'],'4');
-     $loc = "location:admin.php?".$_SESSION['location']."";
-          header($loc);
-     }
+/// test scelta effettuata sul pgm chiamante
+             $scelta = new testSiScelta($pid,$azione);
+               $scelta->alert_s();
+
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 switch ($azione)
 {
@@ -29,11 +26,11 @@ case NULL:
           $loc = "location:admin.php?".$_SESSION['location']."";
           header($loc);
       break;
+
 case 'nuovo':
           $param    = array('nuovo','ritorno');
           $bti      = new bottoni_str_par('Portfolio - nuovo','por','write_por.php',$param);
                 $bti->btn();
-
 // dati di base
 echo  "<fieldset>";
      $PDO = new DB_ins('por','pprog');
@@ -64,7 +61,6 @@ echo  "<fieldset>";
       break;
 
 case 'modifica':
-{
           $param    = array('modifica','ritorno');
           $btm      = new bottoni_str_par('Portfolio - modifica','por','write_por.php',$param);
                $btm->btn();
@@ -114,9 +110,62 @@ echo  "<fieldset>";
                 $f  =    new input($campo);
                         $f->field();
       echo  "</fieldset>";
-     }
+           }
      break;
-}
+
+     case 'copia':
+               $param    = array('copia','ritorno');
+               $btm      = new bottoni_str_par('Portfolio - copia','por','write_por.php',$param);
+                    $btm->btn();
+
+            $sql = "SELECT *
+                    FROM `".DB::$pref."por`
+                    WHERE `pid` = '$pid' ";
+          // transazione
+          $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+          $PDO = new PDO($con,DB::$user,DB::$pw);
+          $PDO->beginTransaction();
+          foreach($PDO->query($sql) as $row)
+          {
+           require('fields_por.php');
+     echo  "<fieldset>";
+          $f0 = new input(array($pid,'pid',1,'','','h'));
+             $f0->field();
+             $PDO = new DB_ins('por','pprog');
+             $nr=$PDO->insert();
+                $f  =    new input(array($nr,'pprog',5,'Progressivo','Per serializzare','i'));
+                        $f->field();
+             $ts = new DB_tip_i('stato','pstat',$pstat,'Stato record','Attivo-sospeso');
+                     $ts->select();
+             $campo  =    array($pcod,'pcod',30,'Codice portfolio','Codice da assegnare','i');
+                     $f  =    new input($campo);
+                             $f->field();
+             $campo  =    array($pdes,'pdes',30,'Descrizione ','Descrizione portfolio','i');
+                     $f  =    new input($campo);
+                             $f->field();
+             $t = new getTmp($ptmp,'ptmp','Template','Template che visualizza la slide');
+             $t->getTemplate();
+
+             $tw = new select_file('images/',$pimg,'pimg','Immagine ','Path immagine portfolio');
+                     $tw->image();
+             $campo  =    array($palt,'palt',30,'Testo alternativo','Testo alternativo immagine','i');
+                     $f  =    new input($campo);
+                             $f->field();
+             $campo  =    array($pcapt,'pcapt',50,'Titolo','Titolo','i');
+                     $f  =    new input($campo);
+                             $f->field();
+             $campo  =    array($pmheader,'pmheader',50,'Testata-modal','Testata della mappa modal','i');
+                     $f  =    new input($campo);
+                             $f->field();
+             $campo  =    array($pmtext,'pmtext',30,'Testo-modal','Testo della mappa modal','i');
+                     $f  =    new input($campo);
+                             $f->field();
+             $campo  =    array($pmlink,'pmlink',50,'Link','URL del link del portfolio','i');
+                     $f  =    new input($campo);
+                             $f->field();
+           echo  "</fieldset>";
+          }
+          break;
 case 'cancella':
           $param    = array('cancella','ritorno');
           $btm      = new bottoni_str_par('Portfolio - conferma cancellazione','por','write_por.php',$param);

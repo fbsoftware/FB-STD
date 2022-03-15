@@ -8,57 +8,34 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * aggiornamento tabella 'arc'
+   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-//----------------------------------------------
-require_once('post_arc.php');
-
+require_once("post_".$_SESSION['tab'].".php");
 $azione   =    $_POST['submit'];
 print_r($_POST);//debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($hcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'151');
-          }
-// test validità descrizione
-if (($hdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'154');
-          }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($hcod,$hdes);
+               $m->alert();
+             }
 
 switch ($azione)
 {
 case 'nuovo':
-echo           $sql = "INSERT INTO `".DB::$pref."arc`
-                      (hid,hprog,hstat,htmp,hcod,hdes,hsino1,htit1,hsino2,htit2,hsino3,htit3,hsino4,htit4,htit_sn,htit,htext)
-                      VALUES (NULL,'$hprog','$hstat','$htmp','$hcod','$hdes',
-                                   '$hsino1','$htit1','$hsino2','$htit2','$hsino3','$htit3','$hsino4','$htit4','$htit_sn','$htit','$htext')";
-                      $PDO->exec($sql);
-                      $PDO->commit();
-                      array_push($_SESSION['esito'],'54');
-                      break;
-
-case 'modifica':
-echo           $sql = "UPDATE `".DB::$pref."arc`
-                   SET hprog='$hprog',hstat='$hstat',htmp='$htmp',hcod='$hcod',hdes='$hdes',
-                         hsino1='$hsino1',hsino2='$hsino2', hsino3='$hsino3', hsino4='$hsino4',
-						 htit1='$htit1',htit2='$htit2',htit3='$htit3',htit4='$htit4',htit_sn='$htit_sn',htit='$htit',htext='$htext'
-                    WHERE hid= '$hid' ";
-               $PDO->exec($sql);
-               $PDO->commit();
-               array_push($_SESSION['esito'],'55');
-               break;
-
-case 'cancella':
-            $sql = "DELETE from `".DB::$pref."arc`
-                    WHERE hid= '$hid' ";
-                    $PDO->exec($sql);
-                    $PDO->commit();
-                    array_push($_SESSION['esito'],'53');
+case 'copia':
+            include('DB_nuovo.php');
                     break;
 
+case 'modifica':
+            include('DB_modifica.php');
+                        break;
+
+case 'cancella':
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
                array_push($_SESSION['esito'],'2');
                header('location:admin.php?'.$_SESSION['location'].'');
@@ -67,5 +44,6 @@ case 'ritorno':
 default:
   echo "[".$azione."]-Operazione invalida";
 }
-          header('location:admin.php?'.$_SESSION['location'].'');
+unset($_SESSION['tab']);
+header('location:admin.php?'.$_SESSION['location'].'');
 ?>

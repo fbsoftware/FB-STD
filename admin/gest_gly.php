@@ -8,17 +8,18 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * gestione tabella 'gly' icone.
+	 15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 
 //   bottoni gestione
-	$btx = new bottoni_str_par('Icone','gly','upd_gly.php',array('nuovo','modifica','cancella','chiudi'));
+	$btx = new bottoni_str_par('Icone','gly','upd_gly.php',array('nuovo','modifica','copia','cancella','chiudi'));
      	$btx->btn();
 
 // memorizza location iniziale
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-
+		 $_SESSION['tab'] = "gly";
 // zona messaggi
-$parm = $_SESSION['esito'];		
+$parm = $_SESSION['esito'];
 $m = new msg($parm);
 $m->msg();
 
