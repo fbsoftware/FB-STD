@@ -11,13 +11,13 @@
 ============================================================================= */
 require_once('init_admin.php');
 //   bottoni gestione
-	$param = array('nuovo','modifica','cancella','chiudi');
+	$param = array('nuovo','modifica','copia','cancella','chiudi');
 	$btx = new bottoni_str_par('Moduli promo','prm','upd_prm.php',$param);
      	$btx->btn();
 
 // memorizza location iniziale
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-
+		 $_SESSION['tab'] = "prm";
 // zona messaggi
 $parm = $_SESSION['esito'];
 $m = new msg($parm);
@@ -47,7 +47,7 @@ echo "</div>";
 		$f1->field_ck(); echo "</div>";
      $q = new fieldi($ostat,'ostat',2,'');
      echo "<div class='td'>";
-			$q->field_st(); echo "</div>";   
+			$q->field_st(); echo "</div>";
      ?>
      <div class="td"><?php echo $oprog ?></div>
      <div class='td'><?php echo $otmp ?></div>

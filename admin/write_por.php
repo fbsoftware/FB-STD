@@ -10,64 +10,35 @@ ob_start();
  * all'uso anche improprio di FB open template.
  * -------------------------------------------------------------
  * Aggiornamento tabella 'por' per portfolio
+ 15/03/2022	aggiunta copia, nuove include in "write"
  * =============================================================================  */
 require_once('init_admin.php');
-require_once('post_por.php');
+require_once("post_".$_SESSION['tab'].".php");
 $_SESSION['esito'] = array();
 $azione = $_POST['submit'];
 print_r($_POST); //debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($pcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {          array_push($_SESSION['esito'],'151');          }
-// test validità descrizione
-if (($pdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {          array_push($_SESSION['esito'],'154');          }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($pcod,$pdes);
+               $m->alert();
+             }
+
 switch ($azione)
  {
 case 'nuovo':
-     $sql = "INSERT INTO `" . DB :: $pref . "por`
-                (pid,pstat,pprog,pcod,pdes,ptmp,
-                    pimg,palt,pcapt,pcol,pmheader,pmlink,pmtext)
-                VALUES (NULL,'$pstat',$pprog, '$pcod','$pdes','$ptmp',
-                    '$pimg','$palt','$pcapt','$pcol','$pmheader','$pmlink','$pmtext')";
-// transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-$PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction();
-     $PDO -> exec($sql);
-     $PDO -> commit();
-     array_push($_SESSION['esito'],'54');
-     break;
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
 
 case 'modifica':
-     $sql = "UPDATE `" . DB :: $pref . "por`
-                  SET pprog=$pprog,pstat='$pstat',pcod='$pcod',pdes='$pdes',ptmp='$ptmp',
-                         pimg='$pimg',palt='$palt', pmtext='$pmtext',
-                         pcapt='$pcapt',pcol='$pcol',pmheader='$pmheader',pmlink='$pmlink'
-                  WHERE pid=$pid";
-// transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-$PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction();
-     $PDO -> exec($sql);
-     $PDO -> commit();
-     array_push($_SESSION['esito'],'55');
-     break;
+            include('DB_modifica.php');
+                        break;
 
 case 'cancella':
-     $sql = "DELETE from `" . DB :: $pref . "por`
-                  WHERE pid='$pid'";
-// transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
-$PDO = new PDO($con,DB::$user,DB::$pw);
-$PDO->beginTransaction();
-     $PDO -> exec($sql);
-     $PDO -> commit();
-     array_push($_SESSION['esito'],'53');
-     break;
-
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
      array_push($_SESSION['esito'],'2');
      $loc = "location:admin.php?".$_SESSION['location']."";
@@ -77,7 +48,7 @@ default:
      array_push($_SESSION['esito'],'0');
      break;
     }
-
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ob_end_flush();

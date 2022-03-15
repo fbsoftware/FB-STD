@@ -9,56 +9,34 @@
     ------------------------------------------------------------------------
     aggiornamento tabella 'asl'
 	25.03.21	aggiunto si-no titolo sezione
+  15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-//----------------------------------------------
-require_once('post_asl.php');
+require_once("post_".$_SESSION['tab'].".php");     print_r($_POST);//debug
+$azione   =    $_POST['submit'];
 
-$azione   =    $_POST['submit'];       print_r($_POST);//debug
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($dcod,$ddes);
+               $m->alert();
+             }
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($dcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'151');
-          }
-// test validità descrizione
-if (($ddes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'154');
-          }
 
 switch ($azione)
 {
 case 'nuovo':
-echo           $sql = "INSERT INTO `".DB::$pref."asl`
-                      (did,dprog,dstat,dtmp,dcod,ddes,dcap,dtipo,dcol,dart,dtit_sn,dtit,dtext)
-                      VALUES (NULL,'$dprog','$dstat','$dtmp','$dcod','$ddes',
-                                   '$dcap','$dtipo','$dcol','$dart','$dtit_sn','$dtit','$dtext')";
-                      $PDO->exec($sql);
-                      $PDO->commit();
-                      array_push($_SESSION['esito'],'54');
-                      break;
-
-case 'modifica':
-echo           $sql = "UPDATE `".DB::$pref."asl`
-                   SET dprog='$dprog',dstat='$dstat',dtmp='$dtmp',dcod='$dcod',ddes='$ddes',
-                         dcap='$dcap', dtipo='$dtipo',dcol='$dcol',dart='$dart',
-						 dtit_sn='$dtit_sn',dtit='$dtit',dtext='$dtext'
-                    WHERE did= '$did' ";
-               $PDO->exec($sql);
-               $PDO->commit();
-               array_push($_SESSION['esito'],'55');
-               break;
-
-case 'cancella':
-            $sql = "DELETE from `".DB::$pref."asl`
-                    WHERE did= '$did' ";
-                    $PDO->exec($sql);
-                    $PDO->commit();
-                    array_push($_SESSION['esito'],'53');
+case 'copia':
+            include('DB_nuovo.php');
                     break;
 
+case 'modifica':
+            include('DB_modifica.php');
+                        break;
+
+case 'cancella':
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
                array_push($_SESSION['esito'],'2');
                $loc = "location:admin.php?".$_SESSION['location']."";
@@ -68,5 +46,6 @@ case 'ritorno':
 default:
   echo "[".$azione."]-Operazione invalida";
 }
-          header('location:admin.php?'.$_SESSION['location'].'');
+unset($_SESSION['tab']);
+header('location:admin.php?'.$_SESSION['location'].'');
 ?>

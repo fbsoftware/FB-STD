@@ -39,7 +39,7 @@ $l = strlen($valori);
 $valori = substr($valori,0,($l-1));
 $valori .= ")";
 }  // isset
-        $sql = "INSERT INTO `".DB::$pref.$_SESSION['tab']."` $campi $valori ";
+echo        $sql = "INSERT INTO `".DB::$pref.$_SESSION['tab']."` $campi $valori ";
         $PDO->exec($sql);
         $PDO->commit();
         array_push($_SESSION['esito'],'54');

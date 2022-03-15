@@ -1,16 +1,17 @@
 <?php   session_start();
 /*** -------------------------------------------------------------------------
    * Gestione della tabella 'aim' articolo con immagine
+   15/03/2022	aggiunta copia, nuove include in "write"
 =============================================================================  */
 
 //   bottoni gestione
-$param    = array('nuovo','modifica','cancella','chiudi');
+$param    = array('nuovo','modifica','copia','cancella','chiudi');
 $btx      = new bottoni_str_par('Articoli con immagine','aim','upd_aim.php',$param);
           $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-
+$_SESSION['tab'] = "aim";
 // zona messaggi
 $parm = $_SESSION['esito'];
 $m = new msg($parm);

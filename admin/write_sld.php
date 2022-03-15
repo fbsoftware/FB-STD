@@ -10,51 +10,33 @@ ob_start();
  * all'uso anche improprio di FB open template.
  * -------------------------------------------------------------
  * Aggiornamento tabella 'sld' per slides
+ 15/03/2022	aggiunta copia, nuove include in "write"
  * =============================================================================  */
 require_once('init_admin.php');
-
-require_once('post_sld.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione = $_POST['submit'];    //print_r($_POST); //debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($slcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {          array_push($_SESSION['esito'],'151');          }
-// test validità descrizione
-if (($slde <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {          array_push($_SESSION['esito'],'154');          }
+/// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($slcod,$slde);
+               $m->alert();
+             }
 
 switch ($azione)
  {
 case 'nuovo':
-     $sql = "INSERT INTO `" . DB :: $pref . "sld`
-                (slid,slstat,slprog,slcod,slde,sltmp,
-                    slimg,slalt,slcaption,sldesc,slinkcap,slink)
-                VALUES (NULL,'$slstat',$slprog, '$slcod','$slde','$sltmp',
-                    '$slimg','$slalt','$slcaption','$sldesc','$slinkcap','$slink')";
-     		$PDO -> exec($sql);
-     		$PDO -> commit();
-     		array_push($_SESSION['esito'],'54');
-     	break;
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
 
 case 'modifica':
-     $sql = "UPDATE `" . DB :: $pref . "sld`
-                  SET slprog=$slprog,slstat='$slstat',slcod='$slcod',slde='$slde',sltmp='$sltmp',
-                         slimg='$slimg',slalt='$slalt', slcaption='$slcaption',sldesc='$sldesc',
-                         slinkcap='$slinkcap',slink='$slink'
-                  WHERE slid=$slid";
-     		$PDO -> exec($sql);
-     		$PDO -> commit();
-     		array_push($_SESSION['esito'],'55');
-     	break;
+            include('DB_modifica.php');
+                        break;
 
 case 'cancella':
-     $sql = "DELETE from `" . DB :: $pref . "sld`
-                  WHERE slid='$slid'";
-		     $PDO -> exec($sql);
-     		$PDO -> commit();
-     		array_push($_SESSION['esito'],'53');
-     	break;
+            include('DB_cancella.php');
+                        break;
 
 case 'uscita':
      array_push($_SESSION['esito'],'2');
@@ -63,7 +45,7 @@ default:
      array_push($_SESSION['esito'],'0');
      break;
     }
-
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ob_end_flush();

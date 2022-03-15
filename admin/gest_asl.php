@@ -4,14 +4,15 @@
 =========================================================e====================  */
 
 //   bottoni gestione
-$btx = new bottoni_str_par('Articoli slide/tab','asl','upd_asl.php',array('nuovo','modifica','cancella','chiudi'));
+$btx = new bottoni_str_par('Articoli slide/tab','asl','upd_asl.php',array('nuovo','modifica','copia','cancella','chiudi'));
           $btx->btn();
 
 // memorizza location iniziale
 $_SESSION['location'] = $_SERVER['QUERY_STRING'];
+$_SESSION['tab'] = "asl";
 
 // zona messaggi
-$parm = $_SESSION['esito'];     
+$parm = $_SESSION['esito'];
 $m = new msg($parm);
 $m->msg();
 

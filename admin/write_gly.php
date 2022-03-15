@@ -9,23 +9,19 @@
     all'uso anche improprio di FB open template.
     ------------------------------------------------------------------------
     aggiornamento tabella 'gly'
+    15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_gly.php');
+require_once("post_".$_SESSION['tab'].".php");
 
 $azione   =    $_POST['submit'];          print_r($_POST);//debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($gcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'151');;
-          }
-// test validità descrizione
-if (($gdes <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'154');
-          }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($gcod,$gdes);
+               $m->alert();
+             }
 
 // transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
@@ -35,35 +31,17 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
-           $sql = "INSERT INTO `".DB::$pref."gly`
-                      (gid,gprog,gstat,gtmp,gcod,gdes,gcol,gdim,gtitle,gfa,gtext,gcolor,graggio,glink)
-                      VALUES (NULL,$gprog,'$gstat','$gtmp','$gcod','$gdes','$gcol',
-                                   '$gdim','$gtitle','$gfa','$gtext','$gcolor','$graggio','$glink')";
-                      $PDO->exec($sql);
-                      $PDO->commit();
-                      array_push($_SESSION['esito'],'54');
-                      break;
-
-case 'modifica':
-           $sql = "UPDATE `".DB::$pref."gly`
-                   SET gprog=$gprog,gstat='$gstat',gcod='$gcod',gdes='$gdes',
-                         gtmp='$gtmp',gcol='$gcol',gdim='$gdim',gtitle='$gtitle',
-                         gfa='$gfa',gtext='$gtext',gcolor='$gcolor',graggio='$graggio',
-					glink='$glink'
-                   WHERE gid= $gid ";
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  array_push($_SESSION['esito'],'55');
-                  break;
-
-case 'cancella':
-            $sql = "DELETE from `".DB::$pref."gly`
-                    WHERE gid= '$gid' ";
-                    $PDO->exec($sql);
-                    $PDO->commit();
-                    array_push($_SESSION['esito'],'53');
+case 'copia':
+            include('DB_nuovo.php');
                     break;
 
+case 'modifica':
+            include('DB_modifica.php');
+                        break;
+
+case 'cancella':
+            include('DB_cancella.php');
+                        break;
 case 'ritorno':
                array_push($_SESSION['esito'],'2');
                break;
@@ -71,6 +49,7 @@ case 'ritorno':
 default:
   echo "Operazione invalida";
 }
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?>

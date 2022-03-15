@@ -8,19 +8,16 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * gestione tabella 'sld' - CONTROL
+   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================*/
 require_once('init_admin.php');
-require_once 'post_sld.php';
+require_once("post_".$_SESSION['tab'].".php");
 $azione=$_POST['submit'];          //print_r($_POST); //debug
 
-// test scelta effettuata dal pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' || $azione == 'cancella') && $slid <= 0)
-     {
-     array_push($_SESSION['esito'],'4');
-     $loc = "location:admin.php?".$_SESSION['location']."";
-          header($loc);
-     }
+// test scelta effettuata sul pgm chiamante
+             $scelta = new testSiScelta($slid,$azione);
+               $scelta->alert_s();
+
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'>";
 
@@ -102,6 +99,47 @@ $f  = new input(array($slink,'slink',50,'Link bottone','URL del link se si clicc
      }
       echo  "</fieldset>";
      break;
+
+     case 'copia':
+               $param    = array('copia','ritorno');
+               $btm      = new bottoni_str_par('Slide - copia','sld','write_sld.php',$param);
+                    $btm->btn();
+
+            $sql = "SELECT *
+                    FROM `".DB::$pref."sld`
+                    WHERE `slid` = '$slid' ";
+            echo  "<fieldset>";
+          foreach($PDO->query($sql) as $row)
+          {
+           require('fields_sld.php');
+     $f0 = new input(array($slid,'slid',1,$ID,'','h'));
+          $f0->field();
+     $f  = new input(array($slprog,'slprog','5','Progressivo','Per serializzare','i'));
+          $f->field();
+          $PDO = new DB_ins('sld','slprog');
+          $f  = new input(array($PDO->insert(),'slprog',5,'Progressivo','Per serializzare','i'));
+               $f->field();
+     $f2 = new input(array($slcod,'slcod',20,'Codice','Codice della slide','ia'));
+          $f2->field();
+     $f4 = new input(array($slde,'slde',20,'Descrizione','Descrizione della slide','i'));
+          $f4->field();
+     $t = new getTmp($sltmp,'sltmp','Template','Template che visualizza la slide');
+          $t->getTemplate();
+     $tw = new select_file('images/',$slimg,'slimg','Immagine','Path immagine slide');
+          $tw->image();
+     $f  =    new input(array($slalt,'slalt',30,'Titolo immagine','Titolo per mouseover','i'));
+          $f->field();
+     $f  = new input(array($slcaption,'slcaption',50,'Titolo','Titolo','i'));
+          $f->field();
+     $f  = new input(array($sldesc,'sldesc',50,'Descrizione','Descrizione dettagliata','i'));
+          $f->field();
+     $f  = new input(array($slinkcap,'slinkcap',30,'Caption bottone','Descrizione bottone link','i'));
+          $f->field();
+     $f  = new input(array($slink,'slink',50,'Link bottone','URL del link se si clicca il bottone','i'));
+          $f->field();
+          }
+           echo  "</fieldset>";
+          break;
 
 case 'cancella':
           $param    = array('cancella','ritorno');

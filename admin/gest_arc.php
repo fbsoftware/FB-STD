@@ -8,9 +8,12 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * gestione tabella 'arc' articoli in colonna
+	 15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
+$_SESSION['tab'] = "arc";
+
 //   bottoni gestione
-	$btx = new bottoni_str_par('Articoli in colonna','arc','upd_arc.php',array('nuovo','modifica','cancella','chiudi'));
+	$btx = new bottoni_str_par('Articoli in colonna','arc','upd_arc.php',array('nuovo','modifica','copia','cancella','chiudi'));
      	$btx->btn();
 
 // memorizza location iniziale
