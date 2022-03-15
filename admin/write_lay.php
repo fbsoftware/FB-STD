@@ -8,23 +8,18 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * aggiornamento tabella 'lay'
+   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_lay.php');
-
+require_once("post_".$_SESSION['tab'].".php");
 $azione   =    $_POST['submit'];       print_r($_POST);//debug
 
-// test validità codice
-$_SESSION['esito'] = array();
-if (($lcod <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'151');
-          }
-// test validità descrizione
-if (($ldesc <= "") && ($azione != 'cancella') && ($azione != 'ritorno'))
-          {
-          array_push($_SESSION['esito'],'154');
-          }
+// test campi mancanti
+             if (($azione != 'cancella') && ($azione != 'ritorno'))
+             {
+               $m = new testNoDati($lcod,$ldesc);
+               $m->alert();
+             }
 
 // transazione
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
@@ -34,32 +29,17 @@ $PDO->beginTransaction();
 switch ($azione)
 {
 case 'nuovo':
-           $sql = "INSERT INTO `".DB::$pref."lay`
-                      (lid,lprog,lstat,ltipo,lcod,ldesc,ltmp,linclude)
-                      VALUES (NULL,$lprog,'$ltat','$ltipo','$lcod','$ldesc',
-                                   '$ltmp','$linclude')";
-                      $PDO->exec($sql);
-                      $PDO->commit();
-                      array_push($_SESSION['esito'],'54');
-                      break;
+case 'copia':
+            include('DB_nuovo.php');
+                    break;
 
 case 'modifica':
-           echo $sql = "UPDATE `".DB::$pref."lay`
-                   SET lprog=$lprog,lstat='$lstat',lcod='$lcod',ldesc='$ldesc',
-                         ltipo='$ltipo',ltmp='$ltmp',linclude='$linclude'
-                   WHERE lid= $lid ";
-                  $PDO->exec($sql);
-                  $PDO->commit();
-                  array_push($_SESSION['esito'],'55');
-                  break;
+            include('DB_modifica.php');
+                        break;
 
 case 'cancella':
-            $sql = "DELETE from `".DB::$pref."lay`
-                    WHERE lid= '$lid' ";
-                    $PDO->exec($sql);
-                    $PDO->commit();
-                    array_push($_SESSION['esito'],'53');
-                    break;
+            include('DB_cancella.php');
+                        break;
 
 case 'ritorno':
                array_push($_SESSION['esito'],'2');
@@ -68,6 +48,7 @@ case 'ritorno':
 default:
   echo "Operazione invalida";
 }
+unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
      header($loc);
 ?>
