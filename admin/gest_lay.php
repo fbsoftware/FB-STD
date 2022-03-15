@@ -8,15 +8,16 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------------------------------
    * gestione tabella 'lay' layout di pagina.
+	 		15/03/2022	aggiunta, copia nuove include in "write"
 ============================================================================= */
 // toolbar
-	$param  = array('nuovo','modifica','cancella','chiudi');
+	$param  = array('nuovo','modifica','copia','cancella','chiudi');
 	$btx = new bottoni_str_par('Layout di pagina','lay','upd_lay.php',$param);
 		$btx->btn();
 
      // memorizza location iniziale
      $_SESSION['location'] = $_SERVER['QUERY_STRING'];
-
+		 $_SESSION['tab'] = "lay";
 // zona messaggi
 $parm = $_SESSION['esito'];
 $m = new msg($parm);

@@ -8,18 +8,15 @@
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
    * gestione tabella 'lay'
+   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
-require_once('post_lay.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione  =$_POST['submit'];      //print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
-$_SESSION['esito'] = array();
-if (($azione == 'modifica' || $azione == 'cancella') && $lid == '')
-          {
-          array_push($_SESSION['esito'],'4');
-          header('location:admin.php?'.$_SESSION['location'].'');
-          }
+             $scelta = new testSiScelta($lid,$azione);
+               $scelta->alert_s();
 
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'";
@@ -134,6 +131,103 @@ default:
 	echo  "</fieldset>";
 	echo  "</form>";
      break;
+
+     // copia
+         case 'copia':
+     $btx      = new bottoni_str_par('Layout - copia','lay','write_lay.php',array('copia','ritorno'));
+                 $btx->btn();
+          $sql = "SELECT * FROM `".DB::$pref."lay`
+                    WHERE `lid` = $lid ";
+     // transazione
+     $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
+     $PDO = new PDO($con,DB::$user,DB::$pw);
+     $PDO->beginTransaction();
+     foreach($PDO->query($sql) as $row)
+     require('fields_lay.php');
+
+     echo  "<fieldset>";
+          $f1 = new input(array($lid,'lid',3,'','','h'));
+               $f1->field();
+               $xdb = new DB_ins('lay','lprog');
+               $f1 = new input(array($xdb->insert(),'lprog',3,'Progressivo','Per ordinamento','i'));
+                    $f1->field();
+          $ts = new DB_tip_i('stato','lstat',$lstat,'Stato record','Attivo/sospeso');
+               $ts->select();
+          $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
+               $t2->getTemplate();
+     // scelta del file in base al codice tipo di modulo =============================================
+     switch ($ltipo) {
+     case 'artslide':
+                    $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in slide');
+               		$arg->select_label();
+     			break;
+     case 'artacc':
+                    $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in accordion');
+               		$arg->select_label();
+     			break;
+     case 'arttab':
+                    $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in tab');
+               		$arg->select_label();
+     			break;
+     case 'artsingle':
+                    $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo semplice');
+               		$arg->select_label();
+     			break;
+     case 'article':
+                    $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
+               		$arg->select_label();
+     			break;
+     case 'artimg':
+                    $arg = new DB_sel_l('aim','iprog',$lcod,'icod','lcod','istat','icod','Codice','Articolo con immagine');
+               		$arg->select_label();
+     			break;
+     case 'artcol':
+                    $arg = new DB_sel_l('arc','hprog',$lcod,'hcod','lcod','hstat','hcod','Codice','Articolo in colonne');
+               		$arg->select_label();
+     			break;
+     case 'glyph':
+                    $arg = new DB_sel_l('gly','gprog',$lcod,'gcod','lcod','gstat','gcod','Codice','Modulo con glifi');
+               		$arg->select_label();
+     			break;
+     case 'promo':
+                    $arg = new DB_sel_l('prm','oprog',$lcod,'ocod','lcod','ostat','ocod','Codice','Modulo con glifi');
+               		$arg->select_label();
+     			break;
+     case 'portfolio':
+                    $arg = new DB_sel_l('por','pprog',$lcod,'pcod','lcod','pstat','pcod','Codice','Modulo portfolio');
+               		$arg->select_label();
+     			break;
+     case 'slide':
+                    $arg = new DB_sel_l('sld','slprog',$lcod,'slcod','lcod','slstat','slcod','Codice','Modulo slide di immagini');
+               		$arg->select_label();
+     			break;
+     case 'header':
+          		$f1 = new input(array($lcod,'lcod',30,'Codice','Header con navigatore','i'));
+               		$f1->field();
+     			break;
+     case 'footer':
+                    $arg = new DB_sel_l('foo','fprog',$lcod,'fcod','lcod','fstat','fcod','Codice','Modulo footer');
+               		$arg->select_label();
+     			break;
+     case 'contatti':
+                    $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
+               		$arg->select_label();
+                    break;
+     default:
+     	          echo	"Tipo modulo errato=".$ltipo;
+     			break;
+     }
+     // =======================================================================================
+          $f4 = new input(array($ldesc,'ldesc',50,'Descrizione','Descrizione modulo','i'));
+               $f4->field();
+          $f1 = new input(array($ltipo,'ltipo',3,'Tipo modulo','Tipo modulo per comporre la pagina','r'));
+               $f1->field();
+          $f4 = new input(array($linclude,'linclude',50,'Programma','Programma da eseguire','r'));
+               $f4->field();
+
+     	echo  "</fieldset>";
+     	echo  "</form>";
+          break;
 
 // cancellazione
     case 'cancella' :

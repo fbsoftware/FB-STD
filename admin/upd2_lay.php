@@ -10,7 +10,7 @@
    * Layout del sito
 ============================================================================= */
 require_once('init_admin.php');
-require('post_lay.php');
+require_once("post_".$_SESSION['tab'].".php");
 $azione=$_POST['submit'];
 
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
