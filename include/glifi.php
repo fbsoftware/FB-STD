@@ -4,7 +4,7 @@
   $( function() {
   $( ".fb-primary p" ).addClass('fb-primary');
     $( ".fb-primary h1" ).addClass('fb-primary');
-	 $( "i" ).addClass('fb-color-accent');
+	 $( "i" ).addClass('fb-accent');
   } );
   </script>
  <?php
