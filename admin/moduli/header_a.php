@@ -1,24 +1,24 @@
 <?php
-/*==========================================================
- * 15/5/2020	struttura FLEX
-===========================================================*/
-echo "<header>"; 
-echo "<div class='f-flex fd-row jc-between fb-primary'>";
+/**
+18/04/22  flex
+*/
+echo "<header>";
+echo "<div class='f-flex fd-row jc-between ai-center'>";
 
-echo "<div class=''>";
-echo "<img class='marchio' src='images/logo/logo.png' alt='logo.png' title='logo'>";
+echo "<div>";
+echo "<img class='marchio' src='images/logo/logo.png' alt='logo.png' title='logo' >";
 echo "</div>";
 
-echo "<div class=''>";
-echo "<h3>Amministrazione&nbsp;-&nbsp;".DB::$page_title."</h3>";
+echo "<div>";
+echo "<p>".DB::$page_title."</p>";
 echo "</div>";
 
-echo "<div class=''>";
-echo "<img class='marchio' src='images/".$_COOKIE['admin'].".png' alt='".$_COOKIE['admin'].".png' title='".$_COOKIE['admin']."' >";
+echo "<div>";
+echo "<p class='little'>Utente:&nbsp;<img class='img-utente' src='images/".$_COOKIE['admin'].".png' alt='".$_COOKIE['user'].".png' title='".$_COOKIE['user']."' ></p>";
 echo "</div>";
 
-echo "<div class=''>";
-echo "<h3>V-".DB::$livello.".".DB::$rilascio.".".DB::$modify."</h3>";
+echo "<div>";
+echo "<p class='little'>Versione ".DB::$livello.".".DB::$rilascio.".".DB::$modify."</p>";
 echo "</div>";
 
 echo "</div>";		// flex

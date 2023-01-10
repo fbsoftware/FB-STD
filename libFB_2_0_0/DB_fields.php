@@ -45,7 +45,7 @@ public function write()
   									$valori .= ")";
   									echo "<br>".$valori;
   			}
-        $sql = "INSERT INTO `".DB::$pref.$this->tab"`
+        $sql = "INSERT INTO `".DB::$pref.$this->tab."`
                     ".$campi."
                     VALUES ".$valori." ";
         $PDO->exec($sql);
