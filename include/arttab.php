@@ -65,7 +65,7 @@
 // lettura degli articoli del capitolo
 
  echo "<ul";
-for ($i = 0; $i < $count;)
+for ($i = 0; $i < $count; ++$i)
 	{
 	echo "<li><a href='#tab-".$i."' >".$titolo[$i]."</a></li>";	  
 	}

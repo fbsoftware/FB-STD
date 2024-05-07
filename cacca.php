@@ -7,16 +7,15 @@
 </head>
 <body>
 <?php  
- echo "<h1>CACCA  sito</h1>";
+ //echo "<h1>CACCA  sito</h1>";
  require_once('init_site.php');
-// tema
-echo "<body>";
-// parametri passati con l'url e memorizzati 
-require_once 'request.php';		
-//var_dump($_SESSION);//debug
-
-//  index del template   
-require_once(TMP::$tfolder.'index.php'); 
+ echo "<body>";
+ require_once 'request.php';
+ $nav	= new setNav(TMP::$ambiente);
+ $nav->setNav(); 
+ echo	"<a name='inizio'></a>";
+ require 'layout.php';
+ echo "</body>"; 
+echo "</html>";   
+ob_end_flush();  
  ?>
- </body>
-</html>
