@@ -22,7 +22,7 @@ echo "<section id='space'>";
           foreach($PDO->query($sql) as $row)
        {
           require 'admin/fields_spz.php'; 
-        echo "<div class='f-flex fd-row jc-start ai-center fw fb-button fb-secondary'
+        echo "<div class='f-flex fd-row jc-start ai-center fw fb-secondary'
                 style='width:100%; height:".$rspa."px;'>";  
         echo "</div>";
         }
