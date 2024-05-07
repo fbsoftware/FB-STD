@@ -12,7 +12,7 @@
 	  heightStyle: "content"
     });
 	    $( "#accordion .ui-accordion-content .ui-widget-content" ).removeClass('ui-widget-content');
-        $( "#accordion .ui-accordion-content .ui-widget-content" ).addClass('fb-content');
+        $( "#accordion .ui-accordion-content .ui-widget-content" ).addClass('fb-secondary');
   } );
   </script>
 <?php
@@ -62,7 +62,7 @@
 		echo "<h3>";
 		echo $titolo[$i];
 		echo "</h3>";
-		echo "<div class='fb-content'>";
+		echo "<div class='fb-secondary'>";
 		$a = new txt($testo[$i]);
 		$a->ingloba();
 		echo "</div>";                

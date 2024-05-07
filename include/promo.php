@@ -40,7 +40,7 @@ $PDO->beginTransaction();
        
 // elementi promo
 
-	echo "<div class='f-flex fd-row jc-center ai-start fw fb-content'>";
+	echo "<div class='f-flex fd-row jc-center ai-start fw fb-secondary'>";
 $count++;		// numeratore assoluto  per differenziare ogni promo per dialogo modale
 	
 	if ($osino1 == 1) 

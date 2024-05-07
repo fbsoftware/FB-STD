@@ -58,6 +58,8 @@ echo  "<fieldset>";
           $ts->select();
      $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
           $t2->getTemplate();
+     $f1 = new input(array($lpage,'lpage',30,'Pagina','Pagina del sito','i'));
+          $f1->field();
 // scelta del file in base al codice tipo di modulo =============================================
 switch ($ltipo) {
 case 'artslide':
@@ -155,6 +157,8 @@ default:
                $ts->select();
           $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
                $t2->getTemplate();
+          $f1 = new input(array($lpage,'lpage',30,'Pagina','Pagina del sito','i'));
+               $f1->field();
      // scelta del file in base al codice tipo di modulo =============================================
      switch ($ltipo) {
      case 'artslide':

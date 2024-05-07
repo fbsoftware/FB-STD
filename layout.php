@@ -113,7 +113,20 @@ foreach($PDO->query($sql) as $row)
 				require'include/contatti.php';
 				}				
             	break;
-                  
+               
+			case 'izoom':
+					if (file_exists('include/imgzoom.php')) 
+					{				
+					require'include/imgzoom.php';
+					}				
+					break;
+					               
+			case 'space':
+				if (file_exists('include/space.php')) 
+				{				
+				require'include/space.php';
+				}				
+				break;                  
             default:
             	
             	break;

@@ -14,7 +14,7 @@
 		echo "</div>";
 
 ?>            
-			<div class="f-flex fd-row  fb-content">             
+			<div class="f-flex fd-row  fb-secondary">             
 			<div class="f-flex fd-column f-dim1">
 			<form id="contatti" method="post">
                 <div> 
@@ -62,7 +62,7 @@
 
 <!-- ================================================================================= -->
 
- <div class="f-flex fd-row jc-between fb-content">                  
+ <div class="f-flex fd-row jc-between fb-secondary">                  
             <div>
             	<div id="risultato-block" class="form-group">  
 				<label class="label30" id="risultato-label" for="risultato">Inserisci il risultato 

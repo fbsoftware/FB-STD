@@ -278,13 +278,13 @@ echo "</div>";
 echo "<div>";
 
 echo "<div class='demo' style='background:".$tpri_color."'>
-		  <p class='demo' style='color:".$tx_pri_color."'>Primario</p></div>";
+		  <p style='color:".$tx_pri_color."'>Primario</p></div>";
 echo "<div class='demo'  style='background:".$tsec_color."'>
-		  <p class='demo' style='color:".$tx_sec_color."'>Secondario</p></div>";
+		  <p  style='color:".$tx_sec_color."'>Secondario</p></div>";
 echo "<div class='demo'  style='background:".$tbg_color."'>
-		  <p class='demo' style='color:".$tx_color."'>Testo</p></div>";
+		  <p  style='color:".$tx_color."'>Testo</p></div>";
 echo "<div class='demo'  style='background:".$tbutton_color."'>
-		  <p class='demo' style='color:".$tx_button_color."'>Bottone</p></div>";
+		  <p  style='color:".$tx_button_color."'>Bottone</p></div>";
 echo "</div>";
 
 echo "</fieldset>";
@@ -486,13 +486,13 @@ break;
    echo "<div>";
 
    echo "<div class='demo' style='background:".$tpri_color."'>
-   		  <p class='demo' style='color:".$tx_pri_color."'>Primario</p></div>";
+   		  <p  style='color:".$tx_pri_color."'>Primario</p></div>";
    echo "<div class='demo'  style='background:".$tsec_color."'>
-   		  <p class='demo' style='color:".$tx_sec_color."'>Secondario</p></div>";
+   		  <p  style='color:".$tx_sec_color."'>Secondario</p></div>";
    echo "<div class='demo'  style='background:".$tbg_color."'>
-   		  <p class='demo' style='color:".$tx_color."'>Testo</p></div>";
+   		  <p  style='color:".$tx_color."'>Testo</p></div>";
    echo "<div class='demo'  style='background:".$tbutton_color."'>
-   		  <p class='demo' style='color:".$tx_button_color."'>Bottone</p></div>";
+   		  <p  style='color:".$tx_button_color."'>Bottone</p></div>";
    echo "</div>";
 
    echo "</fieldset>";

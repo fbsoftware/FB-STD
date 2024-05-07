@@ -33,7 +33,8 @@ require_once('moduli/nav2a.php');
 echo    "</nav>";   
  
     //  C O R P O   =====================================             
-echo "<section id='corpo' class='f-flex fd-column'   style='height:450px'>"; 
+echo "<section id='corpo'  style='height:450px'>"; 
+
 if ($urla){
           require_once $urla;
           } 

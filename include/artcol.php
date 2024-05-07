@@ -17,16 +17,16 @@ $PDO->beginTransaction();
 		require'admin/fields_arc.php'; 
 		
 // stampa il titolo se richiesto
-	if ($htit_sn == 1) 
-	{
+	//if ($htit_sn == 1) 
+	//
 		echo "<div class='f-flex fd-column  fb-primary'>"; 
 		if ($htit > " ") { echo "<h1>".$htit."</h1>"; } 
 		if ($htext > " ") { echo $htext; }
 		echo "</div>";	
-	}  		
+	//}  		
 	
 // articoli in colonne
-	echo "<div class='f-flex fd-row jc-start fnw fb-content'>";
+	echo "<div class='f-flex fd-row jc-start fnw fb-secondary'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo

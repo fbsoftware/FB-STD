@@ -47,7 +47,7 @@
 			 $count++;
 			}
         }
-	} 
+	}  ++$i;
 
 // pannello se richiesto
 	if (TMP::$ttabtitle == 1) 
@@ -60,12 +60,12 @@
 
 ?>			
  <!-- articoli -->
-<div id = "articl" class="fb-content">
+<div id = "articl class='fb-secondary' ">
 <?php
 // lettura degli articoli del capitolo
 
- echo "<ul>";
-for ($i = 0; $i < $count; ++$i)
+ echo "<ul";
+for ($i = 0; $i < $count;)
 	{
 	echo "<li><a href='#tab-".$i."' >".$titolo[$i]."</a></li>";	  
 	}
@@ -73,7 +73,7 @@ for ($i = 0; $i < $count; ++$i)
 // lettura testi per tab 
 for ($i = 0; $i < $count; ++$i)
 	{
-    echo "<div id='tab-".$i."'>";
+    echo "<div id='tab-".$i."'  class='fb-secondary'>";
     $a = new txt($testo[$i]);
 		$a->ingloba();
     echo "</div>";                

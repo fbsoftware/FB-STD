@@ -31,7 +31,7 @@
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 
-		echo "<div class='f-flex fd-row jc-center  ai-start fb-content'>";
+		echo "<div class='f-flex fd-row jc-center  ai-start fb-secondary'>";
 
 		foreach($rows as $row)
 			{

@@ -13,7 +13,8 @@ require_once('init_site.php');
 // tema
 echo "<body>";
 // parametri passati con l'url e memorizzati 
-require_once 'request.php';		//var_dump($_SESSION);//debug
+require_once 'request.php';		
+//var_dump($_SESSION);//debug
 
 //  index del template   
 require_once(TMP::$tfolder.'index.php'); 

@@ -32,6 +32,7 @@ $arrc	= array();
 
 // determina numero colonne
 		switch ($count) 
+		{
 	case 1:
 		$colonna = "col-md-12";
  		break;

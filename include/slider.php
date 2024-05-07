@@ -31,7 +31,7 @@ img.slide{
 <?php		
 echo "<section id='slider'>";
            
-echo "<div class='slider fb-content'>";
+echo "<div class='slider fb-secondary'>";
 
 // lettura slide
         $sql = "SELECT *

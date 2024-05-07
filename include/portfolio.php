@@ -43,7 +43,7 @@ echo "<section id='portfolio'>";
 		json_encode($rows);
 		$colonne = $sttmt->rowCount();
 
-echo "<div class='f-flex fd-row jc-around fb-content'>";
+echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 		foreach($rows as $row)
 			{
 			require'admin/fields_por.php';

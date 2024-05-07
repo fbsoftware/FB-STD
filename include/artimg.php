@@ -21,7 +21,7 @@ echo	"<section id='artimg'>";
      foreach($PDO->query($sql) as $row)
      {    require 'admin/fields_aim.php'; 
 	 		$titolo_art =   $iart;
-		echo "<div class='f-flex fd-row jc-center fw fb-content'>";		// flex
+		echo "<div class='f-flex fd-row jc-center fw fb-secondary'>";		// flex
 
 		//  immagine/video a sinistra ============================================                                      
           if ($iimgpos == 'sx') 

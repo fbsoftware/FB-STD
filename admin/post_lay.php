@@ -5,6 +5,7 @@ $lstat    =$_POST['lstat'];
 $lcod     =$_POST['lcod'];
 $ldesc    =$_POST['ldesc'];
 $ltmp     =$_POST['ltmp'];
+$lpage    =$_POST['lpage'];
 $ltipo    =$_POST['ltipo']; 
 $linclude =$_POST['linclude'];
 ?>

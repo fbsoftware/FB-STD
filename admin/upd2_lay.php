@@ -28,14 +28,15 @@ case 'nuovo':
 	$btx   = new bottoni_str_par('Layout sito','nav','write_lay.php',$param);
      $btx->btn();
       echo  "<fieldset>";
-     $xdb = new DB_ins('lay','lprog');
-     $f1 = new input(array($xdb->insert(),'lprog',3,'Progressivo','Per ordinamento','i'));
+    $xdb = new DB_ins('lay','lprog');
+	$f1 = new input(array($xdb->insert(),'lprog',3,'Progressivo','Per ordinamento','i'));
           $f1->field();
-     $ts = new DB_tip_i('stato','lstat','','Stato record','Attivo/sospeso');
+	$ts = new DB_tip_i('stato','lstat','','Stato record','Attivo/sospeso');
           $ts->select();
-      $t = new getTmp('','ltmp','Template','Scelta del template');
+	$t = new getTmp('','ltmp','Template','Scelta del template');
           $t->getTemplate();
-
+	$f1 = new input(array('','lpage',30,'Pagina','Pagina del sito','i'));
+          $f1->field();
 // scelta del file in base al tipo di modulo =============================================
 switch ($ltipo) {
 case 'artslide':
@@ -94,6 +95,14 @@ case 'contatti':
                $arg = new DB_sel_l('ctt','eprog','','ecod','lcod','estat','ecod','Tipo modulo','Modulo contatti');
           		$arg->select_label();
                break;
+case 'izoom':
+				$arg = new DB_sel_l('zim','zprog','','zcod','lcod','zstat','zcod','Tipo modulo','Immagine zoomabile');
+				   $arg->select_label();
+				break;
+case 'space':
+				$arg = new DB_sel_l('spz','rprog','','rcod','lcod','rstat','rcod','Tipo modulo','Spaziature');
+					$arg->select_label();
+				break;
 default:
 	          echo	"Tipo modulo errato=".$ltipo;
 	break;
@@ -105,62 +114,70 @@ default:
  // scelta del programma in base al tipo di modulo =============================================
 switch ($ltipo) {
 case 'artslide':
-               $f4 = new input(array('artslide.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('artslide.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'arttab':
-               $f4 = new input(array('arttab.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('arttab.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'artacc':
-               $f4 = new input(array('artacc.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('artacc.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'artsingle':  // da verificare, altrimenti usare -article-
-               $f4 = new input(array('artsingle.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('artsingle.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'article':
-               $f4 = new input(array('article.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('article.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'artimg':
-               $f4 = new input(array('artimg.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('artimg.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'artcol':
-               $f4 = new input(array('artcol.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('artcol.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'glyph':
-               $f4 = new input(array('glyph.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('glyph.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'promo':
-               $f4 = new input(array('promo.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('promo.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'portfolio':
-               $f4 = new input(array('portfolio.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('portfolio.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'slide':
-               $f4 = new input(array('slide.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('slide.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
 			break;
 case 'header':
-               $f4 = new input(array('header.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('header.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
                break;
 case 'footer':
-               $f4 = new input(array('footer.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('footer.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
                break;
 case 'contatti':
-               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da requirere','r'));
+               $f4 = new input(array('contatti.php','linclude',50,'Programma','Programma da eseguire','r'));
           		$f4->field();
                break;
-default:
+case 'izoom':
+				$f4 = new input(array('imgzoom.php','linclude',50,'Programma','Programma da eseguire','r'));
+				   $f4->field();
+				break;
+case 'space':
+					$f4 = new input(array('space.php','linclude',50,'Programma','Programma da eseguire','r'));
+					   $f4->field();
+					break;
+				default:
 	          echo	"Tipo modulo errato=".$ltipo;
 	break;
 }

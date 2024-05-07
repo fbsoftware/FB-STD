@@ -33,7 +33,8 @@ echo "<div class='td'>Progr.</div>";
 echo "<div class='td'>Codice</div>";
 echo "<div class='td'>Descrizione</div>";
 echo "<div class='td'>Tipo</div>";
-echo "<div class='td'> Template</div>";
+echo "<div class='td'>Template</div>";
+echo "<div class='td'>Pagina</div>";
 echo "<div class='td'>Require</div>";
 echo "</div>";
 // lettura database
@@ -57,6 +58,7 @@ echo "</div>";
           <div class='td'><?php echo htmlspecialchars($ldesc, ENT_QUOTES) ?></div>
           <div class='td'><?php echo $ltipo ?></div>
           <div class='td'><?php echo $ltmp ?></div>
+          <div class='td'><?php echo $lpage ?></div>
           <div class='td'><?php echo $linclude ?></div>
 <?php
      echo "</div>";
