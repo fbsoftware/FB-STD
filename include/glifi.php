@@ -4,8 +4,7 @@
   $( function() {
   $( ".fb-primary p" ).addClass('fb-primary');
     $( ".fb-primary h1" ).addClass('fb-primary');
-	 $( "i" ).addClass('fb-accent');
-  } );
+	  } );
   </script>
  <?php
 // pannello
@@ -16,6 +15,10 @@
 		if (TMP::$tgliftext > " ") { echo "<p>".TMP::$tgliftext."</p>"; }
 		echo "</div>";
 		echo "</div>";
+		
+// spaziatura
+$spazio = new spazio('50');
+$spazio->altezza();
 
 // lettura glifi per il template
         $sql = "SELECT *

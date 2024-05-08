@@ -28,6 +28,9 @@ echo "<section id='portfolio'>";
 		echo "</div>";
 		$cnt = 1;
 	}
+// spaziatura
+$spazio = new spazio('50');
+$spazio->altezza();
 
 // lettura portfolio
         $sql = "SELECT *
@@ -53,11 +56,16 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 			echo "<p><a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='img-fit fb-hp150' src='".$pimg."' alt='".$pimg."'>  </a>";
 
-			// portfolio-caption e bottone
+			// portfolio-caption 
 			echo "<div>";
 			echo "<h3 class='center'>".$pcapt."</h3>";
-				if ($pmlink >= ' ')
-	{ 	echo "<div class='center'><a class='fb-button fb-p025 fb-rad5 fb-upper' href='".$pmlink."' target='_new'>".$pmtext."</a></div>";}
+
+			// bottone
+			if ($pmlink >= ' ')
+			{ 	echo "<div class='center'><a class='fb-accent fb-p05 fb-rad50 fb-upper' 
+				href='".$pmlink."' target='_new'>".$pmtext."</a></div>";
+			}
+
 			echo "</div>";
 
 			// dialogo modale
@@ -69,6 +77,9 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 			}
 
 	echo "</div>";		// flex
+// spaziatura
+$spazio = new spazio('25');
+$spazio->altezza();
 
 echo "</section>";
 ?>

@@ -1,7 +1,7 @@
 <section id="arttab">
   <script>
   $( function() {
-    $( "#arttab" ).tabs();
+    $( "#tabs" ).tabs();
    } 
   );
     $( function() {
@@ -57,23 +57,22 @@
 		if (TMP::$ttabtext > " ") { echo "<p>".TMP::$ttabtext."</p>"; }
 		echo "</div>";
 }
+			
+ // articoli 
+ echo "<div id = 'tabs' class='fb-secondary' >";
 
-?>			
- <!-- articoli -->
-<div id = "articl class='fb-secondary' ">
-<?php
 // lettura degli articoli del capitolo
 
- echo "<ul";
+ echo "<ul>";
 for ($i = 0; $i < $count; ++$i)
 	{
-	echo "<li><a href='#tab-".$i."' >".$titolo[$i]."</a></li>";	  
+	echo "<li><a href='#tabs-".$i."' >".$titolo[$i]."</a></li>";	  
 	}
 	echo "</ul>";	
 // lettura testi per tab 
 for ($i = 0; $i < $count; ++$i)
 	{
-    echo "<div id='tab-".$i."'  class='fb-secondary'>";
+    echo "<div id='tabs-".$i."'  class='fb-secondary'>";
     $a = new txt($testo[$i]);
 		$a->ingloba();
     echo "</div>";                
