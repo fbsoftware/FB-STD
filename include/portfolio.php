@@ -51,23 +51,25 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 			{
 			require'admin/fields_por.php';
 			// portfolio-elemento immagine
-			echo "<div>";
+			echo "<div class='f-flex fd-column jc-around fb-secondary'>";
+
 			$target	= "portfolio".$pid;
+			echo "<div>";
 			echo "<p><a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='img-fit fb-hp150' src='".$pimg."' alt='".$pimg."'>  </a>";
+			echo "</div>";
 
 			// portfolio-caption 
 			echo "<div>";
 			echo "<h3 class='center'>".$pcapt."</h3>";
+			echo "</div>";
 
 			// bottone
 			if ($pmlink >= ' ')
-			{ 	echo "<div class='center'><a class='fb-accent fb-p05 fb-rad50 fb-upper' 
+			{ 	echo "<div class='center'><a class='fb-accent fb-p1 fb-rad7 fb-upper' 
 				href='".$pmlink."' target='_new'>".$pmtext."</a></div>";
 			}
-
-			echo "</div>";
-
+			
 			// dialogo modale
 		$modal	= new popup_modale($target,$pmheader,$pimg,$pmlink,$pmtext);
 			$modal->popup();

@@ -7,6 +7,7 @@
   ---------------------------------------------------------------------------
   16.03.21	tolto link per conflitto con javascript:void(0), se serve il link 
 			metterlo nel testo/immagine che lancia il modale. 
+	9/5/24	tolto testo inutile
 ============================================================================= */
 class popup_modale
 {
@@ -43,9 +44,9 @@ echo	"<div class='popup' popup-name='".$this->id."' id='".$this->id."' style='z-
 	echo	"<img src='".$this->img."' alt='".$this->img."' class='img-responsive' style='max-width:500px'>";    	
 	echo	"</div>";
 // testo   	
-	echo	"<div>"; 
+	/*echo	"<div>"; 
 	echo "<p>".$this->text."</p>";
-	echo "</div>";
+	echo "</div>";*/
 	
 
 //------------------------------------------

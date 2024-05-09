@@ -63,7 +63,7 @@
 
 // lettura degli articoli del capitolo
 
- echo "<ul>";
+ echo "<ul class='fb-secondary'>";
 for ($i = 0; $i < $count; ++$i)
 	{
 	echo "<li><a href='#tabs-".$i."' >".$titolo[$i]."</a></li>";	  
