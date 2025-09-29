@@ -36,8 +36,10 @@ switch ($azione)
            $f1->field();
       $ts = new DB_tip_i('stato','dstat','','Stato record','Attivo-sospeso');
           $ts->select();
+          //------------------------------------------------------
       $t = new getTmp('','dtmp','Template','Scelta del template');
           $t->getTemplate();
+          //------------------------------------------------------
       $f1 = new input(array('','dcod',20,'Codice','Codice modulo','ia'));
            $f1->field();
       $f1 = new input(array('','ddes',50,'Descrizione','Descrizione modulo','i'));

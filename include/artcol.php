@@ -16,64 +16,50 @@ $PDO->beginTransaction();
 		//print_r($row);//debug
 		require'admin/fields_arc.php'; 
 		
-// stampa il titolo se richiesto
-	//if ($htit_sn == 1) 
-	//
-		echo "<div class='f-flex fd-column  fb-primary'>"; 
-		if ($htit > " ") { echo "<h1>".$htit."</h1>"; } 
-		if ($htext > " ") { echo $htext; }
-		echo "</div>";	
-	//}  		
-	
+// stampa riga di separazione
+			echo "<hr class='fb-primary'>"; 
+
 // articoli in colonne
 	echo "<div class='f-flex fd-row jc-start fnw fb-secondary'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo
           echo "<div>";
-			echo "<div>";
           $art = new getArt($htit1);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
           $a->ingloba();
           echo "</div>";
-		  echo "</div>";
 		}
 	if ($hsino2 == 1) 
 		{  
           // ricerca articolo
           echo "<div>";  
-echo "<div>";		  
           $art = new getArt($htit2);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
           $a->ingloba();
           echo "</div>";
-		   echo "</div>";
 		}
 	if ($hsino3 == 1) 
 		{  
           // ricerca articolo
           echo "<div>"; 
-echo "<div>";		  
           $art = new getArt($htit3);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
           $a->ingloba();
           echo "</div>";
-		   echo "</div>";
 		}
 	if ($hsino4 == 1) 
 		{  
           // ricerca articolo
           echo "<div>";   
-echo "<div>";		  
           $art = new getArt($htit4);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
           $a->ingloba();
           echo "</div>";
-		   echo "</div>";
 		}
   	}	            
 echo "</div>";  //-- flex -->

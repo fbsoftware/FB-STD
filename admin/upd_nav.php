@@ -128,6 +128,11 @@ case 'url':
           $tw->select_dir();
           echo    "<br />";
           break;
+   case 'pag':
+         $tw = new select_root($nsotvo,'nsotvo','Pagina web','File della pagina');
+          $tw->select_dir();
+          echo    "<br />";
+         break;   
     default:
     echo "Tipo voce errata=".$ntipo;//debug
     break;

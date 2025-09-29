@@ -28,7 +28,7 @@ class DB
         public static $ambiente  =  '';	  // ambiente: sito,admin
 //        public $mod_ins = 0;            // progressivo per inserimento moduli
         public $max = 0;                  // nuovo inserimento
-		public static $ROOT = '';         // ROOT assoluta = localhost/...
+	public static $ROOT = '';         // ROOT assoluta = localhost/...
   
         public function __construct() 
 		
@@ -59,7 +59,7 @@ class DB
                   self::$url        = $arr['config']['url'];
                   self::$author     = $arr['config']['author'];
                   self::$keywords   = $arr['config']['keywords'];
-				  self::$ROOT       = $_SERVER['DOCUMENT_ROOT'].self::$root;
+		self::$ROOT       = $_SERVER['DOCUMENT_ROOT'].self::$root;
           return $arr;
          }
 				  

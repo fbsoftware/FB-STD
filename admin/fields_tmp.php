@@ -41,10 +41,10 @@ $tpromotext     =$row['tpromotext'];
 $tcttitle   	=$row['tcttitle'];
 $tcttit     	=$row['tcttit'];
 $tcttext     	=$row['tcttext'];  
-/* accordion
+// accordion
 $taccotitle   	=$row['taccotitle'];
 $taccotit     	=$row['taccotit'];
-$taccotext     	=$row['taccotext']; */     
+$taccotext     	=$row['taccotext'];     
 // tab
 $ttabtitle   	=$row['ttabtitle'];
 $ttabtit     	=$row['ttabtit'];

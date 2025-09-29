@@ -98,7 +98,7 @@ case 'nuovo':
           $tz->select();
       $tz = new DB_tip_i('color','tcolor','','Colore template','Colore di base di pulsanti,glifi,barre ecc.');
           $tz->select();
-     $tw = new DB_tip_i('edit','teditor','','Editor di testo','Programma di editor di testo');
+     $tw = new DB_tip_i('tedit','teditor','','Editor di testo','Programma di editor di testo');
           $tw->select();
 echo "</fieldset>";
 
@@ -140,7 +140,7 @@ echo "</div>";
           $input->field();
      echo "</fieldset>";
 
- /*
+
 // accordion
      echo  "<fieldset id='tab4' >";
      $tz = new DB_tip_i('s-n','taccotitle',0,'Mostra titolo','Visualizza o meno il titolo del modulo accordion');
@@ -150,7 +150,7 @@ echo "</div>";
      $input    = new input(array('','taccotext',50,'Testo','Testo della sezione di accordion','tx'));
           $input->field();
 	echo "</fieldset>";
-*/
+
 // portfolio
      echo  "<fieldset id='tab5' >";
      $tz = new DB_tip_i('s-n','tportitle',0,'Mostra titolo','Visualizza o meno il titolo');
@@ -252,7 +252,7 @@ echo "</div>";
           $tz->select();
       $tz = new DB_tip_i('color','tcolor',$tcolor,'Colore base','Colore di base del template');
           $tz->select();
-     $tz = new DB_tip_i('edit','teditor',$teditor,'Editor di testo','Programma di editor di testo');
+     $tz = new DB_tip_i('tedit','teditor',$teditor,'Editor di testo','Programma di editor di testo');
           $tz->select();
 	echo "</fieldset>";
 
@@ -309,7 +309,7 @@ echo "</div>";
      $input    = new input(array($tpromotext,'tpromotext',50,'Testo','Testo della sezione dei promo','tx'));
           $input->field();
      echo "</fieldset>";
-/*
+
 // accordion
      echo  "<fieldset id='tab4'>";
      $tz = new DB_tip_i('s-n','taccotitle',$taccotitle,'Mostra titolo','Visualizza o meno il titolo');
@@ -319,7 +319,7 @@ echo "</div>";
      $input    = new input(array($taccotext,'taccotext',50,'Testo','Testo della sezione accordion','tx'));
           $input->field();
      echo  "</fieldset>";
-	*/
+
 // portfolio
      echo  "<fieldset id='tab5'>";
      $tz = new DB_tip_i('s-n','tportitle',$tportitle,'Mostra titolo','Visualizza o meno il titolo');
@@ -460,7 +460,7 @@ break;
              $tz->select();
          $tz = new DB_tip_i('color','tcolor',$tcolor,'Colore base','Colore di base del template');
              $tz->select();
-        $tz = new DB_tip_i('edit','teditor',$teditor,'Editor di testo','Programma di editor di testo');
+        $tz = new DB_tip_i('tedit','teditor',$teditor,'Editor di testo','Programma di editor di testo');
              $tz->select();
    	echo "</fieldset>";
 

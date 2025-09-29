@@ -2,7 +2,11 @@
 //   cerca nel layout l'articolo richiesto
 echo "<section id='article'>";
 $count = 0; 
-     echo "<div class='f-flex fd-row fb-secondary'>";
+
+     // stampa riga di separazione
+			echo "<hr class='fb-primary'>"; 
+
+     echo "<div class='f-flex jc-center fb-secondary'>";
         $sql = "SELECT *
                 FROM `".DB::$pref."art`
                 WHERE atit = '$lcod'

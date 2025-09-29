@@ -50,10 +50,11 @@ class DB_sel_lt          extends DB
                if ($row[$this->campo] == $this->valini)
                  {echo "<option selected='selected' value='".$row[$this->campo]."'>".$row[$this->option]."</option>"; }
                else
-                 {echo "<option value='".$row[$this->campo]."'>".$row[$this->option]."</option>";
-                       echo $row[$this->campo]."<br >";}
+                 {echo "<option value='".$row[$this->campo]."'>".$row[$this->option]."";
+                       echo $row[$this->campo]."</option><br >";}
             }
-           echo "</select></div>";
+           echo "</select>";
+		   echo "</div>";
           }
 }
 ?>

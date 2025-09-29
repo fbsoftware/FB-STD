@@ -19,8 +19,8 @@ switch ($azione)
 case 'nuovo':
 case 'copia':
     echo      $sql = "INSERT INTO `".DB::$pref."spz` 
-                      (rid,rprog,rstat,rcod,rtmp,rspa,rpage,rdesc) 
-                      VALUES (NULL,'$rprog','$rtat','$rcod','$rtmp','$rspa','$rpage','$rdesc')";
+                      (qid,qprog,qstat,qcod,qtmp,qspa,qpage,qdesc) 
+                      VALUES (NULL,'$qprog','$qtat','$qcod','$qtmp','$qspa','$qpage','$qdesc')";
           $PDO->exec($sql);    
           $PDO->commit();
           $_SESSION['esito'] = 54;
@@ -28,9 +28,9 @@ case 'copia':
 
 case 'modifica':
           echo $sql = "UPDATE `".DB::$pref."spz` 
-          SET rprog='$rprog',rstat='$rstat',
-                         rcod='$rcod',rspa='$rspa',rtmp='$rtmp',rpage='$rpage',rdesc='$rdesc'
-                    WHERE rid= '$rid' ";
+          SET qprog='$qprog',qstat='$qstat',
+                         qcod='$qcod',qspa='$qspa',qtmp='$qtmp',qpage='$qpage',qdesc='$qdesc'
+                    WHERE qid= '$qid' ";
           $PDO->exec($sql);    
           $PDO->commit();
           $_SESSION['esito'] = 55;
@@ -38,7 +38,7 @@ case 'modifica':
   
 case 'cancella':
           $sql = "DELETE from `".DB::$pref."spz` 
-                    WHERE rid= '$rid' ";
+                    WHERE qid= '$qid' ";
 		$PDO->exec($sql);    
           $PDO->commit();
           $_SESSION['esito'] = 53;

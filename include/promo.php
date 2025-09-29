@@ -40,7 +40,7 @@ $PDO->beginTransaction();
        
 // elementi promo
 
-	echo "<div class='f-flex fd-row jc-center ai-start fw fb-secondary'>";
+	echo "<div class='f-flex fd-row jc-around ai-start fw fb-secondary'>";
 $count++;		// numeratore assoluto  per differenziare ogni promo per dialogo modale
 	
 	if ($osino1 == 1) 
@@ -49,8 +49,8 @@ $count++;		// numeratore assoluto  per differenziare ogni promo per dialogo moda
 			echo "<a class='trasp'  popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='promo' src='".$oimg1."' alt='".$oimg1."' height='200px'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit1."</h3>";
-			echo "<span class='text-muted'>".$otext1."</span>";
+			echo "<h3>".$otit1."</h3>";
+			echo $otext1;
 			echo "</div>"; 			
 		
 		$modal	= new popup_modale($target,$otit1,$oimg1,'',$otext2);
@@ -64,8 +64,8 @@ $count++;		// numeratore assoluto  per differenziare ogni promo per dialogo moda
 			echo "<a class='trasp'  popup-open='".$target."' href='javascript:void(0)'>";			
 			echo "<img class='promo' src='".$oimg2."' alt='".$oimg2."' height='200px'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit2."</h3>";
-			echo "<span class='text-muted'>".$otext2."</span>";
+			echo "<h3>".$otit2."</h3>";
+			echo $otext2;
 			echo "</div>";
 		
 		$modal	= new popup_modale($target,$otit2,$oimg2,'',$otext2);
@@ -79,8 +79,8 @@ $count++;		// numeratore assoluto  per differenziare ogni promo per dialogo moda
 			echo "<a class='trasp'  popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='promo' src='".$oimg3."' alt='".$oimg3."'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit3."</h3>";
-			echo "<span class='text-muted'>".$otext3."</span>";
+			echo "<h3>".$otit3."</h3>";
+			echo $otext3;
 			echo "</div>"; 
 		
 		$modal	= new popup_modale($target,$otit3,$oimg3,'',$otext3);
@@ -94,8 +94,8 @@ $count++;		// numeratore assoluto  per differenziare ogni promo per dialogo moda
 						echo "<a class='trasp'  popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='promo' src='".$oimg4."' alt='".$oimg4."'>";
 			echo "</a>";
-			echo "<h4 class='service-heading'>".$otit4."</h3>";
-			echo "<span class='text-muted'>".$otext4."</span>";
+			echo "<h3>".$otit4."</h3>";
+			echo $otext4;
 			echo "</div>";
 		
 		$modal	= new popup_modale($target,$otit4,$oimg4,'',$otext4);

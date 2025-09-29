@@ -11,8 +11,8 @@
 			tolto bottone di exit inserito in moduli/nav2.php
 ============================================================================= */
 // prima voce menù
-$nav	= new setNav(TMP::$ambiente);
-	$nav->setNav(); 
+//$nav	= new setNav(TMP::$ambiente);       tolto 26/06/24
+//$nav->setNav(); 
 
 //-- CONTENUTO DELLA PAGINA ...
 echo	"<a name='inizio'></a>";

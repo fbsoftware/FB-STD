@@ -36,10 +36,14 @@ $azione  =$_POST['submit'];
 
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 echo "<section id='upd' class='container-fluid'>";
+ //==================================================================================
 
 switch ($azione)
 {
- //==================================================================================
+case 'chiudi':
+     $loc = "location:admin.php?urla=widget.php&pag=";
+     header($loc);
+     	break;
 case 'nuovo':    // scelta tipo footer, prosegue su: upd2_foo.php
     {
 	$param  = array('nuovo','ritorno');

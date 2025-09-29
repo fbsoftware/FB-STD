@@ -12,7 +12,8 @@
 ============================================================================= */
 require_once('init_admin.php');
 require_once("post_".$_SESSION['tab'].".php");
-$azione   =    $_POST['submit'];       print_r($_POST);//debug
+$azione   =    $_POST['submit'];       
+//print_r($_POST);//debug
 
 // test campi mancanti
              if (($azione != 'cancella') && ($azione != 'ritorno'))
@@ -50,5 +51,5 @@ default:
 }
 unset($_SESSION['tab']);
 $loc = "location:admin.php?".$_SESSION['location']."";
-     header($loc);
+    header($loc);
 ?>

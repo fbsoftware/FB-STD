@@ -16,14 +16,14 @@ echo "<section id='space'>";
  // lettura voci menu
          $sql = "SELECT *
                 FROM `".DB::$pref."spz`
-                WHERE rtmp = '".TMP::$tmenu."' and rstat <> 'A' 
-                AND rcod = '$lcod' 
-                ORDER BY rprog";
+                WHERE qtmp = '".TMP::$tmenu."' and qstat <> 'A' 
+                AND qcod = '$lcod' 
+                ORDER BY qprog";
           foreach($PDO->query($sql) as $row)
        {
           require 'admin/fields_spz.php'; 
         echo "<div class='f-flex fd-row jc-start ai-center fw fb-secondary'
-                style='width:100%; height:".$rspa."px;'>";  
+                style='width:100%; height:".$qspa."px;'>";  
         echo "</div>";
         }
 

@@ -12,7 +12,8 @@
 ============================================================================= */
 require_once('init_admin.php');
 require_once("post_".$_SESSION['tab'].".php");
-$azione  =$_POST['submit'];      //print_r($_POST);//debug
+$azione  =$_POST['submit'];      
+//print_r($_POST);//debug
 
 // test scelta effettuata sul pgm chiamante
              $scelta = new testSiScelta($lid,$azione);
@@ -56,12 +57,13 @@ echo  "<fieldset>";
           $f1->field();
      $ts = new DB_tip_i('stato','lstat',$lstat,'Stato record','Attivo/sospeso');
           $ts->select();
-     $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
+     $t2 = new getTmp($ltmp,'ltmp','Tema','Scelta del tema');
           $t2->getTemplate();
      $f1 = new input(array($lpage,'lpage',30,'Pagina','Pagina del sito','i'));
           $f1->field();
 // scelta del file in base al codice tipo di modulo =============================================
-switch ($ltipo) {
+switch ($ltipo) 
+{
 case 'artslide':
                $arg = new DB_sel_l('asl','dprog',$lcod,'dcod','lcod','dstat','dcod','Codice','Articolo in slide');
           		$arg->select_label();
@@ -79,11 +81,11 @@ case 'artsingle':
           		$arg->select_label();
 			break;
 case 'article':
-               $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
+               $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Codice','Articolo semplice');
           		$arg->select_label();
 			break;
 case 'artimg':
-               $arg = new DB_sel_l('aim','iprog',$lcod,'icod','lcod','istat','icod','Codice','Articolo con immagine');
+               $arg = new DB_sel_l('aim','icod',$lcod,'icod','lcod','istat','ides','Codice','Articolo con immagine');
           		$arg->select_label();
 			break;
 case 'artcol':
@@ -116,6 +118,10 @@ case 'footer':
 			break;
 case 'contatti':
                $arg = new DB_sel_l('ctt','eprog',$lcod,'ecod','lcod','estat','ecod','Codice','Modulo contatti');
+          		$arg->select_label();
+               break;
+case 'pag':
+               $arg = new DB_sel_l('pag','jprog',$lcod,'jcod','lcod','jstat','jcod','Codice','Nome pagina');
           		$arg->select_label();
                break;
 default:
@@ -155,8 +161,8 @@ default:
                     $f1->field();
           $ts = new DB_tip_i('stato','lstat',$lstat,'Stato record','Attivo/sospeso');
                $ts->select();
-          $t2 = new getTmp($ltmp,'ltmp','Template','Scelta del template');
-               $t2->getTemplate();
+	$arg = new DB_sel_l('tmp','tprog',$ltmp,'tcod','lcod','tstat','tcod','Tema','Tema del sito');
+		$arg->select_label();
           $f1 = new input(array($lpage,'lpage',30,'Pagina','Pagina del sito','i'));
                $f1->field();
      // scelta del file in base al codice tipo di modulo =============================================
@@ -178,7 +184,7 @@ default:
                		$arg->select_label();
      			break;
      case 'article':
-                    $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Titolo articolo','Articolo semplice');
+                    $arg = new DB_sel_l('art','aprog',$lcod,'atit','lcod','astat','atit','Codice','Articolo semplice');
                		$arg->select_label();
      			break;
      case 'artimg':
@@ -257,7 +263,7 @@ echo  "<fieldset>";
 	 	$f2->field();
       $f3 = new input(array($lcod,'lcod',20,'Codice','','r'));
 	 	$f3->field();
-      $f4 = new input(array(htmlspecialchars($ldesc, ENT_QUOTES),'ldesc',30,'Descrizione','','r'));
+      $f4 = new input(array(utf8_decode($ldesc),'ldesc',30,'Descrizione','','r'));
       	$f4->field();
       echo    "</fieldset></form>";
       break;

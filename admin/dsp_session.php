@@ -24,6 +24,7 @@ $param = array('ritorno');
 $btx   = new bottoni_str_par('Strumenti di debug','config','admin.php?urla=widget.php&pag=',$param);
      $btx->btn();
 ?>
+
 	<div id="tabs">
   <ul>
 	<li><a href="#tabs-0">Request</a></li>

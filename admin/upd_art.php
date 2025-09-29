@@ -44,9 +44,8 @@ $content  ='--- Inserire qui il testo ---';
           $f6 = new input(array('','amostra',0,'Mostra il titolo','SI = mostra il titolo','sn'));
                $f6->field();
 		$f9 = new input(array($content,'atext',30,'Testo','','tx'));
-			$f9->field();
-if (TMP::$teditor == 'ckeditor')
-	{  echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; }
+			$f9->field(); 
+echo "<script type='text/javascript'>CKEDITOR.replace('atext');</script>"; 
 echo "</fieldset>";
 echo "</div>";
 echo "</form>";

@@ -26,7 +26,7 @@ $arrc	= array();
 			$a = new txt($row['atext']);
 			$arr[] 	= $a->ingloba();
 			$arrt[] = $row['atit'];
-			$arrt[] = $row['atit'];
+			//$arrt[] = $row['atit'];
 			};   	// lettuta art
 		};        	// lettura asl
 
@@ -49,14 +49,14 @@ $arrc	= array();
   		break;
 
 
-
+echo "<div class='f-flex fd-row jc-center  ai-start fb-secondary'>";
           echo "<div class='container'>";
           echo "<div class='row'>";
 
           
 
           echo "</div>";     // row
-          echo "</div>";     // container
+          echo "</div>";     // flex
           $count++;
      }     
 ?>

@@ -7,10 +7,14 @@ echo	"<section id='artimg'>";
   <script>
   $( function() {
   $( ".fb-primary p" ).addClass('fb-primary');
-    $( ".fb-primary h1" ).addClass('fb-primary');
+  $( ".fb-primary h1" ).addClass('fb-primary');
   } );
   </script>
+
 <?php
+// stampa riga di separazione
+			echo "<hr class='fb-primary'>"; 
+ //Secho "CODICE=".$lcod;//debug              
 // cerca gli articoli con immagine
        $sql = "SELECT *
                 FROM `".DB::$pref."aim`
@@ -21,7 +25,7 @@ echo	"<section id='artimg'>";
      foreach($PDO->query($sql) as $row)
      {    require 'admin/fields_aim.php'; 
 	 		$titolo_art =   $iart;
-		echo "<div class='f-flex fd-row jc-center fw fb-secondary'>";		// flex
+		echo "<div class='f-flex fd-row jc-around fw fb-secondary'>";		// flex
 
 		//  immagine/video a sinistra ============================================                                      
           if ($iimgpos == 'sx') 

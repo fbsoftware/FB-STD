@@ -24,8 +24,11 @@ echo	"<section id='imgzoom'>";
     /*set the size of the result div:*/
     width: 400px;
     height:400px;
+    margin-right: 100px;
   }
-
+  #myimage  {
+    margin-left: 100px;
+  }
 </style>
   <script>
   $( function() {
@@ -91,7 +94,7 @@ echo	"<section id='imgzoom'>";
     }</script>
 <?php
 // cerca immagine zoomabile da pubblicare
-echo "<div class='f-flex fd-row jc-center fw fb-secondary'>";		// flex
+echo "<div class='f-flex fd-row jc-between fw fb-secondary'>";		// flex
         $sql = "SELECT *
                 FROM `".DB::$pref."zim`
                 WHERE ztmp = '".TMP::$tcod."'
@@ -104,8 +107,8 @@ echo "<div class='f-flex fd-row jc-center fw fb-secondary'>";		// flex
         require 'admin/fields_zim.php'; 
     ?>
         <div class="img-zoom-container">
-        <div><img id="myimage" src="<?php echo $zimg; ?>" width="70%"" /></div>
-        <div id="myresult" class="img-zoom-result"></div>
+          <div><img id="myimage" src="<?php echo $zimg; ?>" width="70%"" /></div>
+          <div id="myresult" class="img-zoom-result"></div>
         </div>
         
     <?php 

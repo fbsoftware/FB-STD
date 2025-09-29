@@ -8,7 +8,7 @@ $ftipo     	=$_POST['ftipo'];
 $ftmp		=$_POST['ftmp'];
 $fcol      	=$_POST['fcol'];
 $felemento  =$_POST['felemento'];
-$ftitolo    =addslashes($_POST['ftitolo']);
-$ftext      =addslashes($_POST['ftext']);
+$ftitolo    =$_POST['ftitolo'];
+$ftext      =$_POST['ftext'];
 $flink      =$_POST['flink'];
 ?>

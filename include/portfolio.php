@@ -28,9 +28,6 @@ echo "<section id='portfolio'>";
 		echo "</div>";
 		$cnt = 1;
 	}
-// spaziatura
-$spazio = new spazio('50');
-$spazio->altezza();
 
 // lettura portfolio
         $sql = "SELECT *
@@ -55,7 +52,7 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 
 			$target	= "portfolio".$pid;
 			echo "<div>";
-			echo "<p><a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
+			echo "<a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
 			echo "<img class='img-fit fb-hp150' src='".$pimg."' alt='".$pimg."'>  </a>";
 			echo "</div>";
 
@@ -73,15 +70,12 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 			// dialogo modale
 		$modal	= new popup_modale($target,$pmheader,$pimg,$pmlink,$pmtext);
 			$modal->popup();
-			echo "</p>";
+			//echo "</p>";
 
 			echo "</div>";		// elemento
 			}
 
 	echo "</div>";		// flex
-// spaziatura
-$spazio = new spazio('25');
-$spazio->altezza();
 
 echo "</section>";
 ?>

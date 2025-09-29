@@ -41,10 +41,10 @@ $tpromotext    =addslashes($_POST['tpromotext']);
 $tcttitle   	=$_POST['tcttitle'];
 $tcttit     	=$_POST['tcttit'];
 $tcttext     	=addslashes($_POST['tcttext']);  
-/* accordion
+// accordion
 $taccotitle   	=$_POST['taccotitle'];
 $taccotit     	=$_POST['taccotit'];
-$taccotext     	=addslashes($_POST['taccotext']);*/
+$taccotext     	=addslashes($_POST['taccotext']);
 // tab
 $ttabtitle   	=$_POST['ttabtitle'];
 $ttabtit     	=$_POST['ttabtit'];

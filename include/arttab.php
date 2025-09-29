@@ -17,7 +17,7 @@
 </style> 
 <?php
 // cerca nel layout gli articoli per i tab
-		$sql = "SELECT *
+	 $sql = "SELECT *
                 FROM `".DB::$pref."asl`
                 WHERE dtmp = '".TMP::$tmenu."'
                     and dtipo = 'arttab'                

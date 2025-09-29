@@ -12,15 +12,16 @@ class getTmp          extends  DB
      { // BEGIN class getTmp
      
      	// variabili
+       
+        public $valini ='';        // valore iniziale (if) 
         public $nome   ='';        // nome della variabile POST
-        public $valini ='';        // valore iniziale (if)
         public $label  ='';        // label del campo (if)
         public $toolt  ='';        // Placeholder-tooltip          
      	
        public function __construct($valini,$nome,$label,$toolt)      // costruttore
      	{
-               $this->nome    = $nome;     
                $this->valini  = $valini;  
+               $this->nome    = $nome;
                $this->label   = $label; 
                $this->toolt   = $toolt;  
       	}
@@ -36,13 +37,13 @@ class getTmp          extends  DB
               $PDO->beginTransaction();
      echo "<div><label for='$this->nome' title='".$this->toolt."'>$this->label</label>";
      echo "<select name='$this->nome'>";
-     $sql="    SELECT * 
-               FROM ".DB::$pref."tmp 
-               WHERE tstat=' ' 
-               ORDER BY ttdesc";
+     echo $sql="SELECT * 
+                FROM ".DB::$pref."tmp 
+                WHERE tstat=' ' 
+                ORDER BY ttdesc";
             foreach($PDO->query($sql) as $row)
               {  
-              if    ( $row['tcod'] == $this->valini)
+              if    ( ($row['tcod'] == $this->valini) && ($row['tcod'] >'') )
                 echo "<option selected value=".$row['tcod'].">".$row['ttdesc']."</option>"; 
               else
                 echo "<option value=".$row['tcod'].">".$row['ttdesc']."</option>"; 

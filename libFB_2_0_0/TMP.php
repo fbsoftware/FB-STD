@@ -53,12 +53,12 @@ class TMP       extends  DB
   public static $tcttitle	=  0;		// titolo si-no
   public static $tcttit		=  '';		// titolo
   public static $tcttext	=  '';		// testo
-  /*
+ 
 	// accordion
   public static $taccotitle	=  0;		// titolo si-no
   public static $taccotit		=  '';		// titolo
   public static $taccotext	=  '';		// testo
-*/
+
   // articoli in tab
   public static $ttabtitle	=  0;		// titolo si-no
   public static $ttabtit		=  '';		// titolo
@@ -132,11 +132,11 @@ class TMP       extends  DB
 				self::$tcttitle		= $row['tcttitle'];	// titolo si-no
 				self::$tcttit		= $row['tcttit'];	// titolo
 				self::$tcttext		= $row['tcttext'];	// testo
-				/* 	// accordion
+				 	// accordion
 				self::$taccotitle	= $row['taccotitle'];	// titolo si-no
 				self::$taccotit		= $row['taccotit'];	// titolo
 				self::$taccotext	= $row['taccotext'];	// testo
-				*/
+				
 				// articoli in tab
 				self::$ttabtitle	= $row['ttabtitle'];	// titolo si-no
 				self::$ttabtit		= $row['ttabtit'];	// titolo

@@ -34,8 +34,12 @@ switch ($azione)
            $f1->field();
       $ts = new DB_tip_i('stato','istat','','Stato record','Attivo-sospeso');
           $ts->select();
-      $t = new getTmp('','itmp','Template','Scelta del template');
-          $t->getTemplate();
+
+      //$t = new getTmp('','itmp','Tema','Scelta del tema');
+          //$t->getTemplate();
+$f4 =    new DB_sel_lt('tmp','tprog','','tcod','itmp','tstat','ttdesc','Tema','Tema in uso');
+    $f4->select_lt();
+
       $f3 = new input(array('','icod',20,'Codice','Codice del componente','ia'));
           $f3->field();
       $f4 = new input(array('','ides',30,'Descrizione','Descrizione del componente','i'));

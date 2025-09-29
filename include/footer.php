@@ -1,5 +1,5 @@
 <?php
-echo	"<div id='footer' class='f-flex fd-row  fb-secondary jc-around fw'>";
+echo	"<div id='footer' class='f-flex fd-row  fb-primary jc-around fw'>";
 ?>
 <style type="text/css">
 /* per no marker */
@@ -13,8 +13,8 @@ echo	"<div id='footer' class='f-flex fd-row  fb-secondary jc-around fw'>";
 }
 
 #footer p	{
-		background-color: var(--sec-color);
-	border: 1.5px solid var(--sec-color);
+		background-color: var(--pri-color);
+	border: 1.5px solid var(--pri-color);
 	color: var(--black-color);
 }
 </style>

@@ -36,7 +36,7 @@ while (false !== ($filename = readdir($dh)))
 //closedir($this->path);       
 } 
 else {
-	echo "Directory non trovata";
+	echo "Directory non trovata=$filename";
 }
 // elaborazione dell' array 
 sort($files);

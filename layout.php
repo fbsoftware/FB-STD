@@ -1,5 +1,5 @@
 <?php
-$count = 0; 
+// = 0; 
         $sql = "SELECT *
                 FROM `".DB::$pref."lay`
                 WHERE ltmp= '".TMP::$tmenu."' 
@@ -11,8 +11,10 @@ $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
 
 foreach($PDO->query($sql) as $row)
-          { 
-          $lcod     =   $row['lcod'];     
+          {  
+			//require'../admin/post_lay.php';
+			//echo  "tema-tipo-codice=".$row['ltmp']."-".$row['ltipo']."-".$row['lcod'];//debug
+			$lcod = $row['lcod'];
             switch ($row['ltipo']) 
             {
            case 'header':
@@ -126,7 +128,14 @@ foreach($PDO->query($sql) as $row)
 				{				
 				require'include/space.php';
 				}				
-				break;                  
+				break;     
+					               
+			case 'pag':
+				if (file_exists('include/page.php')) 
+				{				
+				require'include/page.php';
+				}				
+				break;               
             default:
             	
             	break;

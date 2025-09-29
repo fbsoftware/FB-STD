@@ -24,7 +24,7 @@ class DB_nav          extends DB
                        </option>"; 
                        echo "tutti"."<br >"; 
 					   
- echo             $sql="SELECT DISTINCT nmenu
+              $sql="SELECT DISTINCT nmenu
                     FROM ".self::$pref."nav"."
                     ORDER BY nmenu ";
           foreach($PDO->query($sql) as $row)

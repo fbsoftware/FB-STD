@@ -48,9 +48,11 @@ echo "</div>";
           {
      require('fields_ctt.php');
 			echo "<div class='tr'>";
-		$f2 = new input(array($eid,'eid',2,'','','ck-n'));
-		echo "<div class='td'>";
-			$f2->field_n(); echo "</div>";
+
+               $f1 = new fieldi($eid,'eid',2,'');
+                    echo "<div class='td'>";
+				$f1->field_ck(); echo "</div>";
+		
 		$s = new input(array($estat,'estat',2,'','','st-n'));
 		echo "<div class='td'>";
 			$s->field_n(); echo "</div>";

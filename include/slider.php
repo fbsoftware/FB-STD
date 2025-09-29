@@ -12,9 +12,12 @@ color:white;
 font-size:1em;
 }
 .bx-wrapper		{
-background:var(--bg-color) !important;
-margin-bottom:50px;	
+/*background:var(--sec-color) !important;*/
+margin-bottom:0px;	
 border:none;
+}
+.bx-controls-auto  {
+ /*background:var(--sec-color)!important;  */
 }
 .scrim {
 	position:relative;
@@ -26,6 +29,10 @@ border:none;
 }
 img.slide{
 	width:100%;
+}
+/* Adeguamento altezza immagini  */
+.fb-Hslider {
+    height:545px !important;
 }
 </style>
 <?php		
@@ -58,14 +65,14 @@ echo	"</div>";   // slider
 ?>
         <script>
             $('.slider').bxSlider({
-                autoControls: true,
+                autoControls: false,
                 auto: true,
                 pager: false,
-           /*     slideWidth: 1270*/
                 mode: 'fade',
                 captions: false,
                 speed: '<?php echo TMP::$tslidetime ?>'
             });
+            $( ".bx-viewport" ).addClass('fb-Hslider');
         </script>
 <?php		
 echo "</section>";

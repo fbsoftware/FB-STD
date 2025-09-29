@@ -59,14 +59,20 @@ case 'art':
        $t = new DB_sel_l('art','atit','','atit','nsotvo','astat','atit','Articolo','');
        echo $t->select_label()  ; break;
 case 'lnk':
-       $ty = new field($nsotvo,'nsotvo',30,'Link interno');    echo $ty->field_i(); break;
+       $ty = new field($nsotvo,'nsotvo',30,'Link interno');    
+       echo $ty->field_i(); break;
 case 'ifr':
        $tw = new select_root($nsotvo,'nsotvo','Html/php pers.');
-       echo $tw->select_dir();
-       break;
+       echo $tw->select_dir();    break;
+case 'pag':
+       $tw = new select_file('../pagine/',$nsotvo,'nsotvo','Pagina web','File della pagina');
+      echo $tw->file();    break;    
+default:
+   echo "Tipo voce errata=".$ntipo;
+   break;   
 }
-      $f5 = new field('','ntarget',20,'Target');
-	 	$f5->field_i();
+      $tg = new DB_tip_i('trg','ntarget',$ntarget,'Target','Target:_blank ...');
+		$tg->select();
       $f6 = new field(0,'nselect',1,'Voce corrente (1)');
 	 	$f6->field_i();
       $f7 = new field(0,'ntitle',1,'(1)Titoli, (0)dettaglio');
@@ -77,11 +83,14 @@ case 'ifr':
 	 	$fa->field_i();
       $tz = new field(0,'naccesso',1,'Livello accesso');
 	 	$tz->field_i();
-	  $f2 = new input(array('','nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));
-		$f2->field();
+	   $f2 = new input(array('','nmetakey',33,'Meta keywords','Keywords assegnate alla pagina','tx'));
+		$f2->field();   
+
+
 	echo  "</fieldset>";
 	echo "</form>";
       break;
+
 }
 }
 echo "</body>";

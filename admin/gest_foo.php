@@ -31,7 +31,7 @@ echo "<div class='th'>";
 echo "<div class='td'>Scelta</div>";
 echo "<div class='td'>Stato</div>";
 echo "<div class='td'>Progr.</div>";
-echo "<div class='td'>$COD</div>";
+echo "<div class='td'>Codice</div>";
 echo "<div class='td'>Descrizione</div>";
 echo "<div class='td'>Tipo</div>";
 echo "<div class='td'> Template</div>";
@@ -39,7 +39,7 @@ echo "</div>";
 // lettura database
      $sql =   "SELECT *
                FROM ".DB::$pref."foo
-               ORDER BY fprog";
+               ORDER BY fcod";
 
           foreach($PDO->query($sql) as $row)
           {

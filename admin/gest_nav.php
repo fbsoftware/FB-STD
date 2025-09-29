@@ -23,6 +23,7 @@ $parm = $_SESSION['esito'];
 $m = new msg($parm);
 $m->msg();
 
+// scelta tema
 $menu = new DB_nav();
 $menu->menu();
 echo "</form>";

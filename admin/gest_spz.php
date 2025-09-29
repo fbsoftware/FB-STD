@@ -41,23 +41,23 @@ echo "</div>";
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
      $PDO = new PDO($con,DB::$user,DB::$pw);
      $PDO->beginTransaction();
-      foreach($PDO->query($sql) as $row)
+      foreach($PDO->query($sql) as $qow)
           {
           require('fields_spz.php');
           echo "<div class='tr'>";
-     $f2 = new input(array($rid,'rid',2,'','','ck-n'));
+     $f2 = new input(array($qid,'qid',2,'','','ck-n'));
 		echo "<div class='td'>";
      $f2->field_n(); echo "</div>";
-		$f = new input(array($rstat,'rstat',2,'','','st-n'));
+		$f = new input(array($qstat,'qstat',2,'','','st-n'));
 		echo "<div class='td'>";
      $f->field_n(); echo "</div>";
                     ?>
-          <div class='td'><?php echo $rprog ?></div>
-          <div class='td'><?php echo $rtmp ?></div>
-          <div class='td'><?php echo $rpage ?></div>
-          <div class='td'><?php echo $rcod ?></div>
-          <div class='td'><?php echo $rspa ?></div>
-          <div class='td'><?php echo $rdesc ?></div>
+          <div class='td'><?php echo $qprog ?></div>
+          <div class='td'><?php echo $qtmp ?></div>
+          <div class='td'><?php echo $qpage ?></div>
+          <div class='td'><?php echo $qcod ?></div>
+          <div class='td'><?php echo $qspa ?></div>
+          <div class='td'><?php echo $qdesc ?></div>
           <?php
      echo "</div>";
           }

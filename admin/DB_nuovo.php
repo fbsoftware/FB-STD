@@ -24,7 +24,7 @@ Il database è già connesso e la transazione pronta.
         $test1 = strpos($row[1],"text");
         $test2 = strpos($row[1],"varchar");
             if (($test1 >= 0) || ($test2 >= 0 ))
-            {   $valori .="'".addslashes($_POST[$row[0]])."',";    }
+            {   $valori .="'".utf8_decode($_POST[$row[0]])."',";    }
             else {   $valori .="'".$_POST[$row[0]]."',"; }
   				}
         } // foreach

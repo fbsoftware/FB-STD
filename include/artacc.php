@@ -13,6 +13,9 @@
     });
 	    $( "#accordion .ui-accordion-content .ui-widget-content" ).removeClass('ui-widget-content');
         $( "#accordion .ui-accordion-content .ui-widget-content" ).addClass('fb-secondary');
+  		$( "#accordion .ui-state-default" ).removeClass('ui-state-default');
+        $( "#accordion .ui-state-default" ).addClass('fb-primary');
+		$( "#accordion" ).addClass('fb-secondary');
   } );
   </script>
 <?php
@@ -27,19 +30,19 @@
           foreach($PDO->query($sql) as $row)
           {  
 			require('admin/fields_asl.php');	
-			// stampa il titolo dell'accordion se richiesto
-		
-	if ($dtit_sn == 1) 
+	
+	// stampa il titolo dell'accordion se richiesto	
+	if (TMP::$taccotitle == 1) 
 	{
 		echo "<div class='f-flex fd-column ui-state-default fb-primary'>"; 
-		if ($dtit > " ") { echo "<h1>".$dtit."</h1>"; } 
-		if ($dtext > " ") { echo $dtext; }
+		if (TMP::$taccotit > " ") { echo "<h1>".TMP::$taccotit."</h1>"; } 
+		if (TMP::$taccotext > " ") { echo TMP::$taccotext; }
 		echo "</div>";	
 	}  
   
-// lettura articoli della categoria
-           $titolo = array();
-           $testo  = array();
+		// lettura articoli della categoria
+		$titolo = array();
+		$testo  = array();
         $sql = "SELECT *
                 FROM `".DB::$pref."art`
                 WHERE acap = '$dcap'

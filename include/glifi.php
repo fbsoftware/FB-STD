@@ -34,7 +34,7 @@ $spazio->altezza();
 		json_encode($rows);
 		$colonne = $stmt->rowCount();
 
-		echo "<div class='f-flex fd-row jc-center  ai-start fb-secondary'>";
+		echo "<div class='f-flex fd-row jc-around  ai-start fb-secondary'>";
 
 		foreach($rows as $row)
 			{
