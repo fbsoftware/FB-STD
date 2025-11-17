@@ -260,16 +260,16 @@ echo "</div>";
      echo  "<fieldset id='tab1'>";
      $f = new input(array($tpri_color,'tpri_color',10,'Colore primario','Colore primario','ic'));
           $f->field();
-	$f = new input(array($tx_pri_color,'tx_pri_color',10,'Testo primario','Colore testo primario','ic'));
-          $f->field();
+	//$f = new input(array($tx_pri_color,'tx_pri_color',10,'Testo primario','Colore testo primario','ic'));
+          //$f->field();
 	$f = new input(array($tsec_color,'tsec_color',10,'Colore secondario','Colore secondario','ic'));
           $f->field();
-	$f = new input(array($tx_sec_color,'tx_sec_color',10,'Testo secondario','Colore testo secondario','ic'));
-          $f->field();
-     $f = new input(array($tbg_color,'tbg_color',10,'Sfondo testo','Colore di sfondo del testo','ic'));
-          $f->field();
-	$f = new input(array($tx_color,'tx_color',10,'Colore testo','Colore del testo','ic'));
-          $f->field();
+	//$f = new input(array($tx_sec_color,'tx_sec_color',10,'Testo secondario','Colore testo secondario','ic'));
+          //$f->field();
+     //$f = new input(array($tbg_color,'tbg_color',10,'Sfondo testo','Colore di sfondo del testo','ic'));
+          //$f->field();
+	//$f = new input(array($tx_color,'tx_color',10,'Colore testo','Colore del testo','ic'));
+          //$f->field();
 	$f = new input(array($tbutton_color,'tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
           $f->field();
 	$f = new input(array($tx_button_color,'tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
@@ -278,13 +278,13 @@ echo "</div>";
 echo "<div>";
 
 echo "<div class='demo' style='background:".$tpri_color."'>
-		  <p style='color:".$tx_pri_color."'>Primario</p></div>";
+		  <p style='color:".$tsec_color."'>Primario</p></div>";
 echo "<div class='demo'  style='background:".$tsec_color."'>
-		  <p  style='color:".$tx_sec_color."'>Secondario</p></div>";
-echo "<div class='demo'  style='background:".$tbg_color."'>
-		  <p  style='color:".$tx_color."'>Testo</p></div>";
+		  <p  style='color:".$tpri_color."'>Secondario</p></div>";
 echo "<div class='demo'  style='background:".$tbutton_color."'>
-		  <p  style='color:".$tx_button_color."'>Bottone</p></div>";
+		  <p  style='color:".$tpri_color."'>Bottone</p></div>";
+echo "<div class='demo'  style='background:".$tx_button_color."'>
+		  <p  style='color:".$tsec_color."'>Bottone2</p></div>";
 echo "</div>";
 
 echo "</fieldset>";
@@ -468,16 +468,16 @@ break;
         echo  "<fieldset id='tab1'>";
         $f = new input(array($tpri_color,'tpri_color',10,'Colore primario','Colore primario','ic'));
              $f->field();
-   	$f = new input(array($tx_pri_color,'tx_pri_color',10,'Testo primario','Colore testo primario','ic'));
-             $f->field();
+   	//$f = new input(array($tx_pri_color,'tx_pri_color',10,'Testo primario','Colore testo primario','ic'));
+             //$f->field();
    	$f = new input(array($tsec_color,'tsec_color',10,'Colore secondario','Colore secondario','ic'));
              $f->field();
-   	$f = new input(array($tx_sec_color,'tx_sec_color',10,'Testo secondario','Colore testo secondario','ic'));
-             $f->field();
-        $f = new input(array($tbg_color,'tbg_color',10,'Sfondo testo','Colore di sfondo del testo','ic'));
-             $f->field();
-   	$f = new input(array($tx_color,'tx_color',10,'Colore testo','Colore del testo','ic'));
-             $f->field();
+   	//$f = new input(array($tx_sec_color,'tx_sec_color',10,'Testo secondario','Colore testo secondario','ic'));
+             //$f->field();
+        //$f = new input(array($tbg_color,'tbg_color',10,'Sfondo testo','Colore di sfondo del testo','ic'));
+             //$f->field();
+   	//$f = new input(array($tx_color,'tx_color',10,'Colore testo','Colore del testo','ic'));
+             //$f->field();
    	$f = new input(array($tbutton_color,'tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
              $f->field();
    	$f = new input(array($tx_button_color,'tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
@@ -486,13 +486,13 @@ break;
    echo "<div>";
 
    echo "<div class='demo' style='background:".$tpri_color."'>
-   		  <p  style='color:".$tx_pri_color."'>Primario</p></div>";
+   		  <p  style='color:".$tsec_color."'>Primario</p></div>";
    echo "<div class='demo'  style='background:".$tsec_color."'>
-   		  <p  style='color:".$tx_sec_color."'>Secondario</p></div>";
-   echo "<div class='demo'  style='background:".$tbg_color."'>
-   		  <p  style='color:".$tx_color."'>Testo</p></div>";
+   		  <p  style='color:".$tpri_color."'>Secondario</p></div>";
    echo "<div class='demo'  style='background:".$tbutton_color."'>
-   		  <p  style='color:".$tx_button_color."'>Bottone</p></div>";
+   		  <p  style='color:".$tpri_color."'>Testo</p></div>";
+   echo "<div class='demo'  style='background:".$tx_button_color."'>
+   		  <p  style='color:".$tsec_color."'>Bottone</p></div>";
    echo "</div>";
 
    echo "</fieldset>";
