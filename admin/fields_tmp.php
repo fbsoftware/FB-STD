@@ -19,7 +19,7 @@ $tx_sec_color   =$row['tx_sec_color'];
 $tbg_color      =$row['tbg_color'];      
 $tx_color       =$row['tx_color'];       
 $tbutton_color  =$row['tbutton_color'];  
-$tbutton2_color=$row['tbutton2_color'];
+$tx_button_color=$row['tx_button_color'];
 //slide
 $tslidebutt   	=$row['tslidebutt'];
 $tslidetime    =$row['tslidetime'];
