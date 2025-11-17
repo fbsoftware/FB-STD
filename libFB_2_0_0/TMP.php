@@ -25,11 +25,11 @@ class TMP       extends  DB
   public static $teditor	=  '';		// editor di testo
 // colori base
   public static $tpri_color			=  '';		// primario
-  public static $tx_pri_color       =  '';		// testo primario
+  //public static $tx_pri_color       =  '';		// testo primario
   public static $tsec_color         =  '';		// secondario
-  public static $tx_sec_color       =  '';      // testo secondario
-  public static $tbg_color          =  '';      // sfondo testo
-  public static $tx_color           =  '';		// testo
+  //public static $tx_sec_color       =  '';      // testo secondario
+  //public static $tbg_color          =  '';      // sfondo testo
+  //public static $tx_color           =  '';		// testo
   public static $tbutton_color      =  '';		// bottone
   public static $tx_button_color    =  '';		// testo bottone
   // slide
@@ -149,11 +149,11 @@ class TMP       extends  DB
 				self::$teditor		= $row['teditor'];	// editor di testo
 				// colori base
 				self::$tpri_color		      =$row['tpri_color'];			// primario
-				self::$tx_pri_color       =$row['tx_pri_color'];   	// testo primario
+				//self::$tx_pri_color       =$row['tx_pri_color'];   	// testo primario
 				self::$tsec_color         =$row['tsec_color'];     	// secondario
-				self::$tx_sec_color       =$row['tx_sec_color'];       // testo secondario
-				self::$tbg_color          =$row['tbg_color'];          // sfondo testo
-				self::$tx_color           =$row['tx_color'];       	// testo
+				//self::$tx_sec_color       =$row['tx_sec_color'];       // testo secondario
+				//self::$tbg_color          =$row['tbg_color'];          // sfondo testo
+				//self::$tx_color           =$row['tx_color'];       	// testo
 				self::$tbutton_color      =$row['tbutton_color'];  	// bottone
 				self::$tx_button_color    =$row['tx_button_color'];	// testo bottone
                }
