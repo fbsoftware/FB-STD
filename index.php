@@ -10,11 +10,6 @@
    * 20/04/2021		colore di sfondo nel <body>   
 ============================================================================= */
 require_once('init_site.php');
-// log errori
- 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 
 //tema
 echo "<body>";
