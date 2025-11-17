@@ -19,7 +19,7 @@ $tx_sec_color   =$_POST['tx_sec_color'];
 $tbg_color      =$_POST['tbg_color'];      
 $tx_color       =$_POST['tx_color'];       
 $tbutton_color  =$_POST['tbutton_color'];  
-$tx_button_color=$_POST['tx_button_color'];
+$tbutton2_color=$_POST['tbutton2_color'];
 // slide
 $tslidebutt    =$_POST['tslidebutt'];
 $tslidetime    =$_POST['tslidetime'];

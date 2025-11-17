@@ -31,7 +31,7 @@ class TMP       extends  DB
   //public static $tbg_color          =  '';      // sfondo testo
   //public static $tx_color           =  '';		// testo
   public static $tbutton_color      =  '';		// bottone
-  public static $tx_button_color    =  '';		// testo bottone
+  public static $tbutton2_color    =  '';		// testo bottone
   // slide
   public static $tslidebutt   = '';     // slide - bottoni navigazione
   public static $tslidetime   = 0;      // slide - tempo permanenza immagine
@@ -155,7 +155,7 @@ class TMP       extends  DB
 				//self::$tbg_color          =$row['tbg_color'];          // sfondo testo
 				//self::$tx_color           =$row['tx_color'];       	// testo
 				self::$tbutton_color      =$row['tbutton_color'];  	// bottone
-				self::$tx_button_color    =$row['tx_button_color'];	// testo bottone
+				self::$tbutton2_color    =$row['tbutton2_color'];	// testo bottone
                }
                return $row;   // per eventuale utilizzo
           }

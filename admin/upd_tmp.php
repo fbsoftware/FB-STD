@@ -118,7 +118,7 @@ echo "</fieldset>";
           //$f->field();
 	$f = new input(array('#ffffff','tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
           $f->field();
-	$f = new input(array('#ffffff','tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
+	$f = new input(array('#ffffff','tbutton2_color',10,'Testo bottone','Colore del testo del bottone','ic'));
           $f->field();
 echo "</fieldset>";
 echo "</div>";
@@ -272,7 +272,7 @@ echo "</div>";
           //$f->field();
 	$f = new input(array($tbutton_color,'tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
           $f->field();
-	$f = new input(array($tx_button_color,'tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
+	$f = new input(array($tbutton2_color,'tbutton2_color',10,'Testo bottone','Colore del testo del bottone','ic'));
           $f->field();
 // DEMO COLORI
 echo "<div>";
@@ -283,7 +283,7 @@ echo "<div class='demo'  style='background:".$tsec_color."'>
 		  <p  style='color:".$tpri_color."'>Secondario</p></div>";
 echo "<div class='demo'  style='background:".$tbutton_color."'>
 		  <p  style='color:".$tsec_color."'>Bottone</p></div>";
-echo "<div class='demo'  style='background:".$tx_button_color."'>
+echo "<div class='demo'  style='background:".$tbutton2_color."'>
 		  <p  style='color:".$tpri_color."'>Bottone2</p></div>";
 echo "</div>";
 
@@ -480,7 +480,7 @@ break;
              //$f->field();
    	$f = new input(array($tbutton_color,'tbutton_color',10,'Colore bottone','Colore del bottone','ic'));
              $f->field();
-   	$f = new input(array($tx_button_color,'tx_button_color',10,'Testo bottone','Colore del testo del bottone','ic'));
+   	$f = new input(array($tbutton2_color,'tbutton2_color',10,'Testo bottone','Colore del testo del bottone','ic'));
              $f->field();
    // DEMO COLORI
    echo "<div>";
@@ -491,7 +491,7 @@ break;
    		  <p  style='color:".$tpri_color."'>Secondario</p></div>";
    echo "<div class='demo'  style='background:".$tbutton_color."'>
    		  <p  style='color:".$tsec_color."'>Testo</p></div>";
-   echo "<div class='demo'  style='background:".$tx_button_color."'>
+   echo "<div class='demo'  style='background:".$tbutton2_color."'>
    		  <p  style='color:".$tpri_color."'>Bottone</p></div>";
    echo "</div>";
 
