@@ -7,3 +7,4 @@ FB-STD-2.0.2
 01/03/2022	utilizzo degli incude DB_nuovo,DB_modifica,DB_cancella per ogni
 						tabella che rende inutili tutti i php: post_"tabella" nei programmi:
 						write_"tabella"; aggiunta funzione di "copia" per ogni tabella.
+17/11/2025	utilizzo di 4 colori per la palette del sito

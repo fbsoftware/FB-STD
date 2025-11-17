@@ -1,6 +1,0 @@
-COSE DA FARE 
-============
-
-PER OVVIARE A BUGS
-------------------
-12/7/19	Articoli con immagine:	per articolo sospeso mostra comunque l'immagine e non il testo, mentre non dovrebbe mostrare nulla

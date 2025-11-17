@@ -155,7 +155,7 @@ class TMP       extends  DB
 				//self::$tbg_color          =$row['tbg_color'];          // sfondo testo
 				//self::$tx_color           =$row['tx_color'];       	// testo
 				self::$tbutton_color      =$row['tbutton_color'];  	// bottone
-				self::$tbutton2_color    =$row['tbutton2_color'];	// testo bottone
+				self::$tbutton2_color    =$row['tx_button_color'];	// testo bottone
                }
                return $row;   // per eventuale utilizzo
           }
