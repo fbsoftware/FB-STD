@@ -282,9 +282,9 @@ echo "<div class='demo' style='background:".$tpri_color."'>
 echo "<div class='demo'  style='background:".$tsec_color."'>
 		  <p  style='color:".$tpri_color."'>Secondario</p></div>";
 echo "<div class='demo'  style='background:".$tbutton_color."'>
-		  <p  style='color:".$tpri_color."'>Bottone</p></div>";
+		  <p  style='color:".$tsec_color."'>Bottone</p></div>";
 echo "<div class='demo'  style='background:".$tx_button_color."'>
-		  <p  style='color:".$tsec_color."'>Bottone2</p></div>";
+		  <p  style='color:".$tpri_color."'>Bottone2</p></div>";
 echo "</div>";
 
 echo "</fieldset>";
@@ -490,9 +490,9 @@ break;
    echo "<div class='demo'  style='background:".$tsec_color."'>
    		  <p  style='color:".$tpri_color."'>Secondario</p></div>";
    echo "<div class='demo'  style='background:".$tbutton_color."'>
-   		  <p  style='color:".$tpri_color."'>Testo</p></div>";
+   		  <p  style='color:".$tsec_color."'>Testo</p></div>";
    echo "<div class='demo'  style='background:".$tx_button_color."'>
-   		  <p  style='color:".$tsec_color."'>Bottone</p></div>";
+   		  <p  style='color:".$tpri_color."'>Bottone</p></div>";
    echo "</div>";
 
    echo "</fieldset>";
