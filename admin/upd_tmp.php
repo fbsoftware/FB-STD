@@ -34,7 +34,9 @@ p.demo	{
 //----------------------------------------------
 echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
 
-require_once("post_".$_SESSION['tab'].".php");
+echo "sess-tab".$_SESSION['tab'];
+
+echo require_once("post_".$_SESSION['tab'].".php");
 $azione   =$_POST['submit'];
 
 // test scelta effettuata sul pgm chiamante
