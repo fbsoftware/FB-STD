@@ -3,6 +3,6 @@
 --pri-color: 		<?php echo TMP::$tpri_color; ?>;
 --sec-color: 		<?php echo TMP::$tsec_color; ?>;
 --button-color:		<?php echo TMP::$tbutton_color; ?>;
---tx_button-color:	<?php echo TMP::$tx_button_color; ?>;
+--tx-button-color:	<?php echo TMP::$tx_button_color; ?>;
 }
 </style>
