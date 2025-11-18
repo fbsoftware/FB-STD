@@ -3,9 +3,9 @@ setlocal EnableDelayedExpansion
 
 :: === CONFIGURAZIONE ===
 set PROJECT=C:\xampp\htdocs\FB-STD
-set DEV=%PROJECT%\user.dev.ini
-set PROD=%PROJECT%\user.prod.ini
-set ACTIVE=%PROJECT%\user.ini
+set DEV=%PROJECT%\.user.dev.ini
+set PROD=%PROJECT%\.user.prod.ini
+set ACTIVE=%PROJECT%\.user.ini
 
 :: === CONTROLLO FILE ===
 if not exist "%DEV%" (
@@ -22,8 +22,8 @@ if not exist "%PROD%" (
 
 echo -----------------------------------------------------
 echo Seleziona la modalita':
-echo 1 = SVILUPPO (user.dev.ini)
-echo 2 = PRODUZIONE (user.prod.ini)
+echo 1 = SVILUPPO (.user.dev.ini)
+echo 2 = PRODUZIONE (.user.prod.ini)
 echo -----------------------------------------------------
 echo.
 
