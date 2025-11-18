@@ -63,7 +63,7 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 
 			// bottone
 			if ($pmlink >= ' ')
-			{ 	echo "<div class='center'><a class='fb-accent fb-p1 fb-rad7 fb-upper' 
+			{ 	echo "<div class='center'><a class='fb-accent fb-p1 fb-rad50 fb-upper' 
 				href='".$pmlink."' target='_new'>".$pmtext."</a></div>";
 			}
 			
