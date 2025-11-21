@@ -43,6 +43,7 @@ class getTmp          extends  DB
                 ORDER BY ttdesc";
             foreach($PDO->query($sql) as $row)
               {  
+    echo "<br/>template=".$row['tcod'];//debug
               if    ( ($row['tcod'] == $this->valini) && ($row['tcod'] >'') )
                 echo "<option selected value=".$row['tcod'].">".$row['ttdesc']."</option>"; 
               else

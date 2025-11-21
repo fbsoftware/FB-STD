@@ -37,4 +37,6 @@ $valori = substr($valori,0,($l-1));
         $PDO->exec($sql);
         $PDO->commit();
         array_push($_SESSION['esito'],'55');
+        print_r($valori);//debug
+        
  ?>

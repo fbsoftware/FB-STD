@@ -1,5 +1,5 @@
 <?php
-//   cerca nel layout la pagina richiesta
+//   cerca nel layout la pagina richiesta  
 echo "<section id='pagina-".$lcod."'>";
 $count = 0; 
 
