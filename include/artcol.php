@@ -20,7 +20,7 @@ $PDO->beginTransaction();
 			echo "<hr class='fb-primary'>"; 
 
 // articoli in colonne
-	echo "<div class='f-flex fd-row jc-start fnw fb-secondary'>";
+	echo "<div class='f-flex fd-col jc-start fnw fb-secondary'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo

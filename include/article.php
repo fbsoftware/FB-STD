@@ -6,7 +6,9 @@ $count = 0;
      // stampa riga di separazione
 			echo "<hr class='fb-primary'>"; 
 
-     echo "<div class='f-flex jc-center fb-secondary'>";
+     echo "<div class='f-flex fb-row jc-center fb-secondary'>";
+     echo "articolo=".$lcod;//debug
+     
         $sql = "SELECT *
                 FROM `".DB::$pref."art`
                 WHERE atit = '$lcod'

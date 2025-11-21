@@ -14,7 +14,8 @@ echo	"<section id='artimg'>";
 <?php
 // stampa riga di separazione
 			echo "<hr class='fb-primary'>"; 
- //Secho "CODICE=".$lcod;//debug              
+ //echo "CODICE=".$lcod;//debug    
+
 // cerca gli articoli con immagine
        $sql = "SELECT *
                 FROM `".DB::$pref."aim`
@@ -29,7 +30,8 @@ echo	"<section id='artimg'>";
 
 		//  immagine/video a sinistra ============================================                                      
           if ($iimgpos == 'sx') 
-          {	
+          {			echo "<div class='f-flex'>";		// div interno
+
                if ($itipo == 'img') 
                { 
 		   ?>
@@ -44,22 +46,30 @@ echo	"<section id='artimg'>";
 				$modal->popup();
 				}
                
-			   elseif ($itipo == 'video')
+			elseif ($itipo == 'video')
                {
                 require 'video.php';
                }
-			   
+			echo "</div>";  
+// testo
+               echo "<div class='f-flex'>";		// div interno
 				require 'art-img.php';
 				$count++;
-				echo "</div>";
+			echo "</div>";
           }
           
           //  immagine/video a destra =========================================
           elseif ($iimgpos == 'dx') 
+          echo "<div class='f-flex'>";		// div interno
           {
-			require 'art-img.php';
+			// testo
+               echo "<div class='f-flex'>";		// div interno
+				require 'art-img.php';
+				$count++;
+			echo "</div>";
                if ($itipo == 'img') 
-               {  ?>
+               {  
+               echo "<div class='f-flex'>";		// div interno?>
 			<?php $target	= "artimg".$count; 			
  			echo "<a popup-open='".$target."' href='javascript:void(0)'>";?>
   			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive img-h300" title="<?php echo $iimgtit; ?>"> 
@@ -68,7 +78,6 @@ echo	"<section id='artimg'>";
  			<?php
 			$modal	= new popup_modale($target,$iimgtit,$iimg,"",$iimgalt);
 				$modal->popup();
-			echo "</div>";
 	
                }
                // video
