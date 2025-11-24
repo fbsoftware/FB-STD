@@ -20,11 +20,11 @@ $PDO->beginTransaction();
 			echo "<hr class='fb-primary'>"; 
 
 // articoli in colonne
-	echo "<div class='f-flex fd-col jc-start fnw fb-secondary'>";
+	echo "<div class='f-flex fd-row jc-start fnw fb-secondary'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo
-          echo "<div>";
+          echo "<div class='f-1>"; 
           $art = new getArt($htit1);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
@@ -34,7 +34,7 @@ $PDO->beginTransaction();
 	if ($hsino2 == 1) 
 		{  
           // ricerca articolo
-          echo "<div>";  
+          echo "<div class='f-1>"; 
           $art = new getArt($htit2);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
@@ -44,7 +44,7 @@ $PDO->beginTransaction();
 	if ($hsino3 == 1) 
 		{  
           // ricerca articolo
-          echo "<div>"; 
+          echo "<div class='f-1>"; 
           $art = new getArt($htit3);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
@@ -54,7 +54,7 @@ $PDO->beginTransaction();
 	if ($hsino4 == 1) 
 		{  
           // ricerca articolo
-          echo "<div>";   
+          echo "<div class='f-1>"; 
           $art = new getArt($htit4);
           $art->getFieldsdArt();
           $a = new txt($art->atext);

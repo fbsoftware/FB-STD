@@ -1,5 +1,5 @@
 <?php
-//   cerca nel layout l'articolo richiesto
+//    cerca nel layout l'articolo richiesto
 echo "<section id='article'>";
 $count = 0; 
 
@@ -7,7 +7,6 @@ $count = 0;
 			echo "<hr class='fb-primary'>"; 
 
      echo "<div class='f-flex fb-row jc-center fb-secondary'>";
-     echo "articolo=".$lcod;//debug
      
         $sql = "SELECT *
                 FROM `".DB::$pref."art`
@@ -17,7 +16,6 @@ $count = 0;
      foreach($PDO->query($sql) as $row)
 		{ 
 		 echo "<div>";
-     echo "Mostra titolo articolo".$row['amostra'];//debug
 		  if ($row['amostra'] == 1) 
 			{
 			echo "<h1>".$row['atit']."</h1>";
