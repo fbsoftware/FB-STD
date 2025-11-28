@@ -32,15 +32,15 @@ case 'nuovo':
 case 'copia':
     echo "<br>prima di include";//debug
              $_SESSION['tab'] = "art";
-            include('DB_nuovo.php');
+            include_once('DB_nuovo.php');
                     break;
 
 case 'modifica':
-            include('DB_modifica.php');
+            include_once('DB_modifica.php');
                         break;
 
 case 'cancella':
-            include('DB_cancella.php');
+            include_once('DB_cancella.php');
                         break;
 
 default :      array_push($_SESSION['esito'],'0');
