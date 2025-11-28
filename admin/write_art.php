@@ -12,15 +12,14 @@
 require_once('init_admin.php');
 require_once("post_".$_SESSION['tab'].".php");
 $azione =$_POST['submit'];
-//print_r($_POST);//debug
+print_r($_POST);//debug
 $_SESSION['esito'] = array();
 
-// test campi mancanti
-if (($azione != 'cancella') && ($azione != 'ritorno')) {
+if (($azione != 'cancella') && ($azione != 'ritorno')) 
+{
   $m = new testNoDati($atit,$atext);
   $m->alert();
 }
-
 switch ($azione)
 {
 case 'ritorno':
@@ -31,6 +30,8 @@ case 'ritorno':
 
 case 'nuovo':
 case 'copia':
+    echo "<br>prima di include";//debug
+             $_SESSION['tab'] = "art";
             include('DB_nuovo.php');
                     break;
 

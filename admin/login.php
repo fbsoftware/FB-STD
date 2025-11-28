@@ -7,6 +7,7 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
 ============================================================================= */
+
 require_once('init_admin.php');
 
 // memorizza location iniziale

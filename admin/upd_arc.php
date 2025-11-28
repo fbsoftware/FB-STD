@@ -1,5 +1,5 @@
 <?php session_start();      ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
    * package		FB open template
    * versione 3.1
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
@@ -7,7 +7,7 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
    * ------------------------------------------------
-   * gestione tabella per 4 moduli articoli in colonne
+   * gestione tabella per 1:4 moduli articoli in colonne
 	23.03.21	aggiunto titolo e testo da mostrare o meno
   15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
