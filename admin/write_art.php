@@ -1,18 +1,18 @@
 <?php session_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
-   * package		FB open template
-   * versione 1.3
-   * copyright	Copyright (C) 2011 - 2012 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
-   * ========================================================================
-   * Scrive il nuovo articolo.
+/**
+  Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+    package		FB open template
+    versione 1.3
+    copyright	Copyright (C) 2011 - 2012 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+    ========================================================================
+    Scrive il nuovo articolo.
 ============================================================================= */
 require_once('init_admin.php');
 require_once("post_".$_SESSION['tab'].".php");
 $azione =$_POST['submit'];
-print_r($_POST);//debug
 $_SESSION['esito'] = array();
 
 if (($azione != 'cancella') && ($azione != 'ritorno')) 
@@ -30,7 +30,6 @@ case 'ritorno':
 
 case 'nuovo':
 case 'copia':
-    echo "<br>prima di include";//debug
              $_SESSION['tab'] = "art";
             include_once('DB_nuovo.php');
                     break;
