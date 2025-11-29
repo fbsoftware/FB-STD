@@ -1,5 +1,5 @@
 <?php
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		FB open template
    * versione 1.4 (beta)   
    * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.

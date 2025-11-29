@@ -1,5 +1,5 @@
 <?php  session_start();   ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package            fbot-boot
    * versione 1.0    
    * copyright  Copyright (C) 2012 - 2013 FB. All rights reserved.

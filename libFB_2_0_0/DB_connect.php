@@ -1,11 +1,11 @@
 <?php
 /**
- Connessione al database - versione aggiornata per UTF-8/utf8mb4 e PDO sicuro
+ Connessione al database - versione aggiornata per UTF-8/UTF-8mb4 e PDO sicuro
 */
 class DB_connect
 {
     /**
-     * Crea e ritorna una connessione PDO configurata per utf8mb4.
+     * Crea e ritorna una connessione PDO configurata per UTF-8mb4.
      * Mantengo beginTransaction() per compatibilità con il comportamento precedente,
      * se preferisci puoi rimuoverlo e avviare la transazione dove serve.
      *
@@ -19,7 +19,7 @@ class DB_connect
     public function connect()
     {
         try {
-            $dsn = "mysql:host=" . DB::$host . ";dbname=" . DB::$db . ";charset=utf8mb4";
+            $dsn = "mysql:host=" . DB::$host . ";dbname=" . DB::$db . ";charset=UTF-8mb4";
 
             $options = [
                 PDO::ATTR_PERSISTENT         => true,
@@ -30,8 +30,8 @@ class DB_connect
 
             $PDO = new PDO($dsn, DB::$user, DB::$pw, $options);
 
-            // Forziamo l'uso di utf8mb4 anche lato sessione (utile su alcune configurazioni)
-            $PDO->exec("SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_500_ci'");
+            // Forziamo l'uso di UTF-8mb4 anche lato sessione (utile su alcune configurazioni)
+            $PDO->exec("SET NAMES 'UTF-8mb4' COLLATE 'UTF-8mb4_unicode_500_ci'");
 
             // Se vuoi che la transazione sia aperta qui (comportamento originale)
             $PDO->beginTransaction();
@@ -46,7 +46,7 @@ class DB_connect
 }
 /** 
 Note rapide
-Questa versione imposta charset=utf8mb4 nel DSN e invia anche SET NAMES utf8mb4; così il client e server usano 
+Questa versione imposta charset=UTF-8mb4 nel DSN e invia anche SET NAMES UTF-8mb4; così il client e server usano 
 correttamente UTF‑8 a 4 byte.
 Ritorna l'oggetto PDO (prima veniva creato ma non ritornato) quindi ricordati di assegnarlo:
 $db = new DB_connect(); $PDO = $db->connect();
@@ -54,7 +54,7 @@ Ho aggiunto opzioni consigliate: ERRMODE_EXCEPTION, FETCH_ASSOC e EMULATE_PREPAR
 statements nativi).
 Ho lasciato PDO::ATTR_PERSISTENT = true perché era nel tuo file originale; se hai problemi o non vuoi connessioni 
 persistenti rimuovi quella riga.
-Dopo aver aggiornato la connessione, assicurati di rimuovere eventuali utf8_decode() nel tuo codice (come nei 
+Dopo aver aggiornato la connessione, assicurati di rimuovere eventuali UTF-8_decode() nel tuo codice (come nei 
 file DB_nuovo/DB_modifica) — quei decode spesso causano la perdita di accenti/apostrofi quando si usa UTF‑8 
 correttamente.
 Se vuoi, posso anche fornirti una versione con metodo statico (DB_connect::connect()) o modificare init_admin.php 

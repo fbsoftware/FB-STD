@@ -1,6 +1,6 @@
 <?php session_start();   ob_start();
 header('Content-Type: text/html; charset=UTF-8');
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		FB open template
    * versione 1.3.4
    * copyright	Copyright (C) 2011 - 2012 FB. All rights reserved.
@@ -102,7 +102,7 @@ $sql =  "SELECT * FROM `".DB::$pref."art`
                  WHERE `aid` ='".$aid."' ";
 
 // Creiamo la connessione PDO con charset
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db.";charset=utf8mb4";
+$con = "mysql:host=".DB::$host.";dbname=".DB::$db.";charset=UTF-8mb4";
 $PDO = new PDO($con,DB::$user,DB::$pw,$options);
 $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)
@@ -143,7 +143,7 @@ break;
                FROM `".DB::$pref."art`
                WHERE `aid` = $aid ";
 // transazione
-$con = "mysql:host=".DB::$host.";dbname=".DB::$db.";charset=utf8mb4";
+$con = "mysql:host=".DB::$host.";dbname=".DB::$db.";charset=UTF-8mb4";
 $PDO = new PDO($con,DB::$user,DB::$pw,$options);
 $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)

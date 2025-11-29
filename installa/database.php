@@ -1,5 +1,5 @@
 <?php
-/* * Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/* * Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		FB open template
    * versione 1.4   
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
@@ -180,7 +180,7 @@ $PDO->exec("CREATE TABLE `".$_POST['pref']."tmp` (
   `ttdesc` varchar(50) NOT NULL COMMENT 'Nome template',
   `tfolder` varchar(50) NOT NULL COMMENT 'Percorso template',
   `tdesc` varchar(50) NOT NULL COMMENT 'Descrizione',
-  `tmenu` varchar(20) NOT NULL COMMENT 'Menù base',
+  `tmenu` varchar(20) NOT NULL COMMENT 'Menï¿½ base',
   `tlang` varchar(5) NOT NULL COMMENT 'Lingua',
   `tcolor` varchar(20) NOT NULL COMMENT 'Colore',
   `tslidebutt` int(1) NOT NULL COMMENT 'Bottoni navigazione',

@@ -22,7 +22,7 @@ else {
     $test1 = strpos($row[1],"text");
     $test2 = strpos($row[1],"varchar");
               if (($test1 >= 0) || ($test2 >= 0 ))
-             {    $valori .="".$row[0]."='".utf8_decode($_POST[$row[0]])."',"; }
+             {    $valori .="".$row[0]."='".UTF-8_decode($_POST[$row[0]])."',"; }
         else {    $valori .="".$row[0]."='".$_POST[$row[0]]."',"; }
       }
         } // foreach

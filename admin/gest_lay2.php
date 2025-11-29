@@ -1,5 +1,5 @@
 <?php  session_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		FB open template
    * versione 3.1
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
@@ -64,7 +64,7 @@ echo "</div>";
 	 ?>
           <div class='td'><?php echo $lprog ?></div>
           <div class='td'><?php echo $lcod ?></div>
-          <div class='td'><?php echo utf8_decode($ldesc) ?></div>
+          <div class='td'><?php echo UTF-8_decode($ldesc) ?></div>
           <div class='td'><?php echo $ltipo ?></div>
           <div class='td'><?php echo $ltmp ?></div>
           <div class='td'><?php echo $lpage ?></div>

@@ -1,5 +1,5 @@
 <?php
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		Gestionale
    * versione 1.0    
    * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
@@ -7,7 +7,7 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 =============================================================================== 
-  Crea il 2° livello del navigatore principale.
+  Crea il 2ï¿½ livello del navigatore principale.
 =============================================================================== */
 require 'call_ok.php';
 require_once("connectDB.php");

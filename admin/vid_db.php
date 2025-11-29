@@ -1,5 +1,5 @@
 <?php   session_start();
-/*** Fausto Bresciani   fbsoftware.bresciani@gmail.com  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware.bresciani@gmail.com  www.faustobresciani.it
    * package		Gestione Associazione
    * versione 1.3
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.

@@ -1,6 +1,6 @@
-<?php session_start();
+<?php //session_start();
 /**
-  Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+  Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
     package		FB open template
     versione 1.3
     copyright	Copyright (C) 2011 - 2012 FB. All rights reserved.
@@ -11,7 +11,8 @@
     Scrive il nuovo articolo.
 ============================================================================= */
 require_once('init_admin.php');
-require_once("post_".$_SESSION['tab'].".php");
+require_once('post_art.php');
+//require_once("post_".$_SESSION['tab'].".php");
 $azione =$_POST['submit'];
 $_SESSION['esito'] = array();
 

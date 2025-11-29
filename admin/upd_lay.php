@@ -1,5 +1,5 @@
 <?php session_start();      ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		FB open template
    * versione 3.1
    * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
@@ -263,7 +263,7 @@ echo  "<fieldset>";
 	 	$f2->field();
       $f3 = new input(array($lcod,'lcod',20,'Codice','','r'));
 	 	$f3->field();
-      $f4 = new input(array(utf8_decode($ldesc),'ldesc',30,'Descrizione','','r'));
+      $f4 = new input(array(UTF-8_decode($ldesc),'ldesc',30,'Descrizione','','r'));
       	$f4->field();
       echo    "</fieldset></form>";
       break;

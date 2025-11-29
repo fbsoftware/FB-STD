@@ -1,6 +1,6 @@
 <?php  session_start();
 /**
- Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+ Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
     package		FB open template
     versione 3.1
     copyright	Copyright (C) 2022 - 2023 FB. All rights reserved.

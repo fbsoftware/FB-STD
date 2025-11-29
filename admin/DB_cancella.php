@@ -7,10 +7,10 @@ Il database è già connesso e la transazione pronta.
 if (!isset($_SESSION['tab'])) 
 { throw new Exception('Tabella non definita in sessione.'); } 
 // Assicuriamoci che esista una connessione PDO ($PDO). 
-// se non esiste, la creiamo (con charset utf8mb4). 
+// se non esiste, la creiamo (con charset UTF-8mb4). 
 if (!isset($PDO) || !($PDO instanceof PDO)) 
 { 
-    $con = "mysql:host=" . DB::$host . ";dbname=" . DB::$db . ";charset=utf8mb4"; 
+    $con = "mysql:host=" . DB::$host . ";dbname=" . DB::$db . ";charset=UTF-8mb4"; 
     $options = [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, 
                 PDO::ATTR_EMULATE_PREPARES => false, ]; 

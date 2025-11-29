@@ -1,5 +1,5 @@
 <?php
-/*** Fausto Bresciani   fbsoftware@libero.it  www.fbsoftware.altervista.org
+/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		Gestionale
    * versione 1.0    
    * copyright	Copyright (C) 2019 - 2020 FB. All rights reserved.
