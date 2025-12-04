@@ -3,8 +3,8 @@
 echo "<section id='article'>";
 $count = 0; 
 
-     // stampa riga di separazione
-			echo "<hr class='fb-primary'>"; 
+// stampa riga di separazione
+         require 'include/space.php';
 
      echo "<div class='f-flex fb-row jc-center fb-secondary'>";
      

@@ -1,11 +1,12 @@
 <?php
-/**	============================================================
-      * @class:      getTmp
-      *
-      * @description:    ritorna i campi del record ricercato
-      *
-      * @author Fausto Bresciani <fbsoftware@libero.it>
-      * @version 0.1
+/**	
+    ============================================================
+       @class:      getTmp
+      
+       @description:    ritorna i campi del record ricercato
+      
+       @author Fausto Bresciani <fbsoftware@libero.it>
+       @version 0.1
     =============================================================  */
      
 class getTmp          extends  DB  
@@ -26,10 +27,10 @@ class getTmp          extends  DB
                $this->toolt   = $toolt;  
       	}
 
-/************************************************
- * @method:         getTemplate()
- * @description:    select dei templates
- * **********************************************/
+/***********************************************
+  @method:         getTemplate()
+  @description:    select dei templates
+  **********************************************/
   public function getTemplate()
      {                            
               $con = "mysql:host=".self::$host.";dbname=".self::$db."";
@@ -37,17 +38,16 @@ class getTmp          extends  DB
               $PDO->beginTransaction();
      echo "<div><label for='$this->nome' title='".$this->toolt."'>$this->label</label>";
      echo "<select name='$this->nome'>";
-     echo $sql="SELECT * 
-                FROM ".DB::$pref."tmp 
-                WHERE tstat=' ' 
+          echo $sql="SELECT * 
+                FROM ".DB::$pref."tmp    
+                WHERE tstat = ' '   
                 ORDER BY ttdesc";
             foreach($PDO->query($sql) as $row)
               {  
-    echo "<br/>template=".$row['tcod'];//debug
               if    ( ($row['tcod'] == $this->valini) && ($row['tcod'] >'') )
                 echo "<option selected value=".$row['tcod'].">".$row['ttdesc']."</option>"; 
               else
-                echo "<option value=".$row['tcod'].">".$row['ttdesc']."</option>"; 
+                echo          "<option value=".$row['tcod'].">".$row['ttdesc']."</option>"; 
               }
             echo "</select></div>";
      } 

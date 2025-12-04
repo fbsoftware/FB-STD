@@ -7,6 +7,7 @@
    riferimenti ai vari componenti.
    =============================================================
    06/20/22 titoli generali dal record e non dal template
+   04/12/25 Aggiunta classe fb-shadow e H3 --> H2
    -------------------------------------------------------------*/
 echo "<section id='portfolio'>";
 ?>
@@ -58,13 +59,15 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 
 			// portfolio-caption 
 			echo "<div>";
-			echo "<h3 class='center'>".$pcapt."</h3>";
+			echo "<h2 class='center'>".$pcapt."</h3>";
 			echo "</div>";
 
 			// bottone
 			if ($pmlink >= ' ')
-			{ 	echo "<div class='center'><a class='fb-accent fb-p1 fb-rad50 fb-upper' 
-				href='".$pmlink."' target='_new'>".$pmtext."</a></div>";
+			{ 	echo "<div class='center fb-button fb-rad50 fb-shadow'>
+			<a class='fb-accent fb-p1 fb-upper' 
+				href='".$pmlink."' target='_new'>".$pmtext."</a>
+				</div>";
 			}
 			
 			// dialogo modale

@@ -8,24 +8,38 @@
     Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
     all'uso anche improprio di FB open template.
 ================================================================================
-  05/05/24  Spaziatura
+  01/12/2025  Spaziatura
 ================================================================================*/
+?>
+<style>
+.divider2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--sec-color);
+}
+
+.divider2::before,
+.divider2::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid var(--pri-color);
+}
+.divider2 i {
+    color: var(--pri-color);   /* Cambia colore qui */
+    font-size: 24px; /* opzionale */
+}
+
+</style>
+<?php
 echo "<section id='space'>";
 // Spaziatura
 
- // lettura voci menu
-         $sql = "SELECT *
-                FROM `".DB::$pref."spz`
-                WHERE qtmp = '".TMP::$tmenu."' and qstat <> 'A' 
-                AND qcod = '$lcod' 
-                ORDER BY qprog";
-          foreach($PDO->query($sql) as $row)
-       {
-          require 'admin/fields_spz.php'; 
-        echo "<div class='f-flex fd-row jc-start ai-center fw fb-secondary'
-                style='width:100%; height:".$qspa."px;'>";  
-        echo "</div>";
-        }
+ echo '
+<div class="divider2">
+    <i class="fa-solid fa-star"></i>
+</div>';
+
 
 echo "</section>";
 ?>

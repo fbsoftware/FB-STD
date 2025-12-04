@@ -1,13 +1,14 @@
 <?php    session_start();       ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
-   * package		FB open template
-   * versione 1.3
-   * copyright	Copyright (C) 2022 - 2024 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
-   * ------------------------------------------------------------------------
-   * gestione tabella 'spz' spaziature fra moduli
+/**
+     Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
+    package		FB open template
+    versione 1.3
+    copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+    ------------------------------------------------------------------------
+    gestione tabella 'spz' spaziature fra moduli
 ============================================================================= */
  //   toolbar
 $param = array("nuovo","modifica","copia","cancella","ritorno");
@@ -34,14 +35,14 @@ echo "</div>";
 
  // lettura database
 	     $sql = "SELECT *
-               FROM ".DB::$pref."spz
-			ORDER BY rcod";
+                    FROM ".DB::$pref."spz
+			     ORDER BY qcod";
 
 // transazione
      $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
      $PDO = new PDO($con,DB::$user,DB::$pw);
      $PDO->beginTransaction();
-      foreach($PDO->query($sql) as $qow)
+      foreach($PDO->query($sql) as $row)
           {
           require('fields_spz.php');
           echo "<div class='tr'>";

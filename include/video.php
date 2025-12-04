@@ -1,6 +1,8 @@
-<?php //  video YouTube 
-/* -----------------------------------------------
-	28/02/21	struttura flex video fisso 400x300
+<?php  
+/**
+-----------------------------------------------
+video YouTube 	
+28/02/21	struttura flex video fisso 400x300
 -------------------------------------------------- */
 
 echo "<div id='wrapp'> ";

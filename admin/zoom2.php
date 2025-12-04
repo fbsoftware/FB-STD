@@ -1,21 +1,13 @@
 <?php
-/* ----------------------------------------
-	04/05/24    modulo immagine zoomabile
-------------------------------------------- */
-echo	"<section id='imgzoom'>";
-// cerca immagine zoomabile da pubblicare
-       $sql = "SELECT *
-                FROM `".DB::$pref."zim`
-                WHERE ztmp = '".TMP::$tcod."'
-                              and zstat <> 'A'
-				        AND zcod = '$lcod'  
-                ORDER BY zprog ";
-     foreach($PDO->query($sql) as $row)
+// Connessione MySQL
+//$conn = new mysqli("localhost", "root", "", "my_database");
 
-     {
-        require 'admin/fields_zim.php'; 
-$img = $zimg;
-     } 
+//$query = "SELECT filename FROM immagini WHERE id = 1";
+//$res = $conn->query($query);
+//$row = $res->fetch_assoc();
+
+//$img = "img/" . $row["filename"];   // es: img/prodotto1.jpg
+$img = "images/trota.jpg";
 ?>
 <!DOCTYPE html>
 <html lang="it">

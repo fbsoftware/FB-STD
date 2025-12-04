@@ -11,6 +11,8 @@ echo "<script src='https://fbsoftware.github.io/FB-CODE/js/date_picker_it.js'></
 echo "<script src='https://fbsoftware.github.io/FB-CODE/js/FBbase.js'></script>";
 echo "<script src='https://fbsoftware.github.io/FB-CODE/js/tooltip.js'></script>";
 echo "<script src='https://fbsoftware.github.io/FB-CODE/js/popup.js'></script>";
+echo "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>";
 echo "<link rel = 'stylesheet' href = 'https://fonts.googleapis.com/css?family=Roboto:i,100,700,600,500,400|sans-serif' >";
 require_once('colori-std.txt');
+
 ?>

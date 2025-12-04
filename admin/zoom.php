@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<<?php 
+
+?>
+!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,11 +92,32 @@ function imageZoom(imgID, resultID) {
 
 <p>Passa il mouse sull'immagine per ingrandire:</p>
 
-<div class="img-zoom-container f-flex fd-row ai-center jc-start">  
-<div><img id="myimage" src="SLOGO-FB3.png" width="300" height="240"></div>
-<div id="myresult" class="img-zoom-result"></div>
-</div>
-
+<?php
+/* cerca immagine zoomabile da pubblicare /*  FROM `".DB::$pref."zim`
+                WHERE ztmp = '".TMP::$tcod."'
+                              and zstat <> 'A'
+				        AND zcod = '$lcod'  
+                ORDER BY zprog ";
+                
+                <?php echo $zimg; ?>
+                */
+       $sql = "SELECT * FROM `prefix_zim`
+                WHERE ztmp = 'blog'
+                              and zstat <> 'A'
+				        AND zcod = 'ttmmpp'  
+                ORDER BY zprog ";
+              
+     foreach($PDO->query($sql) as $row)
+  print_r($row);
+     {
+        require 'admin/fields_zim.php'; 
+    ?>
+        <div class="img-zoom-container f-flex fd-row jc-between fw fb-secondary">
+          <div><img id="myimage" src="images/trota.jpg" width="70%" /></div>
+          <div id="myresult" class="img-zoom-result"></div>
+        </div>
+  <?php }?>      
+  
 <script>
 // Initiate zoom effect:
 imageZoom("myimage", "myresult");
@@ -101,3 +125,4 @@ imageZoom("myimage", "myresult");
 
 </body>
 </html>
+<?php ?>

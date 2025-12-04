@@ -2,7 +2,7 @@
 /*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
    * package		FB open template
    * versione 3.1
-   * copyright	Copyright (C) 2013 - 2014 FB. All rights reserved.
+   * copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
    * license		GNU/GPL
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
    * all'uso anche improprio di FB open template.
@@ -263,7 +263,7 @@ echo  "<fieldset>";
 	 	$f2->field();
       $f3 = new input(array($lcod,'lcod',20,'Codice','','r'));
 	 	$f3->field();
-      $f4 = new input(array(UTF-8_decode($ldesc),'ldesc',30,'Descrizione','','r'));
+      $f4 = new input(array(utf8_decode($ldesc),'ldesc',30,'Descrizione','','r'));
       	$f4->field();
       echo    "</fieldset></form>";
       break;

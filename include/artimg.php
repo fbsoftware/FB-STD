@@ -1,7 +1,9 @@
 <?php
-/* --------------------------------
-	28/02/21	struttura flex
------------------------------------ */
+/**
+---------------------------------------
+	Articolo con immagine affiancata
+     28/02/21	struttura flex
+--------------------------------------- */
 echo	"<section id='artimg'>";
 ?>
   <script>
@@ -13,8 +15,7 @@ echo	"<section id='artimg'>";
 
 <?php
 // stampa riga di separazione
-			echo "<hr class='fb-primary'>"; 
- //echo "CODICE=".$lcod;//debug    
+         require 'include/space.php';
 
 // cerca gli articoli con immagine
        $sql = "SELECT *
@@ -26,13 +27,13 @@ echo	"<section id='artimg'>";
      foreach($PDO->query($sql) as $row)
      {    require 'admin/fields_aim.php'; 
 	 		$titolo_art =   $iart;
-		echo "<div class='f-flex fd-row jc-around fw fb-secondary'>";		// flex
+		echo "<div class='f-flex fd-row jc-around fb-secondary'>";		
 
-		//  immagine/video a sinistra ============================================                                      
+     //  immagine/video a sinistra ============================================                                      
           if ($iimgpos == 'sx') 
-          {			echo "<div class='f-flex'>";		// div interno
+          {	echo "<div class='f-flex f-1'>";		// div interno
 
-               if ($itipo == 'img') 
+               if ($itipo == 'img') // immagine ------------------------------
                { 
 		   ?>
 			<?php $target	= "artimg".$count; 
@@ -45,31 +46,31 @@ echo	"<section id='artimg'>";
 			$modal	= new popup_modale($target,$iimgtit,$iimg,"",$iimgalt);
 				$modal->popup();
 				}
-               
-			elseif ($itipo == 'video')
+          // video ------------------------------     
+			elseif ($itipo == 'video')    
                {
                 require 'video.php';
                }
 			echo "</div>";  
-// testo
-               echo "<div class='f-flex'>";		// div interno
+          // testo ------------------------------ 
 				require 'art-img.php';
 				$count++;
-			echo "</div>";
-          }
+           }
           
           //  immagine/video a destra =========================================
           elseif ($iimgpos == 'dx') 
-          echo "<div class='f-flex'>";		// div interno
+
+          echo "<div class='f-flex f-1'>";		// div interno
           {
-			// testo
-               echo "<div class='f-flex'>";		// div interno
+          // testo ------------------------------
 				require 'art-img.php';
 				$count++;
-			echo "</div>";
+
+          // immagine/video ------------------------------
+          echo "<div class='f-flex f-1'>";	
                if ($itipo == 'img') 
                {  
-               echo "<div class='f-flex'>";		// div interno?>
+               ?>
 			<?php $target	= "artimg".$count; 			
  			echo "<a popup-open='".$target."' href='javascript:void(0)'>";?>
   			<img src="<?php echo $iimg; ?>" class="img-thumbnail img-responsive img-h300" title="<?php echo $iimgtit; ?>"> 
@@ -80,7 +81,7 @@ echo	"<section id='artimg'>";
 				$modal->popup();
 	
                }
-               // video
+               // video  ------------------------------
                elseif ($itipo == 'video')
                {
                require 'video.php';  
@@ -88,8 +89,7 @@ echo	"<section id='artimg'>";
 				$count++;
 			   echo "</div>";
 		  }
-echo "</div>";     // flex
+     echo "</div>";     // flex
           }
-  
+echo "</section>";  
 ?>
-</section>

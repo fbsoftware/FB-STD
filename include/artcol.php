@@ -17,14 +17,14 @@ $PDO->beginTransaction();
 		require'admin/fields_arc.php'; 
 		
 // stampa riga di separazione
-			echo "<hr class='fb-primary'>"; 
+         require 'include/space.php';
 
 // articoli in colonne
-	echo "<div class='f-flex fd-row jc-start fnw fb-secondary'>";
+	echo "<div class='f-flex fd-row jc-start fb-secondary'>";
 	if ($hsino1 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-1>"; 
+          echo "<div class='f-1 fd-column'>"; 
           $art = new getArt($htit1);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
@@ -34,7 +34,7 @@ $PDO->beginTransaction();
 	if ($hsino2 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-1>"; 
+          echo "<div class='f-1 fd-column'>"; 
           $art = new getArt($htit2);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
@@ -44,7 +44,7 @@ $PDO->beginTransaction();
 	if ($hsino3 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-1>"; 
+          echo "<div class='f-1 fd-column'>"; 
           $art = new getArt($htit3);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
@@ -54,7 +54,7 @@ $PDO->beginTransaction();
 	if ($hsino4 == 1) 
 		{  
           // ricerca articolo
-          echo "<div class='f-1>"; 
+          echo "<div class='f-1 fd-column'>"; 
           $art = new getArt($htit4);
           $art->getFieldsdArt();
           $a = new txt($art->atext);
