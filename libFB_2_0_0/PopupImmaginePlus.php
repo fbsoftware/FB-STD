@@ -18,28 +18,25 @@ class PopupImmaginePlus {
 
     public function render() {
         return '
-        <!-- Pulsante apertura -->
-        <button class="btn-open" id="open-'.$this->id.'">Apri '.$this->titolo.'</button>
+        
 
         <!-- Modale -->
         <div id="'.$this->id.'" class="modal">
             <div class="modal-content animate-pop">
-                <span class="close">&times;</span>
+
+                <!-- Barra in alto con X + LENTE -->
+                <div class="top-buttons">
+                    <span class="close">&times;</span>
+                    <button class="zoom-top enlargeBtn" data-img="img-'.$this->id.'">🔍</button>
+                </div>
 
                 <h2>'.$this->titolo.'</h2>
                 <p>'.$this->descrizione.'</p>
 
-                <div class="img-container">
-                    <img id="img-'.$this->id.'" 
-                         src="'.$this->urlImg.'" 
-                         alt="'.$this->nomeImg.'" 
-                         class="popup-img">
-
-                    <!-- Icona Zoom -->
-                    <button class="zoom-icon enlargeBtn" data-img="img-'.$this->id.'">
-                        🔍
-                    </button>
-                </div>
+                <img id="img-'.$this->id.'" 
+                     src="'.$this->urlImg.'" 
+                     alt="'.$this->nomeImg.'" 
+                     class="popup-img">
 
             </div>
         </div>
@@ -53,7 +50,9 @@ class PopupImmaginePlus {
 
     public static function scripts() {
         return '
+
         <style>
+
             /* --- MODALE BASE --- */
             .modal {
                 display: none;
@@ -89,18 +88,11 @@ class PopupImmaginePlus {
             }
 
             .close {
-                position: absolute;
-                right: 15px;
-                top: 10px;
                 font-size: 26px;
                 cursor: pointer;
             }
 
             /* --- IMMAGINE --- */
-            .img-container {
-                position: relative;
-                display: inline-block;
-            }
             .popup-img {
                 width: 300px;
                 border-radius: 6px;
@@ -109,19 +101,6 @@ class PopupImmaginePlus {
             }
             .popup-img.zoom {
                 transform: scale(1.8);
-            }
-
-            /* --- ICONA ZOOM --- */
-            .zoom-icon {
-                position: absolute;
-                right: 10px;
-                bottom: 10px;
-                padding: 8px;
-                font-size: 18px;
-                background: rgba(255,255,255,0.8);
-                border-radius: 100%;
-                border: none;
-                cursor: pointer;
             }
 
             /* --- LIGHTBOX --- */
@@ -141,6 +120,27 @@ class PopupImmaginePlus {
                 cursor: pointer;
                 animation: popIn 0.3s;
             }
+
+            /* Barra in alto con X + lente */
+            .top-buttons {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                display: flex;
+                gap: 10px;
+                z-index: 10;
+            }
+
+            /* Nuovo pulsante lente */
+            .zoom-top {
+                background: rgba(255,255,255,0.9);
+                border: none;
+                font-size: 20px;
+                padding: 5px 8px;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+
         </style>
 
         <script>
@@ -170,7 +170,7 @@ class PopupImmaginePlus {
                 });
             });
 
-            /* --- CLIC SULL’IMMAGINE → LIGHTBOX --- */
+            /* --- CLICK IMMAGINE → LIGHTBOX --- */
             document.querySelectorAll(".popup-img").forEach(img => {
                 img.addEventListener("click", () => {
                     const id = img.id.replace("img-", "");
@@ -179,14 +179,14 @@ class PopupImmaginePlus {
                 });
             });
 
-            /* --- CHIUDI LIGHTBOX CON CLICK --- */
+            /* --- CHIUDI LIGHTBOX --- */
             document.querySelectorAll(".lightbox").forEach(lb => {
                 lb.addEventListener("click", () => {
                     lb.style.display = "none";
                 });
             });
 
-            /* --- ESC per chiudere lightbox --- */
+            /* --- ESC KEY --- */
             document.addEventListener("keyup", e => {
                 if (e.key === "Escape") {
                     document.querySelectorAll(".lightbox").forEach(lb => lb.style.display = "none");
