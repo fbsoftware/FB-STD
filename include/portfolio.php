@@ -54,7 +54,7 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 			$target	= "portfolio".$pid;
 			echo "<div>";
 			echo "<a class='trasp' popup-open='".$target."' href='javascript:void(0)'>";
-			echo "<img class='img-fit fb-hp150' src='".$pimg."' alt='".$pimg."'>  </a>";
+			echo "<img class='img-fit fb-hp150 fb-img-shadow' src='".$pimg."' alt='".$pimg."'>  </a>";
 			echo "</div>";
 
 			// portfolio-caption 
@@ -64,8 +64,8 @@ echo "<div class='f-flex fd-row jc-around fb-secondary'>";
 
 			// bottone
 			if ($pmlink >= ' ')
-			{ 	echo "<div class='center fb-button fb-rad50 fb-shadow'>
-			<a class='fb-accent fb-p1 fb-upper' 
+			{ 	echo "<div class='center fb-button fb-shadow fb-rad50'>
+			<a class='fb-accent fb-p1 fb-upper fb-rad50' 
 				href='".$pmlink."' target='_new'>".$pmtext."</a>
 				</div>";
 			}
