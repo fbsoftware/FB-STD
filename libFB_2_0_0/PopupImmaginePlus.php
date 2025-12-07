@@ -19,7 +19,7 @@ class PopupImmaginePlus {
     public function render() {
         return '
         
-
+<!-- Pulsante apertura -->
         <!-- Modale -->
         <div id="'.$this->id.'" class="modal">
             <div class="modal-content animate-pop">
