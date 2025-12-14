@@ -17,7 +17,7 @@ $PDO->beginTransaction();
 		require'admin/fields_arc.php'; 
 		
 // stampa riga di separazione
-         require 'include/space.php';
+         require 'widget/space.php';
 
 // articoli in colonne
 	echo "<div class='f-flex fd-row jc-start fb-secondary'>";

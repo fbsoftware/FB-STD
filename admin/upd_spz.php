@@ -56,7 +56,7 @@ switch ($azione)
 // modifica
     case 'modifica':
      $param = array('modifica','ritorno');
-     $btx   = new bottoni_str_par('Tipologie - modifica','spz','write_spz.php',$param);
+     $btx   = new bottoni_str_par('Spaziature - modifica','spz','write_spz.php',$param);
           $btx->btn();
 
 // transazione
@@ -90,7 +90,7 @@ switch ($azione)
 // copia
     case 'copia':
     $param = array('copia','ritorno');
-    $btx   = new bottoni_str_par('Tipologie - copia','spz','write_spz.php',$param);
+    $btx   = new bottoni_str_par('Spaziature - copia','spz','write_spz.php',$param);
          $btx->btn();
 // transazione
       $sql = "SELECT * FROM `".DB::$pref."spz`
@@ -122,7 +122,7 @@ switch ($azione)
 // cancellazione
     case 'cancella' :
           $param  = array('cancella','ritorno');
-          $btx    = new bottoni_str_par('Tipologie - conferma cancellazione','spz','write_spz.php',$param);
+          $btx    = new bottoni_str_par('Spaziature - conferma cancellazione','spz','write_spz.php',$param);
                $btx->btn();
       $sql = "SELECT * FROM `".DB::$pref."spz`
               WHERE `qid` = $qid  ";

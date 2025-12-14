@@ -1,15 +1,20 @@
 <?php  session_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
-   * package		FB open template
-   * versione 3.1
-   * copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
-   * ------------------------------------------------------------------------
-   * gestione tabella 'lay' layout di pagina.
+/**
+ Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
+    package		FB open template
+    versione 3.1
+    copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+    ------------------------------------------------------------------------
+    gestione tabella 'lay' layout di pagina.
 	 		15/03/2022	aggiunta, copia nuove include in "write"
 ============================================================================= */
+
+//require_once('errorOn.php');//debug
+//var_dump($_POST['tema']);
+
 require_once('init_admin.php');
  if ($_POST['submit'] == 'chiudi')
   header('location:admin.php?urla=widget.php&pag=');
@@ -50,7 +55,6 @@ echo "</div>";
                FROM `".DB::$pref."lay`
 			   WHERE ltmp = '".$_POST['tema']."'
                ORDER BY lprog";
-
           foreach($PDO->query($sql) as $row)
           {
      require('fields_lay.php');

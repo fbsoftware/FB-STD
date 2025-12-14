@@ -15,7 +15,7 @@ echo	"<section id='artimg'>";
 
 <?php
 // stampa riga di separazione
-         require 'include/space.php';
+         require 'widget/space.php';
 
 // cerca gli articoli con immagine
        $sql = "SELECT *

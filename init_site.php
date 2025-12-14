@@ -1,6 +1,7 @@
 <?php
 require_once('loadLibraries.php');
 require_once('loadTemplateSito.php');
+require_once __DIR__ . '/include/helpers.php';
 $app = new Head('Sito MonoPage');
 $app->openHead();
 require_once("jquery_link.php");

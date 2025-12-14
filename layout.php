@@ -1,139 +1,143 @@
 <?php
-// = 0; 
+
         $sql = "SELECT *
                 FROM `".DB::$pref."lay`
                 WHERE ltmp= '".TMP::$tmenu."' 
-                    and lstat <> 'A' 
+                AND lstat IS NULL OR TRIM(lstat) = '' 
                 ORDER BY lprog ";
-// transazione    
+/* transazione    
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
 $PDO = new PDO($con,DB::$user,DB::$pw);
 $PDO->beginTransaction(); 
+foreach($PDO->query($sql) as $row)   */
 
-foreach($PDO->query($sql) as $row)
+// nuova versione
+$rows = DB_SEL::select($sql);
+foreach ($rows as $row) 
           {  
-			//require'../admin/post_lay.php';
+			//require'/../admin/post_lay.php';
 			//echo  "tema-tipo-codice=".$row['ltmp']."-".$row['ltipo']."-".$row['lcod'];//debug
 			$lcod = $row['lcod'];
+
             switch ($row['ltipo']) 
             {
            case 'header':
-				if (file_exists("include/header.php")) 
+				if (file_exists("widget/header.php")) 
 				{
-				require'include/header.php';
+				require'widget/header.php';
 				}
             	break;
 
             case 'slide':
-				if (file_exists('include/slider.php')) 
+				if (file_exists('admin/widget/slider.php')) 
 				{			
-				require'include/slider.php';
+				require'admin/widget/slider.php';
 				}
             	break;
 
             case 'promo':
-				if (file_exists('include/promo.php')) 
+				if (file_exists('admin/widget/promo.php')) 
 				{			
-				require'include/promo.php';
+				require'admin/widget/promo.php';
 				}
             	break;
                
             case 'portfolio':
-				if (file_exists('include/portfolio.php')) 
+				if (file_exists('admin/widget/portfolio.php')) 
 				{			
-				require'include/portfolio.php';
+				require'admin/widget/portfolio.php';
 				}
             	break;
                
             case 'artimg':
-				if (file_exists('include/artimg.php')) 
+				if (file_exists('admin/widget/artimg.php')) 
 				{				
-				require'include/artimg.php';
+				require'admin/widget/artimg.php';
 				}
             	break;
                
             case 'article':
-				if (file_exists('include/article.php')) 
+				if (file_exists('admin/widget/article.php')) 
 				{
-				require'include/article.php';
+				require'admin/widget/article.php';
 				}
             	break;
 
             case 'artsingle':
-				if (file_exists('include/artsingle.php')) 
+				if (file_exists('admin/widget/artsingle.php')) 
 				{	
-				require'include/article.php';
+				require'admin/widget/article.php';
 				}
             	break;
                
                
 /*            case 'artslide':
-				if (file_exists('include/artslide.php')) 
+				if (file_exists('admin/widget/artslide.php')) 
 				{	
-				require'include/artslide.php';
+				require'admin/widget/artslide.php';
 				}
             	break;*/
                
             case 'arttab':
-				if (file_exists('include/arttab.php')) 
+				if (file_exists('admin/widget/arttab.php')) 
 				{	
-				require'include/arttab.php';
+				require'admin/widget/arttab.php';
 				}
             	break;
                
             case 'artacc':
-				if (file_exists('include/arttab.php')) 
+				if (file_exists('admin/widget/arttab.php')) 
 				{	
-				require'include/artacc.php';
+				require'admin/widget/artacc.php';
 				}
             	break;
                
             case 'artcol':
-				if (file_exists('include/arttab.php')) 
+				if (file_exists('admin/widget/arttab.php')) 
 				{	
-				require'include/artcol.php';
+				require'admin/widget/artcol.php';
 				}
             	break;
                
             case 'glyph':
-				if (file_exists('include/glifi.php')) 
+				if (file_exists('admin/widget/glifi.php')) 
 				{	
-				require'include/glifi.php';
+				require'admin/widget/glifi.php';
 				}
             	break;
                
             case 'footer':
-				if (file_exists('include/footer.php')) 
+				if (file_exists('admin/widget/footer.php')) 
 				{				
-				require'include/footer.php';
+				require'admin/widget/footer.php';
 				}				
             	break;
                
             case 'contatti':
-				if (file_exists('include/contatti.php')) 
+				if (file_exists('admin/widget/contatti.php')) 
 				{				
-				require'include/contatti.php';
+				require'admin/widget/contatti.php';
 				}				
             	break;
                
 			case 'izoom':
-					if (file_exists('include/imgzoom.php')) 
+					if (file_exists('admin/widget/imgzoom.php')) 
 					{				
-					require'include/imgzoom.php';
+					require'admin/widget/imgzoom.php';
 					}				
 					break;
 					               
 			case 'space':
-				if (file_exists('include/space.php')) 
+				if (file_exists('admin/widget/space.php')) 
 				{				
-				require'include/space.php';
+				require'admin/widget/space.php';
 				}				
 				break;     
 					               
 			case 'pag':
-				if (file_exists('include/page.php')) 
+				if (file_exists('admin/widget/page.php')) 
 				{				
-				require'include/page.php';
+				require'admin/widget/page.php';
 				}				
 				break;               
             default:

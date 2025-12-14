@@ -17,6 +17,7 @@
     align-items: center;
     gap: 10px;
     background-color: var(--sec-color);
+    height: 80px;
 }
 
 .divider2::before,

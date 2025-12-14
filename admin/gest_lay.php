@@ -12,7 +12,9 @@
 ============================================================================= */
 // toolbar, scelta del tema
 $param  = array('mostra','chiudi');
-$btx   = new bottoni_str_par('Scelta del tema','lay','gest_lay2.php',$param);
+// $btx   = new bottoni_str_par('Scelta del tema','lay','gest_lay2.php',$param);
+$btx   = new bottoni_str_par('Scelta del tema','lay','builder.php',$param);
+
      $btx->btn();
 
 // memorizza location iniziale

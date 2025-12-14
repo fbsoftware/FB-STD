@@ -1,5 +1,6 @@
 <?php
-/* ----------------------------------------
+/**
+  ----------------------------------------
 	04/05/24    modulo immagine zoomabile
 ------------------------------------------- */
 echo	"<section id='imgzoom'>";
@@ -17,17 +18,13 @@ echo	"<section id='imgzoom'>";
 $img = $zimg;
      } 
 ?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<title>Zoom che segue il mouse</title>
 
 <style>
 .container {
     display: flex;
     gap: 25px;
     align-items: flex-start;
+    background: var(--sec-color);
 }
 
 /* Immagine principale */

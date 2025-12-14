@@ -1,14 +1,15 @@
 <?php session_start();      ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
-   * package		FB open template
-   * versione 3.1
-   * copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
-   * ------------------------------------------------
-   * gestione tabella 'lay'
-   15/03/2022	aggiunta copia, nuove include in "write"
+/**
+    Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
+    package		FB open template
+    versione 3.1
+    copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+    ------------------------------------------------
+    gestione tabella 'lay'
+    15/03/2022	aggiunta copia, nuove include in "write"
 ============================================================================= */
 require_once('init_admin.php');
 require_once("post_".$_SESSION['tab'].".php");
@@ -122,6 +123,10 @@ case 'contatti':
                break;
 case 'pag':
                $arg = new DB_sel_l('pag','jprog',$lcod,'jcod','lcod','jstat','jcod','Codice','Nome pagina');
+          		$arg->select_label();
+               break;
+case 'space':
+               $arg = new DB_sel_l('spz','qprog',$lcod,'qcod','lcod','qstat','qcod','Codice','Spaziatura');
           		$arg->select_label();
                break;
 default:

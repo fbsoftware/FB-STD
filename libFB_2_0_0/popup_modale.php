@@ -37,7 +37,8 @@ echo	"<div class='popup' popup-name='".$this->id."' id='".$this->id."' style='z-
 //titolo
 	echo	"<div class='fb-secondary'>";    
 	echo	"<h2  class='fb-secondary'>".$this->header."</h3>";
-	// bottone di chiusura del popup	
+	// bottone di chiusura del popup
+	echo "<button class='zoom-top enlargeBtn' data-img='img-'.$this->id.''>🔍</button>";	
 	echo "<a class='close-button trasp' popup-close='".$this->id."' href='javascript:void(0)'>x</a>";
 	echo	"</div>";   
 // immagine			

@@ -1,13 +1,14 @@
 <?php  session_start();    ob_start();
-/*** Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
-   * package		FB open template
-   * versione 3.0
-   * copyright	Copyright (C) 2012 - 2013 FB. All rights reserved.
-   * license		GNU/GPL
-   * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
-   * all'uso anche improprio di FB open template.
-   * ------------------------------------------------------------------------
-   * Layout del sito
+/**
+    Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
+    package		FB open template
+    versione 3.0
+    copyright	Copyright (C) 2025 - 2026 FB. All rights reserved.
+    license		GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta
+    all'uso anche improprio di FB open template.
+    ------------------------------------------------------------------------
+    Layout del sito - nuovo record
 ============================================================================= */
 require_once('init_admin.php');
 require_once("post_".$_SESSION['tab'].".php");
@@ -118,7 +119,7 @@ default:
           	$f3 = new input(array($ltipo,'ltipo',30,'Tipo','Codice per comporre la pagina','r'));
                	$f3->field();
 	break;			
-
+/*
 case 'modifica':
 	$param = array('modifica','ritorno');
 	$btx   = new bottoni_str_par('Layout sito','lay','write_lay.php',$param);
@@ -216,6 +217,7 @@ default:
 	          echo	"Azione errata=".$azione;
 	break;	
 }
+*/
 // =======================================================================================
 	echo  "</fieldset>";
 	echo  "</form>";

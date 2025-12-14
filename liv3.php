@@ -7,7 +7,7 @@
    * Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
    * all'uso anche improprio di FB open template.
 =============================================================================== 
-  Crea il 2� livello del navigatore principale.
+  Crea il 2° livello del navigatore principale.
 =============================================================================== */
 require 'call_ok.php';
 require_once("connectDB.php");

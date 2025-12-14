@@ -7,15 +7,18 @@ init_admin.php - inizializzazione lato admin
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-ob_start();
+ob_start(); 
+
+//require_once("errorOn.php");// debug
 
 // Impostazioni base PHP
 ini_set('default_charset', 'UTF-8');
 header('Content-Type: text/html; charset=UTF-8');
 
-
+// librerie e head 
 require_once('../loadLibraries.php');
 require_once('loadTemplateAdmin.php');
+require_once ('../include/helpers.php');
 $app = new Head('Amministratore');
 $app->openHead();
 require_once("../jquery_linkAdmin.php");

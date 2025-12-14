@@ -1,0 +1,47 @@
+#widgets-panel {
+    width: 30%;
+    float: left;
+    padding: 10px;
+    background: #f0f0f0;
+}
+
+#canvas {
+    width: 65%;
+    float: right;
+    padding: 10px;
+    background: #fafafa;
+}
+
+#sortable {
+    list-style: none;
+    padding: 0;
+}
+
+.canvas-item {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 5px;
+    cursor: grab;
+}
+
+.add-widget {
+    background: #ddd;
+    padding: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.del {
+    float: right;
+    color: red;
+    cursor: pointer;
+}
+.builder-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+    padding: 10px; 
+    flex-direction: row;
+}
