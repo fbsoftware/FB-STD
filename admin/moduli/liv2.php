@@ -1,10 +1,14 @@
 <?php
-/** FB_template versione 1.4
-   Fausto Bresciani
-   Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta all'uso
-   anche improprio di FB_template.
+/** 
+    Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
+    package            fbot-boot
+    versione 1.0    
+    copyright  Copyright (C) 2025 - 2026 FB. All rights reserved.
+    license            GNU/GPL
+    Si concede licenza gratuita e NON si risponde di qualsiasi cosa dovuta 
+    all'uso anche improprio di FB open template.
 =============================================================================== 
-  Crea il 2° livello del navigatore principale.
+  Crea il 2Â° livello del navigatore principale.
 =============================================================================== */
 $file=str_replace('\\','/',__FILE__);
 if($file == $_SERVER['SCRIPT_FILENAME']) exit('Accesso non consentito') ;

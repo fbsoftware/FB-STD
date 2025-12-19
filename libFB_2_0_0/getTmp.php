@@ -3,7 +3,7 @@
     ============================================================
        @class:      getTmp
       
-       @description:    ritorna i campi del record ricercato
+       @description:    ritorna i campi del record del template
       
        @author Fausto Bresciani <fbsoftware@libero.it>
        @version 0.1
@@ -37,7 +37,7 @@ class getTmp          extends  DB
               $PDO = new PDO($con,self::$user,self::$pw);
               $PDO->beginTransaction();
      echo "<div><label for='$this->nome' title='".$this->toolt."'>$this->label</label>";
-     echo "<select name='$this->nome'>";
+     echo "<select name='$this->nome' id='$this->nome'>";
           echo $sql="SELECT * 
                 FROM ".DB::$pref."tmp    
                 WHERE tstat = ' '   
@@ -52,5 +52,4 @@ class getTmp          extends  DB
             echo "</select></div>";
      } 
 }     // END class getTmp
-
 ?>

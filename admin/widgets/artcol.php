@@ -1,4 +1,9 @@
-<?php   
+<?php  
+/**
+Articoli in colonne
+@package Articoli in colonne
+@author  Fausto Bresciani
+ */ 
 echo	"<section id='artcol'>";
 
 // transazione    
@@ -16,9 +21,6 @@ $PDO->beginTransaction();
 		//print_r($row);//debug
 		require'admin/fields_arc.php'; 
 		
-// stampa riga di separazione
-         require 'widget/space.php';
-
 // articoli in colonne
 	echo "<div class='f-flex fd-row jc-start fb-secondary'>";
 	if ($hsino1 == 1) 

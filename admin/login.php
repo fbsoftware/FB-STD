@@ -21,7 +21,7 @@ echo "<body class='admin' data-theme='".TMP::$tcolor."'>";
      echo     "<fieldset  class='fb-w25'>";
 
 echo  "<h3 class='center'><img src='images/logo/logo.png' alt='logo.png, 1,6kB' title='logo' height='75' >";
-echo  "&nbsp;&nbsp;&nbsp;&nbsp;Collegamento&nbsp;&nbsp;&nbsp;&nbsp;</h3>";
+echo  "Collegamento</h3>";
 
 //   prepara il modulo del login
 echo  "<form name='modulo' action='login_test.php' method='post'>";

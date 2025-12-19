@@ -11,14 +11,7 @@
 $file=str_replace('\\','/',__FILE__);
 if($file == $_SERVER['SCRIPT_FILENAME']) exit('Accesso non consentito') ;
 /*=============================================================================== */
-?>
 
-<style type="text/css">
-ul.nav2 li a	{
-	color: var(--black-color);
-}
-</style>
-<?php
 $accesso  =  $_COOKIE['accesso'];
         $sql = "SELECT *
                 FROM `".DB::$pref."nav`
@@ -66,12 +59,4 @@ require'fields_nav.php';
      }
 }
            echo "</ul>";
-
-//  bottone logout
-echo "<form class='bottoni' method='post' action='login.php'>";
-echo "<button class='fb-accent fb-p025 fb-rad7 fb-m05' type='submit' name='submit' value='chiudi'> ";
-echo "<img src='".DB::$dir_imm."uscita.png' alt='uscita' height='25'>";
-echo "&nbsp;&nbsp;&nbsp;&nbsp;Uscita";
-echo "</button>";
-echo "</form>";
 ?>

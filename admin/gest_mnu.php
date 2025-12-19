@@ -45,18 +45,18 @@ $sql = "SELECT * FROM ".DB::$pref."mnu
       {
 		require('fields_mnu.php');
 		echo "<div class='tr'>";
+		echo "<div class='td'>";
 		$f2 = new input(array($bid,'bid',2,'','Scelta','ck-n'));
-		echo "<div class='td'>";
 			$f2->field_n(); echo "</div>";
-		$ff = new input(array($bstat,'bstat',2,'','','st-n'));
 		echo "<div class='td'>";
+		$ff = new input(array($bstat,'bstat',2,'','','st-n'));
 			$ff->field_n(); echo "</div>";
   ?>
-		<div class='td'><?php echo $bprog ?></div>
-		<div class='td'><?php echo $bmenu ?></div>
-		<div class='td'><?php echo $btipo ?></div>
-		<div class='td'><?php echo $btesto ?></div>
-		<div class='td'><?php echo $bselect ?></div>
+		<div class='td'><?= $bprog ?></div>
+		<div class='td'><?= $bmenu ?></div>
+		<div class='td'><?= $btipo ?></div>
+		<div class='td'><?= $btesto ?></div>
+		<div class='td'><?= $bselect ?></div>
 <?php
      echo "</div>";
           }

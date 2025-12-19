@@ -15,23 +15,15 @@ require_once('init_admin.php');
 echo "<body class='admin'>";
 
 // test se richiesto login ============================
-     if(!isset($_COOKIE['admin']))
-          {header('location:login.php');}
+if(!isset($_COOKIE['admin']))
+   {header('location:login.php');}
 
 // parametri dall'url ================================
 require_once(DB::$ROOT."request.php");
-
-// setta navigatore iniziale =======================
-require_once('set_nav_a.php');
 	
-// H E A D E R  =====================================
+// H E A D E R  +   N A V I G A T O R E  ============
 require_once('moduli/header_a.php');       
 
-//  N A V I G A T O R E   ===========================
-echo    "<nav class='f-flex fd-row jc-start ai-center fw'>"; 
-require_once('moduli/nav2a.php'); 	
-echo    "</nav>";   
- 
     //  C O R P O   =====================================             
 echo "<section id='corpo'  style='height:450px'>"; 
 

@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**===============================================================================
   Gestione dei campi input di form a 6 parametri
   1.0.0		tooltip left
@@ -42,13 +42,13 @@ case 'ck':      // check box
  case 'star':     // immagine stella
           if ($this->valini == '*')
                {
-               echo "<input type='image' class='titolo'
+               echo "<input type='image' 
                     name='$this->campo' value= '$this->valini'
                     src='images/star.png '>";
                }
           else
                {
-               echo "<input type='image' class='titolo'
+               echo "<input type='image' 
                     name='$this->campo' value= '$this->valini'
                     src='images/null.png '>";
                }
@@ -65,12 +65,12 @@ case 'pwr':     // input password readonly
 break;
 
 case 'r':       // input readonly
-                    echo "<input type='text' class='titolo' readonly name='$this->campo'
+                    echo "<input type='text'  readonly name='$this->campo'
                         id='$this->campo' value= '$this->valini'
                         size='$this->lung' >";
 break;
 
-case 'rb':      // input readonly + bold
+case 'rb':      // input readonly e bold
                     echo "<input type='text' class='titolo_b' readonly='readonly'
                         name='$this->campo'  id='$this->campo' value= '$this->valini'
                         size='$this->lung' >";
@@ -195,13 +195,13 @@ case 'ck-n':      // check box
  case 'star-n':     // immagine stella
           if ($this->valini == '*')
                {
-               echo "<input type='image' class='titolo'
+               echo "<input type='image' 
                     name='$this->campo' value= '$this->valini'
                     src='images/star.png' height='24px' width='42px'>";
                }
           else
                {
-               echo "<input type='image' class='titolo'
+               echo "<input type='image' 
                     name='$this->campo' value= '$this->valini'
                     src='images/null.png '>";
                }
@@ -209,10 +209,10 @@ break;
 case 'st-n':            // input status
                     if ($this->valini != 'A')
                         { echo "<input type='image' class='nobord'
-                            src='images/ok.png' height='16px' width='16px'
+                            src='images/bottoni/ok.png' height='16px' width='16px'
                           name='$this->campo' id='$this->campo' value='$this->valini' >";}
                     else
-                        {echo "<input type='image' class='nobord' src='images/stop.png' height='16px'
+                        {echo "<input type='image' class='nobord' src='images/bottoni/stop.png' height='16px'
                          name='$this->campo' id='$this->campo' value='$this->valini' width='16px' >";}
 break;
  }
