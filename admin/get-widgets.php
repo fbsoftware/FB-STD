@@ -10,7 +10,7 @@ $widget = $_POST['name'] ?? 'default-widget'; // Se non viene passato, usa un va
 $last = $conn->query("SELECT COALESCE(MAX(lprog), 0) + 1 FROM `prefix_lay`")->fetchColumn();
 
 // Inserisci il nuovo widget
-$stmt = $conn->prepare("INSERT INTO `prefix_lay` (linclude, lprog) VALUES (?, ?)");
+$stmt = $conn->prepare("INSERT INTO `".DB::$pref."lay` (linclude, lprog) VALUES (?, ?)");
 $stmt->execute([$widget, $last]);
 
 // Recupera l'ID del nuovo widget inserito

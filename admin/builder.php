@@ -67,6 +67,19 @@
     padding: 10px; 
     flex-direction: row;
 }
+.del {
+    cursor: pointer;
+    user-select: none;
+}
+
+.del,
+.del * {
+    pointer-events: auto;
+}
+
+.canvas-item {
+    user-select: none;
+}
 
 </style>
 <script src="script.js"></script>
@@ -232,10 +245,10 @@ action="update-details.php" onkeypress='return event.keyCode != 13;'>
     </form>
 
     <h2>Anteprima</h2>
- <!--  <div id="preview-box" style="border:1px solid #ccc;padding:10px;min-height:80px;">
+ <div id="preview-box" style="border:1px solid #ccc;padding:10px;min-height:80px;">
        <?php  
-    //    include_once("../widget/promo.php");
+        include_once("../widget/".$lcod.".php");
        ?>
-    </div>   -->
+    </div>   
 </div>
 </div>

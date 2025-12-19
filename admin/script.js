@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // CLICK HANDLER (delete + select)
     // ===============================================================
     sortable.addEventListener("click", e => {
-
+ console.log("JS cliccato delete");
         // --- DELETE WIDGET ---
         const delBtn = e.target.closest(".del");
         if (delBtn) {
@@ -37,12 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.text())
                 .then(t => {
                     console.log("PHP:", t);
-                    if (t.trim() === "OK") li.remove();
+                    if (t.trim() === "OK") {
+                    li.classList.add("removing");
+                    if (!confirm("Eliminare questo widget?")) return;
+
+    setTimeout(() => li.remove(), 250);
+}
+
                 })
                 .catch(console.error);
 
             return; // IMPORTANTISSIMO: blocca il select
         }
+});
+
 
         // --- SELECT WIDGET ---
         const li = e.target.closest(".canvas-item");
@@ -51,27 +59,48 @@ document.addEventListener("DOMContentLoaded", () => {
         const lid = li.dataset.lid;
         if (!lid) return;
 
-        // Carica dettagli
-        fetch(`widgets/get-details.php?lid=${lid}`)
-            .then(r => r.json())
-            .then(data => populateForm(data));
 
-        // Carica anteprima
-        fetch(`preview-widget.php?lid=${lid}`)
-            .then(r => r.text())
-            .then(html => {
-                const preview = document.getElementById("preview-box");
-                if (preview) preview.innerHTML = html;
-            });
-    });
+// Carica dettagli (POST)
+fetch('get-details.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams({ lid })
+})
+.then(r => r.text())   // <--- qui leggiamo come testo
+.then(text => {
+  console.log(text);    // vediamo cosa sta effettivamente arrivando
+  return JSON.parse(text); // se sei sicuro che sia JSON
+})
+
+  .then(r => r.json())
+  .then(data => populateForm(data));
+
+
+// Carica anteprima (POST)
+fetch('preview-widget.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams({ lid })
+})
+  .then(r => r.text())
+  .then(html => {
+    const preview = document.getElementById("preview-box");
+    if (preview) preview.innerHTML = html;
+  });
+    
 
     // ===============================================================
     // DRAG & DROP
     // ===============================================================
-    sortable.addEventListener("dragstart", e => {
-        dragged = e.target;
-        e.target.style.opacity = .5;
-    });
+sortable.addEventListener("dragstart", e => {
+    if (e.target.closest(".del")) {
+        e.preventDefault();
+        return;
+    }
+    dragged = e.target;
+    e.target.style.opacity = .5;
+});
+
 
     sortable.addEventListener("dragover", e => e.preventDefault());
 

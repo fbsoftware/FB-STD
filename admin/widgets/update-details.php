@@ -1,5 +1,5 @@
 <?php
-console.log("upd-dettagli-POST".var_dump($_POST);
+console.log("upd-dettagli-POST".var_dump($_POST));
 
 $conn = new PDO("mysql:host=localhost;dbname=my_database;charset=utf8", "root", "");
 
@@ -12,7 +12,7 @@ $ltipo  = $_POST['ltipo'];
 $ldesc  = $_POST['ldesc'];
 
 $stmt = $conn->prepare("
-    UPDATE prefix_lay SET
+    UPDATE `".DB::$pref."lay` SET
         lstat=?, 
         ltmp=?, 
         lpage=?, 
