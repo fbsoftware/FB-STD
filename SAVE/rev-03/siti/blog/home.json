@@ -1,0 +1,46 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "home",
+        "version": 1,
+        "updated_at": "2026-02-13T17:54:18.431Z"
+    },
+    "sections": {
+        "sec-1771005229097": {
+            "id": "sec-1771005229097",
+            "columns": [
+                "col-1771005237035-8rdqn"
+            ],
+            "props": {
+                "width": "100%",
+                "background": "#ffffff",
+                "padding": "0px"
+            }
+        }
+    },
+    "columns": {
+        "col-1771005237035-8rdqn": {
+            "id": "col-1771005237035-8rdqn",
+            "sectionId": "sec-1771005229097",
+            "widgets": [
+                "wid-1771005244121"
+            ],
+            "props": {
+                "width": "100%",
+                "padding": "0px"
+            }
+        }
+    },
+    "widgets": {
+        "wid-1771005244121": {
+            "id": "wid-1771005244121",
+            "type": "titolo",
+            "props": {
+                "text": "Titolo...",
+                "level": "h2",
+                "align": "center"
+            }
+        }
+    },
+    "theme": []
+}

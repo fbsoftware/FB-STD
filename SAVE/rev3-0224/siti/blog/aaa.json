@@ -1,0 +1,91 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "aaa",
+        "version": 1,
+        "updated_at": "2026-02-23T18:33:23.283Z"
+    },
+    "sections": {
+        "sec-1771869703844": {
+            "id": "sec-1771869703844",
+            "columns": [
+                "col-1771869705333-giuks",
+                "col-1771869706840-1ts9p"
+            ],
+            "props": {
+                "background": "#ff00ff",
+                "padding": "0px"
+            }
+        }
+    },
+    "columns": {
+        "col-1771869705333-giuks": {
+            "id": "col-1771869705333-giuks",
+            "sectionId": "sec-1771869703844",
+            "widgets": [
+                "wid-1771869710626",
+                "wid-1771869724746"
+            ],
+            "props": {
+                "background": "#ff0000",
+                "padding": "0px"
+            }
+        },
+        "col-1771869706840-1ts9p": {
+            "id": "col-1771869706840-1ts9p",
+            "sectionId": "sec-1771869703844",
+            "widgets": [
+                "wid-1771869716246",
+                "wid-1771869719574"
+            ],
+            "props": {
+                "background": "#0000ff",
+                "padding": "0px"
+            }
+        }
+    },
+    "widgets": {
+        "wid-1771869710626": {
+            "id": "wid-1771869710626",
+            "type": "image",
+            "props": {
+                "src": "images\/image.png",
+                "alt": "Immagine"
+            }
+        },
+        "wid-1771869716246": {
+            "id": "wid-1771869716246",
+            "type": "testo",
+            "props": {
+                "text": "Lorem ipsum dolor sit amet. At sint deserunt At odio reprehenderit vel eveniet molestiae. Quo maiores debitis ut dignissimos nulla qui eligendi voluptas aut perferendis nihil. Sed tenetur deserunt et earum enim et molestiae praesentium et tempore error ut obcaecati consequatur nam nihil velit non eius dolorem.",
+                "align": "left",
+                "color": "#000000",
+                "fontFamily": "Inter"
+            }
+        },
+        "wid-1771869719574": {
+            "id": "wid-1771869719574",
+            "type": "titolo",
+            "props": {
+                "text": "Titolo...",
+                "level": "h2",
+                "align": "center",
+                "color": "#000000",
+                "fontFamily": "Poppins",
+                "background": "#ffff00"
+            }
+        },
+        "wid-1771869724746": {
+            "id": "wid-1771869724746",
+            "type": "bottone",
+            "props": {
+                "text": "CERCA",
+                "url": "#",
+                "align": "center",
+                "color": null,
+                "fontFamily": null
+            }
+        }
+    },
+    "theme": []
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        body { padding: 20px; }
+        .accordion { margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<!-- PRIMO ACCORDION -->
+<h2>Accordion 1</h2>
+<div id="piero" class="accordion">
+    <h3>Sezione 1.1</h3>
+    <div>Contenuto della sezione 1.1</div>
+    
+    <h3>Sezione 1.2</h3>
+    <div>Contenuto della sezione 1.2</div>
+</div>
+
+<!-- SECONDO ACCORDION -->
+<h2>Accordion 2</h2>
+<div id="paoòo" class="accordion">
+    <h3>Sezione 2.1</h3>
+    <div>Contenuto della sezione 2.1</div>
+    
+    <h3>Sezione 2.2</h3>
+    <div>Contenuto della sezione 2.2</div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Inizializzare entrambi gli accordion
+    $('#piero').accordion({
+        collapsible: true,
+        active: 0
+    });
+    
+    $('#paoòo').accordion({
+        collapsible: true,
+        active: 0
+    });
+});
+</script>
+
+</body>
+</html>

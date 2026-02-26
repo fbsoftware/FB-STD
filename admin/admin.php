@@ -12,6 +12,7 @@
 	19/5/20	percorso assoluto DB::$ROOT
 ============================================================================= */
 require_once('init_admin.php');
+//require_once('errorOn.php');  
 echo "<body class='admin'>";
 
 // test se richiesto login ============================

@@ -1,0 +1,86 @@
+<style>
+label {
+float: left;
+    width: 100px;
+    display: inline;
+    margin-right: 10px;
+    line-height: 22px;
+    text-align: right;
+}
+input {
+    color: blue;
+    font-size: 10pt;
+    background: #ffffff;
+    border: 1px solid #aaaaaa;
+
+}
+</style>
+
+<h3>Stile globale</h3>
+<div id="panel-style-global" class="editor-panel">
+
+  <!-- 🎨 COLORI -->
+  <section class="style-section">
+    <h3>Colori</h3>
+
+    <div class="style-control">
+      <label>Primary</label>
+      <input type="color" data-theme-color="primary">
+    </div>
+
+    <div class="style-control">
+      <label>Secondary</label>
+      <input type="color" data-theme-color="secondary">
+    </div>
+
+    <div class="style-control">
+      <label>Accent</label>
+      <input type="color" data-theme-color="accent">
+    </div>
+
+    <div class="style-control">
+      <label>Testo</label>
+      <input type="color" data-theme-color="text">
+    </div>
+  </section>
+
+  <!-- 🔤 TIPOGRAFIA -->
+  <section class="style-section">
+    <h3>Tipografia</h3>
+
+    <div class="style-group">
+      <label>Titoli</label>
+
+      <select data-theme-font="heading-fontFamily">
+        <option value="Inter">Inter</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Poppins">Poppins</option>
+        <option value="Roboto">Roboto</option>
+      </select>
+
+      <select data-theme-font="heading-weight">
+        <option value="400">Regular</option>
+        <option value="600">Semi-bold</option>
+        <option value="700">Bold</option>
+      </select>
+    </div>
+<br>
+    <div class="style-group">
+      <label>Testo</label>
+
+      <select data-theme-font="body-family">
+        <option value="Inter">Inter</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Poppins">Poppins</option>
+        <option value="Roboto">Roboto</option>
+         
+      </select>
+
+      <select data-theme-font="body-weight">
+        <option value="400">Regular</option>
+        <option value="500">Medium</option>
+      </select>
+    </div>
+  </section>
+
+</div>

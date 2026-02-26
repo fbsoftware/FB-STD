@@ -1,0 +1,18 @@
+#panel-style-global {
+  padding: 16px;
+}
+
+.style-section {
+  margin-bottom: 24px;
+}
+
+.style-control {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.style-group select {
+  width: 100%;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,54 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "footer",
+        "version": 1,
+        "updated_at": "2026-02-09T10:58:47.312Z"
+    },
+    "sections": {
+        "sec-1770634707930": {
+            "id": "sec-1770634707930",
+            "columns": [
+                "col-1770634707930",
+                "col-1770634717903"
+            ],
+            "props": {
+                "width": "100%",
+                "background": "#ffffff",
+                "padding": "0px"
+            }
+        }
+    },
+    "columns": {
+        "col-1770634707930": {
+            "id": "col-1770634707930",
+            "sectionId": "sec-1770634707930",
+            "widgets": [],
+            "props": {
+                "width": "100%",
+                "padding": "0px"
+            }
+        },
+        "col-1770634717903": {
+            "id": "col-1770634717903",
+            "sectionId": "sec-1770634707930",
+            "widgets": [
+                "wid-1770634721965"
+            ],
+            "props": {
+                "width": "100%",
+                "padding": "0px"
+            }
+        }
+    },
+    "widgets": {
+        "wid-1770634721965": {
+            "id": "wid-1770634721965",
+            "type": "image",
+            "props": {
+                "src": "images\/image.png"
+            }
+        }
+    },
+    "theme": []
+}

@@ -1,4 +1,4 @@
-<?php session_start();      ob_start();
+<?php  ob_start();
 /**
     Fausto Bresciani   fbsoftware@libero.it  www.faustobresciani.it
     package		Gestionale

@@ -1,5 +1,5 @@
 <?php
-echo	"<div id='footer' class='f-flex fd-row  fb-primary jc-around fw'>";
+echo	"<section id='footer' class='f-flex fd-row  fb-primary jc-around fw'>";
 ?>
 <style type="text/css">
 /* per no marker */
@@ -84,5 +84,5 @@ switch ($row['ftipo'])
   		}    // foreach  ctt
 		}    // switch
 		}    // foreach  foo
-          echo	"</div>";	// footer
+          echo	"</section>";	// footer
 ?>

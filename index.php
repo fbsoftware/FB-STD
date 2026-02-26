@@ -11,14 +11,15 @@
     20/04/2021		colore di sfondo nel <body>   
 ============================================================================= */
 require_once('init_site.php');
-
+require_once('admin/errorON.php');
 //tema
 echo "<body>";
 // parametri passati con l'url e memorizzati 
 require_once 'request.php';		
-//var_dump($_SESSION);//debug
+echo "<br>var_dump=".($_SESSION);//debug
 
-//  index del template   
+//  index del template  
+echo  "<br>cartella template=".TMP::$tfolder."";//debug
 require_once(TMP::$tfolder.'index.php'); 
 echo "</body>"; 
 echo "</html>";   

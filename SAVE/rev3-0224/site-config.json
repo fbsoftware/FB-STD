@@ -1,0 +1,17 @@
+{
+    "colors":   
+    {
+        "primary":"#3366ff",
+        "secondary":"#ff6633",
+        "accent":"#ffa500",
+        "text":"#222222",
+        "bg":"#ffffff"
+    },
+    "fonts":
+    {
+        "heading-family":"Montserrat",
+        "heading-weight":"600",
+        "body-family":"Inter",
+        "body-weight":"400"
+    }
+}

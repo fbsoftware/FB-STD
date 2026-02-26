@@ -3,7 +3,7 @@
         $sql = "SELECT *
                 FROM `".DB::$pref."lay`
                 WHERE ltmp= '".TMP::$tmenu."' 
-                AND lstat IS NULL OR TRIM(lstat) = '' 
+                AND TRIM(lstat) = '' 
                 ORDER BY lprog ";
 /* transazione    
 $con = "mysql:host=".DB::$host.";dbname=".DB::$db."";
@@ -12,19 +12,19 @@ $PDO->beginTransaction();
 foreach($PDO->query($sql) as $row)   */
 
 // nuova versione
-$rows = DB_SEL::select($sql);
-foreach ($rows as $row) 
+ foreach($PDO->query($sql) as $row)
           {  
 			//require'/../admin/post_lay.php';
-			//echo  "tema-tipo-codice=".$row['ltmp']."-".$row['ltipo']."-".$row['lcod'];//debug
-			$lcod = $row['lcod'];
+			echo  "tema-tipo-codice=".$row['ltmp']."-".$row['ltipo']."-".$row['lcod'];//debug
+		echo "<br>LCOD=".$row['ltipo']."---".$row['lcod'];
+//$lcod = $row['lcod']";
 
             switch ($row['ltipo']) 
             {
            case 'header':
-				if (file_exists("widget/header.php")) 
+				if (file_exists("admin/widget/header.php")) 
 				{
-				require'widget/header.php';
+				require'admin/widget/header.php';
 				}
             	break;
 
@@ -62,7 +62,7 @@ foreach ($rows as $row)
 				require'admin/widget/article.php';
 				}
             	break;
-
+/*
             case 'artsingle':
 				if (file_exists('admin/widget/artsingle.php')) 
 				{	
@@ -71,7 +71,7 @@ foreach ($rows as $row)
             	break;
                
                
-/*            case 'artslide':
+            case 'artslide':
 				if (file_exists('admin/widget/artslide.php')) 
 				{	
 				require'admin/widget/artslide.php';
@@ -100,9 +100,9 @@ foreach ($rows as $row)
             	break;
                
             case 'glyph':
-				if (file_exists('admin/widget/glifi.php')) 
+				if (file_exists('admin/widget/glyph.php')) 
 				{	
-				require'admin/widget/glifi.php';
+				require'admin/widget/glyph.php';
 				}
             	break;
                
@@ -121,9 +121,9 @@ foreach ($rows as $row)
             	break;
                
 			case 'izoom':
-					if (file_exists('admin/widget/imgzoom.php')) 
+					if (file_exists('admin/widget/izoom.php')) 
 					{				
-					require'admin/widget/imgzoom.php';
+					require'admin/widget/izoom.php';
 					}				
 					break;
 					               
@@ -134,12 +134,12 @@ foreach ($rows as $row)
 				}				
 				break;     
 					               
-			case 'pag':
-				if (file_exists('admin/widget/page.php')) 
+	/*		case 'pag':
+				if (file_exists('admin/widget/pag.php')) 
 				{				
-				require'admin/widget/page.php';
+				require'admin/widget/pag.php';
 				}				
-				break;               
+				break;   */            
             default:
             	
             	break;

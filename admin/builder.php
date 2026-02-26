@@ -80,9 +80,27 @@
 .canvas-item {
     user-select: none;
 }
+.canvas-item {
+    transition: 
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        height 0.25s ease,
+        margin 0.25s ease,
+        padding 0.25s ease;
+}
+
+.canvas-item.removing {
+    opacity: 0;
+    transform: translateX(20px);
+    height: 0;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+}
 
 </style>
-<script src="script.js"></script>
+
 <?php
 //require_once('errorOn.php');
 require_once('init_admin.php');
@@ -124,8 +142,10 @@ $widgetFiles = glob(__DIR__ . "/widgets/*.php");
         $name = basename($file);
         $label = ucwords(str_replace(['.php','_'],['',' '], $name));
     ?>
-        <div class="add-widget" data-widget="<?= $name ?>">
-            + <?= $label ?>
+        <div class="add-widget" 
+        data-widget="<?= $name ?>"
+        draggable="true">
+        + <?= $label ?>
         </div>
     <?php endforeach; ?>
 </div>
@@ -148,11 +168,16 @@ $widgetFiles = glob(__DIR__ . "/widgets/*.php");
 <!-- Dettagli widget -->
 <div id="right">
         <h2>Dettagli widget</h2>
+<?php
+include_once('post_lay.php');
+?>
 
   <form id="details-form" method="post">
     <fieldset id='tab1'>   
         <input type="hidden" name="lid" id="lid">
         <?php  
+        echo "input del tipo=",$ltipo;//debug
+        echo "<br />";
         $f1 = new input(array($ltipo,'ltipo',20,'Tipo','Tipo modulo per comporre la pagina','r'));
           $f1->field();        
         $ts = new DB_tip_i('stato','lstat',$lstat,'Stato record','Attivo/sospeso');
@@ -252,3 +277,12 @@ action="update-details.php" onkeypress='return event.keyCode != 13;'>
     </div>   
 </div>
 </div>
+
+<?php
+// espone il tema corrente per lo script client
+$tema_corrente = isset($_POST['tema']) ? $_POST['tema'] : '';
+?>
+<script>
+    const CURRENT_TEMA = <?= json_encode($tema_corrente, JSON_UNESCAPED_UNICODE) ?>;
+</script>
+<script src="script.js"></script>
