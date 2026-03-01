@@ -1,19 +1,5 @@
 const editor = {};
 
-//---------------------------------------------
-// HTML colonna con toolbar 
-//---------------------------------------------
-function html_colonna(columnId) {
-  return `
-    <div class="column" data-id="${columnId}">
-      <div class="toolbar">
-        <button class="column-handle">☰</button>
-        <button class="delete-column pink">✕</button>
-      </div>
-    </div>
-  `;
-}
-
 //================================================
 // 5️⃣ Escape HTML
 //================================================
@@ -36,6 +22,14 @@ editor.sanitizeState = function() {
 };
 
 // ==========================================
+//  aggiorna tutti i DOM (dopo load o reset)
+// ==========================================
+editor.applyStateToCanvas = function(){
+  Object.keys(editor.state.columns).forEach(editor.updateColumnDOM);
+  Object.keys(editor.state.sections).forEach(editor.updateSectionDOM);
+  Object.keys(editor.state.widgets).forEach(editor.updateWidgetDOM);
+};
+// ==========================================
 //  PANEL LOADER (CORE)
 // ==========================================
   editor.loadPanel = function (panelName, callback) {
@@ -56,6 +50,22 @@ $('#panel-container').load(
 );
 
 };
+
+//================================================  
+//  SALVA THEME NEL JSON
+//================================================
+editor.saveTheme = function() {
+  editor.state.theme = editor.state.theme || {};
+  editor.state.theme.colors = editor.state.theme.colors || {};
+
+  $('[data-global-color]').each(function(){
+    const key = $(this).data('global-color');
+    editor.state.theme.colors[key] = $(this).val();
+  });
+
+  console.log("🎨 Theme salvato:", editor.state.theme.colors);
+};
+$("#save-theme").on("click", editor.saveTheme);
 
 //================================================  
 //  DEFAULT THEME centrale
@@ -131,6 +141,26 @@ editor.deserializeLayout = function (data) {
 
 };
 
+//================================================
+//  2️⃣ Sincronizza stato da DOM (dopo drag&drop)
+//================================================
+editor.syncStateFromDOM = function(){
+
+console.log("SYNC START");
+
+$(".column").each(function(){
+
+  const colId = $(this).data("id");
+  console.log("Colonna:", colId);
+
+  $(this).find(".widget").each(function(){
+    console.log("  Widget trovato DOM:", $(this).data("id"));
+  });
+
+});
+
+};
+
 //================================================  
 //  🎨 APPLICA COME CSS GLOBALI
 //================================================  
@@ -144,48 +174,6 @@ function applySiteConfig(cfg){
   root.style.setProperty("--font-heading", cfg.fonts["heading-family"]);
   root.style.setProperty("--font-body", cfg.fonts["body-family"]);
 }
-
-
-
-//================================================  
-//  2️⃣ renderFromState
-//================================================
-editor.renderFromState = function () {
-
-  Object.values(editor.state.sections).forEach(section => {
-    editor.addSection(section.id, { fromLoad: true });
-
-    section.columns.forEach(colId => {
-      const col = editor.state.columns[colId];
-      editor.addColumn(section.id, col.id, { fromLoad: true });
-
-      col.widgets.forEach(wid => {
-        const widget = editor.state.widgets[wid];
-        editor.addWidgetToColumn(col.id, widget, { fromLoad: true });
-      });
-    });
-  });
-
-};
-
-
-//================================================  
-//  Funzioni di render GREZZE
-//================================================
-editor.renderColumn = function (columnId, options = {}) {
-
-  const col = editor.state.columns[columnId];
-  if (!col) return;
-
-  // 🔥 NON GENERARE NUOVI ID
-  const $col = $(`<div class="column" data-id="${columnId}"></div>`);
-
-  // props
-  $col.css(col.props || {});
-
-  // append to section
-  $(`.section[data-id="${col.sectionId}"] .columns`).append($col);
-};
 
 //================================================  
 //  🟢 createEmptyPage (minimale ma UX-friendly)
@@ -206,9 +194,7 @@ editor.createEmptyPage = function () {
 //================================================
 editor.initStylePanel = function () {
 
-
   editor.applyTheme(); // ✅ QUI È CORRETTO
-
 };
 
 //================================================
@@ -245,7 +231,8 @@ editor.updateWidgetDOM = function (widgetId) {
 
   const $el = $(`.canvas-widget[data-id="${widgetId}"]`);
   if (!$el.length) return;
-//==============================================
+//-----------------------------------------------------
+
 // 🔤 TITOLO
 if (widget.type === 'titolo') {
   const level = widget.props.level || 'h2';
@@ -255,23 +242,26 @@ if (widget.type === 'titolo') {
   const fontFamily = widget.props.fontFamily || 'Inter';
 
   let $heading = $el.find('h1, h2, h3');
-
   // se cambia il livello → ricrea il tag
   if (!$heading.is(level)) {
     const $new = $(`<${level}>`).text(text);
     $heading.replaceWith($new);
-    $heading = $new;
-  } else {
-    $heading.text(text);
-  }
-
-  // 🔥 allineamento = CSS
+    $heading = $new;  } 
+  else {    $heading.text(text);  }
+// 🔥 allineamento = CSS
   $heading.css('text-align', align ); 
-  $heading.css('color' , color);
-  $heading.css('font-family' , fontFamily);
+   $heading.css('font-family' , fontFamily);
+ 
+  // colore = CSS
+  const $ex = $(`.widget[data-id="${widgetId}"]`);
+console.log('Aggiorna colore titolo:', color);
+  $ex.css({
+    color: widget.props.color,
+    backgroundColor: widget.props.background
+  });
+};
 
-}
-//==============================================
+ //==============================================
 // 📝 TESTO
 if (widget.type === 'testo') {
   const text = widget.props.text || '';
@@ -280,6 +270,9 @@ if (widget.type === 'testo') {
   if (!$content.length) return;
 
   $content.html(text);
+  $content.css('text-align', widget.props.align || 'left');
+  $content.css('color', widget.props.color || '#000000');
+  $content.css('font-family', widget.props.fontFamily || 'Inter');
 }
 //==============================================
  // 📝 BOTTONE
@@ -287,15 +280,26 @@ if (widget.type === 'testo') {
   const text = widget.props.bottone || '';
   const url  = widget.props.url || '#';
   const align = widget.props.align || 'center';
+  const padding = widget.props.padding || '0px';
+  const color = widget.props.color || '#000000';
+  const background = widget.props.background || 'transparent';
+  const fontFamily = widget.props.fontFamily || 'Inter';
 
   const $a = $el.find('a');
   if (!$a.length) return;
-   $a.attr('href', url);
+    $a.attr('href', url);
+    $a.text(text);
 
-   const $b = $el.find('button');
+  const $b = $el.find('div.widget-content');
   if (!$b.length) return;
-  $b.text(text);
-  $b.css('text-align', align);
+$b.css({
+  textAlign: widget.props.align,
+  padding: widget.props.padding,
+  color: widget.props.color,
+  backgroundColor: widget.props.background,
+  fontFamily: widget.props.fontFamily
+});
+
 }
   //==============================================
   // 🖼️ IMMAGINE
@@ -561,15 +565,6 @@ editor.clearWidgetPanel = function () {
   );
 };
   
-//================================================    
-//  nessun widget è selezionato = pannello vuoto
-//================================================
-editor.clearWidgetPanel = function () {
-  $('#widget-details .panel-body').html(
-    '<div class="panel-placeholder">Seleziona un widget</div>'
-  );
-};
-  
 
 //================================================
 //  7️⃣ Render widget preview (Nel canvas)
@@ -578,13 +573,13 @@ editor.renderWidgetPreview = function (widget) {
 
   switch (widget.type) {
     case 'titolo':
-      return `<${widget.props.level} style="text-align: ${widget.props.align}; font-family: ${widget.props.fontFamily || ''}; color: ${widget.props.color || ''}">${widget.props.text}</${widget.props.level}>`;
+      return `<${widget.props.level} style="text-align: ${widget.props.align}; font-family: ${widget.props.fontFamily || ''}; color: ${widget.props.color || ''};">${widget.props.text}</${widget.props.level}>`;
     case 'testo':
-      return `<p>${widget.props.text}</p>`;
+      return `<p style="text-align: ${widget.props.align}; font-family: ${widget.props.fontFamily || ''}; color: ${widget.props.color || ''};">${widget.props.text}</p>`;
         case 'space':
       return `<div class="widget widget-space" style="height: ${widget.props.height}px;"></div>`;
     case 'bottone':
-      return `<button class="widget-bottone" style="text-align: ${widget.props.align}"><a href="${widget.props.url}">${widget.props.text}</a></button>`;
+      return `<button class="widget-bottone" style="text-align: ${widget.props.align}; margin:${widget.props.margin}"><a href="${widget.props.url}">${widget.props.text}</a></button>`;
     case 'image':
       return `<img src='${widget.props.src}' alt='${widget.props.alt}' height="200"/>`;
       case 'separator':
@@ -619,17 +614,17 @@ editor.getDefaultProps = function (type) {
     case "testo":
       return { text: "Lorem ipsum dolor sit amet. At sint deserunt At odio reprehenderit vel eveniet molestiae. Quo maiores debitis ut dignissimos nulla qui eligendi voluptas aut perferendis nihil. Sed tenetur deserunt et earum enim et molestiae praesentium et tempore error ut obcaecati consequatur nam nihil velit non eius dolorem.", align: "left" , color: "#000000",fontFamily: "Inter" };
     case "titolo":
-      return { text: "Titolo..." , level: "h2" , align: "center", color: "#000000" , fontFamily: "Poppins" };
+      return { text: "Titolo..." , level: "h1" , align: "center", color: "#000000" , fontFamily: "Poppins" };
     case "space":
       return { height: 1 };  
     case "bottone":
-      return { text: "CERCA" , url: "#" , align: "center" , color: null , fontFamily: null};
+      return { text: "CERCA" , url: "#" , align: "center" , padding: '0px', color: null , fontFamily: null};
     case "image":
       return { src: "images/image.png" , alt: "Immagine" };
     case "column":
-      return {    width: '100%', background: '#fefefe' ,   padding: '0px'};  
+      return {    width: '200px', background: '#fefefe' ,   padding: '0px'};  
     case "section":
-      return {    width: '100%',  background: '#fefefe' ,  padding: '0px'};  
+      return {    width: '900px',  background: '#fefefe' ,  padding: '0px'};  
     case "separator":
       return {    width: '100%',  background: '#fefefe' ,  padding: '0px'};    
     default:
@@ -701,6 +696,7 @@ editor.activateColumn = function ($column) {
     hoverClass: 'column-hover',
 
     drop: function (e, ui) {
+
       const widgetType = ui.draggable.data('type');
       const columnId   = $column.data('id');
 
@@ -744,7 +740,7 @@ editor.renderColumnPanel = function (columnId) {
 const $p = $('#widget-details .panel-header').empty();
   $p.append(`
   <div> 
-    <h3 class="pink">Colonna</h3>
+    <h3 class="pink">Dettagli Colonna</h3>
   </div>  `);
 
 const $b = $('#widget-details .panel-body').empty();
@@ -785,13 +781,13 @@ editor.renderSectionPanel = function (sectionId){
 
        $s.append(`
        <div> 
-       <h3 class="pink">Sezione</h3>
+       <h3 class="pink">Dettagli Sezione</h3>
        </div>  `);
 
     const $d = $('#widget-details .panel-body').empty();
 
        $d.append(`
- <div class="accordion">      
+ <div id="widget-details" class="panel-body">      
     <h3 class="" aria-expanded="true" aria-selected="true">Layout</h3>
       <div style="display: flex;">
            <label>Larghezza px</label>
@@ -851,50 +847,7 @@ editor.select = function ({ widgetId, columnId, sectionId }) {
   }
 };
 
-//================================================
-//  8️⃣ Sincronizza lo stato dalle colonne (dopo drag&drop)
-//================================================
-editor.syncStateFromDOM = function () {
 
-  // 🔄 Sync ordine colonne per ogni sezione
-  $(".section").each(function () {
-
-    const sectionId = $(this).attr("data-id");
-    if (!editor.state.sections[sectionId]) return;
-
-    const columnOrder = $(this)
-      .find(".section-inner > .column")
-      .map((_, el) => $(el).attr("data-id"))
-      .get();
-
-    editor.state.sections[sectionId].columns = columnOrder;
-
-  });
-
-  // 🔄 Reset widgets per colonna
-  Object.values(editor.state.columns).forEach(col => {
-    col.widgets = [];
-  });
-
-  // 🔄 Sync widget dentro colonne
-  $(".column").each(function () {
-
-    const colId = $(this).attr("data-id");
-    if (!editor.state.columns[colId]) return;
-
-    $(this).find(".canvas-widget").each(function () {
-
-      const wid = $(this).attr("data-id");
-      if (!wid) return;
-
-      editor.state.columns[colId].widgets.push(wid);
-
-    });
-
-  });
-
-  console.log("SYNC COMPLETO OK");
-};
 
 //================================================
 //  RENDE SORTABILE LA SESSIONE
@@ -915,17 +868,17 @@ editor.makeSectionsSortable = function () {
   }
 
   $canvas.sortable({
-    items: '> .section',          // 🔥 FIX QUI
+    items: '> .section',          
     handle: '.section-handle',
-    axis: 'y',
+    axis: 'y',  // ⬅️ solo verticale
     tolerance: 'pointer',
     placeholder: 'section-placeholder',
     cancel: '.column, .canvas-widget, button'
-  });
-
-  $canvas.data('sections-sortable', true);
+ });
+  console.log('Sections sortable initialized');
+  $canvas.data('sections-sortable', true) ; 
+ 
 };
-
 
 //==========================================
 //  COLONNE SORTABILI CON HANDLE
@@ -946,44 +899,19 @@ editor.makeColumnsSortable = function ($section) {
 
     stop: function () {
       const sectionId = $section.data('id');
-
-      // 🔄 sync ordine colonne nello state
+     //  🔄 sync ordine colonne nello state
       editor.state.sections[sectionId].columns =
         $inner.children('.column')
           .map((_, el) => $(el).data('id'))
           .get();
-
+    //editor.syncStateFromDOM();
     }
   });
+console.log('Column sortable initialized');
 
   $inner.data('columns-sortable', true);
 };
 
-//==========================================
-//  WIDGET SORTABILI TRA COLONNE
-//==========================================
-editor.makeWidgetsSortable = function () {
-
-  $(".column").sortable({
-
-    items: "> .canvas-widget",
-    handle: ".widget-handle", // se esiste
-    connectWith: ".column",
-    tolerance: "pointer",
-    placeholder: "widget-placeholder",
-
-    start: function () {
-      console.log("DRAG START");
-    },
-
-    //stop: function () {
-    //  console.log("DRAG STOP → sync state");
-    //  editor.syncStateFromDOM();
-    //}
-
-  });
-
-};
 
 //======================================
 //  DRAGGABLE PALETTE → COLONNE
@@ -1042,8 +970,8 @@ editor.addSection = function (forcedId = null, options = {}) {
     <div class="section" data-id="${sectionId}">
       <div class="toolbar">
         <button class="section-handle">☰</button>
-        <button class="add-column">➕ Colonna</button>
         <button class="delete-section pink">✕</button>
+        <button class="add-column">➕ Colonna</button>
       </div>
       <div class="section-inner"></div>
     </div>
@@ -1055,6 +983,9 @@ editor.addSection = function (forcedId = null, options = {}) {
 }
 
   editor.makeSectionsSortable();
+
+  // AGGIORNA IL DOM
+  editor.updateSectionDOM(sectionId);
 };
 
 
@@ -1089,7 +1020,7 @@ editor.createSectionFromState = function (section) {
 };
 
 //==========================================
-//  2️⃣ AGGIUNGERE UNA COLONNA A UNA SEZIONE
+//  ➕ COLONNA A SEZIONE e DOM
 //==========================================
 editor.addColumn = function (sectionId, forcedId = null, options = {}) {
 
@@ -1113,16 +1044,22 @@ editor.addColumn = function (sectionId, forcedId = null, options = {}) {
     editor.state.sections[sectionId].columns.push(columnId);
   }
 
+  const $column = $(`
+    <div class="column" data-id="${columnId}">
+      <div class="toolbar">
+        <button class="column-handle">☰</button>
+        <button class="delete-column pink">✕</button>
+      </div>
+    </div>
+  `);
 
-const $column = $(html_colonna(columnId));
   $(`[data-id="${sectionId}"] .section-inner`).append($column);
-  if (editor.mode === "view") {
-  $(".toolbar").remove();
-}
+  if (editor.mode === "view") {  $(".toolbar").remove();}
 
   editor.activateColumn($column);
   editor.makeColumnsSortable($(`[data-id="${sectionId}"]`));
-
+  // AGGIORNA IL DOM
+  editor.updateColumnDOM(columnId);
 };
 
 //============================================
@@ -1164,6 +1101,18 @@ editor.bindWidgetPropsLivePreview = function ()
 
     editor.setThemeValue(path, value);
     editor.applyTheme(); // 🔥 live preview
+  });
+};
+
+//================================================  
+// APPLY THEME CSS variables
+//================================================
+editor.applyThemeCSS = function() {
+  const colors = editor.state.theme?.colors || {};
+  const root = document.documentElement;
+
+  Object.keys(colors).forEach(key => {
+    root.style.setProperty(`--${key}`, colors[key]);
   });
 };
 
@@ -1229,11 +1178,11 @@ editor.loadLayout = function (tema, page) {
 
   editor.currentTema = tema;
   editor.currentPage  = page;
+console.log("✅ Layout loaded:", tema, page );
 
   const url = `siti/${tema}/${page}.json`;
 
   return $.getJSON(url)
-
     // ===========================
     // ✅ SUCCESS
     // ===========================
@@ -1294,8 +1243,8 @@ editor.loadLayout = function (tema, page) {
       // FINAL SYNC FRAME
       // ===========================
       requestAnimationFrame(() => {
-        editor.initDragAndDrop?.();
-      });
+  editor.applyStateToCanvas();
+});
 
     })
 
@@ -1326,12 +1275,12 @@ window.SITE_CONFIG = { colors: {}, fonts: {} };
 $("#saveSiteConfig").on("click", function () {
 
   // 🎨 colori
-  document.querySelectorAll("[data-site-color]").forEach(el => {
+  document.querySelectorAll("[data-global-color]").forEach(el => {
     SITE_CONFIG.colors[el.dataset.siteColor] = el.value;
   });
 
   // 🔤 font
-  document.querySelectorAll("[data-site-font]").forEach(el => {
+  document.querySelectorAll("[data-global-font]").forEach(el => {
     SITE_CONFIG.fonts[el.dataset.siteFont] = el.value;
   });
 
@@ -1341,7 +1290,6 @@ $("#saveSiteConfig").on("click", function () {
     body: JSON.stringify(SITE_CONFIG)
   }).then(r=>r.json()).then(()=>{
     $("#siteConfigStatus").text("✅ Salvato");
-    alert('Configurazione salvata correttamente');
   });
 });
 
@@ -1356,8 +1304,8 @@ editor.init = function () {
 
   editor.resetEditor();
   
-  //  📥 CARICA CONFIG ALL’AVVIO
-fetch("site-config.json")
+  // CARICA CONFIG ALL’AVVIO
+  fetch("site-config.json")
   .then(r=>r.json())
   .then(cfg=>{
     window.SITE_CONFIG = cfg;
@@ -1513,17 +1461,46 @@ editor.updateColumnDOM = function (columnId) {
   $el.css({
     backgroundColor: col.props.background,
     padding: col.props.padding,
-    width: col.props.width
+    width: col.props.width?.match(/%|px/) ? col.props.width : col.props.width+"px"
       });
-      console.log('+3+Colonna DOM aggiornata:', col.props);
 }
+
+ //===============================================  
+ //  Evento - Modifica dettagli colore
+ //===============================================
+$(document).on("change", "[data-prop='color']", function(){
+  console.log('Colore selezionato:', $(this).val());
+  const val = $(this).val();
+  const $custom = $(this).next("[data-custom-color]");
+  const wid = editor.selected.widgetId;
+
+  if (val === "custom") {
+    $custom.show();
+    return;
+  }
+
+  editor.state.widgets[wid].props.color = val;
+  console.log('CHIAMATO updateWidgetDOM con colore:', val);
+  editor.updateWidgetDOM(wid);
+});
+
+ //===============================================  
+ //  Evento - Modifica dettagli colore custom
+ //===============================================
+$(document).on("input", "[data-custom-color]", function(){
+  const color = $(this).val();
+  const wid = editor.selected.widgetId;
+
+  editor.state.widgets[wid].props.color = color;
+  editor.updateWidgetDOM(wid);
+});
+
  //===============================================  
  //  Evento - Seleziona colonna
  //===============================================
 $('#canvas').on('click', '.column', function (e) {
   // ❗ se ho cliccato un widget → lascia gestire al widget
   if ($(e.target).closest('.canvas-widget').length) return;
-
   e.stopPropagation();
 
   editor.select({
@@ -1540,11 +1517,8 @@ $('#canvas').on('click', '.column', function (e) {
  //=============================================== 
 $('#canvas').on('click', '.section', function (e) {
   // ❗ se ho cliccato colonna o widget → esci
-  if (
-
-    $(e.target).closest('.canvas-widget').length
+  if (  $(e.target).closest('.canvas-widget').length
   ) return;
-
   e.stopPropagation();
 
   editor.select({
@@ -1577,9 +1551,8 @@ $('#widget-details').on('input', '[data-col-prop]', function () {
 
   editor.state.columns[colId].props[prop] =
     prop === 'background' ? val:
-    prop === 'width' ? val + '%' :
-    prop === 'padding' ?  val + 'px':
-    val;
+    prop === 'width'?.match(/%|px/) ? val : val+"px"
+    prop === 'padding' ?  val + 'px':  val;
     console.log('+1+Colonna prop aggiornata:', prop, val);
 
   editor.updateColumnDOM(colId);
@@ -1595,9 +1568,8 @@ $('#widget-details').on('input', '[data-sec-prop]', function () {
 
   editor.state.sections[secId].props[prop] =
     prop === 'background' ? val :
-    prop === 'width' ? val + '%' :
-    prop === 'padding' ?  val + 'px' : 
-    val;
+    prop === 'width'?.match(/%|px/) ? val : val+"px"
+    prop === 'padding' ?  val + 'px' :  val;
 
   editor.updateSectionDOM(secId);
 });
@@ -1605,7 +1577,6 @@ $('#widget-details').on('input', '[data-sec-prop]', function () {
 //  🖱️ EVENTI - clic su widget
 //======================================
 $('#canvas').on('click', '.canvas-widget', function (e) {
- 
   e.stopPropagation();
  
    editor.select({
@@ -1738,11 +1709,6 @@ editor.deleteWidget = function (sectionId, columnId, widgetId) {
 
   const payload = editor.serializeLayout();
   if (!payload.widgets) payload.widgets = {};
-   console.log("🔄 Sync prima del salvataggio");
-
-  editor.syncStateFromDOM();
-
-  console.log("💾 Salvataggio stato:", editor.state);
 
   $.ajax({
     url: 'save_layout.php',
@@ -1761,11 +1727,11 @@ editor.deleteWidget = function (sectionId, columnId, widgetId) {
 // 🖼️ STEP 6 — Aggiorna UI selezione (DOM = riflesso) 
 //==========================================================
 editor.updateSelectionUI = function () {
-  $(".canvas-widget").removeClass("selected");
+  $(".widget").removeClass("selected");
 
   if (!editor.state.selected.widgetId) return;
 
-  $(`.canvas-widget[data-id="${editor.state.selected.widgetId}"]`)
+  $(`.widget[data-id="${editor.state.selected.widgetId}"]`)
     .addClass("selected");
     c
 };

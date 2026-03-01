@@ -364,7 +364,7 @@ editor.renderWidgetControls = function (widget, $panel) {
   const $panelh = $('#widget-details .panel-header');
   $panelh.empty();
        $panelh.append(`
-          <h3 class="pink">Dettagli ${widget.type} </h3>
+          <h3 class="pink"> ${widget.type} </h3>
        `);
 
   switch (widget.type) {
@@ -373,23 +373,22 @@ editor.renderWidgetControls = function (widget, $panel) {
       $panel.append(`
   <div id="panel-body" class="accordion">
       <h3 class="" aria-expanded="true" aria-selected="true">Layout</h3>
-
       <div style="display: flex;">
         <label>Testo</label>
         <input type="text"
                data-prop="text"
                value="${widget.props?.text || ''}">
-      </div>   
+      </div>         
+      <h3 class="">Stile</h3>
       <div style="display: flex;">
-          <label>Livello</label>
-          <select data-prop="level">
-            <option value="h1" ${widget.props?.level === 'h1' ? 'selected' : ''}>H1</option>
-            <option value="h2" ${widget.props?.level === 'h2' ? 'selected' : ''}>H2</option>
-            <option value="h3" ${widget.props?.level === 'h3' ? 'selected' : ''}>H3</option>
-          </select>
+        <label>Livello</label>
+        <select data-prop="level">
+          <option value="h1" ${widget.props?.level === 'h1' ? 'selected' : ''}>H1</option>
+          <option value="h2" ${widget.props?.level === 'h2' ? 'selected' : ''}>H2</option>
+          <option value="h3" ${widget.props?.level === 'h3' ? 'selected' : ''}>H3</option>
+        </select>
       </div>
 
-      <h3 class="">Stile</h3>
       <div style="display: flex;">
         <label>Allineamento</label>
         <select data-prop="align">
@@ -398,20 +397,19 @@ editor.renderWidgetControls = function (widget, $panel) {
           <option value="right"  ${widget.props?.align === 'right' ? 'selected' : ''}>right</option>
         </select>
       </div>
-       
+        </div>
+
       <div style="display: flex;">
-        <label>Colore testo</label>
+        <label>Colore</label>
         <select data-prop="color">
-          <option value="var(--color-primary)"    ${widget.props?.color === 'var(--color-primary)' ? 'selected' : ''}>Primary</option>
-          <option value="var(--color-secondary)"  ${widget.props?.color === 'var(--color-secondary)' ? 'selected' : ''}>Secondary</option>
-          <option value="var(--color-accent)"     ${widget.props?.color === 'var(--color-accent)' ? 'selected' : ''}>Accent</option>
-          <option value="var(--color-text)"       ${widget.props?.color === 'var(--color-text)' ? 'selected' : ''}>Testo</option>
-          <option value="custom" type="color">🎨 Custom...</option>
+          <option value="#3366ff"  ${widget.props?.color === 'primary' ? 'selected' : 'primary'}>Primario</option>
+          <option value="#ff6633"  ${widget.props?.color === 'secondary' ? 'selected' : 'secondary'}>Secondario</option>
+          <option value="#ffa500"  ${widget.props?.color === 'accent' ? 'selected' : 'accent'}>Accent</option>
+          <option value="#222222"  ${widget.props?.color === 'text' ? 'selected' : ''}>Testo</option>
+          <option value="#ffffff"  ${widget.props?.color === 'bg' ? 'selected' : ''}>Sfondo</option>
         </select>
-        <br>
-        <input type="color"  hidden>
       </div>
-    
+        </div>      
 
       <div style="display: flex;">
         <label>Font</label>
@@ -430,43 +428,6 @@ editor.renderWidgetControls = function (widget, $panel) {
       $panel.append(`
         <label>Contenuto</label>
         <textarea name="" data-prop="text">${widget.props?.text}</textarea>
-
-        <div style="display: flex;">
-          <label>Allineamento</label>
-          <select data-prop="align">
-            <option value="left"   ${widget.props?.align === 'left' ? 'selected' : ''}>left</option>  
-            <option value="center" ${widget.props?.align === 'center' ? 'selected' : ''}>center</option>
-            <option value="right"  ${widget.props?.align === 'right' ? 'selected' : ''}>right</option>
-            <option value="justify"${widget.props?.align === 'justify' ? 'selected' : ''}>justify</option>
-          </select>
-        </div>
-
-        <div style="display: flex;">
-          <label>Colore testo</label>
-          <select data-prop="color">
-            <option  style="background-color: #3366ff;" value="#3366ff"${widget.props?.color === '#3366ff' ? 'selected' : ''}>primario</option>
-            <option  style="background-color: #ff6633;" value="#ff6633"${widget.props?.color === '#ff6633' ? 'selected' : ''}>secondario</option>
-            <option  style="background-color: #ffa500;" value="#ffa500"${widget.props?.color === '#ffa500' ? 'selected' : ''}>accent</option>
-            <option  style="background-color: #000000;color: white;" value="#000000"${widget.props?.color === '#000000' ? 'selected' : ''}>testo</option>
-          </select>
-          <input type="color" data-prop="color" value="${widget.props?.color || '#3366ff'}" style="width: 50px; cursor: pointer;">
-
-<script>
-  document.querySelector('input[type="color"]').addEventListener('input', (e) => {
-    widget.props.color = e.target.value;
-  });
-</script>
-        </div>
-
-              <div style="display: flex;">
-        <label>Font</label>
-        <select data-prop="fontFamily">
-          <option value="Inter"      ${widget.props?.fontFamily === 'Inter' ? 'selected' : ''}>Inter</option>
-          <option value="Montserrat" ${widget.props?.fontFamily === 'Montserrat' ? 'selected' : ''}>Montserrat</option>
-          <option value="Poppins"    ${widget.props?.fontFamily === 'Poppins' ? 'selected' : ''}>Poppins</option>
-          <option value="Roboto"     ${widget.props?.fontFamily === 'Roboto' ? 'selected' : ''}>Roboto</option>
-        </select>
-      </div>
       `);
       break;
 
@@ -501,9 +462,8 @@ editor.renderWidgetControls = function (widget, $panel) {
     
     case 'bottone':
       $panel.append(`
-<div class="accordion">
-<h3 class="" aria-expanded="true" aria-selected="true">Layout</h3>
-
+      <div class="accordion">
+      <h3 class="" aria-expanded="true" aria-selected="true">Layout</h3>
       <div style="display: flex;">
          <label>Testo bottone</label>
          <input type="text"
@@ -517,9 +477,8 @@ editor.renderWidgetControls = function (widget, $panel) {
                 data-prop="url"
                 value="${widget.props?.url || ''}">
       </div>
-<h3 class="" aria-expanded="true" aria-selected="true">Stile</h3>
-
-      <div style="display: flex;">
+       <h3 class="" aria-expanded="true" aria-selected="true">Stile</h3>
+            <div style="display: flex;">
         <label>Allineamento</label>
         <select data-prop="align">
           <option value="left"   ${widget.props?.align === 'left' ? 'selected' : ''}>left</option>
@@ -527,23 +486,7 @@ editor.renderWidgetControls = function (widget, $panel) {
           <option value="right"  ${widget.props?.align === 'right' ? 'selected' : ''}>right</option>
         </select>
       </div>
-      
-      <div style="display: flex;">
-        <label>Font</label>
-        <select data-prop="fontFamily">
-          <option value="Inter"      ${widget.props?.fontFamily === 'Inter' ? 'selected' : ''}>Inter</option>
-          <option value="Montserrat" ${widget.props?.fontFamily === 'Montserrat' ? 'selected' : ''}>Montserrat</option>
-          <option value="Poppins"    ${widget.props?.fontFamily === 'Poppins' ? 'selected' : ''}>Poppins</option>
-          <option value="Roboto"     ${widget.props?.fontFamily === 'Roboto' ? 'selected' : ''}>Roboto</option>
-        </select>
-      </div>
-  </div> 
-      
-      <div style="display: flex;">
-        <label>Padding</label>
-        <input type="number" data-prop="padding" value="${widget.props?.padding || '0px'}">
-      </div>
-</div>          
+      </div>          
                       `);
      break; 
 
@@ -552,15 +495,6 @@ editor.renderWidgetControls = function (widget, $panel) {
   }
 };
 
-//================================================    
-//  nessun widget è selezionato = pannello vuoto
-//================================================
-editor.clearWidgetPanel = function () {
-  $('#widget-details .panel-body').html(
-    '<div class="panel-placeholder">Seleziona un widget</div>'
-  );
-};
-  
 //================================================    
 //  nessun widget è selezionato = pannello vuoto
 //================================================

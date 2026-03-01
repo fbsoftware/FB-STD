@@ -1,0 +1,101 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "bbb",
+        "version": 1,
+        "updated_at": "2026-02-28T20:37:42.632Z"
+    },
+    "sections": {
+        "sec-1772310529460": {
+            "id": "sec-1772310529460",
+            "columns": [
+                "col-1772310531855-zi03a",
+                "col-1772310901448-f5ayq",
+                "col-1772310533224-ct9n5"
+            ],
+            "props": {
+                "background": "#ffffff",
+                "padding": "0px"
+            }
+        }
+    },
+    "columns": {
+        "col-1772310531855-zi03a": {
+            "id": "col-1772310531855-zi03a",
+            "sectionId": "sec-1772310529460",
+            "widgets": [
+                "wid-1772310543012",
+                "wid-1772310546240"
+            ],
+            "props": {
+                "background": "#ffffff",
+                "padding": "0px"
+            }
+        },
+        "col-1772310533224-ct9n5": {
+            "id": "col-1772310533224-ct9n5",
+            "sectionId": "sec-1772310529460",
+            "widgets": [
+                "wid-1772310538799"
+            ],
+            "props": {
+                "background": "#ffffff",
+                "padding": "0px"
+            }
+        },
+        "col-1772310901448-f5ayq": {
+            "id": "col-1772310901448-f5ayq",
+            "sectionId": "sec-1772310529460",
+            "widgets": [
+                "wid-1772311034463"
+            ],
+            "props": {
+                "background": "#ffffff",
+                "padding": "0px"
+            }
+        }
+    },
+    "widgets": {
+        "wid-1772310538799": {
+            "id": "wid-1772310538799",
+            "type": "image",
+            "props": {
+                "src": "images\/image.png",
+                "alt": "Immagine"
+            }
+        },
+        "wid-1772310543012": {
+            "id": "wid-1772310543012",
+            "type": "titolo",
+            "props": {
+                "text": "Titolo...",
+                "level": "h2",
+                "align": "center",
+                "color": "#000000",
+                "fontFamily": "Poppins"
+            }
+        },
+        "wid-1772310546240": {
+            "id": "wid-1772310546240",
+            "type": "testo",
+            "props": {
+                "text": "Lorem ipsum dolor sit amet. At sint deserunt At odio reprehenderit vel eveniet molestiae. Quo maiores debitis ut dignissimos nulla qui eligendi voluptas aut perferendis nihil. Sed tenetur deserunt et earum enim et molestiae praesentium et tempore error ut obcaecati consequatur nam nihil velit non eius dolorem.",
+                "align": "left",
+                "color": "#000000",
+                "fontFamily": "Inter"
+            }
+        },
+        "wid-1772311034463": {
+            "id": "wid-1772311034463",
+            "type": "bottone",
+            "props": {
+                "text": "CERCA",
+                "url": "#",
+                "align": "center",
+                "color": null,
+                "fontFamily": null
+            }
+        }
+    },
+    "theme": []
+}
