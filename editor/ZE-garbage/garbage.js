@@ -132,3 +132,101 @@ $('#widget-details').on('input change', 'input[type=number]', function () {
   // passa dal tuo bindWidgetPropsLivePreview
 });
 
+//=========================================
+//  ULTRA ROBUST LAYOUT LOADER v3
+//=========================================
+editor.loadLayout = function (tema, page) {
+  // ---- HARD SAFE PARAMS
+  tema = tema   || editor.currentTema  || editor.state?.meta?.tema  || "default";
+  page  = page  || editor.currentPage  || editor.state?.meta?.page  || "default";
+
+  editor.currentTema = tema;
+  editor.currentPage  = page;
+console.log("✅ Layout loaded:", tema, page );
+
+  const url = `siti/${tema}/${page}.json`;
+
+  return $.getJSON(url)
+    // ===========================
+    // ✅ SUCCESS
+    // ===========================
+    .done(function (data) {
+
+      // ---- HARD RESET
+      editor.resetData?.();
+      $("#canvas").empty();
+
+      // ---- HARD SANITIZE ROOT
+      editor.state = data && typeof data === "object" ? data : {};
+      editor.state.meta    = editor.state.meta    || { tema, page };
+      editor.state.sections= editor.state.sections|| {};
+      editor.state.columns = editor.state.columns || {};
+      editor.state.widgets = editor.state.widgets || {};
+      editor.state.theme   = editor.state.theme   || {};
+
+      // ---- FIX widgets array -> object
+      if (Array.isArray(editor.state.widgets)) {
+        const obj = {};
+        editor.state.widgets.forEach(w => w?.id && (obj[w.id] = w));
+        editor.state.widgets = obj;
+      }
+
+      // ---- FIX columns widgets missing array
+      Object.values(editor.state.columns).forEach(c => {
+        if (!Array.isArray(c.widgets)) c.widgets = [];
+      });
+
+      // ===========================
+      // RENDER PIPELINE (SAFE ORDER)
+      // ===========================
+
+      // 1️⃣ Sections
+      Object.values(editor.state.sections).forEach(sec => {
+        editor.addSection(sec.id, { fromLoad: true });
+      });
+
+      // 2️⃣ Columns
+      Object.values(editor.state.columns).forEach(col => {
+        editor.addColumn(col.sectionId, col.id, { fromLoad: true });
+      });
+
+      // 3️⃣ Widgets (bind to real columns)
+      Object.values(editor.state.widgets).forEach(widget => {
+        const col = Object.values(editor.state.columns)
+          .find(c => c.widgets.includes(widget.id));
+
+        if (!col) {
+          console.warn("⚠ Widget without column:", widget.id);
+          return;
+        }
+
+        editor.addWidgetToColumn(col.id, widget, { fromLoad: true });
+      });
+
+      // ===========================
+      // FINAL SYNC FRAME
+      // ===========================
+      requestAnimationFrame(() => {
+  editor.applyStateToCanvas();
+});
+
+    })
+
+    // ===========================
+    // ❌ FAIL SAFE MODE
+    // ===========================
+    .fail(function (xhr) {
+      console.error("❌ Layout load failed:", url, xhr.status);
+
+      editor.state = {
+        meta: { tema, page },
+        sections: {},
+        columns: {},
+        widgets: {},
+        theme: {}
+      };
+
+      $("#canvas").empty();
+      console.warn("⚠ Empty layout initialized");
+    });
+};
