@@ -245,7 +245,8 @@ editor.updateWidgetDOM = function (widgetId) {
 
   const $el = $(`.canvas-widget[data-id="${widgetId}"]`);
   if (!$el.length) return;
-//==============================================
+//-----------------------------------------------------
+
 // 🔤 TITOLO
 if (widget.type === 'titolo') {
   const level = widget.props.level || 'h2';
@@ -255,23 +256,26 @@ if (widget.type === 'titolo') {
   const fontFamily = widget.props.fontFamily || 'Inter';
 
   let $heading = $el.find('h1, h2, h3');
-
   // se cambia il livello → ricrea il tag
   if (!$heading.is(level)) {
     const $new = $(`<${level}>`).text(text);
     $heading.replaceWith($new);
-    $heading = $new;
-  } else {
-    $heading.text(text);
-  }
-
-  // 🔥 allineamento = CSS
+    $heading = $new;  } 
+  else {    $heading.text(text);  }
+// 🔥 allineamento = CSS
   $heading.css('text-align', align ); 
-  $heading.css('color' , color);
-  $heading.css('font-family' , fontFamily);
+   $heading.css('font-family' , fontFamily);
+ 
+  // colore = CSS
+  const $ex = $(`.widget[data-id="${widgetId}"]`);
+console.log('Aggiorna colore titolo:', color);
+  $ex.css({
+    color: widget.props.color,
+    backgroundColor: widget.props.background
+  });
+};
 
-}
-//==============================================
+ //==============================================
 // 📝 TESTO
 if (widget.type === 'testo') {
   const text = widget.props.text || '';
@@ -280,6 +284,9 @@ if (widget.type === 'testo') {
   if (!$content.length) return;
 
   $content.html(text);
+  $content.css('text-align', widget.props.align || 'left');
+  $content.css('color', widget.props.color || '#000000');
+  $content.css('font-family', widget.props.fontFamily || 'Inter');
 }
 //==============================================
  // 📝 BOTTONE
@@ -287,15 +294,26 @@ if (widget.type === 'testo') {
   const text = widget.props.bottone || '';
   const url  = widget.props.url || '#';
   const align = widget.props.align || 'center';
+  const padding = widget.props.padding || '0px';
+  const color = widget.props.color || '#000000';
+  const background = widget.props.background || 'transparent';
+  const fontFamily = widget.props.fontFamily || 'Inter';
 
   const $a = $el.find('a');
   if (!$a.length) return;
-   $a.attr('href', url);
+    $a.attr('href', url);
+    $a.text(text);
 
-   const $b = $el.find('button');
+  const $b = $el.find('div.widget-content');
   if (!$b.length) return;
-  $b.text(text);
-  $b.css('text-align', align);
+$b.css({
+  textAlign: widget.props.align,
+  padding: widget.props.padding,
+  color: widget.props.color,
+  backgroundColor: widget.props.background,
+  fontFamily: widget.props.fontFamily
+});
+
 }
   //==============================================
   // 🖼️ IMMAGINE
@@ -319,7 +337,6 @@ if (widget.type === 'space') {
 }   
 
 };
-
 //================================================
 //  Annulla selezione
 //================================================
@@ -578,13 +595,13 @@ editor.renderWidgetPreview = function (widget) {
 
   switch (widget.type) {
     case 'titolo':
-      return `<${widget.props.level} style="text-align: ${widget.props.align}; font-family: ${widget.props.fontFamily || ''}; color: ${widget.props.color || ''}">${widget.props.text}</${widget.props.level}>`;
+      return `<${widget.props.level} style="text-align: ${widget.props.align}; font-family: ${widget.props.fontFamily || ''}; color: ${widget.props.color || ''};">${widget.props.text}</${widget.props.level}>`;
     case 'testo':
-      return `<p>${widget.props.text}</p>`;
+      return `<p style="text-align: ${widget.props.align}; font-family: ${widget.props.fontFamily || ''}; color: ${widget.props.color || ''};">${widget.props.text}</p>`;
         case 'space':
       return `<div class="widget widget-space" style="height: ${widget.props.height}px;"></div>`;
     case 'bottone':
-      return `<button class="widget-bottone" style="text-align: ${widget.props.align}"><a href="${widget.props.url}">${widget.props.text}</a></button>`;
+      return `<button class="widget-bottone" style="text-align: ${widget.props.align}; margin:${widget.props.margin}"><a href="${widget.props.url}">${widget.props.text}</a></button>`;
     case 'image':
       return `<img src='${widget.props.src}' alt='${widget.props.alt}' height="200"/>`;
       case 'separator':
@@ -619,23 +636,24 @@ editor.getDefaultProps = function (type) {
     case "testo":
       return { text: "Lorem ipsum dolor sit amet. At sint deserunt At odio reprehenderit vel eveniet molestiae. Quo maiores debitis ut dignissimos nulla qui eligendi voluptas aut perferendis nihil. Sed tenetur deserunt et earum enim et molestiae praesentium et tempore error ut obcaecati consequatur nam nihil velit non eius dolorem.", align: "left" , color: "#000000",fontFamily: "Inter" };
     case "titolo":
-      return { text: "Titolo..." , level: "h2" , align: "center", color: "#000000" , fontFamily: "Poppins" };
+      return { text: "Titolo..." , level: "h1" , align: "center", color: "#000000" , fontFamily: "Poppins" };
     case "space":
       return { height: 1 };  
     case "bottone":
-      return { text: "CERCA" , url: "#" , align: "center" , color: null , fontFamily: null};
+      return { text: "CERCA" , url: "#" , align: "center" , padding: '0px', color: null , fontFamily: null};
     case "image":
       return { src: "images/image.png" , alt: "Immagine" };
     case "column":
-      return {    width: '100%', background: '#fefefe' ,   padding: '0px'};  
+      return {    width: '200px', background: '#fefefe' ,   padding: '0px'};  
     case "section":
-      return {    width: '100%',  background: '#fefefe' ,  padding: '0px'};  
+      return {    width: '900px',  background: '#fefefe' ,  padding: '0px'};  
     case "separator":
       return {    width: '100%',  background: '#fefefe' ,  padding: '0px'};    
     default:
       return {};
     }
   };
+
 
 // --------------------------------------------- 
 // aggiunge widget alla colonna (da palette o da load)
@@ -682,14 +700,14 @@ editor.addWidgetToColumn = function (columnId, widgetData, options = {}) {
 
 
 //================================================
-//  COLONNA: sortable SOLO per canvas-widget
+//  COLONNA: sortable SOLO per widget
 //================================================
 editor.activateColumn = function ($column) {
 
   if ($column.data('sortable')) return;
 
   $column.sortable({
-    items: '.canvas-widget',
+    items: '.widget',
     connectWith: '.column',
     placeholder: 'widget-placeholder',
     tolerance: 'pointer'
@@ -723,7 +741,7 @@ editor.renderWidget = function (widgetId) {
   if (!widget) return null;
 
   return $(`
-    <div class="canvas-widget" data-id="${widgetId}">
+    <div class="widget" data-id="${widgetId}">
       <div class="widget-header">
         <button class="delete-widget pink">✖</button>
       </div>
@@ -829,7 +847,7 @@ editor.select = function ({ widgetId, columnId, sectionId }) {
   $('.selected').removeClass('selected');
 
   if (widgetId) {
-    $(`.canvas-widget[data-id="${widgetId}"]`).addClass('selected');
+    $(`.widget[data-id="${widgetId}"]`).addClass('selected');
   }
   else if (columnId) {
     $(`.column[data-id="${columnId}"]`).addClass('selected');
@@ -882,7 +900,7 @@ editor.syncStateFromDOM = function () {
     const colId = $(this).attr("data-id");
     if (!editor.state.columns[colId]) return;
 
-    $(this).find(".canvas-widget").each(function () {
+    $(this).find(".widget").each(function () {
 
       const wid = $(this).attr("data-id");
       if (!wid) return;
@@ -920,7 +938,7 @@ editor.makeSectionsSortable = function () {
     axis: 'y',
     tolerance: 'pointer',
     placeholder: 'section-placeholder',
-    cancel: '.column, .canvas-widget, button'
+    cancel: '.column, .widget, button'
   });
 
   $canvas.data('sections-sortable', true);
@@ -942,7 +960,7 @@ editor.makeColumnsSortable = function ($section) {
     tolerance: 'pointer',
     placeholder: 'column-placeholder',
     axis: 'x', // ⬅️ SOLO ORIZZONTALE
-    cancel: '.canvas-widget',
+    cancel: '.widget',
 
     stop: function () {
       const sectionId = $section.data('id');
@@ -966,7 +984,7 @@ editor.makeWidgetsSortable = function () {
 
   $(".column").sortable({
 
-    items: "> .canvas-widget",
+    items: "> .widget",
     handle: ".widget-handle", // se esiste
     connectWith: ".column",
     tolerance: "pointer",
@@ -1219,102 +1237,42 @@ editor.updateSectionDOM = function (sectionId) {
   });
 };
 
+///=========================================
+//  ULTRA ROBUST loadLayout
 //=========================================
-//  ULTRA ROBUST LAYOUT LOADER v3
-//=========================================
-editor.loadLayout = function (tema, page) {
-  // ---- HARD SAFE PARAMS
-  tema = tema   || editor.currentTema  || editor.state?.meta?.tema  || "default";
-  page  = page  || editor.currentPage  || editor.state?.meta?.page  || "default";
+editor.loadLayout = function (theme, page) {
 
-  editor.currentTema = tema;
-  editor.currentPage  = page;
+  theme = theme || editor.currentTheme || "default";
+  page  = page  || "home";
 
-  const url = `siti/${tema}/${page}.json`;
+  console.log("🔧 Loading layout:", theme, page);
 
-  return $.getJSON(url)
-
-    // ===========================
-    // ✅ SUCCESS
-    // ===========================
+  return $.getJSON(`siti/${theme}/${page}.json`)
     .done(function (data) {
 
-      // ---- HARD RESET
-      editor.resetData?.();
-      $("#canvas").empty();
+      console.log("📦 JSON loaded", data);
 
-      // ---- HARD SANITIZE ROOT
-      editor.state = data && typeof data === "object" ? data : {};
-      editor.state.meta    = editor.state.meta    || { tema, page };
-      editor.state.sections= editor.state.sections|| {};
-      editor.state.columns = editor.state.columns || {};
-      editor.state.widgets = editor.state.widgets || {};
-      editor.state.theme   = editor.state.theme   || {};
+      // RESET STATE
+      editor.state = data;
+      editor.currentTheme = theme;
+      editor.currentPage  = page;
 
-      // ---- FIX widgets array -> object
-      if (Array.isArray(editor.state.widgets)) {
-        const obj = {};
-        editor.state.widgets.forEach(w => w?.id && (obj[w.id] = w));
-        editor.state.widgets = obj;
-      }
+      // CLEAR CANVAS
+      $('#canvas').empty();
 
-      // ---- FIX columns widgets missing array
-      Object.values(editor.state.columns).forEach(c => {
-        if (!Array.isArray(c.widgets)) c.widgets = [];
-      });
+      // RENDER DOM
+      editor.renderFromState();
 
-      // ===========================
-      // RENDER PIPELINE (SAFE ORDER)
-      // ===========================
-
-      // 1️⃣ Sections
-      Object.values(editor.state.sections).forEach(sec => {
-        editor.addSection(sec.id, { fromLoad: true });
-      });
-
-      // 2️⃣ Columns
-      Object.values(editor.state.columns).forEach(col => {
-        editor.addColumn(col.sectionId, col.id, { fromLoad: true });
-      });
-
-      // 3️⃣ Widgets (bind to real columns)
-      Object.values(editor.state.widgets).forEach(widget => {
-        const col = Object.values(editor.state.columns)
-          .find(c => c.widgets.includes(widget.id));
-
-        if (!col) {
-          console.warn("⚠ Widget without column:", widget.id);
-          return;
-        }
-
-        editor.addWidgetToColumn(col.id, widget, { fromLoad: true });
-      });
-
-      // ===========================
-      // FINAL SYNC FRAME
-      // ===========================
+      // 🔥 RE-INIT CORE SYSTEMS
       requestAnimationFrame(() => {
-        editor.initDragAndDrop?.();
+        if (editor.initDragAndDrop) editor.initDragAndDrop();
+        if (editor.makeSectionsSortable) editor.makeSectionsSortable();
+        console.log("✅ Drag & Drop reinitialized");
       });
 
     })
-
-    // ===========================
-    // ❌ FAIL SAFE MODE
-    // ===========================
-    .fail(function (xhr) {
-      console.error("❌ Layout load failed:", url, xhr.status);
-
-      editor.state = {
-        meta: { tema, page },
-        sections: {},
-        columns: {},
-        widgets: {},
-        theme: {}
-      };
-
-      $("#canvas").empty();
-      console.warn("⚠ Empty layout initialized");
+    .fail(function (err) {
+      console.error("❌ Load JSON failed:", err);
     });
 };
 
@@ -1522,7 +1480,7 @@ editor.updateColumnDOM = function (columnId) {
  //===============================================
 $('#canvas').on('click', '.column', function (e) {
   // ❗ se ho cliccato un widget → lascia gestire al widget
-  if ($(e.target).closest('.canvas-widget').length) return;
+  if ($(e.target).closest('.widget').length) return;
 
   e.stopPropagation();
 
@@ -1542,7 +1500,7 @@ $('#canvas').on('click', '.section', function (e) {
   // ❗ se ho cliccato colonna o widget → esci
   if (
 
-    $(e.target).closest('.canvas-widget').length
+    $(e.target).closest('.widget').length
   ) return;
 
   e.stopPropagation();
@@ -1604,7 +1562,7 @@ $('#widget-details').on('input', '[data-sec-prop]', function () {
 //======================================
 //  🖱️ EVENTI - clic su widget
 //======================================
-$('#canvas').on('click', '.canvas-widget', function (e) {
+$('#canvas').on('click', '.widget', function (e) {
  
   e.stopPropagation();
  
@@ -1619,7 +1577,7 @@ $('#canvas').on('click', '.canvas-widget', function (e) {
 //  🔸 Click colonna
 //======================================
 $('#canvas').on('click', '.column', function (e) {
-  if ($(e.target).closest('.canvas-widget').length) return;
+  if ($(e.target).closest('.widget').length) return;
 
   e.stopPropagation();
 
@@ -1659,7 +1617,7 @@ $('#canvas').on('click', '.delete-section', function (e) {
 $('#canvas').on('click', function (e) {
 
   // se clicco dentro un widget o pannello → ignora
-  if ($(e.target).closest('.canvas-widget, #widget-panel, #style-panel').length) {
+  if ($(e.target).closest('.widget, #widget-panel, #style-panel').length) {
     return;
   }
 
@@ -1692,7 +1650,7 @@ $('#canvas').on('click', '.delete-widget', function (e) {
 
   e.stopPropagation();
 
-  const $widget = $(this).closest('.canvas-widget');
+  const $widget = $(this).closest('.widget');
   const widgetId = $widget.data('id');
 
   // rimuove da stato
@@ -1727,7 +1685,7 @@ editor.deleteWidget = function (sectionId, columnId, widgetId) {
   delete editor.state.widgets[widgetId];
 
   // 3️⃣ rimuovi dal DOM
-  $(`.canvas-widget[data-id="${widgetId}"]`).remove();
+  $(`.widget[data-id="${widgetId}"]`).remove();
 
 };
 
@@ -1761,11 +1719,11 @@ editor.deleteWidget = function (sectionId, columnId, widgetId) {
 // 🖼️ STEP 6 — Aggiorna UI selezione (DOM = riflesso) 
 //==========================================================
 editor.updateSelectionUI = function () {
-  $(".canvas-widget").removeClass("selected");
+  $(".widget").removeClass("selected");
 
   if (!editor.state.selected.widgetId) return;
 
-  $(`.canvas-widget[data-id="${editor.state.selected.widgetId}"]`)
+  $(`.widget[data-id="${editor.state.selected.widgetId}"]`)
     .addClass("selected");
     c
 };
@@ -1789,8 +1747,8 @@ editor.selectWidget = function (widgetId) {
   };
 
  // 2️⃣ evidenzia canvas
-  $('.canvas-widget').removeClass('selected');
-  $(`.canvas-widget[data-id="${widgetId}"]`).addClass('selected');
+  $('.widget').removeClass('selected');
+  $(`.widget[data-id="${widgetId}"]`).addClass('selected');
 
    // 3️⃣ 🔥 RENDER DETTAGLI
   editor.renderWidgetPanel(widgetId);
