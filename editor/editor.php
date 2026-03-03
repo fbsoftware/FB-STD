@@ -6,8 +6,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
-<link rel="stylesheet"
-      href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="editor.css">
@@ -30,6 +29,13 @@ if ($tema && $page) {
 ?>
 
 <div id="editor">
+
+<div id="tabs">
+  <ul>
+    <li><a href="#palette">Elementi</a></li>
+    <li><a href="#widget-details">Dettagli</a></li>
+    <li><a href="#global">Global</a></li>
+    </ul>
     <div id='palette'>
         <div id="accordion" class="accordion">
         
@@ -62,14 +68,22 @@ if ($tema && $page) {
                 <?php endforeach; ?>
                 </ul>
             </div>  
+    </div> <!-- palette -->    
+
+</div> <!-- accordion -->
 
 
+  <!-- DETTAGLI -->
+    <div id="widget-details">
 
-        
+        <div class="panel-header"></div>
+        <div class="panel-body accordion"></div>
+        <div class="panel-footer"></div>
+    </div><!-- elementi/dettagli -->
+     
+
         <!-- impostazioni globali---------------------------- -->
-        <h3 class="" aria-expanded="true" aria-selected="true">Impostazioni globali</h3>
-            <div>
-
+    <div id="global">
                 <!-- 🎨 COLORI -->
                 <section class="style-section">
                     <label> 🎨 COLORI</label>
@@ -127,6 +141,7 @@ if ($tema && $page) {
                         <option value="Roboto">Roboto</option>
                     </select>
                     </div>
+
                     <div class="style-group" style="display: flex;">
                     <label>Stile body</label>
                     <select data-site-font="body-weight">
@@ -135,20 +150,25 @@ if ($tema && $page) {
                     </select>
                     </div>
                 </section>
-        // SALVATAGGIO CONFIGURAZIONE
-                <button id="saveSiteConfig" class="btn pink">💾 Salva Impostazioni</button>
+        <!--SALVATAGGIO CONFIGURAZIONE  -->
+                <button id="saveSiteConfig" class="button2">💾 Salva Impostazioni</button>
                 <span id="siteConfigStatus"></span>
-
-
-            </div>    
-        </div> <!-- accordion -->
-    </div> <!-- palette -->
+            
+    </div> <!-- global -->
+</div> <!-- tabs -->
 
     <!-- CANVAS -->
     <div class="canvas-panel">
-                <div>     
-                <h1 style="text-align:center">Layout del tema <span style="color: black"><?=$tema?></span> pagina <span style="color: black"><?=$page?></span></h1>  
-                </div>  
+                <div style="display: flex; gap: 250px; align-items: center; margin-bottom: 20px;">
+                    <div>
+                        <button id="save-layout" class="button2">Pubblica</button>
+                    </div>
+                    <div>     
+                        <h2 style="text-align:center">Layout del tema <span style="color: black"><?=$tema?></span> pagina <span style="color: black"><?=$page?></span></h2>  
+                    </div>
+                </div> 
+
+
         <div>
             <div id="canvas" class="canvas">    
             </div>
@@ -156,19 +176,7 @@ if ($tema && $page) {
         </div>
        
     </div>  
-
-  <!-- DETTAGLI -->
-    <div id="widget-details">
-        <div>
-        <button id="save-layout">Pubblica</button>
-        </div>
-        <div class="panel-header"></div>
-        
-        <div class="panel-body accordion"></div>
- 
-        <div class="panel-footer"></div>
-    </div>
-    
+   
 </div> <!--#editor-->
 
 
@@ -198,24 +206,20 @@ window.INITIAL_LAYOUT = <?= json_encode($layoutData) ?>;
         active: 0,  
         icons: { header: 'ui-icon-triangle-1-e', activeHeader: 'ui-icon-triangle-1-s' }
             });
-            
+     $( function() {
+    $( "#tabs" ).tabs();
+  } );        
   } );
  </script>
- <script src="test.js"></script>
-<script src="panels/style-panel.js"></script>
-<script src="editor.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
 
-  if (EDITOR_CONFIG.page) {
-    console.log("Carico pagina:",EDITOR_CONFIG.tema, EDITOR_CONFIG.page);
-    editor.loadLayout(EDITOR_CONFIG.tema,EDITOR_CONFIG.page);
-  } else {
-    console.log("Nuova pagina (vuota)");
-    editor.createEmptyPage();
-  }
-});
-</script>
+<script src="editor.js"></script>
+<script src="editor-widgets.js"></script>
+<script src="editor-dragdrop.js"></script>
+<script src="editor-inspector.js"></script>
+<script src="editor-state.js"></script>
+<script src="editor-render.js"></script>
+<script src="editor-core.js"></script>
+
 
 </body>
 </html>

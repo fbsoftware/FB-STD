@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 :root {
   /* 🎨 Colori */
   --color-primary: #3366ff;
@@ -68,13 +71,14 @@ h3  {
 
 #editor {
     display: grid;
-    grid-template-columns: 230px 1fr 220px;
+    grid-template-columns: 240px 1fr;
     height: 100vh;
     cursor: pointer;
 }
 
 /* PALETTE */
 #palette  , 
+#global,
 .ui-accordion .ui-accordion-content
 {   
     padding: 0px;
@@ -108,26 +112,26 @@ display: none !important;
 .widget {
     background: white;
     border: 1px solid #ccc;
-    
     margin-bottom: 10px;
     cursor: grab;
     text-align: center;
 }
 .widget.selected {
   background: #e8f4ff;
-  outline: 3px solid #ff0000;
+  outline: 1px solid #ff0000;
 }
 
 /* CANVAS */
 .canvas-panel {
     border: 0px;
+    width: 1240px;
 }
 #canvas {
     background: #fff;
     padding: 20px;
     position: relative;    
     min-height: 200px;
-    border: 2px dashed #bbb;
+    border: 1px dashed #bbb;
 }
 
 #canvas .widget {
@@ -157,7 +161,7 @@ display: none !important;
 /* Stile per il widget selezionato */
 .widget.selected {
     cursor: pointer;
-    outline: 2px solid #ff0000;
+    border: 1px solid #ff0000;
 }
 /*  CANVAS-WIDGET   */
 
@@ -175,7 +179,7 @@ display: none !important;
 }
 .sortable-placeholder {
     height: 40px;
-    border: 2px dashed #0073ea;
+    border: 1px dashed #0073ea;
     background: #f0f6ff;
 }
 /* DELETE-WIDGET */
@@ -192,17 +196,18 @@ display: none !important;
     color: white;
 }
 
-/* SEZIONI */
+/* SEZIONI 
 .section {
-    border: 2px solid #007bff;
+    border:1px solid #007bff;
     margin-bottom: 10px;
     padding: 30px;
     min-height: 200px;
     padding-top: 0%;
-    width: 900px;
+    width: 100%;
     }
 .section.selected {
-   outline: 3px solid #007bff;
+   border: 2px solid #007bff;
+   background: #e8f4ff;
 }
 .section-handle {
   cursor: grab;
@@ -225,24 +230,56 @@ display: none !important;
     background: #ff0000;
     color: white;
 }
+*/
 /*========================  */
-/*  COLONNA  */
+/*  SEZIONE                */
+/*========================  */
+.canvas-section {
+    position: relative;
+    border: 1px dashed black;
+    transition: 0.2s;
+    min-height: 200px;
+        margin-bottom: 20px;
+        padding: 20px;
+}
+
+.canvas-section.selected {
+    border: 1px solid #0073aa;
+}
+.section-toolbar {
+    position: absolute;
+    top: -35px;
+    right: 0;
+    background: #0073aa;
+    padding: 5px;
+    border-radius: 6px;
+    display: flex;
+    gap: 5px;
+}
+
+.section-toolbar button {
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 3px 6px;
+    border: 1px solid #0073aa;
+}
+/*========================  */
+/*  COLONNA                 */
 /*========================  */
 .section-inner {
   display: flex;
-  gap: 10px;
-  width: 100%;
 }
 
-.column {
-  min-height: 150px;
-  border:2px solid #22c55e;
-  padding-top: 0%;
-  margin-top: 10px;
-  /*max-width: min-content;*/
+.canvas-column {
+    padding: 10px;
+    border: 1px dashed green;
+    transition: 0.2s;
+    min-height: 100px;
 }
-.column.selected {
- outline: 3px solid #22c55e;
+.canvas-column.selected {
+ border: 3px solid #22c55e;
+ background: #e8f4ff;
 }
 .column-handle {
   cursor: grab;
@@ -261,7 +298,7 @@ display: none !important;
 }
 .column-placeholder {
   min-height: 150px;
-  border: 2px dashed #999;
+  border: 1px dashed #999;
   background: rgba(16, 16, 16, 0.05);
 }
 .delete-column {
@@ -364,6 +401,16 @@ button {
     cursor: pointer;
     font-size: 14px;
     border-radius: 0px;
+    margin: 0px ;
+    }
+.button2 {
+    background-color: orange;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px 15px;
+    margin: 20px ;
     }
 
 label {
@@ -420,7 +467,7 @@ select{
 .separator hr {
     flex: 1;
     border: none;
-    border-top: 2px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 span.icon {
