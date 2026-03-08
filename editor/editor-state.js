@@ -4,14 +4,28 @@
 //  Editor State Structure
 //================================= 
 editor.state = {
-    meta: {
-        version: "2.0"
+
+    meta:{
+        tema: window.EDITOR_CONFIG.tema,
+        page: window.EDITOR_CONFIG.page,
+        version: "2.0",
+        updated_at: null
     },
-    global: {
-        colors: {},
-        typography: {}
+
+    global:{
+        colors:{},
+        typography:{},
+        fonts:{}
+
     },
-    sections: []
+
+    sections:[],
+
+    selected:{
+        type:null,
+        id:null
+    }
+
 };
 
 //================================= 
@@ -44,15 +58,15 @@ editor.createSection = function() {
 
     editor.state.sections.push(newSection);
 };
-
+/*
 //=================================
-//  Select element state
+//  Select element state - widget
 //=================================
 editor.state.selected = {
-    type: null,   // "section" | "column" | "widget"
-    id: null
+    type: "widget",
+    id: widget.id
 };
-
+*/
 //=================================
 //  Select element
 //=================================

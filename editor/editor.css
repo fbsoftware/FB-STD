@@ -165,23 +165,7 @@ display: none !important;
 }
 /*  CANVAS-WIDGET   */
 
-.widget {
-    list-style: none;
-    background: transparent;
-    border: 1px solid #ff0000;
-    cursor: move;
-    user-select: none;
-    position: relative;
-    z-index: 1;
-}
-.widget.sorting {
-    opacity: 0.7;
-}
-.sortable-placeholder {
-    height: 40px;
-    border: 1px dashed #0073ea;
-    background: #f0f6ff;
-}
+
 /* DELETE-WIDGET */
 .delete-widget {
     position: absolute;
@@ -196,41 +180,6 @@ display: none !important;
     color: white;
 }
 
-/* SEZIONI 
-.section {
-    border:1px solid #007bff;
-    margin-bottom: 10px;
-    padding: 30px;
-    min-height: 200px;
-    padding-top: 0%;
-    width: 100%;
-    }
-.section.selected {
-   border: 2px solid #007bff;
-   background: #e8f4ff;
-}
-.section-handle {
-  cursor: grab;
-  color: #fff;
-  padding: 6px 10px;
-  font-size: 13px;
-}
-.toolbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: start; 
-}
-
-.delete-section {
-    cursor: pointer;
-    background: pink;
-    color: black;
-}
-.delete-section:hover {
-    background: #ff0000;
-    color: white;
-}
-*/
 /*========================  */
 /*  SEZIONE                */
 /*========================  */
@@ -248,13 +197,13 @@ display: none !important;
 }
 .section-toolbar {
     position: absolute;
-    top: -35px;
+    top: -28px;
     right: 0;
     background: #0073aa;
-    padding: 5px;
-    border-radius: 6px;
+    padding: 1px;
+    border-radius: 3px;
     display: flex;
-    gap: 5px;
+    gap:1px;
 }
 
 .section-toolbar button {
@@ -262,25 +211,39 @@ display: none !important;
     border: none;
     cursor: pointer;
     padding: 3px 6px;
-    border: 1px solid #0073aa;
+}
+.section-inner {
+  display: flex;
 }
 /*========================  */
 /*  COLONNA                 */
 /*========================  */
-.section-inner {
-  display: flex;
+.canvas-columns{
+display:flex;
+gap:20px;
+}
+.canvas-column{
+flex:1;
+min-height:80px;
+border:1px dashed #ddd;
+padding:10px;
+}
+.canvas-column.drag-over {
+    background: #f5f8ff;
+    border: 2px dashed #4a7dff;
+}
+.section-columns{
+    display:flex;
+    gap:10px;
 }
 
-.canvas-column {
-    padding: 10px;
-    border: 1px dashed green;
-    transition: 0.2s;
-    min-height: 100px;
+.add-column{
+    margin-top:10px;
+    padding:6px 10px;
+    font-size:13px;
+    cursor:pointer;
 }
-.canvas-column.selected {
- border: 3px solid #22c55e;
- background: #e8f4ff;
-}
+/* ------------------------------------ */
 .column-handle {
   cursor: grab;
   user-select: none;
@@ -346,6 +309,39 @@ display: none !important;
     margin-top: 10px;
     text-align: center;
 }
+
+/*========================  */
+/*  STILI WIDGETS          */
+/*========================  */
+.widget-item{
+padding:8px;
+border:1px solid #ddd;
+margin-bottom:6px;
+cursor:grab;
+background:white;
+}
+
+.canvas-column{
+min-height:80px;
+border:1px dashed #ccc;
+padding:10px;
+}
+
+.canvas-widget{
+padding:10px;
+border:1px solid #ddd;
+margin-bottom:6px;
+background:#fff;
+}
+.widget-placeholder{
+height:40px;
+background:#f5f5f5;
+border:2px dashed #bbb;
+margin-bottom:8px;
+}
+
+/*  =====  fine  =====  */
+
 /*  STILE TITOLO  */
 .widget[data-type="titolo"] h1,
 .widget[data-type="titolo"] h2,
@@ -477,4 +473,20 @@ span.icon {
 
 option:hover {
     opacity: 50%;
+}
+
+/*  pannello proprietà widget  */
+#properties-panel{
+    padding:15px;
+    background:#f5f5f5;
+}
+
+.prop-field{
+    margin-bottom:12px;
+}
+
+.prop-field label{
+    display:block;
+    font-size:12px;
+    margin-bottom:4px;
 }

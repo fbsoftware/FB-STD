@@ -4,8 +4,7 @@
     Mini Elementor - Load Layout
 ==================================================
  */
-//require_once '../admin/errorOn.php';
-//require_once 'init_min.php';
+
 error_reporting(0);
 ini_set('display_errors', 0);
 

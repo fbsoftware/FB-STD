@@ -1,0 +1,97 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "qqq",
+        "version": "2.0",
+        "updated_at": "2026-03-06T16:52:04.958Z"
+    },
+    "global": {
+        "colors": {
+            "primary": "#3366ff",
+            "secondary": "#ff6633",
+            "accent": "#ffa500",
+            "text": "#222222",
+            "bg": "#ffffff",
+            "undefined": "#ffffff"
+        },
+        "typography": [],
+        "fonts": {
+            "heading-family": "Inter",
+            "heading-weight": "400",
+            "body-family": "Inter",
+            "body-weight": "400"
+        }
+    },
+    "sections": [
+        {
+            "id": "sec-1772813016692-625",
+            "settings": {
+                "background": "#ffffff",
+                "paddingTop": 40,
+                "paddingBottom": 40
+            },
+            "columns": [
+                {
+                    "id": "col-1772813016692-63",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w-1772813021045-962",
+                            "type": "text",
+                            "content": "Nuovo testo"
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1772815929378-780",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w-1772815964373-231",
+                            "type": "button",
+                            "text": "Click qui",
+                            "url": "#"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "sec-1772813196040-405",
+            "settings": {
+                "background": "#ffffff",
+                "paddingTop": 40,
+                "paddingBottom": 40
+            },
+            "columns": [
+                {
+                    "id": "col-1772813196040-686",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w-1772813229306-760",
+                            "type": "button",
+                            "text": "Click qui",
+                            "url": "#"
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1772815938422-921",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w-1772815957651-764",
+                            "type": "text",
+                            "content": "Nuovo testo"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "selected": {
+        "type": "section",
+        "id": "sec-1772813016692-625"
+    }
+}
