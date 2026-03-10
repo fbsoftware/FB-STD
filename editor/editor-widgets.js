@@ -5,76 +5,124 @@ editor.widgets = {
 
     text: {
         label: "Testo",
+
         icon: "📝",
-        create: function(){
 
-            return {
-                id: editor.generateId("w"),
-                type: "text",
-                content: "Nuovo testo"
-            };
+        defaultProps: {
+            text: "Nuovo testo"
+        },
 
+        render: function(widget){
+            return `
+                <div class="widget-text">
+                    ${widget.props.text}
+                </div>
+            `;
         }
-    },
-    header: {
-        label: "Titolo",
-        icon: "📌",
-        create: function(){
 
-            return {
-                id: editor.generateId("w"),
-                type: "text",
-                content: "Titolo ..."
-            };
-
-        }
-    },
-    button: {
-        label: "Bottone",
-        icon: "🔘",
-        create: function(){
-
-            return {
-                id: editor.generateId("w"),
-                type: "button",
-                text: "Click qui",
-                url: "#"
-            };
-
-        }
     },
 
-  spacer:  {
-        label: "Spaziatore",
-        icon: "⬇️",
-        create: function(){
+    image: {
 
-            return {
-                id: editor.generateId("w"),
-                type: "spacer",
-                height: "200px"
-            };
-
-        }
-    },
-
-     image:{
         label: "Immagine",
         icon: "🖼️ ",
-        create: function(){
 
-            return {
-                id: editor.generateId("w"),
-                type: "image",
-                src: "src='images/auto.jpg' alt='Auto'",
-                height: 200
-            };
+        defaultProps: {
+            src: "https://placehold.co/150x150",
+            alt: "https://placehold.co/150x150"
+            
+        },
 
+        render: function(widget){
+            return `
+            <div class="widget-image">
+                <img src="${widget.props.src}" alt="${widget.props.alt}" />
+            </div>
+            `;
         }
-    }
 
+    },
+header: {
+        label: "Titolo",
+        icon: "📌",
+
+        defaultProps: {
+            text: "Titolo ---",
+            level: "h2",
+            align: "center"
+        },
+
+        render: function(widget){
+            const tag = widget.props.level;
+            return `
+            <div class="widget-header">
+                <${tag} style="text-align:${widget.props.align}">
+                    ${widget.props.text}
+                </${tag}>
+            </div>
+            `;
+        }
+
+    },
+button: {
+
+        label: "Bottone",
+        icon: "🔘",
+
+        defaultProps: {
+            text: "CERCA",
+            url: "",
+            align: "center"
+        },
+
+        render: function(widget){
+            return `
+            <div class="widget-button">
+                <a  src="${widget.props.src}"/>
+            </div>    
+            `;
+        }
+
+    }, 
+ spacer: {
+
+        label: "Spaziatore",
+        icon: "🔘",
+
+        defaultProps: {
+                text: "Spazio vuoto",
+                height: "200px"
+        },
+
+        render: function(widget){
+            return `
+            <div class="widget-spacer">
+                <br  src="${widget.props.src}"/>
+            </div>    
+            `;
+        }
+
+    }  
 }
+//=================================
+// crea widget
+//=================================
+    Object.keys(editor.widgets).forEach(type => {
 
+    const w = editor.widgets[type];
+
+    w.create = function(){
+
+        return {
+            id: "w" + Date.now() + Math.floor(Math.random()*1000),
+            type: type,
+            props: {...w.defaultProps}
+        };
+
+    };
+
+})
+ 
 //=================================
 // Render widget palette
 //=================================
@@ -89,7 +137,7 @@ editor.renderWidgetPalette = function(){
         const widget = editor.widgets[type];
 
         const $item = $("<div>")
-            .addClass("widget-item")
+            .addClass("palette-widget")
             .attr("draggable", true)
             .attr("data-widget", type)
             .text(widget.icon + " " + widget.label);
@@ -99,43 +147,7 @@ editor.renderWidgetPalette = function(){
     });
 
 };
-/*=================================
-// Heading widget - titolo
-//=================================
-editor.widgets.heading = {
-
-    label: "Titolo",
-    icon: "T",
-
-    create(){
-        return {
-            id: editor.generateId("w"),
-            type: "heading",
-            content: "Titolo",
-            level: "h2",
-            align: "left"
-        };
-    },
-
-    render(widget){
-        return $("<" + widget.level + ">")
-            .text(widget.content)
-            .css("text-align", widget.align);
-    },
-
-    props: [
-        { type:"text", label:"Testo", field:"content" },
-        { type:"select", label:"Livello", field:"level",
-            options:["h1","h2","h3","h4"]
-        },
-        { type:"select", label:"Allineamento", field:"align",
-            options:["left","center","right"]
-        }
-    ]
-
-};
-*/
-
+ 
 //=================================
 //  3️⃣ Trova il widget selezionato
 //=================================
@@ -218,5 +230,28 @@ editor.renderProperties = function(){
         $panel.append($field);
 
     });
+
+};
+//=================================
+// Crea widget nel canvas
+//=================================
+editor.createWidget = function(type){
+
+    const def = this.widgets[type];
+
+    if(!def){
+        console.error("Widget type not found:", type);
+        return null;
+    }
+
+    return {
+
+        id: this.uid(),
+
+        type: type,
+
+        props: structuredClone(def.defaultProps)
+
+    };
 
 };

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="editor.css">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
     <body>
 
@@ -139,10 +140,9 @@ if ($tema && $page) {
   <!-- DETTAGLI -->
   
     <div id="properties-panel">
-    <h3 class="" aria-expanded="true" aria-selected="true">Dettagli</h3>
-        <div class="panel-header"></div>
-        <div class="panel-body accordion"></div>
-        <div class="panel-footer"></div>
+        <h3 class="" aria-expanded="true" aria-selected="true">Dettagli</h3> 
+        <div id="widgets-toolbar">  </div>
+        <div id="widgets-body">  </div>    
     </div><!-- elementi/dettagli -->
      
 </div> <!-- tabs -->
@@ -215,7 +215,7 @@ window.INITIAL_LAYOUT = <?= json_encode($layoutData) ?>;
   } );
  </script>
 
-<script src="editor.js"></script>
+
 <script src="editor-utils.js"></script>
 <script src="editor-widgets.js"></script>
 <script src="editor-dragdrop.js"></script>
@@ -223,7 +223,7 @@ window.INITIAL_LAYOUT = <?= json_encode($layoutData) ?>;
 <script src="editor-state.js"></script>
 <script src="editor-render.js"></script>
 <script src="editor-core.js"></script>
-
+<script src="editor.js"></script>
 
 </body>
 </html>

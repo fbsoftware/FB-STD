@@ -1,0 +1,112 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "aaa",
+        "version": "2.0",
+        "updated_at": "2026-03-10T15:32:42.082Z"
+    },
+    "global": {
+        "colors": {
+            "primary": "#3366ff",
+            "secondary": "#ff6633",
+            "accent": "#ffa500",
+            "text": "#222222",
+            "bg": "#ffffff",
+            "undefined": "#ffffff"
+        },
+        "typography": [],
+        "fonts": {
+            "heading-family": "Inter",
+            "heading-weight": "400",
+            "body-family": "Inter",
+            "body-weight": "400"
+        }
+    },
+    "sections": [
+        {
+            "id": "sec-1773096179771-389",
+            "settings": {
+                "background": "#ffffff",
+                "paddingTop": 40,
+                "paddingBottom": 40
+            },
+            "columns": [
+                {
+                    "id": "col-1773096179771-758",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w1773156766834504",
+                            "type": "text",
+                            "props": {
+                                "text": "Nuovo testo"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1773156802806-22",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w1773156806186999",
+                            "type": "image",
+                            "props": {
+                                "src": "https:\/\/placehold.co\/150x150",
+                                "alt": "https:\/\/placehold.co\/150x150"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1773156821753-636",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w1773156824481940",
+                            "type": "header",
+                            "props": {
+                                "text": "Titolo ---",
+                                "level": "h2",
+                                "align": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1773156829763-537",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w1773156831932899",
+                            "type": "button",
+                            "props": {
+                                "text": "CERCA",
+                                "url": "",
+                                "align": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1773156836615-214",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w1773156838607596",
+                            "type": "spacer",
+                            "props": {
+                                "text": "Spazio vuoto",
+                                "height": "200px"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "selected": {
+        "type": "section",
+        "id": "sec-1773096179771-389"
+    }
+}

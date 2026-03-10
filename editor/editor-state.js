@@ -21,10 +21,7 @@ editor.state = {
 
     sections:[],
 
-    selected:{
-        type:null,
-        id:null
-    }
+    selected:null
 
 };
 
@@ -58,15 +55,7 @@ editor.createSection = function() {
 
     editor.state.sections.push(newSection);
 };
-/*
-//=================================
-//  Select element state - widget
-//=================================
-editor.state.selected = {
-    type: "widget",
-    id: widget.id
-};
-*/
+
 //=================================
 //  Select element
 //=================================
@@ -76,4 +65,40 @@ editor.select = function(type, id) {
 
     console.log("SELECT:", editor.state.selected); // debug
     editor.render();
+};
+
+//=================================
+//  Duplicate section
+//=================================
+editor.duplicateSection = function(sectionId){
+
+    const index = editor.state.sections.findIndex(
+        s => s.id === sectionId
+    );
+
+    if(index === -1) return;
+
+    const original = editor.state.sections[index];
+
+    // copia profonda
+    const copy = JSON.parse(JSON.stringify(original));
+
+    // nuovi ID
+    copy.id = editor.utils.uuid("sec");
+
+    copy.columns.forEach(col => {
+
+        col.id = editor.utils.uuid("col");
+
+        col.widgets.forEach(w => {
+            w.id = editor.utils.uuid("wid");
+        });
+
+    });
+
+    // inserisce sotto la sezione originale
+    editor.state.sections.splice(index + 1, 0, copy);
+
+    editor.render();
+
 };

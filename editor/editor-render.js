@@ -9,7 +9,7 @@ editor.render = function() {
     editor.state.sections.forEach(function(section) {
 
         const $section = editor.renderSection(section);
-
+console.log("RENDER SECTION:", section); // debug
         $canvas.append($section);
 
     });
@@ -27,6 +27,7 @@ editor.renderSection = function(section) {
         .attr("data-id", section.id);
 
     if (
+        editor.state.selected &&
         editor.state.selected.type === "section" &&
         editor.state.selected.id === section.id
     ) 
@@ -36,34 +37,48 @@ editor.renderSection = function(section) {
         const $toolbar = $("<div>")
             .addClass("section-toolbar")
             .html(`
-                <button class="move-up">⬆</button>
-                <button class="move-down">⬇</button>
-                <button class="duplicate">📄</button>
-                <button class="delete-section">🗑</button>
+                <button class="move-up">
+                <span class="material-symbols-outlined">arrow_upward</span>
+                </button>
+
+                <button class="move-down">
+                <span class="material-symbols-outlined">arrow_downward</span>
+                </button>
+
+                <button class="duplicate">
+                <span class="material-symbols-outlined">content_copy</span>
+                </button>
+
+                <button class="delete-section">
+                <span class="material-symbols-outlined">delete</span>
+                </button>
             `);
 
         $section.prepend($toolbar);
     }
 
+    // ===== colonne =====
     const $columns = $("<div>").addClass("section-columns");
 
-    section.columns.forEach(col => {
-        $columns.append(editor.renderColumn(col));
-    });
+    if(section.columns){
+        section.columns.forEach(col => {
+            $columns.append(editor.renderColumn(col));
+        });
+    }
 
     $section.append($columns);
 
-
+    // ===== bottone aggiungi colonna =====
     const $addColumn = $("<button>")
         .addClass("add-column")
         .text("+ Colonna")
         .on("click", function(){
 
-        section.columns.push({
-        id: editor.utils.uuid("col"),
-        width: 100,
-        widgets: []
-});
+            section.columns.push({
+                id: editor.utils.uuid("col"),
+                width:100,
+                widgets:[]
+            });
 
             editor.render();
         });
@@ -72,8 +87,7 @@ editor.renderSection = function(section) {
 
     return $section;
 };
-
-//=================================
+///=================================
 // Render column
 //=================================
 editor.renderColumn = function(column){
@@ -82,16 +96,146 @@ editor.renderColumn = function(column){
         .addClass("canvas-column")
         .attr("data-id", column.id);
 
-    column.widgets.forEach(function(widget){
-        const $widget = editor.renderWidget(widget);
-        $column.append($widget);
+    // colonna selezionata
+    if(
+        editor.state.selected &&
+        editor.state.selected.type === "column" &&
+        editor.state.selected.id === column.id
+    ){
+
+        $column.addClass("selected");
+
+        const $toolbar = $("<div>")
+            .addClass("column-toolbar")
+            .html(`
+                <button class="move-left">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+
+                <button class="move-right">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+
+                <button class="delete-column">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            `);
+
+        $column.prepend($toolbar);
+    }
+
+    // render widget
+    column.widgets.forEach(widget => {
+        $column.append(editor.renderWidget(widget));
     });
 
     return $column;
 };
+
+//=====================================
+// widget header
+//=====================================
+editor.renderHeaderWidget = function(widget){
+
+    const text = widget.props?.header || "Header widget";
+
+    return `
+        <div class="widget-header">
+            ${text}
+        </div>
+    `;
+
+}
+//=====================================
+// widget testo
+//=====================================
+editor.renderTextWidget = function(widget){
+
+    const text = widget.props?.text || "Text widget";
+
+    return `
+        <div class="widget-text">
+            ${text}
+        </div>
+    `;
+
+}
+
+//=====================================
+// widget image
+//=====================================
+editor.renderImageWidget = function(widget){
+
+    const text = widget.props?.image || "Image widget";
+
+    return `
+        <div class="widget-image">
+            ${text}
+        </div>
+    `;
+
+}
+
+//=====================================
+// widget spacer
+//=====================================
+editor.renderSpacerWidget = function(widget){
+
+    const text = widget.props?.spacer || "Spacer widget";
+
+    return `
+        <div class="widget-spacer">
+            ${text}
+        </div>
+    `;
+
+}
+
+//=====================================
+// widget button
+//=====================================
+editor.renderButtonWidget = function(widget){
+
+    const text = widget.props?.button || "Button widget";
+
+    return `
+        <div class="widget-button">
+            ${text}
+        </div>
+    `;
+
+}
 //=================================
 // Render widget
 //================================= 
+editor.renderWidget = function(widget){
+
+    const def = this.widgets[widget.type];
+
+    if(!def){
+        return "";
+    }
+
+    const content = def.render(widget);
+
+    return `
+    <div class="canvas-widget" data-id="${widget.id}">
+
+        <div class="widget-toolbar">
+            <button class="widget-edit" data-id="${widget.id}">✏️</button>
+            <button class="widget-delete" data-id="${widget.id}">🗑</button>
+        </div>
+
+        <div class="widget-body">
+            ${content}
+        </div>
+
+    </div>
+    `;
+
+};
+
+/*
   editor.renderWidget = function(widget){
 
     const $w = $("<div>")
@@ -142,7 +286,7 @@ editor.renderColumn = function(column){
     return $w;
 
 };
-
+*/
 //=================================     
 //  colonne sortable
 //================================= 

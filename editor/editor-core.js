@@ -4,12 +4,22 @@
 editor.bindEvents = function() {
 
     // CLICK SEZIONE (delegato)
-    $(document).on("click", ".canvas-section", function(e) {
-        e.stopPropagation();
-        const id = $(this).data("id");
-        editor.select("section", id);
-    });
+    $(document).on("click", ".canvas-section", function(e){
+        // è clic su colonna e non sezione
+        if($(e.target).closest(".canvas-column").length){
+        return;
+    }
+    e.stopPropagation();
 
+    const id = $(this).data("id");
+    editor.state.selected = {
+        type: "section",
+        id: id
+    };
+
+    editor.render();
+
+});
     // CLICK +SEZIONE (diretto, perché è statico nel DOM)
     $("#add-section").on("click", function() {
         editor.createSection();
@@ -21,7 +31,6 @@ editor.bindEvents = function() {
 // Move section up
 //=================================
 $(document).on("click", ".move-up", function(e) {
-
     e.stopPropagation();
 
     const sectionId = $(this)
@@ -29,6 +38,7 @@ $(document).on("click", ".move-up", function(e) {
         .data("id");
 
     editor.moveSection(sectionId, "up");
+    editor.state.selected = null;
 
 });
 
@@ -44,6 +54,7 @@ $(document).on("click", ".move-down", function(e) {
         .data("id");
 
     editor.moveSection(sectionId, "down");
+    editor.state.selected = null;
 
 });
 //=================================
@@ -58,6 +69,23 @@ $(document).on("click", ".delete-section", function(e){
         .data("id");
 
     editor.deleteSection(sectionId);
+    editor.state.selected = null;
+
+});
+
+//=================================
+// Duplicate section
+//=================================
+$(document).on("click", ".duplicate", function(e){
+
+    e.stopPropagation();
+
+    const sectionId = $(this)
+        .closest(".canvas-section")
+        .data("id");
+
+    editor.duplicateSection(sectionId);
+    editor.state.selected = null;
 
 });
 
@@ -172,6 +200,142 @@ editor.addColumn = function(sectionId){
     editor.render();
 
 };
+//=================================
+// Selezione colonna
+//=================================
+$(document).on("click", ".canvas-column", function(e){
+    e.stopPropagation();
+
+    const id = $(this).data("id");
+
+    editor.state.selected = {
+        type:"column",
+        id:id
+    };
+
+    editor.render();
+
+});
+
+//=================================
+//  Toolbar Cancella colonna
+//=================================
+$(document).on("click",".delete-column",function(e){
+
+    e.stopPropagation();
+
+    const colId = $(this)
+        .closest(".canvas-column")
+        .data("id");
+
+    editor.deleteColumn(colId);
+
+});
+//=================================
+//  Cancella colonna
+//=================================
+editor.deleteColumn = function(colId){
+
+    editor.state.sections.forEach(section => {
+
+        section.columns = section.columns.filter(
+            col => col.id !== colId
+        );
+
+    });
+
+    editor.render();
+
+};
+
+//=================================
+//  Spostare colonna a sinistra
+//=================================
+$(document).on("click",".move-left",function(e){
+
+    e.stopPropagation();
+
+    const colId = $(this)
+        .closest(".canvas-column")
+        .data("id");
+
+    editor.moveColumnLeft(colId);
+
+});
+
+//=================================
+//  move column left
+//=================================
+editor.moveColumnLeft = function(colId){
+
+    editor.state.sections.forEach(section => {
+
+        const index = section.columns.findIndex(c => c.id === colId);
+
+        if(index > 0){
+
+            const temp = section.columns[index-1];
+            section.columns[index-1] = section.columns[index];
+            section.columns[index] = temp;
+
+        }
+
+    });
+
+    editor.render();
+
+};
+
+
+//=================================
+//  Spostare colonna a destra
+//=================================
+editor.moveColumnRight = function(colId){
+
+    editor.state.sections.forEach(section => {
+
+        const index = section.columns.findIndex(c => c.id === colId);
+
+        if(index >= 0 && index < section.columns.length-1){
+
+            const temp = section.columns[index+1];
+            section.columns[index+1] = section.columns[index];
+            section.columns[index] = temp;
+
+        }
+
+    });
+
+    editor.render();
+
+};
+
+//=================================
+//  Spostare colonna a destra
+//=================================
+editor.moveColumnRight = function(colId){
+
+    editor.state.sections.forEach(section => {
+
+        const index = section.columns.findIndex(c => c.id === colId);
+
+        if(index >= 0 && index < section.columns.length-1){
+
+            const temp = section.columns[index+1];
+            section.columns[index+1] = section.columns[index];
+            section.columns[index] = temp;
+
+        }
+
+    });
+
+    editor.render();
+
+};
+
+
+
+
 
 //=================================
 //  seleziona widget
@@ -190,3 +354,33 @@ $(document).on("click", ".widget", function(e){
     editor.renderProperties();
 
 });
+
+//=================================
+// clic su canvas vuoto = deselect
+$(document).on("click", "#canvas", function(){
+
+    if(editor.state.selected){
+
+        editor.state.selected = null;
+        editor.render();
+
+    }
+
+});
+
+//=================================
+//  colonna a destra
+//=================================
+$(document).on("click",".move-right",function(e){
+
+    e.stopPropagation();
+
+    const colId = $(this)
+        .closest(".canvas-column")
+        .data("id");
+
+    editor.moveColumnRight(colId);
+
+});
+
+

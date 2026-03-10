@@ -7,7 +7,7 @@ editor.renderWidgetPalette();   // ← QUESTO CARICA I WIDGET NELLA PALETTE
 // Carica layout iniziale
          if (window.INITIAL_LAYOUT && window.INITIAL_LAYOUT.sections) {
         editor.state = window.INITIAL_LAYOUT;
-        console.log("Layout caricato:", editor.state);
+console.log("Layout caricato:", editor.state);
     } else {
 // Se non c'è un layout iniziale, creane uno di default
         console.log("Nuovo layout");
@@ -18,7 +18,7 @@ editor.renderWidgetPalette();   // ← QUESTO CARICA I WIDGET NELLA PALETTE
         editor.state.global.colors = window.SITE_CONFIG.colors || {};
         editor.state.global.typography = window.SITE_CONFIG.typography || {};
         editor.state.global.fonts  = window.SITE_CONFIG.fonts || {};
-        console.log("Configurazione globale caricata:", editor.state.global);    
+console.log("Configurazione globale caricata:", editor.state.global);    
         }
 
     // Aggiorno updated_at
@@ -56,26 +56,22 @@ editor.moveSection = function(sectionId, direction) {
 //=================================
 // Delete section
 //=================================
-editor.deleteSection = function(sectionId) {
+editor.deleteSection = function(sectionId){
 
-    editor.state.sections = editor.state.sections.filter(function(sec){
-        return sec.id !== sectionId;
-    });
+    if(!confirm("Eliminare questa sezione?")) return;
 
-    // reset selezione
-    editor.state.selected = {
-        type: null,
-        id: null
-    };
+    editor.state.sections = editor.state.sections.filter(
+        s => s.id !== sectionId
+    );
 
     editor.render();
+    
 };
 
 //=================================
 // Handle widget drop
 //=================================
 $(document).on("drop", ".canvas-column", function(e){
-
     e.preventDefault();
 
     const widgetType =
@@ -84,7 +80,8 @@ $(document).on("drop", ".canvas-column", function(e){
     if(!widgetType) return;
 
     const columnId = $(this).data("id");
-
+console.log(widgetType);
+console.log(editor.widgets[widgetType]);
     const widget =
         editor.widgets[widgetType].create();
 

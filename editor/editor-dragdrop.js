@@ -1,7 +1,7 @@
 //===============================================================
 // Editor Drag & Drop
 //==============================================================    
-$(document).on("dragstart", ".widget-item", function(e){
+$(document).on("dragstart", ".palette-widget", function(e){
 
     const type = $(this).data("widget");
 
@@ -13,8 +13,11 @@ $(document).on("dragstart", ".widget-item", function(e){
 // Drop su colonna
 //================================= 
 $(document).on("dragover", ".canvas-column", function(e){
-
     e.preventDefault();
+
+    const widget = editor.createWidget(type);
+    column.widgets.push(widget);
+    editor.render();
 
 });
 
