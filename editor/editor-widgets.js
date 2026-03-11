@@ -4,23 +4,40 @@
 editor.widgets = {
 
     text: {
-        label: "Testo",
 
-        icon: "📝",
+  label:"Testo",
+  icon:"📝",
 
-        defaultProps: {
-            text: "Nuovo testo"
-        },
+  defaultProps:{
+     text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+     align:"left",
+     color:"var(--color-primary)",
+     customColor:""
+  },
 
-        render: function(widget){
-            return `
-                <div class="widget-text">
-                    ${widget.props.text}
-                </div>
-            `;
-        }
+  fields:{
+     text:{type:"text",label:"Testo"},
+     align:{
+        type:"select",
+        options:["left","center","right"]
+     },
+     color:{type:"color"}
+  },
 
-    },
+  render(widget){
+     const p = widget.props;
+
+     return `
+     <div style="
+        text-align:${p.align};
+        color:${p.color};
+     ">
+        ${p.text}
+     </div>
+     `;
+  }
+
+},
 
     image: {
 
@@ -78,7 +95,7 @@ button: {
         render: function(widget){
             return `
             <div class="widget-button">
-                <a  src="${widget.props.src}"/>
+                <a  src="${widget.props.src}"/>${widget.props.text}</a>
             </div>    
             `;
         }
@@ -107,22 +124,30 @@ button: {
 //=================================
 // crea widget
 //=================================
-    Object.keys(editor.widgets).forEach(type => {
-
-    const w = editor.widgets[type];
-
-    w.create = function(){
-
-        return {
-            id: "w" + Date.now() + Math.floor(Math.random()*1000),
-            type: type,
-            props: {...w.defaultProps}
-        };
-
+    editor.createWidget = function(type){
+    const def = editor.widgets[type];
+    if(!def){
+        console.error("Widget type not found:", type);
+        return null;
+    }
+    return {
+        id: editor.uid(),
+        type: type,
+        props: structuredClone(def.defaultProps)
     };
+};
 
-})
- 
+//=================================
+// editor widget uid
+//=================================
+editor.uid = (function(){
+    let counter = 0;
+    return function(){
+        counter++;
+        return "w" + Date.now() + "_" + counter;
+    };
+})();
+
 //=================================
 // Render widget palette
 //=================================
@@ -253,5 +278,33 @@ editor.createWidget = function(type){
         props: structuredClone(def.defaultProps)
 
     };
+
+};
+
+//=================================
+// Apre pannello dettagli widget 
+//=================================
+editor.openWidgetInspector = function(widgetId){
+    $("#tabs").tabs();
+    // attiva tab Dettagli
+    $("#tabs").tabs("option", "active", 1);
+
+    let widget = null;
+
+    editor.state.sections.forEach(section=>{
+        section.columns.forEach(column=>{
+            column.widgets.forEach(w=>{
+                if(w.id === widgetId){
+                    widget = w;
+                }
+            });
+        });
+    });
+
+    if(!widget) return;
+
+    const def = editor.widgets[widget.type];
+
+    editor.renderInspector(widget, def);
 
 };

@@ -34,7 +34,7 @@ if ($tema && $page) {
 <div id="tabs">
   <ul>
     <li><a href="#widgets-panel">Elementi</a></li>
-    <li><a href="#properties-panel">Dettagli</a></li>
+    <li><a href="#widget-inspector">Dettagli</a></li>
     <li><a href="#global">Global</a></li>
     </ul>
 
@@ -139,7 +139,7 @@ if ($tema && $page) {
 
   <!-- DETTAGLI -->
   
-    <div id="properties-panel">
+    <div id="widget-inspector">
         <h3 class="" aria-expanded="true" aria-selected="true">Dettagli</h3> 
         <div id="widgets-toolbar">  </div>
         <div id="widgets-body">  </div>    
@@ -215,7 +215,7 @@ window.INITIAL_LAYOUT = <?= json_encode($layoutData) ?>;
   } );
  </script>
 
-
+<script src="editor.js"></script>
 <script src="editor-utils.js"></script>
 <script src="editor-widgets.js"></script>
 <script src="editor-dragdrop.js"></script>
@@ -223,7 +223,7 @@ window.INITIAL_LAYOUT = <?= json_encode($layoutData) ?>;
 <script src="editor-state.js"></script>
 <script src="editor-render.js"></script>
 <script src="editor-core.js"></script>
-<script src="editor.js"></script>
+
 
 </body>
 </html>

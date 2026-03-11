@@ -383,4 +383,38 @@ $(document).on("click",".move-right",function(e){
 
 });
 
+//======================================
+// clic-widget per selezione
+//======================================
+$(document).on("click", ".canvas-widget", function(e){
 
+    const id = $(this).data("id");
+
+    editor.state.selectedWidgetId = id;
+
+    $(".canvas-widget").removeClass("selected");
+    $(this).addClass("selected");
+
+    editor.openWidgetInspector(id);
+
+    e.stopPropagation();
+
+});
+//======================================
+// Cancella widget 
+//======================================
+$(document).on("click", ".widget-delete", function(e){
+
+    e.stopPropagation();
+
+    const id = $(this).closest(".canvas-widget").data("id");
+
+    editor.state.sections.forEach(section=>{
+        section.columns.forEach(column=>{
+            column.widgets = column.widgets.filter(w => w.id !== id);
+        });
+    });
+
+    editor.render();
+
+});

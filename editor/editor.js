@@ -68,40 +68,6 @@ editor.deleteSection = function(sectionId){
     
 };
 
-//=================================
-// Handle widget drop
-//=================================
-$(document).on("drop", ".canvas-column", function(e){
-    e.preventDefault();
-
-    const widgetType =
-        e.originalEvent.dataTransfer.getData("widget-type");
-
-    if(!widgetType) return;
-
-    const columnId = $(this).data("id");
-console.log(widgetType);
-console.log(editor.widgets[widgetType]);
-    const widget =
-        editor.widgets[widgetType].create();
-
-    editor.state.sections.forEach(section => {
-
-        section.columns.forEach(column => {
-
-            if(column.id === columnId){
-
-                column.widgets.push(widget);
-
-            }
-
-        });
-
-    });
-
-    editor.render();
-
-});
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 $(document).ready(function () {
   editor.init();

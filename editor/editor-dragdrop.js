@@ -12,13 +12,24 @@ $(document).on("dragstart", ".palette-widget", function(e){
 //=================================
 // Drop su colonna
 //================================= 
-$(document).on("dragover", ".canvas-column", function(e){
+$(document).on("drop", ".canvas-column", function(e){
     e.preventDefault();
 
-    const widget = editor.createWidget(type);
-    column.widgets.push(widget);
-    editor.render();
+    const widgetType = e.originalEvent.dataTransfer.getData("widget-type");
+    if(!widgetType) return;
 
+    const widget = editor.createWidget(widgetType);
+
+    const columnId = $(this).data("id");
+    editor.state.sections.forEach(section => {
+        section.columns.forEach(column => {
+            if(column.id === columnId){
+                column.widgets.push(widget);
+            }
+        });
+    });
+
+    editor.render();
 });
 
 //=================================
