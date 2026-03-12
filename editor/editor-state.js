@@ -19,9 +19,8 @@ editor.state = {
 
     },
 
-    sections:[],
-
-    selected:null
+        sections: [],
+    selectedWidgetId: null
 
 };
 
