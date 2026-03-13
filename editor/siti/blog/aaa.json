@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "aaa",
         "version": "2.0",
-        "updated_at": "2026-03-11T12:36:56.341Z"
+        "updated_at": "2026-03-13T18:02:42.417Z"
     },
     "global": {
         "colors": {
@@ -48,10 +48,19 @@
                             "id": "w1773232706569_3",
                             "type": "text",
                             "props": {
-                                "text": "Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
-                                "align": "left",
-                                "color": "var(--color-primary)",
+                                "text": "Pappa ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+                                "align": "center",
+                                "color": "#0a0a0a",
                                 "customColor": ""
+                            }
+                        },
+                        {
+                            "id": "w1773353691107_1",
+                            "type": "button",
+                            "props": {
+                                "text": "CERCA",
+                                "url": "",
+                                "align": "center"
                             }
                         }
                     ]
@@ -59,14 +68,23 @@
                 {
                     "id": "col-1773232668441-285",
                     "width": 100,
-                    "widgets": []
+                    "widgets": [
+                        {
+                            "id": "w1773339565447_1",
+                            "type": "image",
+                            "props": {
+                                "src": "https:\/\/placehold.co\/150x150",
+                                "alt": "https:\/\/placehold.co\/150x150"
+                            }
+                        }
+                    ]
                 }
             ]
         }
     ],
     "selected": {
-        "type": "column",
-        "id": "col-1773232618677-607"
+        "type": "section",
+        "id": "sec-1773232618677-596"
     },
-    "selectedWidgetId": "w1773232683786_1"
+    "selectedWidgetId": "w1773232706569_3"
 }

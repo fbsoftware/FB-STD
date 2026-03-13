@@ -141,8 +141,6 @@ if ($tema && $page) {
   
     <div id="widget-inspector">
         <h3 class="" aria-expanded="true" aria-selected="true">Dettagli</h3> 
-        <div id="widgets-toolbar">  </div>
-        <div id="widgets-body">  </div>    
     </div><!-- elementi/dettagli -->
      
 </div> <!-- tabs -->

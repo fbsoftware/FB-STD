@@ -76,7 +76,7 @@ editor.renderSection = function(section) {
 
             section.columns.push({
                 id: editor.utils.uuid("col"),
-                width:100,
+                width:200,
                 widgets:[]
             });
 
@@ -145,7 +145,7 @@ editor.renderWidget = function(widget){
     return `
         <div class="canvas-widget ${selected}" data-id="${widget.id}">
             <div class="widget-toolbar">
-                <button class="widget-delete">🗑</button>
+                <button class="widget-delete"><span class="material-symbols-outlined">delete</span></button>
             </div>
 
             ${content}
@@ -160,14 +160,11 @@ editor.renderWidget = function(widget){
 editor.initSortableColumns = function(){
 
     $(".canvas-columns").sortable({
-
         items: ".canvas-column",
         axis: "x",
 
         stop: function(){
-
             editor.syncColumnsState();
-
         }
 
     });
@@ -214,7 +211,104 @@ editor.renderInspector = function(widget, def){
     $panel.empty();
 
     $panel.append(`
-        <div class="inspector-title">Dettagli ${def.label}</div>
+        <div class="inspector-title">
+            <h4>Dettagli ${def.label}</h4>
+        </div>
+        <div class="inspector-body">Valori ${def.valori}</div>
     `);
 
 };
+//===========================================
+//  legge fields e genera gli input
+//===========================================
+editor.renderInspector = function(widget, def){
+
+    const $panel = $("#widget-inspector");
+
+    $panel.empty();
+
+    if(!def.fields) return;
+    //------------------------------------------------
+    //  testata dettagli
+    //------------------------------------------------
+    $panel.append(`
+        <div class="inspector-title">
+            <h4>Dettagli ${def.label}</h4>
+        </div>
+        <div class="inspector-body">Valori ${def.valori}</div>
+    `);
+
+    //------------------------------------------------
+    //  campi modificabili
+    //------------------------------------------------
+    Object.keys(def.fields).forEach(fieldName => {
+
+        const field = def.fields[fieldName];
+
+        const value = widget.props[fieldName] ?? "";
+
+        let input = "";
+
+        if(field.type === "text"){
+
+            input = `
+                <input type="textarea"
+                       data-field="${fieldName}"
+                       value="${value}">
+            `;
+
+        }
+
+        if(field.type === "color"){
+
+            input = `
+                <input type="color"
+                       data-field="${fieldName}"
+                       value="${value}">
+            `;
+
+        }
+
+        if(field.type === "select"){
+
+            let options = "";
+
+            Object.keys(field.options).forEach(k => {
+
+                const selected =
+                    k === value ? "selected" : "";
+
+                options += `
+                    <option value="${k}" ${selected}>
+                        ${field.options[k]}
+                    </option>
+                `;
+
+            });
+
+            input = `
+                <select data-field="${fieldName}">
+                    ${options}
+                </select>
+            `;
+
+        }
+
+        const row = `
+            <div class="inspector-row">
+
+                <label>
+                    ${field.label}
+                </label>
+
+                ${input}
+
+            </div>
+        `;
+
+        $panel.append(row);
+
+    });
+
+};
+

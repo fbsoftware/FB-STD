@@ -333,6 +333,22 @@ editor.moveColumnRight = function(colId){
 
 };
 
+//====================================
+//  deseleziona widget
+//====================================
+$(document).on("click", function(e){
+
+    if(!$(e.target).closest(".canvas-widget").length){
+
+        editor.state.selectedWidgetId = null;
+
+        $(".canvas-widget").removeClass("selected");
+
+        $(".widget-toolbar").hide();
+
+    }
+
+});
 
 
 
@@ -416,5 +432,41 @@ $(document).on("click", ".widget-delete", function(e){
     });
 
     editor.render();
+
+});
+
+//===============================
+//  3️⃣ Gestione modifica valori
+//===============================
+$(document).on(
+    "input change",
+    "#widget-inspector [data-field]",
+    function(){
+
+        const field = $(this).data("field");
+
+        const value = $(this).val();
+
+        const widgetId = editor.state.selectedWidgetId;
+
+        editor.state.sections.forEach(section => {
+
+            section.columns.forEach(column => {
+
+                column.widgets.forEach(widget => {
+
+                    if(widget.id === widgetId){
+
+                        widget.props[field] = value;
+
+                    }
+
+                });
+
+            });
+
+        });
+
+        editor.render();
 
 });

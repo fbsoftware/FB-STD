@@ -50,9 +50,11 @@ h3  {
 }
 
 .pink ,
-.delete-widget,
+.widget-delete,
 .delete-column,
-.delete-section
+.delete-section,
+.move-right,
+.move-left
 {
     background-color: pink; 
     color: black;
@@ -61,9 +63,11 @@ h3  {
     }
 
 .pink:hover ,
-.delete-widget:hover,
+.widget-delete:hover,
 .delete-column:hover,
-.delete-section:hover
+.delete-section:hover,
+.move-right:hover,
+.move-left:hover
 {
     background: #ff0000;
     color: white;
@@ -87,6 +91,7 @@ h3  {
 }
 
   #widget-details,
+  #widget-inspector,
   .style-section
 {
     overflow: auto;
@@ -95,15 +100,6 @@ h3  {
     padding:5px;    
 }
 
-.palette-widget {
-    background: white;
-    border: 1px solid #808080;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: grab;
-    text-align: center;
-    border-radius: 10px;
-}
 /* PALETTE-CLONE - nata con addClass() */
 .palette-clone {
 display: none !important;
@@ -204,8 +200,6 @@ display: none !important;
 .section-toolbar button{
     background:none;
     border:none;
-    cursor:pointer;
-    padding:4px;
 }
 
 .section-toolbar button:hover {
@@ -214,7 +208,7 @@ display: none !important;
 }
 
 .material-symbols-outlined{
-    font-size:18px;
+    font-size:10px;
 }
 .section-inner {
   display: flex;
@@ -274,8 +268,11 @@ gap:20px;
 
 .column-toolbar{
     position:absolute;
-    top:-30px;
-    left:0;
+    top:-22px;
+    right:0;
+    background: pink;
+    padding: 1px;
+    border-radius: 3px;
     display:flex;
     gap:1px;
 }
@@ -323,9 +320,12 @@ gap:20px;
 .palette-widget{
 padding:8px;
 border:1px solid #ddd;
-margin-bottom:6px;
+border-radius: 20px;
+margin:6px;
 cursor:grab;
 background:white;
+width: 70%;
+align-items: center;
 }
 
 
@@ -345,8 +345,11 @@ margin-bottom:8px;
 }
 .widget-toolbar{
     position:absolute;
-    top:4px;
-    right:4px;
+    top:0px;
+    right:0px;
+    background: pink;
+    padding: 1px;
+    border-radius: 3px;
     display:flex;
     gap:1px;
 }
@@ -401,6 +404,7 @@ margin-bottom:8px;
     text-decoration:none;
 }
 .widget-button {
+    width: fit-content;
     padding: 10px 20px;
     border: none;
     border-radius: 25px;
@@ -408,7 +412,7 @@ margin-bottom:8px;
     background: orange;
     color: black;
     text-decoration:none;
-}
+  }
 .widget-list {
     padding: 10px;
 }
@@ -511,4 +515,24 @@ option:hover {
     display:block;
     font-size:12px;
     margin-bottom:4px;
+}
+
+/*   INSPECTOR   */
+.inspector-row{
+    margin-bottom:10px;
+}
+
+.inspector-row label{
+    display:block;
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+/*  deseleziona toolbar widget  */
+.widget-toolbar{
+    display:none;
+}
+
+.canvas-widget.selected .widget-toolbar{
+    display:flex;
 }

@@ -1,5 +1,5 @@
 //===============================================================
-// Editor Widgets
+// Editor Widgets - proprietà + campi di modifica
 //==============================================================    
 editor.widgets = {
 
@@ -88,14 +88,14 @@ button: {
 
         defaultProps: {
             text: "CERCA",
-            url: "",
+            url: "#",
             align: "center"
         },
 
         render: function(widget){
             return `
-            <div class="widget-button">
-                <a  src="${widget.props.src}"/>${widget.props.text}</a>
+            <div class="widget-button" style="text-align:'${widget.props.align}'">
+                <a  src="${widget.props.url}"/>${widget.props.text}</a>
             </div>    
             `;
         }
@@ -285,8 +285,9 @@ editor.createWidget = function(type){
 // Apre pannello dettagli widget 
 //=================================
 editor.openWidgetInspector = function(widgetId){
-    $("#tabs").tabs();
+   
     // attiva tab Dettagli
+    $("#tabs").tabs();
     $("#tabs").tabs("option", "active", 1);
 
     let widget = null;
@@ -308,3 +309,83 @@ editor.openWidgetInspector = function(widgetId){
     editor.renderInspector(widget, def);
 
 };
+
+//============================  
+// widget testo
+//============================  
+editor.widgets.text = {
+
+    label:"Testo",
+
+    icon:"📝",
+
+    defaultProps:{
+        text:"Nuovo testo",
+        align:"left",
+        color:"var(--color-primary)"
+    },
+
+    fields:{
+
+        text:{
+            type:"text",
+            label:"Testo"
+        },
+
+        align:{
+            type:"select",
+            label:"Allineamento",
+            options:{
+                left:"Sinistra",
+                center:"Centro",
+                right:"Destra"
+            }
+        },
+
+        color:{
+            type:"color",
+            label:"Colore"
+        }
+
+    },
+
+    render:function(widget){
+
+        return `
+        <div class="widget-text"
+             style="
+                text-align:${widget.props.align};
+                color:${widget.props.color};
+             ">
+            ${widget.props.text}
+        </div>
+        `;
+
+    }
+
+};
+/*
+//============================  
+// widget titolo (header)
+//============================ 
+fields:{
+    text:{type:"text",label:"Titolo"},
+    level:{
+        type:"select",
+        label:"Tag",
+        options:{
+            h1:"H1",
+            h2:"H2",
+            h3:"H3"
+        }
+    },
+    align:{
+        type:"select",
+        label:"Allineamento",
+        options:{
+            left:"Sinistra",
+            center:"Centro",
+            right:"Destra"
+        }
+    }
+}*/
