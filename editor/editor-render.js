@@ -2,16 +2,14 @@
 //  Editor Render
 //================================= 
 editor.render = function() {
-
     const $canvas = $("#canvas");
     $canvas.empty();
 
     editor.state.sections.forEach(function(section) {
 
         const $section = editor.renderSection(section);
-console.log("RENDER SECTION:", section); // debug
-        $canvas.append($section);
 
+         $canvas.append($section);
     });
 
     editor.initSortableWidgets();
@@ -201,8 +199,8 @@ editor.syncColumnsState = function(){
 //==========================================
 // render pannello dettagli
 //==========================================
-
 editor.renderInspector = function(widget, def){
+// console.log("========>DETTAGLI");
 
     const $panel = $("#widget-inspector");
 
@@ -216,43 +214,33 @@ editor.renderInspector = function(widget, def){
         </div>
         <div class="inspector-body">Valori ${def.valori}</div>
     `);
-
-};
-//===========================================
-//  legge fields e genera gli input
-//===========================================
-editor.renderInspector = function(widget, def){
-
-    const $panel = $("#widget-inspector");
-
-    $panel.empty();
-
-    if(!def.fields) return;
-    //------------------------------------------------
-    //  testata dettagli
-    //------------------------------------------------
-    $panel.append(`
-        <div class="inspector-title">
-            <h4>Dettagli ${def.label}</h4>
-        </div>
-        <div class="inspector-body">Valori ${def.valori}</div>
-    `);
+//console.log("TITOLO = ", def);
 
     //------------------------------------------------
     //  campi modificabili
     //------------------------------------------------
+    if(!def.fields) return;
+
     Object.keys(def.fields).forEach(fieldName => {
-
         const field = def.fields[fieldName];
-
         const value = widget.props[fieldName] ?? "";
 
         let input = "";
-
+// ----------------------------------------------------
         if(field.type === "text"){
 
             input = `
-                <input type="textarea"
+                <input type="text"
+                       data-field="${fieldName}"
+                       value="${value}">
+            `;
+
+        }
+
+        if(field.type === "text"){
+/*  */
+            input = `
+                <input
                        data-field="${fieldName}"
                        value="${value}">
             `;

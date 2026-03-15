@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "aaa",
         "version": "2.0",
-        "updated_at": "2026-03-13T18:02:42.417Z"
+        "updated_at": "2026-03-15T16:28:25.541Z"
     },
     "global": {
         "colors": {
@@ -24,7 +24,7 @@
     },
     "sections": [
         {
-            "id": "sec-1773232618677-596",
+            "id": "sec-1773529940394-270",
             "settings": {
                 "background": "#ffffff",
                 "paddingTop": 40,
@@ -32,11 +32,30 @@
             },
             "columns": [
                 {
-                    "id": "col-1773232618677-607",
+                    "id": "col-1773529940394-61",
                     "width": 100,
                     "widgets": [
                         {
-                            "id": "w1773232695666_2",
+                            "id": "w1773529984626_1",
+                            "type": "image",
+                            "props": {
+                                "src": "https:\/\/placehold.co\/150x150",
+                                "alt": "https:\/\/placehold.co\/150x150"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1773592636434-588",
+                    "width": 200,
+                    "widgets": []
+                },
+                {
+                    "id": "col-1773529980446-897",
+                    "width": 200,
+                    "widgets": [
+                        {
+                            "id": "w1773529987962_2",
                             "type": "header",
                             "props": {
                                 "text": "Titolo ---",
@@ -45,36 +64,12 @@
                             }
                         },
                         {
-                            "id": "w1773232706569_3",
+                            "id": "w1773529992874_3",
                             "type": "text",
                             "props": {
-                                "text": "Pappa ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
-                                "align": "center",
-                                "color": "#0a0a0a",
-                                "customColor": ""
-                            }
-                        },
-                        {
-                            "id": "w1773353691107_1",
-                            "type": "button",
-                            "props": {
-                                "text": "CERCA",
-                                "url": "",
-                                "align": "center"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "id": "col-1773232668441-285",
-                    "width": 100,
-                    "widgets": [
-                        {
-                            "id": "w1773339565447_1",
-                            "type": "image",
-                            "props": {
-                                "src": "https:\/\/placehold.co\/150x150",
-                                "alt": "https:\/\/placehold.co\/150x150"
+                                "text": "Lorem ipsum dolor sit amet. Certo che se andiamo avanti cos\u00ec non \u00e8 che andiamo benissimo. Wjfl fqwipowc ipiaewf  hjferppfphi ojfeiojg iojeriogj iojgeio \u00f2lfjeo.",
+                                "align": "left",
+                                "color": "#0d7d15"
                             }
                         }
                     ]
@@ -83,8 +78,8 @@
         }
     ],
     "selected": {
-        "type": "section",
-        "id": "sec-1773232618677-596"
+        "type": "column",
+        "id": "col-1773592636434-588"
     },
-    "selectedWidgetId": "w1773232706569_3"
+    "selectedWidgetId": "w1773529992874_3"
 }

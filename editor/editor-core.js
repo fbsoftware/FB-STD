@@ -5,7 +5,7 @@ editor.bindEvents = function() {
 
     // CLICK SEZIONE (delegato)
     $(document).on("click", ".canvas-section", function(e){
-        // è clic su colonna e non sezione
+console.log("-1- Clic su colonna e non sezione");
         if($(e.target).closest(".canvas-column").length){
         return;
     }
@@ -23,7 +23,6 @@ editor.bindEvents = function() {
     // CLICK +SEZIONE (diretto, perché è statico nel DOM)
     $("#add-section").on("click", function() {
         editor.createSection();
-        console.log("Sezione aggiunta");
         editor.render();
     });
 
@@ -93,7 +92,9 @@ $(document).on("click", ".duplicate", function(e){
 // SAVE / PUBBLICA
 //================================
 $(document).on("click", "#save-layout", function(){
-alert("Vuoi Pubblicare il layout?");
+//alert("Vuoi Pubblicare il layout?");
+if(!confirm("Vuoi Pubblicare il layout?")) return;
+
     const data = editor.state;
 
     console.log("SALVATAGGIO:", data);
@@ -251,6 +252,7 @@ editor.deleteColumn = function(colId){
 //=================================
 //  Spostare colonna a sinistra
 //=================================
+
 $(document).on("click",".move-left",function(e){
 
     e.stopPropagation();
@@ -350,38 +352,18 @@ $(document).on("click", function(e){
 
 });
 
-
-
-
-//=================================
-//  seleziona widget
-//=================================
-$(document).on("click", ".widget", function(e){
-    e.stopPropagation();
-
-    const id = $(this).data("id");
-
-    editor.state.selected = {
-        type: "widget",
-        id: id
-    };
-
-    editor.render();
-    editor.renderProperties();
-
-});
-
 //=================================
 // clic su canvas vuoto = deselect
-$(document).on("click", "#canvas", function(){
-
-    if(editor.state.selected){
+//=================================
+$(document).on("click", "#canvas", function()
+{
+      //  e.stopPropagation();
+console.log("-2- clic su canvas vuoto")
+        if(editor.state.selected){
 
         editor.state.selected = null;
         editor.render();
-
     }
-
 });
 
 //=================================
@@ -403,6 +385,8 @@ $(document).on("click",".move-right",function(e){
 // clic-widget per selezione
 //======================================
 $(document).on("click", ".canvas-widget", function(e){
+console.log("-3- .canvas-widget-clic");
+ //e.stopPropagation();
 
     const id = $(this).data("id");
 
@@ -413,10 +397,9 @@ $(document).on("click", ".canvas-widget", function(e){
 
     editor.openWidgetInspector(id);
 
-    e.stopPropagation();
-
 });
 //======================================
+
 // Cancella widget 
 //======================================
 $(document).on("click", ".widget-delete", function(e){
@@ -438,35 +421,54 @@ $(document).on("click", ".widget-delete", function(e){
 //===============================
 //  3️⃣ Gestione modifica valori
 //===============================
-$(document).on(
-    "input change",
-    "#widget-inspector [data-field]",
+$(document).on("input change", ".inspector-row [data-field]",
     function(){
-
         const field = $(this).data("field");
-
         const value = $(this).val();
-
         const widgetId = editor.state.selectedWidgetId;
 
         editor.state.sections.forEach(section => {
-
             section.columns.forEach(column => {
-
                 column.widgets.forEach(widget => {
 
                     if(widget.id === widgetId){
-
                         widget.props[field] = value;
-
                     }
-
                 });
-
             });
-
         });
 
         editor.render();
-
 });
+
+//========================================
+//  Blocca direttamente sugli input:
+//========================================
+$(document).on(
+    "click",
+    "#widget-inspector input, #widget-inspector select, #widget-inspector textarea",
+    function(e){
+        e.stopPropagation();
+});
+
+//=======================================
+//  valori globali
+//=======================================
+editor.globals = {
+
+    colors:{
+        primary:"var(--color-primary)",
+        secondary:"var(--color-secondary)",
+        accent:"var(--color-accent)",
+        bg:"var(--color-bg)",
+        text:"var(--color-text)"
+    },
+
+    align:{
+        left:"sinistra",
+        center:"centro",
+        justify:"giustificato",
+        right:"destra"
+    }
+
+};

@@ -199,65 +199,6 @@ editor.getSelectedWidget = function(){
 };
 
 //=================================
-// Render PROPS widget
-//=================================
-editor.renderProperties = function(){
-
-    const $panel = $("#properties-panel");
-    $panel.empty();
-
-    const widget = editor.getSelectedWidget();
-
-    if(!widget) return;
-
-    const def = editor.widgets[widget.type];
-
-    def.props.forEach(prop => {
-
-        const $field = $("<div>").addClass("prop-field");
-
-        const $label = $("<label>").text(prop.label);
-
-        let $input;
-
-        if(prop.type === "text"){
-
-            $input = $("<input>")
-                .val(widget[prop.field]);
-
-        }
-
-        if(prop.type === "select"){
-
-            $input = $("<select>");
-
-            prop.options.forEach(opt => {
-                $input.append(
-                    $("<option>")
-                        .val(opt)
-                        .text(opt)
-                );
-            });
-
-            $input.val(widget[prop.field]);
-        }
-
-        $input.on("input change", function(){
-
-            widget[prop.field] = $(this).val();
-
-            editor.render();
-
-        });
-
-        $field.append($label).append($input);
-
-        $panel.append($field);
-
-    });
-
-};
-//=================================
 // Crea widget nel canvas
 //=================================
 editor.createWidget = function(type){
@@ -320,7 +261,7 @@ editor.widgets.text = {
     icon:"📝",
 
     defaultProps:{
-        text:"Nuovo testo",
+        text:"Lorem ipsum dolor sit amet.",
         align:"left",
         color:"var(--color-primary)"
     },
@@ -338,15 +279,30 @@ editor.widgets.text = {
             options:{
                 left:"Sinistra",
                 center:"Centro",
-                right:"Destra"
+                right:"Destra",
+                justify:"Giustificato"
             }
         },
 
         color:{
-            type:"color",
-            label:"Colore"
+            type:"select",
+            label:"Globali",
+            options:{
+                primary:"#3366ff",
+                secondary:"#ff6633",
+                accent:"#ffa500",
+                bg:"#ffffff",
+                text:"#000000",
+                custom:"#23844a"
+            }
         }
-
+    /*,    
+    color:{
+        type:"select",
+        label:"Colore",
+        options:"colors"
+    }
+*/
     },
 
     render:function(widget){
