@@ -136,8 +136,7 @@ editor.renderColumn = function(column){
 editor.renderWidget = function(widget){
 
     const def = editor.widgets[widget.type];
-    const selected =
-        widget.id === editor.state.selectedWidgetId ? "selected" : "";
+    const selected = widget.id === editor.state.selectedWidgetId ? "selected" : "";
     const content = def.render(widget);
 
     return `

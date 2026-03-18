@@ -1,0 +1,80 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "123",
+        "version": "2.0",
+        "updated_at": "2026-03-18T07:07:42.678Z"
+    },
+    "global": {
+        "colors": {
+            "primary": "#3366ff",
+            "secondary": "#ff6633",
+            "accent": "#ffa500",
+            "text": "#222222",
+            "bg": "#ffffff",
+            "undefined": "#ffffff"
+        },
+        "typography": [],
+        "fonts": {
+            "heading-family": "Inter",
+            "heading-weight": "400",
+            "body-family": "Inter",
+            "body-weight": "400"
+        }
+    },
+    "sections": [
+        {
+            "id": "sec-1773817662678-281",
+            "settings": {
+                "background": "#ffffff",
+                "paddingTop": 40,
+                "paddingBottom": 40
+            },
+            "columns": [
+                {
+                    "id": "col-1773817662678-940",
+                    "width": 100,
+                    "widgets": [
+                        {
+                            "id": "w1773817749217_2",
+                            "type": "header",
+                            "props": {
+                                "text": "Titolo ---",
+                                "level": "h2",
+                                "align": "center"
+                            }
+                        },
+                        {
+                            "id": "w1773817680730_1",
+                            "type": "text",
+                            "props": {
+                                "text": "AAAALorem ipsum dolor sit amet. bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                                "align": "center",
+                                "color": "var(--color-primary)"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1773817912300-127",
+                    "width": 200,
+                    "widgets": [
+                        {
+                            "id": "w1773817915974_3",
+                            "type": "image",
+                            "props": {
+                                "src": "https:\/\/placehold.co\/150x150",
+                                "alt": "https:\/\/placehold.co\/150x150"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "selectedWidgetId": null,
+    "selected": {
+        "type": "section",
+        "id": "sec-1773817662678-281"
+    }
+}

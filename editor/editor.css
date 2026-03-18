@@ -186,30 +186,7 @@ display: none !important;
 .canvas-section.selected {
     border: 1px solid #0073aa;
 }
-.section-toolbar {
-    position: absolute;
-    top: -28px;
-    right: 0;
-    background: pink;
-    padding: 1px;
-    border-radius: 3px;
-    display: flex;
-    gap:1px;
-}
 
-.section-toolbar button{
-    background:none;
-    border:none;
-}
-
-.section-toolbar button:hover {
-    background: #ff0000;
-    color: white;
-}
-
-.material-symbols-outlined{
-    font-size:10px;
-}
 .section-inner {
   display: flex;
 }
@@ -264,17 +241,6 @@ gap:20px;
     min-width: 200px;
     border:1px dashed #ccc;
     padding:10px;
-}
-
-.column-toolbar{
-    position:absolute;
-    top:-22px;
-    right:0;
-    background: pink;
-    padding: 1px;
-    border-radius: 3px;
-    display:flex;
-    gap:1px;
 }
 
 /*========================  */
@@ -343,16 +309,7 @@ background:#f5f5f5;
 border:2px dashed #bbb;
 margin-bottom:8px;
 }
-.widget-toolbar{
-    position:absolute;
-    top:0px;
-    right:0px;
-    background: pink;
-    padding: 1px;
-    border-radius: 3px;
-    display:flex;
-    gap:1px;
-}
+
 .canvas-widget.selected{
     outline:2px solid #4da3ff;
 }
@@ -382,37 +339,13 @@ margin-bottom:8px;
   font-size: var(--body-size);
   color: var(--color-text);
 }
-/*  STILE BOTTONE  */
-.widget[data-type="bottone"] {
-  font-family: var(--font-body);
-  font-weight: var(--font-body-weight);
-  font-size: var(--h2-size);
-  color: var(--color-text);
-}
+
 .widget-content,
 .widget-header  {
     padding: 0;
     margin: 0;
     }
-.widget-bottone {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    background: orange;
-    color: black;
-    text-decoration:none;
-}
-.widget-button {
-    width: fit-content;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    background: orange;
-    color: black;
-    text-decoration:none;
-  }
+
 .widget-list {
     padding: 10px;
 }
@@ -424,15 +357,6 @@ button {
     font-size: 14px;
     border-radius: 0px;
     margin: 0px ;
-    }
-.button2 {
-    background-color: orange;
-    color: black;
-    border: 1px solid black;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 10px 15px;
-    margin: 20px ;
     }
 
 label {
@@ -528,11 +452,65 @@ option:hover {
     margin-bottom:3px;
 }
 
+
+
+
+/*=========*/
+/* TOOLBAR */
+/*=========*/
+.canvas-widget:hover .widget-toolbar,
+.canvas-column:hover .column-toolbar,
+.canvas-section:hover .section-toolbar
+{
+    display:block;
+    opacity:1;
+}
+.canvas-widget.selected .widget-toolbar,
+.canvas-column.selected .column-toolbar,
+.canvas-section.selected .section-toolbar
+{
+    display:flex;
+}
 /*  deseleziona toolbar widget  */
-.widget-toolbar{
+.widget-toolbar,
+.column-toolbar,
+.section-toolbar{
     display:none;
 }
+.widget-toolbar
+.column-toolbar,
+.section-toolbar {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    background: pink;
+    padding: 1px;
+    border-radius: 3px;
+    display: flex;
+    gap:1px;
+    opacity:0;
+    transition:opacity 0.15s ease;
+}
+ 
+.widget-toolbar button,
+.column-toolbar button,
+.section-toolbar button
+{
+    background:none;
+    border:none;
+}
+.widget-toolbar button:hover
+.column-toolbar button:hover,
+.section-toolbar button:hover {
+    background: #ff0000;
+    color: white;
+}
 
-.canvas-widget.selected .widget-toolbar{
-    display:flex;
+.material-symbols-outlined{
+    font-size:10px;
+}
+
+
+.canvas-widget:hover .widget-toolbar{
+
 }
