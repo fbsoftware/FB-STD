@@ -89,7 +89,7 @@ editor.updateWidgetOrder = function(columnId, newOrder){
 };
 
 //=================================
-// Colori colonne "droppabili"
+// Colonne "droppabili"
 //=================================
 $(document).on("dragover", ".canvas-column", function(e){
     e.preventDefault();

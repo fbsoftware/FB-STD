@@ -5,40 +5,45 @@ editor.widgets = {
 
     text: {
 
-  label:"Testo",
-  icon:"📝",
+        label:"Testo",
+        icon:"📝",
 
   defaultProps:{
      text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
      align:"left",
-     color:"var(--color-primary)",
-     customColor:""
+     color:"var(--color-primary)"
   },
 
   fields:{
-     text:{type:"text",label:"Testo"},
-     align:{
-        type:"select",
-        options:["left","center","right"]
-     },
-     color:{type:"color"}
+    text:{
+        type:"text",
+        label:"Testo"},
+
+    align:{type:"select",    
+        options:{left:"Sinistra",
+                center:"Centro",
+                right:"Destra"} ,
+        label:"Allineamento"}, 
+
+    color:{
+        type:"color",
+        label:"Colore",
+},
   },
 
-  render(widget){
-     const p = widget.props;
+    render(widget){
+        const p = widget.props;
 
-     return `
-     <div style="
-        text-align:${p.align};
-        color:${p.color};
-     ">
-        ${p.text}
-     </div>
-     `;
-  }
-
-},
-
+        return `
+        <div style="
+            text-align:${p.align || "left"};
+            color:${p.color || "#000"};
+        ">
+            ${p.text || ""}
+        </div>
+        `;
+    }
+    },
     image: {
 
         label: "Immagine",
@@ -59,21 +64,51 @@ editor.widgets = {
         }
 
     },
-header: {
+    header: {
         label: "Titolo",
         icon: "📌",
 
         defaultProps: {
             text: "Titolo ---",
             level: "h2",
-            align: "center"
+            align: "center",
+            color:"var(--color-primary)"
         },
+fields:{
+    text:{
+        type:"text",
+        label:"Titolo"
+    },
+    level:{
+        type:"select",
+        label:"Tag",
+        options:{
+            h1:"H1",
+            h2:"H2",
+            h3:"H3"
+        }
+    },
+    align:{
+        type:"select",
+        label:"Allineamento",
+        options:{
+            left:"Sinistra",
+            center:"Centro",
+            right:"Destra"
+        }
+    },
+
+    color:{
+        type:"color",
+        label:"Colore",
+    },
+},
 
         render: function(widget){
             const tag = widget.props.level;
             return `
             <div class="widget-header">
-                <${tag} style="text-align:${widget.props.align}">
+                <${tag} style="text-align:${widget.props.align} ; color:${widget.props.color}">
                     ${widget.props.text}
                 </${tag}>
             </div>
@@ -81,7 +116,7 @@ header: {
         }
 
     },
-button: {
+    button: {
 
         label: "Bottone",
         icon: "🔘",
@@ -101,7 +136,7 @@ button: {
         }
 
     }, 
- spacer: {
+    spacer: {
 
         label: "Spaziatore",
         icon: "🔘",
@@ -181,21 +216,13 @@ editor.getSelectedWidget = function(){
     const id = editor.state.selected.id;
 
     for(const section of editor.state.sections){
-
         for(const column of section.columns){
-
             for(const widget of column.widgets){
-
                 if(widget.id === id) return widget;
-
             }
-
         }
-
     }
-
     return null;
-
 };
 
 //=================================
@@ -209,17 +236,11 @@ editor.createWidget = function(type){
         console.error("Widget type not found:", type);
         return null;
     }
-
     return {
-
         id: this.uid(),
-
         type: type,
-
         props: structuredClone(def.defaultProps)
-
     };
-
 };
 
 //=================================
@@ -251,97 +272,4 @@ editor.openWidgetInspector = function(widgetId){
 
 };
 
-//============================  
-// widget testo
-//============================  
-editor.widgets.text = {
 
-    label:"Testo",
-
-    icon:"📝",
-
-    defaultProps:{
-        text:"Lorem ipsum dolor sit amet.",
-        align:"left",
-        color:"var(--color-primary)"
-    },
-
-    fields:{
-
-        text:{
-            type:"text",
-            label:"Testo"
-        },
-
-        align:{
-            type:"select",
-            label:"Allineamento",
-            options:{
-                left:"Sinistra",
-                center:"Centro",
-                right:"Destra",
-                justify:"Giustificato"
-            }
-        },
-
-        color:{
-            type:"select",
-            label:"Globali",
-            options:{
-                primary:"#3366ff",
-                secondary:"#ff6633",
-                accent:"#ffa500",
-                bg:"#ffffff",
-                text:"#000000",
-                custom:"#23844a"
-            }
-        }
-    /*,    
-    color:{
-        type:"select",
-        label:"Colore",
-        options:"colors"
-    }
-*/
-    },
-
-    render:function(widget){
-
-        return `
-        <div class="widget-text"
-             style="
-                text-align:${widget.props.align};
-                color:${widget.props.color};
-             ">
-            ${widget.props.text}
-        </div>
-        `;
-
-    }
-
-};
-/*
-//============================  
-// widget titolo (header)
-//============================ 
-fields:{
-    text:{type:"text",label:"Titolo"},
-    level:{
-        type:"select",
-        label:"Tag",
-        options:{
-            h1:"H1",
-            h2:"H2",
-            h3:"H3"
-        }
-    },
-    align:{
-        type:"select",
-        label:"Allineamento",
-        options:{
-            left:"Sinistra",
-            center:"Centro",
-            right:"Destra"
-        }
-    }
-}*/
