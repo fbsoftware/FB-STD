@@ -211,7 +211,7 @@ editor.renderInspector = function(widget, def){
         <div class="inspector-title">
             <h4>Dettagli ${def.label}</h4>
         </div>
-        <div class="inspector-body">Valori ${def.valori}</div>
+        <div class="inspector-body"></div>
     `);
 //console.log("TITOLO = ", def);
 
