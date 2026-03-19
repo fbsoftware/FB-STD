@@ -50,9 +50,11 @@ h3  {
 }
 
 .pink ,
-.delete-widget,
+.widget-delete,
 .delete-column,
-.delete-section
+.delete-section,
+.move-right,
+.move-left
 {
     background-color: pink; 
     color: black;
@@ -61,9 +63,11 @@ h3  {
     }
 
 .pink:hover ,
-.delete-widget:hover,
+.widget-delete:hover,
 .delete-column:hover,
-.delete-section:hover
+.delete-section:hover,
+.move-right:hover,
+.move-left:hover
 {
     background: #ff0000;
     color: white;
@@ -87,6 +91,7 @@ h3  {
 }
 
   #widget-details,
+  #widget-inspector,
   .style-section
 {
     overflow: auto;
@@ -95,15 +100,6 @@ h3  {
     padding:5px;    
 }
 
-.palette-widget {
-    background: white;
-    border: 1px solid #808080;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: grab;
-    text-align: center;
-    border-radius: 10px;
-}
 /* PALETTE-CLONE - nata con addClass() */
 .palette-clone {
 display: none !important;
@@ -190,32 +186,7 @@ display: none !important;
 .canvas-section.selected {
     border: 1px solid #0073aa;
 }
-.section-toolbar {
-    position: absolute;
-    top: -28px;
-    right: 0;
-    background: pink;
-    padding: 1px;
-    border-radius: 3px;
-    display: flex;
-    gap:1px;
-}
 
-.section-toolbar button{
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:4px;
-}
-
-.section-toolbar button:hover {
-    background: #ff0000;
-    color: white;
-}
-
-.material-symbols-outlined{
-    font-size:18px;
-}
 .section-inner {
   display: flex;
 }
@@ -272,14 +243,6 @@ gap:20px;
     padding:10px;
 }
 
-.column-toolbar{
-    position:absolute;
-    top:-30px;
-    left:0;
-    display:flex;
-    gap:1px;
-}
-
 /*========================  */
 /*  bottone salva  */
 /*========================  */
@@ -323,9 +286,12 @@ gap:20px;
 .palette-widget{
 padding:8px;
 border:1px solid #ddd;
-margin-bottom:6px;
+border-radius: 20px;
+margin:6px;
 cursor:grab;
 background:white;
+width: 70%;
+align-items: center;
 }
 
 
@@ -343,13 +309,7 @@ background:#f5f5f5;
 border:2px dashed #bbb;
 margin-bottom:8px;
 }
-.widget-toolbar{
-    position:absolute;
-    top:4px;
-    right:4px;
-    display:flex;
-    gap:1px;
-}
+
 .canvas-widget.selected{
     outline:2px solid #4da3ff;
 }
@@ -379,36 +339,13 @@ margin-bottom:8px;
   font-size: var(--body-size);
   color: var(--color-text);
 }
-/*  STILE BOTTONE  */
-.widget[data-type="bottone"] {
-  font-family: var(--font-body);
-  font-weight: var(--font-body-weight);
-  font-size: var(--h2-size);
-  color: var(--color-text);
-}
+
 .widget-content,
 .widget-header  {
     padding: 0;
     margin: 0;
     }
-.widget-bottone {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    background: orange;
-    color: black;
-    text-decoration:none;
-}
-.widget-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    background: orange;
-    color: black;
-    text-decoration:none;
-}
+
 .widget-list {
     padding: 10px;
 }
@@ -420,15 +357,6 @@ button {
     font-size: 14px;
     border-radius: 0px;
     margin: 0px ;
-    }
-.button2 {
-    background-color: orange;
-    color: black;
-    border: 1px solid black;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 10px 15px;
-    margin: 20px ;
     }
 
 label {
@@ -511,4 +439,78 @@ option:hover {
     display:block;
     font-size:12px;
     margin-bottom:4px;
+}
+
+/*   INSPECTOR   */
+.inspector-row{
+    margin-bottom:10px;
+}
+
+.inspector-row label{
+    display:block;
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+
+
+
+/*=========*/
+/* TOOLBAR */
+/*=========*/
+.canvas-widget:hover .widget-toolbar,
+.canvas-column:hover .column-toolbar,
+.canvas-section:hover .section-toolbar
+{
+    display:block;
+    opacity:1;
+}
+.canvas-widget.selected .widget-toolbar,
+.canvas-column.selected .column-toolbar,
+.canvas-section.selected .section-toolbar
+{
+    display:flex;
+}
+/*  deseleziona toolbar widget  */
+.widget-toolbar,
+.column-toolbar,
+.section-toolbar{
+    display:none;
+}
+.widget-toolbar
+.column-toolbar,
+.section-toolbar {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    background: pink;
+    padding: 1px;
+    border-radius: 3px;
+    display: flex;
+    gap:1px;
+    opacity:0;
+    transition:opacity 0.15s ease;
+}
+ 
+.widget-toolbar button,
+.column-toolbar button,
+.section-toolbar button
+{
+    background:none;
+    border:none;
+}
+.widget-toolbar button:hover
+.column-toolbar button:hover,
+.section-toolbar button:hover {
+    background: #ff0000;
+    color: white;
+}
+
+.material-symbols-outlined{
+    font-size:10px;
+}
+
+
+.canvas-widget:hover .widget-toolbar{
+
 }

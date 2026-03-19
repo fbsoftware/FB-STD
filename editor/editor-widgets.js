@@ -1,5 +1,5 @@
 //===============================================================
-// Editor Widgets
+// Editor Widgets - proprietà + campi di modifica
 //==============================================================    
 editor.widgets = {
 
@@ -88,14 +88,14 @@ button: {
 
         defaultProps: {
             text: "CERCA",
-            url: "",
+            url: "#",
             align: "center"
         },
 
         render: function(widget){
             return `
-            <div class="widget-button">
-                <a  src="${widget.props.src}"/>${widget.props.text}</a>
+            <div class="widget-button" style="text-align:'${widget.props.align}'">
+                <a  src="${widget.props.url}"/>${widget.props.text}</a>
             </div>    
             `;
         }
@@ -199,65 +199,6 @@ editor.getSelectedWidget = function(){
 };
 
 //=================================
-// Render PROPS widget
-//=================================
-editor.renderProperties = function(){
-
-    const $panel = $("#properties-panel");
-    $panel.empty();
-
-    const widget = editor.getSelectedWidget();
-
-    if(!widget) return;
-
-    const def = editor.widgets[widget.type];
-
-    def.props.forEach(prop => {
-
-        const $field = $("<div>").addClass("prop-field");
-
-        const $label = $("<label>").text(prop.label);
-
-        let $input;
-
-        if(prop.type === "text"){
-
-            $input = $("<input>")
-                .val(widget[prop.field]);
-
-        }
-
-        if(prop.type === "select"){
-
-            $input = $("<select>");
-
-            prop.options.forEach(opt => {
-                $input.append(
-                    $("<option>")
-                        .val(opt)
-                        .text(opt)
-                );
-            });
-
-            $input.val(widget[prop.field]);
-        }
-
-        $input.on("input change", function(){
-
-            widget[prop.field] = $(this).val();
-
-            editor.render();
-
-        });
-
-        $field.append($label).append($input);
-
-        $panel.append($field);
-
-    });
-
-};
-//=================================
 // Crea widget nel canvas
 //=================================
 editor.createWidget = function(type){
@@ -285,8 +226,9 @@ editor.createWidget = function(type){
 // Apre pannello dettagli widget 
 //=================================
 editor.openWidgetInspector = function(widgetId){
-    $("#tabs").tabs();
+   
     // attiva tab Dettagli
+    $("#tabs").tabs();
     $("#tabs").tabs("option", "active", 1);
 
     let widget = null;
@@ -308,3 +250,98 @@ editor.openWidgetInspector = function(widgetId){
     editor.renderInspector(widget, def);
 
 };
+
+//============================  
+// widget testo
+//============================  
+editor.widgets.text = {
+
+    label:"Testo",
+
+    icon:"📝",
+
+    defaultProps:{
+        text:"Lorem ipsum dolor sit amet.",
+        align:"left",
+        color:"var(--color-primary)"
+    },
+
+    fields:{
+
+        text:{
+            type:"text",
+            label:"Testo"
+        },
+
+        align:{
+            type:"select",
+            label:"Allineamento",
+            options:{
+                left:"Sinistra",
+                center:"Centro",
+                right:"Destra",
+                justify:"Giustificato"
+            }
+        },
+
+        color:{
+            type:"select",
+            label:"Globali",
+            options:{
+                primary:"#3366ff",
+                secondary:"#ff6633",
+                accent:"#ffa500",
+                bg:"#ffffff",
+                text:"#000000",
+                custom:"#23844a"
+            }
+        }
+    /*,    
+    color:{
+        type:"select",
+        label:"Colore",
+        options:"colors"
+    }
+*/
+    },
+
+    render:function(widget){
+
+        return `
+        <div class="widget-text"
+             style="
+                text-align:${widget.props.align};
+                color:${widget.props.color};
+             ">
+            ${widget.props.text}
+        </div>
+        `;
+
+    }
+
+};
+/*
+//============================  
+// widget titolo (header)
+//============================ 
+fields:{
+    text:{type:"text",label:"Titolo"},
+    level:{
+        type:"select",
+        label:"Tag",
+        options:{
+            h1:"H1",
+            h2:"H2",
+            h3:"H3"
+        }
+    },
+    align:{
+        type:"select",
+        label:"Allineamento",
+        options:{
+            left:"Sinistra",
+            center:"Centro",
+            right:"Destra"
+        }
+    }
+}*/

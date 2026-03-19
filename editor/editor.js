@@ -7,7 +7,6 @@ editor.renderWidgetPalette();   // ← QUESTO CARICA I WIDGET NELLA PALETTE
 // Carica layout iniziale
          if (window.INITIAL_LAYOUT && window.INITIAL_LAYOUT.sections) {
         editor.state = window.INITIAL_LAYOUT;
-console.log("Layout caricato:", editor.state);
     } else {
 // Se non c'è un layout iniziale, creane uno di default
         console.log("Nuovo layout");
@@ -18,7 +17,6 @@ console.log("Layout caricato:", editor.state);
         editor.state.global.colors = window.SITE_CONFIG.colors || {};
         editor.state.global.typography = window.SITE_CONFIG.typography || {};
         editor.state.global.fonts  = window.SITE_CONFIG.fonts || {};
-console.log("Configurazione globale caricata:", editor.state.global);    
         }
 
     // Aggiorno updated_at
