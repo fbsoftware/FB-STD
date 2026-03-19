@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "aaa",
         "version": "2.0",
-        "updated_at": "2026-03-15T16:28:25.541Z"
+        "updated_at": "2026-03-19T16:54:51.463Z"
     },
     "global": {
         "colors": {
@@ -39,16 +39,21 @@
                             "id": "w1773529984626_1",
                             "type": "image",
                             "props": {
-                                "src": "https:\/\/placehold.co\/150x150",
-                                "alt": "https:\/\/placehold.co\/150x150"
+                                "src": "images\/image.png",
+                                "alt": "immagine",
+                                "width": "150"
+                            }
+                        },
+                        {
+                            "id": "w1773939311564_2",
+                            "type": "button",
+                            "props": {
+                                "text": "CERCA",
+                                "url": "#",
+                                "align": "center"
                             }
                         }
                     ]
-                },
-                {
-                    "id": "col-1773592636434-588",
-                    "width": 200,
-                    "widgets": []
                 },
                 {
                     "id": "col-1773529980446-897",
@@ -71,6 +76,14 @@
                                 "align": "left",
                                 "color": "#0d7d15"
                             }
+                        },
+                        {
+                            "id": "w1773939293690_1",
+                            "type": "spacer",
+                            "props": {
+                                "text": "Spazio vuoto",
+                                "height": "47"
+                            }
                         }
                     ]
                 }
@@ -79,7 +92,7 @@
     ],
     "selected": {
         "type": "column",
-        "id": "col-1773592636434-588"
+        "id": "col-1773529980446-897"
     },
-    "selectedWidgetId": "w1773529992874_3"
+    "selectedWidgetId": null
 }

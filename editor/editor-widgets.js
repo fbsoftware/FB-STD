@@ -50,15 +50,28 @@ editor.widgets = {
         icon: "🖼️ ",
 
         defaultProps: {
-            src: "https://placehold.co/150x150",
-            alt: "https://placehold.co/150x150"
+            src: "images/image.png",
+            alt: "immagine",
+            width: "150px"
             
         },
+
+        fields:{
+            src:{
+                type:"text",
+                label:"Immagine"},
+            alt:{
+                type:"text",
+                label:"Testo alternativo"},
+            width:{
+                type:"number",
+                label:"Larghezza px"}
+       },      
 
         render: function(widget){
             return `
             <div class="widget-image">
-                <img src="${widget.props.src}" alt="${widget.props.alt}" />
+                <img src="${widget.props.src}" alt="${widget.props.alt}" width="${widget.props.width}"/>
             </div>
             `;
         }
@@ -127,15 +140,36 @@ fields:{
             align: "center"
         },
 
+        fields:{
+            text:{
+                type:"text",
+                label:"Titolo"
+            },
+            url:{
+                type:"text",
+                label:"Link"
+            },
+            align:{
+                type:"select",
+                label:"Allineamento",
+                options:{
+                    left:"Sinistra",
+                    center:"Centro",
+                    right:"Destra"
+                }
+            },
+        },
+
         render: function(widget){
             return `
             <div class="widget-button" style="text-align:'${widget.props.align}'">
-                <a  src="${widget.props.url}"/>${widget.props.text}</a>
+                <a  href="${widget.props.url}"/>${widget.props.text}</a>
             </div>    
             `;
         }
 
     }, 
+   
     spacer: {
 
         label: "Spaziatore",
@@ -143,13 +177,22 @@ fields:{
 
         defaultProps: {
                 text: "Spazio vuoto",
-                height: "200px"
+                height: "20px"
         },
+
+        fields:{
+            text:{
+                type:"text",
+                label:"Testo"},
+            height:{
+                type:"number",
+                label:"Altezza px"}
+       },  
 
         render: function(widget){
             return `
-            <div class="widget-spacer">
-                <br  src="${widget.props.src}"/>
+            <div class="widget-spacer" style="height:${widget.props.height}px">
+                ${widget.props.text}
             </div>    
             `;
         }

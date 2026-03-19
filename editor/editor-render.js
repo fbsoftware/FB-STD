@@ -237,7 +237,6 @@ editor.renderInspector = function(widget, def){
         }
 
         if(field.type === "text"){
-/*  */
             input = `
                 <input
                        data-field="${fieldName}"
@@ -255,7 +254,15 @@ editor.renderInspector = function(widget, def){
             `;
 
         }
+        if(field.type === "number"){
 
+            input = `
+                <input type="number"
+                       data-field="${fieldName}"
+                       value="${value}">
+            `;
+
+        }
         if(field.type === "select"){
 
             let options = "";
