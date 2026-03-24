@@ -139,7 +139,7 @@ if ($tema && $page) {
 
   <!-- DETTAGLI -->
   
-    <div id="widget-inspector">
+    <div id="inspector">
         <h3 class="" aria-expanded="true" aria-selected="true">Dettagli</h3> 
     </div><!-- elementi/dettagli -->
      
@@ -150,18 +150,22 @@ if ($tema && $page) {
     <div class="canvas-panel">
                 <div style="display: flex; gap: 250px; align-items: center; margin-bottom: 20px;">
                     <div>
-                        <button id="save-layout" class="button2">Pubblica</button>
+                        <button id="save-layout">Pubblica</button>
                     </div>
                     <div>     
                         <h2 style="text-align:center">Layout del tema <span style="color: black"><?=$tema?></span> pagina <span style="color: black"><?=$page?></span></h2>  
+                    </div>
+                    <div>
+                        <button id="save-HTML">Scarica HTML</button>
                     </div>
                 </div> 
 
 
         <div>
-            <div id="canvas" class="canvas">    
-            </div>
+            <div id="canvas" class="canvas"> </div>
+            <div style="display:flex; justify-content:center">
             <button id="add-section" class="add-section-btn">➕ Sezione</button>
+            </div>
         </div>
        
     </div>  
@@ -213,15 +217,16 @@ window.INITIAL_LAYOUT = <?= json_encode($layoutData) ?>;
   } );
  </script>
 
-<script src="editor.js"></script>
+
 <script src="editor-utils.js"></script>
 <script src="editor-widgets.js"></script>
 <script src="editor-dragdrop.js"></script>
 <script src="editor-inspector.js"></script>
 <script src="editor-state.js"></script>
-<script src="editor-render.js"></script>
+<script src="editor-render.js"></script>        <!-- quì editor.render() definizione -->
+<script src="HTML.js"></script>
 <script src="editor-core.js"></script>
-
+<script src="editor.js"></script>             <!-- quì editor.init() defin. + uso -->
 
 </body>
 </html>

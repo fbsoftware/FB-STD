@@ -1,0 +1,88 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "987c",
+        "version": "2.0",
+        "updated_at": "2026-03-24T22:30:35.287Z"
+    },
+    "global": {
+        "colors": {
+            "primary": "#3366ff",
+            "secondary": "#ff6633",
+            "accent": "#ffa500",
+            "text": "#222222",
+            "bg": "#ffffff",
+            "undefined": "#ffffff"
+        },
+        "typography": [],
+        "fonts": {
+            "heading-family": "Inter",
+            "heading-weight": "400",
+            "body-family": "Inter",
+            "body-weight": "400"
+        }
+    },
+    "sections": [
+        {
+            "id": "sec-1774368987667-848",
+            "columns": [
+                {
+                    "id": "col-1774391443795-949",
+                    "width": 50,
+                    "widgets": [
+                        {
+                            "id": "w1774391450889_1",
+                            "type": "header",
+                            "props": {
+                                "text": "Titolo ---",
+                                "level": "h2",
+                                "align": "center",
+                                "color": "#ffa500"
+                            }
+                        },
+                        {
+                            "id": "w1774391453079_2",
+                            "type": "text",
+                            "props": {
+                                "text": "Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+                                "align": "left",
+                                "color": "#000000"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1774368987667-656",
+                    "width": 50,
+                    "widgets": [
+                        {
+                            "id": "w1774369078009_1",
+                            "type": "header",
+                            "props": {
+                                "text": "Titolo ---",
+                                "level": "h2",
+                                "align": "center",
+                                "color": "#ffa500"
+                            }
+                        },
+                        {
+                            "id": "w1774391425536_1",
+                            "type": "button",
+                            "props": {
+                                "text": "CERCA",
+                                "url": "#",
+                                "align": "center",
+                                "color": "#000000",
+                                "sfondo": "#ffa500",
+                                "bordo": "15",
+                                "padd": "20"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "selectedType": "section",
+    "selectedId": "sec-1774368987667-848"
+}

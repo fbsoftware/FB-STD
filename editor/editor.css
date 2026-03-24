@@ -54,7 +54,11 @@ h3  {
 .delete-column,
 .delete-section,
 .move-right,
-.move-left
+.move-left,
+.move-up,
+.move-down,
+.duplicate,
+.add-column
 {
     background-color: pink; 
     color: black;
@@ -67,7 +71,11 @@ h3  {
 .delete-column:hover,
 .delete-section:hover,
 .move-right:hover,
-.move-left:hover
+.move-left:hover,
+.move-up:hover,
+.move-down:hover,
+.duplicate:hover,
+.add-column:hover
 {
     background: #ff0000;
     color: white;
@@ -83,17 +91,15 @@ h3  {
 /* PALETTE */
 #palette  , 
 #global,
-.ui-accordion .ui-accordion-content
-{   
+.ui-accordion .ui-accordion-content {   
     padding: 0px;
     background: #222;
     overflow: auto;
 }
 
   #widget-details,
-  #widget-inspector,
-  .style-section
-{
+  #inspector,
+  .style-section {
     overflow: auto;
     background: #222;
     color: white;
@@ -105,74 +111,24 @@ h3  {
 display: none !important;
 }
 
-.widget {
-    background: white;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    cursor: grab;
-    text-align: center;
-}
-.widget.selected {
-  background: #e8f4ff;
-  outline: 1px solid #ff0000;
-}
-
 /* CANVAS */
 .canvas-panel {
     border: 0px;
     width: 1240px;
 }
 
-
-#canvas .widget {
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-
 .hint {
     color: #999;
 }
 
-/* DETTAGLI */
-/* UI */
-
+/* DETTAGLI  UI */
 .ui-draggable-dragging {
     opacity: 0.7;
 }
-/* Stile per il widget selezionato */
-.widget.selected {
-    cursor: pointer;
-    border: 1px solid #ff0000;
-}
-/*  CANVAS-WIDGET   */
-
-
-/* DELETE-WIDGET */
-.delete-widget {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    cursor: pointer;
-    background: pink;
-    color: black;
-}
-.delete-widget:hover {
-    background: #ff0000;
-    color: white;
-}
 
 /*========================  */
-/*  SEZIONE                */
+/*  CANVAS                */
 /*========================  */
-.canvas-section {
-    position: relative;
-    border: 1px dashed black;
-    transition: 0.2s;
-    min-height: 200px;
-        margin-bottom: 20px;
-        padding: 20px;
-}
 #canvas,
 .canvas {
     background: #fff;
@@ -183,8 +139,26 @@ display: none !important;
     list-style: none;
     margin: 0;
 }
-.canvas-section.selected {
-    border: 1px solid #0073aa;
+/*========================  */
+/*  SEZIONE                 */
+/*========================  */
+.canvas-section {
+    position: relative;
+    border: 1px dashed black;
+    transition: 0.2s;
+    min-height: 200px;
+    margin-bottom: 20px;
+    padding: 50px;
+    display: flex;
+}
+.canvas-widget.selected{
+    outline:2px solid #4da3ff;
+}
+.canvas-column.selected{
+    outline:2px solid #ff9800;
+}
+.canvas-section.selected{
+    outline:2px solid #4caf50;
 }
 
 .section-inner {
@@ -193,26 +167,34 @@ display: none !important;
 /*========================  */
 /*  COLONNA                 */
 /*========================  */
-.canvas-columns{
-display:flex;
-gap:20px;
+.section-columns{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    min-height: 40px;
+    align-items:stretch;
+}
+
+.canvas-column{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    position:relative;
+    min-height:80px;
+    min-width: 200px;
+    border:1px dashed #ccc;
+    padding:50px;
 }
 
 .canvas-column.drag-over {
     background: #f5f8ff;
     border: 2px dashed #4a7dff;
 }
-.section-columns{
-    min-width: 200px;
-    display:flex;
-    gap:10px;
-}
 
 .add-column{
-    margin-top:10px;
-    padding:6px 10px;
-    font-size:13px;
-    cursor:pointer;
+    display:inline-block;
+    margin:10px auto;
+    width:auto;
 }
 /* ------------------------------------ */
 .column-handle {
@@ -225,28 +207,11 @@ gap:20px;
   cursor: grabbing;
 }
 
-
-.column-drop-hint {
-    color: #999;
-    font-size: 13px;
-}
-.column-placeholder {
-  min-height: 150px;
-  border: 1px dashed #999;
-  background: rgba(16, 16, 16, 0.05);
-}
-.canvas-column{
-    position:relative;
-    min-height:80px;
-    min-width: 200px;
-    border:1px dashed #ccc;
-    padding:10px;
-}
-
 /*========================  */
 /*  bottone salva  */
 /*========================  */
-#save-layout {
+#save-layout,
+#save-HTML {
     background-color: pink;
     color: black;
     border: none;
@@ -294,24 +259,21 @@ width: 70%;
 align-items: center;
 }
 
-
-
-.canvas-widget{
+.canvas-widget{    
+display:block;
 position:relative;
 padding:10px;
+width:100%;
 border:1px solid #ddd;
 margin-bottom:6px;
 background:#fff;
 }
+ 
 .widget-placeholder{
 height:40px;
 background:#f5f5f5;
 border:2px dashed #bbb;
 margin-bottom:8px;
-}
-
-.canvas-widget.selected{
-    outline:2px solid #4da3ff;
 }
 /*  =====  fine  =====  */
 
@@ -359,6 +321,16 @@ button {
     margin: 0px ;
     }
 
+button.button {
+    background-color: pink;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 0px;
+    margin: 0px ;
+    }
+
 label {
   display: inline-block;
   width: 12rem;   /* scala con la dimensione del font */
@@ -373,7 +345,6 @@ input   {
 }
 
 input[type="range"] {
-    width: 100%;
     height: 8px;
     border-radius: 5px;
     outline: none;
@@ -443,7 +414,7 @@ option:hover {
 
 /*   INSPECTOR   */
 .inspector-row{
-    margin-bottom:10px;
+    margin-bottom:0px;
 }
 
 .inspector-row label{
@@ -458,48 +429,36 @@ option:hover {
 /*=========*/
 /* TOOLBAR */
 /*=========*/
-.canvas-widget:hover .widget-toolbar,
-.canvas-column:hover .column-toolbar,
-.canvas-section:hover .section-toolbar
-{
-    display:block;
-    opacity:1;
-}
 .canvas-widget.selected .widget-toolbar,
 .canvas-column.selected .column-toolbar,
-.canvas-section.selected .section-toolbar
-{
+.canvas-section.selected .section-toolbar{
     display:flex;
+    opacity:1;
+    justify-content:end;
+    z-index:10;
 }
+
 /*  deseleziona toolbar widget  */
 .widget-toolbar,
 .column-toolbar,
 .section-toolbar{
+    position:absolute;
+    top:-20px;
+    right:0;
+    background:pink;
+    padding:1px;
     display:none;
-}
-.widget-toolbar
-.column-toolbar,
-.section-toolbar {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    background: pink;
-    padding: 1px;
-    border-radius: 3px;
-    display: flex;
-    gap:1px;
     opacity:0;
     transition:opacity 0.15s ease;
+    gap:4px;
 }
  
 .widget-toolbar button,
 .column-toolbar button,
-.section-toolbar button
-{
-    background:none;
+.section-toolbar button  {
     border:none;
 }
-.widget-toolbar button:hover
+.widget-toolbar button:hover,
 .column-toolbar button:hover,
 .section-toolbar button:hover {
     background: #ff0000;
@@ -508,9 +467,4 @@ option:hover {
 
 .material-symbols-outlined{
     font-size:10px;
-}
-
-
-.canvas-widget:hover .widget-toolbar{
-
 }

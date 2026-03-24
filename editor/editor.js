@@ -2,14 +2,13 @@ var editor = editor || {};
 
 editor.init = function () {
 
-editor.bindEvents();
 editor.renderWidgetPalette();   // ← QUESTO CARICA I WIDGET NELLA PALETTE
 // Carica layout iniziale
          if (window.INITIAL_LAYOUT && window.INITIAL_LAYOUT.sections) {
         editor.state = window.INITIAL_LAYOUT;
     } else {
 // Se non c'è un layout iniziale, creane uno di default
-        console.log("Nuovo layout");
+console.log("Nuovo layout");
         editor.createSection();
     }
  // Popolo i dati globali da site-config.json

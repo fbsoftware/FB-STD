@@ -1,5 +1,3 @@
-// editor-state.
- 
 //================================= 
 //  Editor State Structure
 //================================= 
@@ -16,14 +14,12 @@ editor.state = {
         colors:{},
         typography:{},
         fonts:{}
-
     },
 
-        sections: [],
-    selectedWidgetId: null
-
+    sections: [],
+    selectedType: null,
+    selectedId: null
 };
-
 //================================= 
 //  State genera Id
 //=================================
@@ -34,25 +30,25 @@ editor.generateId = function(prefix) {
 //=================================
 //  Create new section
 //=================================
-editor.createSection = function() {
-
-    const newSection = {
-        id: editor.generateId("sec"),
-        settings: {
-            background: "#ffffff",
-            paddingTop: 40, 
-            paddingBottom: 40
-        },
+ editor.createSection = function(){
+console.log("Crea sezione+col+win");
+    const section = {
+        id: editor.utils.uuid("sec"),
         columns: [
             {
-                id: editor.generateId("col"),
+                id: editor.utils.uuid("col"),
                 width: 100,
                 widgets: []
             }
         ]
     };
 
-    editor.state.sections.push(newSection);
+    editor.state.sections.push(section);
+
+    editor.state.selectedType = "section";
+    editor.state.selectedId = section.id;
+
+    editor.render();
 };
 
 //=================================

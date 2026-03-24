@@ -6,9 +6,7 @@ editor.render = function() {
     $canvas.empty();
 
     editor.state.sections.forEach(function(section) {
-
         const $section = editor.renderSection(section);
-
          $canvas.append($section);
     });
 
@@ -18,44 +16,45 @@ editor.render = function() {
 //=================================
 // Render section
 //=================================
-editor.renderSection = function(section) {
+editor.renderSection = function(section){
+
+    const selected =
+        editor.state.selectedType === "section" &&
+        section.id === editor.state.selectedId
+        ? "selected"
+        : "";
 
     const $section = $("<div>")
-        .addClass("canvas-section")
+        .addClass(`canvas-section ${selected}`)
         .attr("data-id", section.id);
 
-    if (
-        editor.state.selected &&
-        editor.state.selected.type === "section" &&
-        editor.state.selected.id === section.id
-    ) 
-    {
-        $section.addClass("selected");
-
-        const $toolbar = $("<div>")
-            .addClass("section-toolbar")
-            .html(`
-                <button class="move-up">
+    const $toolbar = $("<div>")
+        .addClass("section-toolbar")
+        .html(`
+            <button class="move-up button">
                 <span class="material-symbols-outlined">arrow_upward</span>
-                </button>
+            </button>
 
-                <button class="move-down">
+            <button class="move-down button">
                 <span class="material-symbols-outlined">arrow_downward</span>
-                </button>
+            </button>
 
-                <button class="duplicate">
+            <button class="duplicate button">
                 <span class="material-symbols-outlined">content_copy</span>
-                </button>
+            </button>
 
-                <button class="delete-section">
+            <button class="delete-section button">
                 <span class="material-symbols-outlined">delete</span>
-                </button>
-            `);
+            </button>
 
-        $section.prepend($toolbar);
-    }
+            <button class="add-column button">
+                <span class="material-symbols-outlined">add</span>
+                <span style="font-size:50%; text-transform: lowercase;">col</span>
+            </button>
+        `);
 
-    // ===== colonne =====
+    $section.prepend($toolbar);
+
     const $columns = $("<div>").addClass("section-columns");
 
     if(section.columns){
@@ -66,63 +65,76 @@ editor.renderSection = function(section) {
 
     $section.append($columns);
 
-    // ===== bottone aggiungi colonna =====
-    const $addColumn = $("<button>")
-        .addClass("add-column")
-        .text("+ Colonna")
-        .on("click", function(){
-
-            section.columns.push({
-                id: editor.utils.uuid("col"),
-                width:200,
-                widgets:[]
-            });
-
-            editor.render();
-        });
-
-    $section.append($addColumn);
-
     return $section;
 };
-///=================================
+
+//=================================
 // Render column
 //=================================
 editor.renderColumn = function(column){
 
     const $column = $("<div>")
         .addClass("canvas-column")
-        .attr("data-id", column.id);
-
-    // colonna selezionata
-    if(
-        editor.state.selected &&
-        editor.state.selected.type === "column" &&
-        editor.state.selected.id === column.id
-    ){
-
-        $column.addClass("selected");
+        .attr("data-id", column.id)
+        .css("width", column.width + "%");
 
         const $toolbar = $("<div>")
             .addClass("column-toolbar")
             .html(`
-                <button class="move-left">
+                <button class="move-left button">
                     <span class="material-symbols-outlined">arrow_back</span>
                 </button>
 
-                <button class="move-right">
+                <button class="move-right button">
                     <span class="material-symbols-outlined">arrow_forward</span>
                 </button>
 
-                <button class="delete-column">
+                <button class="delete-column button">
                     <span class="material-symbols-outlined">delete</span>
                 </button>
             `);
 
         $column.prepend($toolbar);
-    }
 
-    // render widget
+    column.widgets.forEach(widget => {
+        $column.append(editor.renderWidget(widget));
+    });
+
+    return $column;
+};//=================================
+// Render column
+//=================================
+editor.renderColumn = function(column){
+
+    const selected =
+        editor.state.selectedType === "column" &&
+        column.id === editor.state.selectedId
+        ? "selected"
+        : "";
+
+    const $column = $("<div>")
+        .addClass(`canvas-column ${selected}`)
+        .attr("data-id", column.id)
+        .css("width", column.width + "%");
+
+    const $toolbar = $("<div>")
+        .addClass("column-toolbar")
+        .html(`
+            <button class="move-left button">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+
+            <button class="move-right button">
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+
+            <button class="delete-column button">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        `);
+
+    $column.prepend($toolbar);
+
     column.widgets.forEach(widget => {
         $column.append(editor.renderWidget(widget));
     });
@@ -136,27 +148,33 @@ editor.renderColumn = function(column){
 editor.renderWidget = function(widget){
 
     const def = editor.widgets[widget.type];
-    const selected = widget.id === editor.state.selectedWidgetId ? "selected" : "";
+
+     const selected =
+        editor.state.selectedType === "widget" &&
+        widget.id === editor.state.selectedId
+        ? "selected"
+        : ""; 
+
     const content = def.render(widget);
 
     return `
         <div class="canvas-widget ${selected}" data-id="${widget.id}">
             <div class="widget-toolbar">
-                <button class="widget-delete"><span class="material-symbols-outlined">delete</span></button>
+                <button class="widget-delete button">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
             </div>
 
             ${content}
-
         </div>
     `;
 };
-
 //=================================     
 //  colonne sortable
 //================================= 
 editor.initSortableColumns = function(){
 
-    $(".canvas-columns").sortable({
+    $(".canvas-column").sortable({
         items: ".canvas-column",
         axis: "x",
 
@@ -174,135 +192,113 @@ editor.initSortableColumns = function(){
 editor.syncColumnsState = function(){
 
     editor.state.sections.forEach(section => {
-
-        const $row = $(".canvas-section[data-id='"+section.id+"'] .canvas-columns");
-
+        const $row = $(".canvas-section[data-id='"+section.id+"'] .canvas-column");
         const newOrder = [];
 
         $row.children(".canvas-column").each(function(){
-
             const id = $(this).data("id");
-
             const column = section.columns.find(c => c.id === id);
-
             if(column) newOrder.push(column);
-
         });
 
         section.columns = newOrder;
-
     });
-
 };
 
 //==========================================
 // render pannello dettagli
 //==========================================
-editor.renderInspector = function(widget, def){
-// console.log("========>DETTAGLI");
+editor.renderInspector = function(item, def){
 
-    const $panel = $("#widget-inspector");
+    let html = `<div class="inspector">`;
 
-    if(!$panel.length) return;
+    html += `<h3>${def.label || "Proprietà"}</h3>`;
 
-    $panel.empty();
+    for (const fieldName in def.fields){
 
-    $panel.append(`
-        <div class="inspector-title">
-            <h4>Dettagli ${def.label}</h4>
-        </div>
-        <div class="inspector-body"></div>
-    `);
-//console.log("TITOLO = ", def);
-
-    //------------------------------------------------
-    //  campi modificabili
-    //------------------------------------------------
-    if(!def.fields) return;
-
-    Object.keys(def.fields).forEach(fieldName => {
         const field = def.fields[fieldName];
-        const value = widget.props[fieldName] ?? "";
+        const value = item.props?.[fieldName] ?? "";
 
-        let input = "";
-// ----------------------------------------------------
-        if(field.type === "text"){
+        html += `<div class="field">`;
+        html += `<label>${field.label}</label>`;
 
-            input = `
+        // TEXT
+        if (field.type === "text"){
+            html += `
                 <input type="text"
-                       data-field="${fieldName}"
-                       value="${value}">
+                    value="${value}"
+                    data-field="${fieldName}">
             `;
-
         }
 
-        if(field.type === "text"){
-            input = `
-                <input
-                       data-field="${fieldName}"
-                       value="${value}">
-            `;
+        // SELECT
+        if (field.type === "select"){
+            html += `<select data-field="${fieldName}">`;
 
+            for (const k in field.options){
+                const selected = k == value ? "selected" : "";
+                html += `<option value="${k}" ${selected}>${field.options[k]}</option>`;
+            }
+
+            html += `</select>`;
         }
 
-        if(field.type === "color"){
+        // RANGE
+        if (field.type === "range"){
+            html += `
+                <input type="range"
+                    min="${field.min}"
+                    max="${field.max}"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
 
-            input = `
+        // COLOR (con fix var())
+        if (field.type === "color"){
+            html += `
                 <input type="color"
-                       data-field="${fieldName}"
-                       value="${value}">
+                    value="${resolveColor(value)}"
+                    data-field="${fieldName}">
             `;
-
-        }
-        if(field.type === "number"){
-
-            input = `
-                <input type="number"
-                       data-field="${fieldName}"
-                       value="${value}">
-            `;
-
-        }
-        if(field.type === "select"){
-
-            let options = "";
-
-            Object.keys(field.options).forEach(k => {
-
-                const selected =
-                    k === value ? "selected" : "";
-
-                options += `
-                    <option value="${k}" ${selected}>
-                        ${field.options[k]}
-                    </option>
-                `;
-
-            });
-
-            input = `
-                <select data-field="${fieldName}">
-                    ${options}
-                </select>
-            `;
-
         }
 
-        const row = `
-            <div class="inspector-row">
+        html += `</div>`;
+    }
 
-                <label>
-                    ${field.label}
-                </label>
+    html += `</div>`;
 
-                ${input}
-
-            </div>
-        `;
-
-        $panel.append(row);
-
-    });
-
+    $("#inspector").html(html);
 };
 
+//=============================================
+//  SELEZIONE/DESELEZIONE CENTRALIZZATA
+//=============================================
+editor.clearSelection = function(){
+    editor.state.selectedType = null;
+    editor.state.selectedId = null;
+};
+
+editor.selectSection = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "section";
+    editor.state.selectedId = id;
+console.log("SEZIONE STATE:", editor.state);
+    editor.render();
+};
+
+editor.selectColumn = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "column";
+    editor.state.selectedId = id;
+console.log("COLONNA STATE:", editor.state);
+    editor.render();
+};
+
+editor.selectWidget = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "widget";
+    editor.state.selectedId = id;
+    editor.render();
+    editor.openWidgetInspector(id);
+};
