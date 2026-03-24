@@ -283,7 +283,6 @@ editor.selectSection = function(id){
     editor.clearSelection();
     editor.state.selectedType = "section";
     editor.state.selectedId = id;
-console.log("SEZIONE STATE:", editor.state);
     editor.render();
 };
 
@@ -291,7 +290,6 @@ editor.selectColumn = function(id){
     editor.clearSelection();
     editor.state.selectedType = "column";
     editor.state.selectedId = id;
-console.log("COLONNA STATE:", editor.state);
     editor.render();
 };
 

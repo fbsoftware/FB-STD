@@ -1,17 +1,3 @@
-/* //================================
-//  Bind global events
-//================================  
-editor.bindEvents = function() {
-    // CLICK SEZIONE (delegato)
-    $(document).on("click", ".canvas-section", function(e){
-console.log("-Bind global- Clic SEZIONE");
-        if($(e.target).closest(".canvas-column").length)
-        {        return;    }
-    e.stopPropagation();
-
-    editor.render();
-});
-*/
 //=================================
 // Move section up
 //=================================
@@ -208,7 +194,6 @@ $(document).on("click", ".canvas-column", function(e){
 if($(e.target).closest(".canvas-widget").length) return;
     const id = $(this).data("id");
 
-console.log("Clic COLONNA + SELECTED", id);    
     editor.selectColumn(id);
 });
 
@@ -392,7 +377,6 @@ $(document).on("click", ".canvas-widget", function(e){
     e.stopPropagation();
 
     const id = $(this).data("id");
-console.log("Clic WIDGET + SELECTED", id);    
 
     editor.selectWidget(id);
 });
@@ -478,7 +462,6 @@ $(document).on("click", ".canvas-section", function(e){
   if($(e.target).closest(".canvas-column").length) return;
 
     const id = $(this).data("id");
-console.log("Clic SEZIONE + SELECTED", id);    
     editor.selectSection(id);
  
 });

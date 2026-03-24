@@ -178,3 +178,11 @@ editor.findWidgetById = function (id) {
     return null;
 
 };
+
+
+//=================================
+// ➕ SEZIONE
+//=================================
+$(document).on("click", "#add-section", function(){
+    editor.createSection();
+});

@@ -148,7 +148,7 @@ display: none !important;
     transition: 0.2s;
     min-height: 200px;
     margin-bottom: 20px;
-    padding: 50px;
+    padding: 20px;
     display: flex;
 }
 .canvas-widget.selected{
@@ -183,7 +183,7 @@ display: none !important;
     min-height:80px;
     min-width: 200px;
     border:1px dashed #ccc;
-    padding:50px;
+    padding:20px;
 }
 
 .canvas-column.drag-over {

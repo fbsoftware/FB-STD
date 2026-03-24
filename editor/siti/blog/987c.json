@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "987c",
         "version": "2.0",
-        "updated_at": "2026-03-24T22:30:35.287Z"
+        "updated_at": "2026-03-24T22:34:02.524Z"
     },
     "global": {
         "colors": {
@@ -28,7 +28,7 @@
             "columns": [
                 {
                     "id": "col-1774391443795-949",
-                    "width": 50,
+                    "width": 33.333333333333336,
                     "widgets": [
                         {
                             "id": "w1774391450889_1",
@@ -53,16 +53,14 @@
                 },
                 {
                     "id": "col-1774368987667-656",
-                    "width": 50,
+                    "width": 33.333333333333336,
                     "widgets": [
                         {
-                            "id": "w1774369078009_1",
-                            "type": "header",
+                            "id": "w1774391846869_1",
+                            "type": "spacer",
                             "props": {
-                                "text": "Titolo ---",
-                                "level": "h2",
-                                "align": "center",
-                                "color": "#ffa500"
+                                "text": "",
+                                "height": "20px"
                             }
                         },
                         {
@@ -76,6 +74,22 @@
                                 "sfondo": "#ffa500",
                                 "bordo": "15",
                                 "padd": "20"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1774391865103-868",
+                    "width": 33.333333333333336,
+                    "widgets": [
+                        {
+                            "id": "w1774391868922_2",
+                            "type": "image",
+                            "props": {
+                                "src": "images\/image.png",
+                                "alt": "immagine",
+                                "width": "150px",
+                                "align": "center"
                             }
                         }
                     ]

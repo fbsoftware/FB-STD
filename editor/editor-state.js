@@ -31,7 +31,7 @@ editor.generateId = function(prefix) {
 //  Create new section
 //=================================
  editor.createSection = function(){
-console.log("Crea sezione+col+win");
+    console.log("➕ SEZIONE");
     const section = {
         id: editor.utils.uuid("sec"),
         columns: [
