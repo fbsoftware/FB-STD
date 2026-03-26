@@ -49,28 +49,62 @@ editor.widgets = {
         label:"Testo",
         icon:"📝",
 
-  defaultProps:{
-     text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
-     align:"left",
-     color:"#000000"
-  },
+defaultProps:{
+    text:"Lorem ipsum dolor ...",
+    align:"left",
+    color:"var(--color-text)",
+    fontSize:"16px",
+    fontWeight:"400",
+    link:"",
+    image:""
+},
 
   fields:{
-    text:{
-        type:"textarea",
-        label:"Testo"},
-
-    align:{type:"select",    
-        options:{left:"Sinistra",
-                center:"Centro",
-                right:"Destra"} ,
-        label:"Allineamento"}, 
-
+    text:{type:"textarea", label:"Testo"},
+    align:{
+        type:"select",
+        label:"Allineamento",
+        options:{
+            left:"Sinistra",
+            center:"Centro",
+            right:"Destra",
+            justify:"Giustificato"
+        }
+    },
     color:{
-        type:"color",
+        type:"select",
         label:"Colore",
+        options:{
+            "var(--color-primary)":"Primario",
+            "var(--color-secondary)":"Secondario",
+            "var(--color-accent)":"Accent",
+            "var(--color-text)":"Testo",
+            "var(--color-bg)":"Sfondo"
+        }
+    },
+    fontSize:{
+        type:"select",
+        label:"Dimensione font",
+        options:{
+            "16px":"Testo",
+            "36px":"Titolo",
+            "28px":"Sottotitolo",
+            "22px":"Evidenza"
+        }
+    },
+
+    fontWeight:{
+        type:"select",
+        label:"Peso font",
+        options:{
+            "400":"Normale",
+            "600":"Semibold",
+            "700":"Bold"
+        }
+    },
+    link:{type:"text", label:"Link"},
+    image:{type:"text", label:"Immagine URL"}
 },
-  },
 
     render(widget){
         const p = widget.props;
@@ -79,6 +113,8 @@ editor.widgets = {
         <textarea style="
             text-align:${p.align || "left"};
             color:${p.color || "#000"};
+            font-size:${p.fontSize || "16px"};
+            font-weight:${p.fontWeight|| "400"};
         ">
             ${p.text || ""}
         </textarea>
@@ -192,8 +228,9 @@ fields:{
             align: "center",
             color:"#000000",
             sfondo:"#ffa500",
-            bordo:"15",
-            padd:"20"
+            bordo:"25",
+            padd:"20",
+            fontSize:"22px"
         },
 
         fields:{
@@ -214,13 +251,29 @@ fields:{
                     right:"Destra"
                 }
             },
-            color:{
-                type:"color",
-                label:"Colore"   },
+    color:{
+        type:"select",
+        label:"Colore",
+        options:{
+            "var(--color-primary)":"Primario",
+            "var(--color-secondary)":"Secondario",
+            "var(--color-accent)":"Accent",
+            "var(--color-text)":"Testo",
+            "var(--color-bg)":"Sfondo"
+        }
+    },
             
-            sfondo:{
-                type:"color",
-                label:"Sfondo"    },
+    sfondo:{
+        type:"select",
+        label:"Sfondo",
+        options:{
+            "var(--color-primary)":"Primario",
+            "var(--color-secondary)":"Secondario",
+            "var(--color-accent)":"Accent",
+            "var(--color-text)":"Testo",
+            "var(--color-bg)":"Sfondo"
+        }
+    },
 
             bordo:{
                 type:"number",
@@ -228,14 +281,24 @@ fields:{
                 
             padd:{
                 type:"number",
-                label:"Padding px"}
+                label:"Padding px"},
+            fontSize:{
+                type:"select",
+                label:"Dimensione font",
+                options:{
+                    "16px":"Testo",
+                    "36px":"Titolo",
+                    "28px":"Sottotitolo",
+                    "22px":"Evidenza"
+        }
+    },
         },
 
         render: function(widget){
             return `
             <div class="widget-button" style="text-align:${widget.props.align}; background-color:${widget.props.sfondo};
             border-radius:${widget.props.bordo}px; padding:${widget.props.padd}px;">
-                <a  href="${widget.props.url}" style="text-decoration: none;">
+                <a  href="${widget.props.url}" style="text-decoration: none; font-size:${widget.props.fontSize}">
                 <span  style="justify-content:center;  color:${widget.props.color};">${widget.props.text}</span></a>
             </div>    
             `;

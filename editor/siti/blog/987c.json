@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "987c",
         "version": "2.0",
-        "updated_at": "2026-03-26T10:28:32.441Z"
+        "updated_at": "2026-03-26T17:06:29.936Z"
     },
     "global": {
         "colors": {
@@ -70,10 +70,10 @@
                                 "text": "CERCA",
                                 "url": "#",
                                 "align": "center",
-                                "color": "#000000",
-                                "sfondo": "#ffa500",
-                                "bordo": "15",
-                                "padd": "20"
+                                "color": "var(--color-text)",
+                                "sfondo": "var(--color-accent)",
+                                "bordo": "33",
+                                "padd": "24"
                             }
                         }
                     ]
@@ -97,6 +97,6 @@
             ]
         }
     ],
-    "selectedType": null,
-    "selectedId": null
+    "selectedType": "widget",
+    "selectedId": "w1774391425536_1"
 }
