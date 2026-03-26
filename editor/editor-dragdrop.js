@@ -89,7 +89,7 @@ editor.updateWidgetOrder = function(columnId, newOrder){
 };
 
 //=================================
-// Colori colonne "droppabili"
+// Colonne "droppabili"
 //=================================
 $(document).on("dragover", ".canvas-column", function(e){
     e.preventDefault();
@@ -178,3 +178,12 @@ editor.findWidgetById = function (id) {
     return null;
 
 };
+
+
+//=================================
+// ➕ SEZIONE
+//=================================
+$(document).on("click", "#add-section", function(){
+
+    editor.createSection();
+});

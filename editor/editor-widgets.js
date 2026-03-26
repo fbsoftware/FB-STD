@@ -3,77 +3,177 @@
 //==============================================================    
 editor.widgets = {
 
-    text: {
+    text: {   //-----------------------------------------------
 
-  label:"Testo",
-  icon:"📝",
+        label:"Testo",
+        icon:"📝",
 
   defaultProps:{
      text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
      align:"left",
-     color:"var(--color-primary)",
-     customColor:""
+     color:"#000000"
   },
 
   fields:{
-     text:{type:"text",label:"Testo"},
-     align:{
-        type:"select",
-        options:["left","center","right"]
-     },
-     color:{type:"color"}
+    text:{
+        type:"text",
+        label:"Testo"},
+
+    align:{type:"select",    
+        options:{left:"Sinistra",
+                center:"Centro",
+                right:"Destra"} ,
+        label:"Allineamento"}, 
+
+    color:{
+        type:"color",
+        label:"Colore",
+},
   },
 
-  render(widget){
-     const p = widget.props;
+    render(widget){
+        const p = widget.props;
 
-     return `
-     <div style="
-        text-align:${p.align};
-        color:${p.color};
-     ">
-        ${p.text}
-     </div>
-     `;
-  }
+        return `
+        <div style="
+            text-align:${p.align || "left"};
+            color:${p.color || "#000"};
+        ">
+            ${p.text || ""}
+        </div>
+        `;
+    }
+    },
+    textarea: {  //-----------------------------------------------
 
+        label:"Testo",
+        icon:"📝",
+
+  defaultProps:{
+     text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+     align:"left",
+     color:"#000000"
+  },
+
+  fields:{
+    text:{
+        type:"textarea",
+        label:"Testo"},
+
+    align:{type:"select",    
+        options:{left:"Sinistra",
+                center:"Centro",
+                right:"Destra"} ,
+        label:"Allineamento"}, 
+
+    color:{
+        type:"color",
+        label:"Colore",
 },
+  },
 
-    image: {
+    render(widget){
+        const p = widget.props;
+
+        return `<div>
+        <textarea style="
+            text-align:${p.align || "left"};
+            color:${p.color || "#000"};
+        ">
+            ${p.text || ""}
+        </textarea>
+        </div>
+        `;
+    }
+    },
+    image: {   //-----------------------------------------------
 
         label: "Immagine",
         icon: "🖼️ ",
 
         defaultProps: {
-            src: "https://placehold.co/150x150",
-            alt: "https://placehold.co/150x150"
-            
+            src: "images/image.png",
+            alt: "immagine",
+            width: "150px",
+            align:"center"
         },
+
+        fields:{
+            src:{
+                type:"image",
+                label:"Immagine"},
+            alt:{
+                type:"text",
+                label:"Testo alternativo"},
+            width:{
+                type:"number",
+                label:"Larghezza px"},
+            align:{
+                type:"select",    
+                options:{left:"Sinistra",
+                        center:"Centro",
+                        right:"Destra"} ,
+                label:"Allineamento"}, 
+       },      
 
         render: function(widget){
             return `
             <div class="widget-image">
-                <img src="${widget.props.src}" alt="${widget.props.alt}" />
+                <img src="${widget.props.src}" 
+                     alt="${widget.props.alt}" 
+                     width="${widget.props.width}" 
+                     style="align-text:${widget.props.align}"/>
             </div>
             `;
         }
 
     },
-header: {
+    header: {   //-----------------------------------------------
         label: "Titolo",
         icon: "📌",
 
         defaultProps: {
             text: "Titolo ---",
             level: "h2",
-            align: "center"
+            align: "center",    
+            color:"#ffa500"
         },
+
+fields:{
+    text:{
+        type:"text",
+        label:"Titolo"
+    },
+    level:{
+        type:"select",
+        label:"Tag",
+        options:{
+            h1:"H1",
+            h2:"H2",
+            h3:"H3"
+        }
+    },
+    align:{
+        type:"select",
+        label:"Allineamento",
+        options:{
+            left:"Sinistra",
+            center:"Centro",
+            right:"Destra"   }
+    },
+
+    color:{
+        type:"color",
+        label:"Colore"    },
+},
 
         render: function(widget){
             const tag = widget.props.level;
+            const col = widget.props.color;
+            const all = widget.props.align;
             return `
             <div class="widget-header">
-                <${tag} style="text-align:${widget.props.align}">
+                <${tag} style="text-align:${all} ; color:${col}">
                     ${widget.props.text}
                 </${tag}>
             </div>
@@ -81,7 +181,7 @@ header: {
         }
 
     },
-button: {
+    button: {   //-----------------------------------------------
 
         label: "Bottone",
         icon: "🔘",
@@ -89,32 +189,82 @@ button: {
         defaultProps: {
             text: "CERCA",
             url: "#",
-            align: "center"
+            align: "center",
+            color:"#000000",
+            sfondo:"#ffa500",
+            bordo:"15",
+            padd:"20"
+        },
+
+        fields:{
+            text:{
+                type:"text",
+                label:"Titolo"
+            },
+            url:{
+                type:"text",
+                label:"Link"
+            },
+            align:{
+                type:"select",
+                label:"Allineamento",
+                options:{
+                    left:"Sinistra",
+                    center:"Centro",
+                    right:"Destra"
+                }
+            },
+            color:{
+                type:"color",
+                label:"Colore"   },
+            
+            sfondo:{
+                type:"color",
+                label:"Sfondo"    },
+
+            bordo:{
+                type:"number",
+                label:"Raggio bordo px"},
+                
+            padd:{
+                type:"number",
+                label:"Padding px"}
         },
 
         render: function(widget){
             return `
-            <div class="widget-button" style="text-align:'${widget.props.align}'">
-                <a  src="${widget.props.url}"/>${widget.props.text}</a>
+            <div class="widget-button" style="text-align:${widget.props.align}; background-color:${widget.props.sfondo};
+            border-radius:${widget.props.bordo}px; padding:${widget.props.padd}px;">
+                <a  href="${widget.props.url}" style="text-decoration: none;">
+                <span  style="justify-content:center;  color:${widget.props.color};">${widget.props.text}</span></a>
             </div>    
             `;
         }
 
     }, 
- spacer: {
+    spacer: {   //-----------------------------------------------
 
         label: "Spaziatore",
         icon: "🔘",
 
         defaultProps: {
-                text: "Spazio vuoto",
-                height: "200px"
+                text: "",
+                height: "20px"
         },
+
+        fields:{
+            text:{
+                type:"text",
+                label:"Testo"},
+            height:{
+                type:"number",
+                label:"Altezza px"}
+       },  
 
         render: function(widget){
             return `
-            <div class="widget-spacer">
-                <br  src="${widget.props.src}"/>
+            <div class="widget-spacer" style="height:${widget.props.height}px">
+                ${widget.props.text}
             </div>    
             `;
         }
@@ -181,21 +331,13 @@ editor.getSelectedWidget = function(){
     const id = editor.state.selected.id;
 
     for(const section of editor.state.sections){
-
         for(const column of section.columns){
-
             for(const widget of column.widgets){
-
                 if(widget.id === id) return widget;
-
             }
-
         }
-
     }
-
     return null;
-
 };
 
 //=================================
@@ -209,139 +351,100 @@ editor.createWidget = function(type){
         console.error("Widget type not found:", type);
         return null;
     }
-
     return {
-
         id: this.uid(),
-
         type: type,
-
         props: structuredClone(def.defaultProps)
-
     };
-
 };
 
 //=================================
 // Apre pannello dettagli widget 
 //=================================
-editor.openWidgetInspector = function(widgetId){
-   
-    // attiva tab Dettagli
-    $("#tabs").tabs();
-    $("#tabs").tabs("option", "active", 1);
+editor.openWidgetInspector = function(id){
 
-    let widget = null;
-
-    editor.state.sections.forEach(section=>{
-        section.columns.forEach(column=>{
-            column.widgets.forEach(w=>{
-                if(w.id === widgetId){
-                    widget = w;
-                }
-            });
-        });
-    });
-
-    if(!widget) return;
+    const widget = editor.findWidgetById(id);
+    if (!widget) return;
 
     const def = editor.widgets[widget.type];
 
-    editor.renderInspector(widget, def);
+/*     editor.state.selectedType = "widget";
+    editor.state.selectedId = id; */
 
+    editor.renderInspector(widget, def);
 };
 
-//============================  
-// widget testo
-//============================  
-editor.widgets.text = {
+//===============================================================
+// Editor Colonne - proprietà + campi di modifica
+//==============================================================    
+editor.columns = {
 
-    label:"Testo",
-
+  column: {
+    label:"Colonna",
     icon:"📝",
 
     defaultProps:{
-        text:"Lorem ipsum dolor sit amet.",
-        align:"left",
-        color:"var(--color-primary)"
+      width: 200
     },
 
-    fields:{
-
-        text:{
-            type:"text",
-            label:"Testo"
-        },
-
-        align:{
-            type:"select",
-            label:"Allineamento",
-            options:{
-                left:"Sinistra",
-                center:"Centro",
-                right:"Destra",
-                justify:"Giustificato"
-            }
-        },
-
-        color:{
-            type:"select",
-            label:"Globali",
-            options:{
-                primary:"#3366ff",
-                secondary:"#ff6633",
-                accent:"#ffa500",
-                bg:"#ffffff",
-                text:"#000000",
-                custom:"#23844a"
-            }
-        }
-    /*,    
-    color:{
-        type:"select",
-        label:"Colore",
-        options:"colors"
-    }
-*/
+    fields: {
+      width: {
+        type: "range",
+        min: 10,
+        max: 500,
+        label: "Larghezza"
+      }
     },
 
-    render:function(widget){
+    render(column){
+      const p = column.props;
 
-        return `
-        <div class="widget-text"
-             style="
-                text-align:${widget.props.align};
-                color:${widget.props.color};
-             ">
-            ${widget.props.text}
-        </div>
-        `;
-
+      return `
+      <div class="canvas-column"
+           data-id="${column.id}"
+           style="width:${p.width || 50}px;">
+      </div>
+      `;
     }
+  }
+}
 
+//==================================================
+// 🧱 1. openColumnInspector
+//==================================================
+editor.openColumnInspector = function(id){
+    console.log("👉 openColumnInspector", id);
+
+    const column = editor.findColumnById(id);
+
+    if (!column) return;
+    const def = editor.columns.column;
+        editor.renderInspector(column, def);
 };
-/*
-//============================  
-// widget titolo (header)
-//============================ 
-fields:{
-    text:{type:"text",label:"Titolo"},
-    level:{
-        type:"select",
-        label:"Tag",
-        options:{
-            h1:"H1",
-            h2:"H2",
-            h3:"H3"
-        }
-    },
-    align:{
-        type:"select",
-        label:"Allineamento",
-        options:{
-            left:"Sinistra",
-            center:"Centro",
-            right:"Destra"
+
+//==================================================
+// cerca colonna per dettagli
+//==================================================
+editor.findColumnById = function(id){
+    for (const section of editor.state.sections){
+        for (const col of section.columns){
+            if (col.id == id) return col;
         }
     }
-}*/
+};
+
+//==================================================
+// converte formato per colori
+//==================================================
+function resolveColor(value) {
+  if (!value) return "#000000";
+
+  const match = value.match(/var\(--(.+?)\)/);
+  if (match) {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue(`--${match[1]}`)
+      .trim();
+  }
+
+  return value;
+}

@@ -1,0 +1,102 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "987c",
+        "version": "2.0",
+        "updated_at": "2026-03-26T10:28:32.441Z"
+    },
+    "global": {
+        "colors": {
+            "primary": "#3366ff",
+            "secondary": "#ff6633",
+            "accent": "#ffa500",
+            "text": "#222222",
+            "bg": "#ffffff",
+            "undefined": "#ffffff"
+        },
+        "typography": [],
+        "fonts": {
+            "heading-family": "Inter",
+            "heading-weight": "400",
+            "body-family": "Inter",
+            "body-weight": "400"
+        }
+    },
+    "sections": [
+        {
+            "id": "sec-1774368987667-848",
+            "columns": [
+                {
+                    "id": "col-1774391443795-949",
+                    "width": 33.333333333333336,
+                    "widgets": [
+                        {
+                            "id": "w1774391450889_1",
+                            "type": "header",
+                            "props": {
+                                "text": "Titolo Capitolo",
+                                "level": "h2",
+                                "align": "center",
+                                "color": "#ffa500"
+                            }
+                        },
+                        {
+                            "id": "w1774477810814_1",
+                            "type": "textarea",
+                            "props": {
+                                "text": "Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+                                "align": "right",
+                                "color": "#0d0d0d"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1774368987667-656",
+                    "width": 33.333333333333336,
+                    "widgets": [
+                        {
+                            "id": "w1774391846869_1",
+                            "type": "spacer",
+                            "props": {
+                                "text": "",
+                                "height": "20px"
+                            }
+                        },
+                        {
+                            "id": "w1774391425536_1",
+                            "type": "button",
+                            "props": {
+                                "text": "CERCA",
+                                "url": "#",
+                                "align": "center",
+                                "color": "#000000",
+                                "sfondo": "#ffa500",
+                                "bordo": "15",
+                                "padd": "20"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1774391865103-868",
+                    "width": 33.333333333333336,
+                    "widgets": [
+                        {
+                            "id": "w1774391868922_2",
+                            "type": "image",
+                            "props": {
+                                "src": "images\/image.png",
+                                "alt": "immagine",
+                                "width": "150px",
+                                "align": "center"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "selectedType": null,
+    "selectedId": null
+}

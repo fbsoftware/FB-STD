@@ -1,31 +1,20 @@
-//================================
-//  Bind global events
-//================================  
-editor.bindEvents = function() {
+//====================================
+//  deseleziona se fuori sezione/inspector
+//====================================
+$(document).on("click", function(e){
 
-    // CLICK SEZIONE (delegato)
-    $(document).on("click", ".canvas-section", function(e){
-console.log("-1- Clic su colonna e non sezione");
-        if($(e.target).closest(".canvas-column").length){
+    if(
+        $(e.target).closest(".canvas-widget").length ||
+        $(e.target).closest(".canvas-column").length ||
+        $(e.target).closest(".canvas-section").length ||
+        $(e.target).closest("#inspector").length
+    ){
         return;
     }
-    e.stopPropagation();
 
-    const id = $(this).data("id");
-    editor.state.selected = {
-        type: "section",
-        id: id
-    };
-
+    editor.clearSelection();
     editor.render();
-
 });
-    // CLICK +SEZIONE (diretto, perché è statico nel DOM)
-    $("#add-section").on("click", function() {
-        editor.createSection();
-        editor.render();
-    });
-
 //=================================
 // Move section up
 //=================================
@@ -37,7 +26,6 @@ $(document).on("click", ".move-up", function(e) {
         .data("id");
 
     editor.moveSection(sectionId, "up");
-    editor.state.selected = null;
 
 });
 
@@ -53,7 +41,6 @@ $(document).on("click", ".move-down", function(e) {
         .data("id");
 
     editor.moveSection(sectionId, "down");
-    editor.state.selected = null;
 
 });
 //=================================
@@ -67,8 +54,7 @@ $(document).on("click", ".delete-section", function(e){
         .closest(".canvas-section")
         .data("id");
 
-    editor.deleteSection(sectionId);
-    editor.state.selected = null;
+  editor.deleteSection(sectionId);
 
 });
 
@@ -83,8 +69,7 @@ $(document).on("click", ".duplicate", function(e){
         .closest(".canvas-section")
         .data("id");
 
-    editor.duplicateSection(sectionId);
-    editor.state.selected = null;
+     editor.duplicateSection(sectionId);
 
 });
 
@@ -92,8 +77,7 @@ $(document).on("click", ".duplicate", function(e){
 // SAVE / PUBBLICA
 //================================
 $(document).on("click", "#save-layout", function(){
-//alert("Vuoi Pubblicare il layout?");
-if(!confirm("Vuoi Pubblicare il layout?")) return;
+if(!confirm("Vuoi Pubblicare il layout ?")) return;
 
     const data = editor.state;
 
@@ -113,6 +97,17 @@ if(!confirm("Vuoi Pubblicare il layout?")) return;
 
 });
 
+//================================
+// SAVE / PUBBLICA
+//================================
+$(document).on("click", "#save-HTML", function(){
+if(!confirm("Vuoi creare HTML ?")) return;
+
+editor.state.page = editor.state; // copia lo state corrente in page
+const html = editor.renderPageHTML(editor.state.page);
+downloadHTML(html);
+
+})
 
 //=================================
 //  Load site config
@@ -179,7 +174,6 @@ $("#saveSiteConfig").on("click", function(){
 
 });
 };
-}
 
 //=================================
 //  + colonna
@@ -205,14 +199,43 @@ editor.addColumn = function(sectionId){
 // Selezione colonna
 //=================================
 $(document).on("click", ".canvas-column", function(e){
-    e.stopPropagation();
 
+    e.stopPropagation();
+if($(e.target).closest(".canvas-widget").length) return;
     const id = $(this).data("id");
 
-    editor.state.selected = {
-        type:"column",
-        id:id
-    };
+    editor.selectColumn(id);
+});
+
+//=================================
+//  Aggiungi colonna, da sezione
+//=================================
+$(document).on("click", ".add-column", function(e){
+
+    e.stopPropagation();
+
+    const sectionId = $(this)
+        .closest(".canvas-section")
+        .data("id");
+
+    const section = editor.state.sections.find(sec => sec.id === sectionId);
+
+    if(!section){
+        console.error("Sezione non trovata:", sectionId);
+        return;
+    }
+
+    section.columns.push({
+        id: editor.utils.uuid("col"),
+        width: 100,
+        widgets: []
+    });
+
+    const n = section.columns.length;
+
+    section.columns.forEach(col => {
+        col.width = 100 / n;
+    });
 
     editor.render();
 
@@ -335,37 +358,6 @@ editor.moveColumnRight = function(colId){
 
 };
 
-//====================================
-//  deseleziona widget
-//====================================
-$(document).on("click", function(e){
-
-    if(!$(e.target).closest(".canvas-widget").length){
-
-        editor.state.selectedWidgetId = null;
-
-        $(".canvas-widget").removeClass("selected");
-
-        $(".widget-toolbar").hide();
-
-    }
-
-});
-
-//=================================
-// clic su canvas vuoto = deselect
-//=================================
-$(document).on("click", "#canvas", function()
-{
-      //  e.stopPropagation();
-console.log("-2- clic su canvas vuoto")
-        if(editor.state.selected){
-
-        editor.state.selected = null;
-        editor.render();
-    }
-});
-
 //=================================
 //  colonna a destra
 //=================================
@@ -385,21 +377,13 @@ $(document).on("click",".move-right",function(e){
 // clic-widget per selezione
 //======================================
 $(document).on("click", ".canvas-widget", function(e){
-console.log("-3- .canvas-widget-clic");
- //e.stopPropagation();
+    e.stopPropagation();
 
     const id = $(this).data("id");
 
-    editor.state.selectedWidgetId = id;
-
-    $(".canvas-widget").removeClass("selected");
-    $(this).addClass("selected");
-
-    editor.openWidgetInspector(id);
-
+    editor.selectWidget(id);
 });
 //======================================
-
 // Cancella widget 
 //======================================
 $(document).on("click", ".widget-delete", function(e){
@@ -421,36 +405,39 @@ $(document).on("click", ".widget-delete", function(e){
 //===============================
 //  3️⃣ Gestione modifica valori
 //===============================
-$(document).on("input change", ".inspector-row [data-field]",
-    function(){
-        const field = $(this).data("field");
-        const value = $(this).val();
-        const widgetId = editor.state.selectedWidgetId;
+$(document).on("input change", "#inspector [data-field]", function(){
 
-        editor.state.sections.forEach(section => {
-            section.columns.forEach(column => {
-                column.widgets.forEach(widget => {
+    const field = $(this).data("field");
+    const value = $(this).val();
 
-                    if(widget.id === widgetId){
-                        widget.props[field] = value;
-                    }
-                });
-            });
-        });
+    let item;
 
-        editor.render();
+    if (editor.state.selectedType === "widget"){
+        item = editor.findWidgetById(editor.state.selectedId);
+    }
+
+    if (editor.state.selectedType === "column"){
+        item = editor.findColumnById(editor.state.selectedId);
+    }
+
+    if (!item) return;
+
+    if (!item.props) item.props = {};
+
+    item.props[field] = value;
+
+    editor.render(); // refresh canvas
 });
-
 //========================================
-//  Blocca direttamente sugli input:
+//  Blocca direttamente l'input inspector
 //========================================
 $(document).on(
-    "click",
-    "#widget-inspector input, #widget-inspector select, #widget-inspector textarea",
+    "mousedown click",
+    "#widget-inspector, #widget-inspector *",
     function(e){
         e.stopPropagation();
-});
-
+    }
+);
 //=======================================
 //  valori globali
 //=======================================
@@ -472,3 +459,17 @@ editor.globals = {
     }
 
 };
+
+//=============================================
+//  SELEZIONE/DESELEZIONE CENTRALIZZATA
+//=============================================
+$(document).on("click", ".canvas-section", function(e){
+    e.stopPropagation();
+
+  if($(e.target).closest(".canvas-column").length) return;
+
+    const id = $(this).data("id");
+    editor.selectSection(id);
+ 
+});
+
