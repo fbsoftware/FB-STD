@@ -3,7 +3,7 @@
 //==============================================================    
 editor.widgets = {
 
-    text: {
+    text: {   //-----------------------------------------------
 
         label:"Testo",
         icon:"📝",
@@ -44,7 +44,49 @@ editor.widgets = {
         `;
     }
     },
-    image: {
+    textarea: {  //-----------------------------------------------
+
+        label:"Testo",
+        icon:"📝",
+
+  defaultProps:{
+     text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+     align:"left",
+     color:"#000000"
+  },
+
+  fields:{
+    text:{
+        type:"textarea",
+        label:"Testo"},
+
+    align:{type:"select",    
+        options:{left:"Sinistra",
+                center:"Centro",
+                right:"Destra"} ,
+        label:"Allineamento"}, 
+
+    color:{
+        type:"color",
+        label:"Colore",
+},
+  },
+
+    render(widget){
+        const p = widget.props;
+
+        return `<div>
+        <textarea style="
+            text-align:${p.align || "left"};
+            color:${p.color || "#000"};
+        ">
+            ${p.text || ""}
+        </textarea>
+        </div>
+        `;
+    }
+    },
+    image: {   //-----------------------------------------------
 
         label: "Immagine",
         icon: "🖼️ ",
@@ -86,7 +128,7 @@ editor.widgets = {
         }
 
     },
-    header: {
+    header: {   //-----------------------------------------------
         label: "Titolo",
         icon: "📌",
 
@@ -139,7 +181,7 @@ fields:{
         }
 
     },
-    button: {
+    button: {   //-----------------------------------------------
 
         label: "Bottone",
         icon: "🔘",
@@ -200,7 +242,7 @@ fields:{
         }
 
     }, 
-    spacer: {
+    spacer: {   //-----------------------------------------------
 
         label: "Spaziatore",
         icon: "🔘",
@@ -331,21 +373,7 @@ editor.openWidgetInspector = function(id){
 
     editor.renderInspector(widget, def);
 };
-/*
-//======================================
-// clic-colonna per selezione
-//======================================
-$(document).on("click", ".canvas-column", function(e){
-console.log("-3- .canvas-column-clic");
-console.log("STATE:", editor.state);
-    const id = $(this).data("id");
 
-    $(".canvas-column").removeClass("selected");
-    $(this).addClass("selected");
-
-    editor.openColumnInspector(id);
-});
-*/
 //===============================================================
 // Editor Colonne - proprietà + campi di modifica
 //==============================================================    

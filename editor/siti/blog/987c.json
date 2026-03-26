@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "987c",
         "version": "2.0",
-        "updated_at": "2026-03-24T22:34:02.524Z"
+        "updated_at": "2026-03-26T10:28:32.441Z"
     },
     "global": {
         "colors": {
@@ -34,19 +34,19 @@
                             "id": "w1774391450889_1",
                             "type": "header",
                             "props": {
-                                "text": "Titolo ---",
+                                "text": "Titolo Capitolo",
                                 "level": "h2",
                                 "align": "center",
                                 "color": "#ffa500"
                             }
                         },
                         {
-                            "id": "w1774391453079_2",
-                            "type": "text",
+                            "id": "w1774477810814_1",
+                            "type": "textarea",
                             "props": {
                                 "text": "Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
-                                "align": "left",
-                                "color": "#000000"
+                                "align": "right",
+                                "color": "#0d0d0d"
                             }
                         }
                     ]
@@ -97,6 +97,6 @@
             ]
         }
     ],
-    "selectedType": "section",
-    "selectedId": "sec-1774368987667-848"
+    "selectedType": null,
+    "selectedId": null
 }

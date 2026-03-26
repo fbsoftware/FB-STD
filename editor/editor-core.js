@@ -1,3 +1,20 @@
+//====================================
+//  deseleziona se fuori sezione/inspector
+//====================================
+$(document).on("click", function(e){
+
+    if(
+        $(e.target).closest(".canvas-widget").length ||
+        $(e.target).closest(".canvas-column").length ||
+        $(e.target).closest(".canvas-section").length ||
+        $(e.target).closest("#inspector").length
+    ){
+        return;
+    }
+
+    editor.clearSelection();
+    editor.render();
+});
 //=================================
 // Move section up
 //=================================
@@ -9,8 +26,7 @@ $(document).on("click", ".move-up", function(e) {
         .data("id");
 
     editor.moveSection(sectionId, "up");
-    //editor.state.selectedType = null;
-    //editor.state.selectedId = null;
+
 });
 
 //=================================
@@ -25,8 +41,6 @@ $(document).on("click", ".move-down", function(e) {
         .data("id");
 
     editor.moveSection(sectionId, "down");
-    //editor.state.selectedType = null;
-    //editor.state.selectedId = null;
 
 });
 //=================================
@@ -41,8 +55,6 @@ $(document).on("click", ".delete-section", function(e){
         .data("id");
 
   editor.deleteSection(sectionId);
-    //editor.state.selectedType = null;
-    //editor.state.selectedId = null;
 
 });
 
@@ -58,8 +70,6 @@ $(document).on("click", ".duplicate", function(e){
         .data("id");
 
      editor.duplicateSection(sectionId);
-   /* editor.state.selectedType = null;
-    editor.state.selectedId = null; */
 
 });
 
@@ -348,13 +358,6 @@ editor.moveColumnRight = function(colId){
 
 };
 
-//====================================
-//  deseleziona widget
-//====================================
-$(document).on("click", function(){
-    editor.clearSelection();
-    editor.render();
-});
 //=================================
 //  colonna a destra
 //=================================
@@ -428,9 +431,13 @@ $(document).on("input change", "#inspector [data-field]", function(){
 //========================================
 //  Blocca direttamente l'input inspector
 //========================================
-$(document).on("click", "#widget-inspector", function(e){
-    e.stopPropagation();
-});
+$(document).on(
+    "mousedown click",
+    "#widget-inspector, #widget-inspector *",
+    function(e){
+        e.stopPropagation();
+    }
+);
 //=======================================
 //  valori globali
 //=======================================

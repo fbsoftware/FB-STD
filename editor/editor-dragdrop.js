@@ -184,5 +184,6 @@ editor.findWidgetById = function (id) {
 // ➕ SEZIONE
 //=================================
 $(document).on("click", "#add-section", function(){
+
     editor.createSection();
 });

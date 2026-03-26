@@ -144,7 +144,7 @@ display: none !important;
 /*========================  */
 .canvas-section {
     position: relative;
-    border: 1px dashed black;
+    border: 2px dashed #ddd;
     transition: 0.2s;
     min-height: 200px;
     margin-bottom: 20px;
@@ -182,7 +182,7 @@ display: none !important;
     position:relative;
     min-height:80px;
     min-width: 200px;
-    border:1px dashed #ccc;
+    border:2px dashed #ddd;
     padding:20px;
 }
 
@@ -264,7 +264,7 @@ display:block;
 position:relative;
 padding:10px;
 width:100%;
-border:1px solid #ddd;
+border:2px solid #ddd;
 margin-bottom:6px;
 background:#fff;
 }

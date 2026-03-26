@@ -48,8 +48,7 @@ editor.renderSection = function(section){
             </button>
 
             <button class="add-column button">
-                <span class="material-symbols-outlined">add</span>
-                <span style="font-size:50%; text-transform: lowercase;">col</span>
+               <span class="material-symbols-outlined">add_column_right</span>
             </button>
         `);
 
@@ -222,7 +221,7 @@ editor.renderInspector = function(item, def){
         html += `<div class="field">`;
         html += `<label>${field.label}</label>`;
 
-        // TEXT
+        // TEXT----------------------------------------
         if (field.type === "text"){
             html += `
                 <input type="text"
@@ -231,7 +230,34 @@ editor.renderInspector = function(item, def){
             `;
         }
 
-        // SELECT
+        // TEXTAREA----------------------------------------
+if(field.type === "textarea"){
+
+    html += `
+        <textarea data-field="${fieldName}" rows="8">${value}</textarea>
+    `;
+}
+
+        // NUMBER----------------------------------------
+        if (field.type === "number"){
+            html += `
+                <input type="number"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
+
+
+        // IMAGE----------------------------------------
+        if (field.type === "image"){
+            html += `
+                <input type="text"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
+
+        // SELECT----------------------------------------
         if (field.type === "select"){
             html += `<select data-field="${fieldName}">`;
 
@@ -243,7 +269,7 @@ editor.renderInspector = function(item, def){
             html += `</select>`;
         }
 
-        // RANGE
+        // RANGE------------------------------------------
         if (field.type === "range"){
             html += `
                 <input type="range"
@@ -254,7 +280,7 @@ editor.renderInspector = function(item, def){
             `;
         }
 
-        // COLOR (con fix var())
+        // COLOR (con fix var())------------------------------
         if (field.type === "color"){
             html += `
                 <input type="color"
@@ -274,7 +300,10 @@ editor.renderInspector = function(item, def){
 //=============================================
 //  SELEZIONE/DESELEZIONE CENTRALIZZATA
 //=============================================
-editor.clearSelection = function(){
+editor.clearSelection = function()
+
+{
+    console.log("CLEAR SELECTION");
     editor.state.selectedType = null;
     editor.state.selectedId = null;
 };
@@ -300,3 +329,4 @@ editor.selectWidget = function(id){
     editor.render();
     editor.openWidgetInspector(id);
 };
+
