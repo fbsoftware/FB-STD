@@ -1,0 +1,114 @@
+{
+    "meta": {
+        "tema": "blog",
+        "page": "987d",
+        "version": "2.0",
+        "updated_at": "2026-03-27T18:29:10.536Z"
+    },
+    "global": {
+        "colors": {
+            "primary": "#3366ff",
+            "secondary": "#ff6633",
+            "accent": "#ffa500",
+            "text": "#222222",
+            "bg": "#ffffff",
+            "undefined": "#ffffff"
+        },
+        "typography": [],
+        "fonts": {
+            "heading-family": "Inter",
+            "heading-weight": "400",
+            "body-family": "Inter",
+            "body-weight": "400"
+        }
+    },
+    "sections": [
+        {
+            "id": "sec-1774630404922-834",
+            "columns": [
+                {
+                    "id": "col-1774630404922-27",
+                    "width": 33.333333333333336,
+                    "widgets": [
+                        {
+                            "id": "w1774630443935_3",
+                            "type": "header",
+                            "props": {
+                                "text": "Textarea",
+                                "level": "h2",
+                                "align": "left",
+                                "color": "var(--color-text)"
+                            }
+                        },
+                        {
+                            "id": "w1774631300922_1",
+                            "type": "textarea",
+                            "props": {
+                                "text": "Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+                                "align": "left",
+                                "color": "var(--color-text)",
+                                "fontSize": "16px",
+                                "fontWeight": "400",
+                                "link": "",
+                                "image": ""
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1774632737922-52",
+                    "width": 20,
+                    "widgets": [
+                        {
+                            "id": "w1774636199215_1",
+                            "type": "header",
+                            "props": {
+                                "text": "Ferrari gialla",
+                                "level": "h2",
+                                "align": "center",
+                                "color": "#000000"
+                            }
+                        },
+                        {
+                            "id": "w1774635599547_1",
+                            "type": "image",
+                            "props": {
+                                "src": "images\/auto.jpg",
+                                "alt": "ialt",
+                                "width": "203",
+                                "align": "center"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "col-1774630436720-450",
+                    "width": 70,
+                    "widgets": [
+                        {
+                            "id": "w1774630447931_4",
+                            "type": "header",
+                            "props": {
+                                "text": "Testo",
+                                "level": "h2",
+                                "align": "left",
+                                "color": "var(--color-text)"
+                            }
+                        },
+                        {
+                            "id": "w1774630439548_2",
+                            "type": "text",
+                            "props": {
+                                "text": "Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed suscipit minus. Sed voluptatem eaque non quam quis quo asperiores quisquam qui harum sunt.",
+                                "align": "left",
+                                "color": "#000000"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "selectedType": null,
+    "selectedId": null
+}

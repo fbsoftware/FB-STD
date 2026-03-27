@@ -46,17 +46,15 @@ editor.widgets = {
     },
     textarea: {  //-----------------------------------------------
 
-        label:"Testo",
+        label:"Textarea",
         icon:"📝",
 
 defaultProps:{
-    text:"Lorem ipsum dolor ...",
+    text:"Lorem ipsum dolor sit amet. Sit minus quibusdam eum error blanditiis sed",
     align:"left",
     color:"var(--color-text)",
     fontSize:"16px",
-    fontWeight:"400",
-    link:"",
-    image:""
+    fontWeight:"400"
 },
 
   fields:{
@@ -172,7 +170,7 @@ defaultProps:{
             text: "Titolo ---",
             level: "h2",
             align: "center",    
-            color:"#ffa500"
+            color:"#000000"
         },
 
 fields:{
@@ -199,8 +197,16 @@ fields:{
     },
 
     color:{
-        type:"color",
-        label:"Colore"    },
+        type:"select",
+        label:"Colore",
+        options:{
+            "var(--color-primary)":"Primario",
+            "var(--color-secondary)":"Secondario",
+            "var(--color-accent)":"Accent",
+            "var(--color-text)":"Testo",
+            "var(--color-bg)":"Sfondo"
+        }
+    },
 },
 
         render: function(widget){
@@ -334,6 +340,58 @@ fields:{
 
     }  
 }
+
+//=================================
+// Apre pannello dettagli widget 
+//=================================
+editor.openWidgetInspector = function(id){
+
+    const widget = editor.findWidgetById(id);
+    if (!widget) return;
+
+    const def = editor.widgets[widget.type];
+
+/*     editor.state.selectedType = "widget";
+    editor.state.selectedId = id; */
+
+    editor.renderInspector(widget, def);
+};
+
+//===============================================================
+// Editor Colonne - proprietà + campi di modifica
+//==============================================================    
+editor.columns = {
+
+  column: {
+    label:"Colonna",
+    icon:"📝",
+
+    defaultProps:{
+      width: 200
+    },
+
+    fields: {
+      width: {
+        type: "range",
+        min: 10,
+        max: 500,
+        label: "Larghezza"
+      }
+    },
+
+    render(column){
+      const p = column.props;
+
+      return `
+      <div class="canvas-column"
+           data-id="${column.id}"
+           style="width:${p.width || 50}px;">
+      </div>
+      `;
+    }
+  }
+}
+
 //=================================
 // crea widget
 //=================================
@@ -421,56 +479,6 @@ editor.createWidget = function(type){
     };
 };
 
-//=================================
-// Apre pannello dettagli widget 
-//=================================
-editor.openWidgetInspector = function(id){
-
-    const widget = editor.findWidgetById(id);
-    if (!widget) return;
-
-    const def = editor.widgets[widget.type];
-
-/*     editor.state.selectedType = "widget";
-    editor.state.selectedId = id; */
-
-    editor.renderInspector(widget, def);
-};
-
-//===============================================================
-// Editor Colonne - proprietà + campi di modifica
-//==============================================================    
-editor.columns = {
-
-  column: {
-    label:"Colonna",
-    icon:"📝",
-
-    defaultProps:{
-      width: 200
-    },
-
-    fields: {
-      width: {
-        type: "range",
-        min: 10,
-        max: 500,
-        label: "Larghezza"
-      }
-    },
-
-    render(column){
-      const p = column.props;
-
-      return `
-      <div class="canvas-column"
-           data-id="${column.id}"
-           style="width:${p.width || 50}px;">
-      </div>
-      `;
-    }
-  }
-}
 
 //==================================================
 // 🧱 1. openColumnInspector
@@ -511,3 +519,90 @@ function resolveColor(value) {
 
   return value;
 }
+
+//==========================================
+// render pannello dettagli
+//==========================================
+editor.renderInspector = function(item, def){
+
+    let html = `<div class="inspector">`;
+
+    html += `<h3>${def.label || "Proprietà"}</h3>`;
+
+    for (const fieldName in def.fields){
+
+        const field = def.fields[fieldName];
+        const value = item.props?.[fieldName] ?? "";
+
+        html += `<div class="field">`;
+        html += `<label>${field.label}</label>`;
+
+        // TEXT----------------------------------------
+        if (field.type === "text"){
+            html += `
+                <input type="text"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
+
+        // TEXTAREA----------------------------------------
+        if(field.type === "textarea"){
+        html += `
+        <textarea data-field="${fieldName}" rows="8">${value}</textarea>
+        `;
+}
+
+        // NUMBER----------------------------------------
+        if (field.type === "number"){
+            html += `
+                <input type="number"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
+        // IMAGE----------------------------------------
+        if (field.type === "image"){
+            html += `
+                <input type="text"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
+        // SELECT----------------------------------------
+        if (field.type === "select"){
+            html += `<select data-field="${fieldName}">`;
+
+            for (const k in field.options){
+                const selected = k == value ? "selected" : "";
+                html += `<option value="${k}" ${selected}>${field.options[k]}</option>`;
+            }
+
+            html += `</select>`;
+        }
+        // RANGE------------------------------------------
+        if (field.type === "range"){
+            html += `
+                <input type="range"
+                    min="${field.min}"
+                    max="${field.max}"
+                    value="${value}"
+                    data-field="${fieldName}">
+            `;
+        }
+        // COLOR (con fix var())------------------------------
+        if (field.type === "color"){
+            html += `
+                <input type="color"
+                    value="${resolveColor(value)}"
+                    data-field="${fieldName}">
+            `;
+        }
+
+        html += `</div>`;
+    }
+
+    html += `</div>`;
+
+    $("#inspector").html(html);
+};

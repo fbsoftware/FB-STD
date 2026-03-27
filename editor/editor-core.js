@@ -15,6 +15,8 @@ $(document).on("click", function(e){
     editor.clearSelection();
     editor.render();
 });
+
+
 //=================================
 // Move section up
 //=================================
@@ -199,8 +201,8 @@ editor.addColumn = function(sectionId){
 // Selezione colonna
 //=================================
 $(document).on("click", ".canvas-column", function(e){
-
     e.stopPropagation();
+console.log("CLICCATA COLONNA");
 if($(e.target).closest(".canvas-widget").length) return;
     const id = $(this).data("id");
 
@@ -403,7 +405,7 @@ $(document).on("click", ".widget-delete", function(e){
 });
 
 //===============================
-//  3️⃣ Gestione modifica valori
+//  3️⃣ Gestione modifica valori 
 //===============================
 $(document).on("input change", "#inspector [data-field]", function(){
 
@@ -428,16 +430,7 @@ $(document).on("input change", "#inspector [data-field]", function(){
 
     editor.render(); // refresh canvas
 });
-//========================================
-//  Blocca direttamente l'input inspector
-//========================================
-$(document).on(
-    "mousedown click",
-    "#widget-inspector, #widget-inspector *",
-    function(e){
-        e.stopPropagation();
-    }
-);
+
 //=======================================
 //  valori globali
 //=======================================
@@ -473,3 +466,105 @@ $(document).on("click", ".canvas-section", function(e){
  
 });
 
+//=============================================
+//  BLOCCHI VARI
+//=============================================
+$(document).on("click", "#editor-tabs, #tab-details, #inspector", function(e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mousedown click input change", "#editor-tabs input, #editor-tabs select, #editor-tabs textarea, #editor-tabs button",
+    function(e){
+        e.stopPropagation();
+    }
+);
+
+//========================================
+//  Blocca direttamente l'input inspector
+//========================================
+$(document).on("mousedown click", "#inspector, #inspector *",
+    function(e){
+        e.stopPropagation();
+    }
+);
+
+//=================================
+// ➕ SEZIONE
+//=================================
+$(document).on("click", "#add-section", function(){
+    editor.createSection();
+});
+
+//=============================================
+// SELEZIONE / DESELEZIONE CENTRALIZZATA
+//=============================================
+editor.clearSelection = function(){
+    editor.state.selectedType = null;
+    editor.state.selectedId = null;
+};
+
+editor.selectSection = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "section";
+    editor.state.selectedId = id;
+    editor.render();
+};
+
+editor.selectColumn = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "column";
+    editor.state.selectedId = id;
+    editor.render();
+    editor.openColumnInspector(id);
+};
+
+editor.selectWidget = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "widget";
+    editor.state.selectedId = id;
+    editor.render();
+    editor.openWidgetInspector(id);
+};
+
+//========================================
+//  larghezza colonna
+//========================================
+$(document).on(
+    "input change", '#inspector [data-column-field="width"]',
+    function(){
+
+        const value = parseInt($(this).val(), 10);
+console.log("col-input modificato" , value);
+        if(isNaN(value)) return;
+
+        const columnId = editor.state.selectedId;
+        const column = editor.findColumnById(columnId);
+
+        if(!column) return;
+
+        column.width = value;
+
+        $('#inspector [data-column-field="width"]').val(value);
+
+        editor.render();
+        editor.openColumnInspector(columnId);
+    }
+);
+$(document).on("input change", "#inspector [data-column-field]",
+    function(){
+
+        const field = $(this).data("column-field");
+        const value = parseInt($(this).val(), 10);
+
+        const columnId = editor.state.selectedId;
+        const column = editor.findColumnById(columnId);
+
+        if(!column) return;
+
+        column[field] = value;
+
+        editor.render();
+        editor.openColumnInspector(columnId);
+    }
+);

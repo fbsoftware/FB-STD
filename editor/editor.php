@@ -44,7 +44,7 @@ if ($tema && $page) {
             <h3 class="" aria-expanded="true" aria-selected="true">Widget</h3>
             <div id="widgets-panel">  </div>
 
-            <!-- plugins ----------------------------------------------- -->
+            <!-- plugins ----------------------------------------------- 
             <h3 class="">Plugin</h3>        
             <div>
                 <ul class="widget-list">
@@ -56,7 +56,7 @@ if ($tema && $page) {
                     </div>
                     <?php endforeach; ?>
                 </ul>
-            </div>  
+            </div>  -->
     </div> <!-- accordion -->
         <!-- impostazioni globali---------------------------- -->
       

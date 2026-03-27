@@ -68,39 +68,91 @@ editor.renderSection = function(section){
 };
 
 //=================================
-// Render column
+// cerco la colonna selezionata
 //=================================
-editor.renderColumn = function(column){
+editor.findColumnById = function(columnId){
 
-    const $column = $("<div>")
-        .addClass("canvas-column")
-        .attr("data-id", column.id)
-        .css("width", column.width + "%");
+    let found = null;
 
-        const $toolbar = $("<div>")
-            .addClass("column-toolbar")
-            .html(`
-                <button class="move-left button">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                </button>
-
-                <button class="move-right button">
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
-
-                <button class="delete-column button">
-                    <span class="material-symbols-outlined">delete</span>
-                </button>
-            `);
-
-        $column.prepend($toolbar);
-
-    column.widgets.forEach(widget => {
-        $column.append(editor.renderWidget(widget));
+    editor.state.sections.forEach(section => {
+        section.columns.forEach(column => {
+            if(column.id === columnId){
+                found = column;
+            }
+        });
     });
 
-    return $column;
-};//=================================
+    return found;
+};
+
+//=================================
+// colonna selezionata
+//=================================
+editor.selectColumn = function(id){
+    editor.clearSelection();
+    editor.state.selectedType = "column";
+    editor.state.selectedId = id;
+    editor.render();
+    editor.openColumnInspector(id);
+};
+
+//=================================
+// apre inspector colonna
+//=================================
+editor.openColumnInspector = function(columnId){
+
+    const column = editor.findColumnById(columnId);
+
+    if(!column){
+        console.error("Colonna non trovata:", columnId);
+        return;
+    }
+console.log("COLONNA TROVATA");
+    editor.renderColumnInspector(column);
+};
+
+//=================================
+// Render column in inspector
+//=================================
+editor.renderColumnInspector = function(column){
+
+    const $panel = $("#inspector");
+    $panel.empty();
+
+    const html = `
+        <div class="inspector-group">
+            <div class="inspector-title">Colonna</div>
+
+            <label for="col-width-range">Larghezza (%)</label>
+
+            <input
+                id="col-width-range"
+                type="range"
+                min="10"
+                max="100"
+                step="5"
+                value="${column.width}"
+                data-column-field="width"
+                data-column-input="range"
+            >
+
+            <input
+                id="col-width-number"
+                type="number"
+                min="10"
+                max="100"
+                step="5"
+                value="${column.width}"
+                data-column-field="width"
+                data-column-input="number"
+            >
+        </div>
+    `;
+
+    $panel.html(html);
+};
+
+//=================================
 // Render column
 //=================================
 editor.renderColumn = function(column){
@@ -204,129 +256,4 @@ editor.syncColumnsState = function(){
     });
 };
 
-//==========================================
-// render pannello dettagli
-//==========================================
-editor.renderInspector = function(item, def){
-
-    let html = `<div class="inspector">`;
-
-    html += `<h3>${def.label || "Proprietà"}</h3>`;
-
-    for (const fieldName in def.fields){
-
-        const field = def.fields[fieldName];
-        const value = item.props?.[fieldName] ?? "";
-
-        html += `<div class="field">`;
-        html += `<label>${field.label}</label>`;
-
-        // TEXT----------------------------------------
-        if (field.type === "text"){
-            html += `
-                <input type="text"
-                    value="${value}"
-                    data-field="${fieldName}">
-            `;
-        }
-
-        // TEXTAREA----------------------------------------
-if(field.type === "textarea"){
-
-    html += `
-        <textarea data-field="${fieldName}" rows="8">${value}</textarea>
-    `;
-}
-
-        // NUMBER----------------------------------------
-        if (field.type === "number"){
-            html += `
-                <input type="number"
-                    value="${value}"
-                    data-field="${fieldName}">
-            `;
-        }
-
-
-        // IMAGE----------------------------------------
-        if (field.type === "image"){
-            html += `
-                <input type="text"
-                    value="${value}"
-                    data-field="${fieldName}">
-            `;
-        }
-
-        // SELECT----------------------------------------
-        if (field.type === "select"){
-            html += `<select data-field="${fieldName}">`;
-
-            for (const k in field.options){
-                const selected = k == value ? "selected" : "";
-                html += `<option value="${k}" ${selected}>${field.options[k]}</option>`;
-            }
-
-            html += `</select>`;
-        }
-
-        // RANGE------------------------------------------
-        if (field.type === "range"){
-            html += `
-                <input type="range"
-                    min="${field.min}"
-                    max="${field.max}"
-                    value="${value}"
-                    data-field="${fieldName}">
-            `;
-        }
-
-        // COLOR (con fix var())------------------------------
-        if (field.type === "color"){
-            html += `
-                <input type="color"
-                    value="${resolveColor(value)}"
-                    data-field="${fieldName}">
-            `;
-        }
-
-        html += `</div>`;
-    }
-
-    html += `</div>`;
-
-    $("#inspector").html(html);
-};
-
-//=============================================
-//  SELEZIONE/DESELEZIONE CENTRALIZZATA
-//=============================================
-editor.clearSelection = function()
-
-{
-    console.log("CLEAR SELECTION");
-    editor.state.selectedType = null;
-    editor.state.selectedId = null;
-};
-
-editor.selectSection = function(id){
-    editor.clearSelection();
-    editor.state.selectedType = "section";
-    editor.state.selectedId = id;
-    editor.render();
-};
-
-editor.selectColumn = function(id){
-    editor.clearSelection();
-    editor.state.selectedType = "column";
-    editor.state.selectedId = id;
-    editor.render();
-};
-
-editor.selectWidget = function(id){
-    editor.clearSelection();
-    editor.state.selectedType = "widget";
-    editor.state.selectedId = id;
-    editor.render();
-    editor.openWidgetInspector(id);
-};
 

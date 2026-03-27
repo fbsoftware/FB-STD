@@ -169,21 +169,14 @@ display: none !important;
 /*========================  */
 .section-columns{
     display:flex;
-    flex-direction:row;
     gap:10px;
-    min-height: 40px;
     align-items:stretch;
 }
 
 .canvas-column{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
     position:relative;
-    min-height:80px;
-    min-width: 200px;
-    border:2px dashed #ddd;
-    padding:20px;
+    min-height:60px;
+    border: 2px dashed #ddd;
 }
 
 .canvas-column.drag-over {
@@ -206,6 +199,7 @@ display: none !important;
 .column-handle:active {
   cursor: grabbing;
 }
+
 
 /*========================  */
 /*  bottone salva  */
@@ -475,4 +469,16 @@ textarea{
     min-height:140px;
     resize:vertical;
     box-sizing:border-box;
+}
+
+/* INSPECTOR */
+#inspector input[type="range"],
+#inspector input[type="number"]{
+    display:block;
+    width:100%;
+    margin:8px 0;
+    box-sizing:border-box;
+}
+#inspector input[type="number"]{
+    width:80px;
 }
