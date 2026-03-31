@@ -156,7 +156,7 @@ defaultProps:{
                 <img src="${widget.props.src}" 
                      alt="${widget.props.alt}" 
                      width="${widget.props.width}" 
-                     style="align-text:${widget.props.align}"/>
+                     style="text-align:${widget.props.align}"/>
             </div>
             `;
         }

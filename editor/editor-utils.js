@@ -11,3 +11,20 @@ editor.utils.uuid = function(prefix = "id") {
            Math.floor(Math.random() * 1000);
 
 };
+
+//==========================================
+//  CERCA SEZIONE
+//==========================================
+
+editor.findSectionById = function(sectionId){
+
+    let found = null;
+
+    editor.state.sections.forEach(section => {
+        if(section.id === sectionId){
+            found = section;
+        }
+    });
+
+    return found;
+};

@@ -3,7 +3,7 @@
         "tema": "blog",
         "page": "987d",
         "version": "2.0",
-        "updated_at": "2026-03-27T18:29:10.536Z"
+        "updated_at": "2026-03-28T11:12:47.509Z"
     },
     "global": {
         "colors": {
@@ -28,15 +28,15 @@
             "columns": [
                 {
                     "id": "col-1774630404922-27",
-                    "width": 33.333333333333336,
+                    "width": 30,
                     "widgets": [
                         {
                             "id": "w1774630443935_3",
                             "type": "header",
                             "props": {
                                 "text": "Textarea",
-                                "level": "h2",
-                                "align": "left",
+                                "level": "h3",
+                                "align": "center",
                                 "color": "var(--color-text)"
                             }
                         },
@@ -60,11 +60,11 @@
                     "width": 20,
                     "widgets": [
                         {
-                            "id": "w1774636199215_1",
+                            "id": "w1774640250398_1",
                             "type": "header",
                             "props": {
                                 "text": "Ferrari gialla",
-                                "level": "h2",
+                                "level": "h3",
                                 "align": "center",
                                 "color": "#000000"
                             }

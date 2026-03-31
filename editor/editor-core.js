@@ -509,6 +509,7 @@ editor.selectSection = function(id){
     editor.state.selectedType = "section";
     editor.state.selectedId = id;
     editor.render();
+    editor.openSectionInspector(id);
 };
 
 editor.selectColumn = function(id){
@@ -566,5 +567,26 @@ $(document).on("input change", "#inspector [data-column-field]",
 
         editor.render();
         editor.openColumnInspector(columnId);
+    }
+);
+
+
+//========================================
+// EVENTO MODIFICA DETTAGLI SEZIONE
+//========================================
+$(document).on("input change", '#inspector [data-section-field]', function(){
+
+        const field = $(this).data("section-field");
+        const value = $(this).val();
+
+        const sectionId = editor.state.selectedId;
+        const section = editor.findSectionById(sectionId);
+
+        if(!section) return;
+
+        section[field] = value;
+
+        editor.render();
+        editor.openSectionInspector(sectionId);
     }
 );

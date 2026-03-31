@@ -406,19 +406,6 @@ option:hover {
     margin-bottom:4px;
 }
 
-/*   INSPECTOR   */
-.inspector-row{
-    margin-bottom:0px;
-}
-
-.inspector-row label{
-    display:block;
-    font-size:12px;
-    margin-bottom:3px;
-}
-#inspector .inspector {
-    margin-bottom: 20px;
-}
 /*=========*/
 /* TOOLBAR */
 /*=========*/
@@ -471,7 +458,19 @@ textarea{
     box-sizing:border-box;
 }
 
-/* INSPECTOR */
+/*   INSPECTOR   */
+.inspector-row{
+    margin-bottom:0px;
+}
+
+.inspector-row label{
+    display:block;
+    font-size:12px;
+    margin-bottom:3px;
+}
+#inspector .inspector {
+    margin-bottom: 20px;
+}
 #inspector input[type="range"],
 #inspector input[type="number"]{
     display:block;
@@ -481,4 +480,18 @@ textarea{
 }
 #inspector input[type="number"]{
     width:80px;
+}
+#inspector .inspector-group{
+    margin-bottom:16px;
+}
+
+#inspector label{
+    display:block;
+    margin:8px 0 4px;
+}
+
+#inspector input,
+#inspector select{
+    width:100%;
+    box-sizing:border-box;
 }

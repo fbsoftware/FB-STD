@@ -31,9 +31,12 @@ editor.generateId = function(prefix) {
 //  Create new section
 //=================================
  editor.createSection = function(){
-    console.log("➕ SEZIONE");
+
     const section = {
         id: editor.utils.uuid("sec"),
+        background: "var(--color-bg)",
+        padding: "20px",
+        margin: "0px",
         columns: [
             {
                 id: editor.utils.uuid("col"),
